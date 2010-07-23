@@ -1,0 +1,16 @@
+<h1>Editing contractor</h1>
+
+<% form_for(@contractor) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @contractor %> |
+<%= link_to 'Back', contractors_path %>

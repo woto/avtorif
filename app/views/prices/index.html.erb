@@ -1,0 +1,24 @@
+<h1>Listing prices</h1>
+
+<table>
+  <tr>
+    <th>Code</th>
+    <th>Contractor</th>
+    <th>Margin</th>
+  </tr>
+
+<% @prices.each do |price| %>
+  <tr>
+    <td><%=h price.code %></td>
+    <td><%=h price.contractor %></td>
+    <td><%=h price.margin %></td>
+    <td><%= link_to 'Show', price %></td>
+    <td><%= link_to 'Edit', edit_price_path(price) %></td>
+    <td><%= link_to 'Destroy', price, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New price', new_price_path %>
