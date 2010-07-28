@@ -1,28 +1,29 @@
+<p id="notice"><%= notice %></p>
+
 <p>
   <b>Price:</b>
-  <%=h @good.price %>
-</p>
-
-<p>
-  <b>Contractor:</b>
-  <%=h @good.contractor %>
-</p>
-
-<p>
-  <b>Code:</b>
-  <%=h @good.code %>
+  <%= @goods.price %>
 </p>
 
 <p>
   <b>Manufacturer:</b>
-  <%=h @good.manufacturer %>
+  <%= @goods.manufacturer %>
+</p>
+
+<p>
+  <b>Contractor:</b>
+  <%= @goods.contractor %>
+</p>
+
+<p>
+  <b>Code:</b>
+  <%= @goods.code %>
 </p>
 
 <p>
   <b>Cost:</b>
-  <%=h @good.cost %>
+  <%= @goods.cost %>
 </p>
 
-
-<%= link_to 'Edit', edit_good_path(@good) %> |
+<%= link_to 'Edit', edit_polymorphic_path(@goods) %> |
 <%= link_to 'Back', goods_path %>

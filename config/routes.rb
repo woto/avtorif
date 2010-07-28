@@ -1,5 +1,51 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :goods
+  map.resources :repeats
+
+  map.resources :repeats_jobs
+
+  map.resources :analogues
+
+  map.resources :prices
+
+  map.resources :prices
+
+  map.resources :folder_settings
+
+  map.resources :email_settings
+
+  map.resources :ftp_settings
+
+  map.resources :prices
+
+  map.resources :prices
+
+  map.resources :prices
+
+  map.resources :prices
+
+  map.resources :prices
+
+  map.resources :prices
+
+  map.resources :prices
+
+  map.resources :prices
+
+  map.resources :prices
+
+  map.resources :prices
+
+  map.resources :prices
+
+  map.resources :prices
+
+  map.resources :prices
+
+  map.resources :prices
+
+  map.resources :prices
+
+  map.resources :prices
 
   map.resources :goods
 
@@ -8,10 +54,10 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :goods
 
   map.resources :prices
-  map.resources :contractors
-  map.resources :goods
+  map.resources :contractors  
   map.resources :manufacturers
   map.resources :prices
+  map.resources :goods
 
   # The priority is based upon order of creation: first created -> highest priority.
 

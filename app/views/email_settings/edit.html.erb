@@ -1,0 +1,20 @@
+<h1>Editing email_setting</h1>
+
+<% form_for(@email_setting) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </p>
+  <p>
+    <%= f.label :pop %><br />
+    <%= f.text_field :pop %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @email_setting %> |
+<%= link_to 'Back', email_settings_path %>

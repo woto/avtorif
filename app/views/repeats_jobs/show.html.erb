@@ -1,0 +1,13 @@
+<p>
+  <b>Repeat:</b>
+  <%=h @repeats_job.repeat_id %>
+</p>
+
+<p>
+  <b>Job:</b>
+  <%=h @repeats_job.job_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_repeats_job_path(@repeats_job) %> |
+<%= link_to 'Back', repeats_jobs_path %>

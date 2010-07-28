@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  minute: MyString
+  hour: MyString
+  day: MyString
+  month: MyString
+  year: MyString
+  weekday: MyString
+  active: false
+  description: MyString
+
+two:
+  minute: MyString
+  hour: MyString
+  day: MyString
+  month: MyString
+  year: MyString
+  weekday: MyString
+  active: false
+  description: MyString

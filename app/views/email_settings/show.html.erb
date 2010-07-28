@@ -1,0 +1,13 @@
+<p>
+  <b>Email:</b>
+  <%=h @email_setting.email %>
+</p>
+
+<p>
+  <b>Pop:</b>
+  <%=h @email_setting.pop %>
+</p>
+
+
+<%= link_to 'Edit', edit_email_setting_path(@email_setting) %> |
+<%= link_to 'Back', email_settings_path %>

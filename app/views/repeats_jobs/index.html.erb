@@ -1,0 +1,22 @@
+<h1>Listing repeats_jobs</h1>
+
+<table>
+  <tr>
+    <th>Repeat</th>
+    <th>Job</th>
+  </tr>
+
+<% @repeats_jobs.each do |repeats_job| %>
+  <tr>
+    <td><%=h repeats_job.repeat_id %></td>
+    <td><%=h repeats_job.job_id %></td>
+    <td><%= link_to 'Show', repeats_job %></td>
+    <td><%= link_to 'Edit', edit_repeats_job_path(repeats_job) %></td>
+    <td><%= link_to 'Destroy', repeats_job, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New repeats_job', new_repeats_job_path %>

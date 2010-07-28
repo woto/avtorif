@@ -1,0 +1,15 @@
+<h1>New ftp_setting</h1>
+
+<% form_for(@ftp_setting) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :ftp %><br />
+    <%= f.text_field :ftp %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', ftp_settings_path %>

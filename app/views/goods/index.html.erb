@@ -2,27 +2,30 @@
 
 <table>
   <tr>
-    <th>Price</th>
-    <th>Contractor</th>
-    <th>Code</th>
-    <th>Manufacturer</th>
-    <th>Cost</th>
+    <th><%= t 'Price' %></th>
+    <th><%= t 'Manufacturer' %></th>
+    <th><%= t 'Contractor' %></th>
+    <th><%= t 'Code' %></th>
+    <th><%= t 'Cost' %></th>
+    <th></th>
+    <th></th>
+    <th></th>
   </tr>
 
-<% @goods.each do |good| %>
+<% @goods.each do |goods| %>
   <tr>
-    <td><%=h good.price %></td>
-    <td><%=h good.contractor %></td>
-    <td><%=h good.code %></td>
-    <td><%=h good.manufacturer %></td>
-    <td><%=h good.cost %></td>
-    <td><%= link_to 'Show', good %></td>
-    <td><%= link_to 'Edit', edit_good_path(good) %></td>
-    <td><%= link_to 'Destroy', good, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= goods.price.code %></td>
+    <td><%= goods.manufacturer.name %></td>
+    <td><%= goods.contractor.name %></td>
+    <td><%= goods.code %></td>
+    <td><%= goods.cost %></td>
+    <td><%= link_to 'Show', goods %></td>
+    <td><%= link_to 'Edit', edit_polymorphic_path(goods) %></td>
+    <td><%= link_to 'Destroy', goods, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New good', new_good_path %>
+<%= link_to 'New Goods', new_polymorphic_path(Goods) %>

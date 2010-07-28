@@ -3,11 +3,14 @@
 <table>
   <tr>
     <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
   </tr>
 
 <% @contractors.each do |contractor| %>
   <tr>
-    <td><%=h contractor.name %></td>
+    <td><%= contractor.name %></td>
     <td><%= link_to 'Show', contractor %></td>
     <td><%= link_to 'Edit', edit_contractor_path(contractor) %></td>
     <td><%= link_to 'Destroy', contractor, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -17,4 +20,4 @@
 
 <br />
 
-<%= link_to 'New contractor', new_contractor_path %>
+<%= link_to 'New Contractor', new_contractor_path %>

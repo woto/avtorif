@@ -2,7 +2,7 @@ class GoodsController < ApplicationController
   # GET /goods
   # GET /goods.xml
   def index
-    @goods = Good.all
+    @goods = Goods.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,42 +13,42 @@ class GoodsController < ApplicationController
   # GET /goods/1
   # GET /goods/1.xml
   def show
-    @good = Good.find(params[:id])
+    @goods = Goods.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @good }
+      format.xml  { render :xml => @goods }
     end
   end
 
   # GET /goods/new
   # GET /goods/new.xml
   def new
-    @good = Good.new
+    @goods = Goods.new
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @good }
+      format.xml  { render :xml => @goods }
     end
   end
 
   # GET /goods/1/edit
   def edit
-    @good = Good.find(params[:id])
+    @goods = Goods.find(params[:id])
   end
 
   # POST /goods
   # POST /goods.xml
   def create
-    @good = Good.new(params[:good])
+    @goods = Goods.new(params[:goods])
 
     respond_to do |format|
-      if @good.save
-        format.html { redirect_to(@good, :notice => 'Good was successfully created.') }
-        format.xml  { render :xml => @good, :status => :created, :location => @good }
+      if @goods.save
+        format.html { redirect_to(@goods, :notice => 'Goods was successfully created.') }
+        format.xml  { render :xml => @goods, :status => :created, :location => @goods }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @good.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @goods.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -56,15 +56,15 @@ class GoodsController < ApplicationController
   # PUT /goods/1
   # PUT /goods/1.xml
   def update
-    @good = Good.find(params[:id])
+    @goods = Goods.find(params[:id])
 
     respond_to do |format|
-      if @good.update_attributes(params[:good])
-        format.html { redirect_to(@good, :notice => 'Good was successfully updated.') }
+      if @goods.update_attributes(params[:goods])
+        format.html { redirect_to(@goods, :notice => 'Goods was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @good.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @goods.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -72,8 +72,8 @@ class GoodsController < ApplicationController
   # DELETE /goods/1
   # DELETE /goods/1.xml
   def destroy
-    @good = Good.find(params[:id])
-    @good.destroy
+    @goods = Goods.find(params[:id])
+    @goods.destroy
 
     respond_to do |format|
       format.html { redirect_to(goods_url) }

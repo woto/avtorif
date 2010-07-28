@@ -1,0 +1,20 @@
+<h1>Editing repeats_job</h1>
+
+<% form_for(@repeats_job) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :repeat_id %><br />
+    <%= f.text_field :repeat_id %>
+  </p>
+  <p>
+    <%= f.label :job_id %><br />
+    <%= f.text_field :job_id %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @repeats_job %> |
+<%= link_to 'Back', repeats_jobs_path %>

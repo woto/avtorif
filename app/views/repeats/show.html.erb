@@ -1,0 +1,43 @@
+<p>
+  <b>Minute:</b>
+  <%=h @repeat.minute %>
+</p>
+
+<p>
+  <b>Hour:</b>
+  <%=h @repeat.hour %>
+</p>
+
+<p>
+  <b>Day:</b>
+  <%=h @repeat.day %>
+</p>
+
+<p>
+  <b>Month:</b>
+  <%=h @repeat.month %>
+</p>
+
+<p>
+  <b>Year:</b>
+  <%=h @repeat.year %>
+</p>
+
+<p>
+  <b>Weekday:</b>
+  <%=h @repeat.weekday %>
+</p>
+
+<p>
+  <b>Active:</b>
+  <%=h @repeat.active %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%=h @repeat.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_repeat_path(@repeat) %> |
+<%= link_to 'Back', repeats_path %>

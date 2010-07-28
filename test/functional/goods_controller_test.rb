@@ -12,15 +12,15 @@ class GoodsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create good" do
-    assert_difference('Good.count') do
-      post :create, :good => { }
+  test "should create goods" do
+    assert_difference('Goods.count') do
+      post :create, :goods => { }
     end
 
-    assert_redirected_to good_path(assigns(:good))
+    assert_redirected_to goods_path(assigns(:goods))
   end
 
-  test "should show good" do
+  test "should show goods" do
     get :show, :id => goods(:one).to_param
     assert_response :success
   end
@@ -30,13 +30,13 @@ class GoodsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should update good" do
-    put :update, :id => goods(:one).to_param, :good => { }
-    assert_redirected_to good_path(assigns(:good))
+  test "should update goods" do
+    put :update, :id => goods(:one).to_param, :goods => { }
+    assert_redirected_to goods_path(assigns(:goods))
   end
 
-  test "should destroy good" do
-    assert_difference('Good.count', -1) do
+  test "should destroy goods" do
+    assert_difference('Goods.count', -1) do
       delete :destroy, :id => goods(:one).to_param
     end
 

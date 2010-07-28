@@ -3,11 +3,14 @@
 <table>
   <tr>
     <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
   </tr>
 
 <% @manufacturers.each do |manufacturer| %>
   <tr>
-    <td><%=h manufacturer.name %></td>
+    <td><%= manufacturer.name %></td>
     <td><%= link_to 'Show', manufacturer %></td>
     <td><%= link_to 'Edit', edit_manufacturer_path(manufacturer) %></td>
     <td><%= link_to 'Destroy', manufacturer, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -17,4 +20,4 @@
 
 <br />
 
-<%= link_to 'New manufacturer', new_manufacturer_path %>
+<%= link_to 'New Manufacturer', new_manufacturer_path %>

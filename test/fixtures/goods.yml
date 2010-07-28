@@ -2,12 +2,14 @@
 
 one:
   price: 
-  catalog_number: MyString
+  contractor: 
+  code: MyString
   manufacturer: 
-  price: 
+  cost: 9.99
 
 two:
   price: 
-  catalog_number: MyString
+  contractor: 
+  code: MyString
   manufacturer: 
-  price: 
+  cost: 9.99
