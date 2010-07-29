@@ -2,12 +2,10 @@ class CreatePrices < ActiveRecord::Migration
   def self.up
     create_table :prices do |t|
       t.string :code
-      t.string :name
+      t.string :file_mask
       t.references :contractor
       t.decimal :margin
       t.boolean :original
-      t.string :username
-      t.string :password
       t.string :filename
       t.integer :settings_id
       t.string :settings_type

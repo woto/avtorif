@@ -2,7 +2,9 @@ class CreateFolderSettings < ActiveRecord::Migration
   def self.up
     create_table :folder_settings do |t|
       t.string :path
-
+      t.string :login
+      t.string :password
+      
       t.timestamps
     end
   end
