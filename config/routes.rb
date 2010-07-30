@@ -1,4 +1,50 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :jobs
+
+  map.resources :jobs
+
+  map.resources :jobs
+
+  map.resources :jobs
+
+  map.resources :jobs
+
+  map.resources :repeats
+
+  map.resources :repeats
+
+  map.resources :jobs
+
+  map.resources :jobs
+
+  map.resources :jobs
+
+  map.resources :jobs
+
+  map.resources :jobs
+
+  map.resources :jobs
+
+  map.resources :jobs
+
+  map.resources :jobs
+
+  map.resources :jobs
+
+  map.resources :jobs
+
+  map.resources :repeats
+
+  map.resources :repeats
+
+  map.resources :repeats
+
+  map.resources :repeats
+
+  map.resources :repeats
+
+  map.resources :jobs
+
   map.resources :repeats
 
   map.resources :repeats_jobs

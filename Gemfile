@@ -1,5 +1,4 @@
 source :gemcutter
-source :rubygems
 #source 'http://rubygems.org'
 
 gem 'rails', '2.3.8'
@@ -33,5 +32,6 @@ gem 'delayed_job'
 #   gem 'webrat'        
 # end
                      
-gem 'formtastic'
+gem 'formtastic', :git => "http://github.com/justinfrench/formtastic.git", :tag => "1.0.0.beta3"
 gem 'whenever'
+gem 'rufus-scheduler'

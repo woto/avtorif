@@ -4,36 +4,16 @@
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :minute %><br />
-    <%= f.text_field :minute %>
-  </p>
-  <p>
-    <%= f.label :hour %><br />
-    <%= f.text_field :hour %>
-  </p>
-  <p>
-    <%= f.label :day %><br />
-    <%= f.text_field :day %>
-  </p>
-  <p>
-    <%= f.label :month %><br />
-    <%= f.text_field :month %>
-  </p>
-  <p>
-    <%= f.label :year %><br />
-    <%= f.text_field :year %>
-  </p>
-  <p>
-    <%= f.label :weekday %><br />
-    <%= f.text_field :weekday %>
+    <%= f.label :cron_string %><br />
+    <%= f.text_field :cron_string %>
   </p>
   <p>
     <%= f.label :active %><br />
     <%= f.check_box :active %>
   </p>
   <p>
-    <%= f.label :description %><br />
-    <%= f.text_field :description %>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
   </p>
   <p>
     <%= f.submit 'Update' %>

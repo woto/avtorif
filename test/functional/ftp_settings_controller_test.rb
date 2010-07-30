@@ -13,7 +13,7 @@ class FtpSettingsControllerTest < ActionController::TestCase
   end
 
   test "should create ftp_setting" do
-    assert_difference('FtpSetting.count') do
+    assert_difference('FtpReceiveSetting.count') do
       post :create, :ftp_setting => { }
     end
 
@@ -36,7 +36,7 @@ class FtpSettingsControllerTest < ActionController::TestCase
   end
 
   test "should destroy ftp_setting" do
-    assert_difference('FtpSetting.count', -1) do
+    assert_difference('FtpReceiveSetting.count', -1) do
       delete :destroy, :id => ftp_settings(:one).to_param
     end
 

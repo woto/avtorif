@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  next_start: 2010-07-29 11:22:02
+  last_start: 2010-07-29 11:22:02
+  active: false
+  description: MyString
+  repeats: 
+
+two:
+  next_start: 2010-07-29 11:22:02
+  last_start: 2010-07-29 11:22:02
+  active: false
+  description: MyString
+  repeats: 

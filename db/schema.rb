@@ -9,12 +9,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100728081548) do
+ActiveRecord::Schema.define(:version => 20100730080647) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
     t.integer  "analogue_id"
-    t.string   "note"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -40,21 +40,33 @@ ActiveRecord::Schema.define(:version => 20100728081548) do
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
-  create_table "email_settings", :force => true do |t|
-    t.string   "email"
-    t.string   "pop"
+  create_table "email_receive_settings", :force => true do |t|
+    t.string   "email_address"
+    t.string   "pop_server"
+    t.string   "login"
+    t.string   "password"
+    t.string   "topic"
+    t.string   "sender_address"
+    t.string   "email_date_time"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "folder_settings", :force => true do |t|
+  create_table "folder_receive_settings", :force => true do |t|
     t.string   "path"
+    t.string   "login"
+    t.string   "password"
+    t.string   "file_date_time"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "ftp_settings", :force => true do |t|
-    t.string   "ftp"
+  create_table "ftp_receive_settings", :force => true do |t|
+    t.string   "ftp_server"
+    t.string   "path"
+    t.string   "login"
+    t.string   "password"
+    t.string   "file_date_time"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -69,10 +81,20 @@ ActiveRecord::Schema.define(:version => 20100728081548) do
     t.datetime "updated_at"
   end
 
+  create_table "import_jobs", :force => true do |t|
+    t.integer  "price_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "jobs", :force => true do |t|
-    t.datetime "last_success"
-    t.boolean  "active"
-    t.string   "description"
+    t.datetime "next_start"
+    t.datetime "last_start"
+    t.string   "title"
+    t.integer  "repeats_id"
+    t.integer  "job_id"
+    t.string   "jobable_type"
+    t.integer  "jobable_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -94,26 +116,26 @@ ActiveRecord::Schema.define(:version => 20100728081548) do
     t.string   "code"
     t.string   "name"
     t.integer  "contractor_id"
-    t.integer  "margin",        :limit => 10, :precision => 10, :scale => 0
+    t.integer  "margin",                :limit => 10, :precision => 10, :scale => 0
     t.boolean  "original"
-    t.string   "username"
-    t.string   "password"
-    t.string   "filename"
-    t.integer  "settings_id"
-    t.string   "settings_type"
+    t.string   "file_mask"
+    t.string   "file_hash"
+    t.integer  "receive_settings_id"
+    t.string   "receive_settings_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "receive_jobs", :force => true do |t|
+    t.integer  "price_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "repeats", :force => true do |t|
-    t.string   "minute"
-    t.string   "hour"
-    t.string   "day"
-    t.string   "month"
-    t.string   "year"
-    t.string   "weekday"
+    t.string   "cron_string"
     t.boolean  "active"
-    t.string   "description"
+    t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

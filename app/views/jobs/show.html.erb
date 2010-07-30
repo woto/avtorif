@@ -1,0 +1,38 @@
+<p>
+  <b>Next start:</b>
+  <%=h @job.next_start %>
+</p>
+
+<p>
+  <b>Last start:</b>
+  <%=h @job.last_start %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%=h @job.title %>
+</p>
+
+<p>
+  <b>Repeats:</b>
+  <%=h @job.repeats %>
+</p>
+
+<p>
+  <b>Job:</b>
+  <%=h @job.job %>
+</p>
+
+<p>
+  <b>Jobable type:</b>
+  <%=h @job.jobable_type %>
+</p>
+
+<p>
+  <b>Jobable:</b>
+  <%=h @job.jobable_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_job_path(@job) %> |
+<%= link_to 'Back', jobs_path %>

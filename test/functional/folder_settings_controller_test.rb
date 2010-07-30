@@ -13,7 +13,7 @@ class FolderSettingsControllerTest < ActionController::TestCase
   end
 
   test "should create folder_setting" do
-    assert_difference('FolderSetting.count') do
+    assert_difference('FolderReceiveSetting.count') do
       post :create, :folder_setting => { }
     end
 
@@ -36,7 +36,7 @@ class FolderSettingsControllerTest < ActionController::TestCase
   end
 
   test "should destroy folder_setting" do
-    assert_difference('FolderSetting.count', -1) do
+    assert_difference('FolderReceiveSetting.count', -1) do
       delete :destroy, :id => folder_settings(:one).to_param
     end
 

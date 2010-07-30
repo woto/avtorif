@@ -2,13 +2,14 @@ class CreatePrices < ActiveRecord::Migration
   def self.up
     create_table :prices do |t|
       t.string :code
-      t.string :file_mask
+      t.string :name
       t.references :contractor
       t.decimal :margin
       t.boolean :original
-      t.string :filename
-      t.integer :settings_id
-      t.string :settings_type
+      t.string :file_mask
+      t.string :file_hash
+      t.integer :receive_settings_id
+      t.string :receive_settings_type
 
       t.timestamps
     end

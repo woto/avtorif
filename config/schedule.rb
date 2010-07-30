@@ -18,7 +18,7 @@ set :output, "log/schedule.log"
 # end
 
 every 1.minute do
-  rake "db:setup"
+  runner "JobWalker.new.call"
 end
 
 # Learn more: http://github.com/javan/whenever

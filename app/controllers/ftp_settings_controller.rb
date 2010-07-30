@@ -2,7 +2,7 @@ class FtpSettingsController < ApplicationController
   # GET /ftp_settings
   # GET /ftp_settings.xml
   def index
-    @ftp_settings = FtpSetting.all
+    @ftp_settings = FtpReceiveSetting.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +13,7 @@ class FtpSettingsController < ApplicationController
   # GET /ftp_settings/1
   # GET /ftp_settings/1.xml
   def show
-    @ftp_setting = FtpSetting.find(params[:id])
+    @ftp_setting = FtpReceiveSetting.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +24,7 @@ class FtpSettingsController < ApplicationController
   # GET /ftp_settings/new
   # GET /ftp_settings/new.xml
   def new
-    @ftp_setting = FtpSetting.new
+    @ftp_setting = FtpReceiveSetting.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,17 +34,17 @@ class FtpSettingsController < ApplicationController
 
   # GET /ftp_settings/1/edit
   def edit
-    @ftp_setting = FtpSetting.find(params[:id])
+    @ftp_setting = FtpReceiveSetting.find(params[:id])
   end
 
   # POST /ftp_settings
   # POST /ftp_settings.xml
   def create
-    @ftp_setting = FtpSetting.new(params[:ftp_setting])
+    @ftp_setting = FtpReceiveSetting.new(params[:ftp_setting])
 
     respond_to do |format|
       if @ftp_setting.save
-        format.html { redirect_to(@ftp_setting, :notice => 'FtpSetting was successfully created.') }
+        format.html { redirect_to(@ftp_setting, :notice => 'FtpReceiveSetting was successfully created.') }
         format.xml  { render :xml => @ftp_setting, :status => :created, :location => @ftp_setting }
       else
         format.html { render :action => "new" }
@@ -56,11 +56,11 @@ class FtpSettingsController < ApplicationController
   # PUT /ftp_settings/1
   # PUT /ftp_settings/1.xml
   def update
-    @ftp_setting = FtpSetting.find(params[:id])
+    @ftp_setting = FtpReceiveSetting.find(params[:id])
 
     respond_to do |format|
       if @ftp_setting.update_attributes(params[:ftp_setting])
-        format.html { redirect_to(@ftp_setting, :notice => 'FtpSetting was successfully updated.') }
+        format.html { redirect_to(@ftp_setting, :notice => 'FtpReceiveSetting was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -72,7 +72,7 @@ class FtpSettingsController < ApplicationController
   # DELETE /ftp_settings/1
   # DELETE /ftp_settings/1.xml
   def destroy
-    @ftp_setting = FtpSetting.find(params[:id])
+    @ftp_setting = FtpReceiveSetting.find(params[:id])
     @ftp_setting.destroy
 
     respond_to do |format|

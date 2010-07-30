@@ -3,7 +3,7 @@ class CreateAnalogues < ActiveRecord::Migration
     create_table :analogues do |t|
       t.integer :original_id
       t.integer :analogue_id
-      t.string :note
+      t.string :description
 
       t.timestamps
     end

@@ -3,9 +3,9 @@ require 'net/ftp'
 require 'fileutils'
 
 require 'net/pop'
-require File.dirname(__FILE__) + '/../config/environment'
 
-logger = RAILS_DEFAULT_LOGGER
+
+
 
 class PriceReceiver
   def initialize(receiver, username, password, file_mask, local_file)
@@ -83,11 +83,11 @@ class EmailReceiver < AbstractReceiver
   end
 end
 
-=begin
-HttpReceiver = ''
-FtpReceiver = ''
-FolderReceiver = ''
-=end
+
+#HttpReceiver = ''
+#FtpReceiver = ''
+#FolderReceiver = ''
+#=end
 
 ftp = FtpReceiver.new('avtorif.ru', '/')
 email = EmailReceiver.new('mail.avtorif.ru')
