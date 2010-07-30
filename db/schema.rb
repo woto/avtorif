@@ -9,18 +9,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100730080647) do
+ActiveRecord::Schema.define(:version => 20100730112348) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
     t.integer  "analogue_id"
     t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "contractors", :force => true do |t|
-    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -40,33 +34,30 @@ ActiveRecord::Schema.define(:version => 20100730080647) do
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
-  create_table "email_receive_settings", :force => true do |t|
-    t.string   "email_address"
-    t.string   "pop_server"
+  create_table "emails", :force => true do |t|
+    t.string   "server"
+    t.string   "address"
     t.string   "login"
     t.string   "password"
     t.string   "topic"
-    t.string   "sender_address"
-    t.string   "email_date_time"
+    t.string   "sender"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "folder_receive_settings", :force => true do |t|
+  create_table "folders", :force => true do |t|
     t.string   "path"
     t.string   "login"
     t.string   "password"
-    t.string   "file_date_time"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "ftp_receive_settings", :force => true do |t|
-    t.string   "ftp_server"
+  create_table "ftps", :force => true do |t|
+    t.string   "server"
     t.string   "path"
     t.string   "login"
     t.string   "password"
-    t.string   "file_date_time"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -114,14 +105,13 @@ ActiveRecord::Schema.define(:version => 20100730080647) do
 
   create_table "prices", :force => true do |t|
     t.string   "code"
-    t.string   "name"
-    t.integer  "contractor_id"
-    t.integer  "margin",                :limit => 10, :precision => 10, :scale => 0
+    t.string   "title"
+    t.integer  "supplier_id"
+    t.integer  "margin",       :limit => 10, :precision => 10, :scale => 0
     t.boolean  "original"
     t.string   "file_mask"
-    t.string   "file_hash"
-    t.integer  "receive_settings_id"
-    t.string   "receive_settings_type"
+    t.integer  "receive_id"
+    t.string   "receive_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -136,6 +126,12 @@ ActiveRecord::Schema.define(:version => 20100730080647) do
     t.string   "cron_string"
     t.boolean  "active"
     t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "suppliers", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

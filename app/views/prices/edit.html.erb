@@ -8,12 +8,12 @@
     <%= f.text_field :code %>
   </p>
   <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
   </p>
   <p>
-    <%= f.label :contractor %><br />
-    <%= f.text_field :contractor %>
+    <%= f.label :supplier %><br />
+    <%= f.text_field :supplier %>
   </p>
   <p>
     <%= f.label :margin %><br />
@@ -24,24 +24,16 @@
     <%= f.check_box :original %>
   </p>
   <p>
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
+    <%= f.label :file_mask %><br />
+    <%= f.text_field :file_mask %>
   </p>
   <p>
-    <%= f.label :password %><br />
-    <%= f.text_field :password %>
+    <%= f.label :receive_id %><br />
+    <%= f.text_field :receive_id %>
   </p>
   <p>
-    <%= f.label :filename %><br />
-    <%= f.text_field :filename %>
-  </p>
-  <p>
-    <%= f.label :settings_id %><br />
-    <%= f.text_field :settings_id %>
-  </p>
-  <p>
-    <%= f.label :settings_type %><br />
-    <%= f.text_field :settings_type %>
+    <%= f.label :receive_type %><br />
+    <%= f.text_field :receive_type %>
   </p>
   <p>
     <%= f.submit 'Update' %>

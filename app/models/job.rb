@@ -3,7 +3,7 @@ class Job < ActiveRecord::Base
 
   belongs_to :jobable, :polymorphic => true, :dependent => :destroy
   has_one :child_job, :foreign_key => :job_id, :class_name => "Job"
-  belongs_to :parent_job, :foreign_key => :job_id, :class_name => "Job"
+  belongs_to :parent_job, :readonly => true, :foreign_key => :job_id, :class_name => "Job"
 
   def after_save
     jw = JobWalker.new

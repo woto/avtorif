@@ -13,7 +13,7 @@ class PricesControllerTest < ActionController::TestCase
   end
 
   test "should create price" do
-    assert_difference('PriceReceive.count') do
+    assert_difference('Price.count') do
       post :create, :price => { }
     end
 
@@ -36,7 +36,7 @@ class PricesControllerTest < ActionController::TestCase
   end
 
   test "should destroy price" do
-    assert_difference('PriceReceive.count', -1) do
+    assert_difference('Price.count', -1) do
       delete :destroy, :id => prices(:one).to_param
     end
 

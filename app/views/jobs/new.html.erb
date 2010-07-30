@@ -1,38 +1,15 @@
 <h1>New job</h1>
 
-<% form_for(@job) do |f| %>
+<% semantic_form_for(@job) do |f| %>
   <%= f.error_messages %>
 
+    <%= f.input :jobable, :polymorphic => [ :user, :group, :some_other_model ] %>
+
+    <%= f.inputs %>
+
+
   <p>
-    <%= f.label :next_start %><br />
-    <%= f.datetime_select :next_start %>
-  </p>
-  <p>
-    <%= f.label :last_start %><br />
-    <%= f.datetime_select :last_start %>
-  </p>
-  <p>
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :repeats %><br />
-    <%= f.text_field :repeats %>
-  </p>
-  <p>
-    <%= f.label :job %><br />
-    <%= f.text_field :job %>
-  </p>
-  <p>
-    <%= f.label :jobable_type %><br />
-    <%= f.text_field :jobable_type %>
-  </p>
-  <p>
-    <%= f.label :jobable_id %><br />
-    <%= f.text_field :jobable_id %>
-  </p>
-  <p>
-    <%= f.submit 'Create' %>
+    <%= f.buttons %>
   </p>
 <% end %>
 

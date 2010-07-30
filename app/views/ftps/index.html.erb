@@ -1,0 +1,26 @@
+<h1>Listing ftps</h1>
+
+<table>
+  <tr>
+    <th>Server</th>
+    <th>Path</th>
+    <th>Login</th>
+    <th>Password</th>
+  </tr>
+
+<% @ftps.each do |ftp| %>
+  <tr>
+    <td><%=h ftp.server %></td>
+    <td><%=h ftp.path %></td>
+    <td><%=h ftp.login %></td>
+    <td><%=h ftp.password %></td>
+    <td><%= link_to 'Show', ftp %></td>
+    <td><%= link_to 'Edit', edit_ftp_path(ftp) %></td>
+    <td><%= link_to 'Destroy', ftp, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New ftp', new_ftp_path %>

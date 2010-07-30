@@ -1,0 +1,20 @@
+<h1>Listing import_jobs</h1>
+
+<table>
+  <tr>
+    <th>Price</th>
+  </tr>
+
+<% @import_jobs.each do |import_job| %>
+  <tr>
+    <td><%=h import_job.price %></td>
+    <td><%= link_to 'Show', import_job %></td>
+    <td><%= link_to 'Edit', edit_import_job_path(import_job) %></td>
+    <td><%= link_to 'Destroy', import_job, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New import_job', new_import_job_path %>

@@ -3,29 +3,25 @@
 <table>
   <tr>
     <th>Code</th>
-    <th>Name</th>
-    <th>Contractor</th>
+    <th>Title</th>
+    <th>Supplier</th>
     <th>Margin</th>
     <th>Original</th>
-    <th>Username</th>
-    <th>Password</th>
-    <th>Filename</th>
-    <th>Settings</th>
-    <th>Settings type</th>
+    <th>File mask</th>
+    <th>Receive</th>
+    <th>Receive type</th>
   </tr>
 
 <% @prices.each do |price| %>
   <tr>
     <td><%=h price.code %></td>
-    <td><%=h price.name %></td>
-    <td><%=h price.contractor %></td>
+    <td><%=h price.title %></td>
+    <td><%=h price.supplier %></td>
     <td><%=h price.margin %></td>
     <td><%=h price.original %></td>
-    <td><%=h price.username %></td>
-    <td><%=h price.password %></td>
-    <td><%=h price.filename %></td>
-    <td><%=h price.settings_id %></td>
-    <td><%=h price.settings_type %></td>
+    <td><%=h price.file_mask %></td>
+    <td><%=h price.receive_id %></td>
+    <td><%=h price.receive_type %></td>
     <td><%= link_to 'Show', price %></td>
     <td><%= link_to 'Edit', edit_price_path(price) %></td>
     <td><%= link_to 'Destroy', price, :confirm => 'Are you sure?', :method => :delete %></td>

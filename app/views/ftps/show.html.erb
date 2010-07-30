@@ -1,0 +1,23 @@
+<p>
+  <b>Server:</b>
+  <%=h @ftp.server %>
+</p>
+
+<p>
+  <b>Path:</b>
+  <%=h @ftp.path %>
+</p>
+
+<p>
+  <b>Login:</b>
+  <%=h @ftp.login %>
+</p>
+
+<p>
+  <b>Password:</b>
+  <%=h @ftp.password %>
+</p>
+
+
+<%= link_to 'Edit', edit_ftp_path(@ftp) %> |
+<%= link_to 'Back', ftps_path %>
