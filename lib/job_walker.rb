@@ -9,7 +9,7 @@ class JobWalker
   JOB_TYPES = %w{
     receive_price
     import_price
-    update_price_status
+    update_price
     send_notify
   }
 

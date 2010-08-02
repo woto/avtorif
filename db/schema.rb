@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100730112348) do
+ActiveRecord::Schema.define(:version => 20100730133602) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
@@ -103,6 +103,11 @@ ActiveRecord::Schema.define(:version => 20100730112348) do
     t.datetime "updated_at"
   end
 
+  create_table "notify_jobs", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "prices", :force => true do |t|
     t.string   "code"
     t.string   "title"
@@ -124,8 +129,8 @@ ActiveRecord::Schema.define(:version => 20100730112348) do
 
   create_table "repeats", :force => true do |t|
     t.string   "cron_string"
-    t.boolean  "active"
     t.string   "title"
+    t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

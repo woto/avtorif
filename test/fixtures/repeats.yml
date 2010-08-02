@@ -1,21 +1,11 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  minute: MyString
-  hour: MyString
-  day: MyString
-  month: MyString
-  year: MyString
-  weekday: MyString
-  active: false
-  description: MyString
+  cron_string: */1 * * * *
+  title: Каждую минуту
+  active: true
 
 two:
-  minute: MyString
-  hour: MyString
-  day: MyString
-  month: MyString
-  year: MyString
-  weekday: MyString
-  active: false
-  description: MyString
+  cron_string: 10 2/* * * *
+  title: Каждые два часа в 10 минут
+  active: true

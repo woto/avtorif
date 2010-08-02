@@ -27,7 +27,7 @@ gem 'delayed_job'
 # gem 'aws-s3', :require => 'aws/s3'
 
 # Bundle gems for certain environments:
-# gem 'rspec', :group => :test
+gem 'rspec'
 # group :test do
 #   gem 'webrat'        
 # end
