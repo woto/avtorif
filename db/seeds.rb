@@ -31,9 +31,10 @@ Ftp.create(
   :path => '',
   :login => 'lucid',
   :password => 'Kl32r5x0'
-).prices.create(
-  :file_mask => 'LucJC.xls',
-  :title => 'аксесуары',
+).create_receive(
+  :file_mask => 'LucJC.xls'
+).create_price(
+    :title => 'аксесуары',
   :code=> 'REAL-0001200-FAKE',
   :supplier => supplier1
 )
@@ -43,9 +44,11 @@ Ftp.create(
   :path => '',
   :login => 'pelikan',
   :password => 'lcaz6Ksf8'
-).prices.create(
-  :file_mask => 'PEL.xls',
+).create_receive(
+  :file_mask => 'PEL.xls'
+).create_price(
   :title => 'НАЛИЧИЕ',
   :code => 'REAL-0001201-FAKE',
   :supplier => supplier1
 )
+

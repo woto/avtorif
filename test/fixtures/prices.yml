@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  code: MyString
+  title: MyString
+  supplier: 
+  margin: 9.99
+  original: false
+  file_mask: MyString
+
+two:
+  code: MyString
+  title: MyString
+  supplier: 
+  margin: 9.99
+  original: false
+  file_mask: MyString

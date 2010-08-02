@@ -1,0 +1,11 @@
+<h1>New csv</h1>
+
+<% form_for(@csv) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', csvs_path %>

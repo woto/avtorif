@@ -1,0 +1,18 @@
+<h1>Listing excels</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% @excels.each do |excel| %>
+  <tr>
+    <td><%= link_to 'Show', excel %></td>
+    <td><%= link_to 'Edit', edit_excel_path(excel) %></td>
+    <td><%= link_to 'Destroy', excel, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New excel', new_excel_path %>

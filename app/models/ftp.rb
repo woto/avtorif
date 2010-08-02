@@ -1,3 +1,3 @@
 class Ftp < ActiveRecord::Base
-  has_many :prices, :as => :receive, :dependent => :destroy
+  has_one :receive, :as => :receiveable, :dependent => :destroy
 end

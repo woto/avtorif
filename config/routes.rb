@@ -1,133 +1,19 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :repeats
-
-  map.resources :repeats
-
-  map.resources :repeats
-
-  map.resources :repeats
-
+  map.resources :csvs
+  map.resources :excels
+  map.resources :imports
   map.resources :prices
-
-  map.resources :prices
-
+  map.resources :receives
+  map.resources :jobs
+  map.resources :repeats
   map.resources :folders
-
   map.resources :emails
-
   map.resources :ftps
-
   map.resources :suppliers
-
-  map.resources :import_jobs
-
-  map.resources :import_jobs
-
-  map.resources :jobs
-
-  map.resources :jobs
-
-  map.resources :jobs
-
-  map.resources :jobs
-
-  map.resources :jobs
-
-  map.resources :repeats
-
-  map.resources :repeats
-
-  map.resources :jobs
-
-  map.resources :jobs
-
-  map.resources :jobs
-
-  map.resources :jobs
-
-  map.resources :jobs
-
-  map.resources :jobs
-
-  map.resources :jobs
-
-  map.resources :jobs
-
-  map.resources :jobs
-
-  map.resources :jobs
-
-  map.resources :repeats
-
-  map.resources :repeats
-
-  map.resources :repeats
-
-  map.resources :repeats
-
-  map.resources :repeats
-
-  map.resources :jobs
-
-  map.resources :repeats
-
   map.resources :repeats_jobs
-
   map.resources :analogues
-
-  map.resources :prices
-
-  map.resources :prices
-
-  map.resources :folder_settings
-
-  map.resources :email_settings
-
-  map.resources :ftp_settings
-
-  map.resources :prices
-
-  map.resources :prices
-
-  map.resources :prices
-
-  map.resources :prices
-
-  map.resources :prices
-
-  map.resources :prices
-
-  map.resources :prices
-
-  map.resources :prices
-
-  map.resources :prices
-
-  map.resources :prices
-
-  map.resources :prices
-
-  map.resources :prices
-
-  map.resources :prices
-
-  map.resources :prices
-
-  map.resources :prices
-
-  map.resources :prices
-
   map.resources :goods
-
-  map.resources :goods
-
-  map.resources :goods
-
-  map.resources :prices
-  map.resources :contractors  
   map.resources :manufacturers
-  map.resources :prices
-  map.resources :goods
 
   # The priority is based upon order of creation: first created -> highest priority.
 

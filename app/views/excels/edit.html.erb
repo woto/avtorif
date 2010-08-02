@@ -1,0 +1,12 @@
+<h1>Editing excel</h1>
+
+<% form_for(@excel) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @excel %> |
+<%= link_to 'Back', excels_path %>

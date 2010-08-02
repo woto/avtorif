@@ -15,7 +15,7 @@ gem 'delayed_job'
 # gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
 
 # To use debugger
 # gem 'ruby-debug'
@@ -27,11 +27,12 @@ gem 'delayed_job'
 # gem 'aws-s3', :require => 'aws/s3'
 
 # Bundle gems for certain environments:
-gem 'rspec'
-# group :test do
-#   gem 'webrat'        
-# end
+group :test do
+   gem 'webrat'        
+   gem 'rspec'
+end
                      
 gem 'formtastic', :git => "http://github.com/justinfrench/formtastic.git", :tag => "1.0.0.beta3"
 gem 'whenever'
 gem 'rufus-scheduler'
+gem 'god'
