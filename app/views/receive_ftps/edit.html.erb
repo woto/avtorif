@@ -1,0 +1,28 @@
+<h1>Editing receive_ftp</h1>
+
+<% form_for(@receive_ftp) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :server %><br />
+    <%= f.text_field :server %>
+  </p>
+  <p>
+    <%= f.label :path %><br />
+    <%= f.text_field :path %>
+  </p>
+  <p>
+    <%= f.label :login %><br />
+    <%= f.text_field :login %>
+  </p>
+  <p>
+    <%= f.label :password %><br />
+    <%= f.text_field :password %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @receive_ftp %> |
+<%= link_to 'Back', receive_ftps_path %>

@@ -1,4 +1,18 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :import_excels
+
+  map.resources :import_csvs
+
+  map.resources :receive_emails
+
+  map.resources :receive_folders
+
+  map.resources :receive_ftps
+
+  map.resources :jobs
+
+  map.resources :jobs
+
   map.resources :csvs
   map.resources :excels
   map.resources :imports

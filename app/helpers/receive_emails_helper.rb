@@ -1,0 +1,2 @@
+module ReceiveEmailsHelper
+end

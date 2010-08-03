@@ -23,32 +23,3 @@ Repeat.create(:cron_string => "0 23 * * *", :title => "Каждый день в 
 Repeat.create(:cron_string => "*/10 * * * *", :title => "Каждые 10 минут")
 
 
-supplier1 = Supplier.create(:name => "ника")
-supplier2 = Supplier.create(:name => "ПЕЛИКАН-АВТО")
-
-Ftp.create(
-  :server => 'ftp://avtorif.ru',
-  :path => '',
-  :login => 'lucid',
-  :password => 'Kl32r5x0'
-).create_receive(
-  :file_mask => 'LucJC.xls'
-).create_price(
-    :title => 'аксесуары',
-  :code=> 'REAL-0001200-FAKE',
-  :supplier => supplier1
-)
-
-Ftp.create(
-  :server => 'ftp://avtorif.ru',
-  :path => '',
-  :login => 'pelikan',
-  :password => 'lcaz6Ksf8'
-).create_receive(
-  :file_mask => 'PEL.xls'
-).create_price(
-  :title => 'НАЛИЧИЕ',
-  :code => 'REAL-0001201-FAKE',
-  :supplier => supplier1
-)
-

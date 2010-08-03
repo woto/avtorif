@@ -1,0 +1,26 @@
+<h1>Listing receive_ftps</h1>
+
+<table>
+  <tr>
+    <th>Server</th>
+    <th>Path</th>
+    <th>Login</th>
+    <th>Password</th>
+  </tr>
+
+<% @receive_ftps.each do |receive_ftp| %>
+  <tr>
+    <td><%=h receive_ftp.server %></td>
+    <td><%=h receive_ftp.path %></td>
+    <td><%=h receive_ftp.login %></td>
+    <td><%=h receive_ftp.password %></td>
+    <td><%= link_to 'Show', receive_ftp %></td>
+    <td><%= link_to 'Edit', edit_receive_ftp_path(receive_ftp) %></td>
+    <td><%= link_to 'Destroy', receive_ftp, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New receive_ftp', new_receive_ftp_path %>

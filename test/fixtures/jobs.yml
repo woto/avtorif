@@ -3,11 +3,17 @@
 one:
   next_start: 2010-08-02 13:22:16
   last_start: 2010-08-02 13:22:16
-  title: MyString
-  repeats: 
+  title: Принять прайс
+  repeats: one
 
 two:
   next_start: 2010-08-02 13:22:16
   last_start: 2010-08-02 13:22:16
-  title: MyString
-  repeats: 
+  title: После моего срабатывания запустится импорт прайса
+  repeats: two
+
+three:
+  parent: two
+  next_start: 2010-08-02 13:22:16
+  last_start: 2010-08-02 13:22:16
+  title: Импортировать прайс

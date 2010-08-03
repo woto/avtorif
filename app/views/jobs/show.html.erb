@@ -15,7 +15,12 @@
 
 <p>
   <b>Repeats:</b>
-  <%=h @job.repeats %>
+  <%=h @job.repeats.map{ |repeat| repeat.title + "," } %>
+</p>
+
+<p>
+  <b>Parent Job:</b>
+  <%=h @job.parent.try(:title) %>
 </p>
 
 

@@ -1,0 +1,2 @@
+module ReceiveFoldersHelper
+end

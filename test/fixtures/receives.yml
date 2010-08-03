@@ -1,7 +1,6 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
 one:
-  receive: 
-
+  file_mask: LucJC.xls
+  price: one
 two:
-  receive: 
+  file_mask: PEL.xls
+  price: two

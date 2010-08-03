@@ -9,3 +9,8 @@ two:
   cron_string: 10 2/* * * *
   title: Каждые два часа в 10 минут
   active: true
+
+three:
+  cron_string: */3 * * * *
+  title: Каждые три минуты
+  active: true

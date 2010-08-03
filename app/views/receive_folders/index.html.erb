@@ -1,0 +1,24 @@
+<h1>Listing receive_folders</h1>
+
+<table>
+  <tr>
+    <th>Path</th>
+    <th>Login</th>
+    <th>Password</th>
+  </tr>
+
+<% @receive_folders.each do |receive_folder| %>
+  <tr>
+    <td><%=h receive_folder.path %></td>
+    <td><%=h receive_folder.login %></td>
+    <td><%=h receive_folder.password %></td>
+    <td><%= link_to 'Show', receive_folder %></td>
+    <td><%= link_to 'Edit', edit_receive_folder_path(receive_folder) %></td>
+    <td><%= link_to 'Destroy', receive_folder, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New receive_folder', new_receive_folder_path %>

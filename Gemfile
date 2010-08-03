@@ -16,6 +16,8 @@ gem 'delayed_job'
 
 # Deploy with Capistrano
 gem 'capistrano'
+gem 'mongrel'
+gem 'rake'
 
 # To use debugger
 # gem 'ruby-debug'
@@ -32,7 +34,7 @@ group :test do
    gem 'rspec'
 end
                      
-gem 'formtastic', :git => "http://github.com/justinfrench/formtastic.git", :tag => "1.0.0.beta3"
+gem 'formtastic', :git => "http://github.com/justinfrench/formtastic.git", :tag => "1.0.0.beta4"
 gem 'whenever'
 gem 'rufus-scheduler'
 gem 'god'

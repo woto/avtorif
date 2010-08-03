@@ -1,0 +1,11 @@
+one:
+  server: ftp://avtorif.ru
+  path:
+  login: lucid
+  password: Kl32r5x0
+two:
+  server: ftp://avtorif.ru
+  path:
+  login: pelikan
+  password: lcaz6Ksf8
+

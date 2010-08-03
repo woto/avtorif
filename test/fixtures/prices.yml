@@ -1,17 +1,8 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
 one:
-  code: MyString
-  title: MyString
-  supplier: 
-  margin: 9.99
-  original: false
-  file_mask: MyString
-
+  title: аксесуары
+  code: REAL-0001200-FAKE
+  supplier: one
 two:
-  code: MyString
-  title: MyString
-  supplier: 
-  margin: 9.99
-  original: false
-  file_mask: MyString
+  title: НАЛИЧИЕ
+  code: REAL-0001201-FAKE
+  supplier: two

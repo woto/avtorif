@@ -1,0 +1,18 @@
+<p>
+  <b>Path:</b>
+  <%=h @receive_folder.path %>
+</p>
+
+<p>
+  <b>Login:</b>
+  <%=h @receive_folder.login %>
+</p>
+
+<p>
+  <b>Password:</b>
+  <%=h @receive_folder.password %>
+</p>
+
+
+<%= link_to 'Edit', edit_receive_folder_path(@receive_folder) %> |
+<%= link_to 'Back', receive_folders_path %>

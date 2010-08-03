@@ -8,6 +8,13 @@ CREATE TABLE `analogues` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+CREATE TABLE `csvs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 CREATE TABLE `delayed_jobs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `priority` int(11) DEFAULT '0',
@@ -32,6 +39,13 @@ CREATE TABLE `emails` (
   `password` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `topic` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `sender` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `excels` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -70,9 +84,11 @@ CREATE TABLE `goods` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE TABLE `import_jobs` (
+CREATE TABLE `imports` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `price_id` int(11) DEFAULT NULL,
+  `importable_id` int(11) DEFAULT NULL,
+  `importable_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -83,10 +99,7 @@ CREATE TABLE `jobs` (
   `next_start` datetime DEFAULT NULL,
   `last_start` datetime DEFAULT NULL,
   `title` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `repeats_id` int(11) DEFAULT NULL,
   `job_id` int(11) DEFAULT NULL,
-  `jobable_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `jobable_id` int(11) DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -107,13 +120,6 @@ CREATE TABLE `manufacturers` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE TABLE `notify_jobs` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `created_at` datetime DEFAULT NULL,
-  `updated_at` datetime DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
 CREATE TABLE `prices` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `code` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -121,17 +127,17 @@ CREATE TABLE `prices` (
   `supplier_id` int(11) DEFAULT NULL,
   `margin` decimal(10,0) DEFAULT NULL,
   `original` tinyint(1) DEFAULT NULL,
-  `file_mask` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  `receive_id` int(11) DEFAULT NULL,
-  `receive_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-CREATE TABLE `receive_jobs` (
+CREATE TABLE `receives` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `price_id` int(11) DEFAULT NULL,
+  `receiveable_id` int(11) DEFAULT NULL,
+  `receiveable_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `file_mask` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -170,12 +176,6 @@ INSERT INTO schema_migrations (version) VALUES ('20100727142307');
 
 INSERT INTO schema_migrations (version) VALUES ('20100728081548');
 
-INSERT INTO schema_migrations (version) VALUES ('20100730080028');
-
-INSERT INTO schema_migrations (version) VALUES ('20100730080643');
-
-INSERT INTO schema_migrations (version) VALUES ('20100730104129');
-
 INSERT INTO schema_migrations (version) VALUES ('20100730105152');
 
 INSERT INTO schema_migrations (version) VALUES ('20100730110236');
@@ -184,8 +184,16 @@ INSERT INTO schema_migrations (version) VALUES ('20100730110935');
 
 INSERT INTO schema_migrations (version) VALUES ('20100730111119');
 
-INSERT INTO schema_migrations (version) VALUES ('20100730112348');
-
-INSERT INTO schema_migrations (version) VALUES ('20100730130353');
-
 INSERT INTO schema_migrations (version) VALUES ('20100730133602');
+
+INSERT INTO schema_migrations (version) VALUES ('20100802093300');
+
+INSERT INTO schema_migrations (version) VALUES ('20100802093744');
+
+INSERT INTO schema_migrations (version) VALUES ('20100802094124');
+
+INSERT INTO schema_migrations (version) VALUES ('20100802094557');
+
+INSERT INTO schema_migrations (version) VALUES ('20100802094621');
+
+INSERT INTO schema_migrations (version) VALUES ('20100802131530');

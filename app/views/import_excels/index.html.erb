@@ -1,0 +1,18 @@
+<h1>Listing import_excels</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% @import_excels.each do |import_excel| %>
+  <tr>
+    <td><%= link_to 'Show', import_excel %></td>
+    <td><%= link_to 'Edit', edit_import_excel_path(import_excel) %></td>
+    <td><%= link_to 'Destroy', import_excel, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New import_excel', new_import_excel_path %>

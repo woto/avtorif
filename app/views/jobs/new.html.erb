@@ -1,6 +1,6 @@
 <h1>New job</h1>
 
-<% form_for(@job) do |f| %>
+<% semantic_form_for(@job) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -16,8 +16,10 @@
     <%= f.text_field :title %>
   </p>
   <p>
-    <%= f.label :repeats %><br />
-    <%= f.text_field :repeats %>
+    <%= f.input :repeats %>
+  </p>
+  <p>
+    <%= f.input :child %>
   </p>
   <p>
     <%= f.submit 'Create' %>

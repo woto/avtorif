@@ -1,0 +1,30 @@
+<h1>Listing receive_emails</h1>
+
+<table>
+  <tr>
+    <th>Server</th>
+    <th>Address</th>
+    <th>Login</th>
+    <th>Password</th>
+    <th>Topic</th>
+    <th>Sender</th>
+  </tr>
+
+<% @receive_emails.each do |receive_email| %>
+  <tr>
+    <td><%=h receive_email.server %></td>
+    <td><%=h receive_email.address %></td>
+    <td><%=h receive_email.login %></td>
+    <td><%=h receive_email.password %></td>
+    <td><%=h receive_email.topic %></td>
+    <td><%=h receive_email.sender %></td>
+    <td><%= link_to 'Show', receive_email %></td>
+    <td><%= link_to 'Edit', edit_receive_email_path(receive_email) %></td>
+    <td><%= link_to 'Destroy', receive_email, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New receive_email', new_receive_email_path %>

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100802094621) do
+ActiveRecord::Schema.define(:version => 20100802131530) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
@@ -94,9 +94,7 @@ ActiveRecord::Schema.define(:version => 20100802094621) do
     t.datetime "next_start"
     t.datetime "last_start"
     t.string   "title"
-    t.integer  "repeats_id"
-    t.integer  "jobable_id"
-    t.string   "jobable_type"
+    t.integer  "job_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

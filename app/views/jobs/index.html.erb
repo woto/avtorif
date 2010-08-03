@@ -6,6 +6,7 @@
     <th>Last start</th>
     <th>Title</th>
     <th>Repeats</th>
+    <th>Parent Job id</th>
   </tr>
 
 <% @jobs.each do |job| %>
@@ -13,7 +14,8 @@
     <td><%=h job.next_start %></td>
     <td><%=h job.last_start %></td>
     <td><%=h job.title %></td>
-    <td><%=h job.repeats %></td>
+    <td><%=h job.repeats.map{ |repeat| repeat.title + ", "} %></td>
+    <td><%=h job.parent.try(:title) %></td>
     <td><%= link_to 'Show', job %></td>
     <td><%= link_to 'Edit', edit_job_path(job) %></td>
     <td><%= link_to 'Destroy', job, :confirm => 'Are you sure?', :method => :delete %></td>
