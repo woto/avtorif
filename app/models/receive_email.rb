@@ -1,3 +1,3 @@
 class ReceiveEmail < ActiveRecord::Base
-    has_one :receive, :as => :receiveable, :dependent => :destroy
+  has_one :receive, :as => :receiveable
 end

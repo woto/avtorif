@@ -9,17 +9,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100802131530) do
+ActiveRecord::Schema.define(:version => 20100803074849) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
     t.integer  "analogue_id"
     t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "csvs", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -39,45 +34,22 @@ ActiveRecord::Schema.define(:version => 20100802131530) do
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
-  create_table "emails", :force => true do |t|
-    t.string   "server"
-    t.string   "address"
-    t.string   "login"
-    t.string   "password"
-    t.string   "topic"
-    t.string   "sender"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "excels", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "folders", :force => true do |t|
-    t.string   "path"
-    t.string   "login"
-    t.string   "password"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "ftps", :force => true do |t|
-    t.string   "server"
-    t.string   "path"
-    t.string   "login"
-    t.string   "password"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "goods", :force => true do |t|
     t.integer  "price_id"
     t.integer  "contractor_id"
     t.string   "code"
     t.integer  "manufacturer_id"
     t.integer  "cost",            :limit => 10, :precision => 10, :scale => 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "import_csvs", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "import_excels", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -95,6 +67,8 @@ ActiveRecord::Schema.define(:version => 20100802131530) do
     t.datetime "last_start"
     t.string   "title"
     t.integer  "job_id"
+    t.integer  "jobbable_id"
+    t.string   "jobbable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -118,6 +92,34 @@ ActiveRecord::Schema.define(:version => 20100802131530) do
     t.integer  "supplier_id"
     t.integer  "margin",      :limit => 10, :precision => 10, :scale => 0
     t.boolean  "original"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "receive_emails", :force => true do |t|
+    t.string   "server"
+    t.string   "address"
+    t.string   "login"
+    t.string   "password"
+    t.string   "topic"
+    t.string   "sender"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "receive_folders", :force => true do |t|
+    t.string   "path"
+    t.string   "login"
+    t.string   "password"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "receive_ftps", :force => true do |t|
+    t.string   "server"
+    t.string   "path"
+    t.string   "login"
+    t.string   "password"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

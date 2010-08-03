@@ -1,30 +1,25 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :import_excels
+  map.resources :prices
 
+  map.resources :imports
+
+  map.resources :imports
+
+  map.resources :imports  
+  map.resources :import_excels
   map.resources :import_csvs
 
+  map.resources :receives
   map.resources :receive_emails
-
   map.resources :receive_folders
-
   map.resources :receive_ftps
 
   map.resources :jobs
-
-  map.resources :jobs
-
-  map.resources :csvs
-  map.resources :excels
-  map.resources :imports
-  map.resources :prices
-  map.resources :receives
-  map.resources :jobs
   map.resources :repeats
-  map.resources :folders
-  map.resources :emails
-  map.resources :ftps
-  map.resources :suppliers
   map.resources :repeats_jobs
+
+  map.resources :prices
+  map.resources :suppliers
   map.resources :analogues
   map.resources :goods
   map.resources :manufacturers

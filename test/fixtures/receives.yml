@@ -1,6 +1,4 @@
 one:
   file_mask: LucJC.xls
-  price: one
 two:
   file_mask: PEL.xls
-  price: two

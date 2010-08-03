@@ -7,7 +7,6 @@
     <th>Supplier</th>
     <th>Margin</th>
     <th>Original</th>
-    <th>File mask</th>
   </tr>
 
 <% @prices.each do |price| %>
@@ -17,7 +16,6 @@
     <td><%=h price.supplier %></td>
     <td><%=h price.margin %></td>
     <td><%=h price.original %></td>
-    <td><%=h price.file_mask %></td>
     <td><%= link_to 'Show', price %></td>
     <td><%= link_to 'Edit', edit_price_path(price) %></td>
     <td><%= link_to 'Destroy', price, :confirm => 'Are you sure?', :method => :delete %></td>
