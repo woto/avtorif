@@ -5,7 +5,7 @@ class CreateJobs < ActiveRecord::Migration
       t.datetime :last_start
       t.string :title
       t.references :job
-      t.references :jobbable, :polymorphic => true
+      t.references :jobable, :polymorphic => true
 
       t.timestamps
     end

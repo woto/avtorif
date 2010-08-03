@@ -1,4 +1,12 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :receive_jobs
+
+  map.resources :import_jobs
+
+  map.resources :import_jobs
+
+  map.resources :import_jobs
+
   map.resources :prices
 
   map.resources :imports

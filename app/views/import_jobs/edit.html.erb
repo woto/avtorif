@@ -1,0 +1,20 @@
+<h1>Editing import_job</h1>
+
+<% form_for(@import_job) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :price %><br />
+    <%= f.text_field :price %>
+  </p>
+  <p>
+    <%= f.label :importable %><br />
+    <%= f.text_field :importable %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @import_job %> |
+<%= link_to 'Back', import_jobs_path %>

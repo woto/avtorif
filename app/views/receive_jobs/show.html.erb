@@ -1,0 +1,13 @@
+<p>
+  <b>Price:</b>
+  <%=h @receive_job.price %>
+</p>
+
+<p>
+  <b>Receiveable:</b>
+  <%=h @receive_job.receiveable %>
+</p>
+
+
+<%= link_to 'Edit', edit_receive_job_path(@receive_job) %> |
+<%= link_to 'Back', receive_jobs_path %>

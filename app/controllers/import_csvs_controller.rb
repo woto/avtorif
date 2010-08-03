@@ -1,6 +1,6 @@
 class ImportCsvsController < ApplicationController
-  # GET /import_csvs
-  # GET /import_csvs.xml
+  # GET /import_csvs.yml
+  # GET /import_csvs.yml.xml
   def index
     @import_csvs = ImportCsv.all
 
@@ -10,8 +10,8 @@ class ImportCsvsController < ApplicationController
     end
   end
 
-  # GET /import_csvs/1
-  # GET /import_csvs/1.xml
+  # GET /import_csvs.yml/1
+  # GET /import_csvs.yml/1.xml
   def show
     @import_csv = ImportCsv.find(params[:id])
 
@@ -21,8 +21,8 @@ class ImportCsvsController < ApplicationController
     end
   end
 
-  # GET /import_csvs/new
-  # GET /import_csvs/new.xml
+  # GET /import_csvs.yml/new
+  # GET /import_csvs.yml/new.xml
   def new
     @import_csv = ImportCsv.new
 
@@ -32,13 +32,13 @@ class ImportCsvsController < ApplicationController
     end
   end
 
-  # GET /import_csvs/1/edit
+  # GET /import_csvs.yml/1/edit
   def edit
     @import_csv = ImportCsv.find(params[:id])
   end
 
-  # POST /import_csvs
-  # POST /import_csvs.xml
+  # POST /import_csvs.yml
+  # POST /import_csvs.yml.xml
   def create
     @import_csv = ImportCsv.new(params[:import_csv])
 
@@ -53,8 +53,8 @@ class ImportCsvsController < ApplicationController
     end
   end
 
-  # PUT /import_csvs/1
-  # PUT /import_csvs/1.xml
+  # PUT /import_csvs.yml/1
+  # PUT /import_csvs.yml/1.xml
   def update
     @import_csv = ImportCsv.find(params[:id])
 
@@ -69,8 +69,8 @@ class ImportCsvsController < ApplicationController
     end
   end
 
-  # DELETE /import_csvs/1
-  # DELETE /import_csvs/1.xml
+  # DELETE /import_csvs.yml/1
+  # DELETE /import_csvs.yml/1.xml
   def destroy
     @import_csv = ImportCsv.find(params[:id])
     @import_csv.destroy

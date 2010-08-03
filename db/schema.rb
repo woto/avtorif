@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100803074849) do
+ActiveRecord::Schema.define(:version => 20100803123249) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
@@ -54,6 +54,13 @@ ActiveRecord::Schema.define(:version => 20100803074849) do
     t.datetime "updated_at"
   end
 
+  create_table "import_jobs", :force => true do |t|
+    t.integer  "price_id"
+    t.integer  "importable_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "imports", :force => true do |t|
     t.integer  "price_id"
     t.integer  "importable_id"
@@ -67,8 +74,8 @@ ActiveRecord::Schema.define(:version => 20100803074849) do
     t.datetime "last_start"
     t.string   "title"
     t.integer  "job_id"
-    t.integer  "jobbable_id"
-    t.string   "jobbable_type"
+    t.integer  "jobable_id"
+    t.string   "jobable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -120,6 +127,14 @@ ActiveRecord::Schema.define(:version => 20100803074849) do
     t.string   "path"
     t.string   "login"
     t.string   "password"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "receive_jobs", :force => true do |t|
+    t.integer  "price_id"
+    t.integer  "receiveable_id"
+    t.string   "receiveable_type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

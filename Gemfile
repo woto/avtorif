@@ -2,6 +2,11 @@ source :gemcutter
 #source 'http://rubygems.org'
 
 gem 'rails', '2.3.8'
+#gem 'actionmailer'
+#gem 'actionpack'
+#gem 'activeresource'
+#gem 'activesupport'
+#gem 'activerecord'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -18,6 +23,7 @@ gem 'delayed_job'
 gem 'capistrano'
 gem 'mongrel'
 gem 'rake'
+gem 'rack'
 
 # To use debugger
 # gem 'ruby-debug'

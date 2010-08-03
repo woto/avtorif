@@ -3,7 +3,7 @@ one:
   last_start: 2010-08-02 13:22:16
   title: Принять прайс
   repeats: one
-  jobbable: one (Receive)
+  jobable: one (Receive)
 
 two:
   next_start: 2010-08-02 13:22:16

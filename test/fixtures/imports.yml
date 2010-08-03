@@ -1,9 +1,3 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
 one:
-  price: 
-  importable: 
-
-two:
-  price: 
-  importable: 
+  price: one
+  importable: one (ImportCsv)
