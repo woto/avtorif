@@ -24,6 +24,7 @@ gem 'capistrano'
 gem 'mongrel'
 gem 'rake'
 gem 'rack'
+gem 'paperclip'
 
 # To use debugger
 # gem 'ruby-debug'

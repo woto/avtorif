@@ -1,8 +1,8 @@
 one:
   title: аксесуары
-  code: REAL-0001200-FAKE
-  supplier: one
+  code: jcars-0001200-FAKE
+  supplier: jcars
 two:
   title: НАЛИЧИЕ
-  code: REAL-0001201-FAKE
-  supplier: two
+  code: pavto-0001201-FAKE
+  supplier: pavto

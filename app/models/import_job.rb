@@ -1,4 +1,5 @@
 class ImportJob < ActiveRecord::Base
   belongs_to :price
-  belongs_to :receiveable
+  belongs_to :importable, :polymorphic => true
+  has_one :job, :as => :jobable
 end

@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100803123249) do
+ActiveRecord::Schema.define(:version => 20100804105539) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
@@ -55,13 +55,6 @@ ActiveRecord::Schema.define(:version => 20100803123249) do
   end
 
   create_table "import_jobs", :force => true do |t|
-    t.integer  "price_id"
-    t.integer  "importable_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "imports", :force => true do |t|
     t.integer  "price_id"
     t.integer  "importable_id"
     t.string   "importable_type"
@@ -139,15 +132,6 @@ ActiveRecord::Schema.define(:version => 20100803123249) do
     t.datetime "updated_at"
   end
 
-  create_table "receives", :force => true do |t|
-    t.integer  "price_id"
-    t.integer  "receiveable_id"
-    t.string   "receiveable_type"
-    t.string   "file_mask"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "repeats", :force => true do |t|
     t.string   "cron_string"
     t.string   "title"
@@ -157,7 +141,11 @@ ActiveRecord::Schema.define(:version => 20100803123249) do
   end
 
   create_table "suppliers", :force => true do |t|
-    t.string   "name"
+    t.string   "title"
+    t.string   "inn",        :limit => 12
+    t.string   "kpp",        :limit => 9
+    t.string   "login"
+    t.string   "password"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

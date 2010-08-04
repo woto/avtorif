@@ -1,10 +1,23 @@
 <h1>New supplier</h1>
 
-<% semantic_form_for(@supplier) do |f| %>
+<% form_for(@supplier) do |f| %>
   <%= f.error_messages %>
 
-  <%= f.inputs %>
-  <%= f.buttons %>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :inn %><br />
+    <%= f.text_field :inn %>
+  </p>
+  <p>
+    <%= f.label :kpp %><br />
+    <%= f.text_field :kpp %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
 <% end %>
 
 <%= link_to 'Back', suppliers_path %>

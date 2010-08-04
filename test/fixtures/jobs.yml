@@ -2,8 +2,8 @@ one:
   next_start: 2010-08-02 13:22:16
   last_start: 2010-08-02 13:22:16
   title: Принять прайс
-  repeats: one
-  jobable: one (Receive)
+  repeats: one, two
+  jobable: one (ReceiveJob)
 
 two:
   next_start: 2010-08-02 13:22:16
@@ -16,3 +16,4 @@ three:
   next_start: 2010-08-02 13:22:16
   last_start: 2010-08-02 13:22:16
   title: Импортировать прайс
+  jobable: one (ImportJob)

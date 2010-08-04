@@ -3,7 +3,7 @@ class CreateReceiveJobs < ActiveRecord::Migration
     create_table :receive_jobs do |t|
       t.references :price
       t.references :receiveable, :polymorphic => true
-
+      
       t.timestamps
     end
   end

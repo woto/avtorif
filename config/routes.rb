@@ -1,4 +1,12 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :suppliers
+
+  map.resources :suppliers
+
+  map.resources :suppliers
+
+  map.resources :suppliers
+
   map.resources :receive_jobs
 
   map.resources :import_jobs
@@ -9,15 +17,9 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :prices
 
-  map.resources :imports
-
-  map.resources :imports
-
   map.resources :imports  
   map.resources :import_excels
   map.resources :import_csvs
-
-  map.resources :receives
   map.resources :receive_emails
   map.resources :receive_folders
   map.resources :receive_ftps

@@ -2,7 +2,7 @@ class CreateImportJobs < ActiveRecord::Migration
   def self.up
     create_table :import_jobs do |t|
       t.references :price
-      t.references :importable
+      t.references :importable, :polymorphic => true
 
       t.timestamps
     end

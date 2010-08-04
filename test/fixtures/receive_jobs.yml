@@ -1,8 +1,6 @@
 one:
   price: one
   receiveable: one (ReceiveFtp)
-  #file_mask: LucJC.xls
 two:
   price: two
-  receiveable: one (ReceiveFtp)
-  #file_mask: PEL.xls
+  receiveable: two (ReceiveFtp)
