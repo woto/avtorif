@@ -1,3 +1,15 @@
+class ReceiveJobber < AbstractJobber
+  def perform
+      concrete_receive = @jobber.receiveable_type.classify.constantize.find(@jobber.receiveable_id)
+      receiver_class = (@jobber.receiveable_type.split(/(.*?)Receive/)[2] + "Receiver").classify.constantize
+      receiver = receiver_class.new(concrete_receive)
+      receiver.receive
+  end
+end
+
+
+=begin
+
 require 'rubygems'
 require 'net/ftp'
 require 'fileutils'
@@ -6,16 +18,6 @@ require 'net/pop'
 
 
 
-
-class PriceReceiver
-  def initialize(receiver, username, password, file_mask, local_file)
-    unless receiver.is_a? AbstractReceiver
-      raise Exception 'Must be derived from AbstractReceiver'
-    end
-    receiver.receive(username, password, file_mask, local_file)
-  end
-end
-
 class AbstractReceiver
   def receive
     raise Exception 'override receive method'
@@ -23,24 +25,9 @@ class AbstractReceiver
 end
 
 class FtpReceiver < AbstractReceiver
-  def initialize(url, path, port = 21)
-    @ftp=Net::FTP.new
-    @ftp.connect(url,port)
-    @remote_path = path
-  end
+  def receive
+    @ftp.chdir(@path)
 
-  def receive(username, password, file_mask, local_file)
-    @ftp.login(username, password)
-    @ftp.chdir(@remote_path)
-    files = @ftp.list
-    files = files.select { |file| file =~ file_mask }
-    # TODO 1
-    if files.count > 1
-      raise Exception 'Found more than one file, specify more precisely mask'
-    end
-    file = files[0].split(/\s/)[-1]
-    @ftp.getbinaryfile(file, local_file)
-    @ftp.close
   end
 end
 
@@ -83,14 +70,4 @@ class EmailReceiver < AbstractReceiver
   end
 end
 
-
-#HttpReceiver = ''
-#FtpReceiver = ''
-#FolderReceiver = ''
-#=end
-
-ftp = FtpReceiver.new('avtorif.ru', '/')
-email = EmailReceiver.new('mail.avtorif.ru')
-
-#pr = PriceReceiver.new(ftp, 'lucid', 'Kl32r5x0', /tmp.xls/, '/home/woto/rails/tmp.xls')
-pr = PriceReceiver.new(email, "webmaster", 'zBsnAbfhxY', /.*/, '/home/woto/rails/tmp2.xls')
+=end

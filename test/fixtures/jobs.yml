@@ -7,7 +7,6 @@ receive_jcars:
   supplier: jcars
 
 import_jcars:
-  next_start: 2010-08-02 13:22:16
   last_start: 2010-08-02 13:22:16
   title: Я импортирую оригиналы с наценкой 0,93 от джапан карс
   jobable: one (ImportJob)
@@ -15,7 +14,6 @@ import_jcars:
 
 import_jcars2:
   parent: two
-  next_start: 2010-08-02 13:22:16
   last_start: 2010-08-02 13:22:16
   title: Я импортирую не оригиналы с наценкой 0,87 от джапан карс
   jobable: one (ImportJob)
@@ -26,5 +24,5 @@ receive_pavto:
   last_start: 2010-08-02 13:22:16
   title: Я принимаю прайс каждую минуту каждые два часа от пеликан авто, и каждые три минуты (в зависимости от того что наступит раньше)
   repeats: every_one_minute_in_every_two_hours, every_three_minutes
-  jobable: one (ReceiveJob)
-  supplier: one
+  jobable: two (ReceiveJob)
+  supplier: pavto

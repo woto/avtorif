@@ -14,7 +14,7 @@ gem 'rails', '2.3.8'
 gem 'mysql'
 #gem 'sqlite3-ruby', :require => 'sqlite3'
 #gem 'spreadsheet'
-gem 'delayed_job'
+gem 'delayed_job', :git => 'git://github.com/collectiveidea/delayed_job.git'
 
 # Use unicorn as the web server
 # gem 'unicorn'

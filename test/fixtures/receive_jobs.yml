@@ -1,6 +1,4 @@
 one:
-  #price: one
-  receiveable: one (ReceiveFtp)
+  receiveable: japancars (ReceiveFtp)
 two:
-  #price: two
-  receiveable: two (ReceiveFtp)
+  receiveable: pelikanavto (ReceiveFtp)

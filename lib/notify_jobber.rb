@@ -1,3 +1,8 @@
+class NotifyJobber
+
+
+=begin
+
 require File.dirname(__FILE__) + '/../config/environment'
 Delayed::Job.enqueue(ReceivePrice.new)
 
@@ -24,3 +29,7 @@ EOF
 
     end
   end
+
+=end
+
+end
