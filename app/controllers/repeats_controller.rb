@@ -2,7 +2,7 @@ class RepeatsController < ApplicationController
   # GET /repeats
   # GET /repeats.xml
   def index
-    @repeats = Repeat.all
+    @repeats = Repeat.paginate :page => params[:page], :order => 'created_at DESC'
 
     respond_to do |format|
       format.html # index.html.erb

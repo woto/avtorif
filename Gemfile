@@ -25,6 +25,7 @@ gem 'mongrel'
 gem 'rake'
 gem 'rack'
 gem 'paperclip'
+gem 'will_paginate'
 
 # To use debugger
 # gem 'ruby-debug'

@@ -5,6 +5,8 @@
     <th>Title</th>
     <th>Inn</th>
     <th>Kpp</th>
+    <th>Login</th>
+    <th>Password</th>
   </tr>
 
 <% @suppliers.each do |supplier| %>
@@ -12,6 +14,8 @@
     <td><%=h supplier.title %></td>
     <td><%=h supplier.inn %></td>
     <td><%=h supplier.kpp %></td>
+    <td><%=h supplier.login %></td>
+    <td><%=h supplier.password %></td>
     <td><%= link_to 'Show', supplier %></td>
     <td><%= link_to 'Edit', edit_supplier_path(supplier) %></td>
     <td><%= link_to 'Destroy', supplier, :confirm => 'Are you sure?', :method => :delete %></td>

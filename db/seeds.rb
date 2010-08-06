@@ -18,8 +18,9 @@
 #FtpReceiveSetting.create(:ftp => 'ftp://example.com').create_price(:code => 'EXAMPLE-04301', :contractor => contractor, :margin => 9.78, :original => false, :username => 'username2', :password => 'password2')
 #FolderReceiveSetting.create(:path => '\\127.0.0.1\какой-то_путь\папка-для-прайсов').create_price(:code => 'EXAMPLE-00022', :contractor => contractor, :margin => 1.98, :original => true, :username => 'username3', :password => 'password3')
 
-Repeat.create(:cron_string => "*/1 * * * *", :title => "Каждую минуту")
-Repeat.create(:cron_string => "0 23 * * *", :title => "Каждый день в 23:00")
-Repeat.create(:cron_string => "*/10 * * * *", :title => "Каждые 10 минут")
+14_000_000.times do
+  Repeat.create(:cron_string => "*/1 * * * *", :title => "Каждую минуту")
+end
+
 
 

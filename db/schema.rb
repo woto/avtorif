@@ -37,9 +37,9 @@ ActiveRecord::Schema.define(:version => 20100804105539) do
   create_table "goods", :force => true do |t|
     t.integer  "price_id"
     t.integer  "contractor_id"
-    t.string   "code"
+    t.string   "catalog_number"
     t.integer  "manufacturer_id"
-    t.integer  "cost",            :limit => 10, :precision => 10, :scale => 0
+    t.boolean  "original"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -55,9 +55,13 @@ ActiveRecord::Schema.define(:version => 20100804105539) do
   end
 
   create_table "import_jobs", :force => true do |t|
-    t.integer  "price_id"
     t.integer  "importable_id"
     t.string   "importable_type"
+    t.integer  "cost_colnum"
+    t.integer  "manufacturer_colnum"
+    t.integer  "catalog_number_colnum"
+    t.integer  "replacement_colnum"
+    t.integer  "margin"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -69,6 +73,7 @@ ActiveRecord::Schema.define(:version => 20100804105539) do
     t.integer  "job_id"
     t.integer  "jobable_id"
     t.string   "jobable_type"
+    t.integer  "supplier_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -81,17 +86,16 @@ ActiveRecord::Schema.define(:version => 20100804105539) do
   end
 
   create_table "manufacturers", :force => true do |t|
-    t.string   "name"
+    t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "prices", :force => true do |t|
-    t.string   "code"
-    t.string   "title"
-    t.integer  "supplier_id"
-    t.integer  "margin",      :limit => 10, :precision => 10, :scale => 0
-    t.boolean  "original"
+    t.integer  "job_id"
+    t.integer  "goods_id"
+    t.string   "description"
+    t.integer  "cost",        :limit => 10, :precision => 10, :scale => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -125,7 +129,6 @@ ActiveRecord::Schema.define(:version => 20100804105539) do
   end
 
   create_table "receive_jobs", :force => true do |t|
-    t.integer  "price_id"
     t.integer  "receiveable_id"
     t.string   "receiveable_type"
     t.datetime "created_at"
@@ -135,7 +138,6 @@ ActiveRecord::Schema.define(:version => 20100804105539) do
   create_table "repeats", :force => true do |t|
     t.string   "cron_string"
     t.string   "title"
-    t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

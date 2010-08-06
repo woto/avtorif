@@ -3,7 +3,6 @@ class CreateRepeats < ActiveRecord::Migration
     create_table :repeats do |t|
       t.string :cron_string
       t.string :title
-      t.boolean :active
 
       t.timestamps
     end

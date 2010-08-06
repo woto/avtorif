@@ -1,8 +1,11 @@
 one:
-  title: аксесуары
-  code: jcars-0001200-FAKE
-  supplier: jcars
+  description: 'Какое-то описание детали'
+  cost: 25.333
+  job: one
+  goods: one
+
 two:
-  title: НАЛИЧИЕ
-  code: pavto-0001201-FAKE
-  supplier: pavto
+  description: 'Другое описание и цена той же детали, но с другим ценообразованием'
+  cost: 27.333
+  job: two
+  goods: one

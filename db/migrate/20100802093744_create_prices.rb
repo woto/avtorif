@@ -1,11 +1,10 @@
 class CreatePrices < ActiveRecord::Migration
   def self.up
     create_table :prices do |t|
-      t.string :code
-      t.string :title
-      t.references :supplier
-      t.decimal :margin
-      t.boolean :original
+      t.references :job
+      t.references :goods
+      t.string :description
+      t.decimal :cost
 
       t.timestamps
     end

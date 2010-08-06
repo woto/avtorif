@@ -3,9 +3,9 @@ class CreateGoods < ActiveRecord::Migration
     create_table :goods do |t|
       t.references :price
       t.references :contractor
-      t.string :code
+      t.string :catalog_number
       t.references :manufacturer
-      t.decimal :cost
+      t.boolean :original
 
       t.timestamps
     end

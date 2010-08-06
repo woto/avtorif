@@ -1,5 +1,5 @@
 class Goods < ActiveRecord::Base
-  belongs_to :price
+  has_many :prices
   belongs_to :manufacturer
 
   has_many :goods_as_original, :foreign_key => 'original_id', :class_name => 'Analogue'

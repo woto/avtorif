@@ -1,9 +1,9 @@
-one:
+japancars:
   server: ftp://avtorif.ru
   path:
   login: lucid
   password: Kl32r5x0
-two:
+pelikanavto:
   server: ftp://avtorif.ru
   path:
   login: pelikan

@@ -7,6 +7,10 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :suppliers
 
+  map.resources :suppliers
+
+  map.resources :suppliers
+
   map.resources :receive_jobs
 
   map.resources :import_jobs

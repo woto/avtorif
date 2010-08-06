@@ -1,16 +1,13 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
+every_one_minute:
   cron_string: */1 * * * *
   title: Каждую минуту
-  active: true
 
-two:
-  cron_string: 10 2/* * * *
+every_ten_minutes_in_every_two_hour:
+  cron_string: 10 */2 * * *
   title: Каждые два часа в 10 минут
-  active: true
 
-three:
+every_three_minutes:
   cron_string: */3 * * * *
   title: Каждые три минуты
-  active: true

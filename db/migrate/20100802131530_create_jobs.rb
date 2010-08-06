@@ -6,6 +6,7 @@ class CreateJobs < ActiveRecord::Migration
       t.string :title
       t.references :job
       t.references :jobable, :polymorphic => true
+      t.references :supplier
 
       t.timestamps
     end

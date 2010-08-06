@@ -1,6 +1,6 @@
 one:
-  price: one
+  #price: one
   receiveable: one (ReceiveFtp)
 two:
-  price: two
+  #price: two
   receiveable: two (ReceiveFtp)
