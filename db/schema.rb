@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(:version => 20100804105539) do
     t.integer  "jobable_id"
     t.string   "jobable_type"
     t.integer  "supplier_id"
+    t.string   "file_mask"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -121,6 +122,7 @@ ActiveRecord::Schema.define(:version => 20100804105539) do
 
   create_table "receive_ftps", :force => true do |t|
     t.string   "server"
+    t.string   "port"
     t.string   "path"
     t.string   "login"
     t.string   "password"

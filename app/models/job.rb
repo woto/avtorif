@@ -15,10 +15,14 @@ class Job < ActiveRecord::Base
   #has_one :child_job, :foreign_key => :job_id, :class_name => "Job"
   #belongs_to :parent_job, :readonly => true, :foreign_key => :job_id, :class_name => "Job"
 
+=begin
   def after_save
     jw = JobWalker.new
     self.next_start = Time.now - 1
     jw.update_next_start self
     #self.save
   end
+end
+=end
+
 end

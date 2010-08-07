@@ -1,10 +1,12 @@
 japancars:
-  server: ftp://avtorif.ru
-  path:
+  server: avtorif.ru
+  port: 21  
+  path: '/'
   login: lucid
   password: Kl32r5x0
 pelikanavto:
-  server: ftp://avtorif.ru
-  path:
+  server: avtorif.ru
+  port: 21
+  path: '/'
   login: pelikan
   password: lcaz6Ksf8

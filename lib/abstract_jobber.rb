@@ -6,4 +6,5 @@ class AbstractJobber
   def perform
     raise Exception
   end
+
 end

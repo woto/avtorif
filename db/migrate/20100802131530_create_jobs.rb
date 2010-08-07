@@ -7,6 +7,7 @@ class CreateJobs < ActiveRecord::Migration
       t.references :job
       t.references :jobable, :polymorphic => true
       t.references :supplier
+      t.string :file_mask
 
       t.timestamps
     end

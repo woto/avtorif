@@ -5,19 +5,22 @@ receive_jcars:
   repeats: every_one_minute
   jobable: one (ReceiveJob)
   supplier: jcars
+  file_mask: LucJC.xls
 
 import_jcars:
   last_start: 2010-08-02 13:22:16
   title: Я импортирую оригиналы с наценкой 0,93 от джапан карс
   jobable: one (ImportJob)
   supplier: jcars
+  file_mask: LucJC.xls
 
 import_jcars2:
-  parent: two
+  parent: receive_jcars
   last_start: 2010-08-02 13:22:16
   title: Я импортирую не оригиналы с наценкой 0,87 от джапан карс
   jobable: one (ImportJob)
   supplier: jcars
+  file_mask: LucJC.xls
 
 receive_pavto:
   next_start: 2010-08-02 13:22:16
@@ -26,3 +29,5 @@ receive_pavto:
   repeats: every_one_minute_in_every_two_hours, every_three_minutes
   jobable: two (ReceiveJob)
   supplier: pavto
+  file_mask: PE.*
+

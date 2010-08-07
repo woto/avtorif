@@ -1,5 +1,4 @@
 class AbstractReceiver
-begin
   def initialize(receiver)
     @receiver = receiver 
   end
