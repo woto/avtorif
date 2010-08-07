@@ -12,6 +12,7 @@ class CreateJobs < ActiveRecord::Migration
       t.references :supplier
       t.string :file_mask
       t.boolean :locked, :default => false
+      t.boolean :active, :default => true
 
       t.timestamps
     end

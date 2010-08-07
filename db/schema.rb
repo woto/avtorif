@@ -101,6 +101,7 @@ ActiveRecord::Schema.define(:version => 20100811094637) do
     t.integer  "supplier_id"
     t.string   "file_mask"
     t.boolean  "locked",                :default => false
+    t.boolean  "active",                :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
   end

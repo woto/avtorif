@@ -2,15 +2,11 @@ japancars:
   title: джапанн карс
   inn: 123456789123
   kpp: 123456789
-  login: japancars
-  password: 123
-  
+  login: pelikanavto
+  password: 123  
+
 pelikanavto:
   title: ПЕЛИКАН-АВТО
-  inn: 123456789123
-  kpp: 123456789
-  login: pelikanavto
-  password: 123
 
 stalker:
   title: Сталкер
@@ -35,4 +31,8 @@ ruslan_kornev_gmail:
   title: ruslan_kornev_gmail
 
 webtest_avtorif:
-  title: webtest_avtorif  
+  title: webtest_avtorif
+
+
+local_test:
+  title: local_test

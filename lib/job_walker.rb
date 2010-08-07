@@ -7,15 +7,14 @@ require 'date'
 
 #require 'receive_jobber'
 
-logger = RAILS_DEFAULT_LOGGER
-logger.level = Logger::ERROR
+#logger = RAILS_DEFAULT_LOGGER
+#logger.level = Logger::ERROR
 
 
 class JobWalker
 
   def call
-    #logger = RAILS_DEFAULT_LOGGER
-    jobs = Job.all
+    jobs = Job.all(:conditions => {:active => true})
     #logger.error jobs.collect{|job| job.title}
 
     jobs.each do |job|

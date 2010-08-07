@@ -17,7 +17,9 @@ class FtpReceiver < AbstractReceiver
         file = file.split(/\s/)[-1]
         remote_file = RemoteFile.new(file)
         ftp.getbinaryfile(file, remote_file.path)
-        md5 = Digest::MD5.hexdigest(File.read(remote_file.path))
+        remote_file.flush        
+        md5 = Digest::MD5.file(remote_file.path).hexdigest
+
 
         if Attachment.find(:first, :conditions => ['md5 = ? AND supplier_id = ?',  md5, @receiver.receive_job.job.supplier.id]).nil?
           attachment = Attachment.new(:attachment => remote_file, :md5 => md5)

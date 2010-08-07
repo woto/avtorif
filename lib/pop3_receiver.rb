@@ -9,31 +9,34 @@
       Net::POP3.disable_ssl
     end
     
-    pop = Net::POP3.start(@receiver.server, @receiver.port, @receiver.login, @receiver.password)
-    begin
+    Net::POP3.start(@receiver.server, @receiver.port, @receiver.login, @receiver.password) do |pop|
       # pop.set_debug_output $stderr
       pop.mails.reverse.each_with_index do |email, index|
         unless index > AppConfig.max_emails
 
           net_popmail = email.pop
 
-          email_id = @receiver.login + " - " + @receiver.server + ":" + @receiver.port
+          email_id = @receiver.login + " - " + @receiver.server + ":" + @receiver.port + " " + Time.zone.now.to_s + " " + rand.to_s
           begin
             FileUtils::mkdir(Rails.root.to_s + '/public/system/emails')
           rescue Errno::EEXIST => e
           end
-          tempfile = File.open(Rails.root.to_s + '/public/system/emails/' + email_id + ' - ' + Time.zone.now.to_s, 'w')
+
+          tempfile = File.open(Rails.root.to_s + '/public/system/emails/' + email_id, 'w')
             tempfile.write net_popmail
           tempfile.close
 
           mail = Notifier.receive(net_popmail)
 
           !mail.attachments.nil? && mail.attachments.each do |attachment|
+
             md5 =  Digest::MD5.hexdigest(attachment.string)
 
-            if Attachment.find(:first, :conditions => ['md5 = ? AND supplier_id = ? AND attachment_file_name = ?',  md5, @receiver.receive_job.job.supplier.id, attachment.original_filename]).nil?
+            # attachment.original_filename
+            
+            if Attachment.find(:first, :conditions => ['md5 = ? AND supplier_id = ?',  md5, @receiver.receive_job.job.supplier.id]).nil?
 
-              attachment = Attachment.new(:attachment => attachment, :md5 => md5, :email_id => File.basename(tempfile.path))
+              attachment = Attachment.new(:attachment => attachment, :md5 => md5, :email_id => email_id)
               attachment.supplier = @receiver.receive_job.job.supplier
               attachment.save
 
@@ -46,8 +49,6 @@
         end
         email.delete
       end
-    ensure
-      pop.finish
     end
   end
 end

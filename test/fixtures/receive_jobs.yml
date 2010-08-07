@@ -23,7 +23,10 @@ receive_job_for_woto_mail_pop3:
   receiveable: email_settings_for_woto_mail_pop3 (ReceiveEmail)
 
 receive_job_for_woto77_yandex_pop3:
-  receiveable: email_settings_for_woto77_yandex_pop3 (ReceiveEmail)  
+  receiveable: email_settings_for_woto77_yandex_pop3 (ReceiveEmail)
+
+receive_job_for_local_test:
+  receiveable: folder_settings_for_local_test (ReceiveFolder)    
 #
 #receive_job_for_webtest_avtorif_imap:
 #  receiveable: email_settings_for_webtest_avtorif_imap (ReceiveEmail)

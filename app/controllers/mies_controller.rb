@@ -24,8 +24,8 @@ class MiesController < ApplicationController
     gets
 =end    
 
-     # rj = ReceiveJobber.new(ReceiveJob.find(282938205))
-     # rj.perform
+     rj = ReceiveJobber.new(ReceiveJob.find(338983884))
+     rj.perform
 
     # Прием Корнев Руслан
     #rj = ReceiveJobber.new(ReceiveJob.find(275428135))
@@ -38,8 +38,8 @@ class MiesController < ApplicationController
     #rescue Exception => e
     #  notify_about_exception(e)
 
-    rj = ImportJobber.new(ImportJob.find(1053535), 3)
-    rj.perform
+#    rj = ImportJobber.new(ImportJob.find(1053535), 3)
+#    rj.perform
 
     #ij = ImportJobber.new(ImportJob.find(302205181))
     #ij.perform
