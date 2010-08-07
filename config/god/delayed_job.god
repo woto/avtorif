@@ -1,4 +1,4 @@
-RAILS_ROOT = "./"
+RAILS_ROOT = "/home/woto/rails/avtorif"
 RAILS_ENV = "development"
 
 10.times do |num|

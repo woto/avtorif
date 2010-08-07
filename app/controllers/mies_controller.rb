@@ -1,11 +1,28 @@
 class MiesController < ApplicationController
 
-
   include ExceptionNotification::Notifiable
   
   # GET /mies
   # GET /mies.xml
   def index
+
+=begin
+
+    require 'win32ole'
+    connection = WIN32OLE.new('ADODB.Connection')
+    connection.Open('Provider=Microsoft.Jet.OLEDB.4.0;Data Source=users.mdb')
+    cat = WIN32OLE.new("ADOX.Catalog")
+    cat.ActiveConnection = connection
+    print "Inform your table name: "
+    yourtable = gets.chomp
+    print yourtable, "\n"
+    # loop through each field in the table replacing the Spaces by what you want - in my case "_"
+    for col in 0..cat.Tables(yourtable).Columns.Count - 1
+    cat.Tables(yourtable).Columns(col).Name = cat.Tables(yourtable).Columns(col).Name.gsub(" ", "_")
+    end
+    print "Task completed! Check your database."
+    gets
+=end    
 
      # rj = ReceiveJobber.new(ReceiveJob.find(282938205))
      # rj.perform

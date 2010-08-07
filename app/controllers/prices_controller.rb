@@ -16,8 +16,8 @@ class PricesController < ApplicationController
         rescue Errno::EEXIST => e
         end
         response = Net::HTTP.post_form(URI.parse('http://ws.emex.ru/EmExService.asmx/FindDetailAdv'),
-                                  {'login'=>'14616',
-                                   'password'=>'2b0ffb38',
+                                  {'login'=>AppConfig.emex_login,
+                                   'password'=> AppConfig.emex_password,
                                    'makeLogo' => 'true',
                                    'detailNum' => params[:price][:catalog_number],
                                    'findSubstitutes' => 'true'})
@@ -64,10 +64,13 @@ class PricesController < ApplicationController
 
             value = CGI.unescapeHTML(c.children.to_s)
 
-            p[(c.name.underscore + "-emex").to_sym] = value 
+            p[(c.name.underscore + "-emex").to_sym] = value
             
 
             case c.name
+              when /^DateChange$/
+                p[:created_at] = value
+                p[:updated_at] = value
               when /^DetailNum$/
                 p[:catalog_number] = value
               when /^Quantity$/

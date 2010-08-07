@@ -2,6 +2,8 @@ defaults: &defaults
   ftp_timeout: 3600
   max_emails: 10000
   emex_timeout: 3600
+  emex_login: 14616
+  emex_password: 2b0ffb38
 
 development:
   <<: *defaults
