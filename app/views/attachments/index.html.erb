@@ -1,0 +1,24 @@
+<h1>Listing attachments</h1>
+
+<table>
+  <tr>
+    <th>Price file name</th>
+    <th>Price content type</th>
+    <th>Price file size</th>
+  </tr>
+
+<% @attachments.each do |attachment| %>
+  <tr>
+    <td><%=h attachment.price_file_name %></td>
+    <td><%=h attachment.price_content_type %></td>
+    <td><%=h attachment.price_file_size %></td>
+    <td><%= link_to 'Show', attachment %></td>
+    <td><%= link_to 'Edit', edit_attachment_path(attachment) %></td>
+    <td><%= link_to 'Destroy', attachment, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New attachment', new_attachment_path %>

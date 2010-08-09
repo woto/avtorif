@@ -11,15 +11,15 @@ import_job_for_japancars:
   parent: receive_job_for_japancars
   last_start: 2010-08-02 13:22:16
   title: Я импортирую оригиналы с наценкой 0,93 от джапан карс
-  jobable: receive_from_japancars (ImportJob)
+  jobable: import_from_japancars (ImportJob)
   supplier: japancars
   file_mask: LucJC.xls
 
-import_job_for_japancars2:
+import_job_for_japancars_2:
   parent: receive_job_for_japancars
   last_start: 2010-08-02 13:22:16
   title: Я импортирую не оригиналы с наценкой 0,87 от джапан карс
-  jobable: receive_from_japancars (ImportJob)
+  jobable: import_from_japancars_2 (ImportJob)
   supplier: japancars
   file_mask: LucJC.xls
 

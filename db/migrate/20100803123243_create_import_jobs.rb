@@ -8,6 +8,8 @@ class CreateImportJobs < ActiveRecord::Migration
       t.integer :catalog_number_colnum
       t.integer :replacement_colnum
       t.integer :cost_colnum
+      t.integer :title_colnum
+      t.integer :count_colnum
       t.integer :margin
 
 

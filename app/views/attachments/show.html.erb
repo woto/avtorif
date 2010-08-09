@@ -1,0 +1,18 @@
+<p>
+  <b>Price file name:</b>
+  <%=h @attachment.price_file_name %>
+</p>
+
+<p>
+  <b>Price content type:</b>
+  <%=h @attachment.price_content_type %>
+</p>
+
+<p>
+  <b>Price file size:</b>
+  <%=h @attachment.price_file_size %>
+</p>
+
+
+<%= link_to 'Edit', edit_attachment_path(@attachment) %> |
+<%= link_to 'Back', attachments_path %>

@@ -41,3 +41,5 @@ Rails::Initializer.run do |config|
   # config.action_controller.allow_forgery_protection = false
 
 end
+
+ExceptionNotification::Notifier.exception_recipients = %w(webmaster@avtorif.ru)

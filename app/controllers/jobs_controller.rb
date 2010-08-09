@@ -80,4 +80,12 @@ class JobsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def start
+    @job = Job.find(params[:id])
+    JobWalker.new.start_job(@job)
+    redirect_to(jobs_url)
+     #rj = ReceiveJobber.new(ReceiveJob.find(484199613))
+     #rj.perform
+  end
 end

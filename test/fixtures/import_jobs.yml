@@ -1,6 +1,22 @@
-one:
+import_from_japancars:
 #  price: one
   importable: one (ImportCsv)
+  catalog_number_colnum: 1
+  manufacturer_colnum: 2
+  title_colnum: 3
+  count_colnum: 4
+  cost_colnum: 5
+  margin: 0.93
+
+import_from_japancars_2:
+#  price: one
+  importable: one (ImportCsv)
+  catalog_number_colnum: 1
+  manufacturer_colnum: 2
+  title_colnum: 3
+  count_colnum: 4
+  cost_colnum: 5
+  margin: 0.87
 
 two:
 #  price: two

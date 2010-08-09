@@ -7,6 +7,7 @@
     <th>Title</th>
     <th>Repeats</th>
     <th>Parent Job id</th>
+    <th>Ручной запуска</th>
   </tr>
 
 <% @jobs.each do |job| %>
@@ -19,6 +20,7 @@
     <td><%= link_to 'Show', job %></td>
     <td><%= link_to 'Edit', edit_job_path(job) %></td>
     <td><%= link_to 'Destroy', job, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Start', start_job_path(job) %></td>
   </tr>
 <% end %>
 </table>

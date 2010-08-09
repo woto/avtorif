@@ -9,12 +9,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100804105539) do
+ActiveRecord::Schema.define(:version => 20100809103746) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
     t.integer  "analogue_id"
     t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "attachments", :force => true do |t|
+    t.string   "price_file_name"
+    t.string   "price_content_type"
+    t.string   "price_file_size"
+    t.datetime "price_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -61,6 +70,8 @@ ActiveRecord::Schema.define(:version => 20100804105539) do
     t.integer  "manufacturer_colnum"
     t.integer  "catalog_number_colnum"
     t.integer  "replacement_colnum"
+    t.integer  "title_colnum"
+    t.integer  "count_colnum"
     t.integer  "margin"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -150,6 +161,11 @@ ActiveRecord::Schema.define(:version => 20100804105539) do
     t.string   "kpp",        :limit => 9
     t.string   "login"
     t.string   "password"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "uploads", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end

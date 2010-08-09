@@ -1,43 +1,23 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :my
-  map.resources :suppliers
-
-  map.resources :suppliers
-
-  map.resources :suppliers
-
-  map.resources :suppliers
-
-  map.resources :suppliers
-
-  map.resources :suppliers
-
-  map.resources :receive_jobs
-
-  map.resources :import_jobs
-
-  map.resources :import_jobs
-
-  map.resources :import_jobs
-
-  map.resources :prices
-
-  map.resources :imports  
   map.resources :import_excels
   map.resources :import_csvs
   map.resources :receive_emails
   map.resources :receive_folders
   map.resources :receive_ftps
 
-  map.resources :jobs
+  map.resources :jobs, :member => {:start => :get}
   map.resources :repeats
   map.resources :repeats_jobs
 
-  map.resources :prices
+  map.resources :import_jobs
+  map.resources :receive_jobs
+
   map.resources :suppliers
   map.resources :analogues
   map.resources :goods
   map.resources :manufacturers
+  map.resources :attachments
+  map.resources :prices  
 
   # The priority is based upon order of creation: first created -> highest priority.
 
