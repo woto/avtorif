@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :mies
+
   map.resources :import_excels
   map.resources :import_csvs
   map.resources :receive_emails

@@ -5,6 +5,7 @@ class CreateAttachments < ActiveRecord::Migration
       t.string :price_content_type
       t.string :price_file_size
       t.datetime :price_updated_at
+      t.string :md5
 
       t.timestamps
     end
