@@ -1,4 +1,4 @@
-one:
+receive_from_japancars:
   receiveable: japancars (ReceiveFtp)
-two:
+receive_from_pelikanavto:
   receiveable: pelikanavto (ReceiveFtp)

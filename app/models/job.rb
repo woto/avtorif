@@ -10,7 +10,7 @@ class Job < ActiveRecord::Base
 
   belongs_to :supplier
   belongs_to :jobable, :polymorphic => true
-  has_one :child, :class_name => "Job", :foreign_key => "job_id"
+  has_many :childs, :class_name => "Job", :foreign_key => "job_id"
   belongs_to :parent, :class_name => "Job", :foreign_key => "job_id"
   #has_one :child_job, :foreign_key => :job_id, :class_name => "Job"
   #belongs_to :parent_job, :readonly => true, :foreign_key => :job_id, :class_name => "Job"

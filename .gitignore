@@ -17,3 +17,4 @@ vendor/gems/doc
 vendor/gems/environment.rb
 .bundle
 Gemfile.lock
+prices

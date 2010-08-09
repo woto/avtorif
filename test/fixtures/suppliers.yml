@@ -1,13 +1,13 @@
-jcars:
+japancars:
   title: "джапанн карс"
   inn: 123456789123
   kpp: 123456789
-  login: jcars
+  login: japancars
   password: 123
   
-pavto:
+pelikanavto:
   title: "ПЕЛИКАН-АВТО"
   inn: 123456789123
   kpp: 123456789
-  login: pavto
+  login: pelikanavto
   password: 123  

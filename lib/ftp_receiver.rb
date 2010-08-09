@@ -22,7 +22,9 @@ class FtpReceiver < AbstractReceiver
       end
       tmpfile.unlink
 
-      JobWalker.new.start_job(@receiver.receive_job.job.child)
+      @receiver.receive_job.job.childs.each do |child|
+        JobWalker.new.start_job(child)
+      end
     end
   end
 end

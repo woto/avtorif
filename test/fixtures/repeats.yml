@@ -6,7 +6,7 @@ every_one_minute:
 
 every_one_minute_in_every_two_hours:
   cron_string: 10 */2 * * *
-  title: Каждые два часа в 10 минут
+  title: Каждую минуту в каждые два часа
 
 every_three_minutes:
   cron_string: */3 * * * *

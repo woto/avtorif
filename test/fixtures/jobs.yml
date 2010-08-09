@@ -1,33 +1,33 @@
-receive_jcars:
+receive_job_for_japancars :
   next_start: 2010-08-02 13:22:16
   last_start: 2010-08-02 13:22:16
   title: Принять прайс от джапан карс (сразу после моего запуска запустится два импорта)
   repeats: every_one_minute
-  jobable: one (ReceiveJob)
-  supplier: jcars
+  jobable: receive_from_japancars (ReceiveJob)
+  supplier: japancars
   file_mask: LucJC.xls
 
-import_jcars:
+import_job_for_japancars:
+  parent: receive_job_for_japancars
   last_start: 2010-08-02 13:22:16
   title: Я импортирую оригиналы с наценкой 0,93 от джапан карс
-  jobable: one (ImportJob)
-  supplier: jcars
+  jobable: receive_from_japancars (ImportJob)
+  supplier: japancars
   file_mask: LucJC.xls
 
-import_jcars2:
-  parent: receive_jcars
+import_job_for_japancars2:
+  parent: receive_job_for_japancars
   last_start: 2010-08-02 13:22:16
   title: Я импортирую не оригиналы с наценкой 0,87 от джапан карс
-  jobable: one (ImportJob)
-  supplier: jcars
+  jobable: receive_from_japancars (ImportJob)
+  supplier: japancars
   file_mask: LucJC.xls
 
-receive_pavto:
+receive_job_for_pelikanavto:
   next_start: 2010-08-02 13:22:16
   last_start: 2010-08-02 13:22:16
   title: Я принимаю прайс каждую минуту каждые два часа от пеликан авто, и каждые три минуты (в зависимости от того что наступит раньше)
   repeats: every_one_minute_in_every_two_hours, every_three_minutes
-  jobable: two (ReceiveJob)
-  supplier: pavto
+  jobable: receive_from_pelikanavto (ReceiveJob)
+  supplier: pelikanavto
   file_mask: PE.*
-
