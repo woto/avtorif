@@ -41,14 +41,19 @@ class AttachmentsController < ApplicationController
   # POST /attachments.xml
   def create
     @attachment = Attachment.new(params[:attachment])
+    @attachment.md5 = Digest::MD5.hexdigest(File.read(params[:attachment][:attachment].path))
 
     respond_to do |format|
-      if @attachment.save
-        format.html { redirect_to(@attachment, :notice => 'Attachment was successfully created.') }
-        format.xml  { render :xml => @attachment, :status => :created, :location => @attachment }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @attachment.errors, :status => :unprocessable_entity }
+      begin
+        if @attachment.save
+          format.html { redirect_to(@attachment, :notice => 'Attachment was successfully created.') }
+          format.xml  { render :xml => @attachment, :status => :created, :location => @attachment }
+        else
+          format.html { render :action => "new" }
+          format.xml  { render :xml => @attachment.errors, :status => :unprocessable_entity }
+        end
+      rescue
+        format.html { redirect_to(attachments_path, :notice => 'Загружаемый файл уже имеется на сервере.') }
       end
     end
   end

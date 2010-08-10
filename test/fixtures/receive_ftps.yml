@@ -4,9 +4,17 @@ japancars:
   path: '/'
   login: lucid
   password: Kl32r5x0
+
 pelikanavto:
   server: avtorif.ru
   port: 21
   path: '/'
   login: pelikan
   password: lcaz6Ksf8
+
+receive_job_for_stalker_nalichie_from_ftp:
+  server: ftp.avrs.ru
+  port: 21
+  path: '/'
+  login: rif
+  password: RiFftpPrice

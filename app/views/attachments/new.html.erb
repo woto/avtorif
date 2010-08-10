@@ -1,11 +1,13 @@
 <h1>New attachment</h1>
 
-<% form_for(@attachment, :html => { :multipart => true }) do |f| %>
+<% semantic_form_for(@attachment, :html => { :multipart => true }) do |f| %>
   <%= f.error_messages %>
 
+  <%= f.input :supplier %>
+    
   <p>
-    <%= f.label :price %><br />
-    <%= f.file_field :price%>
+    <%= f.label :attachment %><br />
+    <%= f.file_field :attachment %>
   </p>
 
   <p>

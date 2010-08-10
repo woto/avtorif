@@ -10,7 +10,7 @@ class CreateImportJobs < ActiveRecord::Migration
       t.integer :cost_colnum
       t.integer :title_colnum
       t.integer :count_colnum
-      t.integer :margin
+      t.decimal :margin, :precision => 10, :scale => 5
 
 
       t.timestamps

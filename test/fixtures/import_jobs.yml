@@ -18,6 +18,33 @@ import_from_japancars_2:
   cost_colnum: 5
   margin: 0.87
 
-two:
+import_from_kornev_ruslan:
+  importable: csv_settings_for_kornev_ruslan (ImportCsv)
+  catalog_number_colnum: 1
+  manufacturer_colnum: 2
+  title_colnum: 3
+  count_colnum: 4
+  cost_colnum: 5
+  margin: 0.85
+
+import_from_kornev_ruslan2:
+  importable: csv_settings_for_kornev_ruslan2 (ImportCsv)
+  catalog_number_colnum: 2
+  manufacturer_colnum: 1
+  title_colnum: 3
+  count_colnum: 5
+  cost_colnum: 4
+  margin: 0.85
+
+import_job_for_stalker_nalichie:
+  importable: ftp_settings_for_import_job_for_stalker_nalichie (ImportCsv)
+  catalog_number_colnum: 2
+  manufacturer_colnum: 1
+  title_colnum: 3
+  count_colnum: 5
+  cost_colnum: 4
+  margin: 0.85
+
+#two:
 #  price: two
-  importable: two (ImportCsv) 
+#  importable: two (ImportCsv) 

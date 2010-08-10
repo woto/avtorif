@@ -1,4 +1,8 @@
 receive_from_japancars:
   receiveable: japancars (ReceiveFtp)
+
 receive_from_pelikanavto:
   receiveable: pelikanavto (ReceiveFtp)
+
+receive_job_for_stalker_nalichie:
+  receiveable: receive_job_for_stalker_nalichie_from_ftp (ReceiveFtp)  

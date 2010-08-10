@@ -20,14 +20,18 @@ ActiveRecord::Schema.define(:version => 20100809111859) do
   end
 
   create_table "attachments", :force => true do |t|
-    t.string   "price_file_name"
-    t.string   "price_content_type"
-    t.string   "price_file_size"
-    t.datetime "price_updated_at"
+    t.string   "attachment_file_name"
+    t.string   "attachment_content_type"
+    t.string   "attachment_file_size"
+    t.datetime "attachment_updated_at"
     t.string   "md5"
+    t.boolean  "proceded",                :default => false
+    t.integer  "supplier_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "attachments", ["attachment_file_name", "attachment_file_size", "md5", "supplier_id"], :name => "uniq_attachments", :unique => true
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -45,21 +49,24 @@ ActiveRecord::Schema.define(:version => 20100809111859) do
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "goods", :force => true do |t|
-    t.integer  "price_id"
-    t.integer  "contractor_id"
     t.string   "catalog_number"
     t.integer  "manufacturer_id"
     t.boolean  "original"
+    t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "import_csvs", :force => true do |t|
+    t.integer  "start_from_line"
+    t.string   "delimeter"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "import_excels", :force => true do |t|
+    t.string   "sheet_number"
+    t.string   "start_from_line"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -73,7 +80,7 @@ ActiveRecord::Schema.define(:version => 20100809111859) do
     t.integer  "replacement_colnum"
     t.integer  "title_colnum"
     t.integer  "count_colnum"
-    t.integer  "margin"
+    t.decimal  "margin",                :precision => 10, :scale => 5
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -110,10 +117,10 @@ ActiveRecord::Schema.define(:version => 20100809111859) do
   end
 
   create_table "prices", :force => true do |t|
-    t.integer  "job_id"
     t.integer  "goods_id"
-    t.string   "description"
-    t.integer  "cost",        :limit => 10, :precision => 10, :scale => 0
+    t.integer  "supplier_id"
+    t.string   "title"
+    t.decimal  "cost",        :precision => 10, :scale => 3
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -2,6 +2,8 @@ require 'open-uri'
 require 'digest/sha1'
 
 class RemoteFile < ::Tempfile
+  
+  attr_accessor :original_filename
 
   def initialize(path, tmpdir = Dir::tmpdir)
     @original_filename  = File.basename(path)
@@ -18,9 +20,9 @@ class RemoteFile < ::Tempfile
     self
   end
 
-  def original_filename
-    @original_filename
-  end
+  #def original_filename
+  #  @original_filename
+  #end
 
   def content_type
     mime = `file --mime -br #{self.path}`.strip

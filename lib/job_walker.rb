@@ -37,13 +37,13 @@ class JobWalker
   end
 
   def start_job(job)
-    puts job
+      #puts job
       job.last_start = Time.zone.now
       concrete_job = job.jobable
       jobber_class = (job.jobable_type.split(/(.*?)Job/)[1] + "Jobber").classify.constantize
       #jobber = jobber_class.new(concrete_job)
       #Delayed::Job.enqueue ReceiveJobber.new(ImportJob.first)
       Delayed::Job.enqueue jobber_class.new(concrete_job)
-    job.save
+      job.save
   end
 end

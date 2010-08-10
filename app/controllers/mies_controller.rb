@@ -2,9 +2,12 @@ class MiesController < ApplicationController
   # GET /mies
   # GET /mies.xml
   def index
-    
-    rj = ReceiveJobber.new(ReceiveJob.find(484199613))
+
+    rj = ImportJobber.new(ImportJob.find(121088585))
     rj.perform
+
+    #rj = ReceiveJobber.new(ReceiveJob.find(484199613))
+    #rj.perform
     
     @mies = My.all
 

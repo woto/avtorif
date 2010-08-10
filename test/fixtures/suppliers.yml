@@ -10,4 +10,10 @@ pelikanavto:
   inn: 123456789123
   kpp: 123456789
   login: pelikanavto
-  password: 123  
+  password: 123
+
+kornevruslan:
+  title: "Корнев Руслан"
+
+stalker:
+  title: "Сталкер"

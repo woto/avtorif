@@ -31,3 +31,26 @@ receive_job_for_pelikanavto:
   jobable: receive_from_pelikanavto (ReceiveJob)
   supplier: pelikanavto
   file_mask: PE.*
+
+import_job_for_kornevruslan:
+  title: Я буду вызываться после ручной загрузки прайса avtorif.csv и импортировать товары с наценкой 0,85
+  jobable: import_from_kornev_ruslan (ImportJob)
+  supplier: kornevruslan
+  file_mask: avtorif.csv
+
+import_job_for_kornevruslan:
+  title: Я буду вызываться после ручной загрузки прайса avtorif.txt и импортировать товары с наценкой 0,85
+  jobable: import_from_kornev_ruslan2 (ImportJob)
+  supplier: kornevruslan
+  file_mask: avtorif.csv
+
+job_for_stalker_nalichie_1:
+  repeats: every_one_minute
+  jobable: receive_job_for_stalker_nalichie (ReceiveJob)
+  supplier: stalker
+  file_mask: avtorif.txt
+
+import_job_for_stalker_nalichie_1:
+  jobable: import_job_for_stalker_nalichie (ImportJob)
+  supplier: stalker
+  file_mask: avtorif.txt

@@ -1,1 +1,11 @@
-one: {}
+csv_settings_for_kornev_ruslan:
+  start_from_line: 1
+  delimeter: ;
+
+csv_settings_for_kornev_ruslan2:
+  start_from_line: 1
+  delimeter: ;
+
+ftp_settings_for_import_job_for_stalker_nalichie:
+   start_from_line: 2
+   delimeter: ;
