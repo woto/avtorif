@@ -40,6 +40,20 @@ Rails::Initializer.run do |config|
   # config.i18n.default_locale = :ru
   # config.action_controller.allow_forgery_protection = false
 
+  config.action_mailer.raise_delivery_errors  = true
+  config.action_mailer.perform_deliveries     = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address => "mail.avtorif.ru",
+    :port => 25,
+    :domain => "avtorif.ru",
+    :authentication => :login,
+    :user_name => "webmaster",
+    :password => "zBsnAbfhxY"
+  }
+  #config.gem 'exception_notification'
+
 end
 
 ExceptionNotification::Notifier.exception_recipients = %w(webmaster@avtorif.ru)
+ExceptionNotification::Notifier.sender_address = %("Application Error" <webmaster@avtorif.ru>)

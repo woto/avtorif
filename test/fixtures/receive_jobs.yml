@@ -5,4 +5,7 @@ receive_from_pelikanavto:
   receiveable: pelikanavto (ReceiveFtp)
 
 receive_job_for_stalker_nalichie:
-  receiveable: receive_job_for_stalker_nalichie_from_ftp (ReceiveFtp)  
+  receiveable: receive_job_for_stalker_nalichie_from_ftp (ReceiveFtp)
+
+receive_job_for_jeepshop:
+  receiveable: receive_job_from_ftp_for_jeepshop (ReceiveFtp)

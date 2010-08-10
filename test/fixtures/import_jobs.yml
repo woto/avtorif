@@ -37,10 +37,19 @@ import_from_kornev_ruslan2:
   margin: 0.85
 
 import_job_for_stalker_nalichie:
-  importable: ftp_settings_for_import_job_for_stalker_nalichie (ImportCsv)
+  importable: csv_settings_for_import_job_for_stalker_nalichie (ImportCsv)
   catalog_number_colnum: 2
   manufacturer_colnum: 1
   title_colnum: 3
+  count_colnum: 5
+  cost_colnum: 4
+  margin: 0.85
+
+import_job_1_for_jeepshop:
+  importable: csv_settings_for_import_job_1_for_jeepshop (ImportCsv)
+  catalog_number_colnum: 2
+  manufacturer_colnum: 3
+  title_colnum: 4
   count_colnum: 5
   cost_colnum: 4
   margin: 0.85

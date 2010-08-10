@@ -2,12 +2,25 @@ class MiesController < ApplicationController
   # GET /mies
   # GET /mies.xml
   def index
+    raise Exception
 
-    rj = ImportJobber.new(ImportJob.find(121088585))
-    rj.perform
+    #rescue Exception => e
+    #  notify_about_exception(e)
 
-    #rj = ReceiveJobber.new(ReceiveJob.find(484199613))
+#    raise Exception
+    
+    #rj = ImportJobber.new(ImportJob.find(121088585))
     #rj.perform
+
+    # Сталкер наличие
+    #rj = ReceiveJobber.new(ReceiveJob.find(149763117))
+    #rj.perform
+
+    # Пеликан авто
+    #rj = ReceiveJobber.new(ReceiveJob.find(637130520))
+    #rj.perform
+
+    JobWalker.new.call
     
     @mies = My.all
 

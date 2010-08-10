@@ -45,12 +45,28 @@ import_job_for_kornevruslan:
   file_mask: avtorif.csv
 
 job_for_stalker_nalichie_1:
+  title: Задача приема от сталкера налачие через фтп
   repeats: every_one_minute
   jobable: receive_job_for_stalker_nalichie (ReceiveJob)
   supplier: stalker
   file_mask: avtorif.txt
 
 import_job_for_stalker_nalichie_1:
+  title: Обработка принятого файла от сталкер налачие
   jobable: import_job_for_stalker_nalichie (ImportJob)
   supplier: stalker
   file_mask: avtorif.txt
+
+job_for_jeepshop_1:
+  title: Принять через фтп прайс от джипшоп по маске AVTORIF.txt
+  repeats: every_one_minute
+  jobable: receive_job_for_jeepshop (ReceiveJob)
+  supplier: jeepshop
+  file_mask: AVTORIF.txt
+
+import_job_for_jeepshop_1:
+  title: Импортировать прайс после приема любым из имеющихся способов
+  repeats: every_one_minute
+  jobable: import_job_1_for_jeepshop (ImportJob) 
+  supplier: jeepshop
+  file_mask: AVTORIF.txt

@@ -1,19 +1,22 @@
 japancars:
-  title: "джапанн карс"
+  title: джапанн карс
   inn: 123456789123
   kpp: 123456789
   login: japancars
   password: 123
   
 pelikanavto:
-  title: "ПЕЛИКАН-АВТО"
+  title: ПЕЛИКАН-АВТО
   inn: 123456789123
   kpp: 123456789
   login: pelikanavto
   password: 123
 
 kornevruslan:
-  title: "Корнев Руслан"
+  title: Корнев Руслан
 
 stalker:
-  title: "Сталкер"
+  title: Сталкер
+
+jeepshop:
+  title: ДЖИПШОП
