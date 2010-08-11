@@ -16,7 +16,7 @@ class JobWalker
     jobs.each do |job|
       if job.parent.blank?
         # Обновляем время следующего запуска только у тех задач, у которых нет родителя
-        if job.next_start < Time.zone.now
+        if !job.next_start.nil? && job.next_start < Time.zone.now
           nearest_next_time = nil
           job.repeats.each do |repeat|
             r = Rufus::CronLine.new(repeat.cron_string)

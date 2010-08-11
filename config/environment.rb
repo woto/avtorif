@@ -51,7 +51,6 @@ Rails::Initializer.run do |config|
     :user_name => "webmaster",
     :password => "zBsnAbfhxY"
   }
-  #config.gem 'exception_notification'
 
 end
 

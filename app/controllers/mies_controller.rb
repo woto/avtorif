@@ -1,13 +1,17 @@
 class MiesController < ApplicationController
+
+
+  include ExceptionNotification::Notifiable
+  
   # GET /mies
   # GET /mies.xml
   def index
+    
     raise Exception
-
     #rescue Exception => e
     #  notify_about_exception(e)
 
-#    raise Exception
+    raise Exception
     
     #rj = ImportJobber.new(ImportJob.find(121088585))
     #rj.perform

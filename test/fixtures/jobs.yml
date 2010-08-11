@@ -45,6 +45,7 @@ import_job_for_kornevruslan:
   file_mask: avtorif.csv
 
 job_for_stalker_nalichie_1:
+  next_start: 2010-08-02 13:22:16
   title: Задача приема от сталкера налачие через фтп
   repeats: every_one_minute
   jobable: receive_job_for_stalker_nalichie (ReceiveJob)
@@ -58,6 +59,7 @@ import_job_for_stalker_nalichie_1:
   file_mask: avtorif.txt
 
 job_for_jeepshop_1:
+  next_start: 2010-08-02 13:22:16
   title: Принять через фтп прайс от джипшоп по маске AVTORIF.txt
   repeats: every_one_minute
   jobable: receive_job_for_jeepshop (ReceiveJob)
