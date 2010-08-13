@@ -1,0 +1,22 @@
+<h1>Listing import_xls</h1>
+
+<table>
+  <tr>
+    <th>Sheet number</th>
+    <th>Start from line</th>
+  </tr>
+
+<% @import_xls.each do |import_xl| %>
+  <tr>
+    <td><%=h import_xl.sheet_number %></td>
+    <td><%=h import_xl.start_from_line %></td>
+    <td><%= link_to 'Show', import_xl %></td>
+    <td><%= link_to 'Edit', edit_import_xl_path(import_xl) %></td>
+    <td><%= link_to 'Destroy', import_xl, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New import_xl', new_import_xl_path %>

@@ -1,0 +1,19 @@
+<h1>New import_xl</h1>
+
+<% form_for(@import_xl) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :sheet_number %><br />
+    <%= f.text_field :sheet_number %>
+  </p>
+  <p>
+    <%= f.label :start_from_line %><br />
+    <%= f.text_field :start_from_line %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', import_xls_path %>

@@ -1,0 +1,8 @@
+receive_two_prices_in_one_mail_from_one_mailbox_with_header_SUPER:
+  server: pop.gmail.com
+  port: 994
+  address: ruslan.kornev@gmail.com
+  login: ruslan.kornev@gmail.com
+  password: vjqgfhjkm
+  topic: .*
+  sender: oganer@gmail.com

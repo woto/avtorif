@@ -2,6 +2,7 @@ class CreateReceiveEmails < ActiveRecord::Migration
   def self.up
     create_table :receive_emails do |t|
       t.string :server
+      t.string :port
       t.string :address
       t.string :login
       t.string :password

@@ -9,3 +9,6 @@ receive_job_for_stalker_nalichie:
 
 receive_job_for_jeepshop:
   receiveable: receive_job_from_ftp_for_jeepshop (ReceiveFtp)
+
+receive_job_for_ruslan_kornev:
+  receiveable: receive_two_prices_in_one_mail_from_one_mailbox_with_header_SUPER (ReceiveEmail)  

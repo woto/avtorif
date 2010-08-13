@@ -1,6 +1,5 @@
 require 'net/pop'
 
-
 class EmailReceiver < AbstractReceiver
   def receive
     Net::POP3.start(@receiver.server, nil, @receiver.login, @receiver.password) do |pop|

@@ -11,7 +11,11 @@ gem 'rails', '2.3.8'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'excelsior'
+gem 'ccsv'
 gem 'fastercsv'
+
+
 gem 'mysql'
 #gem 'sqlite3-ruby', :require => 'sqlite3'
 #gem 'spreadsheet'
@@ -53,4 +57,3 @@ end
 gem 'formtastic', :git => "http://github.com/justinfrench/formtastic.git", :tag => "1.0.0.beta4"
 gem 'whenever'
 gem 'rufus-scheduler'
-gem 'god'

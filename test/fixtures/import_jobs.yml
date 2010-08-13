@@ -1,6 +1,5 @@
 import_from_japancars:
-#  price: one
-  importable: one (ImportCsv)
+  importable: one (ImportXls)
   catalog_number_colnum: 1
   manufacturer_colnum: 2
   title_colnum: 3
@@ -10,7 +9,7 @@ import_from_japancars:
 
 import_from_japancars_2:
 #  price: one
-  importable: one (ImportCsv)
+  importable: one (ImportXls)
   catalog_number_colnum: 1
   manufacturer_colnum: 2
   title_colnum: 3
@@ -50,8 +49,8 @@ import_job_1_for_jeepshop:
   catalog_number_colnum: 2
   manufacturer_colnum: 3
   title_colnum: 4
-  count_colnum: 5
-  cost_colnum: 4
+  count_colnum: 6
+  cost_colnum: 5
   margin: 0.85
 
 #two:

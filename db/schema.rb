@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100809111859) do
+ActiveRecord::Schema.define(:version => 20100811094637) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
@@ -60,13 +60,7 @@ ActiveRecord::Schema.define(:version => 20100809111859) do
   create_table "import_csvs", :force => true do |t|
     t.integer  "start_from_line"
     t.string   "delimeter"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "import_excels", :force => true do |t|
-    t.string   "sheet_number"
-    t.string   "start_from_line"
+    t.string   "codepage"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -81,6 +75,14 @@ ActiveRecord::Schema.define(:version => 20100809111859) do
     t.integer  "title_colnum"
     t.integer  "count_colnum"
     t.decimal  "margin",                :precision => 10, :scale => 5
+    t.string   "encoding"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "import_xls", :force => true do |t|
+    t.string   "sheet_number"
+    t.integer  "start_from_line"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -127,6 +129,7 @@ ActiveRecord::Schema.define(:version => 20100809111859) do
 
   create_table "receive_emails", :force => true do |t|
     t.string   "server"
+    t.string   "port"
     t.string   "address"
     t.string   "login"
     t.string   "password"

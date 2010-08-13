@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  sheet_number: MyString
+  start_from_line: 1
+
+two:
+  sheet_number: MyString
+  start_from_line: 1

@@ -11,6 +11,7 @@ class CreateImportJobs < ActiveRecord::Migration
       t.integer :title_colnum
       t.integer :count_colnum
       t.decimal :margin, :precision => 10, :scale => 5
+      t.string :encoding
 
 
       t.timestamps

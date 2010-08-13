@@ -1,0 +1,8 @@
+port: "8000"
+environment: development
+pid_file: tmp/pids/mongrel.pid
+servers: 10
+address: 127.0.0.1
+user: woto
+group: users
+cwd: /home/woto/rails/avtorif

@@ -53,6 +53,7 @@ job_for_stalker_nalichie_1:
   file_mask: avtorif.txt
 
 import_job_for_stalker_nalichie_1:
+  parent: job_for_stalker_nalichie_1
   title: Обработка принятого файла от сталкер налачие
   jobable: import_job_for_stalker_nalichie (ImportJob)
   supplier: stalker
@@ -67,7 +68,8 @@ job_for_jeepshop_1:
   file_mask: AVTORIF.txt
 
 import_job_for_jeepshop_1:
-  title: Импортировать прайс после приема любым из имеющихся способов
+  parent: job_for_jeepshop_1 
+  title: Импортировать прайс после приема от джипшоп любым из имеющихся способов
   repeats: every_one_minute
   jobable: import_job_1_for_jeepshop (ImportJob) 
   supplier: jeepshop

@@ -2,7 +2,7 @@ require 'net/ftp'
 
 class FtpReceiver < AbstractReceiver
   def receive
-    Timeout.timeout(1000) do
+    Timeout.timeout(120) do
 
       #puts @receiver
       ftp = Net::FTP.new

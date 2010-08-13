@@ -3,6 +3,7 @@ class CreateImportCsvs < ActiveRecord::Migration
     create_table :import_csvs do |t|
       t.integer :start_from_line
       t.string :delimeter
+      t.string :codepage
       t.timestamps
     end
   end
