@@ -40,19 +40,31 @@ class AttachmentsController < ApplicationController
   # POST /attachments
   # POST /attachments.xml
   def create
+
     @attachment = Attachment.new(params[:attachment])
-    @attachment.md5 = Digest::MD5.hexdigest(File.read(params[:attachment][:attachment].path))
+    @attachment.md5 = Digest::MD5.hexdigest(File.read(params[:attachment][:attachment].path))    
 
     respond_to do |format|
       begin
         if @attachment.save
+
+          #Job.all(params[:supplier_id])
+          #ijs = ImportJob.find(:all, :conditions => {:job => {:supplier_id => params[:attachment][:supplier_id]}}, :joins => "INNER JOIN import_jobs ij ON ij.id = jobs.jobable_id ")
+          #ijs = ImportJob.find(:all, :conditions => {:jobs => {:supplier_id => params[:attachment][:supplier_id]}}, :joins => "INNER JOIN jobs ON import_jobs.id = jobs.jobable_id ")
+          ijs = ImportJob.find(:all, :conditions => {:jobs => {:supplier_id => params[:attachment][:supplier_id]}}, :joins => :job)
+          ijs = ijs.select{|ij| ij.job.file_mask.match(params[:attachment][:attachment].original_filename)}
+          ijs.each do |ij|
+            Delayed::Job.enqueue(ImportJobber.new(ij, @attachment.id))
+            #ImportJobber.new(ij, @attachment.id).perform
+          end
+
           format.html { redirect_to(@attachment, :notice => 'Attachment was successfully created.') }
           format.xml  { render :xml => @attachment, :status => :created, :location => @attachment }
         else
           format.html { render :action => "new" }
           format.xml  { render :xml => @attachment.errors, :status => :unprocessable_entity }
         end
-      rescue
+      rescue Exception => e
         format.html { redirect_to(attachments_path, :notice => 'Загружаемый файл уже имеется на сервере.') }
       end
     end

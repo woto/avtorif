@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(:version => 20100811094637) do
     t.integer  "count_colnum"
     t.decimal  "margin",                :precision => 10, :scale => 5
     t.string   "encoding"
+    t.integer  "estimate_days"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -119,10 +120,17 @@ ActiveRecord::Schema.define(:version => 20100811094637) do
   end
 
   create_table "prices", :force => true do |t|
+    t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
+    t.string   "supplier"
     t.string   "title"
-    t.decimal  "cost",        :precision => 10, :scale => 3
+    t.integer  "count",          :limit => 10, :precision => 10, :scale => 0
+    t.decimal  "initial_cost",                 :precision => 10, :scale => 3
+    t.decimal  "result_cost",                  :precision => 10, :scale => 3
+    t.decimal  "margin",                       :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "catalog_number"
+    t.string   "import_rule"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

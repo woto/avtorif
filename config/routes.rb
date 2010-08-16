@@ -19,7 +19,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :goods
   map.resources :manufacturers
   map.resources :attachments
-  map.resources :prices  
+  map.resources :prices, :collection => {:search => :get}  
 
   # The priority is based upon order of creation: first created -> highest priority.
 

@@ -6,6 +6,10 @@ class MiesController < ApplicationController
   # GET /mies
   # GET /mies.xml
   def index
+
+
+    ij = ImportJobber.new(ImportJob.find(302205181), 3)
+    ij.perform
     
     #raise Exception
     #rescue Exception => e
@@ -18,8 +22,8 @@ class MiesController < ApplicationController
     #ij.perform
 
     #Импорт сталкер наличие
-    ij = ImportJobber.new(ImportJob.find(874698584))
-    ij.perform
+    #ij = ImportJobber.new(ImportJob.find(874698584))
+    #ij.perform
 
     # Сталкер наличие
     #rj = ReceiveJobber.new(ReceiveJob.find(149763117))

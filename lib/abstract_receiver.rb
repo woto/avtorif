@@ -1,6 +1,7 @@
 class AbstractReceiver
-  def initialize(receiver)
-    @receiver = receiver 
+  def initialize(receiver, optional = nil)
+    @receiver = receiver
+    @optional = optional
   end
 
   def receive

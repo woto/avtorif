@@ -59,6 +59,13 @@ import_job_for_stalker_nalichie_1:
   supplier: stalker
   file_mask: avtorif.txt
 
+import_job_for_stalker_nalichie_2:
+  parent: job_for_stalker_nalichie_1
+  title: Обработка принятого файла от сталкер налачие 2
+  jobable: import_job_for_stalker_nalichie2 (ImportJob)
+  supplier: stalker
+  file_mask: avtorif.txt
+
 job_for_jeepshop_1:
   next_start: 2010-08-02 13:22:16
   title: Принять через фтп прайс от джипшоп по маске AVTORIF.txt

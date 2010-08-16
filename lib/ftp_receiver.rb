@@ -43,7 +43,7 @@ class FtpReceiver < AbstractReceiver
         #file
 
         @receiver.receive_job.job.childs.each do |child|
-          JobWalker.new.start_job(child)
+          JobWalker.new.start_job(child, attachment.id)
         end
       end
 

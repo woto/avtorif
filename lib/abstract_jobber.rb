@@ -1,6 +1,7 @@
 class AbstractJobber
-  def initialize(jobber)
+  def initialize(jobber, optional = nil)
      @jobber = jobber
+     @optional = optional    
   end
 
   def perform

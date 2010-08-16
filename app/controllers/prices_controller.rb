@@ -1,4 +1,16 @@
 class PricesController < ApplicationController
+
+  def search
+
+    @prices = Price.find(:all, :conditions => ['catalog_number = ?', params[:price][:catalog_number]])
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.xml  { render :xml => @prices }
+    end
+
+    # 90948-01003
+  end
   # GET /prices
   # GET /prices.xml
   def index

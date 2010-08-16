@@ -10,6 +10,10 @@ csv_settings_for_import_job_for_stalker_nalichie:
    start_from_line: 2
    delimeter: 59
 
+csv_settings_for_import_job_for_stalker_nalichie2:
+   start_from_line: 2
+   delimeter: 59
+
 csv_settings_for_import_job_1_for_jeepshop:
    start_from_line: 2
    delimeter: 9
