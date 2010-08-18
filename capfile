@@ -1,5 +1,0 @@
-desc "bla-bla"
-task :search_libs, :hosts => "woto-work" do
-  #run "ls -x1 /usr/lib | grep -i xml"
-  run "df -h /"
-end

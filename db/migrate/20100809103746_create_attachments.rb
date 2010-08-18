@@ -1,11 +1,11 @@
 class CreateAttachments < ActiveRecord::Migration
   def self.up
-    create_table :attachments do |t|
-      t.string :attachment_file_name
+    create_table :attachments, :force => true do |t|
+      t.string :attachment_file_name, :limit => 50
       t.string :attachment_content_type
-      t.string :attachment_file_size
+      t.string :attachment_file_size, :limit => 20
       t.datetime :attachment_updated_at
-      t.string :md5
+      t.string :md5, :limit => 50
       t.boolean :proceded, :default => false
       t.belongs_to :supplier
 
