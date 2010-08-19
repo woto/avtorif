@@ -14,8 +14,8 @@ class RemoteFile < ::Tempfile
   end
 
   def fetch
-    string_io = OpenURI.send(:open, @remote_path)
-    self.write string_io.read
+    #string_io = OpenURI.send(:open, @remote_path)
+    #self.write string_io.read
     self.rewind
     self
   end
