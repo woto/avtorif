@@ -1,5 +1,5 @@
-require 'open-uri'
-require 'digest/sha1'
+#require 'open-uri'
+#require 'digest/sha1'
 
 class RemoteFile < ::Tempfile
   
@@ -10,19 +10,19 @@ class RemoteFile < ::Tempfile
     @remote_path        = path
 
     super Digest::SHA1.hexdigest(path), tmpdir
-    fetch
+    #fetch
   end
 
-  def fetch
-    #string_io = OpenURI.send(:open, @remote_path)
-    #self.write string_io.read
-    self.rewind
-    self
-  end
-
-  #def original_filename
-  #  @original_filename
+  #def fetch
+  #  string_io = OpenURI.send(:open, @remote_path)
+  #  self.write string_io.read
+  #  self.rewind
+  #  self
   #end
+
+  def original_filename
+    @original_filename
+  end
 
   def content_type
     mime = `file --mime -br #{self.path}`.strip
