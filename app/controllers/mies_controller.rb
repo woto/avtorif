@@ -12,8 +12,8 @@ class MiesController < ApplicationController
     rj.perform
 
     # Прием Корнев Руслан
-    #rj = ReceiveJobber.new(ReceiveJob.find(275428135))
-    #rj.perform
+    # rj = ReceiveJobber.new(ReceiveJob.find(275428135))
+    # rj.perform
 
     #ij = ImportJobber.new(ImportJob.find(302205181), 3)
     #ij.perform

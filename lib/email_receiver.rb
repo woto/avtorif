@@ -1,16 +1,48 @@
+#require 'mail'
 require 'net/pop'
+require 'tlsmail'
 
 class EmailReceiver < AbstractReceiver
   def receive
 
-    #if @receiver.ssl?
-
+    if @receiver.ssl?
       Net::POP3.enable_ssl(OpenSSL::SSL::VERIFY_NONE)
-    #end
+    end
+    
+      #pop = Net::POP3.new(@receiver.server, @receiver.port)
+      #pop.start(@receiver.login, @receiver.password)
+      pop = Net::POP3.start(@receiver.server, @receiver.port, @receiver.login, @receiver.password)
+      
+=begin
+
+
+    server = @receiver.server
+    port = @receiver.port
+    login = @receiver.login
+    password = @receiver.password
+    ssl = @receiver.ssl
+
+    Mail.defaults do retriever_method :pop3, {
+                                :address    => server,
+                                :port       => port,
+                                :user_name  => login,
+                                :password   => password,
+                                :enable_ssl => ssl }
+    end
+    emails = Mail.all
+    emails.each do |email|
+      puts email
+
+    end
+
 
     pop = Net::POP3.start(@receiver.server, @receiver.port, @receiver.login, @receiver.password)
       pop.use_ssl
       #pop.reset
+
+=end
+
+
 
         pop.mails.reverse.each do |email|
           mail = Notifier.receive(email.pop)
@@ -30,16 +62,15 @@ class EmailReceiver < AbstractReceiver
                 JobWalker.new.start_job(child, attachment.id)
               end
 
-              email.delete
-              
             end
 
             remote_file.unlink
-
+            
           end
 
+          email.delete
         end
-
+        pop.finish
         #pop.reset
 
   end

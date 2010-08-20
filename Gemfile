@@ -31,6 +31,8 @@ gem 'rake'
 gem 'rack'
 gem 'paperclip'
 gem 'will_paginate'
+#gem 'mail'
+gem 'tlsmail'
 
 # To use debugger
 # gem 'ruby-debug'

@@ -6,25 +6,28 @@ receive_job_for_japancars :
   jobable: receive_from_japancars (ReceiveJob)
   supplier: japancars
   file_mask: LucJC.xls
-  estimate_interval: 10
+  interval_between_jobs: 10
+  interval_working: 1
 
 import_job_for_japancars:
   parent: receive_job_for_japancars
-  last_start: 2010-08-02 13:22:16
+  last_start: 2010-08-20 11:22:16
   title: Я импортирую оригиналы с наценкой 0,93 от джапан карс
   jobable: import_from_japancars (ImportJob)
   supplier: japancars
   file_mask: LucJC.xls
-  estimate_interval: 10
+  interval_between_jobs: 10
+  interval_working: 1
 
 import_job_for_japancars_2:
   parent: receive_job_for_japancars
-  last_start: 2010-08-02 13:22:16
+  last_start: 2010-08-20 10:22:16
   title: Я импортирую не оригиналы с наценкой 0,87 от джапан карс
   jobable: import_from_japancars_2 (ImportJob)
   supplier: japancars
   file_mask: LucJC.xls
-  estimate_interval: 10
+  interval_between_jobs: 10
+  interval_working: 1
 
 receive_job_for_pelikanavto:
   next_start: 2010-08-02 13:22:16
@@ -34,21 +37,24 @@ receive_job_for_pelikanavto:
   jobable: receive_from_pelikanavto (ReceiveJob)
   supplier: pelikanavto
   file_mask: PE.*
-  estimate_interval: 10
+  interval_between_jobs: 10
+  interval_working: 1
 
 import_job_for_kornevruslan:
   title: Я буду вызываться после ручной загрузки прайса avtorif.csv и импортировать товары с наценкой 0,85
   jobable: import_from_kornev_ruslan (ImportJob)
   supplier: kornevruslan
   file_mask: avtorif.csv
-  estimate_interval: 10
+  interval_between_jobs: 10
+  interval_working: 1
 
 import_job_for_kornevruslan:
   title: Я буду вызываться после ручной загрузки прайса avtorif.txt и импортировать товары с наценкой 0,85
   jobable: import_from_kornev_ruslan2 (ImportJob)
   supplier: kornevruslan
   file_mask: avtorif.csv
-  estimate_interval: 10
+  interval_between_jobs: 10
+  interval_working: 1
 
 job_for_stalker_nalichie_1:
   next_start: 2010-08-02 13:22:16
@@ -57,7 +63,8 @@ job_for_stalker_nalichie_1:
   jobable: receive_job_for_stalker_nalichie (ReceiveJob)
   supplier: stalker
   file_mask: avtorif.txt
-  estimate_interval: 10
+  interval_between_jobs: 10
+  interval_working: 1
 
 import_job_for_stalker_nalichie_1:
   parent: job_for_stalker_nalichie_1
@@ -65,7 +72,8 @@ import_job_for_stalker_nalichie_1:
   jobable: import_job_for_stalker_nalichie (ImportJob)
   supplier: stalker
   file_mask: avtorif.txt
-  estimate_interval: 10
+  interval_between_jobs: 10
+  interval_working: 1
 
 import_job_for_stalker_nalichie_2:
   parent: job_for_stalker_nalichie_1
@@ -73,7 +81,8 @@ import_job_for_stalker_nalichie_2:
   jobable: import_job_for_stalker_nalichie2 (ImportJob)
   supplier: stalker
   file_mask: avtorif.txt
-  estimate_interval: 10
+  interval_between_jobs: 10
+  interval_working: 1
 
 job_for_jeepshop_1:
   next_start: 2010-08-02 13:22:16
@@ -82,7 +91,8 @@ job_for_jeepshop_1:
   jobable: receive_job_for_jeepshop (ReceiveJob)
   supplier: jeepshop
   file_mask: AVTORIF.txt
-  estimate_interval: 10
+  interval_between_jobs: 10
+  interval_working: 1
 
 import_job_for_jeepshop_1:
   parent: job_for_jeepshop_1 
@@ -91,7 +101,8 @@ import_job_for_jeepshop_1:
   jobable: import_job_1_for_jeepshop (ImportJob) 
   supplier: jeepshop
   file_mask: AVTORIF.txt
-  estimate_interval: 10
+  interval_between_jobs: 10
+  interval_working: 1
 
 job_1_for_febest:
   next_start: 2010-08-02 13:22:16
@@ -100,7 +111,8 @@ job_1_for_febest:
   jobable: receive_job_for_febest (ReceiveJob)
   supplier: febest
   file_mask: febestrif.txt
-  estimate_interval: 10
+  interval_between_jobs: 10
+  interval_working: 1
 
 job_2_for_febest:
   parent: job_1_for_febest
@@ -108,7 +120,8 @@ job_2_for_febest:
   jobable: import_job_for_febest (ImportJob)
   supplier: febest
   file_mask: febestrif.txt
-  estimate_interval: 10
+  interval_between_jobs: 10
+  interval_working: 1
 
 job_1_for_ruslan_kornev:
   repeats: every_one_minute
@@ -117,13 +130,15 @@ job_1_for_ruslan_kornev:
   jobable: receive_job_for_ruslan_kornev (ReceiveJob)
   supplier: febest
   file_mask: .*
-  estimate_interval: 10
+  interval_between_jobs: 10
+  interval_working: 1
 
 job_1_for_testing_avtorif_email:
   repeats: every_one_minute
   next_start: 2000-01-01 00:00:00
-  title: Прием от avtorif
+  title: Прием от  avtorif
   jobable: receive_price_from_avtorif_job (ReceiveJob)
   supplier: kornevruslan
   file_mask: .*
-  estimate_interval: 10  
+  interval_between_jobs: 10
+  interval_working: 1
