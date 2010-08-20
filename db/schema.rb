@@ -140,7 +140,7 @@ ActiveRecord::Schema.define(:version => 20100811094637) do
   create_table "receive_emails", :force => true do |t|
     t.string   "server"
     t.string   "port"
-    t.string   "address"
+    t.boolean  "ssl"
     t.string   "login"
     t.string   "password"
     t.string   "topic"

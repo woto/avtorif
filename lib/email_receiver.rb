@@ -3,11 +3,13 @@ require 'net/pop'
 class EmailReceiver < AbstractReceiver
   def receive
 
-    OpenSSL::SSL::SSLError
+    #if @receiver.ssl?
 
-    Net::POP3.enable_ssl(OpenSSL::SSL::VERIFY_NONE)
+      Net::POP3.enable_ssl(OpenSSL::SSL::VERIFY_NONE)
+    #end
+
     pop = Net::POP3.start(@receiver.server, @receiver.port, @receiver.login, @receiver.password)
-    
+      pop.use_ssl
       #pop.reset
 
         pop.mails.reverse.each do |email|
