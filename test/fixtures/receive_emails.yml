@@ -1,8 +1,19 @@
 receive_two_prices_in_one_mail_from_one_mailbox_with_header_SUPER:
   server: pop.gmail.com
-  port: 994
-  address: ruslan.kornev@gmail.com
+  port: 995
+  #address: ruslan.kornev@gmail.com
   login: ruslan.kornev@gmail.com
   password: vjqgfhjkm
   topic: .*
-  sender: oganer@gmail.com
+  sender: .*
+  ssl: true
+
+receive_price_from_avtorif_email_settings:
+  server: mail.avtorif.ru
+  port: 110
+  #address: webtest@avtorif.ru
+  login: webtest@avtorif.ru
+  password: Kc8dk6sd8
+  topic: .*
+  sender: .*
+  ssl: false

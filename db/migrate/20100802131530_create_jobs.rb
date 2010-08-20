@@ -3,6 +3,8 @@ class CreateJobs < ActiveRecord::Migration
     create_table :jobs do |t|
       t.datetime :next_start
       t.datetime :last_start
+      t.datetime :last_finish
+      t.integer :estimate_interval      
       t.string :title
       t.references :job
       t.references :jobable, :polymorphic => true

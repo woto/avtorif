@@ -69,6 +69,17 @@ import_job_1_for_jeepshop:
   margin: 0.85
   estimate_days: 20
 
+import_job_for_febest:
+  importable: csv_settings_for_import_from_febest_1 (ImportCsv)
+  catalog_number_colnum: 1
+  manufacturer_colnum: 3
+  title_colnum: 2
+  count_colnum: 5
+  cost_colnum: 4
+  margin: 0.85
+  estimate_days: 5
+
+
 #two:
 #  price: two
 #  importable: two (ImportCsv) 

@@ -6,6 +6,7 @@ class CreateSuppliers < ActiveRecord::Migration
       t.string :kpp, :limit => 9
       t.string :login
       t.string :password
+      t.string :contact_info
 
       t.timestamps
     end

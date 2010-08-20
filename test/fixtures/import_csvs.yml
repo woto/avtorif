@@ -17,3 +17,7 @@ csv_settings_for_import_job_for_stalker_nalichie2:
 csv_settings_for_import_job_1_for_jeepshop:
    start_from_line: 2
    delimeter: 9
+
+csv_settings_for_import_from_febest_1:
+   start_from_line: 2
+   delimeter: 9   

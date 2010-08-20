@@ -91,6 +91,8 @@ ActiveRecord::Schema.define(:version => 20100811094637) do
   create_table "jobs", :force => true do |t|
     t.datetime "next_start"
     t.datetime "last_start"
+    t.datetime "last_finish"
+    t.integer  "estimate_interval"
     t.string   "title"
     t.integer  "job_id"
     t.integer  "jobable_id"
@@ -181,10 +183,11 @@ ActiveRecord::Schema.define(:version => 20100811094637) do
 
   create_table "suppliers", :force => true do |t|
     t.string   "title"
-    t.string   "inn",        :limit => 12
-    t.string   "kpp",        :limit => 9
+    t.string   "inn",          :limit => 12
+    t.string   "kpp",          :limit => 9
     t.string   "login"
     t.string   "password"
+    t.string   "contact_info"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

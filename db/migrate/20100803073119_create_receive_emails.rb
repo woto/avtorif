@@ -3,7 +3,8 @@ class CreateReceiveEmails < ActiveRecord::Migration
     create_table :receive_emails do |t|
       t.string :server
       t.string :port
-      t.string :address
+      #t.string :address
+      t.boolean :ssl
       t.string :login
       t.string :password
       t.string :topic

@@ -25,3 +25,10 @@ receive_job_from_ftp_for_jeepshop:
   path: /
   login: jeepshop 
   password: 9k1xJa29s
+
+receive_from_ftp_for_febest:
+  server: avtorif.ru
+  port: 21
+  path: /
+  login: febest
+  password: 821xaTxV
