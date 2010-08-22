@@ -1,4 +1,14 @@
 class Job < ActiveRecord::Base
+
+  module Status
+    START_FAIL = "<div style='background: yellow'>Задача ни разу не была запущена</div>"
+    FINISH_FAIL = "<div style='background: yellow'>Задача никогда не завершалась успешно</div>"
+    INTERVAL_BETWEEN_JOBS_FAIL = "<div style='background: red'>Помещение в очередь не осуществилось в установленный срок</div>"
+    INTERVAL_WORKING_FAIL = "<div style='background: red'>Выполнение задачи не уложилось в установленный срок</div>"
+    LOCKED = "Находится в очереди на выполнение или выполняется"
+    OK = "Ок"
+  end
+
   cattr_reader :per_page
   @@per_page = 100
   has_many :prices
@@ -15,31 +25,32 @@ class Job < ActiveRecord::Base
   #has_one :child_job, :foreign_key => :job_id, :class_name => "Job"
   #belongs_to :parent_job, :readonly => true, :foreign_key => :job_id, :class_name => "Job"
 
-  def critical?
+  def critical
     # Если задача еще ниразу не сработала
     if !last_start
-      return true
+      return Status::START_FAIL
     end
 
     # Если задача еще ниразу не выполнилась
     if !last_finish
-      return true
+      return Status::FINISH_FAIL
     end
 
-    # проверка на переиодичность выполнения задачи
-    if DateTime.now > last_start + interval_between_jobs.days
-      return true
-    end
-
-    if DateTime.now > last_finish + interval_between_jobs.days
-      return true
+    # проверка на периодичность выполнения задачи
+    if (DateTime.now > last_start + interval_between_jobs.seconds) && !locked
+      return Status::INTERVAL_BETWEEN_JOBS_FAIL
     end
 
     # проверка на длительность выполнения
-    if DateTime.now > last_start + interval_working.hours
-      return true
+    if (DateTime.now > last_start + interval_working.seconds) && locked
+      return Status::INTERVAL_WORKING_FAIL
     end
 
+    if locked
+      return Status::LOCKED
+    end
+
+    return Status::OK
 
     
   end

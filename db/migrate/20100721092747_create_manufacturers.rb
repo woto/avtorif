@@ -1,6 +1,6 @@
 class CreateManufacturers < ActiveRecord::Migration
   def self.up
-    create_table :manufacturers do |t|
+    create_table :manufacturers, :options => "ENGINE MyISAM" do |t|
       t.string :title
 
       t.timestamps

@@ -1,7 +1,7 @@
 class PricesController < ApplicationController
 
   def search
-
+    #sleep(10)
     @prices = []
     @prices = Price.find(:all, :conditions => ['catalog_number = ?', params[:price][:catalog_number]])
     
