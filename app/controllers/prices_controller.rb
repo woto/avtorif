@@ -5,7 +5,7 @@ class PricesController < ApplicationController
     @prices = Price.find(:all, :conditions => ['catalog_number = ?', params[:price][:catalog_number]])
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html {render :action => :index }
       format.xml  { render :xml => @prices }
     end
 

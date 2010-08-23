@@ -1,19 +1,71 @@
-receive_two_prices_in_one_mail_from_one_mailbox_with_header_SUPER:
+email_settings_for_ruslan_kornev_gmail_pop3:
   server: pop.gmail.com
   port: 995
-  #address: ruslan.kornev@gmail.com
   login: ruslan.kornev@gmail.com
   password: vjqgfhjkm
   topic: .*
   sender: .*
   ssl: true
+  protocol: pop3
 
-receive_price_from_avtorif_email_settings:
+email_settings_for_oganer_gmail_pop3:
+  server: pop.gmail.com
+  port: 995
+  login: oganer@gmail.com
+  password: vjqgfhjkm
+  topic: .*
+  sender: .*
+  ssl: true
+  protocol: pop3
+
+
+email_settings_for_oganer_gmail_imap:
+  server: imap.gmail.com
+  port: 993
+  login: oganer@gmail.com
+  password: vjqgfhjkm
+  topic: .*
+  sender: .*
+  ssl: true
+  protocol: imap
+
+email_settings_for_webtest_avtorif_pop3:
   server: mail.avtorif.ru
   port: 110
-  #address: webtest@avtorif.ru
   login: webtest@avtorif.ru
   password: Kc8dk6sd8
   topic: .*
   sender: .*
   ssl: false
+  protocol: pop3
+
+email_settings_for_woto77_yandex_pop3:
+  server: pop.yandex.ru
+  port: 995
+  login: woto77@yandex.ru
+  password: qwer332
+  topic: .*
+  sender: .*
+  ssl: true                                     
+  protocol: pop3
+
+email_settings_for_woto77_yandex_imap:
+  server: imap.yandex.ru
+  port: 993
+  login: woto77@yandex.ru
+  password: qwer332
+  topic: .*
+  sender: .*
+  ssl: true
+  protocol: imap
+
+
+email_settings_for_woto_mail_pop3:
+  server: pop.mail.ru
+  port: 110
+  login: woto@mail.ru
+  password: matrixreloaded
+  topic: .*
+  sender: .*
+  ssl: false
+  protocol: pop3

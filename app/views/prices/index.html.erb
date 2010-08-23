@@ -2,7 +2,7 @@
 
 <table>
   <tr>
-    <th>Code</th>
+    <th>catalog_number</th>
     <th>Title</th>
     <th>Supplier</th>
     <th>Margin</th>
@@ -11,11 +11,10 @@
 
 <% @prices.each do |price| %>
   <tr>
-    <td><%=h price.code %></td>
+    <td><%=h price.catalog_number %></td>
     <td><%=h price.title %></td>
     <td><%=h price.supplier %></td>
     <td><%=h price.margin %></td>
-    <td><%=h price.original %></td>
     <td><%= link_to 'Show', price %></td>
     <td><%= link_to 'Edit', edit_price_path(price) %></td>
     <td><%= link_to 'Destroy', price, :confirm => 'Are you sure?', :method => :delete %></td>

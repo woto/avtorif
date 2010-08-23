@@ -1,9 +1,7 @@
 defaults: &defaults
-  price_path: /prices/
 
 development:
   <<: *defaults
-
 
 production:
   <<: *defaults
