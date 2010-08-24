@@ -95,10 +95,10 @@ job_for_jeepshop_1:
   interval_working: 1
 
 import_job_for_jeepshop_1:
-  parent: job_for_jeepshop_1 
+  parent: job_for_jeepshop_1
   title: Импортировать прайс после приема от джипшоп любым из имеющихся способов
   repeats: every_one_minute
-  jobable: import_job_1_for_jeepshop (ImportJob) 
+  jobable: import_job_1_for_jeepshop (ImportJob)
   supplier: jeepshop
   file_mask: AVTORIF.txt
   interval_between_jobs: 10
@@ -138,6 +138,26 @@ job_1_for_testing_avtorif_email:
   next_start: 2000-01-01 00:00:00
   title: Прием от  avtorif
   jobable: receive_job_for_webtest_avtorif_pop3 (ReceiveJob)
+  supplier: kornevruslan
+  file_mask: .*
+  interval_between_jobs: 10
+  interval_working: 1
+
+job_2_for_testing_avtorif_email:
+  repeats: every_one_minute
+  next_start: 2000-01-01 00:00:00
+  title: Прием от  avtorif через imap
+  jobable: receive_job_for_webtest_avtorif_imap (ReceiveJob)
+  supplier: kornevruslan
+  file_mask: .*
+  interval_between_jobs: 10
+  interval_working: 1
+
+job1_for_test_receiving_from_woto77_imap:
+  repeats: every_one_minute
+  next_start: 2000-01-01 00:00:00
+  title: job1_for_test_receiving_from_woto77_imap
+  jobable: receive_job_for_woto77_yandex_imap (ReceiveJob)
   supplier: kornevruslan
   file_mask: .*
   interval_between_jobs: 10

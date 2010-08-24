@@ -17,4 +17,10 @@ receive_job_for_febest:
   receiveable: receive_from_ftp_for_febest (ReceiveFtp)
 
 receive_job_for_webtest_avtorif_pop3:
-  receiveable: email_settings_for_webtest_avtorif_pop3 (ReceiveEmail)  
+  receiveable: email_settings_for_webtest_avtorif_pop3 (ReceiveEmail)
+
+receive_job_for_webtest_avtorif_imap:
+  receiveable: email_settings_for_webtest_avtorif_imap (ReceiveEmail)
+
+receive_job_for_woto77_yandex_imap:
+  receiveable: email_settings_for_woto77_yandex_imap (ReceiveEmail)

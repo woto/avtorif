@@ -7,13 +7,12 @@ class MiesController < ApplicationController
   # GET /mies.xml
   def index
 
-    # Прием Корнев Руслан с авториф тест
-    rj = ReceiveJobber.new(ReceiveJob.find(460214228))
+    rj = ReceiveJobber.new(ReceiveJob.find(338983884))
     rj.perform
 
     # Прием Корнев Руслан
-    # rj = ReceiveJobber.new(ReceiveJob.find(275428135))
-    # rj.perform
+    #rj = ReceiveJobber.new(ReceiveJob.find(275428135))
+    #rj.perform
 
     #ij = ImportJobber.new(ImportJob.find(302205181), 3)
     #ij.perform

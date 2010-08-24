@@ -1,12 +1,12 @@
-email_settings_for_ruslan_kornev_gmail_pop3:
-  server: pop.gmail.com
-  port: 995
-  login: ruslan.kornev@gmail.com
-  password: vjqgfhjkm
-  topic: .*
-  sender: .*
-  ssl: true
-  protocol: pop3
+#email_settings_for_ruslan_kornev_gmail_pop3:
+#  server: pop.gmail.com
+#  port: 995
+#  login: ruslan.kornev@gmail.com
+#  password: vjqgfhjkm
+#  topic: .*
+#  sender: .*
+#  ssl: true
+#  protocol: pop3
 
 email_settings_for_oganer_gmail_pop3:
   server: pop.gmail.com
@@ -19,15 +19,15 @@ email_settings_for_oganer_gmail_pop3:
   protocol: pop3
 
 
-email_settings_for_oganer_gmail_imap:
-  server: imap.gmail.com
-  port: 993
-  login: oganer@gmail.com
-  password: vjqgfhjkm
-  topic: .*
-  sender: .*
-  ssl: true
-  protocol: imap
+#email_settings_for_oganer_gmail_imap:
+#  server: imap.gmail.com
+#  port: 993
+#  login: oganer@gmail.com
+#  password: vjqgfhjkm
+#  topic: .*
+#  sender: .*
+#  ssl: true
+#  protocol: imap
 
 email_settings_for_webtest_avtorif_pop3:
   server: mail.avtorif.ru
@@ -39,6 +39,16 @@ email_settings_for_webtest_avtorif_pop3:
   ssl: false
   protocol: pop3
 
+#email_settings_for_webtest_avtorif_imap:
+#  server: mail.avtorif.ru
+#  port: 143
+#  login: webtest@avtorif.ru
+#  password: Kc8dk6sd8
+#  topic: .*
+#  sender: .*
+#  ssl: false
+#  protocol: imap
+
 email_settings_for_woto77_yandex_pop3:
   server: pop.yandex.ru
   port: 995
@@ -49,15 +59,15 @@ email_settings_for_woto77_yandex_pop3:
   ssl: true                                     
   protocol: pop3
 
-email_settings_for_woto77_yandex_imap:
-  server: imap.yandex.ru
-  port: 993
-  login: woto77@yandex.ru
-  password: qwer332
-  topic: .*
-  sender: .*
-  ssl: true
-  protocol: imap
+#email_settings_for_woto77_yandex_imap:
+#  server: imap.yandex.ru
+#  port: 993
+#  login: woto77@yandex.ru
+#  password: qwer332
+#  topic: .*
+#  sender: .*
+#  ssl: true
+#  protocol: imap
 
 
 email_settings_for_woto_mail_pop3:
