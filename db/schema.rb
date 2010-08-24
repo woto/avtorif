@@ -146,7 +146,7 @@ ActiveRecord::Schema.define(:version => 20100811094637) do
     t.string   "password"
     t.string   "topic"
     t.string   "sender"
-    t.string   "protocol"
+    t.string   "proto"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

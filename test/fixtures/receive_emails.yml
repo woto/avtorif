@@ -6,7 +6,7 @@
 #  topic: .*
 #  sender: .*
 #  ssl: true
-#  protocol: pop3
+#  proto: pop3
 
 email_settings_for_oganer_gmail_pop3:
   server: pop.gmail.com
@@ -16,7 +16,7 @@ email_settings_for_oganer_gmail_pop3:
   topic: .*
   sender: .*
   ssl: true
-  protocol: pop3
+  proto: pop3
 
 
 #email_settings_for_oganer_gmail_imap:
@@ -27,7 +27,7 @@ email_settings_for_oganer_gmail_pop3:
 #  topic: .*
 #  sender: .*
 #  ssl: true
-#  protocol: imap
+#  proto: imap
 
 email_settings_for_webtest_avtorif_pop3:
   server: mail.avtorif.ru
@@ -37,7 +37,7 @@ email_settings_for_webtest_avtorif_pop3:
   topic: .*
   sender: .*
   ssl: false
-  protocol: pop3
+  proto: pop3
 
 #email_settings_for_webtest_avtorif_imap:
 #  server: mail.avtorif.ru
@@ -47,7 +47,7 @@ email_settings_for_webtest_avtorif_pop3:
 #  topic: .*
 #  sender: .*
 #  ssl: false
-#  protocol: imap
+#  proto: imap
 
 email_settings_for_woto77_yandex_pop3:
   server: pop.yandex.ru
@@ -57,7 +57,7 @@ email_settings_for_woto77_yandex_pop3:
   topic: .*
   sender: .*
   ssl: true                                     
-  protocol: pop3
+  proto: pop3
 
 #email_settings_for_woto77_yandex_imap:
 #  server: imap.yandex.ru
@@ -67,7 +67,7 @@ email_settings_for_woto77_yandex_pop3:
 #  topic: .*
 #  sender: .*
 #  ssl: true
-#  protocol: imap
+#  proto: imap
 
 
 email_settings_for_woto_mail_pop3:
@@ -78,4 +78,4 @@ email_settings_for_woto_mail_pop3:
   topic: .*
   sender: .*
   ssl: false
-  protocol: pop3
+  proto: pop3

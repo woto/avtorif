@@ -7,10 +7,10 @@ require 'email_receiver/imap_receiver'
 class EmailReceiver < AbstractReceiver
 
   def receive
-    i = 1
-    s = 'a'
-    protocol = @receiver.protocol
-    case protocol
+    raise InterfaceException, "Keyboard failure", caller
+    
+    proto = @receiver.proto
+    case proto
       when 'pop3'
         Pop3Receiver.receive @receiver
       when 'imap'
