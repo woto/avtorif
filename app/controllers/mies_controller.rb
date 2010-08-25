@@ -7,8 +7,8 @@ class MiesController < ApplicationController
   # GET /mies.xml
   def index
 
-    rj = ReceiveJobber.new(ReceiveJob.find(338983884))
-    rj.perform
+    # rj = ReceiveJobber.new(ReceiveJob.find(338983884))
+    # rj.perform
 
     # Прием Корнев Руслан
     #rj = ReceiveJobber.new(ReceiveJob.find(275428135))
@@ -39,7 +39,7 @@ class MiesController < ApplicationController
     #rj = ReceiveJobber.new(ReceiveJob.find(637130520))
     #rj.perform
 
-    #JobWalker.new.call
+    JobWalker.new.call
     
     @mies = My.all
 

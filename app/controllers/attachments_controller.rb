@@ -41,11 +41,18 @@ class AttachmentsController < ApplicationController
   # POST /attachments.xml
   def create
 
-    @attachment = Attachment.new(params[:attachment])
-    @attachment.md5 = Digest::MD5.hexdigest(File.read(params[:attachment][:attachment].path))    
+    md5 = Digest::MD5.file(params[:attachment][:attachment].path).hexdigest
+    supplier_id = params[:attachment][:supplier_id]
+    
+    #@attachment = Attachment.new(params[:attachment])
+    #@attachment.md5 = Digest::MD5.hexdigest(File.read())
 
-    respond_to do |format|
-      begin
+    if Attachment.find(:first, :conditions => ['md5 = ? AND supplier_id = ?',  md5, supplier_id]).nil?
+      
+      @attachment = Attachment.new(params[:attachment])
+      @attachment.md5 = md5
+
+      respond_to do |format|
         if @attachment.save
 
           #Job.all(params[:supplier_id])
@@ -64,7 +71,9 @@ class AttachmentsController < ApplicationController
           format.html { render :action => "new" }
           format.xml  { render :xml => @attachment.errors, :status => :unprocessable_entity }
         end
-      rescue Exception => e
+      end
+    else
+      respond_to do |format|
         format.html { redirect_to(attachments_path, :notice => 'Загружаемый файл уже имеется на сервере.') }
       end
     end

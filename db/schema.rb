@@ -100,6 +100,7 @@ ActiveRecord::Schema.define(:version => 20100811094637) do
     t.string   "jobable_type"
     t.integer  "supplier_id"
     t.string   "file_mask"
+    t.boolean  "locked"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -146,7 +147,7 @@ ActiveRecord::Schema.define(:version => 20100811094637) do
     t.string   "password"
     t.string   "topic"
     t.string   "sender"
-    t.string   "proto"
+    t.string   "protocol"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

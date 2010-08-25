@@ -1,164 +1,184 @@
-receive_job_for_japancars :
-  next_start: 2010-08-02 13:22:16
-  last_start: 2010-08-02 13:22:16
-  title: Принять прайс от джапан карс (сразу после моего запуска запустится два импорта)
-  repeats: every_one_minute
-  jobable: receive_from_japancars (ReceiveJob)
-  supplier: japancars
-  file_mask: LucJC.xls
-  interval_between_jobs: 10
-  interval_working: 1
-
-import_job_for_japancars:
-  parent: receive_job_for_japancars
-  last_start: 2010-08-20 11:22:16
-  title: Я импортирую оригиналы с наценкой 0,93 от джапан карс
-  jobable: import_from_japancars (ImportJob)
-  supplier: japancars
-  file_mask: LucJC.xls
-  interval_between_jobs: 10
-  interval_working: 1
-
-import_job_for_japancars_2:
-  parent: receive_job_for_japancars
-  last_start: 2010-08-20 10:22:16
-  title: Я импортирую не оригиналы с наценкой 0,87 от джапан карс
-  jobable: import_from_japancars_2 (ImportJob)
-  supplier: japancars
-  file_mask: LucJC.xls
-  interval_between_jobs: 10
-  interval_working: 1
-
-receive_job_for_pelikanavto:
-  next_start: 2010-08-02 13:22:16
-  last_start: 2010-08-02 13:22:16
-  title: Я принимаю прайс каждую минуту каждые два часа от пеликан авто, и каждые три минуты (в зависимости от того что наступит раньше)
-  repeats: every_one_minute_in_every_two_hours, every_three_minutes
-  jobable: receive_from_pelikanavto (ReceiveJob)
-  supplier: pelikanavto
-  file_mask: PE.*
-  interval_between_jobs: 10
-  interval_working: 1
-
-import_job_for_kornevruslan:
-  title: Я буду вызываться после ручной загрузки прайса avtorif.csv и импортировать товары с наценкой 0,85
-  jobable: import_from_kornev_ruslan (ImportJob)
-  supplier: kornevruslan
-  file_mask: avtorif.csv
-  interval_between_jobs: 10
-  interval_working: 1
-
-import_job_for_kornevruslan:
-  title: Я буду вызываться после ручной загрузки прайса avtorif.txt и импортировать товары с наценкой 0,85
-  jobable: import_from_kornev_ruslan2 (ImportJob)
-  supplier: kornevruslan
-  file_mask: avtorif.csv
-  interval_between_jobs: 10
-  interval_working: 1
-
-job_for_stalker_nalichie_1:
-  next_start: 2010-08-02 13:22:16
-  title: Задача приема от сталкера налачие через фтп
-  repeats: every_one_minute
-  jobable: receive_job_for_stalker_nalichie (ReceiveJob)
-  supplier: stalker
-  file_mask: avtorif.txt
-  interval_between_jobs: 10
-  interval_working: 1
-
-import_job_for_stalker_nalichie_1:
-  parent: job_for_stalker_nalichie_1
-  title: Обработка принятого файла от сталкер налачие
-  jobable: import_job_for_stalker_nalichie (ImportJob)
-  supplier: stalker
-  file_mask: avtorif.txt
-  interval_between_jobs: 10
-  interval_working: 1
-
-import_job_for_stalker_nalichie_2:
-  parent: job_for_stalker_nalichie_1
-  title: Обработка принятого файла от сталкер налачие 2
-  jobable: import_job_for_stalker_nalichie2 (ImportJob)
-  supplier: stalker
-  file_mask: avtorif.txt
-  interval_between_jobs: 10
-  interval_working: 1
-
-job_for_jeepshop_1:
-  next_start: 2010-08-02 13:22:16
-  title: Принять через фтп прайс от джипшоп по маске AVTORIF.txt
-  repeats: every_one_minute
-  jobable: receive_job_for_jeepshop (ReceiveJob)
-  supplier: jeepshop
-  file_mask: AVTORIF.txt
-  interval_between_jobs: 10
-  interval_working: 1
-
-import_job_for_jeepshop_1:
-  parent: job_for_jeepshop_1
-  title: Импортировать прайс после приема от джипшоп любым из имеющихся способов
-  repeats: every_one_minute
-  jobable: import_job_1_for_jeepshop (ImportJob)
-  supplier: jeepshop
-  file_mask: AVTORIF.txt
-  interval_between_jobs: 10
-  interval_working: 1
-
-job_1_for_febest:
-  next_start: 2010-08-02 13:22:16
-  title: Получение
-  repeats: every_one_minute
-  jobable: receive_job_for_febest (ReceiveJob)
-  supplier: febest
-  file_mask: febestrif.txt
-  interval_between_jobs: 10
-  interval_working: 1
-
-job_2_for_febest:
-  parent: job_1_for_febest
-  title: Импорт
-  jobable: import_job_for_febest (ImportJob)
-  supplier: febest
-  file_mask: febestrif.txt
-  interval_between_jobs: 10
-  interval_working: 1
-
-job_1_for_ruslan_kornev:
+#receive_job_for_japancars :
+#  next_start: 2010-08-02 13:22:16
+#  last_start: 2010-08-02 13:22:16
+#  title: Принять прайс от джапан карс (сразу после моего запуска запустится два импорта)
+#  repeats: every_one_minute
+#  jobable: receive_from_japancars (ReceiveJob)
+#  supplier: japancars
+#  file_mask: LucJC.xls
+#  interval_between_jobs: 10
+#  interval_working: 1
+#
+#import_job_for_japancars:
+#  parent: receive_job_for_japancars
+#  last_start: 2010-08-20 11:22:16
+#  title: Я импортирую оригиналы с наценкой 0,93 от джапан карс
+#  jobable: import_from_japancars (ImportJob)
+#  supplier: japancars
+#  file_mask: LucJC.xls
+#  interval_between_jobs: 10
+#  interval_working: 1
+#
+#import_job_for_japancars_2:
+#  parent: receive_job_for_japancars
+#  last_start: 2010-08-20 10:22:16
+#  title: Я импортирую не оригиналы с наценкой 0,87 от джапан карс
+#  jobable: import_from_japancars_2 (ImportJob)
+#  supplier: japancars
+#  file_mask: LucJC.xls
+#  interval_between_jobs: 10
+#  interval_working: 1
+#
+#receive_job_for_pelikanavto:
+#  next_start: 2010-08-02 13:22:16
+#  last_start: 2010-08-02 13:22:16
+#  title: Я принимаю прайс каждую минуту каждые два часа от пеликан авто, и каждые три минуты (в зависимости от того что наступит раньше)
+#  repeats: every_one_minute_in_every_two_hours, every_three_minutes
+#  jobable: receive_from_pelikanavto (ReceiveJob)
+#  supplier: pelikanavto
+#  file_mask: PE.*
+#  interval_between_jobs: 10
+#  interval_working: 1
+#
+#import_job_for_kornevruslan:
+#  title: Я буду вызываться после ручной загрузки прайса avtorif.csv и импортировать товары с наценкой 0,85
+#  jobable: import_from_kornev_ruslan (ImportJob)
+#  supplier: kornevruslan
+#  file_mask: avtorif.csv
+#  interval_between_jobs: 10
+#  interval_working: 1
+#
+#import_job_for_kornevruslan:
+#  title: Я буду вызываться после ручной загрузки прайса avtorif.txt и импортировать товары с наценкой 0,85
+#  jobable: import_from_kornev_ruslan2 (ImportJob)
+#  supplier: kornevruslan
+#  file_mask: avtorif.csv
+#  interval_between_jobs: 10
+#  interval_working: 1
+#
+#job_for_stalker_nalichie_1:
+#  next_start: 2010-08-02 13:22:16
+#  title: Задача приема от сталкера налачие через фтп
+#  repeats: every_one_minute
+#  jobable: receive_job_for_stalker_nalichie (ReceiveJob)
+#  supplier: stalker
+#  file_mask: avtorif.txt
+#  interval_between_jobs: 10
+#  interval_working: 1
+#
+#import_job_for_stalker_nalichie_1:
+#  parent: job_for_stalker_nalichie_1
+#  title: Обработка принятого файла от сталкер налачие
+#  jobable: import_job_for_stalker_nalichie (ImportJob)
+#  supplier: stalker
+#  file_mask: avtorif.txt
+#  interval_between_jobs: 10
+#  interval_working: 1
+#
+#import_job_for_stalker_nalichie_2:
+#  parent: job_for_stalker_nalichie_1
+#  title: Обработка принятого файла от сталкер налачие 2
+#  jobable: import_job_for_stalker_nalichie2 (ImportJob)
+#  supplier: stalker
+#  file_mask: avtorif.txt
+#  interval_between_jobs: 10
+#  interval_working: 1
+#
+#job_for_jeepshop_1:
+#  next_start: 2010-08-02 13:22:16
+#  title: Принять через фтп прайс от джипшоп по маске AVTORIF.txt
+#  repeats: every_one_minute
+#  jobable: receive_job_for_jeepshop (ReceiveJob)
+#  supplier: jeepshop
+#  file_mask: AVTORIF.txt
+#  interval_between_jobs: 10
+#  interval_working: 1
+#
+#import_job_for_jeepshop_1:
+#  parent: job_for_jeepshop_1
+#  title: Импортировать прайс после приема от джипшоп любым из имеющихся способов
+#  repeats: every_one_minute
+#  jobable: import_job_1_for_jeepshop (ImportJob)
+#  supplier: jeepshop
+#  file_mask: AVTORIF.txt
+#  interval_between_jobs: 10
+#  interval_working: 1
+#
+#job_1_for_febest:
+#  next_start: 2010-08-02 13:22:16
+#  title: Получение
+#  repeats: every_one_minute
+#  jobable: receive_job_for_febest (ReceiveJob)
+#  supplier: febest
+#  file_mask: febestrif.txt
+#  interval_between_jobs: 10
+#  interval_working: 1
+#
+#job_2_for_febest:
+#  parent: job_1_for_febest
+#  title: Импорт
+#  jobable: import_job_for_febest (ImportJob)
+#  supplier: febest
+#  file_mask: febestrif.txt
+#  interval_between_jobs: 10
+#  interval_working: 1
+#
+job_1_for_ruslan_kornev_gmail:
   repeats: every_one_minute
   next_start: 2000-01-01 00:00:00
-  title: Проверка и прием с почты от Корнева Руслана
-  jobable: receive_job_for_ruslan_kornev (ReceiveJob)
-  supplier: febest
+  title: Прием с почты от Корнева Руслана
+  jobable: receive_job_for_ruslan_kornev_gmail_pop3 (ReceiveJob)
+  supplier: ruslan_kornev_gmail
   file_mask: .*
   interval_between_jobs: 10
   interval_working: 1
 
-job_1_for_testing_avtorif_email:
+job_1_for_webtest_avtorif:
   repeats: every_one_minute
   next_start: 2000-01-01 00:00:00
-  title: Прием от  avtorif
+  title: Прием от webtest
   jobable: receive_job_for_webtest_avtorif_pop3 (ReceiveJob)
-  supplier: kornevruslan
+  supplier: webtest_avtorif
   file_mask: .*
   interval_between_jobs: 10
   interval_working: 1
 
-job_2_for_testing_avtorif_email:
+#job_2_for_testing_avtorif:
+#  repeats: every_one_minute
+#  next_start: 2000-01-01 00:00:00
+#  title: Прием от  avtorif через imap
+#  jobable: receive_job_for_webtest_avtorif_imap (ReceiveJob)
+#  supplier: kornevruslan
+#  file_mask: .*
+#  interval_between_jobs: 10
+#  interval_working: 1
+
+job_1_for_woto_mail:
   repeats: every_one_minute
   next_start: 2000-01-01 00:00:00
-  title: Прием от  avtorif через imap
-  jobable: receive_job_for_webtest_avtorif_imap (ReceiveJob)
-  supplier: kornevruslan
+  title: Прием от Мэйл.ру
+  jobable: receive_job_for_woto_mail_pop3 (ReceiveJob)
+  supplier: woto_mail
   file_mask: .*
   interval_between_jobs: 10
   interval_working: 1
 
-job1_for_test_receiving_from_woto77_imap:
+job_1_for_woto77_yandex:
   repeats: every_one_minute
   next_start: 2000-01-01 00:00:00
-  title: job1_for_test_receiving_from_woto77_imap
-  jobable: receive_job_for_woto77_yandex_imap (ReceiveJob)
-  supplier: kornevruslan
+  title: Прием от Яндекс
+  jobable: receive_job_for_woto77_yandex_pop3 (ReceiveJob)
+  supplier: woto77_yandex
   file_mask: .*
   interval_between_jobs: 10
   interval_working: 1
+
+#job1_for_test_receiving_from_woto77_imap:
+#  repeats: every_one_minute
+#  next_start: 2000-01-01 00:00:00
+#  title: job1_for_test_receiving_from_woto77_imap
+#  jobable: receive_job_for_woto77_yandex_imap (ReceiveJob)
+#  supplier: kornevruslan
+#  file_mask: .*
+#  interval_between_jobs: 10
+#  interval_working: 1

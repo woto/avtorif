@@ -12,9 +12,6 @@ pelikanavto:
   login: pelikanavto
   password: 123
 
-kornevruslan:
-  title: Корнев Руслан
-
 stalker:
   title: Сталкер
 
@@ -23,3 +20,15 @@ jeepshop:
 
 febest:
   title: FEBEST
+
+woto_mail:
+  title: woto_mail
+
+woto77_yandex:
+  title: woto77_yandex
+
+ruslan_kornev_gmail:
+  title: ruslan_kornev_gmail
+
+webtest_avtorif:
+  title: webtest_avtorif  

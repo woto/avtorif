@@ -9,7 +9,7 @@ class CreateReceiveEmails < ActiveRecord::Migration
       t.string :password
       t.string :topic
       t.string :sender
-      t.string :proto
+      t.string :protocol
 
       t.timestamps
     end

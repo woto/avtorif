@@ -1,7 +1,7 @@
 RAILS_ROOT = "/home/woto/rails/avtorif"
 RAILS_ENV = "development"
 
-5.times do |num|
+10.times do |num|
   God.watch do |w|
     w.env = {
        'RAILS_ROOT' => "#{RAILS_ROOT}",
