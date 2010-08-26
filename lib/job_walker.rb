@@ -3,6 +3,7 @@ require 'rubygems'
 require 'rufus-scheduler'
 require 'time'
 require 'date'
+require 'config/boot'
 
 #require 'receive_jobber'
 

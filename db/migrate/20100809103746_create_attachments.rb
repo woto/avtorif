@@ -6,14 +6,14 @@ class CreateAttachments < ActiveRecord::Migration
       t.string :attachment_file_size, :limit => 20
       t.datetime :attachment_updated_at
       t.string :md5, :limit => 50
-      t.boolean :proceded, :default => false
       t.belongs_to :supplier
+      t.string :email_id
 
       t.timestamps
 
     end
 
-    add_index(:attachments, [:attachment_file_name, :attachment_file_size, :md5, :supplier_id], :unique => true, :name => 'uniq_attachments')
+    #add_index(:attachments, [:attachment_file_name, :attachment_file_size, :md5, :supplier_id], :unique => true, :name => 'uniq_attachments')
 
   end
 

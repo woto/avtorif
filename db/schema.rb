@@ -25,13 +25,11 @@ ActiveRecord::Schema.define(:version => 20100811094637) do
     t.string   "attachment_file_size",    :limit => 20
     t.datetime "attachment_updated_at"
     t.string   "md5",                     :limit => 50
-    t.boolean  "proceded",                              :default => false
     t.integer  "supplier_id"
+    t.string   "email_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "attachments", ["attachment_file_name", "attachment_file_size", "md5", "supplier_id"], :name => "uniq_attachments", :unique => true
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0

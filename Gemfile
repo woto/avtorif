@@ -32,7 +32,7 @@ gem 'rack'
 gem 'paperclip'
 gem 'will_paginate'
 #gem 'mail'
-gem 'tlsmail'
+#gem 'tlsmail'
 
 # To use debugger
 # gem 'ruby-debug'

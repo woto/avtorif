@@ -1,6 +1,6 @@
 #require 'mail'
 require 'net/pop'
-require 'tlsmail'
+#require 'tlsmail'
 
 class EmailReceiver < AbstractReceiver
 
