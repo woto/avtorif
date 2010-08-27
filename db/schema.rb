@@ -75,6 +75,8 @@ ActiveRecord::Schema.define(:version => 20100811094637) do
     t.decimal  "margin",                :precision => 10, :scale => 5
     t.string   "encoding"
     t.integer  "estimate_days"
+    t.string   "email_topic"
+    t.string   "email_sender"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -98,7 +100,7 @@ ActiveRecord::Schema.define(:version => 20100811094637) do
     t.string   "jobable_type"
     t.integer  "supplier_id"
     t.string   "file_mask"
-    t.boolean  "locked"
+    t.boolean  "locked",                :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -133,6 +135,9 @@ ActiveRecord::Schema.define(:version => 20100811094637) do
     t.string   "manufacturer"
     t.string   "catalog_number"
     t.string   "import_rule"
+    t.string   "inn",            :limit => 12
+    t.string   "kpp",            :limit => 9
+    t.integer  "estimate_days"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -143,8 +148,6 @@ ActiveRecord::Schema.define(:version => 20100811094637) do
     t.boolean  "ssl"
     t.string   "login"
     t.string   "password"
-    t.string   "topic"
-    t.string   "sender"
     t.string   "protocol"
     t.datetime "created_at"
     t.datetime "updated_at"

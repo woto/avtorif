@@ -2,19 +2,44 @@
 
 <table>
   <tr>
-    <th>catalog_number</th>
-    <th>Title</th>
-    <th>Supplier</th>
-    <th>Margin</th>
-    <th>Original</th>
+    <th>catalog-number</th>
+    <th>count</th>
+    <th>created-at</th>
+    <th>estimate-days</th>
+    <th>goods-id</th>
+    <th>id</th>
+    <th>import-rule</th>
+    <th>initial-cost</th>
+    <th>inn</th>
+    <th>job-id</th>
+    <th>kpp</th>
+    <th>manufacturer</th>
+    <th>margin</th>
+    <th>result-cost</th>
+    <th>supplier</th>
+    <th>title</th> 
+    <th>updated-at</th>
   </tr>
 
 <% @prices.each do |price| %>
   <tr>
     <td><%=h price.catalog_number %></td>
-    <td><%=h price.title %></td>
-    <td><%=h price.supplier %></td>
+    <td><%=h price.count %></td>
+    <td><%=h price.created_at %></td>
+    <td><%=h price.estimate_days %></td>
+    <td><%=h price.goods_id %></td>
+    <td><%=h price.id %></td>
+    <td><%=h price.import_rule %></td>
+    <td><%=h price.initial_cost %></td>
+    <td><%=h price.inn %></td>
+    <td><%=h price.job_id %></td>
+    <td><%=h price.kpp %></td>
+    <td><%=h price.manufacturer %></td>
     <td><%=h price.margin %></td>
+    <td><%=h price.result_cost %></td>
+    <td><%=h price.supplier %></td>
+    <td><%=h price.title %></td>
+    <td><%=h price.updated_at %></td>
     <td><%= link_to 'Show', price %></td>
     <td><%= link_to 'Edit', edit_price_path(price) %></td>
     <td><%= link_to 'Destroy', price, :confirm => 'Are you sure?', :method => :delete %></td>

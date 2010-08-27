@@ -12,6 +12,9 @@ class CreatePrices < ActiveRecord::Migration
       t.string :manufacturer
       t.string :catalog_number
       t.string :import_rule
+      t.string :inn, :limit => 12
+      t.string :kpp, :limit => 9
+      t.integer :estimate_days
 
       t.timestamps
     end

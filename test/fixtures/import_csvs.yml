@@ -1,23 +1,24 @@
-csv_settings_for_kornev_ruslan:
-  start_from_line: 1
-  delimeter: 34
-
-csv_settings_for_kornev_ruslan2:
-  start_from_line: 1
-  delimeter: 34
-
-csv_settings_for_import_job_for_stalker_nalichie:
-   start_from_line: 2
-   delimeter: 59
-
-csv_settings_for_import_job_for_stalker_nalichie2:
-   start_from_line: 2
-   delimeter: 59
-
-csv_settings_for_import_job_1_for_jeepshop:
+price_format_settings_for_febest:
    start_from_line: 2
    delimeter: 9
 
-csv_settings_for_import_from_febest_1:
+price_format_settings_for_jeepshop:
+   start_from_line: 2
+   delimeter: 9
+
+price_format_settings_for_stalker:
+   start_from_line: 2
+   delimeter: 59
+
+price_format_settings_for_webtest:
    start_from_line: 2
    delimeter: 9   
+
+#csv_settings_for_kornev_ruslan:
+#  start_from_line: 1
+#  delimeter: 34
+#
+#csv_settings_for_kornev_ruslan2:
+#  start_from_line: 1
+#  delimeter: 34
+#

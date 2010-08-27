@@ -1,18 +1,18 @@
-#receive_from_japancars:
-#  receiveable: japancars (ReceiveFtp)
-#
-#receive_from_pelikanavto:
-#  receiveable: pelikanavto (ReceiveFtp)
-#
-#receive_job_for_stalker_nalichie:
-#  receiveable: receive_job_for_stalker_nalichie_from_ftp (ReceiveFtp)
-#
-#receive_job_for_jeepshop:
-#  receiveable: receive_job_from_ftp_for_jeepshop (ReceiveFtp)
-#
-#receive_job_for_febest:
-#  receiveable: receive_from_ftp_for_febest (ReceiveFtp)
-#
+receive_job_for_jeepshop:
+  receiveable: ftp_settings_for_jeepshop (ReceiveFtp)
+
+receive_job_for_japancars:
+  receiveable: ftp_settings_for_japancars (ReceiveFtp)
+
+receive_job_for_pelikanavto:
+  receiveable: ftp_settings_for_pelikanavto (ReceiveFtp)
+
+receive_job_for_stalker:
+  receiveable: ftp_settings_for_stalker (ReceiveFtp)
+
+receive_job_for_febest:
+  receiveable: ftp_settings_for_febest (ReceiveFtp)
+
 receive_job_for_webtest_avtorif_pop3:
   receiveable: email_settings_for_webtest_avtorif_pop3 (ReceiveEmail)
 #

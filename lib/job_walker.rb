@@ -1,9 +1,9 @@
 require File.dirname(__FILE__) + '/../config/environment'
+require File.dirname(__FILE__) + '/../config/boot'
 require 'rubygems'
 require 'rufus-scheduler'
 require 'time'
 require 'date'
-require 'config/boot'
 
 #require 'receive_jobber'
 
@@ -34,6 +34,7 @@ class JobWalker
   end
 
   def start_job(job, optional = nil)
+      #raise StandardError
       #puts job
       job.last_start = Time.zone.now
       job.locked = true

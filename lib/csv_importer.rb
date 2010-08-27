@@ -64,6 +64,8 @@ class CsvImporter < AbstractImporter
             Price.create(
               :goods => goods,
               :supplier => @importer.import_job.job.supplier.title,
+              :inn => @importer.import_job.job.supplier.inn,
+              :kpp => @importer.import_job.job.supplier.kpp,
               :title => iconv.iconv(columns[@importer.import_job.title_colnum - 1]),
               :initial_cost => initial_cost,
               :result_cost => result_cost,
@@ -72,12 +74,9 @@ class CsvImporter < AbstractImporter
               :manufacturer => manufacturer.title,
               :catalog_number => iconv.iconv(columns[@importer.import_job.catalog_number_colnum - 1]),
               :import_rule => @importer.import_job.job.title,
-              :job => @importer.import_job.job
+              :job => @importer.import_job.job,
+              :estimate_days => @importer.import_job.estimate_days
             )
-
-            # TODO настройки для csv файла: разделитель
-            # с какой строки начать парсить
-            #break if file.lineno > 10
         end
       #rescue Exception => e
       #  retry

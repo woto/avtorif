@@ -7,10 +7,8 @@ class CreateReceiveEmails < ActiveRecord::Migration
       t.boolean :ssl
       t.string :login
       t.string :password
-      t.string :topic
-      t.string :sender
       t.string :protocol
-
+      
       t.timestamps
     end
   end

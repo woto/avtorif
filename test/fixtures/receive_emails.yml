@@ -3,8 +3,6 @@ email_settings_for_ruslan_kornev_gmail_pop3:
   port: 995
   login: ruslan.kornev@gmail.com
   password: vjqgfhjkm
-  topic: .*
-  sender: .*
   ssl: true
   protocol: pop3
 
@@ -13,8 +11,6 @@ email_settings_for_webtest_avtorif_pop3:
   port: 110
   login: webtest@avtorif.ru
   password: Kc8dk6sd8
-  topic: .*
-  sender: .*
   ssl: false
   protocol: pop3
 
@@ -23,8 +19,6 @@ email_settings_for_webtest_avtorif_pop3:
 #  port: 143
 #  login: webtest@avtorif.ru
 #  password: Kc8dk6sd8
-#  topic: .*
-#  sender: .*
 #  ssl: false
 #  protocol: imap
 
@@ -33,9 +27,7 @@ email_settings_for_woto77_yandex_pop3:
   port: 995
   login: woto77@yandex.ru
   password: qwer332
-  topic: .*
-  sender: .*
-  ssl: true                                     
+  ssl: true
   protocol: pop3
 
 #email_settings_for_woto77_yandex_imap:
@@ -43,8 +35,6 @@ email_settings_for_woto77_yandex_pop3:
 #  port: 993
 #  login: woto77@yandex.ru
 #  password: qwer332
-#  topic: .*
-#  sender: .*
 #  ssl: true
 #  protocol: imap
 
@@ -54,7 +44,5 @@ email_settings_for_woto_mail_pop3:
   port: 110
   login: woto@mail.ru
   password: matrixreloaded
-  topic: .*
-  sender: .*
   ssl: false
   protocol: pop3  
