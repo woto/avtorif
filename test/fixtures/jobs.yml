@@ -1,57 +1,57 @@
-job_1_for_japancars:
-  next_start: 2000-01-01 00:00:00
-  title: job_1_for_japancars
-  repeats: every_one_minute
-  jobable: receive_job_for_japancars (ReceiveJob)
-  supplier: japancars
-  file_mask: LucJC.xls
-  interval_between_jobs: 10
-  interval_working: 1
-
-#job_2_for_japancars:
-#  parent: job_1_for_japancars
-#  title: job_2_for_japancars
-#  jobable: import_from_japancars_1 (ImportJob)
+#job_1_for_japancars:
+#  next_start: 2000-01-01 00:00:00
+#  title: job_1_for_japancars
+#  repeats: every_one_minute
+#  jobable: receive_job_for_japancars (ReceiveJob)
 #  supplier: japancars
 #  file_mask: LucJC.xls
 #  interval_between_jobs: 10
 #  interval_working: 1
 #
-#job_3_for_japancars:
-#  parent: job_1_for_japancars
-#  title: job_3_for_japancars
-#  jobable: import_from_japancars_2 (ImportJob)
-#  supplier: japancars
-#  file_mask: LucJC.xls
-#  interval_between_jobs: 10
-#  interval_working: 1
-
-####################################################################################
-
-job_1_for_febest:
-  next_start: 2000-01-01 00:00:00
-  title: job_1_for_febest
-  repeats: every_one_minute
-  jobable: receive_job_for_febest (ReceiveJob)
-  supplier: febest
-  file_mask: febestrif.txt
-  interval_between_jobs: 10
-  interval_working: 1
-
-#job_2_for_febest:
-#  parent: job_1_for_febest
-#  title: job_2_for_febest
-#  jobable: import_job_for_febest (ImportJob)
+##job_2_for_japancars:
+##  parent: job_1_for_japancars
+##  title: job_2_for_japancars
+##  jobable: import_from_japancars_1 (ImportJob)
+##  supplier: japancars
+##  file_mask: LucJC.xls
+##  interval_between_jobs: 10
+##  interval_working: 1
+##
+##job_3_for_japancars:
+##  parent: job_1_for_japancars
+##  title: job_3_for_japancars
+##  jobable: import_from_japancars_2 (ImportJob)
+##  supplier: japancars
+##  file_mask: LucJC.xls
+##  interval_between_jobs: 10
+##  interval_working: 1
+#
+#####################################################################################
+#
+#job_1_for_febest:
+#  next_start: 2000-01-01 00:00:00
+#  title: job_1_for_febest
+#  repeats: every_one_minute
+#  jobable: receive_job_for_febest (ReceiveJob)
 #  supplier: febest
 #  file_mask: febestrif.txt
 #  interval_between_jobs: 10
 #  interval_working: 1
-
-######################################################
-
-job_for_jeepshop_1:
+#
+##job_2_for_febest:
+##  parent: job_1_for_febest
+##  title: job_2_for_febest
+##  jobable: import_job_for_febest (ImportJob)
+##  supplier: febest
+##  file_mask: febestrif.txt
+##  interval_between_jobs: 10
+##  interval_working: 1
+#
+#######################################################
+#
+ttt:
   next_start: 2000-01-01 00:00:00
-  title: job_for_jeepshop_1
+  title: eghetyherthtrh
   repeats: every_one_minute
   jobable: receive_job_for_jeepshop (ReceiveJob)
   supplier: jeepshop
@@ -59,136 +59,136 @@ job_for_jeepshop_1:
   interval_between_jobs: 10
   interval_working: 1
 
-job_for_jeepshop_2:
-  parent: job_for_jeepshop_1
-  title: job_for_jeepshop_2
+safsdfgdsfgsg:
+  parent: ttt
+  title: asefasfafaerf
   repeats: every_one_minute
-  jobable: import_job_for_jeepshop_1 (ImportJob)
+  jobable: kkk (ImportJob)
   supplier: jeepshop
   file_mask: AVTORIF.txt
   interval_between_jobs: 10
   interval_working: 1
 
-job_for_jeepshop_3:
-  parent: job_for_jeepshop_1
-  title: job_for_jeepshop_3
+sdfdtyjhrtjtyejh:
+  parent: ttt
+  title: ccccdcsdcdscc
   repeats: every_one_minute
-  jobable: import_job_for_jeepshop_2 (ImportJob)
+  jobable: ccc (ImportJob)
   supplier: jeepshop
   file_mask: AVTORIF.txt
   interval_between_jobs: 10
   interval_working: 1
 
-################################################################################
-
-
-job_1_for_ruslan_kornev_gmail:
-  repeats: every_one_minute
-  next_start: 2000-01-01 00:00:00
-  title: Прием с почты от Корнева Руслана
-  jobable: receive_job_for_ruslan_kornev_gmail_pop3 (ReceiveJob)
-  supplier: ruslan_kornev_gmail
-  file_mask: .*
-  interval_between_jobs: 10
-  interval_working: 1
-
-#import_job_for_kornevruslan:
-#  title: Я буду вызываться после ручной загрузки прайса avtorif.csv и импортировать товары с наценкой 0,85
-#  jobable: import_from_kornev_ruslan (ImportJob)
-#  supplier: kornevruslan
-#  file_mask: avtorif.csv
+#################################################################################
+#
+#
+#job_1_for_ruslan_kornev_gmail:
+#  repeats: every_one_minute
+#  next_start: 2000-01-01 00:00:00
+#  title: Прием с почты от Корнева Руслана
+#  jobable: receive_job_for_ruslan_kornev_gmail_pop3 (ReceiveJob)
+#  supplier: ruslan_kornev_gmail
+#  file_mask: .*
 #  interval_between_jobs: 10
 #  interval_working: 1
 #
-#import_job_for_kornevruslan:
-#  title: Я буду вызываться после ручной загрузки прайса avtorif.txt и импортировать товары с наценкой 0,85
-#  jobable: import_from_kornev_ruslan2 (ImportJob)
-#  supplier: kornevruslan
-#  file_mask: avtorif.csv
+##import_job_for_kornevruslan:
+##  title: Я буду вызываться после ручной загрузки прайса avtorif.csv и импортировать товары с наценкой 0,85
+##  jobable: import_from_kornev_ruslan (ImportJob)
+##  supplier: kornevruslan
+##  file_mask: avtorif.csv
+##  interval_between_jobs: 10
+##  interval_working: 1
+##
+##import_job_for_kornevruslan:
+##  title: Я буду вызываться после ручной загрузки прайса avtorif.txt и импортировать товары с наценкой 0,85
+##  jobable: import_from_kornev_ruslan2 (ImportJob)
+##  supplier: kornevruslan
+##  file_mask: avtorif.csv
+##  interval_between_jobs: 10
+##  interval_working: 1
+#
+#################################################################################
+#
+#job_for_webtest_1:
+#  repeats: every_one_minute
+#  next_start: 2000-01-01 00:00:00
+#  title: job_for_webtest_1
+#  jobable: receive_job_for_webtest_avtorif_pop3 (ReceiveJob)
+#  supplier: webtest_avtorif
 #  interval_between_jobs: 10
 #  interval_working: 1
-
-################################################################################
-
-job_for_webtest_1:
-  repeats: every_one_minute
-  next_start: 2000-01-01 00:00:00
-  title: job_for_webtest_1
-  jobable: receive_job_for_webtest_avtorif_pop3 (ReceiveJob)
-  supplier: webtest_avtorif
-  interval_between_jobs: 10
-  interval_working: 1
-
-job_for_webtest_2:
-  title: job_for_webtest_2
-  jobable: import_job_for_webtest (ImportJob)
-  supplier: webtest_avtorif
-  file_mask: .*
-  interval_between_jobs: 10
-  interval_working: 1
-
-################################################################################
-
-job_1_for_woto_mail:
-  repeats: every_one_minute
-  next_start: 2000-01-01 00:00:00
-  title: Прием от Мэйл.ру
-  jobable: receive_job_for_woto_mail_pop3 (ReceiveJob)
-  supplier: woto_mail
-  file_mask: .*
-  interval_between_jobs: 10
-  interval_working: 1
-
-job_1_for_woto77_yandex:
-  repeats: every_one_minute
-  next_start: 2000-01-01 00:00:00
-  title: Прием от Яндекс
-  jobable: receive_job_for_woto77_yandex_pop3 (ReceiveJob)
-  supplier: woto77_yandex
-  file_mask: .*
-  interval_between_jobs: 10
-  interval_working: 1
-
-####################################################################################
-
-job_for_pelikanavto_1:
-  next_start: 2000-01-01 00:00:00
-  title: job_for_pelikanavto_1
-  repeats: every_three_minutes
-  jobable: receive_job_for_pelikanavto (ReceiveJob)
-  supplier: pelikanavto
-  file_mask: PE.*
-  interval_between_jobs: 10
-  interval_working: 1
-
-####################################################################################
-
-job_for_stalker_1:
-  next_start: 2000-01-01 00:00:00
-  title: job_for_stalker_1
-  repeats: every_one_minute
-  jobable: receive_job_for_stalker (ReceiveJob)
-  supplier: stalker
-  file_mask: avtorif.txt
-  interval_between_jobs: 10
-  interval_working: 1
-
-job_for_stalker_2:
-  parent: job_for_stalker_1
-  title: job_for_stalker_2
-  jobable: import_job_for_stalker_1 (ImportJob)
-  supplier: stalker
-  file_mask: avtorif.txt
-  interval_between_jobs: 10
-  interval_working: 1
-
-job_for_stalker_3:
-  parent: job_for_stalker_1
-  title: job_for_stalker_3
-  jobable: import_job_for_stalker_2 (ImportJob)
-  supplier: stalker
-  file_mask: avtorif.txt
-  interval_between_jobs: 10
-  interval_working: 1
-
-####################################################################################
+#
+#job_for_webtest_2:
+#  title: job_for_webtest_2
+#  jobable: import_job_for_webtest (ImportJob)
+#  supplier: webtest_avtorif
+#  file_mask: .*
+#  interval_between_jobs: 10
+#  interval_working: 1
+#
+#################################################################################
+#
+#job_1_for_woto_mail:
+#  repeats: every_one_minute
+#  next_start: 2000-01-01 00:00:00
+#  title: Прием от Мэйл.ру
+#  jobable: receive_job_for_woto_mail_pop3 (ReceiveJob)
+#  supplier: woto_mail
+#  file_mask: .*
+#  interval_between_jobs: 10
+#  interval_working: 1
+#
+#job_1_for_woto77_yandex:
+#  repeats: every_one_minute
+#  next_start: 2000-01-01 00:00:00
+#  title: Прием от Яндекс
+#  jobable: receive_job_for_woto77_yandex_pop3 (ReceiveJob)
+#  supplier: woto77_yandex
+#  file_mask: .*
+#  interval_between_jobs: 10
+#  interval_working: 1
+#
+#####################################################################################
+#
+#job_for_pelikanavto_1:
+#  next_start: 2000-01-01 00:00:00
+#  title: job_for_pelikanavto_1
+#  repeats: every_three_minutes
+#  jobable: receive_job_for_pelikanavto (ReceiveJob)
+#  supplier: pelikanavto
+#  file_mask: PE.*
+#  interval_between_jobs: 10
+#  interval_working: 1
+#
+#####################################################################################
+#
+#job_for_stalker_1:
+#  next_start: 2000-01-01 00:00:00
+#  title: job_for_stalker_1
+#  repeats: every_one_minute
+#  jobable: receive_job_for_stalker (ReceiveJob)
+#  supplier: stalker
+#  file_mask: avtorif.txt
+#  interval_between_jobs: 10
+#  interval_working: 1
+#
+#job_for_stalker_2:
+#  parent: job_for_stalker_1
+#  title: job_for_stalker_2
+#  jobable: import_job_for_stalker_1 (ImportJob)
+#  supplier: stalker
+#  file_mask: avtorif.txt
+#  interval_between_jobs: 10
+#  interval_working: 1
+#
+#job_for_stalker_3:
+#  parent: job_for_stalker_1
+#  title: job_for_stalker_3
+#  jobable: import_job_for_stalker_2 (ImportJob)
+#  supplier: stalker
+#  file_mask: avtorif.txt
+#  interval_between_jobs: 10
+#  interval_working: 1
+#
+#####################################################################################

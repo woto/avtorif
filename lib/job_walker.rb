@@ -42,7 +42,10 @@ class JobWalker
       jobber_class = (job.jobable_type.split(/(.*?)Job/)[1] + "Jobber").classify.constantize
       #jobber = jobber_class.new(concrete_job)
       #Delayed::Job.enqueue ReceiveJobber.new(ImportJob.first)
-      Delayed::Job.enqueue jobber_class.new(concrete_job, optional)
+
+      #Delayed::Job.enqueue jobber_class.new(concrete_job, optional)
+      jobber_class.new(concrete_job, optional).perform
+      
       job.save
   end
 end

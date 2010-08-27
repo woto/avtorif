@@ -1,24 +1,28 @@
-price_format_settings_for_febest:
+#price_format_settings_for_febest:
+#   start_from_line: 2
+#   delimeter: 9
+
+price_format_settings_for_jeepshop_1:
    start_from_line: 2
    delimeter: 9
 
-price_format_settings_for_jeepshop:
+price_format_settings_for_jeepshop_2:
    start_from_line: 2
    delimeter: 9
 
-price_format_settings_for_stalker:
-   start_from_line: 2
-   delimeter: 59
-
-price_format_settings_for_webtest:
-   start_from_line: 2
-   delimeter: 9   
-
-#csv_settings_for_kornev_ruslan:
-#  start_from_line: 1
-#  delimeter: 34
+#price_format_settings_for_stalker:
+#   start_from_line: 2
+#   delimeter: 59
 #
-#csv_settings_for_kornev_ruslan2:
-#  start_from_line: 1
-#  delimeter: 34
+#price_format_settings_for_webtest:
+#   start_from_line: 2
+#   delimeter: 9
 #
+##csv_settings_for_kornev_ruslan:
+##  start_from_line: 1
+##  delimeter: 34
+##
+##csv_settings_for_kornev_ruslan2:
+##  start_from_line: 1
+##  delimeter: 34
+##

@@ -2,14 +2,10 @@ class CsvImporter < AbstractImporter
 
   def import
 
-    attachments = Attachment.all(:conditions => ['id = ? AND supplier_id = ?', @optional, @importer.import_job.job.supplier.id])
-    #@importer.import_job.job.supplier
-    #file
+    attachments = Attachment.all(:conditions => ['id = ?', @optional])
+
     attachments.each do |attachment|
       counter = 0
-      # require 'csv'
-      #begin
-      #require 'csvscan'
 
       file = File.new(attachment.attachment.path, 'r')
       #CSVScan.scan(File.open(attachment.attachment.path, 'r')) do |columns|
@@ -19,7 +15,9 @@ class CsvImporter < AbstractImporter
         #CSV.open(attachment.attachment.path, 'r', @importer.delimeter.to_i) do |columns|
 
         # очищаем price
-        @importer.import_job.job.prices.clear
+        #if(@importer.import_job.job.prices.size > 0)
+        #    @importer.import_job.job.prices.clear
+        #end
 
         file.each_line("\n") do |row|
           unless row.empty?
@@ -33,6 +31,10 @@ class CsvImporter < AbstractImporter
           #end
           
           counter += 1
+
+          if counter >= 5
+            return
+          end
 
           next if columns.empty?
           next if counter < @importer.start_from_line

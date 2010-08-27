@@ -14,7 +14,7 @@ require 'delayed/tasks'
 
 namespace :avtorif do
   task :reclean do
-    sh "sudo /usr/bin/god terminate"
+    # sh "sudo /usr/bin/god terminate"
 
     puts 'Запускаем миграции с нуля'
     Rake::Task['db:migrate:reset'].invoke
@@ -27,6 +27,6 @@ namespace :avtorif do
     sh "rm -rf #{Rails.root}/public/system/attachments/*"
     sh "rm -rf #{Rails.root}/log/*"
 
-    sh "sudo /etc/init.d/god start"
+    # sh "sudo /etc/init.d/god start"
   end
 end
