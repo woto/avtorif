@@ -32,10 +32,6 @@ class CsvImporter < AbstractImporter
           
           counter += 1
 
-          if counter >= 5
-            return
-          end
-
           next if columns.empty?
           next if counter < @importer.start_from_line
 

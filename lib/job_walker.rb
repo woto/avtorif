@@ -43,8 +43,8 @@ class JobWalker
       #jobber = jobber_class.new(concrete_job)
       #Delayed::Job.enqueue ReceiveJobber.new(ImportJob.first)
 
-      #Delayed::Job.enqueue jobber_class.new(concrete_job, optional)
-      jobber_class.new(concrete_job, optional).perform
+      Delayed::Job.enqueue jobber_class.new(concrete_job, optional)
+      #jobber_class.new(concrete_job, optional).perform
       
       job.save
   end

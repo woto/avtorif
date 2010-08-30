@@ -1,25 +1,25 @@
-##import_from_japancars_1:
-##  importable: price_format_settings_for_japancars (ImportXls)
-##  catalog_number_colnum: 1
-##  manufacturer_colnum: 2
-##  title_colnum: 3
-##  count_colnum: 4
-##  cost_colnum: 5
-##  margin: 0.93
-##  estimate_days: 15
-##
-##import_from_japancars_2:
-##  importable: price_format_settings_for_japancars (ImportXls)
-##  catalog_number_colnum: 1
-##  manufacturer_colnum: 2
-##  title_colnum: 3
-##  count_colnum: 4
-##  cost_colnum: 5
-##  margin: 0.87
-##  estimate_days: 20
+#import_from_japancars_1:
+#  importable: price_format_settings_for_japancars (ImportXls)
+#  catalog_number_colnum: 1
+#  manufacturer_colnum: 2
+#  title_colnum: 3
+#  count_colnum: 4
+#  cost_colnum: 5
+#  margin: 0.93
+#  estimate_days: 15
 #
-#########################################################################
-#
+#import_from_japancars_2:
+#  importable: price_format_settings_for_japancars (ImportXls)
+#  catalog_number_colnum: 1
+#  manufacturer_colnum: 2
+#  title_colnum: 3
+#  count_colnum: 4
+#  cost_colnum: 5
+#  margin: 0.87
+#  estimate_days: 20
+
+########################################################################
+
 #import_job_for_febest:
 #  importable: price_format_settings_for_febest (ImportCsv)
 #  catalog_number_colnum: 1
@@ -29,10 +29,10 @@
 #  cost_colnum: 4
 #  margin: 0.85
 #  estimate_days: 5
-#
-#########################################################################
 
-kkk:
+########################################################################
+
+import_job_for_jeepshop_1:
   importable: price_format_settings_for_jeepshop_1 (ImportCsv)
   catalog_number_colnum: 2
   manufacturer_colnum: 3
@@ -42,7 +42,7 @@ kkk:
   margin: 0.85
   estimate_days: 20
 
-ccc:
+import_job_for_jeepshop_2:
   importable: price_format_settings_for_jeepshop_2 (ImportCsv)
   catalog_number_colnum: 2
   manufacturer_colnum: 3
@@ -52,46 +52,20 @@ ccc:
   margin: 0.95
   estimate_days: 20
 
-#########################################################################
-#
-##import_from_kornev_ruslan:
-##  importable: csv_settings_for_kornev_ruslan (ImportCsv)
-##  catalog_number_colnum: 1
-##  manufacturer_colnum: 2
-##  title_colnum: 3
-##  count_colnum: 4
-##  cost_colnum: 5
-##  margin: 0.85
-##  estimate_days: 20
-##
-##import_from_kornev_ruslan2:
-##  importable: csv_settings_for_kornev_ruslan2 (ImportCsv)
-##  catalog_number_colnum: 2
-##  manufacturer_colnum: 1
-##  title_colnum: 3
-##  count_colnum: 5
-##  cost_colnum: 4
-##  margin: 0.85
-##  estimate_days: 20
-##
-#
-#########################################################################
-#
-#import_job_for_webtest:
-#  importable: price_format_settings_for_webtest (ImportCsv)
-#  catalog_number_colnum: 2
-#  manufacturer_colnum: 3
-#  title_colnum: 4
-#  count_colnum: 6
+########################################################################
+
+#import_from_kornev_ruslan:
+#  importable: csv_settings_for_kornev_ruslan (ImportCsv)
+#  catalog_number_colnum: 1
+#  manufacturer_colnum: 2
+#  title_colnum: 3
+#  count_colnum: 4
 #  cost_colnum: 5
-#  margin: 0.75
-#  estimate_days: 80
+#  margin: 0.85
+#  estimate_days: 20
 #
-#
-#########################################################################
-#
-#import_job_for_stalker_1:
-#  importable: price_format_settings_for_stalker (ImportCsv)
+#import_from_kornev_ruslan2:
+#  importable: csv_settings_for_kornev_ruslan2 (ImportCsv)
 #  catalog_number_colnum: 2
 #  manufacturer_colnum: 1
 #  title_colnum: 3
@@ -100,12 +74,38 @@ ccc:
 #  margin: 0.85
 #  estimate_days: 20
 #
-#import_job_for_stalker_2:
-#  importable: price_format_settings_for_stalker (ImportCsv)
-#  catalog_number_colnum: 2
-#  manufacturer_colnum: 1
-#  title_colnum: 3
-#  count_colnum: 5
-#  cost_colnum: 4
-#  margin: 0.80
-#  estimate_days: 30
+
+########################################################################
+
+import_job_for_webtest:
+  importable: price_format_settings_for_webtest (ImportCsv)
+  catalog_number_colnum: 2
+  manufacturer_colnum: 3
+  title_colnum: 4
+  count_colnum: 6
+  cost_colnum: 5
+  margin: 0.75
+  estimate_days: 80
+
+
+########################################################################
+
+import_job_for_stalker_1:
+  importable: price_format_settings_for_stalker_1 (ImportCsv)
+  catalog_number_colnum: 2
+  manufacturer_colnum: 1
+  title_colnum: 3
+  count_colnum: 5
+  cost_colnum: 4
+  margin: 0.85
+  estimate_days: 20
+
+import_job_for_stalker_2:
+  importable: price_format_settings_for_stalker_2 (ImportCsv)
+  catalog_number_colnum: 2
+  manufacturer_colnum: 1
+  title_colnum: 3
+  count_colnum: 5
+  cost_colnum: 4
+  margin: 0.80
+  estimate_days: 30

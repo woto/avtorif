@@ -14,6 +14,7 @@ gem 'rails', '2.3.8'
 gem 'excelsior'
 gem 'ccsv'
 gem 'fastercsv'
+gem 'cap-recipes'
 
 
 gem 'mysql'
