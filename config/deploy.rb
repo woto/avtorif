@@ -1,5 +1,5 @@
 set :application, "avtorif"
-set :repository,  "git://github.com/woto/avtorif.git"
+set :repository,  "git@github.com:woto/avtorif.git"
 
 set :scm, :git
 # Or: `accurev`, `bzr`, `cvs`, `darcs`, `git`, `mercurial`, `perforce`, `subversion` or `none`

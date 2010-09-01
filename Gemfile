@@ -57,6 +57,6 @@ group :development do
   gem 'ruby-debug-ide'
 end
                      
-gem 'formtastic', :git => "http://github.com/justinfrench/formtastic.git", :tag => "1.0.0.beta4"
+gem 'formtastic'
 gem 'whenever'
 gem 'rufus-scheduler'
