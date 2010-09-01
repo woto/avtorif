@@ -1,22 +1,22 @@
-#import_from_japancars_1:
-#  importable: price_format_settings_for_japancars (ImportXls)
-#  catalog_number_colnum: 1
-#  manufacturer_colnum: 2
-#  title_colnum: 3
-#  count_colnum: 4
-#  cost_colnum: 5
-#  margin: 0.93
-#  estimate_days: 15
-#
-#import_from_japancars_2:
-#  importable: price_format_settings_for_japancars (ImportXls)
-#  catalog_number_colnum: 1
-#  manufacturer_colnum: 2
-#  title_colnum: 3
-#  count_colnum: 4
-#  cost_colnum: 5
-#  margin: 0.87
-#  estimate_days: 20
+import_from_japancars_1:
+  importable: price_format_settings_for_japancars_1 (ImportXls)
+  catalog_number_colnum: 1
+  manufacturer_colnum: 2
+  title_colnum: 3
+  count_colnum: 4
+  cost_colnum: 5
+  margin: 0.93
+  estimate_days: 15
+
+import_from_japancars_2:
+  importable: price_format_settings_for_japancars_2 (ImportXls)
+  catalog_number_colnum: 1
+  manufacturer_colnum: 2
+  title_colnum: 3
+  count_colnum: 4
+  cost_colnum: 5
+  margin: 0.87
+  estimate_days: 20
 
 ########################################################################
 

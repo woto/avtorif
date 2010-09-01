@@ -13,11 +13,11 @@
     begin
       # pop.set_debug_output $stderr
       pop.mails.reverse.each_with_index do |email, index|
-        unless index > 100
+        unless index > AppConfig.max_emails
 
           net_popmail = email.pop
 
-          email_id = @receiver.login + "@" + @receiver.server + ":" + @receiver.port
+          email_id = @receiver.login + " - " + @receiver.server + ":" + @receiver.port
           tempfile = File.open(Rails.root.to_s + '/public/system/emails/' + email_id + ' - ' + Time.zone.now.to_s, 'w')
             tempfile.write net_popmail
           tempfile.close

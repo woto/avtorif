@@ -125,6 +125,7 @@ ActiveRecord::Schema.define(:version => 20100811094637) do
 
   create_table "prices", :force => true do |t|
     t.integer  "job_id"
+    t.string   "job_title"
     t.integer  "goods_id"
     t.string   "supplier"
     t.string   "title"
@@ -134,7 +135,6 @@ ActiveRecord::Schema.define(:version => 20100811094637) do
     t.decimal  "margin",                       :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "catalog_number"
-    t.string   "import_rule"
     t.string   "inn",            :limit => 12
     t.string   "kpp",            :limit => 9
     t.integer  "estimate_days"

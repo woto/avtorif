@@ -8,7 +8,7 @@
     <th>estimate-days</th>
     <th>goods-id</th>
     <th>id</th>
-    <th>import-rule</th>
+    <th>job-title</th>
     <th>initial-cost</th>
     <th>inn</th>
     <th>job-id</th>
@@ -17,8 +17,9 @@
     <th>margin</th>
     <th>result-cost</th>
     <th>supplier</th>
-    <th>title</th> 
+    <th>title</th>
     <th>updated-at</th>
+    <th>make-synonym-group-id</th>
   </tr>
 
 <% @prices.each do |price| %>
@@ -29,7 +30,7 @@
     <td><%=h price.estimate_days %></td>
     <td><%=h price.goods_id %></td>
     <td><%=h price.id %></td>
-    <td><%=h price.import_rule %></td>
+    <td><%=h price.job_title %></td>
     <td><%=h price.initial_cost %></td>
     <td><%=h price.inn %></td>
     <td><%=h price.job_id %></td>
@@ -40,9 +41,7 @@
     <td><%=h price.supplier %></td>
     <td><%=h price.title %></td>
     <td><%=h price.updated_at %></td>
-    <td><%= link_to 'Show', price %></td>
-    <td><%= link_to 'Edit', edit_price_path(price) %></td>
-    <td><%= link_to 'Destroy', price, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%=h price.make_synonym_group_id %></td>
   </tr>
 <% end %>
 </table>

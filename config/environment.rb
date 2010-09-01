@@ -58,3 +58,6 @@ end
 
 ExceptionNotification::Notifier.exception_recipients = %w(webmaster@avtorif.ru)
 ExceptionNotification::Notifier.sender_address = %("Application Error" <webmaster@avtorif.ru>)
+
+$KCODE = 'u'
+require 'jcode'

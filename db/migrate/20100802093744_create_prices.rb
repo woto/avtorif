@@ -2,6 +2,7 @@ class CreatePrices < ActiveRecord::Migration
   def self.up
     create_table :prices do |t|
       t.references :job
+      t.string :job_title
       t.references :goods
       t.string :supplier
       t.string :title
@@ -11,7 +12,6 @@ class CreatePrices < ActiveRecord::Migration
       t.decimal :margin, :precision => 10, :scale => 3
       t.string :manufacturer
       t.string :catalog_number
-      t.string :import_rule
       t.string :inn, :limit => 12
       t.string :kpp, :limit => 9
       t.integer :estimate_days

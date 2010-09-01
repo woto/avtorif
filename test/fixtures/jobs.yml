@@ -1,35 +1,33 @@
-#job_1_for_japancars:
-#  next_start: 2000-01-01 00:00:00
-#  title: job_1_for_japancars
-#  repeats: every_one_minute
-#  jobable: receive_job_for_japancars (ReceiveJob)
-#  supplier: japancars
-#  file_mask: LucJC.xls
-#  interval_between_jobs: 10
-#  interval_working: 1
+job_for_japancars_1:
+  title: job_for_japancars_1
+  repeats: every_one_minute
+  jobable: receive_job_for_japancars (ReceiveJob)
+  supplier: japancars
+  file_mask: LucJC.xls
+  interval_between_jobs: 10
+  interval_working: 1
 
-#job_2_for_japancars:
-#  parent: job_1_for_japancars
-#  title: job_2_for_japancars
-#  jobable: import_from_japancars_1 (ImportJob)
-#  supplier: japancars
-#  file_mask: LucJC.xls
-#  interval_between_jobs: 10
-#  interval_working: 1
+job_for_japancars_2:
+  parent: job_for_japancars_1
+  title: job_for_japancars_2
+  jobable: import_from_japancars_1 (ImportJob)
+  supplier: japancars
+  file_mask: LucJC.xls
+  interval_between_jobs: 10
+  interval_working: 1
 
-#job_3_for_japancars:
-#  parent: job_1_for_japancars
-#  title: job_3_for_japancars
-#  jobable: import_from_japancars_2 (ImportJob)
-#  supplier: japancars
-#  file_mask: LucJC.xls
-#  interval_between_jobs: 10
-#  interval_working: 1
+job_for_japancars_3:
+  parent: job_for_japancars_1
+  title: job_for_japancars_3
+  jobable: import_from_japancars_2 (ImportJob)
+  supplier: japancars
+  file_mask: LucJC.xls
+  interval_between_jobs: 10
+  interval_working: 1
 
 ####################################################################################
 
 #job_1_for_febest:
-#  next_start: 2010-08-02 13:22:16
 #  title: job_1_for_febest
 #  repeats: every_one_minute
 #  jobable: receive_job_for_febest (ReceiveJob)
@@ -50,7 +48,6 @@
 ######################################################
 
 job_for_jeepshop_1:
-  next_start: 2010-08-02 13:22:16
   title: job_for_jeepshop_1
   repeats: every_one_minute
   jobable: receive_job_for_jeepshop (ReceiveJob)
@@ -84,7 +81,6 @@ job_for_jeepshop_3:
 
 #job_1_for_ruslan_kornev_gmail:
 #  repeats: every_one_minute
-#  next_start: 2000-01-01 00:00:00
 #  title: Прием с почты от Корнева Руслана
 #  jobable: receive_job_for_ruslan_kornev_gmail_pop3 (ReceiveJob)
 #  supplier: ruslan_kornev_gmail
@@ -110,40 +106,38 @@ job_for_jeepshop_3:
 
 ################################################################################
 
-#job_for_webtest_avtorif:
-#  repeats: every_one_minute
-#  next_start: 2000-01-01 00:00:00
-#  title: Прием от webtest
-#  jobable: receive_job_for_webtest_avtorif_pop3 (ReceiveJob)
-#  supplier: webtest_avtorif
-#  file_mask: .*
-#  interval_between_jobs: 10
-#  interval_working: 1
-#
-#job_1_for_woto_mail:
-#  repeats: every_one_minute
-#  next_start: 2000-01-01 00:00:00
-#  title: Прием от Мэйл.ру
-#  jobable: receive_job_for_woto_mail_pop3 (ReceiveJob)
-#  supplier: woto_mail
-#  file_mask: .*
-#  interval_between_jobs: 10
-#  interval_working: 1
-#
-#job_1_for_woto77_yandex:
-#  repeats: every_one_minute
-#  next_start: 2000-01-01 00:00:00
-#  title: Прием от Яндекс
-#  jobable: receive_job_for_woto77_yandex_pop3 (ReceiveJob)
-#  supplier: woto77_yandex
-#  file_mask: .*
-#  interval_between_jobs: 10
-#  interval_working: 1
+job_for_webtest_avtorif:
+  repeats: every_one_minute
+  title: job_for_webtest_avtorif
+  jobable: receive_job_for_webtest_avtorif_pop3 (ReceiveJob)
+  supplier: webtest_avtorif
+  file_mask: .*
+  interval_between_jobs: 10
+  interval_working: 1
+
+################################################################################
+
+job_1_for_woto_mail:
+  repeats: every_one_minute
+  title: Прием от Мэйл.ру
+  jobable: receive_job_for_woto_mail_pop3 (ReceiveJob)
+  supplier: woto_mail
+  file_mask: .*
+  interval_between_jobs: 10
+  interval_working: 1
+
+job_1_for_woto77_yandex:
+  repeats: every_one_minute
+  title: Прием от Яндекс
+  jobable: receive_job_for_woto77_yandex_pop3 (ReceiveJob)
+  supplier: woto77_yandex
+  file_mask: .*
+  interval_between_jobs: 10
+  interval_working: 1
 
 ####################################################################################
 
 job_for_pelikanavto_1:
-  next_start: 2000-01-01 00:00:00
   title: job_for_pelikanavto_1
   repeats: every_three_minutes
   jobable: receive_job_for_pelikanavto (ReceiveJob)
@@ -155,7 +149,6 @@ job_for_pelikanavto_1:
 ####################################################################################
 
 job_for_stalker_1:
-  next_start: 2000-01-01 00:00:00
   title: job_for_stalker_1
   repeats: every_one_minute
   jobable: receive_job_for_stalker (ReceiveJob)

@@ -1,3 +1,3 @@
 class ImportCsv < ActiveRecord::Base
-  has_one :import_job, :as => :importable
+  has_many :import_job, :as => :importable
 end

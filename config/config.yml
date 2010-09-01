@@ -1,4 +1,7 @@
 defaults: &defaults
+  ftp_timeout: 3600
+  max_emails: 10000
+  emex_timeout: 3600
 
 development:
   <<: *defaults

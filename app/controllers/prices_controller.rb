@@ -2,7 +2,129 @@ class PricesController < ApplicationController
 
   def search
 
+    @prices = []
     @prices = Price.find(:all, :conditions => ['catalog_number = ?', params[:price][:catalog_number]])
+    
+    #joe = Customer.new("Joe Smith", "123 Maple, Anytown NC", 12345)
+
+    #@prices << Struct.new(:catalog_number => 'b')
+
+    Timeout.timeout(AppConfig.emex_timeout) do
+      begin
+        response = Net::HTTP.post_form(URI.parse('http://ws.emex.ru/EmExService.asmx/FindDetailAdv'),
+                                  {'login'=>'14616',
+                                   'password'=>'2b0ffb38',
+                                   'makeLogo' => 'true',
+                                   'detailNum' => params[:price][:catalog_number],
+                                   'findSubstitutes' => 'true'})
+        doc = ''
+        
+        File.open('./tmp/emex-prices/' + rand.to_s, 'w') do |f|
+          f.write(response.body)
+          doc = Nokogiri::XML(response.body)
+        end
+
+
+=begin
+        File.open('./' + '0.981295776905799', 'r') { |f|
+          doc = Nokogiri::XML(f)
+        }
+=end
+
+        detail_items = doc.children.children
+        detail_items.each do |z|
+          if z.blank?
+            next
+          end
+          p = Price.new(
+            :created_at => '',
+            :estimate_days => '',
+            :goods_id => '',
+            :id => '',
+            :initial_cost => '',
+            :inn => '',
+            :job_id => '',
+            :job_title => '',
+            :kpp => '',
+            :manufacturer => '',
+            :margin => '',
+            :supplier => '',
+            :updated_at => ''
+          )
+
+          z.children.children.each do |c|
+
+            value = c.children.to_s
+            case value
+              when /DetailNum/
+                p[:catalog_number] = value
+              when /Quantity/
+                p[:count] = value
+              when /DetailNameRus/
+                p[:title] = value
+              when /ResultPrice/
+                p[:initial_cost] = value
+            end
+
+            if c.blank?
+              next
+            else
+              p[(c.name.underscore + "-emex").to_sym] = CGI.unescapeHTML(c.children.to_s)
+            end
+            
+          end
+          
+          @prices.push p
+
+        end
+      rescue Exception => e
+        raise e
+      end
+    end
+    #puts res.body
+
+=begin
+   /// <summary>
+    /// Тест для метода FindDetailAdv сервиса Поиска детали
+    /// </summary>
+    private void btnDetAdv_Click(object sender, EventArgs e)
+    {
+    try
+    {
+    Test_EmExService.EmExService.DetailItem[] details = null;
+    TimeSpan ts;
+    using (Test_EmExService.EmExService.EmExService serv = new Test_EmExService.EmExService.EmExService())
+    {
+    this.textBoxExcp.Text = String.Empty;
+    this.textBoxMess.Text = String.Empty;
+    DateTime dt1 = DateTime.Now;
+
+    details = serv.FindDetailAdv(<login>, "<password>", String.Empty, "357407182", true);
+
+    DateTime dt2 = DateTime.Now;
+    ts = dt2 - dt1;
+    }
+
+    this.textBoxMess.Text = String.Format("Найдено деталей: {0} за {1} mc", details.Length.ToString(), ts.TotalMilliseconds.ToString("#0.00"));
+    }
+    catch (Exception excp)
+    {
+    this.textBoxExcp.Text = excp.Message;
+    }
+    }
+
+  http://ws.emex.ru/EmExService.asmx
+    FindDetailAdv
+
+    ЛОГИН:14616
+    ПАРОЛЬ:2b0ffb38
+
+=end
+
+
+
+
+
 
     respond_to do |format|
       format.html {render :action => :index }

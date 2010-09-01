@@ -9,7 +9,7 @@ class EmailReceiver < AbstractReceiver
       when 'pop3'
         Pop3Receiver.receive @receiver
       when 'imap'
-        raise Exception 'not implemented'
+        ImapReceiver.receive @receiver
     end
   end
   

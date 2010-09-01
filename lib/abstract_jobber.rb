@@ -1,3 +1,6 @@
+logger = RAILS_DEFAULT_LOGGER
+logger.level = Logger::ERROR
+
 class AbstractJobber
   def initialize(jobber, optional = nil)
     @jobber = jobber

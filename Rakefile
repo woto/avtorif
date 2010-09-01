@@ -14,7 +14,14 @@ require 'delayed/tasks'
 
 namespace :avtorif do
   task :reclean do
-    # sh "sudo /usr/bin/god terminate"
+    puts 'Рестартуем Cron'
+    sh 'sudo /etc/init.d/cron restart'
+
+    puts 'Останавливаем God'
+    begin
+      sh "sudo /usr/bin/god terminate"
+    rescue StandardError => e
+    end
 
     puts 'Запускаем миграции с нуля'
     Rake::Task['db:migrate:reset'].invoke
@@ -27,6 +34,7 @@ namespace :avtorif do
     sh "rm -rf #{Rails.root}/public/system/attachments/*"
     sh "rm -rf #{Rails.root}/log/*"
 
-    # sh "sudo /etc/init.d/god start"
+    puts "Запускаем God"
+    sh "sudo /etc/init.d/god start"
   end
 end

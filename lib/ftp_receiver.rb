@@ -2,7 +2,7 @@ require 'net/ftp'
 
 class FtpReceiver < AbstractReceiver
   def receive
-    Timeout.timeout(120000) do
+    Timeout.timeout(AppConfig.ftp_timeout) do
 
       ftp = Net::FTP.new
       ftp.debug_mode = true

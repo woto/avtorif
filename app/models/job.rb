@@ -1,7 +1,7 @@
 class Job < ActiveRecord::Base
   cattr_reader :per_page
   @@per_page = 100
-  has_many :prices, :dependent => :delete_all
+  has_many :prices
 
   has_and_belongs_to_many :repeats
 

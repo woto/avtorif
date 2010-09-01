@@ -7,6 +7,10 @@ require 'date'
 
 #require 'receive_jobber'
 
+logger = RAILS_DEFAULT_LOGGER
+logger.level = Logger::ERROR
+
+
 class JobWalker
 
   def call
@@ -15,7 +19,7 @@ class JobWalker
     #logger.error jobs.collect{|job| job.title}
 
     jobs.each do |job|
-      if job.parent.blank? && !job.next_start.nil? && job.next_start < Time.zone.now && !job.locked
+      if job.parent.blank? && (job.next_start.nil? || job.next_start < Time.zone.now) && !job.locked
         nearest_next_time = nil
         job.repeats.each do |repeat|
           r = Rufus::CronLine.new(repeat.cron_string)

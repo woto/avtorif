@@ -15,8 +15,8 @@ class CsvImporter < AbstractImporter
         #CSV.open(attachment.attachment.path, 'r', @importer.delimeter.to_i) do |columns|
 
         # очищаем price
-        #if(@importer.import_job.job.prices.size > 0)
-        #    @importer.import_job.job.prices.clear
+        #if(@importer.import_job.first.job.prices.size > 0)
+        #    @importer.import_job.first.job.prices.clear
         #end
 
         file.each_line("\n") do |row|
@@ -38,19 +38,19 @@ class CsvImporter < AbstractImporter
             require 'iconv'
             iconv = Iconv.new("utf-8", "windows-1251")
 
-            manufacturer = Manufacturer.find_or_create_by_title(iconv.iconv(columns[@importer.import_job.manufacturer_colnum - 1]))
-            goods = Goods.find(:first, :conditions => ['catalog_number = ? and manufacturer_id = ?', columns[@importer.import_job.catalog_number_colnum - 1], manufacturer])
+            manufacturer = Manufacturer.find_or_create_by_title(iconv.iconv(columns[@importer.import_job.first.manufacturer_colnum - 1]))
+            goods = Goods.find(:first, :conditions => ['catalog_number = ? and manufacturer_id = ?', columns[@importer.import_job.first.catalog_number_colnum - 1], manufacturer])
 
-            initial_cost = iconv.iconv(columns[@importer.import_job.cost_colnum - 1])
+            initial_cost = iconv.iconv(columns[@importer.import_job.first.cost_colnum - 1])
             initial_cost = initial_cost.gsub(',', '.')
             initial_cost = initial_cost.to_f
-            result_cost = initial_cost * @importer.import_job.margin.to_f
+            result_cost = initial_cost * @importer.import_job.first.margin.to_f
 
 
             if goods.nil?
 
-              goods = Goods.create(:title => iconv.iconv(columns[@importer.import_job.title_colnum - 1]),
-                :catalog_number => iconv.iconv(columns[@importer.import_job.catalog_number_colnum - 1]),
+              goods = Goods.create(:title => iconv.iconv(columns[@importer.import_job.first.title_colnum - 1]),
+                :catalog_number => iconv.iconv(columns[@importer.import_job.first.catalog_number_colnum - 1]),
                 :manufacturer => manufacturer
               )
               # TODO сделать
@@ -61,19 +61,19 @@ class CsvImporter < AbstractImporter
 
             Price.create(
               :goods => goods,
-              :supplier => @importer.import_job.job.supplier.title,
-              :inn => @importer.import_job.job.supplier.inn,
-              :kpp => @importer.import_job.job.supplier.kpp,
-              :title => iconv.iconv(columns[@importer.import_job.title_colnum - 1]),
+              :supplier => @importer.import_job.first.job.supplier.title,
+              :inn => @importer.import_job.first.job.supplier.inn,
+              :kpp => @importer.import_job.first.job.supplier.kpp,
+              :title => iconv.iconv(columns[@importer.import_job.first.title_colnum - 1]),
               :initial_cost => initial_cost,
               :result_cost => result_cost,
-              :margin => @importer.import_job.margin.to_f,
-              :count => iconv.iconv(columns[@importer.import_job.count_colnum - 1]),
+              :margin => @importer.import_job.first.margin.to_f,
+              :count => iconv.iconv(columns[@importer.import_job.first.count_colnum - 1]),
               :manufacturer => manufacturer.title,
-              :catalog_number => iconv.iconv(columns[@importer.import_job.catalog_number_colnum - 1]),
-              :import_rule => @importer.import_job.job.title,
-              :job => @importer.import_job.job,
-              :estimate_days => @importer.import_job.estimate_days
+              :catalog_number => iconv.iconv(columns[@importer.import_job.first.catalog_number_colnum - 1]),
+              :job_title => @importer.import_job.first.job.title,
+              :job => @importer.import_job.first.job,
+              :estimate_days => @importer.import_job.first.estimate_days
             )
         end
       #rescue Exception => e

@@ -14,15 +14,15 @@ class MiesController < ApplicationController
     #rj = ReceiveJobber.new(ReceiveJob.find(275428135))
     #rj.perform
 
-    #ij = ImportJobber.new(ImportJob.find(302205181), 3)
-    #ij.perform
+    # ij = ImportJobber.new(ImportJob.find(302205181), 3)
+    # ij.perform
     
     #raise Exception
     #rescue Exception => e
     #  notify_about_exception(e)
 
-    #rj = ImportJobber.new(ImportJob.find(121088585))
-    #rj.perform
+    rj = ImportJobber.new(ImportJob.find(1053535), 3)
+    rj.perform
 
     #ij = ImportJobber.new(ImportJob.find(302205181))
     #ij.perform
@@ -39,7 +39,7 @@ class MiesController < ApplicationController
     #rj = ReceiveJobber.new(ReceiveJob.find(637130520))
     #rj.perform
 
-    JobWalker.new.call
+    # JobWalker.new.call
     
     @mies = My.all
 

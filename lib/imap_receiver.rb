@@ -3,9 +3,9 @@ require 'net/pop'
 require 'tlsmail'
 require 'net/imap'
 
-  class ImapReceiver
-
-  end
+class ImapReceiver
+  raise Exception 'not implemented'
+end
 
 =begin
   class EmailReceiver < AbstractReceiver
