@@ -17,7 +17,7 @@ require 'cap_recipes/tasks/delayed_job'
 # bundler
 namespace :bundler do
   task :bundle_install do
-    run("cd #{release_path} && bundle install")
+    run("cd #{release_path} && sudo bundle install")
   end
 end
 

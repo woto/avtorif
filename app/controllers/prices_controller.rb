@@ -11,7 +11,10 @@ class PricesController < ApplicationController
 
     Timeout.timeout(AppConfig.emex_timeout) do
       begin
-        FileUtils::mkdir('./tmp/emex-prices/')
+        begin
+          FileUtils::mkdir('./tmp/emex-prices/')
+        rescue Errno::EEXIST => e
+        end
         response = Net::HTTP.post_form(URI.parse('http://ws.emex.ru/EmExService.asmx/FindDetailAdv'),
                                   {'login'=>'14616',
                                    'password'=>'2b0ffb38',
