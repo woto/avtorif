@@ -17,9 +17,5 @@ God.contact(:email) do |c|
   c.to_email = 'webmaster@avtorif.ru'
 end
 
-File.open('./zzz', 'w') do |f|
-  f.write '1'
-end
-
 God.load "config/god/*.god"
 
