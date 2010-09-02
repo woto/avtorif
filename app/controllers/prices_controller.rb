@@ -58,8 +58,16 @@ class PricesController < ApplicationController
 
           z.children.children.each do |c|
 
-            value = c.children.to_s
-            case value
+            if c.blank?
+              next
+            end
+
+            value = CGI.unescapeHTML(c.children.to_s)
+
+            p[(c.name.underscore + "-emex").to_sym] = value 
+            
+
+            case c.name
               when /DetailNum/
                 p[:catalog_number] = value
               when /Quantity/
@@ -68,12 +76,6 @@ class PricesController < ApplicationController
                 p[:title] = value
               when /ResultPrice/
                 p[:initial_cost] = value
-            end
-
-            if c.blank?
-              next
-            else
-              p[(c.name.underscore + "-emex").to_sym] = CGI.unescapeHTML(c.children.to_s)
             end
             
           end
