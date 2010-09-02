@@ -68,13 +68,13 @@ class PricesController < ApplicationController
             
 
             case c.name
-              when /DetailNum/
+              when /^DetailNum$/
                 p[:catalog_number] = value
-              when /Quantity/
+              when /^Quantity$/
                 p[:count] = value
-              when /DetailNameRus/
+              when /^DetailNameRus$/
                 p[:title] = value
-              when /ResultPrice/
+              when /^ResultPrice$/
                 p[:initial_cost] = value
             end
             

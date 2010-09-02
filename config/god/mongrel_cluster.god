@@ -1,4 +1,4 @@
-RAILS_ROOT = "/home/woto/rails/avtorif"
+RAILS_ROOT = "./"
 RAILS_ENV = "development"
 
 %w{8000}.each do |port|
