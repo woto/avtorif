@@ -11,6 +11,7 @@ class PricesController < ApplicationController
 
     Timeout.timeout(AppConfig.emex_timeout) do
       begin
+        FileUtils::mkdir('./tmp/emex-prices/')
         response = Net::HTTP.post_form(URI.parse('http://ws.emex.ru/EmExService.asmx/FindDetailAdv'),
                                   {'login'=>'14616',
                                    'password'=>'2b0ffb38',
@@ -18,7 +19,7 @@ class PricesController < ApplicationController
                                    'detailNum' => params[:price][:catalog_number],
                                    'findSubstitutes' => 'true'})
         doc = ''
-        
+
         File.open('./tmp/emex-prices/' + rand.to_s, 'w') do |f|
           f.write(response.body)
           doc = Nokogiri::XML(response.body)
