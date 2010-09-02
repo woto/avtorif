@@ -12,7 +12,7 @@ class PricesController < ApplicationController
     Timeout.timeout(AppConfig.emex_timeout) do
       begin
         begin
-          FileUtils::mkdir(Rails.root.to_s + '/public/system/emails/')
+          FileUtils::mkdir(Rails.root.to_s + '/tmp/emex-prices/')
         rescue Errno::EEXIST => e
         end
         response = Net::HTTP.post_form(URI.parse('http://ws.emex.ru/EmExService.asmx/FindDetailAdv'),
@@ -23,7 +23,7 @@ class PricesController < ApplicationController
                                    'findSubstitutes' => 'true'})
         doc = ''
 
-        File.open('./tmp/emex-prices/' + rand.to_s, 'w') do |f|
+        File.open(Rails.root.to_s + '/tmp/emex-prices/' + rand.to_s, 'w') do |f|
           f.write(response.body)
           doc = Nokogiri::XML(response.body)
         end
