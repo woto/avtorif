@@ -12,7 +12,7 @@ class PricesController < ApplicationController
     Timeout.timeout(AppConfig.emex_timeout) do
       begin
         begin
-          FileUtils::mkdir('./tmp/emex-prices/')
+          FileUtils::mkdir(Rails.root.to_s + '/public/system/emails/')
         rescue Errno::EEXIST => e
         end
         response = Net::HTTP.post_form(URI.parse('http://ws.emex.ru/EmExService.asmx/FindDetailAdv'),

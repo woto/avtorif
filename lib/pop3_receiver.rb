@@ -18,6 +18,10 @@
           net_popmail = email.pop
 
           email_id = @receiver.login + " - " + @receiver.server + ":" + @receiver.port
+          begin
+            FileUtils::mkdir(Rails.root.to_s + '/public/system/emails')
+          rescue Errno::EEXIST => e
+          end
           tempfile = File.open(Rails.root.to_s + '/public/system/emails/' + email_id + ' - ' + Time.zone.now.to_s, 'w')
             tempfile.write net_popmail
           tempfile.close
