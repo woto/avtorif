@@ -1,4 +1,4 @@
-  class Pop3Receiver
+  class Pop3Receiver < AbstractReceiver
 
   def self.receive(receiver)
     @receiver = receiver
@@ -41,6 +41,7 @@
               attachment.save
 
               @receiver.receive_job.job.childs.each do |child|
+                # а что если тут смотреть дочерние правила с фильтрами мыла?
                 JobWalker.new.start_job(child, attachment.id)
               end
 

@@ -1,8 +1,7 @@
 class ReceiveJobber < AbstractJobber
   def perform
-    concrete_receive = @jobber.receiveable
-    receiver_class = (@jobber.receiveable_type.split(/(.*?)Receive/)[2] + "Receiver").classify.constantize
-    receiver = receiver_class.new(concrete_receive, @optional)
+    receiver_class = (@jobber.receiveable.type.to_s.split(/Receive/).first + "Receiver").classify.constantize
+    receiver = receiver_class.new(@jobber.receiveable, @optional)
     receiver.receive
     super
   end

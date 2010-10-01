@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20100811094637) do
+ActiveRecord::Schema.define(:version => 20101001160316) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
@@ -31,6 +31,42 @@ ActiveRecord::Schema.define(:version => 20100811094637) do
     t.datetime "updated_at"
   end
 
+  create_table "column_filters", :force => true do |t|
+    t.string   "count"
+    t.string   "cost"
+    t.string   "title"
+    t.string   "catalog_number"
+    t.string   "manufacturer"
+    t.string   "weight"
+    t.integer  "import_rules_id"
+    t.integer  "margin"
+    t.integer  "estimate_days"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "column_relations", :force => true do |t|
+    t.integer  "catalog_number"
+    t.integer  "manufacturer"
+    t.integer  "cost"
+    t.integer  "title"
+    t.integer  "weight"
+    t.integer  "count"
+    t.integer  "import_rules_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "csv_imports", :force => true do |t|
+    t.string   "columns_terminator"
+    t.string   "columns_enclosures"
+    t.string   "columns_escape"
+    t.integer  "start_from_line"
+    t.string   "lines_terminator"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
     t.integer  "attempts",   :default => 0
@@ -46,6 +82,42 @@ ActiveRecord::Schema.define(:version => 20100811094637) do
 
   add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
+  create_table "email_receives", :force => true do |t|
+    t.string   "server"
+    t.string   "port"
+    t.boolean  "ssl"
+    t.string   "login"
+    t.string   "password"
+    t.string   "protocol"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "email_settings", :force => true do |t|
+    t.string   "sender"
+    t.string   "topic"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "folder_receives", :force => true do |t|
+    t.string   "path"
+    t.string   "login"
+    t.string   "password"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "ftp_receives", :force => true do |t|
+    t.string   "server"
+    t.string   "port",       :default => "21"
+    t.string   "path",       :default => "/"
+    t.string   "login"
+    t.string   "password"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "goods", :force => true do |t|
     t.string   "catalog_number"
     t.integer  "manufacturer_id"
@@ -55,35 +127,18 @@ ActiveRecord::Schema.define(:version => 20100811094637) do
     t.datetime "updated_at"
   end
 
-  create_table "import_csvs", :force => true do |t|
-    t.integer  "start_from_line"
-    t.string   "delimeter"
-    t.string   "codepage"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "import_jobs", :force => true do |t|
     t.integer  "importable_id"
     t.string   "importable_type"
-    t.integer  "cost_colnum"
-    t.integer  "manufacturer_colnum"
-    t.integer  "catalog_number_colnum"
-    t.integer  "replacement_colnum"
-    t.integer  "title_colnum"
-    t.integer  "count_colnum"
-    t.decimal  "margin",                :precision => 10, :scale => 5
-    t.string   "encoding"
-    t.integer  "estimate_days"
-    t.string   "email_topic"
-    t.string   "email_sender"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "encoding"
+    t.integer  "import_method_id"
   end
 
-  create_table "import_xls", :force => true do |t|
-    t.string   "sheet_number"
-    t.integer  "start_from_line"
+  create_table "import_methods", :force => true do |t|
+    t.string   "title"
+    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -99,7 +154,7 @@ ActiveRecord::Schema.define(:version => 20100811094637) do
     t.integer  "jobable_id"
     t.string   "jobable_type"
     t.integer  "supplier_id"
-    t.string   "file_mask"
+    t.string   "file_mask",             :default => ".*"
     t.boolean  "locked",                :default => false
     t.boolean  "active",                :default => true
     t.datetime "created_at"
@@ -119,6 +174,12 @@ ActiveRecord::Schema.define(:version => 20100811094637) do
     t.datetime "updated_at"
   end
 
+  create_table "mdb_imports", :force => true do |t|
+    t.string   "table_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "mies", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -128,6 +189,7 @@ ActiveRecord::Schema.define(:version => 20100811094637) do
     t.integer  "job_id"
     t.string   "job_title"
     t.integer  "goods_id"
+    t.integer  "supplier_id"
     t.string   "supplier"
     t.string   "title"
     t.integer  "count",          :limit => 10, :precision => 10, :scale => 0
@@ -139,35 +201,6 @@ ActiveRecord::Schema.define(:version => 20100811094637) do
     t.string   "inn",            :limit => 12
     t.string   "kpp",            :limit => 9
     t.integer  "estimate_days"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "receive_emails", :force => true do |t|
-    t.string   "server"
-    t.string   "port"
-    t.boolean  "ssl"
-    t.string   "login"
-    t.string   "password"
-    t.string   "protocol"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "receive_folders", :force => true do |t|
-    t.string   "path"
-    t.string   "login"
-    t.string   "password"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "receive_ftps", :force => true do |t|
-    t.string   "server"
-    t.string   "port"
-    t.string   "path"
-    t.string   "login"
-    t.string   "password"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -193,6 +226,20 @@ ActiveRecord::Schema.define(:version => 20100811094637) do
     t.string   "login"
     t.string   "password"
     t.string   "contact_info"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "test_receives", :force => true do |t|
+    t.string   "field"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "xls_imports", :force => true do |t|
+    t.integer  "sheet_number"
+    t.string   "sheet_name"
+    t.integer  "start_from_line"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

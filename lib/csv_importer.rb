@@ -1,7 +1,6 @@
 class CsvImporter < AbstractImporter
 
   def import
-
     attachments = Attachment.all(:conditions => ['id = ?', @optional])
 
     attachments.each do |attachment|

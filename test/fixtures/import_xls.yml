@@ -1,9 +1,0 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-
-price_format_settings_for_japancars_1:
-  sheet_number: `
-  start_from_line: `
-
-price_format_settings_for_japancars_2:
-  sheet_number: `
-  start_from_line: `

@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  count: MyString
+  cost: MyString
+  title: MyString
+  catalog_number: MyString
+  manufacturer: MyString
+  weight: MyString
+
+two:
+  count: MyString
+  cost: MyString
+  title: MyString
+  catalog_number: MyString
+  manufacturer: MyString
+  weight: MyString

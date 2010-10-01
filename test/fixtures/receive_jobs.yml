@@ -1,35 +1,38 @@
+receive_job_for_autospar:
+  receiveable: ftp_settings_for_autospar (FtpReceive)
+
 receive_job_for_jeepshop:
-  receiveable: ftp_settings_for_jeepshop (ReceiveFtp)
+  receiveable: ftp_settings_for_jeepshop (FtpReceive)
 
 receive_job_for_japancars:
-  receiveable: ftp_settings_for_japancars (ReceiveFtp)
+  receiveable: ftp_settings_for_japancars (FtpReceive)
 
 receive_job_for_pelikanavto:
-  receiveable: ftp_settings_for_pelikanavto (ReceiveFtp)
+  receiveable: ftp_settings_for_pelikanavto (FtpReceive)
 
 receive_job_for_stalker:
-  receiveable: ftp_settings_for_stalker (ReceiveFtp)
+  receiveable: ftp_settings_for_stalker (FtpReceive)
 
 receive_job_for_febest:
-  receiveable: ftp_settings_for_febest (ReceiveFtp)
+  receiveable: ftp_settings_for_febest (FtpReceive)
 
 receive_job_for_webtest_avtorif_pop3:
-  receiveable: email_settings_for_webtest_avtorif_pop3 (ReceiveEmail)
+  receiveable: email_settings_for_webtest_avtorif_pop3 (EmailReceive)
 #
 receive_job_for_ruslan_kornev_gmail_pop3:
-  receiveable: email_settings_for_ruslan_kornev_gmail_pop3 (ReceiveEmail)
+  receiveable: email_settings_for_ruslan_kornev_gmail_pop3 (EmailReceive)
 
 receive_job_for_woto_mail_pop3:
-  receiveable: email_settings_for_woto_mail_pop3 (ReceiveEmail)
+  receiveable: email_settings_for_woto_mail_pop3 (EmailReceive)
 
 receive_job_for_woto77_yandex_pop3:
-  receiveable: email_settings_for_woto77_yandex_pop3 (ReceiveEmail)
+  receiveable: email_settings_for_woto77_yandex_pop3 (EmailReceive)
 
 receive_job_for_local_test:
-  receiveable: folder_settings_for_local_test (ReceiveFolder)    
+  receiveable: folder_settings_for_local_test (FolderReceive)
 #
 #receive_job_for_webtest_avtorif_imap:
-#  receiveable: email_settings_for_webtest_avtorif_imap (ReceiveEmail)
+#  receiveable: email_settings_for_webtest_avtorif_imap (EmailReceive)
 #
 #receive_job_for_woto77_yandex_imap:
-#  receiveable: email_settings_for_woto77_yandex_imap (ReceiveEmail)
+#  receiveable: email_settings_for_woto77_yandex_imap (EmailReceive)

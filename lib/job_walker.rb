@@ -23,12 +23,11 @@ class JobWalker
         job.repeats.each do |repeat|
           r = Rufus::CronLine.new(repeat.cron_string)
           nearest_next_time = r.next_time(Time.zone.now)
-          min = nearest_next_time if min.nil?
-          if nearest_next_time < min
+          if min.nil? or nearest_next_time < min
             min = nearest_next_time
           end
         end
-        job.next_start = nearest_next_time
+        job.next_start = min
         # Запускаем задачи, у которых время следующего запуска меньше текущего
         start_job(job)
 #          job.save
@@ -41,14 +40,15 @@ class JobWalker
       #puts job
       job.last_start = Time.zone.now
       job.locked = true
-      concrete_job = job.jobable
-      jobber_class = (job.jobable_type.split(/(.*?)Job/)[1] + "Jobber").classify.constantize
+      
+      jobber_class = (job.jobable.class.to_s.split(/(.*?)Job/)[1] + "Jobber").classify.constantize
+
       #jobber = jobber_class.new(concrete_job)
       #Delayed::Job.enqueue ReceiveJobber.new(ImportJob.first)
 
-      Delayed::Job.enqueue jobber_class.new(concrete_job, optional)
-      #jobber_class.new(concrete_job, optional).perform
-      
+      #Delayed::Job.enqueue jobber_class.new(concrete_job, optional)
+      jobber_class.new(job.jobable, optional).perform
+
       job.save
   end
 end

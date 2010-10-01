@@ -1,8 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :import_xls
-
-  map.resources :mies
-  map.resources :import_csvs
+  map.resources :mies  
   map.resources :receive_emails
   map.resources :receive_folders
   map.resources :receive_ftps

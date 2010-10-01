@@ -1,0 +1,39 @@
+ftp_settings_for_stalker:
+  server: ftp.avrs.ru
+  port: 21
+  path: /
+  login: rif
+  password: RiFftpPrice
+  
+ftp_settings_for_jeepshop:
+  server: avtorif.ru
+  port: 21
+  path: /
+  login: jeepshop
+  password: 9k1xJa29s
+
+ftp_settings_for_japancars:
+  server: avtorif.ru
+  port: 21  
+  path: /
+  login: lucid
+  password: Kl32r5x0
+
+ftp_settings_for_pelikanavto:
+  server: avtorif.ru
+  port: 21
+  path: /
+  login: pelikan
+  password: lcaz6Ksf8
+
+ftp_settings_for_febest:
+  server: avtorif.ru
+  port: 21
+  path: /
+  login: febest
+  password: 821xaTxV
+
+ftp_settings_for_autospar:
+  server: ftp.avtorif.ru
+  login: autospar
+  password: wx9sa23

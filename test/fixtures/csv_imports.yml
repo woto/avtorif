@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+:absolute_fake:
+  columns_terminator: MyString
+  columns_enclosures: MyString
+  columns_escape: MyString
+  start_from_line: 1
+  lines_terminator: MyString
+
+two:
+  columns_terminator: MyString
+  columns_enclosures: MyString
+  columns_escape: MyString
+  start_from_line: 1
+  lines_terminator: MyString

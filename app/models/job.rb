@@ -6,6 +6,7 @@ class Job < ActiveRecord::Base
     INTERVAL_BETWEEN_JOBS_FAIL = "<div style='background: red'>Помещение в очередь не осуществилось в установленный срок</div>"
     INTERVAL_WORKING_FAIL = "<div style='background: red'>Выполнение задачи не уложилось в установленный срок</div>"
     LOCKED = "Находится в очереди на выполнение или выполняется"
+    NOT_OBSERVED = "Не наблюдается"
     OK = "Ок"
   end
 
@@ -26,6 +27,10 @@ class Job < ActiveRecord::Base
   #belongs_to :parent_job, :readonly => true, :foreign_key => :job_id, :class_name => "Job"
 
   def critical
+    if (interval_between_jobs.blank? || interval_working.blank?)
+      return Status::NOT_OBSERVED
+    end
+
     # Если задача еще ниразу не сработала
     if !last_start
       return Status::START_FAIL

@@ -2,7 +2,7 @@ class ReceiveEmailsController < ApplicationController
   # GET /receive_emails
   # GET /receive_emails.xml
   def index
-    @receive_emails = ReceiveEmail.all
+    @receive_emails = EmailReceive.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +13,7 @@ class ReceiveEmailsController < ApplicationController
   # GET /receive_emails/1
   # GET /receive_emails/1.xml
   def show
-    @receive_email = ReceiveEmail.find(params[:id])
+    @receive_email = EmailReceive.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +24,7 @@ class ReceiveEmailsController < ApplicationController
   # GET /receive_emails/new
   # GET /receive_emails/new.xml
   def new
-    @receive_email = ReceiveEmail.new
+    @receive_email = EmailReceive.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,17 +34,17 @@ class ReceiveEmailsController < ApplicationController
 
   # GET /receive_emails/1/edit
   def edit
-    @receive_email = ReceiveEmail.find(params[:id])
+    @receive_email = EmailReceive.find(params[:id])
   end
 
   # POST /receive_emails
   # POST /receive_emails.xml
   def create
-    @receive_email = ReceiveEmail.new(params[:receive_email])
+    @receive_email = EmailReceive.new(params[:receive_email])
 
     respond_to do |format|
       if @receive_email.save
-        format.html { redirect_to(@receive_email, :notice => 'ReceiveEmail was successfully created.') }
+        format.html { redirect_to(@receive_email, :notice => 'EmailReceive was successfully created.') }
         format.xml  { render :xml => @receive_email, :status => :created, :location => @receive_email }
       else
         format.html { render :action => "new" }
@@ -56,11 +56,11 @@ class ReceiveEmailsController < ApplicationController
   # PUT /receive_emails/1
   # PUT /receive_emails/1.xml
   def update
-    @receive_email = ReceiveEmail.find(params[:id])
+    @receive_email = EmailReceive.find(params[:id])
 
     respond_to do |format|
       if @receive_email.update_attributes(params[:receive_email])
-        format.html { redirect_to(@receive_email, :notice => 'ReceiveEmail was successfully updated.') }
+        format.html { redirect_to(@receive_email, :notice => 'EmailReceive was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -72,7 +72,7 @@ class ReceiveEmailsController < ApplicationController
   # DELETE /receive_emails/1
   # DELETE /receive_emails/1.xml
   def destroy
-    @receive_email = ReceiveEmail.find(params[:id])
+    @receive_email = EmailReceive.find(params[:id])
     @receive_email.destroy
 
     respond_to do |format|

@@ -4,6 +4,7 @@ class CreatePrices < ActiveRecord::Migration
       t.references :job
       t.string :job_title
       t.references :goods
+      t.references :supplier
       t.string :supplier
       t.string :title
       t.decimal :count

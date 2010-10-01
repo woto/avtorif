@@ -176,7 +176,7 @@ job_for_stalker_3:
 ####################################################################################
 
 job_for_local_test_1:
-  title: Самый ранний тест скачивания из папки
+  title: job_for_local_test_1
   repeats: every_one_minute
   jobable: receive_job_for_local_test (ReceiveJob)
   supplier: local_test
@@ -184,3 +184,40 @@ job_for_local_test_1:
   interval_between_jobs: 80
   interval_working: 60
   active: true
+
+job_for_local_test_2:
+  title: job_for_local_test_2 
+  parent: job_for_local_test_1
+  supplier: local_test
+  jobable: import_job_for_local_test_1 (ImportJob)
+  active: true
+
+job_for_local_test_3:
+  title: job_for_local_test_3
+  parent: job_for_local_test_2
+  supplier: local_test
+  jobable: import_job_for_local_test_2 (ImportJob)
+  active: true
+
+####################################################################################
+
+job_for_autospar_1:
+  title: job_for_autospar_1
+  jobable: receive_job_for_autospar (ReceiveJob)
+  supplier: autospar
+  file_mask: Time.zone.now.strftime('%d%m%y') + ".*"
+
+job_for_autospar_2:
+  title: job_for_autospar_2
+  parent: job_for_autospar_1
+  jobable: import_job_for_autospar_1 (ImportJob)
+  supplier: autospar
+
+job_for_autospar_3:
+  title: job_for_autospar_3
+  parent: job_for_autospar_2  
+  jobable: import_job_for_autospar_2 (ImportJob)
+  supplier: autospar
+
+
+####################################################################################  
