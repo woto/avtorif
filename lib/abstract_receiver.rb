@@ -1,5 +1,7 @@
 class AbstractReceiver
-  def initialize(receiver, optional = nil)
+  def initialize(job, jobable, receiver, optional = nil)
+    @job = job
+    @jobable = jobable
     @receiver = receiver
     @optional = optional
   end

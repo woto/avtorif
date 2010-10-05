@@ -1,6 +1,6 @@
-class ReceiveFtpsController < ApplicationController
-  # GET /receive_ftps
-  # GET /receive_ftps.xml
+class FtpReceivesController < ApplicationController
+  # GET /ftp_receives
+  # GET /ftp_receives.xml
   def index
     @receive_ftps = FtpReceive.all
 
@@ -10,8 +10,8 @@ class ReceiveFtpsController < ApplicationController
     end
   end
 
-  # GET /receive_ftps/1
-  # GET /receive_ftps/1.xml
+  # GET /ftp_receives/1
+  # GET /ftp_receives/1.xml
   def show
     @receive_ftp = FtpReceive.find(params[:id])
 
@@ -21,8 +21,8 @@ class ReceiveFtpsController < ApplicationController
     end
   end
 
-  # GET /receive_ftps/new
-  # GET /receive_ftps/new.xml
+  # GET /ftp_receives/new
+  # GET /ftp_receives/new.xml
   def new
     @receive_ftp = FtpReceive.new
 
@@ -32,13 +32,13 @@ class ReceiveFtpsController < ApplicationController
     end
   end
 
-  # GET /receive_ftps/1/edit
+  # GET /ftp_receives/1/edit
   def edit
     @receive_ftp = FtpReceive.find(params[:id])
   end
 
-  # POST /receive_ftps
-  # POST /receive_ftps.xml
+  # POST /ftp_receives
+  # POST /ftp_receives.xml
   def create
     @receive_ftp = FtpReceive.new(params[:receive_ftp])
 
@@ -53,8 +53,8 @@ class ReceiveFtpsController < ApplicationController
     end
   end
 
-  # PUT /receive_ftps/1
-  # PUT /receive_ftps/1.xml
+  # PUT /ftp_receives/1
+  # PUT /ftp_receives/1.xml
   def update
     @receive_ftp = FtpReceive.find(params[:id])
 
@@ -69,8 +69,8 @@ class ReceiveFtpsController < ApplicationController
     end
   end
 
-  # DELETE /receive_ftps/1
-  # DELETE /receive_ftps/1.xml
+  # DELETE /ftp_receives/1
+  # DELETE /ftp_receives/1.xml
   def destroy
     @receive_ftp = FtpReceive.find(params[:id])
     @receive_ftp.destroy

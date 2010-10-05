@@ -8,7 +8,6 @@
 
 <% @import_jobs.each do |import_job| %>
   <tr>
-    <td><%=h import_job.price %></td>
     <td><%=h import_job.importable %></td>
     <td><%= link_to 'Show', import_job %></td>
     <td><%= link_to 'Edit', edit_import_job_path(import_job) %></td>

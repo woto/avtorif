@@ -1,6 +1,13 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-:absolute_fake:
+price_format_settings_for_shoori_1:
+  columns_terminator: \t
+  columns_enclosures: "\""
+  columns_escape: "\""
+  start_from_line: 2
+  lines_terminator: \n
+
+absolute_fake:
   columns_terminator: MyString
   columns_enclosures: MyString
   columns_escape: MyString

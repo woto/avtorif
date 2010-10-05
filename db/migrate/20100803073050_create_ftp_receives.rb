@@ -1,7 +1,7 @@
 class CreateFtpReceives < ActiveRecord::Migration
   def self.up
     create_table :ftp_receives do |t|
-      t.string :server
+      t.string :server, :default => 'avtorif.ru'
       t.string :port, :default => 21
       t.string :path, :default => '/'
       t.string :login

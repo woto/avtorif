@@ -9,6 +9,8 @@
     <td><%=h job.title %></td>
     <td><%=h job.repeats.map{ |repeat| repeat.title + ", "} %></td>
     <td><%=h job.parent.try(:title) %></td>
+    <td><%= if job.jobable then link_to("Конкретная задача", polymorphic_url(job.jobable)) end %></td>
+    <td><%=h job.file_mask %></td>
     <td>
     <%
        begin

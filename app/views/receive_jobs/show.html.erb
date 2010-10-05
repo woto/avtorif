@@ -1,12 +1,8 @@
-<p>
-  <b>Price:</b>
-  <%=h @receive_job.price %>
-</p>
+<% @receive_job.receiveable.attributes.each do |attr, val| %>
+    <p><%= attr.humanize %>: <%= val %></p>
+<% end %>
 
-<p>
-  <b>Receiveable:</b>
-  <%=h @receive_job.receiveable %>
-</p>
+<%= link_to "Перейти к настройкам", polymorphic_url(@receive_job.receiveable) %>
 
 
 <%= link_to 'Edit', edit_receive_job_path(@receive_job) %> |

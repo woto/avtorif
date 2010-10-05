@@ -6,7 +6,7 @@ module ApplicationHelper
     cont = Array.[]
       controllers.each do |controller|
       if controller =~ /_controller/ && !(controller =~ /application/)
-        cont << link_to(controller.camelize.gsub("Controller.rb",""), :controller => controller.camelize.gsub("Controller.rb","").tableize) + " " 
+        cont << link_to(controller.camelize.gsub("Controller.rb",""), {:controller => controller.camelize.gsub("Controller.rb","").tableize}) + " " 
       end
     end
     return cont

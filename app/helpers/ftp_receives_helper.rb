@@ -1,0 +1,2 @@
+module FtpReceivesHelper
+end

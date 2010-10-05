@@ -1,0 +1,9 @@
+<p>
+  <b>Server:</b>
+  <% link = "ftp://#{@receive_ftp.login}:#{@receive_ftp.password}@#{@receive_ftp.server}#{@receive_ftp.path}" %>
+  <%= link_to link, link %>
+</p>
+
+
+<%= link_to 'Edit', edit_ftp_receive_path(@receive_ftp) %> |
+<%= link_to 'Back', ftp_receive_path %>

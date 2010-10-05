@@ -65,7 +65,7 @@ class PricesController < ApplicationController
             value = CGI.unescapeHTML(c.children.to_s)
 
             p[(c.name.underscore + "-emex").to_sym] = value
-            
+            p[:supplier] = "emex"
 
             case c.name
               when /^DateChange$/

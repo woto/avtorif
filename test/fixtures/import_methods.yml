@@ -18,11 +18,12 @@ clear_by_job:
 
 update_ignore_new:
   title: update_ignore_new
-  description: Обновить имеющиеся, новые проигнорировать
+  description: Обновить имеющиеся в файле, новые проигнорировать
 
 update_insert_new:
   title: update_insert_new
   description: Обновить имеющиеся в файле, новые вставить
+  
 
 # %w[clear, clear_insert, update_ignore_new, update_insert_new]
 

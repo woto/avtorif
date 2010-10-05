@@ -1,3 +1,15 @@
+receive_job_for_shoori:
+  receiveable: ftp_settings_for_shoori (FtpReceive)
+
+receive_job_for_radiator:
+  receiveable: ftp_settings_for_radiator (FtpReceive)
+  	
+receive_job_for_pelikanavto:
+  receiveable: ftp_settings_for_pelikanavto (FtpReceive)
+  
+receive_job_for_major:
+  receiveable: smb_settings_for_major (SmbReceive)
+
 receive_job_for_autospar:
   receiveable: ftp_settings_for_autospar (FtpReceive)
 
@@ -7,9 +19,6 @@ receive_job_for_jeepshop:
 receive_job_for_japancars:
   receiveable: ftp_settings_for_japancars (FtpReceive)
 
-receive_job_for_pelikanavto:
-  receiveable: ftp_settings_for_pelikanavto (FtpReceive)
-
 receive_job_for_stalker:
   receiveable: ftp_settings_for_stalker (FtpReceive)
 
@@ -18,7 +27,7 @@ receive_job_for_febest:
 
 receive_job_for_webtest_avtorif_pop3:
   receiveable: email_settings_for_webtest_avtorif_pop3 (EmailReceive)
-#
+
 receive_job_for_ruslan_kornev_gmail_pop3:
   receiveable: email_settings_for_ruslan_kornev_gmail_pop3 (EmailReceive)
 

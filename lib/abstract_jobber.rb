@@ -2,19 +2,28 @@
 #logger.level = Logger::ERROR
 
 class AbstractJobber
-  def initialize(jobber, optional = nil)
-    @jobber = jobber
+
+  attr_writer :optional
+  
+  def initialize(job, jobable, optional = nil)
+    @job = job
+    @jobable = jobable
     @optional = optional
   end
 
   def perform
-    job = @jobber.job
-    job.last_finish = Time.zone.now
-    job.locked = false
-    job.save
+    #job = @jobable.job
+    #job.last_finish = Time.zone.now
+    @job.last_finish = Time.zone.now
+    #job.locked = false
+    @job.locked = false
+    #job.save
+    @job.save
 
-    @jobber.job.childs.each do |child|
-      JobWalker.new.start_job(child)
+    @job.childs.each do |job|
+      @optional.each do |opt|
+        JobWalker.new.start_job(job, opt)
+      end
     end
     
   end

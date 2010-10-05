@@ -1,5 +1,7 @@
 class AbstractImporter
-  def initialize(importer, optional = nil)
+  def initialize(job, jobable, importer, optional = nil)
+    @job = job
+    @jobable = jobable
     @importer = importer
     @optional = optional
   end

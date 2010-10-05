@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101001160316) do
+ActiveRecord::Schema.define(:version => 20101004105812) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
@@ -102,14 +102,12 @@ ActiveRecord::Schema.define(:version => 20101001160316) do
 
   create_table "folder_receives", :force => true do |t|
     t.string   "path"
-    t.string   "login"
-    t.string   "password"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "ftp_receives", :force => true do |t|
-    t.string   "server"
+    t.string   "server",     :default => "avtorif.ru"
     t.string   "port",       :default => "21"
     t.string   "path",       :default => "/"
     t.string   "login"
@@ -215,6 +213,16 @@ ActiveRecord::Schema.define(:version => 20101001160316) do
   create_table "repeats", :force => true do |t|
     t.string   "cron_string"
     t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "smb_receives", :force => true do |t|
+    t.string   "server"
+    t.string   "path"
+    t.string   "login"
+    t.string   "password"
+    t.string   "workgroup"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

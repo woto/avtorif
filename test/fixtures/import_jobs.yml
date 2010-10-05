@@ -1,3 +1,6 @@
+import_job_for_shoori_1:
+  importable: price_format_settings_for_shoori_1 (CsvImport)
+
 import_from_japancars_1:
   importable: price_format_settings_for_japancars_1 (XlsImport)
 
@@ -52,7 +55,16 @@ import_job_for_local_test_2:
 
 import_job_for_autospar_1:
   import_method: clear_by_supplier
-  importable: absolute_fake (CsvImport)
 
 import_job_for_autospar_2:
-  import_method: simple_insert  
+  import_method: simple_insert
+
+########################################################################
+
+import_job_for_major_1:
+  import_method: clear_by_supplier
+
+import_job_for_major_2:
+  importable: absolute_fake (CsvImport)
+
+########################################################################

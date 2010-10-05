@@ -1,3 +1,3 @@
 class FolderReceive < ActiveRecord::Base
-  has_one :receive_job, :as => :receiveable
+  has_many :receive_job, :as => :receiveable
 end

@@ -1,14 +1,10 @@
 <h1>Listing receive_jobs</h1>
 
 <table>
-  <tr>
-    <th>Price</th>
-    <th>Receiveable</th>
-  </tr>
 
 <% @receive_jobs.each do |receive_job| %>
   <tr>
-    <td><%=h receive_job.price %></td>
+    <td><%=h receive_job.job.try(:title) %></td>
     <td><%=h receive_job.receiveable %></td>
     <td><%= link_to 'Show', receive_job %></td>
     <td><%= link_to 'Edit', edit_receive_job_path(receive_job) %></td>

@@ -2,16 +2,20 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :mies  
   map.resources :receive_emails
   map.resources :receive_folders
-  map.resources :receive_ftps
+  map.resources :ftp_receives
 
-  map.resources :jobs, :member => {:start => :get}
   map.resources :repeats
   map.resources :repeats_jobs
 
   map.resources :import_jobs
   map.resources :receive_jobs
 
-  map.resources :suppliers
+  map.resources :suppliers do |sup|
+    sup.resources :jobs
+  end
+
+  map.resources :jobs, :member => {:start => :get}
+
   map.resources :analogues
   map.resources :goods
   map.resources :manufacturers

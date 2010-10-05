@@ -18,12 +18,13 @@ class JobWalker
     #logger.error jobs.collect{|job| job.title}
 
     jobs.each do |job|
-      if job.parent.blank? && (job.next_start.nil? || job.next_start < Time.zone.now) && !job.locked
+      if job.parent.blank? && (job.next_start.nil? || job.next_start < Time.zone.now) && !job.repeats.blank? && !job.locked
         nearest_next_time = nil
+        min = nil
         job.repeats.each do |repeat|
           r = Rufus::CronLine.new(repeat.cron_string)
           nearest_next_time = r.next_time(Time.zone.now)
-          if min.nil? or nearest_next_time < min
+          if min.blank? or nearest_next_time < min
             min = nearest_next_time
           end
         end
@@ -41,13 +42,13 @@ class JobWalker
       job.last_start = Time.zone.now
       job.locked = true
       
-      jobber_class = (job.jobable.class.to_s.split(/(.*?)Job/)[1] + "Jobber").classify.constantize
+      jobber_class = (job.jobable.class.to_s.split(/(.*?)Job/)[1] + "Jobable").classify.constantize
 
       #jobber = jobber_class.new(concrete_job)
       #Delayed::Job.enqueue ReceiveJobber.new(ImportJob.first)
 
-      #Delayed::Job.enqueue jobber_class.new(concrete_job, optional)
-      jobber_class.new(job.jobable, optional).perform
+      Delayed::Job.enqueue jobber_class.new(job, job.jobable, optional)
+      #jobber_class.new(job, job.jobable, optional).perform
 
       job.save
   end

@@ -11,33 +11,40 @@ class FtpReceiver < AbstractReceiver
       ftp.login(@receiver.login, @receiver.password)
       ftp.chdir(@receiver.path)
 
-      files = ftp.list
-      files = files.select { |file| file =~ Regexp.new(@receiver.receive_job.job.file_mask) }
+      files = ftp.nlst
+      #TODO сделать каким-то образом проверку на eval
+      files = files.select { |file| file =~ Regexp.new(eval(@job.file_mask)) }
+#ftp://radiator:vc0hOPfv9@avtorif.ru
+      retval = Array.new()
+
       files.each do |file|
-        file = file.split(/\s/)[-1]
+        #file = file.split(/\s/)[-1]
         remote_file = RemoteFile.new(file)
         ftp.getbinaryfile(file, remote_file.path)
         remote_file.flush        
         md5 = Digest::MD5.file(remote_file.path).hexdigest
 
 
-        if Attachment.find(:first, :conditions => ['md5 = ? AND supplier_id = ?',  md5, @receiver.receive_job.job.supplier.id]).nil?
+        if Attachment.find(:first, :conditions => ['md5 = ? AND supplier_id = ?',  md5, @job.supplier.id]).nil?
           attachment = Attachment.new(:attachment => remote_file, :md5 => md5)
-          attachment.supplier = @receiver.receive_job.job.supplier
+          attachment.supplier = @job.supplier
           attachment.save
 
-          @receiver.receive_job.job.childs.each do |child|
-            JobWalker.new.start_job(child, attachment.id)
-          end
+          retval << attachment.id
+
+          #@receiver.receive_job.job.childs.each do |child|
+          #  JobWalker.new.start_job(child, attachment.id)
+          #end
 
         end
 
         remote_file.unlink
 
       end
-
     ftp.close
 
+    return retval
+      
   end
 
 

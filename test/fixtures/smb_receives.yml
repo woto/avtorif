@@ -1,0 +1,12 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+smb_settings_for_major:
+  #server: rif2010
+  #path: /mag_alt/DATA/MAJOR
+  #login:
+  #password:
+  server: netgear
+  path: /common/Архаров_Вит/
+  login: office
+  password: 2
+  workgroup:

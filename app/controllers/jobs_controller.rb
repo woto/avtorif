@@ -2,7 +2,11 @@ class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.xml
   def index
-    @jobs = Job.paginate :page => params[:page], :order => 'created_at DESC'
+    scope = Job
+    scope = scope.scoped :conditions => {:supplier_id => params['supplier_id']} if params['supplier_id']
+    @jobs = scope.paginate :include => :supplier,
+                         :page => params[:page],
+                         :order => 'created_at DESC'
 
     respond_to do |format|
       format.html # index.html.erb

@@ -1,15 +1,21 @@
+shoori:
+  title: ШООРИ
+  
+radiator:
+  title: Радиатор-Сервис
+  
+pelikanavto:
+  title: ПЕЛИКАН-АВТО
+  
 autospar:
-  title: autospar
+  title: AUTOSPAR
   
 japancars:
   title: джапанн карс
   inn: 123456789123
   kpp: 123456789
   login: pelikanavto
-  password: 123  
-
-pelikanavto:
-  title: ПЕЛИКАН-АВТО
+  password: 123
 
 stalker:
   title: Сталкер
