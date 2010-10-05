@@ -4,17 +4,13 @@ clear_by_supplier:
   title: clear_by_supplier
   description: Очистить все от поставщика
 
-simple_insert:
-  title: simple_insert
-  description: Просто вставка (напр. новый поставщик)
-
-clear:
-  title: clear
-  description: Очистить
-
 clear_by_job:
   title: clear_by_job
   description: Очистить в зависимости от типа поставки
+
+simple_insert:
+  title: simple_insert
+  description: Просто вставка (напр. новый поставщик)
 
 update_ignore_new:
   title: update_ignore_new
