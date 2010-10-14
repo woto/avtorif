@@ -1,0 +1,32 @@
+<h1>Listing smb_receives</h1>
+
+<table>
+  <tr>
+    <th>Server</th>
+    <th>Port</th>
+    <th>Share</th>
+    <th>Path</th>
+    <th>Login</th>
+    <th>Password</th>
+    <th>Workgroup</th>
+  </tr>
+
+<% @smb_receives.each do |smb_receive| %>
+  <tr>
+    <td><%=h smb_receive.server %></td>
+    <td><%=h smb_receive.port %></td>
+    <td><%=h smb_receive.share %></td>
+    <td><%=h smb_receive.path %></td>
+    <td><%=h smb_receive.login %></td>
+    <td><%=h smb_receive.password %></td>
+    <td><%=h smb_receive.workgroup %></td>
+    <td><%= link_to 'Show', smb_receive %></td>
+    <td><%= link_to 'Edit', edit_smb_receive_path(smb_receive) %></td>
+    <td><%= link_to 'Destroy', smb_receive, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New smb_receive', new_smb_receive_path %>

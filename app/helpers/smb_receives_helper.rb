@@ -1,0 +1,2 @@
+module SmbReceivesHelper
+end

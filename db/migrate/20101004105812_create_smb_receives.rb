@@ -2,9 +2,11 @@ class CreateSmbReceives < ActiveRecord::Migration
   def self.up
     create_table :smb_receives do |t|
       t.string :server
-      t.string :path
-      t.string :login
-      t.string :password
+      t.string :share
+      t.integer :port, :default => 445
+      t.string :path, :default => "/"
+      t.string :login, :default => "Гость"
+      t.string :password, :default => "Гость"
       t.string :workgroup
       
       t.timestamps

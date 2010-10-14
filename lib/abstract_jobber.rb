@@ -20,6 +20,7 @@ class AbstractJobber
     #job.save
     @job.save
 
+    #TODO Тут сделать вызов либо at_once, либо one_by_one 
     @job.childs.each do |job|
       @optional.each do |opt|
         JobWalker.new.start_job(job, opt)

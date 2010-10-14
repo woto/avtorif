@@ -56,8 +56,9 @@ class MiesController < ApplicationController
     #rj = ReceiveJobber.new(ReceiveJob.find(637130520))
     #rj.perform
 
-    JobWalker.new.call
-    
+    #JobWalker.new.call
+    JobWalker.new.start_job(Job.find(548612071))
+
     @mies = My.all
 
     respond_to do |format|

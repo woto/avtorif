@@ -1,3 +1,11 @@
+receive_job_for_ankar:
+  login: ankar
+  password: kqvpimf
+  
+ftp_settings_for_febest:
+  login: febest
+  password: 821xaTxV
+  
 ftp_settings_for_shoori:
   login: nipp
   password: TeRdb8HXh
@@ -9,10 +17,6 @@ ftp_settings_for_radiator:
 ftp_settings_for_pelikanavto:
   login: pelikan
   password: lcaz6Ksf8
-  
-ftp_settings_for_febest:
-  login: febest
-  password: 821xaTxV
 
 ftp_settings_for_autospar:
   login: autospar
@@ -32,3 +36,7 @@ ftp_settings_for_stalker:
 ftp_settings_for_jeepshop:
   login: jeepshop
   password: 9k1xJa29s
+
+ftp_settings_for_avtoteka:
+  login: avtoteka
+  password: avtoteka

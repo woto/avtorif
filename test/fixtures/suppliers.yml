@@ -1,3 +1,21 @@
+arharov:
+  title: Архаров
+  
+ankar:
+  title: Анкар
+
+avtoteka:
+  title: Автотека
+  
+jeepshop:
+  title: ДЖИПШОП
+  
+febest:
+  title: Фебест
+  
+major:
+  title: Major
+  
 shoori:
   title: ШООРИ
   
@@ -21,14 +39,6 @@ stalker:
   title: Сталкер
   inn: 7705826039
   kpp: 770501001
-
-jeepshop:
-  title: ДЖИПШОП
-  inn: 7743739651
-  kpp: 774301001 
-
-febest:
-  title: FEBEST
 
 woto_mail:
   title: woto_mail

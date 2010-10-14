@@ -1,3 +1,12 @@
+receive_job_for_arharov:
+  receiveable: smb_settings_for_arharov (SmbReceive)
+
+receive_job_for_ankar:
+  receiveable: receive_job_for_ankar (FtpReceive)
+  
+receive_job_for_avtoteka:
+  receiveable: ftp_settings_for_avtoteka (FtpReceive)
+
 receive_job_for_shoori:
   receiveable: ftp_settings_for_shoori (FtpReceive)
 

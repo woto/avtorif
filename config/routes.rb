@@ -1,8 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :smb_receives
   map.resources :mies  
   map.resources :receive_emails
   map.resources :receive_folders
   map.resources :ftp_receives
+  map.resources :smb_receives
 
   map.resources :repeats
   map.resources :repeats_jobs

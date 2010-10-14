@@ -1,3 +1,24 @@
+job_for_ankar_1:
+  title: $LABEL
+  repeats: every_hour
+  jobable: receive_job_for_ankar (ReceiveJob)
+  supplier: ankar
+  file_mask: "\"stoc_ankar_quantity.csv\""
+  interval_between_jobs: 108000
+  interval_working: 60
+
+####################################################################################
+
+job_for_avtoteka_1:
+  title: $LABEL
+  repeats: every_hour
+  jobable: receive_job_for_avtoteka (ReceiveJob)
+  supplier: avtoteka
+  interval_between_jobs: 108000
+  interval_working: 60
+
+####################################################################################
+
 job_for_shoori_1:
   title: Прием двух файлов от ШООРИ
   repeats: every_hour
@@ -102,54 +123,63 @@ job_for_japancars_3:
 
 ####################################################################################
 
-#job_1_for_febest:
-#  title: job_1_for_febest
-#  jobable: receive_job_for_febest (ReceiveJob)
-#  supplier: febest
-#  file_mask: febestrif.txt
-#  interval_working: 60
+job_for_febest_1:
+  title: job_for_febest_1
+  jobable: receive_job_for_febest (ReceiveJob)
+  supplier: febest
+  file_mask: "\"febestrif.txt\""
+  repeats: every_hour
+  interval_working: 60
+  interval_between_jobs: 7200
 
-#job_2_for_febest:
-#  parent: job_1_for_febest
-#  title: job_2_for_febest
-#  jobable: import_job_for_febest (ImportJob)
-#  supplier: febest
-#  file_mask: febestrif.txt
-#  interval_working: 60
+job_for_febest_2:
+  title: job_for_febest_2
+  parent: job_for_febest_1
+  jobable: import_job_for_febest (ImportJob)
+  supplier: febest
+  file_mask: "\"febestrif.txt\""
+  repeats: every_hour
+  interval_working: 60
+  interval_between_jobs: 108000
 
-######################################################
+####################################################################################
 
 job_for_jeepshop_1:
   title: job_for_jeepshop_1
   jobable: receive_job_for_jeepshop (ReceiveJob)
   supplier: jeepshop
-  file_mask: AVTORIF.txt
+  file_mask: "\"AVTORIF.txt\""
+  interval_between_jobs: 7200
   interval_working: 60
+  repeats: every_hour
 
 job_for_jeepshop_2:
   parent: job_for_jeepshop_1
   title: job_for_jeepshop_2
   jobable: import_job_for_jeepshop_1 (ImportJob)
   supplier: jeepshop
-  file_mask: AVTORIF.txt
+  file_mask: "\"AVTORIF.txt\""
+  interval_between_jobs: 108000
   interval_working: 1200
+  repeats: every_hour
 
 job_for_jeepshop_3:
   parent: job_for_jeepshop_1
   title: job_for_jeepshop_3
   jobable: import_job_for_jeepshop_2 (ImportJob)
   supplier: jeepshop
-  file_mask: AVTORIF.txt
+  file_mask: "\"AVTORIF.txt\""
+  interval_between_jobs: 108000
   interval_working: 1200
+  repeats: every_hour
 
-################################################################################
+####################################################################################
 
 
 #job_1_for_ruslan_kornev_gmail:
 #  title: Прием с почты от Корнева Руслана
 #  jobable: receive_job_for_ruslan_kornev_gmail_pop3 (ReceiveJob)
 #  supplier: ruslan_kornev_gmail
-#  file_mask: .*
 #  interval_working: 60
 
 #import_job_for_kornevruslan:
@@ -172,7 +202,6 @@ job_for_webtest_avtorif:
   title: job_for_webtest_avtorif
   jobable: receive_job_for_webtest_avtorif_pop3 (ReceiveJob)
   supplier: webtest_avtorif
-  file_mask: .*
   interval_working: 60
 
 ################################################################################
@@ -181,14 +210,12 @@ job_1_for_woto_mail:
   title: Прием от Мэйл.ру
   jobable: receive_job_for_woto_mail_pop3 (ReceiveJob)
   supplier: woto_mail
-  file_mask: .*
   interval_working: 60
 
 job_1_for_woto77_yandex:
   title: Прием от Яндекс
   jobable: receive_job_for_woto77_yandex_pop3 (ReceiveJob)
   supplier: woto77_yandex
-  file_mask: .*
   interval_working: 60
 
 ####################################################################################
@@ -266,13 +293,37 @@ job_for_autospar_3:
 ####################################################################################
 
 job_for_major_1:
-  title: job_for_major_1
+  title: $LABEL
   jobable: receive_job_for_major (ReceiveJob)
+  repeats: every_hour
   supplier: major
+  interval_between_jobs: 108000
+  interval_working: 60
 
 job_for_major_2:
-  title: job_for_major_2
+  title: $LABEL
+  parent: job_for_major_1
   jobable: import_job_for_major_1 (ImportJob)
   supplier: major
-  
-  #import_job_for_major_1
+
+job_for_major_3:
+  title: $LABEL
+  parent: job_for_major_2
+  jobable: import_job_for_major_2 (ImportJob)
+  supplier: major
+  file_mask: "\"Mazda.*\""  
+
+job_for_major_4:
+  title: $LABEL
+  parent: job_for_major_2
+  jobable: import_job_for_major_2 (ImportJob)
+  supplier: major
+  file_mask: "\"parts_major.*\""
+
+####################################################################################
+
+job_for_arharov:
+  repeats: every_hour
+  title: $LABEL
+  jobable: receive_job_for_arharov (ReceiveJob)
+  supplier: arharov

@@ -8,7 +8,6 @@ class CreateAttachments < ActiveRecord::Migration
       t.string :md5, :limit => 50
       t.belongs_to :supplier
       t.string :email_id
-
       t.timestamps
 
     end

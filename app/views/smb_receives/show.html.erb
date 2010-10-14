@@ -1,0 +1,38 @@
+<p>
+  <b>Server:</b>
+  <%=h @smb_receive.server %>
+</p>
+
+<p>
+  <b>Port:</b>
+  <%=h @smb_receive.port %>
+</p>
+
+<p>
+  <b>Share:</b>
+  <%=h @smb_receive.share %>
+</p>
+
+<p>
+  <b>Path:</b>
+  <%=h @smb_receive.path %>
+</p>
+
+<p>
+  <b>Login:</b>
+  <%=h @smb_receive.login %>
+</p>
+
+<p>
+  <b>Password:</b>
+  <%=h @smb_receive.password %>
+</p>
+
+<p>
+  <b>Workgroup:</b>
+  <%=h @smb_receive.workgroup %>
+</p>
+
+
+<%= link_to 'Edit', edit_smb_receive_path(@smb_receive) %> |
+<%= link_to 'Back', smb_receives_path %>

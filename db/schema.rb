@@ -152,7 +152,7 @@ ActiveRecord::Schema.define(:version => 20101004105812) do
     t.integer  "jobable_id"
     t.string   "jobable_type"
     t.integer  "supplier_id"
-    t.string   "file_mask",             :default => ".*"
+    t.string   "file_mask",             :default => "\".*\""
     t.boolean  "locked",                :default => false
     t.boolean  "active",                :default => true
     t.datetime "created_at"
@@ -219,9 +219,11 @@ ActiveRecord::Schema.define(:version => 20101004105812) do
 
   create_table "smb_receives", :force => true do |t|
     t.string   "server"
-    t.string   "path"
-    t.string   "login"
-    t.string   "password"
+    t.string   "share"
+    t.integer  "port",       :default => 445
+    t.string   "path",       :default => "/"
+    t.string   "login",      :default => "Гост\321\214"
+    t.string   "password",   :default => "Гост\321\214"
     t.string   "workgroup"
     t.datetime "created_at"
     t.datetime "updated_at"

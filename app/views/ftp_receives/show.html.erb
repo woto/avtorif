@@ -1,6 +1,6 @@
 <p>
   <b>Server:</b>
-  <% link = "ftp://#{@receive_ftp.login}:#{@receive_ftp.password}@#{@receive_ftp.server}#{@receive_ftp.path}" %>
+  <% link = "ftp://#{@receive_ftp.login}:#{@receive_ftp.password}@#{@receive_ftp.server}:#{@receive_ftp.port}#{@receive_ftp.path}" %>
   <%= link_to link, link %>
 </p>
 
