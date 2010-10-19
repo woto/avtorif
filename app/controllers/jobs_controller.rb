@@ -29,6 +29,7 @@ class JobsController < ApplicationController
   # GET /jobs/new.xml
   def new
     @job = Job.new
+    @job.supplier_id = params[:supplier_id]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -77,10 +78,11 @@ class JobsController < ApplicationController
   # DELETE /jobs/1.xml
   def destroy
     @job = Job.find(params[:id])
+    supplier = @job.supplier
     @job.destroy
 
     respond_to do |format|
-      format.html { redirect_to(jobs_url) }
+      format.html { redirect_to(supplier_jobs_url(supplier)) }
       format.xml  { head :ok }
     end
   end

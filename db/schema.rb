@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101004105812) do
+ActiveRecord::Schema.define(:version => 20101014133636) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
@@ -27,6 +27,23 @@ ActiveRecord::Schema.define(:version => 20101004105812) do
     t.string   "md5",                     :limit => 50
     t.integer  "supplier_id"
     t.string   "email_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "auto_options", :force => true do |t|
+    t.integer  "auto_id"
+    t.integer  "period_id"
+    t.integer  "transmission_id"
+    t.integer  "gear_id"
+    t.integer  "fuel_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "autos", :force => true do |t|
+    t.integer  "manufacturer_id"
+    t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -116,11 +133,30 @@ ActiveRecord::Schema.define(:version => 20101004105812) do
     t.datetime "updated_at"
   end
 
+  create_table "fuels", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "gears", :force => true do |t|
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "goods", :force => true do |t|
     t.string   "catalog_number"
     t.integer  "manufacturer_id"
     t.boolean  "original"
     t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "goods_auto_options", :force => true do |t|
+    t.integer  "goods_id"
+    t.integer  "auto_option_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -179,6 +215,13 @@ ActiveRecord::Schema.define(:version => 20101004105812) do
   end
 
   create_table "mies", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "periods", :force => true do |t|
+    t.integer  "thousand_kilometers"
+    t.integer  "months"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -242,6 +285,12 @@ ActiveRecord::Schema.define(:version => 20101004105812) do
 
   create_table "test_receives", :force => true do |t|
     t.string   "field"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "transmissions", :force => true do |t|
+    t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

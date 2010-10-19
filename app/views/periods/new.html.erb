@@ -1,0 +1,19 @@
+<h1>New period</h1>
+
+<% form_for(@period) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :thousand_kilometers %><br />
+    <%= f.text_field :thousand_kilometers %>
+  </p>
+  <p>
+    <%= f.label :months %><br />
+    <%= f.text_field :months %>
+  </p>
+  <p>
+    <%= f.submit 'Create' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', periods_path %>

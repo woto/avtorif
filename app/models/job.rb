@@ -20,7 +20,7 @@ class Job < ActiveRecord::Base
   #has_one :import, :as => :importable
 
   belongs_to :supplier
-  belongs_to :jobable, :polymorphic => true
+  belongs_to :jobable, :polymorphic => true, :dependent => :destroy
   has_many :childs, :class_name => "Job", :foreign_key => "job_id"
   belongs_to :parent, :class_name => "Job", :foreign_key => "job_id"
   #has_one :child_job, :foreign_key => :job_id, :class_name => "Job"

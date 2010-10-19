@@ -1,0 +1,20 @@
+<h1>Editing auto</h1>
+
+<% form_for(@auto) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :manufacturer %><br />
+    <%= f.text_field :manufacturer %>
+  </p>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @auto %> |
+<%= link_to 'Back', autos_path %>

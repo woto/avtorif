@@ -16,10 +16,11 @@
     <%= f.text_field :title %>
   </p>
   <p>
-    <%= f.input :repeats %>
-  </p>
+    <%= f.label :supplier %><br />
+    <%= f.inputs :supplier %>
+  </p>    
   <p>
-    <%= f.input :child %>
+    <%= f.input :repeats %>
   </p>
   <p>
     <%= f.submit 'Update' %>
@@ -27,4 +28,4 @@
 <% end %>
 
 <%= link_to 'Show', @job %> |
-<%= link_to 'Back', jobs_path %>
+<%= link_to 'Back', supplier_jobs_path %>

@@ -1,0 +1,28 @@
+<h1>Listing auto_options</h1>
+
+<table>
+  <tr>
+    <th>Auto</th>
+    <th>Period</th>
+    <th>Transmission</th>
+    <th>Gear</th>
+    <th>Fuel</th>
+  </tr>
+
+<% @auto_options.each do |auto_option| %>
+  <tr>
+    <td><%=h auto_option.auto %></td>
+    <td><%=h auto_option.period %></td>
+    <td><%=h auto_option.transmission %></td>
+    <td><%=h auto_option.gear %></td>
+    <td><%=h auto_option.fuel %></td>
+    <td><%= link_to 'Show', auto_option %></td>
+    <td><%= link_to 'Edit', edit_auto_option_path(auto_option) %></td>
+    <td><%= link_to 'Destroy', auto_option, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New auto_option', new_auto_option_path %>

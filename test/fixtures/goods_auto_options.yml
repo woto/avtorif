@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  goods: 
+  auto_option: 
+
+two:
+  goods: 
+  auto_option: 

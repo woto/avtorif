@@ -59,8 +59,8 @@ end
 # sun of the bitch
 ActiveSupport::Inflector.inflections do |inflection| 
   inflection.irregular "receive", "receives"
-  #inflection.irregular "folder_receive", "folder_receives"
-  #inflection.irregular "folder_receives", "folder_receive"
+  #inflection.irregular "folder_receives", "folder_receives"
+  #inflection.irregular "folder_receives", "folder_receives"
 end
 
 ExceptionNotification::Notifier.exception_recipients = %w(webmaster@avtorif.ru)

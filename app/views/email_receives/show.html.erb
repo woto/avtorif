@@ -1,0 +1,32 @@
+<p>
+  <b>Server:</b>
+  <%=h @receive_email.server %>
+</p>
+
+<p>
+  <b>Port:</b>
+  <%=h @receive_email.port %>
+</p>
+
+<p>
+  <b>Ssl:</b>
+  <%=h @receive_email.ssl %>
+</p>
+
+<p>
+  <b>Login:</b>
+  <%=h @receive_email.login %>
+</p>
+
+<p>
+  <b>Password:</b>
+  <%=h @receive_email.password %>
+</p>
+
+<p>
+  <b>Protocol:</b>
+  <%=h @receive_email.protocol %>
+</p>
+
+<%= link_to 'Edit', edit_email_receive_path(@receive_email) %> |
+<%= link_to 'Back', email_receive_path %>

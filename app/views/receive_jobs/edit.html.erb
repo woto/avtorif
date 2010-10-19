@@ -1,16 +1,8 @@
 <h1>Editing receive_job</h1>
 
-<% form_for(@receive_job) do |f| %>
+<% semantic_form_for(@receive_job) do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.label :price %><br />
-    <%= f.text_field :price %>
-  </p>
-  <p>
-    <%= f.label :receiveable %><br />
-    <%= f.text_field :receiveable %>
-  </p>
   <p>
     <%= f.submit 'Update' %>
   </p>

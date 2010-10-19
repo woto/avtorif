@@ -1,0 +1,20 @@
+<h1>Listing gears</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+  </tr>
+
+<% @gears.each do |gear| %>
+  <tr>
+    <td><%=h gear.title %></td>
+    <td><%= link_to 'Show', gear %></td>
+    <td><%= link_to 'Edit', edit_gear_path(gear) %></td>
+    <td><%= link_to 'Destroy', gear, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New gear', new_gear_path %>

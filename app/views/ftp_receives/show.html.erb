@@ -1,9 +1,9 @@
 <p>
   <b>Server:</b>
-  <% link = "ftp://#{@receive_ftp.login}:#{@receive_ftp.password}@#{@receive_ftp.server}:#{@receive_ftp.port}#{@receive_ftp.path}" %>
+  <% link = "ftp://#{@ftp_receive.login}:#{@ftp_receive.password}@#{@ftp_receive.server}:#{@ftp_receive.port}#{@ftp_receive.path}" %>
   <%= link_to link, link %>
 </p>
 
 
-<%= link_to 'Edit', edit_ftp_receive_path(@receive_ftp) %> |
+<%= link_to 'Edit', edit_ftp_receive_path(@ftp_receive) %> |
 <%= link_to 'Back', ftp_receive_path %>

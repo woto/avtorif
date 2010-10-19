@@ -1,0 +1,20 @@
+<h1>Editing goods_auto_option</h1>
+
+<% form_for(@goods_auto_option) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :goods %><br />
+    <%= f.text_field :goods %>
+  </p>
+  <p>
+    <%= f.label :auto_option %><br />
+    <%= f.text_field :auto_option %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @goods_auto_option %> |
+<%= link_to 'Back', goods_auto_options_path %>

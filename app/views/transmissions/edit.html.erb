@@ -1,0 +1,16 @@
+<h1>Editing transmission</h1>
+
+<% form_for(@transmission) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @transmission %> |
+<%= link_to 'Back', transmissions_path %>

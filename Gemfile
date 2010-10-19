@@ -15,7 +15,8 @@ gem 'excelsior'
 gem 'ccsv'
 gem 'fastercsv'
 gem 'cap-recipes'
-
+gem 'ar_fixtures'
+gem 'yaml_db', :git => 'git://github.com/ludicast/yaml_db.git', :branch => 'Rails2'
 
 gem 'mysql'
 #gem 'sqlite3-ruby', :require => 'sqlite3'
@@ -58,5 +59,6 @@ group :development do
 end
                      
 gem 'formtastic'
+gem 'simple_form'
 gem 'whenever'
 gem 'rufus-scheduler'

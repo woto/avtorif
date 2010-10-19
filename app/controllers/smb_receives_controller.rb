@@ -2,7 +2,7 @@ class SmbReceivesController < ApplicationController
   # GET /smb_receives
   # GET /smb_receives.xml
   def index
-    @smb_receives = SmbReceive.all
+    @smb_receives = SmbReceive.all(:joins => [:receive_job])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -41,6 +41,8 @@ class SmbReceivesController < ApplicationController
   # POST /smb_receives.xml
   def create
     @smb_receive = SmbReceive.new(params[:smb_receive])
+    receive_job = ReceiveJob.create(:receiveable => @smb_receive)
+    Job.update(params[:job_id], :jobable => receive_job)    
 
     respond_to do |format|
       if @smb_receive.save

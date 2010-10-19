@@ -57,9 +57,11 @@ class MiesController < ApplicationController
     #rj.perform
 
     #JobWalker.new.call
-    JobWalker.new.start_job(Job.find(548612071))
+    #JobWalker.new.start_job(Job.find(548612071))
 
-    @mies = My.all
+    #@mies = My.all
+
+    Supplier.all.to_yaml
 
     respond_to do |format|
       format.html # index.html.erb

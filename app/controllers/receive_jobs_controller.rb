@@ -25,7 +25,9 @@ class ReceiveJobsController < ApplicationController
   # GET /receive_jobs/new.xml
   def new
     @receive_job = ReceiveJob.new
-
+    #@receive_job.receiveable = FtpReceive.new
+    @receive_job.job << Job.find(params[:job_id])
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @receive_job }

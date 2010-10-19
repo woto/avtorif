@@ -5,7 +5,9 @@ module ApplicationHelper
     controllers = Dir.new("#{RAILS_ROOT}/app/controllers").entries.sort
     cont = Array.[]
       controllers.each do |controller|
-      if controller =~ /_controller/ && !(controller =~ /application/)
+      if controller =~ /_controller/ &&
+              !(controller =~ /application/) &&
+              !(controller =~ /job/)
         cont << link_to(controller.camelize.gsub("Controller.rb",""), {:controller => controller.camelize.gsub("Controller.rb","").tableize}) + " " 
       end
     end

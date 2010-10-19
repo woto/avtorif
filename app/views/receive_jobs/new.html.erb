@@ -1,19 +1,18 @@
 <h1>New receive_job</h1>
 
-<% form_for(@receive_job) do |f| %>
+<% semantic_form_for(@receive_job) do |f| %>
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :price %><br />
-    <%= f.text_field :price %>
+    <%= link_to "Получение через ftp", new_job_ftp_receive_path(@receive_job.job) %><br />
+    <%= link_to "Получение через samba", new_job_smb_receive_path(@receive_job.job) %><br />
+    <%= link_to "Получение через email", new_job_email_receive_path(@receive_job.job) %><br />
+    <%= link_to "Получение через локальную папку", new_job_folder_receive_path(@receive_job.job) %><br />
   </p>
-  <p>
-    <%= f.label :receiveable %><br />
-    <%= f.text_field :receiveable %>
-  </p>
+
   <p>
     <%= f.submit 'Create' %>
   </p>
 <% end %>
 
-<%= link_to 'Back', receive_jobs_path %>
+<%= link_to 'Back', supplier_jobs_path(Job.find(params[:job_id]).supplier) %>

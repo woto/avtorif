@@ -1,22 +1,47 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :smb_receives
-  map.resources :mies  
-  map.resources :receive_emails
-  map.resources :receive_folders
-  map.resources :ftp_receives
-  map.resources :smb_receives
+  map.resources :autos
+
+  map.resources :goods_auto_options
+
+  map.resources :auto_options
+
+  map.resources :periods
+
+  map.resources :transmissions
+
+  map.resources :gears
+
+  map.resources :fuels
+
+  map.resources :mies
+
 
   map.resources :repeats
   map.resources :repeats_jobs
 
-  map.resources :import_jobs
-  map.resources :receive_jobs
 
   map.resources :suppliers do |sup|
     sup.resources :jobs
   end
 
-  map.resources :jobs, :member => {:start => :get}
+  map.resources :jobs, :member => {:start => :get} do |job|
+    job.resources :import_jobs
+    job.resources :receive_jobs
+
+    job.resources :email_receives
+    job.resources :folder_receives
+    job.resources :ftp_receives
+    job.resources :smb_receives
+
+  end
+
+  map.resources :email_receives
+  map.resources :folder_receives
+  map.resources :ftp_receives
+  map.resources :smb_receives
+
+  map.resources :import_jobs
+  map.resources :receive_jobs  
 
   map.resources :analogues
   map.resources :goods
