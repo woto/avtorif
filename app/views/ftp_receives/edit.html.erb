@@ -1,11 +1,15 @@
-<h1>Editing receive_ftp</h1>
+<h1>Editing ftp_receive</h1>
 
-<% form_for(@receive_ftp) do |f| %>
+<% form_for(@ftp_receive) do |f| %>
   <%= f.error_messages %>
 
   <p>
     <%= f.label :server %><br />
     <%= f.text_field :server %>
+  </p>
+  <p>
+    <%= f.label :port %><br />
+    <%= f.text_field :port %>
   </p>
   <p>
     <%= f.label :path %><br />
@@ -24,5 +28,5 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', @receive_ftp %> |
-<%= link_to 'Back', receive_ftps_path %>
+<%= link_to 'Show', @ftp_receive %> |
+<%= link_to 'Back', ftp_receives_path %>

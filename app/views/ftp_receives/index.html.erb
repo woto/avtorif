@@ -1,8 +1,9 @@
-<h1>Listing receive_ftps</h1>
+<h1>Listing ftp_receives</h1>
 
 <table>
   <tr>
     <th>Server</th>
+    <th>Port</th>
     <th>Path</th>
     <th>Login</th>
     <th>Password</th>
@@ -11,6 +12,7 @@
 <% @ftp_receives.each do |ftp_receive| %>
   <tr>
     <td><%=h ftp_receive.server %></td>
+    <td><%=h ftp_receive.port %></td>
     <td><%=h ftp_receive.path %></td>
     <td><%=h ftp_receive.login %></td>
     <td><%=h ftp_receive.password %></td>

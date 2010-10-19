@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :ftp_receives
+
+  map.resources :ftp_receives
+
   map.resources :autos
 
   map.resources :goods_auto_options

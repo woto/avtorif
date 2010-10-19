@@ -25,6 +25,10 @@ class FtpReceivesController < ApplicationController
   # GET /ftp_receives/new.xml
   def new
     @ftp_receive = FtpReceive.new
+    @ftp_receive.server = 'avtorif.ru'
+    @ftp_receive.port = 21
+    @ftp_receive.path = '/'
+    @ftp_receive.login = 'anonymous'
 
     respond_to do |format|
       format.html # new.html.erb
@@ -40,14 +44,11 @@ class FtpReceivesController < ApplicationController
   # POST /ftp_receives
   # POST /ftp_receives.xml
   def create
-
-    @ftp_receive = FtpReceive.new(params[:ftp_receives])
-    receive_job = ReceiveJob.create(:receiveable => @ftp_receive)
-    Job.update(params[:job_id], :jobable => receive_job)    
+    @ftp_receive = FtpReceive.new(params[:ftp_receive])
 
     respond_to do |format|
       if @ftp_receive.save
-        format.html { redirect_to(supplier_jobs_path(Job.find(params[:job_id]).supplier), :notice => 'FtpReceive was successfully created.') }
+        format.html { redirect_to(@ftp_receive, :notice => 'FtpReceive was successfully created.') }
         format.xml  { render :xml => @ftp_receive, :status => :created, :location => @ftp_receive }
       else
         format.html { render :action => "new" }
