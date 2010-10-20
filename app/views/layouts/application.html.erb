@@ -8,7 +8,11 @@
 </head>
 <body>
 
-<%= pages %>
+<%= link_to "Поставщики", suppliers_path %>
+
+<div>
+    <%= pages.join("&nbsp;") %>
+</div>
 
 <p style="color: green"><%= notice %></p>
 

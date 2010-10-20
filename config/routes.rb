@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :jobs
+
+  map.resources :jobs
+
   map.resources :ftp_receives
 
   map.resources :ftp_receives

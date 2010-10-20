@@ -45,10 +45,12 @@ class FtpReceivesController < ApplicationController
   # POST /ftp_receives.xml
   def create
     @ftp_receive = FtpReceive.new(params[:ftp_receive])
+    receive_job = ReceiveJob.create(:receiveable => @ftp_receive)
+    Job.update(params[:job_id], :jobable => receive_job)
 
     respond_to do |format|
       if @ftp_receive.save
-        format.html { redirect_to(@ftp_receive, :notice => 'FtpReceive was successfully created.') }
+        format.html { redirect_to(supplier_jobs_path(Job.find(params[:job_id]).supplier), :notice => 'FtpReceive was successfully created.') }
         format.xml  { render :xml => @ftp_receive, :status => :created, :location => @ftp_receive }
       else
         format.html { render :action => "new" }

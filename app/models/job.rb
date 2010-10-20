@@ -1,10 +1,14 @@
 class Job < ActiveRecord::Base
 
+  validates_numericality_of :seconds_between_jobs, :only_integer => true, :if => "!seconds_between_jobs.blank?" 
+  validates_numericality_of :seconds_working, :only_integer => true, :if => "!seconds_working.blank?"
+  validates_presence_of :title
+  
   module Status
     START_FAIL = "<div style='background: yellow'>Задача ни разу не была запущена</div>"
     FINISH_FAIL = "<div style='background: yellow'>Задача никогда не завершалась успешно</div>"
-    INTERVAL_BETWEEN_JOBS_FAIL = "<div style='background: red'>Помещение в очередь не осуществилось в установленный срок</div>"
-    INTERVAL_WORKING_FAIL = "<div style='background: red'>Выполнение задачи не уложилось в установленный срок</div>"
+    SECONDS_BETWEEN_JOBS_FAIL = "<div style='background: red'>Помещение в очередь не осуществилось в установленный срок</div>"
+    SECONDS_WORKING_FAIL = "<div style='background: red'>Выполнение задачи не уложилось в установленный срок</div>"
     LOCKED = "Находится в очереди на выполнение или выполняется"
     NOT_OBSERVED = "Не наблюдается"
     OK = "Ок"
@@ -27,7 +31,7 @@ class Job < ActiveRecord::Base
   #belongs_to :parent_job, :readonly => true, :foreign_key => :job_id, :class_name => "Job"
 
   def critical
-    if (interval_between_jobs.blank? || interval_working.blank?)
+    if (seconds_between_jobs.blank? || seconds_working.blank?)
       return Status::NOT_OBSERVED
     end
 
@@ -42,13 +46,13 @@ class Job < ActiveRecord::Base
     end
 
     # проверка на периодичность выполнения задачи
-    if (DateTime.now > last_start + interval_between_jobs.seconds) && !locked
-      return Status::INTERVAL_BETWEEN_JOBS_FAIL
+    if (DateTime.now > last_start + seconds_between_jobs.seconds) && !locked
+      return Status::SECONDS_BETWEEN_JOBS_FAIL
     end
 
     # проверка на длительность выполнения
-    if (DateTime.now > last_start + interval_working.seconds) && locked
-      return Status::INTERVAL_WORKING_FAIL
+    if (DateTime.now > last_start + seconds_working.seconds) && locked
+      return Status::SECONDS_WORKING_FAIL
     end
 
     if locked
@@ -59,6 +63,7 @@ class Job < ActiveRecord::Base
 
     
   end
+  
 =begin
   def after_save
     jw = JobWalker.new

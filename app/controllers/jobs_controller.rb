@@ -29,8 +29,8 @@ class JobsController < ApplicationController
   # GET /jobs/new.xml
   def new
     @job = Job.new
-    @job.supplier_id = params[:supplier_id]
-
+    @job.file_mask = '\".*\"'
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @job }
@@ -46,10 +46,12 @@ class JobsController < ApplicationController
   # POST /jobs.xml
   def create
     @job = Job.new(params[:job])
+    @job.supplier_id = params[:supplier_id]
+    #supplier = @job.supplier
 
     respond_to do |format|
       if @job.save
-        format.html { redirect_to(@job, :notice => 'Job was successfully created.') }
+        format.html { redirect_to(supplier_jobs_url(params[:supplier_id]), :notice => 'Job was successfully created.') }
         format.xml  { render :xml => @job, :status => :created, :location => @job }
       else
         format.html { render :action => "new" }
@@ -90,8 +92,7 @@ class JobsController < ApplicationController
   def start
     @job = Job.find(params[:id])
     JobWalker.new.start_job(@job)
-    redirect_to(jobs_url)
-     #rj = ReceiveJobber.new(ReceiveJob.find(484199613))
-     #rj.perform
+    redirect_to(supplier_jobs[@job.supplier.id])
   end
+  
 end

@@ -12,15 +12,32 @@
     <%= f.datetime_select :last_start %>
   </p>
   <p>
+    <%= f.label :seconds_between_jobs %><br />
+    <%= f.text_field :seconds_between_jobs %>
+  </p>
+  <p>
+    <%= f.label :seconds_working %><br />
+    <%= f.text_field :seconds_working %>
+  </p>
+  <p>
     <%= f.label :title %><br />
     <%= f.text_field :title %>
   </p>
   <p>
-    <%= f.label :supplier %><br />
-    <%= f.inputs :supplier %>
-  </p>    
+    <%= f.label :parent %><br />
+    <%= f.input :parent, :collection => Job.find(:all, :conditions => {:supplier_id => params[:supplier_id]}) %>    
+  </p>
   <p>
-    <%= f.input :repeats %>
+    <%= f.label :file_mask %><br />
+    <%= f.text_field :file_mask %>
+  </p>
+  <p>
+    <%= f.label :locked %><br />
+    <%= f.check_box :locked %>
+  </p>
+  <p>
+    <%= f.label :active %><br />
+    <%= f.check_box :active %>
   </p>
   <p>
     <%= f.submit 'Update' %>
@@ -28,4 +45,4 @@
 <% end %>
 
 <%= link_to 'Show', @job %> |
-<%= link_to 'Back', supplier_jobs_path %>
+<%= link_to 'Back', supplier_jobs_path(@job.supplier) %>

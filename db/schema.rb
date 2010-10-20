@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101014133636) do
+ActiveRecord::Schema.define(:version => 20101019095403) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
@@ -124,9 +124,9 @@ ActiveRecord::Schema.define(:version => 20101014133636) do
   end
 
   create_table "ftp_receives", :force => true do |t|
-    t.string   "server",     :default => "avtorif.ru"
-    t.string   "port",       :default => "21"
-    t.string   "path",       :default => "/"
+    t.string   "server"
+    t.integer  "port"
+    t.string   "path"
     t.string   "login"
     t.string   "password"
     t.datetime "created_at"
@@ -181,16 +181,16 @@ ActiveRecord::Schema.define(:version => 20101014133636) do
     t.datetime "next_start"
     t.datetime "last_start"
     t.datetime "last_finish"
-    t.integer  "interval_between_jobs"
-    t.integer  "interval_working"
+    t.integer  "seconds_between_jobs"
+    t.integer  "seconds_working"
     t.string   "title"
     t.integer  "job_id"
     t.integer  "jobable_id"
     t.string   "jobable_type"
     t.integer  "supplier_id"
-    t.string   "file_mask",             :default => "\".*\""
-    t.boolean  "locked",                :default => false
-    t.boolean  "active",                :default => true
+    t.string   "file_mask"
+    t.boolean  "locked",               :default => false
+    t.boolean  "active",               :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
   end

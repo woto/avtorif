@@ -9,20 +9,55 @@
 </p>
 
 <p>
+  <b>Last finish:</b>
+  <%=h @job.last_finish %>
+</p>
+
+<p>
+  <b>Seconds between jobs:</b>
+  <%=h @job.seconds_between_jobs %>
+</p>
+
+<p>
+  <b>Seconds working:</b>
+  <%=h @job.seconds_working %>
+</p>
+
+<p>
   <b>Title:</b>
   <%=h @job.title %>
 </p>
 
 <p>
-  <b>Repeats:</b>
-  <%=h @job.repeats.map{ |repeat| repeat.title + "," } %>
+  <b>arent:</b>
+  <%=h @job.parent %>
 </p>
 
 <p>
-  <b>Parent Job:</b>
-  <%=h @job.parent.try(:title) %>
+  <b>Jobable:</b>
+  <%=h @job.jobable %>
+</p>
+
+<p>
+  <b>Supplier:</b>
+  <%=h @job.supplier %>
+</p>
+
+<p>
+  <b>File mask:</b>
+  <%=h @job.file_mask %>
+</p>
+
+<p>
+  <b>Locked:</b>
+  <%=h @job.locked %>
+</p>
+
+<p>
+  <b>Active:</b>
+  <%=h @job.active %>
 </p>
 
 
-<%= link_to 'Edit', edit_supplier_job_path(@job.supplier) %> |
+<%= link_to 'Edit', edit_job_path(@job) %> |
 <%= link_to 'Back', supplier_jobs_path(@job.supplier) %>
