@@ -17,16 +17,16 @@ auto_options:
     - 
     - 
     - 
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "980190962"
     - 
     - 
     - 
     - 
     - 
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
 
 --- 
 autos: 
@@ -40,13 +40,13 @@ autos:
   - - "298486374"
     - 
     - 
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "980190962"
     - 
     - 
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
 
 --- 
 column_filters: 
@@ -74,8 +74,8 @@ column_filters:
     - 
     - 
     - 
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "980190962"
     - MyString
     - MyString
@@ -86,8 +86,8 @@ column_filters:
     - 
     - 
     - 
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
 
 --- 
 column_relations: 
@@ -111,8 +111,8 @@ column_relations:
     - "1"
     - "1"
     - 
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "980190962"
     - "1"
     - "1"
@@ -121,8 +121,8 @@ column_relations:
     - "1"
     - "1"
     - 
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
 
 --- 
 csv_imports: 
@@ -142,40 +142,40 @@ csv_imports:
     - "\""
     - "2"
     - \n
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "298486374"
     - MyString
     - MyString
     - MyString
     - "1"
     - MyString
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "392637757"
     - MyString
     - MyString
     - MyString
     - "1"
     - MyString
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "443848385"
     - \t
     - 
     - 
     - "2"
     - \n
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "810740390"
     - \t
     - "\""
     - "\""
     - "2"
     - \n
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
 
 --- 
 delayed_jobs: 
@@ -192,573 +192,1052 @@ delayed_jobs:
   - created_at
   - updated_at
   records: 
-  - - "1"
+  - - "10"
     - "0"
-    - "0"
+    - "10"
     - |
       --- !ruby/object:ReceiveJobable 
       job: !ruby/ActiveRecord:Job 
         attributes: 
-          interval_between_jobs: "7200"
-          created_at: 2010-10-19 09:27:54
-          title: !binary |
-            0J/QtdC70LjQutCw0L0t0LDQstGC0L4g0YDQsNGB0L/RgNC+0LTQsNC20LAg
-            KNC40L3RgtC10YDQstCw0Lsg0YDQsNC30YDQtdGI0LXQvdC90L7QuSDRgNCw
-            0LHQvtGC0YsgMSDRgdC10LrRg9C90LTQsCk=
-      
-          updated_at: 2010-10-19 09:27:54
-          jobable_id: "280362575"
-          interval_working: "1"
-          last_start: 2010-10-19 09:28:08.130836 Z
-          next_start: 2010-10-19 09:29:00 Z
-          id: "84851029"
-          file_mask: "\"PEL.xls\""
-          jobable_type: ReceiveJob
-          supplier_id: "1044098171"
-          last_finish: 
-          job_id: 
-          active: "1"
-          locked: true
-      jobable: !ruby/ActiveRecord:ReceiveJob 
-        attributes: 
-          created_at: 2010-10-19 09:27:55
-          updated_at: 2010-10-19 09:27:55
-          id: "280362575"
-          receiveable_type: FtpReceive
-          receiveable_id: "365213618"
-      optional: 
-
-    - 
-    - 2010-10-19 09:28:08
-    - 
-    - 
-    - 
-    - 2010-10-19 09:28:08
-    - 2010-10-19 09:28:08
-  - - "2"
-    - "0"
-    - "0"
-    - |
-      --- !ruby/object:ReceiveJobable 
-      job: !ruby/ActiveRecord:Job 
-        attributes: 
-          interval_between_jobs: "7200"
-          created_at: 2010-10-19 09:27:54
-          title: !binary |
-            0J/RgNC40LXQvCBhdnRvcmlmLnhscyDQvtGCINCg0LDQtNC40LDRgtC+0YAg
-            0YHQtdGA0LLQuNGB
-      
-          updated_at: 2010-10-19 09:27:54
-          jobable_id: "584111877"
-          interval_working: "60"
-          last_start: 2010-10-19 09:28:08.155514 Z
-          next_start: 2010-10-19 09:29:00 Z
-          id: "427111281"
-          file_mask: "\"avtorif.xls\""
-          jobable_type: ReceiveJob
-          supplier_id: "769483063"
-          last_finish: 
-          job_id: 
-          active: "1"
-          locked: true
-      jobable: !ruby/ActiveRecord:ReceiveJob 
-        attributes: 
-          created_at: 2010-10-19 09:27:55
-          updated_at: 2010-10-19 09:27:55
-          id: "584111877"
-          receiveable_type: FtpReceive
-          receiveable_id: "59105197"
-      optional: 
-
-    - 
-    - 2010-10-19 09:28:08
-    - 
-    - 
-    - 
-    - 2010-10-19 09:28:08
-    - 2010-10-19 09:28:08
-  - - "3"
-    - "0"
-    - "0"
-    - |
-      --- !ruby/object:ReceiveJobable 
-      job: !ruby/ActiveRecord:Job 
-        attributes: 
-          interval_between_jobs: "108000"
-          created_at: 2010-10-19 09:27:54
-          title: job_for_ankar_1
-          updated_at: 2010-10-19 09:27:54
-          jobable_id: "729717474"
-          interval_working: "60"
-          last_start: 2010-10-19 09:28:08.168333 Z
-          next_start: 2010-10-19 09:29:00 Z
-          id: "200974790"
-          file_mask: "\"stoc_ankar_quantity.csv\""
-          jobable_type: ReceiveJob
-          supplier_id: "1072056295"
-          last_finish: 
-          job_id: 
-          active: "1"
-          locked: true
-      jobable: !ruby/ActiveRecord:ReceiveJob 
-        attributes: 
-          created_at: 2010-10-19 09:27:55
-          updated_at: 2010-10-19 09:27:55
-          id: "729717474"
-          receiveable_type: FtpReceive
-          receiveable_id: "729717474"
-      optional: 
-
-    - 
-    - 2010-10-19 09:28:08
-    - 
-    - 
-    - 
-    - 2010-10-19 09:28:08
-    - 2010-10-19 09:28:08
-  - - "4"
-    - "0"
-    - "0"
-    - |
-      --- !ruby/object:ReceiveJobable 
-      job: !ruby/ActiveRecord:Job 
-        attributes: 
-          interval_between_jobs: 
-          created_at: 2010-10-19 09:27:54
-          title: job_for_arharov
-          updated_at: 2010-10-19 09:27:54
-          jobable_id: "667560807"
-          interval_working: 
-          last_start: 2010-10-19 09:28:08.180934 Z
-          next_start: 2010-10-19 09:29:00 Z
-          id: "263256886"
-          file_mask: "\".*\""
-          jobable_type: ReceiveJob
-          supplier_id: "283739987"
-          last_finish: 
-          job_id: 
-          active: "1"
-          locked: true
-      jobable: !ruby/ActiveRecord:ReceiveJob 
-        attributes: 
-          created_at: 2010-10-19 09:27:55
-          updated_at: 2010-10-19 09:27:55
-          id: "667560807"
-          receiveable_type: SmbReceive
-          receiveable_id: "325745029"
-      optional: 
-
-    - 
-    - 2010-10-19 09:28:08
-    - 
-    - 
-    - 
-    - 2010-10-19 09:28:08
-    - 2010-10-19 09:28:08
-  - - "5"
-    - "0"
-    - "0"
-    - |
-      --- !ruby/object:ReceiveJobable 
-      job: !ruby/ActiveRecord:Job 
-        attributes: 
-          interval_between_jobs: "200"
-          created_at: 2010-10-19 09:27:54
-          title: !binary |
-            0J/QtdC70LjQutCw0L0t0LDQstGC0L4g0YbQtdC90YLRgC4g0YHQutC70LDQ
-            tCAo0JjQvdGC0LXRgNCy0LDQuyDQv9GA0L7QstC10YDQutC4INC80LXQttC0
-            0YMg0LfQsNC00LDRh9Cw0LzQuCAyMDAg0YHQtdC6Lik=
-      
-          updated_at: 2010-10-19 09:27:54
-          jobable_id: "280362575"
-          interval_working: "60"
-          last_start: 2010-10-19 09:28:08.194384 Z
-          next_start: 2010-10-19 09:29:00 Z
-          id: "459943152"
-          file_mask: "\"PER.xls\""
-          jobable_type: ReceiveJob
-          supplier_id: "1044098171"
-          last_finish: 
-          job_id: 
-          active: "1"
-          locked: true
-      jobable: !ruby/ActiveRecord:ReceiveJob 
-        attributes: 
-          created_at: 2010-10-19 09:27:55
-          updated_at: 2010-10-19 09:27:55
-          id: "280362575"
-          receiveable_type: FtpReceive
-          receiveable_id: "365213618"
-      optional: 
-
-    - 
-    - 2010-10-19 09:28:08
-    - 
-    - 
-    - 
-    - 2010-10-19 09:28:08
-    - 2010-10-19 09:28:08
-  - - "6"
-    - "0"
-    - "0"
-    - |
-      --- !ruby/object:ReceiveJobable 
-      job: !ruby/ActiveRecord:Job 
-        attributes: 
-          interval_between_jobs: "7200"
-          created_at: 2010-10-19 09:27:54
-          title: !binary |
-            0KLQtdGB0YLQvtCy0YvQuSDQv9GA0LjQtdC8INC00LLRg9GFINGE0LDQudC7
-            0L7QsiBTS09TLnhscyDQuCBTS09aLnhscw==
-      
-          updated_at: 2010-10-19 09:27:54
-          jobable_id: "280362575"
-          interval_working: "60"
-          last_start: 2010-10-19 09:28:08.209106 Z
-          next_start: 2010-10-19 09:29:00 Z
-          id: "745348199"
-          file_mask: "\"SKO.*\""
-          jobable_type: ReceiveJob
-          supplier_id: "1044098171"
-          last_finish: 
-          job_id: 
-          active: "1"
-          locked: true
-      jobable: !ruby/ActiveRecord:ReceiveJob 
-        attributes: 
-          created_at: 2010-10-19 09:27:55
-          updated_at: 2010-10-19 09:27:55
-          id: "280362575"
-          receiveable_type: FtpReceive
-          receiveable_id: "365213618"
-      optional: 
-
-    - 
-    - 2010-10-19 09:28:08
-    - 
-    - 
-    - 
-    - 2010-10-19 09:28:08
-    - 2010-10-19 09:28:08
-  - - "7"
-    - "0"
-    - "0"
-    - |
-      --- !ruby/object:ReceiveJobable 
-      job: !ruby/ActiveRecord:Job 
-        attributes: 
-          interval_between_jobs: "7200"
-          created_at: 2010-10-19 09:27:54
-          title: !binary |
-            0J/RgNC40LXQvCDQtNCy0YPRhSDRhNCw0LnQu9C+0LIg0L7RgiDQqNCe0J7Q
-            oNCY
-      
-          updated_at: 2010-10-19 09:27:54
-          jobable_id: "40847102"
-          interval_working: "60"
-          last_start: 2010-10-19 09:28:08.225248 Z
-          next_start: 2010-10-19 09:29:00 Z
-          id: "1026110385"
-          file_mask: "\"sk\\\\S{1}ad.txt\""
-          jobable_type: ReceiveJob
-          supplier_id: "480201602"
-          last_finish: 
-          job_id: 
-          active: "1"
-          locked: true
-      jobable: !ruby/ActiveRecord:ReceiveJob 
-        attributes: 
-          created_at: 2010-10-19 09:27:55
-          updated_at: 2010-10-19 09:27:55
-          id: "40847102"
-          receiveable_type: FtpReceive
-          receiveable_id: "459424539"
-      optional: 
-
-    - 
-    - 2010-10-19 09:28:08
-    - 
-    - 
-    - 
-    - 2010-10-19 09:28:08
-    - 2010-10-19 09:28:08
-  - - "8"
-    - "0"
-    - "0"
-    - |
-      --- !ruby/object:ReceiveJobable 
-      job: !ruby/ActiveRecord:Job 
-        attributes: 
-          interval_between_jobs: "108000"
-          created_at: 2010-10-19 09:27:54
+          created_at: 2010-10-20 11:31:09
           title: job_for_avtoteka_1
-          updated_at: 2010-10-19 09:27:54
+          last_start: 2010-10-21 11:30:44.016343 Z
           jobable_id: "620387971"
-          interval_working: "60"
-          last_start: 2010-10-19 09:28:08.241761 Z
-          next_start: 2010-10-19 09:29:00 Z
+          updated_at: 2010-10-21 11:23:24
+          next_start: 2010-10-21 12:00:00 Z
           id: "499090777"
-          file_mask: "\".*\""
+          seconds_between_jobs: "108000"
+          seconds_working: "60"
           jobable_type: ReceiveJob
+          file_mask: 
+          job_code: 
           supplier_id: "737667253"
           last_finish: 
           job_id: 
-          active: "1"
           locked: true
+          active: "1"
       jobable: !ruby/ActiveRecord:ReceiveJob 
         attributes: 
-          created_at: 2010-10-19 09:27:55
-          updated_at: 2010-10-19 09:27:55
+          created_at: 2010-10-20 11:31:09
+          updated_at: 2010-10-20 11:31:09
           id: "620387971"
           receiveable_type: FtpReceive
           receiveable_id: "95376939"
       optional: 
 
+    - |-
+      undefined method `receiveable' for nil:NilClass
+      /usr/lib/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/whiny_nil.rb:52:in `method_missing'
+      /home/woto/rails/avtorif/lib/receive_jobable.rb:3:in `perform'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/backend/base.rb:65:in `invoke_job'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:123:in `run'
+      /usr/lib/ruby/1.8/timeout.rb:62:in `timeout'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:123:in `run'
+      /usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:122:in `run'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:188:in `reserve_and_run_one_job'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:107:in `work_off'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:106:in `times'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:106:in `work_off'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:81:in `start'
+      /usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:80:in `start'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:77:in `loop'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:77:in `start'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/tasks.rb:13
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `call'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `execute'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `each'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `execute'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:597:in `invoke_with_call_chain'
+      /usr/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:590:in `invoke_with_call_chain'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:583:in `invoke'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2051:in `invoke_task'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `each'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2023:in `top_level'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2001:in `run'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:1998:in `run'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/bin/rake:31
+      /usr/bin/rake:19:in `load'
+      /usr/bin/rake:19
+    - 2010-10-21 15:52:43
     - 
-    - 2010-10-19 09:28:08
     - 
     - 
-    - 
-    - 2010-10-19 09:28:08
-    - 2010-10-19 09:28:08
-  - - "9"
+    - 2010-10-21 11:30:44
+    - 2010-10-21 13:05:58
+  - - "13"
     - "0"
-    - "0"
+    - "10"
     - |
       --- !ruby/object:ReceiveJobable 
       job: !ruby/ActiveRecord:Job 
         attributes: 
-          interval_between_jobs: "7200"
-          created_at: 2010-10-19 09:27:54
-          title: job_for_febest_1
-          updated_at: 2010-10-19 09:27:54
-          jobable_id: "738464244"
-          interval_working: "60"
-          last_start: 2010-10-19 09:28:08.255921 Z
-          next_start: 2010-10-19 09:29:00 Z
-          id: "852046107"
-          file_mask: "\"febestrif.txt\""
-          jobable_type: ReceiveJob
-          supplier_id: "854858892"
-          last_finish: 
-          job_id: 
-          active: "1"
-          locked: true
-      jobable: !ruby/ActiveRecord:ReceiveJob 
-        attributes: 
-          created_at: 2010-10-19 09:27:55
-          updated_at: 2010-10-19 09:27:55
-          id: "738464244"
-          receiveable_type: FtpReceive
-          receiveable_id: "889787413"
-      optional: 
-
-    - 
-    - 2010-10-19 09:28:08
-    - 
-    - 
-    - 
-    - 2010-10-19 09:28:08
-    - 2010-10-19 09:28:08
-  - - "10"
-    - "0"
-    - "0"
-    - |
-      --- !ruby/object:ReceiveJobable 
-      job: !ruby/ActiveRecord:Job 
-        attributes: 
-          interval_between_jobs: "7200"
-          created_at: 2010-10-19 09:27:54
-          title: job_for_jeepshop_1
-          updated_at: 2010-10-19 09:27:54
-          jobable_id: "508517365"
-          interval_working: "60"
-          last_start: 2010-10-19 09:28:08.272310 Z
-          next_start: 2010-10-19 09:29:00 Z
-          id: "646346657"
-          file_mask: "\"AVTORIF.txt\""
-          jobable_type: ReceiveJob
-          supplier_id: "289598915"
-          last_finish: 
-          job_id: 
-          active: "1"
-          locked: true
-      jobable: !ruby/ActiveRecord:ReceiveJob 
-        attributes: 
-          created_at: 2010-10-19 09:27:55
-          updated_at: 2010-10-19 09:27:55
-          id: "508517365"
-          receiveable_type: FtpReceive
-          receiveable_id: "1058689885"
-      optional: 
-
-    - 
-    - 2010-10-19 09:28:08
-    - 
-    - 
-    - 
-    - 2010-10-19 09:28:08
-    - 2010-10-19 09:28:08
-  - - "11"
-    - "0"
-    - "0"
-    - |
-      --- !ruby/object:ReceiveJobable 
-      job: !ruby/ActiveRecord:Job 
-        attributes: 
-          interval_between_jobs: "7200"
-          created_at: 2010-10-19 09:27:54
+          created_at: 2010-10-20 13:13:34
           title: !binary |
-            0J/QtdC70LjQutCw0L0t0LDQstGC0L4g0L3QsNC70LjRh9C40LU=
+            MDA3X9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBIEpBUEFOQ0FSUyDQ
+            ndCQ0JvQmNCn0JjQlSDQntCg0JjQk9CY0J3QkNCbIFNRTCDQmCAwMDlf0JfQ
+            sNCz0YDRg9C30LjRgtGMINC/0YDQsNC50YEgSkFQQU5DQVJTINCd0JDQm9CY
+            0KfQmNCVINCd0JXQntCg0JjQk9CY0J0gU1FMIA==
       
-          updated_at: 2010-10-19 09:27:54
-          jobable_id: "280362575"
-          interval_working: "60"
-          last_start: 2010-10-19 09:28:08.386507 Z
-          next_start: 2010-10-19 09:29:00 Z
-          id: "721475712"
-          file_mask: "\"PE1.xls\""
+          last_start: 2010-10-21 11:30:44.227848 Z
+          jobable_id: "1027824379"
+          updated_at: 2010-10-21 11:23:24
+          next_start: 2010-10-21 12:00:00 Z
+          id: "1066346027"
+          seconds_between_jobs: "4000"
+          seconds_working: "20"
           jobable_type: ReceiveJob
-          supplier_id: "1044098171"
-          last_finish: 
+          file_mask: LucJC.xls
+          job_code: ""
+          supplier_id: "239384643"
+          last_finish: 2010-10-20 13:14:10
           job_id: 
-          active: "1"
           locked: true
+          active: "1"
       jobable: !ruby/ActiveRecord:ReceiveJob 
         attributes: 
-          created_at: 2010-10-19 09:27:55
-          updated_at: 2010-10-19 09:27:55
-          id: "280362575"
+          created_at: 2010-10-20 13:13:56
+          updated_at: 2010-10-20 13:13:56
+          id: "1027824379"
           receiveable_type: FtpReceive
-          receiveable_id: "365213618"
+          receiveable_id: "1058689889"
       optional: 
 
+    - |-
+      /usr/lib/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:105:in `const_missing': uninitialized constant FtpReceiver::LucJC
+      /home/woto/rails/avtorif/lib/ftp_receiver.rb:16:in `receive'
+      (eval):1:in `receive'
+      /home/woto/rails/avtorif/lib/ftp_receiver.rb:16:in `eval'
+      /home/woto/rails/avtorif/lib/ftp_receiver.rb:16:in `receive'
+      /home/woto/rails/avtorif/lib/ftp_receiver.rb:16:in `select'
+      /home/woto/rails/avtorif/lib/ftp_receiver.rb:16:in `receive'
+      /usr/lib/ruby/1.8/timeout.rb:62:in `timeout'
+      /home/woto/rails/avtorif/lib/ftp_receiver.rb:5:in `receive'
+      /home/woto/rails/avtorif/lib/receive_jobable.rb:5:in `perform'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/backend/base.rb:65:in `invoke_job'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:123:in `run'
+      /usr/lib/ruby/1.8/timeout.rb:62:in `timeout'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:123:in `run'
+      /usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:122:in `run'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:188:in `reserve_and_run_one_job'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:107:in `work_off'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:106:in `times'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:106:in `work_off'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:81:in `start'
+      /usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:80:in `start'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:77:in `loop'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:77:in `start'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/tasks.rb:13
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `call'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `execute'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `each'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `execute'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:597:in `invoke_with_call_chain'
+      /usr/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:590:in `invoke_with_call_chain'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:583:in `invoke'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2051:in `invoke_task'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `each'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2023:in `top_level'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2001:in `run'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:1998:in `run'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/bin/rake:31
+      /usr/bin/rake:19:in `load'
+      /usr/bin/rake:19
+    - 2010-10-21 15:52:43
     - 
-    - 2010-10-19 09:28:08
     - 
     - 
-    - 
-    - 2010-10-19 09:28:08
-    - 2010-10-19 09:28:08
-  - - "12"
+    - 2010-10-21 11:30:44
+    - 2010-10-21 13:05:58
+  - - "14"
     - "0"
-    - "0"
+    - "10"
     - |
       --- !ruby/object:ReceiveJobable 
       job: !ruby/ActiveRecord:Job 
         attributes: 
-          interval_between_jobs: "108000"
-          created_at: 2010-10-19 09:27:54
-          title: job_for_major_1
-          updated_at: 2010-10-19 09:27:54
-          jobable_id: "699146256"
-          interval_working: "60"
-          last_start: 2010-10-19 09:28:08.401402 Z
-          next_start: 2010-10-19 09:29:00 Z
-          id: "548612071"
-          file_mask: "\".*\""
+          created_at: 2010-10-20 11:31:09
+          title: job_for_webtest_avtorif
+          last_start: 2010-10-21 11:30:44.247078 Z
+          jobable_id: "338983884"
+          updated_at: 2010-10-21 11:23:24
+          next_start: 
+          id: "540680328"
+          seconds_between_jobs: 
+          seconds_working: "60"
           jobable_type: ReceiveJob
+          file_mask: 
+          job_code: 
+          supplier_id: "244397494"
+          last_finish: 
+          job_id: 
+          locked: true
+          active: "1"
+      jobable: !ruby/ActiveRecord:ReceiveJob 
+        attributes: 
+          created_at: 2010-10-20 11:31:09
+          updated_at: 2010-10-20 11:31:09
+          id: "338983884"
+          receiveable_type: EmailReceive
+          receiveable_id: "302439171"
+      optional: 
+
+    - |-
+      undefined method `job' for #<Class:0x7f7f3bd2ce88>
+      /usr/lib/ruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/base.rb:1994:in `method_missing_without_paginate'
+      /usr/lib/ruby/gems/1.8/gems/will_paginate-2.3.14/lib/will_paginate/finder.rb:170:in `method_missing'
+      /usr/lib/ruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/associations/association_collection.rb:380:in `send'
+      /usr/lib/ruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/associations/association_collection.rb:380:in `method_missing_without_paginate'
+      /usr/lib/ruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/base.rb:2178:in `with_scope'
+      /usr/lib/ruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/associations/association_proxy.rb:207:in `send'
+      /usr/lib/ruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/associations/association_proxy.rb:207:in `with_scope'
+      /usr/lib/ruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/associations/association_collection.rb:376:in `method_missing_without_paginate'
+      /usr/lib/ruby/gems/1.8/gems/will_paginate-2.3.14/lib/will_paginate/finder.rb:170:in `method_missing'
+      /home/woto/rails/avtorif/lib/pop3_receiver.rb:37:in `receive'
+      /home/woto/rails/avtorif/lib/pop3_receiver.rb:31:in `each'
+      /home/woto/rails/avtorif/lib/pop3_receiver.rb:31:in `receive'
+      /usr/lib/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/whiny_nil.rb:52:in `each_with_index'
+      /home/woto/rails/avtorif/lib/pop3_receiver.rb:14:in `each'
+      /home/woto/rails/avtorif/lib/pop3_receiver.rb:14:in `each_with_index'
+      /home/woto/rails/avtorif/lib/pop3_receiver.rb:14:in `receive'
+      /usr/lib/ruby/1.8/net/pop.rb:523:in `start'
+      /usr/lib/ruby/1.8/net/pop.rb:397:in `start'
+      /home/woto/rails/avtorif/lib/pop3_receiver.rb:12:in `receive'
+      /home/woto/rails/avtorif/lib/email_receiver.rb:10:in `receive'
+      /home/woto/rails/avtorif/lib/receive_jobable.rb:5:in `perform'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/backend/base.rb:65:in `invoke_job'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:123:in `run'
+      /usr/lib/ruby/1.8/timeout.rb:62:in `timeout'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:123:in `run'
+      /usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:122:in `run'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:188:in `reserve_and_run_one_job'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:107:in `work_off'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:106:in `times'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:106:in `work_off'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:81:in `start'
+      /usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:80:in `start'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:77:in `loop'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:77:in `start'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/tasks.rb:13
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `call'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `execute'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `each'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `execute'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:597:in `invoke_with_call_chain'
+      /usr/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:590:in `invoke_with_call_chain'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:583:in `invoke'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2051:in `invoke_task'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `each'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2023:in `top_level'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2001:in `run'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:1998:in `run'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/bin/rake:31
+      /usr/bin/rake:19:in `load'
+      /usr/bin/rake:19
+    - 2010-10-21 15:52:43
+    - 
+    - 
+    - 
+    - 2010-10-21 11:30:44
+    - 2010-10-21 13:05:58
+  - - "16"
+    - "0"
+    - "10"
+    - |
+      --- !ruby/object:ReceiveJobable 
+      job: !ruby/ActiveRecord:Job 
+        attributes: 
+          created_at: 2010-10-20 11:31:09
+          title: job_for_local_test_1
+          last_start: 2010-10-21 11:30:44.292888 Z
+          jobable_id: "609423326"
+          updated_at: 2010-10-21 11:23:24
+          next_start: 
+          id: "575348894"
+          seconds_between_jobs: 
+          seconds_working: "60"
+          jobable_type: ReceiveJob
+          file_mask: "1"
+          job_code: 
+          supplier_id: "610276578"
+          last_finish: 
+          job_id: 
+          locked: true
+          active: "1"
+      jobable: !ruby/ActiveRecord:ReceiveJob 
+        attributes: 
+          created_at: 2010-10-20 11:31:09
+          updated_at: 2010-10-20 11:31:09
+          id: "609423326"
+          receiveable_type: FolderReceive
+          receiveable_id: "319468209"
+      optional: 
+
+    - |-
+      undefined method `job' for #<Class:0x7f7abe616878>
+      /usr/lib/ruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/base.rb:1994:in `method_missing_without_paginate'
+      /usr/lib/ruby/gems/1.8/gems/will_paginate-2.3.14/lib/will_paginate/finder.rb:170:in `method_missing'
+      /usr/lib/ruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/associations/association_collection.rb:380:in `send'
+      /usr/lib/ruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/associations/association_collection.rb:380:in `method_missing_without_paginate'
+      /usr/lib/ruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/base.rb:2178:in `with_scope'
+      /usr/lib/ruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/associations/association_proxy.rb:207:in `send'
+      /usr/lib/ruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/associations/association_proxy.rb:207:in `with_scope'
+      /usr/lib/ruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/associations/association_collection.rb:376:in `method_missing_without_paginate'
+      /usr/lib/ruby/gems/1.8/gems/will_paginate-2.3.14/lib/will_paginate/finder.rb:170:in `method_missing'
+      /home/woto/rails/avtorif/lib/folder_receiver.rb:6:in `receive'
+      /home/woto/rails/avtorif/lib/folder_receiver.rb:6:in `select'
+      /home/woto/rails/avtorif/lib/folder_receiver.rb:6:in `receive'
+      /usr/lib/ruby/1.8/timeout.rb:62:in `timeout'
+      /home/woto/rails/avtorif/lib/folder_receiver.rb:3:in `receive'
+      /home/woto/rails/avtorif/lib/receive_jobable.rb:5:in `perform'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/backend/base.rb:65:in `invoke_job'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:123:in `run'
+      /usr/lib/ruby/1.8/timeout.rb:62:in `timeout'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:123:in `run'
+      /usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:122:in `run'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:188:in `reserve_and_run_one_job'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:107:in `work_off'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:106:in `times'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:106:in `work_off'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:81:in `start'
+      /usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:80:in `start'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:77:in `loop'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:77:in `start'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/tasks.rb:13
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `call'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `execute'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `each'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `execute'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:597:in `invoke_with_call_chain'
+      /usr/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:590:in `invoke_with_call_chain'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:583:in `invoke'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2051:in `invoke_task'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `each'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2023:in `top_level'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2001:in `run'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:1998:in `run'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/bin/rake:31
+      /usr/bin/rake:19:in `load'
+      /usr/bin/rake:19
+    - 2010-10-21 15:52:38
+    - 
+    - 
+    - 
+    - 2010-10-21 11:30:44
+    - 2010-10-21 13:05:53
+  - - "18"
+    - "0"
+    - "10"
+    - |
+      --- !ruby/object:ReceiveJobable 
+      job: !ruby/ActiveRecord:Job 
+        attributes: 
+          created_at: 2010-10-20 11:31:09
+          title: job_for_major_1
+          last_start: 2010-10-21 11:30:44.467508 Z
+          jobable_id: "699146256"
+          updated_at: 2010-10-21 11:23:24
+          next_start: 2010-10-21 12:00:00 Z
+          id: "548612071"
+          seconds_between_jobs: "108000"
+          seconds_working: "60"
+          jobable_type: ReceiveJob
+          file_mask: 
+          job_code: 
           supplier_id: "1026882825"
           last_finish: 
           job_id: 
-          active: "1"
           locked: true
+          active: "1"
       jobable: !ruby/ActiveRecord:ReceiveJob 
         attributes: 
-          created_at: 2010-10-19 09:27:55
-          updated_at: 2010-10-19 09:27:55
+          created_at: 2010-10-20 11:31:09
+          updated_at: 2010-10-20 11:31:09
           id: "699146256"
           receiveable_type: SmbReceive
           receiveable_id: "339903779"
       optional: 
 
+    - |-
+      undefined method `receiveable' for nil:NilClass
+      /usr/lib/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/whiny_nil.rb:52:in `method_missing'
+      /home/woto/rails/avtorif/lib/receive_jobable.rb:3:in `perform'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/backend/base.rb:65:in `invoke_job'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:123:in `run'
+      /usr/lib/ruby/1.8/timeout.rb:62:in `timeout'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:123:in `run'
+      /usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:122:in `run'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:188:in `reserve_and_run_one_job'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:107:in `work_off'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:106:in `times'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:106:in `work_off'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:81:in `start'
+      /usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:80:in `start'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:77:in `loop'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:77:in `start'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/tasks.rb:13
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `call'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `execute'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `each'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `execute'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:597:in `invoke_with_call_chain'
+      /usr/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:590:in `invoke_with_call_chain'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:583:in `invoke'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2051:in `invoke_task'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `each'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2023:in `top_level'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2001:in `run'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:1998:in `run'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/bin/rake:31
+      /usr/bin/rake:19:in `load'
+      /usr/bin/rake:19
+    - 2010-10-21 15:52:33
     - 
-    - 2010-10-19 09:28:08
     - 
     - 
-    - 
-    - 2010-10-19 09:28:08
-    - 2010-10-19 09:28:08
-  - - "13"
+    - 2010-10-21 11:30:44
+    - 2010-10-21 13:05:48
+  - - "25"
     - "0"
-    - "0"
+    - "10"
     - |
       --- !ruby/object:ReceiveJobable 
       job: !ruby/ActiveRecord:Job 
         attributes: 
-          interval_between_jobs: "7200"
-          created_at: 2010-10-19 09:27:54
+          created_at: 2010-10-20 14:11:54
           title: !binary |
-            0J/QtdC70LjQutCw0L0t0LDQstGC0L4g0L3QsNC70LjRh9C40LUgMg==
+            MDEwX9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBIEFDU0NPTSBTUUwg
       
-          updated_at: 2010-10-19 09:27:54
-          jobable_id: "280362575"
-          interval_working: "60"
-          last_start: 2010-10-19 09:28:08.415780 Z
-          next_start: 2010-10-19 09:29:00 Z
-          id: "839485896"
-          file_mask: "\"PEC.xls\""
+          last_start: 2010-10-21 11:30:44.754832 Z
+          jobable_id: "1027824391"
+          updated_at: 2010-10-21 11:23:24
+          next_start: 2010-10-21 12:00:00 Z
+          id: "1066346035"
+          seconds_between_jobs: "4000"
+          seconds_working: "20"
           jobable_type: ReceiveJob
-          supplier_id: "1044098171"
-          last_finish: 
+          file_mask: ACSCOM.xls
+          job_code: ""
+          supplier_id: "1072056300"
+          last_finish: 2010-10-20 14:13:17
           job_id: 
-          active: "1"
           locked: true
+          active: "1"
       jobable: !ruby/ActiveRecord:ReceiveJob 
         attributes: 
-          created_at: 2010-10-19 09:27:55
-          updated_at: 2010-10-19 09:27:55
-          id: "280362575"
-          receiveable_type: FtpReceive
-          receiveable_id: "365213618"
+          created_at: 2010-10-20 14:12:30
+          updated_at: 2010-10-20 14:12:30
+          id: "1027824391"
+          receiveable_type: SmbReceive
+          receiveable_id: "339903789"
       optional: 
 
+    - |-
+      /usr/lib/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/dependencies.rb:105:in `const_missing': uninitialized constant SmbReceiver::ACSCOM
+      /home/woto/rails/avtorif/lib/smb_receiver.rb:28:in `receive'
+      (eval):1:in `receive'
+      /home/woto/rails/avtorif/lib/smb_receiver.rb:25:in `eval'
+      /home/woto/rails/avtorif/lib/smb_receiver.rb:28:in `receive'
+      /home/woto/rails/avtorif/lib/smb_receiver.rb:25:in `select'
+      /home/woto/rails/avtorif/lib/smb_receiver.rb:25:in `receive'
+      /usr/lib/ruby/1.8/timeout.rb:62:in `timeout'
+      /home/woto/rails/avtorif/lib/smb_receiver.rb:5:in `receive'
+      /home/woto/rails/avtorif/lib/receive_jobable.rb:5:in `perform'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/backend/base.rb:65:in `invoke_job'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:123:in `run'
+      /usr/lib/ruby/1.8/timeout.rb:62:in `timeout'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:123:in `run'
+      /usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:122:in `run'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:188:in `reserve_and_run_one_job'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:107:in `work_off'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:106:in `times'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:106:in `work_off'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:81:in `start'
+      /usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:80:in `start'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:77:in `loop'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:77:in `start'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/tasks.rb:13
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `call'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `execute'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `each'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `execute'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:597:in `invoke_with_call_chain'
+      /usr/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:590:in `invoke_with_call_chain'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:583:in `invoke'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2051:in `invoke_task'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `each'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2023:in `top_level'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2001:in `run'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:1998:in `run'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/bin/rake:31
+      /usr/bin/rake:19:in `load'
+      /usr/bin/rake:19
+    - 2010-10-21 15:52:33
     - 
-    - 2010-10-19 09:28:08
     - 
     - 
-    - 
-    - 2010-10-19 09:28:08
-    - 2010-10-19 09:28:08
-  - - "14"
+    - 2010-10-21 11:30:44
+    - 2010-10-21 13:05:48
+  - - "26"
     - "0"
-    - "0"
+    - "10"
     - |
       --- !ruby/object:ReceiveJobable 
       job: !ruby/ActiveRecord:Job 
         attributes: 
-          interval_between_jobs: 
-          created_at: 2010-10-19 09:34:14
-          title: "047"
-          updated_at: 2010-10-19 09:35:41
-          jobable_id: "1027824376"
-          interval_working: 
-          last_start: 2010-10-19 09:36:09.274114 Z
-          next_start: 2010-10-19 09:37:00 Z
-          id: "1066346022"
-          file_mask: "\".*\""
+          created_at: 2010-10-20 14:32:41
+          title: !binary |
+            MDExX9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBINCQ0JLQotCe0KHQ
+            n9CV0KbQptCV0J3QotCgIA==
+      
+          last_start: 2010-10-21 11:30:44.785171 Z
+          jobable_id: "1027824392"
+          updated_at: 2010-10-21 11:23:24
+          next_start: 2010-10-21 12:00:00 Z
+          id: "1066346036"
+          seconds_between_jobs: "4000"
+          seconds_working: "20"
           jobable_type: ReceiveJob
-          supplier_id: "1072056296"
+          file_mask: "\"Sklad Himki.xls\""
+          job_code: ""
+          supplier_id: "1072056302"
+          last_finish: 
+          job_id: 
+          locked: true
+          active: "1"
+      jobable: !ruby/ActiveRecord:ReceiveJob 
+        attributes: 
+          created_at: 2010-10-20 14:33:11
+          updated_at: 2010-10-20 14:33:11
+          id: "1027824392"
+          receiveable_type: FtpReceive
+          receiveable_id: "1058689892"
+      optional: 
+
+    - |-
+      530 /var/log/ftp/error.log
+      
+      /usr/lib/ruby/1.8/net/ftp.rb:243:in `getresp'
+      /usr/lib/ruby/1.8/net/ftp.rb:264:in `sendcmd'
+      /usr/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+      /usr/lib/ruby/1.8/net/ftp.rb:262:in `sendcmd'
+      /usr/lib/ruby/1.8/net/ftp.rb:382:in `login'
+      /usr/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+      /usr/lib/ruby/1.8/net/ftp.rb:378:in `login'
+      /home/woto/rails/avtorif/lib/ftp_receiver.rb:11:in `receive'
+      /usr/lib/ruby/1.8/timeout.rb:62:in `timeout'
+      /home/woto/rails/avtorif/lib/ftp_receiver.rb:5:in `receive'
+      /home/woto/rails/avtorif/lib/receive_jobable.rb:5:in `perform'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/backend/base.rb:65:in `invoke_job'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:123:in `run'
+      /usr/lib/ruby/1.8/timeout.rb:62:in `timeout'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:123:in `run'
+      /usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:122:in `run'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:188:in `reserve_and_run_one_job'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:107:in `work_off'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:106:in `times'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:106:in `work_off'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:81:in `start'
+      /usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:80:in `start'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:77:in `loop'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:77:in `start'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/tasks.rb:13
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `call'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `execute'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `each'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `execute'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:597:in `invoke_with_call_chain'
+      /usr/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:590:in `invoke_with_call_chain'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:583:in `invoke'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2051:in `invoke_task'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `each'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2023:in `top_level'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2001:in `run'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:1998:in `run'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/bin/rake:31
+      /usr/bin/rake:19:in `load'
+      /usr/bin/rake:19
+    - 2010-10-21 15:52:46
+    - 
+    - 
+    - 
+    - 2010-10-21 11:30:44
+    - 2010-10-21 13:06:01
+  - - "29"
+    - "0"
+    - "10"
+    - |
+      --- !ruby/object:ReceiveJobable 
+      job: !ruby/ActiveRecord:Job 
+        attributes: 
+          created_at: 2010-10-21 09:46:07
+          title: !binary |
+            MDE2X9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBINCU0JbQldCd0KHQ
+            ldCgINCj0KbQldCd0JrQkCBTUUwg
+      
+          last_start: 2010-10-21 11:30:44.866245 Z
+          jobable_id: "1027824396"
+          updated_at: 2010-10-21 11:23:25
+          next_start: 2010-10-21 12:00:00 Z
+          id: "1066346039"
+          seconds_between_jobs: 
+          seconds_working: 
+          jobable_type: ReceiveJob
+          file_mask: !binary |
+            0JzQtdGA0YLQstGL0Lkg0YHQutC70LDQtCAjZGQjI21tIyN5eSMueGxzIA==
+      
+          job_code: ""
+          supplier_id: "1072056305"
+          last_finish: 
+          job_id: 
+          locked: true
+          active: "1"
+      jobable: !ruby/ActiveRecord:ReceiveJob 
+        attributes: 
+          created_at: 2010-10-21 09:46:31
+          updated_at: 2010-10-21 09:46:31
+          id: "1027824396"
+          receiveable_type: FtpReceive
+          receiveable_id: "1058689895"
+      optional: 
+
+    - "undefined local variable or method `\xD1\x81\xD0\xBA\xD0\xBB\xD0\xB0\xD0\xB4' for #<FtpReceiver:0x7fc55a9c1220>\n\
+      /home/woto/rails/avtorif/lib/ftp_receiver.rb:16:in `receive'\n\
+      /home/woto/rails/avtorif/lib/ftp_receiver.rb:16:in `eval'\n\
+      /home/woto/rails/avtorif/lib/ftp_receiver.rb:16:in `receive'\n\
+      /home/woto/rails/avtorif/lib/ftp_receiver.rb:16:in `select'\n\
+      /home/woto/rails/avtorif/lib/ftp_receiver.rb:16:in `receive'\n\
+      /usr/lib/ruby/1.8/timeout.rb:62:in `timeout'\n\
+      /home/woto/rails/avtorif/lib/ftp_receiver.rb:5:in `receive'\n\
+      /home/woto/rails/avtorif/lib/receive_jobable.rb:5:in `perform'\n\
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/backend/base.rb:65:in `invoke_job'\n\
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:123:in `run'\n\
+      /usr/lib/ruby/1.8/timeout.rb:62:in `timeout'\n\
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:123:in `run'\n\
+      /usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'\n\
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:122:in `run'\n\
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:188:in `reserve_and_run_one_job'\n\
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:107:in `work_off'\n\
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:106:in `times'\n\
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:106:in `work_off'\n\
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:81:in `start'\n\
+      /usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'\n\
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:80:in `start'\n\
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:77:in `loop'\n\
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:77:in `start'\n\
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/tasks.rb:13\n\
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `call'\n\
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `execute'\n\
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `each'\n\
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `execute'\n\
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:597:in `invoke_with_call_chain'\n\
+      /usr/lib/ruby/1.8/monitor.rb:242:in `synchronize'\n\
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:590:in `invoke_with_call_chain'\n\
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:583:in `invoke'\n\
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2051:in `invoke_task'\n\
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'\n\
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `each'\n\
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'\n\
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'\n\
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2023:in `top_level'\n\
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2001:in `run'\n\
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'\n\
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:1998:in `run'\n\
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/bin/rake:31\n\
+      /usr/bin/rake:19:in `load'\n\
+      /usr/bin/rake:19"
+    - 2010-10-21 15:52:46
+    - 
+    - 
+    - 
+    - 2010-10-21 11:30:44
+    - 2010-10-21 13:06:01
+  - - "32"
+    - "0"
+    - "10"
+    - |
+      --- !ruby/object:ImportJobable 
+      job: !ruby/ActiveRecord:Job 
+        attributes: 
+          created_at: 2010-10-20 11:31:09
+          title: job_for_febest_2
+          updated_at: 2010-10-20 11:31:09
+          jobable_id: "912233221"
+          last_start: 2010-10-21 11:30:53.330285 Z
+          next_start: 2010-10-21 12:00:00 Z
+          id: "734027939"
+          job_code: 
+          file_mask: "\"febestrif.txt\""
+          jobable_type: ImportJob
+          seconds_working: "60"
+          seconds_between_jobs: "108000"
+          supplier_id: "854858892"
+          last_finish: 
+          job_id: "852046107"
+          active: "1"
+          locked: true
+      jobable: !ruby/ActiveRecord:ImportJob 
+        attributes: 
+          import_method_id: 
+          encoding: 
+          created_at: 2010-10-20 11:31:09
+          updated_at: 2010-10-20 11:31:09
+          importable_type: CsvImport
+          id: "912233221"
+          importable_id: "443848385"
+      optional: 57
+
+    - |-
+      undefined method `delimeter' for #<ActiveRecord::Associations::BelongsToPolymorphicAssociation:0x7f598fa34d10>
+      /usr/lib/ruby/gems/1.8/gems/activerecord-2.3.8/lib/active_record/associations/association_proxy.rb:217:in `method_missing'
+      /home/woto/rails/avtorif/lib/csv_importer.rb:23:in `import'
+      /home/woto/rails/avtorif/lib/csv_importer.rb:21:in `each_line'
+      /home/woto/rails/avtorif/lib/csv_importer.rb:21:in `import'
+      /home/woto/rails/avtorif/lib/csv_importer.rb:6:in `each'
+      /home/woto/rails/avtorif/lib/csv_importer.rb:6:in `import'
+      /home/woto/rails/avtorif/lib/import_jobable.rb:6:in `perform'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/backend/base.rb:65:in `invoke_job'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:123:in `run'
+      /usr/lib/ruby/1.8/timeout.rb:62:in `timeout'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:123:in `run'
+      /usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:122:in `run'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:188:in `reserve_and_run_one_job'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:107:in `work_off'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:106:in `times'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:106:in `work_off'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:81:in `start'
+      /usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:80:in `start'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:77:in `loop'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:77:in `start'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/tasks.rb:13
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `call'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `execute'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `each'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `execute'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:597:in `invoke_with_call_chain'
+      /usr/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:590:in `invoke_with_call_chain'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:583:in `invoke'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2051:in `invoke_task'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `each'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2023:in `top_level'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2001:in `run'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:1998:in `run'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/bin/rake:31
+      /usr/bin/rake:19:in `load'
+      /usr/bin/rake:19
+    - 2010-10-21 15:52:48
+    - 
+    - 
+    - 
+    - 2010-10-21 11:30:53
+    - 2010-10-21 13:06:03
+  - - "33"
+    - "0"
+    - "10"
+    - |
+      --- !ruby/object:ImportJobable 
+      job: !ruby/ActiveRecord:Job 
+        attributes: 
+          created_at: 2010-10-20 11:31:09
+          title: !binary |
+            0J7QsdGA0LDQsdC+0YLQutCwINGE0LDQudC70LAgc2tsYWQudHh0
+      
+          updated_at: 2010-10-21 06:00:15
+          jobable_id: "917852428"
+          last_start: 2010-10-21 11:30:53.766132 Z
+          next_start: 
+          id: "606102037"
+          job_code: 
+          file_mask: "\"sklad.txt\""
+          jobable_type: ImportJob
+          seconds_working: "60"
+          seconds_between_jobs: "108000"
+          supplier_id: "480201602"
+          last_finish: 2010-10-20 13:18:16
+          job_id: "1026110385"
+          active: "1"
+          locked: true
+      jobable: !ruby/ActiveRecord:ImportJob 
+        attributes: 
+          import_method_id: 
+          encoding: 
+          created_at: 2010-10-20 11:31:09
+          updated_at: 2010-10-20 11:31:09
+          importable_type: CsvImport
+          id: "917852428"
+          importable_id: "810740390"
+      optional: 54
+
+    - |-
+      undefined method `importable' for nil:NilClass
+      /usr/lib/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/whiny_nil.rb:52:in `method_missing'
+      /home/woto/rails/avtorif/lib/import_jobable.rb:3:in `perform'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/backend/base.rb:65:in `invoke_job'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:123:in `run'
+      /usr/lib/ruby/1.8/timeout.rb:62:in `timeout'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:123:in `run'
+      /usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:122:in `run'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:188:in `reserve_and_run_one_job'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:107:in `work_off'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:106:in `times'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:106:in `work_off'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:81:in `start'
+      /usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:80:in `start'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:77:in `loop'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:77:in `start'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/tasks.rb:13
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `call'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `execute'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `each'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `execute'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:597:in `invoke_with_call_chain'
+      /usr/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:590:in `invoke_with_call_chain'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:583:in `invoke'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2051:in `invoke_task'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `each'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2023:in `top_level'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2001:in `run'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:1998:in `run'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/bin/rake:31
+      /usr/bin/rake:19:in `load'
+      /usr/bin/rake:19
+    - 2010-10-21 15:52:43
+    - 
+    - 
+    - 
+    - 2010-10-21 11:30:53
+    - 2010-10-21 13:05:58
+  - - "34"
+    - "0"
+    - "10"
+    - |
+      --- !ruby/object:ImportJobable 
+      job: !ruby/ActiveRecord:Job 
+        attributes: 
+          created_at: 2010-10-20 11:31:09
+          title: !binary |
+            0J7QsdGA0LDQsdC+0YLQutCwINGE0LDQudC70LAgc2tsYWQudHh0
+      
+          updated_at: 2010-10-21 11:30:53.792921 Z
+          jobable_id: "917852428"
+          last_start: 2010-10-21 11:30:53.795162 Z
+          next_start: 
+          id: "606102037"
+          job_code: 
+          file_mask: "\"sklad.txt\""
+          jobable_type: ImportJob
+          seconds_working: "60"
+          seconds_between_jobs: "108000"
+          supplier_id: "480201602"
+          last_finish: 2010-10-20 13:18:16
+          job_id: "1026110385"
+          active: "1"
+          locked: true
+      jobable: !ruby/ActiveRecord:ImportJob 
+        attributes: 
+          import_method_id: 
+          encoding: 
+          created_at: 2010-10-20 11:31:09
+          updated_at: 2010-10-20 11:31:09
+          importable_type: CsvImport
+          id: "917852428"
+          importable_id: "810740390"
+      optional: 60
+
+    - |-
+      undefined method `importable' for nil:NilClass
+      /usr/lib/ruby/gems/1.8/gems/activesupport-2.3.8/lib/active_support/whiny_nil.rb:52:in `method_missing'
+      /home/woto/rails/avtorif/lib/import_jobable.rb:3:in `perform'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/backend/base.rb:65:in `invoke_job'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:123:in `run'
+      /usr/lib/ruby/1.8/timeout.rb:62:in `timeout'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:123:in `run'
+      /usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:122:in `run'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:188:in `reserve_and_run_one_job'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:107:in `work_off'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:106:in `times'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:106:in `work_off'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:81:in `start'
+      /usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:80:in `start'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:77:in `loop'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:77:in `start'
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/tasks.rb:13
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `call'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `execute'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `each'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `execute'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:597:in `invoke_with_call_chain'
+      /usr/lib/ruby/1.8/monitor.rb:242:in `synchronize'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:590:in `invoke_with_call_chain'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:583:in `invoke'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2051:in `invoke_task'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `each'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2023:in `top_level'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2001:in `run'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:1998:in `run'
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/bin/rake:31
+      /usr/bin/rake:19:in `load'
+      /usr/bin/rake:19
+    - 2010-10-21 15:52:48
+    - 
+    - 
+    - 
+    - 2010-10-21 11:30:53
+    - 2010-10-21 13:06:03
+  - - "62"
+    - "0"
+    - "10"
+    - |
+      --- !ruby/object:ReceiveJobable 
+      job: !ruby/ActiveRecord:Job 
+        attributes: 
+          created_at: 2010-10-21 12:03:58
+          title: !binary |
+            MDI1X9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBINCd0JXQl9CQ0JLQ
+            mNCh0JjQnNCe0KHQotCsIA==
+      
+          updated_at: 2010-10-21 12:04:51
+          jobable_id: "1027824401"
+          last_start: 2010-10-21 12:05:09.287840 Z
+          next_start: 2010-10-21 13:00:00 Z
+          id: "1066346045"
+          job_code: ""
+          file_mask: !binary |
+            ItCe0J/QoiAwOTA2MTAueGxzIg==
+      
+          jobable_type: ReceiveJob
+          seconds_working: "20"
+          seconds_between_jobs: "4000"
+          supplier_id: "1072056308"
           last_finish: 
           job_id: 
           active: "1"
           locked: true
       jobable: !ruby/ActiveRecord:ReceiveJob 
         attributes: 
-          created_at: 2010-10-19 09:35:41
-          updated_at: 2010-10-19 09:35:41
-          id: "1027824376"
-          receiveable_type: FtpReceive
-          receiveable_id: "1058689886"
+          created_at: 2010-10-21 12:04:20
+          updated_at: 2010-10-21 12:04:20
+          id: "1027824401"
+          receiveable_type: SmbReceive
+          receiveable_id: "339903794"
       optional: 
 
+    - "cd \\DATA\\\xD0\x9D\xD0\x95\xD0\x97\xD0\x90\xD0\x92\xD0\x98\xD0\xA1\xD0\x98\xD0\x9C\xD0\x9E\xD0\xA1\xD0\xA2\xD0\xAC\\: NT_STATUS_OBJECT_NAME_NOT_FOUND\n  .                                   D        0  Thu Oct 21 17:30:01 2010\n  ..                                  D        0  Thu Oct 21 17:30:01 2010\n  1CML32.dll                          A    73728  Thu Sep 18 17:35:12 2003\n  1CPP.dll                            A  1298432  Mon Nov 12 21:56:34 2007\n  1CRWidjets.als                      A    24191  Wed Jan 16 03:37:56 2008\n  1Cv7.$ui                            A       16  Thu Oct 21 07:50:10 2010\n  1Cv7.CFG                            A     5088  Thu Oct 21 17:17:20 2010\n  1Cv7.DBA                            A       94  Thu Oct 21 17:15:23 2010\n  1Cv7.DDS                            A   713929  Wed Oct 13 15:57:06 2010\n  1Cv7.LCK                            A        0  Thu Oct 21 17:24:51 2010\n  1Cv7.MD                             A 11777536  Wed Oct 13 16:24:38 2010\n  1cv7flt.lst                         A       69  Thu Oct 21 17:17:20 2010\n  1SJOURN.$lk                         A        0  Thu Oct 21 08:02:44 2010\n  1SSYSTEM.$lk                        A        0  Thu Oct 21 09:07:28 2010\n  ARHIVE                              D        0  Fri Oct 15 07:37:14 2010\n  AVPraice                            D        0  Thu Oct 21 12:15:39 2010\n  BARCODE.OCX                         A   139264  Thu Dec 27 22:09:24 2001\n  BIN                                 D        0  Tue Oct 19 13:36:05 2010\n  BkEnd.dll                           A  2814001  Wed Dec 28 12:27:50 2005\n  CipherLab.dll                       A   270336  Thu Feb 16 14:08:00 2006\n  CipherLabRF.dll                     A   880640  Wed May 17 13:00:14 2006\n  CipherLabTCP.dll                    A  1404928  Tue Dec 12 15:30:14 2006\n  CP                                 DA        0  Fri Oct 15 07:27:51 2010\n  DATA                               DA        0  Thu Oct 21 16:39:12 2010\n  DialMail.ALS                        A   114156  Mon Sep 10 00:47:34 2007\n  DialMail.dll                        A   683520  Mon Feb 18 22:39:22 2008\n  DiscountForSQL                      D        0  Fri Oct 15 07:27:31 2010\n  DOCPRINT.prm                        A       34  Thu Apr 22 13:17:03 2010\n  Doc_pko_LOG.txt                     A     1067  Thu Jan 28 16:16:25 2010\n  Doc_prih_LOG.txt                    A    47897  Thu Jan 28 16:16:24 2010\n  Doc_rash_LOG.txt                    A    44129  Thu Jan 28 16:16:25 2010\n  Doc_rko_LOG.txt                     A        0  Thu Jan 28 16:16:25 2010\n  Doc_zak_LOG.txt                     A   126568  Thu Jan 28 16:16:29 2010\n  DRIVERS                             D        0  Fri Oct 15 07:27:31 2010\n  EMEX_arhive                         D        0  Thu Oct 21 16:54:06 2010\n  ExtForms                            D        0  Wed Oct 20 17:13:58 2010\n  ftp.dll                             A   347648  Fri Nov  8 11:40:18 2002\n  ftps.exe                            A   262144  Tue Oct 30 11:35:24 2007\n  ggmodw.exe                          A   808284  Mon Apr 14 18:26:17 2008\n  GodexEZPL.dll                       A   278528  Tue Feb  5 17:29:50 2008\n  history.prm                         A     2181  Thu Oct 21 17:17:20 2010\n  IN                                  D        0  Thu Oct 21 17:37:41 2010\n  InboxForSql                         D        0  Thu Oct 21 11:51:06 2010\n  LOG                                 D        0  Fri Oct 15 07:26:18 2010\n  Media.dll                           A    28672  Tue Apr  4 16:24:56 2006\n  NEW_STRU                            D        0  Fri Oct 15 07:26:18 2010\n  ObjDel.prm                          A     7272  Thu Nov  8 13:30:02 2007\n  PC                                  D        0  Fri Oct 15 07:26:18 2010\n  PlayerMed.dll                       A    28672  Sat Feb 19 01:05:36 2005\n  PriceForLoading                     D        0  Thu Oct 21 16:17:17 2010\n  rar.exe                             A   302080  Mon Aug  8 03:50:00 2005\n  register_dll_rif2010_SCLAD.cmd      A      290  Mon Jul 12 13:55:18 2010\n  REGPRINT.prm                        A       34  Fri Mar  5 10:36:22 2010\n  rh117897.lst                        A       97  Fri Mar 19 12:57:04 2010\n  rh124304.lst                        A      145  Thu Jul 29 09:45:48 2010\n  rh150729.lst                        A     2404  Thu Oct 21 17:32:57 2010\n  rh150911.lst                        A      123  Wed Mar 17 14:56:00 2010\n  rh160235.lst                        A     1475  Wed Mar 10 12:00:05 2010\n  rh160236.lst                        A      759  Mon Apr 12 12:08:15 2010\n  rh176635.lst                        A      141  Mon Aug  2 10:33:49 2010\n  rh180305.lst                        A      122  Fri Jul 16 09:56:14 2010\n  rh185606.lst                        A       18  Tue Mar  9 11:15:10 2010\n  rh189852.lst                        A       10  Mon Dec  3 11:23:57 2007\n  rh196469.lst                        A       55  Thu Sep 16 11:04:44 2010\n  rh198810.lst                        A      175  Thu Aug 26 18:50:25 2010\n  rh200863.lst                        A       53  Tue Aug 31 15:38:51 2010\n  rh216861.lst                        A       89  Thu Jul  8 13:24:28 2010\n  rh324518.lst                        A      807  Wed Aug 18 09:57:38 2010\n  rh470729.lst                        A       53  Wed Sep  8 09:35:54 2010\n  rh491770.lst                        A      104  Mon Sep 20 16:10:24 2010\n  rh562423.lst                        A      101  Mon Aug 16 16:28:07 2010\n  rh631760.lst                        A       53  Fri Sep 10 10:27:45 2010\n  rh643755.lst                        A      150  Tue Aug 24 18:42:12 2010\n  rh654961.lst                        A     1727  Tue Dec  4 09:43:46 2007\n  rh6660.lst                          A      173  Fri Apr  9 10:41:09 2010\n  rh729280.lst                        A      112  Mon Apr 26 16:06:31 2010\n  rh774564.lst                        A       89  Tue Oct 19 15:25:19 2010\n  rh8011c4.lst                        A       67  Tue Sep  7 10:53:26 2010\n  rh81016c.lst                        A      392  Mon Nov 26 13:24:50 2007\n  rh8211bb.lst                        A      856  Fri Jul 23 14:39:22 2010\n  rh8423ce.lst                        A       10  Tue Jan 15 15:40:13 2008\n  rh851086.lst                        A       71  Thu Sep  9 10:48:32 2010\n  rh871ef0.lst                        A       31  Fri Sep 10 15:24:28 2010\n  rh8f82dc.lst                        A      103  Mon Mar 15 16:20:24 2010\n  rh9120e6.lst                        A       89  Wed Oct 20 13:33:04 2010\n  rh975114.lst                        A       71  Thu Sep  9 13:19:56 2010\n  rh9b95c7.lst                        A       53  Fri Oct 15 13:04:58 2010\n  rh9eb586.lst                        A      129  Mon Oct  4 14:02:31 2010\n  rha1ce6a.lst                        A       58  Thu Nov 22 17:32:44 2007\n  rha4a00f.lst                        A       67  Tue Aug 24 17:47:08 2010\n  rha62bb1.lst                        A      104  Thu Aug  5 13:14:52 2010\n  rhaad8e6.lst                        A      132  Thu Sep  9 15:26:14 2010\n  rhb0564e.lst                        A       89  Wed May 12 09:42:26 2010\n  rhc76276.lst                        A      184  Thu Aug 12 17:56:19 2010\n  rhce8c0a.lst                        A     1727  Tue Dec  4 10:15:51 2007\n  rhd0327b.lst                        A      155  Fri Aug 27 17:11:54 2010\n  rhd93f4e.lst                        A       89  Mon Apr 26 12:57:52 2010\n  rhe1c1bf.lst                        A      307  Fri Sep 24 16:43:09 2010\n  rhe57479.lst                        A       53  Thu Sep 23 12:05:03 2010\n  rhe98cf9.lst                        A      103  Fri Mar 12 11:58:08 2010\n  rhea6a0c.lst                        A      216  Wed Oct  6 16:33:27 2010\n  rhf05343.lst                        A      807  Wed Sep  8 09:45:06 2010\n  rhf57dfb.lst                        A      173  Fri Apr  9 10:46:05 2010\n  rhfb6ea2.lst                        A       71  Wed Sep  8 12:40:55 2010\n  rhfcfe76.lst                        A       89  Mon May 31 15:15:13 2010\n  ROM-Mail.dll                        A   690688  Tue Aug 10 14:11:20 2004\n  RWidjets.chm                        A    39539  Wed Jan 16 03:38:02 2008\n  RWidjets.dll                        A   106496  Wed Jan 16 03:37:38 2008\n  SC115.$lk                           A        0  Thu Oct 21 08:05:33 2010\n  SC169.$lk                           A        0  Thu Oct 21 11:11:19 2010\n  SC222.$lk                           A        0  Thu Oct 21 09:48:12 2010\n  SC274.$lk                           A        0  Thu Oct 21 12:06:33 2010\n  SC2783.$lk                          A        0  Thu Oct 21 12:30:01 2010\n  SC284.$lk                           A        0  Thu Oct 21 09:53:44 2010\n  SC4179.$lk                          A        0  Thu Oct 21 09:16:45 2010\n  SCANOPOS.DLL                        A    65536  Thu Dec 27 21:09:26 2001\n  SetAttrs.prm                        A       34  Thu May 27 16:53:00 2010\n  sifobi.exe                          A   610458  Mon Jun  9 17:08:19 2008\n  Sound                               D        0  Fri Oct 15 07:25:49 2010\n  SYSLOG                              D        0  Thu Oct 21 17:25:04 2010\n  T0.CDX                              A  2190336  Tue Jul 28 15:46:07 2009\n  T0.DBF                              A  1921760  Tue Jul 28 15:46:07 2009\n  T1.CDX                              A    59392  Tue Nov 27 16:12:55 2007\n  T1.DBF                              A    46282  Tue Nov 27 16:12:55 2007\n  TEMP                                D        0  Thu Oct 21 17:35:18 2010\n  UNIZIP32.DLL                        A   130560  Mon Jan  5 14:40:54 1998\n  usrdef                              D        0  Fri Oct 15 07:25:07 2010\n  v7plus.dll                          A   237650  Tue Sep 23 16:06:26 2003\n  vkloader                            D        0  Fri Oct 15 07:25:06 2010\n  zipfldr.dll                         A   336896  Tue Aug 17 17:04:38 2004\n  _\xD0\xA0\xD0\xB5\xD0\xB7\xD1\x83\xD0\xBB\xD1\x8C\xD1\x82\xD0\xB0\xD1\x82\xD0\x9F\xD0\xB5\xD1\x80\xD0\xB5\xD0\xB2\xD0\xBE\xD0\xB4\xD0\xB0\xD0\xA6\xD0\xB5\xD0\xBD.xls      A    60416  Thu Jan 14 10:05:45 2010\n  \xD0\x90\xD0\xB2\xD1\x82\xD0\xBE\xD0\xBC\xD0\xB8\xD1\x80_\xD0\x9F\xD0\xB5\xD0\xBD\xD0\xB7\xD0\xB0           D        0  Thu Oct 21 05:59:25 2010\n  \xD0\x91\xD1\x83\xD1\x85                              D        0  Fri Oct 15 07:25:06 2010\n  \xD0\x97\xD0\xB0\xD0\xBF\xD1\x80\xD0\xBE\xD1\x81\xD1\x8B\xD0\x9A\xD0\xB0\xD1\x82\xD0\x9D\xD0\xBE\xD0\xBC\xD0\xB5\xD1\x80\xD0\xBE\xD0\xB2.txt      A  1413284  Thu Dec 25 10:18:45 2008\n  \xD0\x98\xD0\xBD\xD0\xB2\xD0\xB5\xD0\xBD\xD1\x82\xD0\xB0\xD1\x80\xD0\xB8\xD0\xB7\xD0\xB0\xD1\x86\xD0\xB8\xD1\x8F        D        0  Fri Oct 15 07:25:05 2010\n  \xD0\x9A\xD0\xBE\xD0\xBF\xD0\xB8\xD1\x8F (2) 1Cv7.MD              A 11724800  Wed Jul 28 11:43:35 2010\n  \xD0\x9A\xD0\xBE\xD0\xBF\xD0\xB8\xD1\x8F 1Cv7.MD                  A 11688960  Wed May 26 11:59:07 2010\n  \xD0\x9B\xD0\xBE\xD0\xB3FTP\xD0\xB8Mail.txt                 A   222108  Thu Oct 21 17:37:42 2010\n  \xD0\x9B\xD0\xBE\xD0\xB3SQL.txt                       A   129271  Thu Oct 21 16:17:17 2010\n  \xD0\x9B\xD0\xBE\xD0\xB3_\xD0\x95\xD0\x9C\xD0\x95\xD0\xA5.txt                 A   273843  Thu Oct 21 08:06:28 2010\n  \xD0\x9B\xD0\xBE\xD0\xB3\xD0\x94\xD0\xB8\xD0\xB0\xD0\xB3\xD0\xBD\xD0\xBE\xD1\x81\xD1\x82\xD0\xB8\xD0\xBA\xD0\xB8.txt      A   760548  Thu Oct 21 07:14:05 2010\n  \xD0\x9B\xD0\xBE\xD0\xB3\xD0\x9E\xD1\x88\xD0\x9E\xD0\xB1\xD0\xBD\xD0\xBE\xD0\xB2\xD0\xBB\xD0\xB5\xD0\xBD\xD0\xB8\xD1\x8F.txt      A   702505  Wed Jan 30 10:33:55 2008\n  \xD0\x9B\xD0\xBE\xD0\xB3\xD0\x9F\xD0\xBB\xD0\xB0\xD0\xBD\xD0\xB8\xD1\x80\xD0\xBE\xD0\xB2\xD1\x89\xD0\xB8\xD0\xBA\xD0\xB0.txt      A   242218  Fri Dec 19 16:32:46 2008\n  \xD0\xBC\xD0\xB8\xD0\xBD\xD0\xB8\xD0\xBC 40.xls                   A  5579264  Tue Apr 13 09:33:08 2010\n  \xD0\x9D\xD0\xBE\xD0\xB2\xD1\x8B\xD0\xB9.xls                      A  5574144  Mon Apr 12 16:34:22 2010\n  \xD0\x9E\xD0\xB1\xD0\xBE\xD1\x80\xD0\xBE\xD1\x82\xD0\xBD\xD0\xB0\xD1\x8F\xD0\xA1\xD0\xBF\xD0\xB5\xD1\x86          D        0  Thu Oct 21 08:06:22 2010\n  \xD0\x9E\xD1\x88\xD0\xB8\xD0\xB1\xD0\xBA\xD0\xB8\xD0\x9E\xD0\xB1\xD1\x80\xD0\xB0\xD0\xB1\xD0\xBE\xD1\x82\xD0\xBE\xD0\xBA.txt      A      156  Thu Oct 21 14:59:48 2010\n  \xD0\xA0\xD0\xB5\xD0\xB7\xD1\x83\xD0\xBB\xD1\x8C\xD1\x82\xD0\xB0\xD1\x82\xD0\x9F\xD0\xB5\xD1\x80\xD0\xB5\xD0\xB2\xD0\xBE\xD0\xB4\xD0\xB0\xD0\xA6\xD0\xB5\xD0\xBD.xls      A     4608  Tue Jan 20 16:01:35 2009\n  \xD0\xA0\xD0\xB5\xD0\xB7\xD1\x83\xD0\xBB\xD1\x8C\xD1\x82\xD0\xB0\xD1\x82\xD1\x8B\xD0\x92\xD1\x8B\xD0\xB3\xD1\x80\xD1\x83\xD0\xB7\xD0\xBA\xD0\xB8.txt      A  1985953  Fri Aug 14 17:25:31 2009\n  \xD0\xA1\xD0\xBA\xD0\xB0\xD0\xBD\xD0\xB8\xD1\x80\xD0\xBE\xD0\xB2\xD0\xB0\xD0\xBD\xD0\xB8\xD0\xB5_\xD0\x90\xD0\xB4\xD0\xBC\xD0\xB8\xD0\xBD\xD0\xB8\xD1\x81\xD1\x82\xD1\x80\xD0\xB0\xD1\x82\xD0\xBE\xD1\x80.txt      A    16322  Mon Nov 19 12:36:53 2007\n  \xD0\xA1\xD0\xBA\xD0\xB0\xD0\xBD\xD0\xB8\xD1\x80\xD0\xBE\xD0\xB2\xD0\xB0\xD0\xBD\xD0\xB8\xD0\xB5_\xD0\x90\xD0\xBB\xD0\xB5\xD0\xBA\xD1\x81\xD0\xB5\xD0\xB5\xD0\xB2_\xD0\xA0_\xD0\x90.txt      A   659274  Wed Oct 29 13:06:59 2008\n  \xD0\xA1\xD0\xBA\xD0\xB0\xD0\xBD\xD0\xB8\xD1\x80\xD0\xBE\xD0\xB2\xD0\xB0\xD0\xBD\xD0\xB8\xD0\xB5_\xD0\x90\xD1\x80\xD1\x82\xD0\xB0\xD0\xBC\xD0\xBE\xD0\xBD\xD0\xBE\xD0\xB2_\xD0\x94.txt      A   499340  Wed Feb 18 10:15:35 2009\n  \xD0\xA1\xD0\xBA\xD0\xB0\xD0\xBD\xD0\xB8\xD1\x80\xD0\xBE\xD0\xB2\xD0\xB0\xD0\xBD\xD0\xB8\xD0\xB5_\xD0\x90\xD1\x80\xD1\x85\xD0\xB0\xD1\x80\xD0\xBE\xD0\xB2\xD0\x92\xD0\xB8\xD1\x82\xD0\xB0\xD0\xBB\xD0\xB8\xD0\xB9.txt      A      254  Tue Jul 13 16:13:03 2010\n  \xD0\xA1\xD0\xBA\xD0\xB0\xD0\xBD\xD0\xB8\xD1\x80\xD0\xBE\xD0\xB2\xD0\xB0\xD0\xBD\xD0\xB8\xD0\xB5_\xD0\x91\xD0\xBE\xD1\x80\xD0\xBE\xD0\xB4\xD0\xBA\xD0\xB8\xD0\xBD_\xD0\x90_\xD0\xAE.txt      A  1323643  Tue Dec 18 19:38:04 2007\n  \xD0\xA1\xD0\xBA\xD0\xB0\xD0\xBD\xD0\xB8\xD1\x80\xD0\xBE\xD0\xB2\xD0\xB0\xD0\xBD\xD0\xB8\xD0\xB5_\xD0\x92\xD0\xBB\xD0\xB0\xD1\x81\xD0\xBE\xD0\xB2_\xD0\xA1_\xD0\x92.txt      A   763292  Sat Dec  8 23:09:19 2007\n  \xD0\xA1\xD0\xBA\xD0\xB0\xD0\xBD\xD0\xB8\xD1\x80\xD0\xBE\xD0\xB2\xD0\xB0\xD0\xBD\xD0\xB8\xD0\xB5_\xD0\x93\xD0\xB0\xD0\xBF\xD0\xBE\xD0\xBD\xD0\xBE\xD0\xB2\xD0\xB0_\xD0\x9D_\xD0\x92.txt      A      254  Tue Sep 16 16:27:25 2008\n  \xD0\xA1\xD0\xBA\xD0\xB0\xD0\xBD\xD0\xB8\xD1\x80\xD0\xBE\xD0\xB2\xD0\xB0\xD0\xBD\xD0\xB8\xD0\xB5_\xD0\x93\xD1\x80\xD0\xB0\xD1\x88\xD0\xB8\xD0\xBD_\xD0\x90_\xD0\x90.txt      A   628437  Fri Dec 28 18:58:58 2007\n  \xD0\xA1\xD0\xBA\xD0\xB0\xD0\xBD\xD0\xB8\xD1\x80\xD0\xBE\xD0\xB2\xD0\xB0\xD0\xBD\xD0\xB8\xD0\xB5_\xD0\x94\xD0\xB0\xD0\xBD\xD0\xB8\xD0\xBB\xD0\xB8\xD0\xBD_\xD0\x9C_\xD0\x9D.txt      A   202390  Thu Nov 29 16:16:50 2007\n  \xD0\xA1\xD0\xBA\xD0\xB0\xD0\xBD\xD0\xB8\xD1\x80\xD0\xBE\xD0\xB2\xD0\xB0\xD0\xBD\xD0\xB8\xD0\xB5_\xD0\x96\xD0\xB5\xD0\xBB\xD1\x82\xD0\xBE\xD0\xB2_\xD0\x94.txt      A      126  Mon Sep 13 18:19:27 2010\n  \xD0\xA1\xD0\xBA\xD0\xB0\xD0\xBD\xD0\xB8\xD1\x80\xD0\xBE\xD0\xB2\xD0\xB0\xD0\xBD\xD0\xB8\xD0\xB5_\xD0\x96\xD1\x83\xD1\x80\xD0\xB0\xD0\xB2\xD0\xBB\xD0\xB5\xD0\xB2_\xD0\x90_\xD0\x90.txt      A    94237  Tue Aug 19 14:20:53 2008\n  \xD0\xA1\xD0\xBA\xD0\xB0\xD0\xBD\xD0\xB8\xD1\x80\xD0\xBE\xD0\xB2\xD0\xB0\xD0\xBD\xD0\xB8\xD0\xB5_\xD0\x9A\xD0\xBE\xD0\xBC\xD0\xB0\xD1\x80\xD0\xBE\xD0\xB2_\xD0\x94_\xD0\x9C.txt      A   653509  Thu Nov 22 18:21:31 2007\n  \xD0\xA1\xD0\xBA\xD0\xB0\xD0\xBD\xD0\xB8\xD1\x80\xD0\xBE\xD0\xB2\xD0\xB0\xD0\xBD\xD0\xB8\xD0\xB5_\xD0\x9A\xD0\xBE\xD1\x88\xD0\xBE\xD0\xB2\xD1\x81\xD0\xBA\xD0\xB8\xD0\xB9_\xD0\x9C_\xD0\x90.txt      A  1652022  Wed Jan 16 10:47:22 2008\n  \xD0\xA1\xD0\xBA\xD0\xB0\xD0\xBD\xD0\xB8\xD1\x80\xD0\xBE\xD0\xB2\xD0\xB0\xD0\xBD\xD0\xB8\xD0\xB5_\xD0\x9C\xD0\xB0\xD0\xBA\xD0\xB0\xD1\x80\xD0\xBE\xD0\xB2_\xD0\x90_\xD0\x9C.txt      A      370  Thu Dec 13 17:59:00 2007\n  \xD0\xA1\xD0\xBA\xD0\xB0\xD0\xBD\xD0\xB8\xD1\x80\xD0\xBE\xD0\xB2\xD0\xB0\xD0\xBD\xD0\xB8\xD0\xB5_\xD0\x9D\xD0\xB8\xD0\xBA\xD0\xBE\xD0\xBB\xD0\xB0\xD0\xB5\xD0\xB2_\xD0\x9E_\xD0\x95.txt      A      126  Thu Sep 30 14:32:57 2010\n  \xD0\xA1\xD0\xBA\xD0\xB0\xD0\xBD\xD0\xB8\xD1\x80\xD0\xBE\xD0\xB2\xD0\xB0\xD0\xBD\xD0\xB8\xD0\xB5_\xD0\x9F\xD1\x80\xD0\xBE\xD1\x85\xD0\xBE\xD1\x80\xD0\xBE\xD0\xB2_\xD0\x95_\xD0\x92.txt      A  1577225  Sat Aug 30 18:34:14 2008\n  \xD0\xA1\xD0\xBA\xD0\xB0\xD0\xBD\xD0\xB8\xD1\x80\xD0\xBE\xD0\xB2\xD0\xB0\xD0\xBD\xD0\xB8\xD0\xB5_\xD0\xA1\xD0\xB5\xD0\xBC\xD0\xB8\xD0\xBA\xD0\xBE\xD0\xB2_\xD0\x90_\xD0\x90.txt      A   636948  Thu Nov 22 09:34:08 2007\n  \xD0\xA1\xD0\xBA\xD0\xB0\xD0\xBD\xD0\xB8\xD1\x80\xD0\xBE\xD0\xB2\xD0\xB0\xD0\xBD\xD0\xB8\xD0\xB5_\xD0\xA1\xD0\xBE\xD0\xBA\xD0\xBE\xD0\xBB\xD0\xBE\xD0\xB2_\xD0\x90_\xD0\xAE.txt      A   501571  Tue Nov 20 07:51:06 2007\n  \xD0\xA1\xD0\xBA\xD0\xB0\xD0\xBD\xD0\xB8\xD1\x80\xD0\xBE\xD0\xB2\xD0\xB0\xD0\xBD\xD0\xB8\xD0\xB5_\xD0\xA4\xD0\xB8\xD0\xBB\xD0\xB8\xD0\xBC\xD0\xBE\xD0\xBD\xD0\xBE\xD0\xB2_\xD0\x90.txt      A   285460  Mon Nov 10 13:53:43 2008\n  \xD0\xA1\xD1\x82\xD0\xB0\xD1\x82\xD0\xB8\xD1\x81\xD1\x82\xD0\xB8\xD0\xBA\xD0\xB0\xD0\x9F\xD0\xB5\xD1\x87\xD0\xB0\xD1\x82\xD0\xB8.xml      A    18524  Tue Oct 19 12:53:33 2010\n  \xD0\xA4\xD0\xBE\xD1\x80\xD0\xB5\xD0\xBA\xD1\x81.txt                    A    68039  Thu Oct 21 08:05:33 2010\n\n\
+      \t\t37500 blocks of size 8388608. 12653 blocks available\n\n\
+      /home/woto/rails/avtorif/lib/smb_receiver.rb:13:in `receive'\n\
+      /usr/lib/ruby/1.8/timeout.rb:62:in `timeout'\n\
+      /home/woto/rails/avtorif/lib/smb_receiver.rb:5:in `receive'\n\
+      /home/woto/rails/avtorif/lib/receive_jobable.rb:5:in `perform'\n\
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/backend/base.rb:65:in `invoke_job'\n\
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:123:in `run'\n\
+      /usr/lib/ruby/1.8/timeout.rb:62:in `timeout'\n\
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:123:in `run'\n\
+      /usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'\n\
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:122:in `run'\n\
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:188:in `reserve_and_run_one_job'\n\
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:107:in `work_off'\n\
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:106:in `times'\n\
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:106:in `work_off'\n\
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:81:in `start'\n\
+      /usr/lib/ruby/1.8/benchmark.rb:308:in `realtime'\n\
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:80:in `start'\n\
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:77:in `loop'\n\
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/worker.rb:77:in `start'\n\
+      /home/woto/.bundler/ruby/1.8/delayed_job-b983b7e/lib/delayed/tasks.rb:13\n\
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `call'\n\
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:636:in `execute'\n\
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `each'\n\
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:631:in `execute'\n\
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:597:in `invoke_with_call_chain'\n\
+      /usr/lib/ruby/1.8/monitor.rb:242:in `synchronize'\n\
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:590:in `invoke_with_call_chain'\n\
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:583:in `invoke'\n\
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2051:in `invoke_task'\n\
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'\n\
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `each'\n\
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2029:in `top_level'\n\
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'\n\
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2023:in `top_level'\n\
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2001:in `run'\n\
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:2068:in `standard_exception_handling'\n\
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/lib/rake.rb:1998:in `run'\n\
+      /usr/lib/ruby/gems/1.8/gems/rake-0.8.7/bin/rake:31\n\
+      /usr/bin/rake:19:in `load'\n\
+      /usr/bin/rake:19"
+    - 2010-10-21 16:27:14
     - 
-    - 2010-10-19 09:36:09
     - 
     - 
-    - 
-    - 2010-10-19 09:36:09
-    - 2010-10-19 09:36:09
+    - 2010-10-21 12:05:09
+    - 2010-10-21 13:40:29
 
 --- 
 email_receives: 
@@ -780,8 +1259,8 @@ email_receives:
     - webtest@avtorif.ru
     - Kc8dk6sd8
     - pop3
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "684181486"
     - pop.mail.ru
     - "110"
@@ -789,8 +1268,8 @@ email_receives:
     - woto@mail.ru
     - matrixreloaded
     - pop3
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "752622840"
     - pop.gmail.com
     - "995"
@@ -798,8 +1277,8 @@ email_receives:
     - ruslan.kornev@gmail.com
     - vjqgfhjkm
     - pop3
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "855325037"
     - pop.yandex.ru
     - "995"
@@ -807,8 +1286,8 @@ email_receives:
     - woto77@yandex.ru
     - qwer332
     - pop3
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
 
 --- 
 email_settings: 
@@ -842,8 +1321,8 @@ folder_receives:
     - !binary |
       L2hvbWUvd290by/QoNCw0LHQvtGH0LjQuSDRgdGC0L7Quy9mb3JfdGVzdA==
 
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
 
 --- 
 ftp_receives: 
@@ -858,93 +1337,329 @@ ftp_receives:
   - updated_at
   records: 
   - - "59105197"
-    - avtorif.ru
+    - ftp.avtorif.ru
     - "21"
     - /
     - radiator
     - vc0hOPfv9
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "95376939"
-    - avtorif.ru
+    - ftp.avtorif.ru
     - "21"
     - /
     - avtoteka
     - avtoteka
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "221035715"
-    - avtorif.ru
+    - ftp.avtorif.ru
     - "21"
     - /
     - autospar
     - wx9sa23
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "365213618"
-    - avtorif.ru
+    - ftp.avtorif.ru
     - "21"
     - /
     - pelikan
     - lcaz6Ksf8
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "459424539"
-    - avtorif.ru
+    - ftp.avtorif.ru
     - "21"
     - /
     - nipp
     - TeRdb8HXh
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "729717474"
-    - avtorif.ru
+    - ftp.avtorif.ru
     - "21"
     - /
     - ankar
     - kqvpimf
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "774517123"
     - ftp.avrs.ru
     - "21"
     - /
     - rif
     - RiFftpPrice
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "889787413"
-    - avtorif.ru
+    - ftp.avtorif.ru
     - "21"
     - /
     - febest
     - 821xaTxV
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "928202641"
+    - ftp.avtorif.ru
+    - "21"
+    - /
+    - lucid
+    - Kl32r5x0
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
+  - - "1058689885"
+    - ftp.avtorif.ru
+    - "21"
+    - /
+    - jeepshop
+    - 9k1xJa29s
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
+  - - "1058689886"
+    - avtorif.ru
+    - "21"
+    - /
+    - uservice
+    - gfch9Kfdh5
+    - 2010-10-20 11:32:20
+    - 2010-10-20 11:32:20
+  - - "1058689887"
+    - avtorif.ru
+    - "21"
+    - /
+    - aspi
+    - f6uGUpYab
+    - 2010-10-20 12:05:44
+    - 2010-10-20 12:05:44
+  - - "1058689888"
+    - avtorif.ru
+    - "21"
+    - /
+    - aspi
+    - f6uGUpYab
+    - 2010-10-20 13:08:29
+    - 2010-10-20 13:08:29
+  - - "1058689889"
     - avtorif.ru
     - "21"
     - /
     - lucid
     - Kl32r5x0
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
-  - - "1058689885"
+    - 2010-10-20 13:13:56
+    - 2010-10-20 13:13:56
+  - - "1058689890"
     - avtorif.ru
     - "21"
     - /
-    - jeepshop
-    - 9k1xJa29s
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
-  - - "1058689886"
+    - anonymous
+    - !binary |
+      0YPRg9GD
+
+    - 2010-10-20 13:23:49
+    - 2010-10-20 13:23:49
+  - - "1058689891"
     - avtorif.ru
     - "21"
-    - ""
+    - /
+    - anonymous
+    - !binary |
+      0LDQsNCw
+
+    - 2010-10-20 13:24:01
+    - 2010-10-20 13:24:01
+  - - "1058689892"
+    - avtorif.ru
+    - "21"
+    - /
+    - autonissan
+    - Jc823ao42
+    - 2010-10-20 14:33:11
+    - 2010-10-20 14:33:11
+  - - "1058689893"
+    - avtorif.ru
+    - "21"
+    - /
+    - aspi
+    - f6uGUpYab
+    - 2010-10-20 14:38:03
+    - 2010-10-20 14:38:03
+  - - "1058689894"
+    - ra.aamajor.ru
+    - "21"
+    - /
+    - opt4
+    - goWGdKnhun
+    - 2010-10-20 15:47:14
+    - 2010-10-20 15:47:14
+  - - "1058689895"
+    - avtorif.ru
+    - "21"
+    - /
+    - genser
+    - H32a9aw45
+    - 2010-10-21 09:46:31
+    - 2010-10-21 09:46:31
+  - - "1058689896"
+    - avtorif.ru
+    - "21"
+    - /
+    - pelikan
+    - lcaz6Ksf8
+    - 2010-10-21 11:34:22
+    - 2010-10-21 11:34:22
+  - - "1058689897"
+    - avtorif.ru
+    - "21"
+    - /
+    - ttm
+    - Nw3pasf4
+    - 2010-10-21 12:07:52
+    - 2010-10-21 12:07:52
+  - - "1058689898"
+    - avtorif.ru
+    - "21"
+    - /
+    - avtoteka
+    - UsYsa812
+    - 2010-10-21 12:10:54
+    - 2010-10-21 12:10:54
+  - - "1058689899"
+    - avtorif.ru
+    - "21"
+    - /
+    - avtoteka
+    - UsYsa812
+    - 2010-10-21 12:12:47
+    - 2010-10-21 12:12:47
+  - - "1058689900"
+    - avtorif.ru
+    - "21"
+    - /
+    - ankar
+    - kqvpimf
+    - 2010-10-21 12:14:26
+    - 2010-10-21 12:14:26
+  - - "1058689901"
+    - ftp.avrs.ru
+    - "21"
+    - /
+    - rif
+    - RiFftpPrice
+    - 2010-10-21 12:18:19
+    - 2010-10-21 12:18:19
+  - - "1058689902"
+    - avtorif.ru
+    - "21"
+    - /
+    - ashika
+    - d5Vs8w4jh
+    - 2010-10-21 12:20:48
+    - 2010-10-21 12:20:48
+  - - "1058689903"
+    - avtorif.ru
+    - "21"
+    - /
+    - ashika
+    - d5Vs8w4jh
+    - 2010-10-21 12:38:18
+    - 2010-10-21 12:38:18
+  - - "1058689904"
+    - avtorif.ru
+    - "21"
+    - /
+    - asmotors
+    - Jd0vY4ts
+    - 2010-10-21 12:41:48
+    - 2010-10-21 12:41:48
+  - - "1058689905"
+    - avtorif.ru
+    - "21"
+    - /
+    - asva
+    - UL2d0734xq
+    - 2010-10-21 12:42:42
+    - 2010-10-21 12:42:42
+  - - "1058689906"
+    - avtorif.ru
+    - "21"
+    - /
+    - asva
+    - UL2d0734xq
+    - 2010-10-21 12:56:34
+    - 2010-10-21 12:56:34
+  - - "1058689907"
+    - avtorif.ru
+    - "21"
+    - /
+    - nipp
+    - TeRdb8HXh
+    - 2010-10-21 12:59:06
+    - 2010-10-21 12:59:06
+  - - "1058689908"
+    - ftp.partnet.ru
+    - "21"
+    - /
+    - anonymous
+    - anonymous
+    - 2010-10-21 13:03:39
+    - 2010-10-21 13:03:39
+  - - "1058689909"
+    - ftp.partnet.ru
+    - "21"
+    - /
+    - anonymous
+    - anonymous
+    - 2010-10-21 13:07:56
+    - 2010-10-21 13:07:56
+  - - "1058689910"
+    - avtorif.ru
+    - "21"
+    - /
+    - pricesql
+    - Hx0aws0
+    - 2010-10-21 13:12:58
+    - 2010-10-21 13:12:58
+  - - "1058689911"
+    - avtorif.ru
+    - "21"
+    - /
+    - ty
+    - Kldm4aqs
+    - 2010-10-21 13:13:55
+    - 2010-10-21 13:13:55
+  - - "1058689912"
+    - avtorif.ru
+    - "21"
+    - /
+    - anonymous
+    - "123"
+    - 2010-10-21 13:19:18
+    - 2010-10-21 13:19:18
+  - - "1058689913"
+    - avtorif.ru
+    - "21"
+    - /
+    - aspi
+    - f6uGUpYab
+    - 2010-10-21 13:20:14
+    - 2010-10-21 13:20:14
+  - - "1058689914"
+    - avtorif.ru
+    - "21"
+    - /
+    - ashika
+    - d5Vs8w4jh
+    - 2010-10-21 13:44:09
+    - 2010-10-21 13:44:09
+  - - "1058689915"
+    - avtorif.ru
+    - "21"
+    - /
     - rolf_n
     - Ych48ds2
-    - 2010-10-19 09:35:41
-    - 2010-10-19 09:35:41
+    - 2010-10-21 13:47:19
+    - 2010-10-21 13:47:19
 
 --- 
 fuels: 
@@ -956,12 +1671,12 @@ fuels:
   records: 
   - - "298486374"
     - MyString
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "980190962"
     - MyString
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
 
 --- 
 gears: 
@@ -973,12 +1688,12 @@ gears:
   records: 
   - - "298486374"
     - MyString
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "980190962"
     - MyString
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
 
 --- 
 goods_auto_options: 
@@ -992,13 +1707,13 @@ goods_auto_options:
   - - "298486374"
     - 
     - 
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "980190962"
     - 
     - 
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
 
 --- 
 import_jobs: 
@@ -1011,118 +1726,34 @@ import_jobs:
   - encoding
   - import_method_id
   records: 
-  - - "1053535"
-    - "893132699"
-    - CsvImport
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
-    - 
-    - 
-  - - "36156209"
-    - "76081908"
-    - CsvImport
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
-    - 
-    - 
-  - - "40464061"
-    - 
-    - 
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
-    - 
-    - "316180201"
-  - - "108791894"
-    - 
-    - 
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
-    - 
-    - "316180201"
   - - "139544383"
     - 
     - 
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
     - 
     - "326575250"
   - - "198188851"
     - "548536844"
     - CsvImport
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
-    - 
-    - 
-  - - "220633758"
-    - "1069596042"
-    - XlsImport
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
     - 
     - 
   - - "290985607"
     - 
     - 
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
     - 
     - "316180201"
-  - - "338676518"
-    - "650767414"
-    - XlsImport
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
-    - 
-    - 
-  - - "421085927"
-    - "741690915"
-    - CsvImport
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
-    - 
-    - 
-  - - "456057485"
-    - "495041356"
-    - CsvImport
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
-    - 
-    - 
-  - - "459292425"
-    - "90866766"
-    - CsvImport
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
-    - 
-    - "326575250"
-  - - "527784430"
-    - 
-    - 
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
-    - 
-    - "326575250"
   - - "744951698"
     - "90866766"
     - CsvImport
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
     - 
     - "326575250"
-  - - "912233221"
-    - "443848385"
-    - CsvImport
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
-    - 
-    - 
-  - - "917852428"
-    - "810740390"
-    - CsvImport
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
-    - 
-    - 
 
 --- 
 import_methods: 
@@ -1140,40 +1771,40 @@ import_methods:
       0LvQtSwg0L3QvtCy0YvQtSDQv9GA0L7QuNCz0L3QvtGA0LjRgNC+0LLQsNGC
       0Yw=
 
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "316180201"
     - clear_by_supplier
     - !binary |
       0J7Rh9C40YHRgtC40YLRjCDQstGB0LUg0L7RgiDQv9C+0YHRgtCw0LLRidC4
       0LrQsA==
 
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "326575250"
     - simple_insert
     - !binary |
       0J/RgNC+0YHRgtC+INCy0YHRgtCw0LLQutCwICjQvdCw0L/RgC4g0L3QvtCy
       0YvQuSDQv9C+0YHRgtCw0LLRidC40Lop
 
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "534782969"
     - clear_by_job
     - !binary |
       0J7Rh9C40YHRgtC40YLRjCDQsiDQt9Cw0LLQuNGB0LjQvNC+0YHRgtC4INC+
       0YIg0YLQuNC/0LAg0L/QvtGB0YLQsNCy0LrQuA==
 
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "831513272"
     - update_insert_new
     - !binary |
       0J7QsdC90L7QstC40YLRjCDQuNC80LXRjtGJ0LjQtdGB0Y8g0LIg0YTQsNC5
       0LvQtSwg0L3QvtCy0YvQtSDQstGB0YLQsNCy0LjRgtGM
 
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
 
 --- 
 jobs: 
@@ -1182,8 +1813,8 @@ jobs:
   - next_start
   - last_start
   - last_finish
-  - interval_between_jobs
-  - interval_working
+  - seconds_between_jobs
+  - seconds_working
   - title
   - job_id
   - jobable_id
@@ -1194,59 +1825,28 @@ jobs:
   - active
   - created_at
   - updated_at
+  - job_code
   records: 
   - - "84851029"
-    - 2010-10-19 09:29:00
-    - 2010-10-19 09:28:08
-    - 
-    - "7200"
-    - "1"
+    - 2010-10-21 16:00:00
+    - 2010-10-21 15:00:08
+    - 2010-10-21 15:00:08
+    - "4000"
+    - "20"
     - !binary |
-      0J/QtdC70LjQutCw0L0t0LDQstGC0L4g0YDQsNGB0L/RgNC+0LTQsNC20LAg
-      KNC40L3RgtC10YDQstCw0Lsg0YDQsNC30YDQtdGI0LXQvdC90L7QuSDRgNCw
-      0LHQvtGC0YsgMSDRgdC10LrRg9C90LTQsCk=
+      MDIxX9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBINCf0JXQm9CY0JrQ
+      kNCdLdCQ0JLQotCeINCd0JDQm9CY0KfQmNCVIA==
 
     - 
-    - "280362575"
+    - "1027824399"
     - ReceiveJob
     - "1044098171"
     - "\"PEL.xls\""
-    - true
-    - true
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:28:08
-  - - "143136434"
-    - 
-    - 
-    - 
-    - "108000"
-    - "1200"
-    - job_for_jeepshop_3
-    - "646346657"
-    - "421085927"
-    - ImportJob
-    - "289598915"
-    - "\"AVTORIF.txt\""
     - false
     - true
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
-  - - "200974790"
-    - 2010-10-19 09:29:00
-    - 2010-10-19 09:28:08
-    - 
-    - "108000"
-    - "60"
-    - job_for_ankar_1
-    - 
-    - "729717474"
-    - ReceiveJob
-    - "1072056295"
-    - "\"stoc_ankar_quantity.csv\""
-    - true
-    - true
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:28:08
+    - 2010-10-20 11:31:09
+    - 2010-10-21 15:00:08
+    - ""
   - - "205865397"
     - 
     - 
@@ -1258,145 +1858,16 @@ jobs:
     - "139544383"
     - ImportJob
     - "610276578"
-    - "\".*\""
+    - 
     - false
     - true
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
-  - - "225697026"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
     - 
-    - 
-    - 
-    - 
-    - "60"
-    - job_for_stalker_2
-    - "343575742"
-    - "456057485"
-    - ImportJob
-    - "671016813"
-    - avtorif.txt
-    - false
-    - true
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
-  - - "247285452"
-    - 
-    - 
-    - 
-    - 
-    - 
-    - job_for_major_3
-    - "968521311"
-    - "459292425"
-    - ImportJob
-    - "1026882825"
-    - "\"Mazda.*\""
-    - false
-    - true
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
-  - - "249826747"
-    - 
-    - 
-    - 
-    - 
-    - 
-    - job_for_autospar_3
-    - "971193648"
-    - "527784430"
-    - ImportJob
-    - "594805345"
-    - "\".*\""
-    - false
-    - true
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
-  - - "263256886"
-    - 2010-10-19 09:29:00
-    - 2010-10-19 09:28:08
-    - 
-    - 
-    - 
-    - job_for_arharov
-    - 
-    - "667560807"
-    - ReceiveJob
-    - "283739987"
-    - "\".*\""
-    - true
-    - true
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:28:08
-  - - "282710889"
-    - 
-    - 
-    - 
-    - 
-    - 
-    - job_for_major_4
-    - "968521311"
-    - "459292425"
-    - ImportJob
-    - "1026882825"
-    - "\"parts_major.*\""
-    - false
-    - true
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
-  - - "343575742"
-    - 
-    - 
-    - 
-    - 
-    - "60"
-    - job_for_stalker_1
-    - 
-    - "282938205"
-    - ReceiveJob
-    - "671016813"
-    - avtorif.txt
-    - false
-    - true
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
-  - - "346093351"
-    - 
-    - 
-    - 
-    - 
-    - "60"
-    - !binary |
-      0J/RgNC40LXQvCDQvtGCINCc0Y3QudC7LtGA0YM=
-
-    - 
-    - "706831403"
-    - ReceiveJob
-    - "279210589"
-    - "\".*\""
-    - false
-    - true
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
-  - - "384869078"
-    - 
-    - 
-    - 
-    - 
-    - "60"
-    - job_for_japancars_3
-    - "956220409"
-    - "220633758"
-    - ImportJob
-    - "239384643"
-    - LucJC.xls
-    - false
-    - true
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
   - - "427111281"
-    - 2010-10-19 09:29:00
-    - 2010-10-19 09:28:08
-    - 
+    - 2010-10-21 16:00:00
+    - 2010-10-21 15:00:08
+    - 2010-10-21 15:00:09
     - "7200"
     - "60"
     - !binary |
@@ -1408,49 +1879,34 @@ jobs:
     - ReceiveJob
     - "769483063"
     - "\"avtorif.xls\""
+    - false
     - true
-    - true
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:28:08
-  - - "459943152"
-    - 2010-10-19 09:29:00
-    - 2010-10-19 09:28:08
+    - 2010-10-20 11:31:09
+    - 2010-10-21 15:00:09
     - 
-    - "200"
-    - "60"
+  - - "459943152"
+    - 2010-10-21 16:00:00
+    - 2010-10-21 15:00:10
+    - 2010-10-21 15:00:10
+    - "4000"
+    - "20"
     - !binary |
-      0J/QtdC70LjQutCw0L0t0LDQstGC0L4g0YbQtdC90YLRgC4g0YHQutC70LDQ
-      tCAo0JjQvdGC0LXRgNCy0LDQuyDQv9GA0L7QstC10YDQutC4INC80LXQttC0
-      0YMg0LfQsNC00LDRh9Cw0LzQuCAyMDAg0YHQtdC6Lik=
+      MDIzX9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBINCf0JXQm9CY0JrQ
+      kNCdLdCQ0JLQotCeINCg0JDQodCf0KDQntCU0JDQltCQ
 
     - 
-    - "280362575"
+    - "1027824399"
     - ReceiveJob
     - "1044098171"
     - "\"PER.xls\""
+    - false
     - true
-    - true
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:28:08
-  - - "499090777"
-    - 2010-10-19 09:29:00
-    - 2010-10-19 09:28:08
-    - 
-    - "108000"
-    - "60"
-    - job_for_avtoteka_1
-    - 
-    - "620387971"
-    - ReceiveJob
-    - "737667253"
-    - "\".*\""
-    - true
-    - true
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:28:08
+    - 2010-10-20 11:31:09
+    - 2010-10-21 15:00:10
+    - ""
   - - "540680328"
     - 
-    - 
+    - 2010-10-21 11:30:44
     - 
     - 
     - "60"
@@ -1459,33 +1915,18 @@ jobs:
     - "338983884"
     - ReceiveJob
     - "244397494"
-    - "\".*\""
-    - false
-    - true
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
-  - - "548612071"
-    - 2010-10-19 09:29:00
-    - 2010-10-19 09:28:08
     - 
-    - "108000"
-    - "60"
-    - job_for_major_1
+    - true
+    - true
+    - 2010-10-20 11:31:09
+    - 2010-10-21 11:30:44
     - 
-    - "699146256"
-    - ReceiveJob
-    - "1026882825"
-    - "\".*\""
-    - true
-    - true
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:28:08
   - - "552234132"
-    - 
-    - 
-    - 
-    - 
-    - 
+    - 2010-10-21 16:00:00
+    - 2010-10-21 15:00:10
+    - 2010-10-21 15:00:10
+    - "4000"
+    - "20"
     - job_for_autospar_1
     - 
     - "746173547"
@@ -1494,27 +1935,12 @@ jobs:
     - Time.zone.now.strftime('%d%m%y') + ".*"
     - false
     - true
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
-  - - "569872965"
-    - 
-    - 
-    - 
-    - 
-    - "60"
-    - job_for_japancars_2
-    - "956220409"
-    - "338676518"
-    - ImportJob
-    - "239384643"
-    - LucJC.xls
-    - false
-    - true
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
+    - 2010-10-20 11:31:09
+    - 2010-10-21 15:00:10
+    - ""
   - - "575348894"
     - 
-    - 
+    - 2010-10-21 11:30:44
     - 
     - 
     - "60"
@@ -1524,213 +1950,90 @@ jobs:
     - ReceiveJob
     - "610276578"
     - "1"
-    - false
     - true
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
-  - - "606102037"
-    - 
-    - 
-    - 
-    - "108000"
-    - "60"
-    - !binary |
-      0J7QsdGA0LDQsdC+0YLQutCwINGE0LDQudC70LAgc2tsYWQudHh0
-
-    - "1026110385"
-    - "917852428"
-    - ImportJob
-    - "480201602"
-    - "\"sklad.txt\""
-    - false
     - true
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
+    - 2010-10-20 11:31:09
+    - 2010-10-21 11:30:44
+    - 
   - - "646346657"
-    - 2010-10-19 09:29:00
-    - 2010-10-19 09:28:08
-    - 
+    - 2010-10-21 14:00:00
+    - 2010-10-21 13:17:51
+    - 2010-10-21 13:17:51
     - "7200"
     - "60"
-    - job_for_jeepshop_1
+    - !binary |
+      MDk1X9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBINCU0JbQmNCf0KjQ
+      ntCfIA==
+
     - 
     - "508517365"
     - ReceiveJob
     - "289598915"
     - "\"AVTORIF.txt\""
+    - false
     - true
-    - true
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:28:08
+    - 2010-10-20 11:31:09
+    - 2010-10-21 13:17:51
+    - ""
   - - "721475712"
-    - 2010-10-19 09:29:00
-    - 2010-10-19 09:28:08
-    - 
-    - "7200"
-    - "60"
+    - 2010-10-21 14:00:00
+    - 2010-10-21 13:00:16
+    - 2010-10-21 13:00:16
+    - "4000"
+    - "20"
     - !binary |
-      0J/QtdC70LjQutCw0L0t0LDQstGC0L4g0L3QsNC70LjRh9C40LU=
+      MDIyX9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBINCf0JXQm9CY0JrQ
+      kNCdLdCQ0JLQotCeINCm0JXQndCi0KAuINCh0JrQm9CQ0JQg
 
     - 
-    - "280362575"
-    - ReceiveJob
-    - "1044098171"
-    - "\"PE1.xls\""
-    - true
-    - true
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:28:08
-  - - "734027939"
-    - 
-    - 
-    - 
-    - "108000"
-    - "60"
-    - job_for_febest_2
-    - "852046107"
-    - "912233221"
-    - ImportJob
-    - "854858892"
-    - "\"febestrif.txt\""
-    - false
-    - true
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
-  - - "745348199"
-    - 2010-10-19 09:29:00
-    - 2010-10-19 09:28:08
-    - 
-    - "7200"
-    - "60"
-    - !binary |
-      0KLQtdGB0YLQvtCy0YvQuSDQv9GA0LjQtdC8INC00LLRg9GFINGE0LDQudC7
-      0L7QsiBTS09TLnhscyDQuCBTS09aLnhscw==
-
-    - 
-    - "280362575"
-    - ReceiveJob
-    - "1044098171"
-    - "\"SKO.*\""
-    - true
-    - true
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:28:08
-  - - "762470216"
-    - 
-    - 
-    - 
-    - 
-    - "60"
-    - !binary |
-      0J/RgNC40LXQvCDQvtGCINCv0L3QtNC10LrRgQ==
-
-    - 
-    - "243069223"
-    - ReceiveJob
-    - "921393248"
-    - "\".*\""
-    - false
-    - true
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
-  - - "839485896"
-    - 2010-10-19 09:29:00
-    - 2010-10-19 09:28:08
-    - 
-    - "7200"
-    - "60"
-    - !binary |
-      0J/QtdC70LjQutCw0L0t0LDQstGC0L4g0L3QsNC70LjRh9C40LUgMg==
-
-    - 
-    - "280362575"
+    - "1027824399"
     - ReceiveJob
     - "1044098171"
     - "\"PEC.xls\""
+    - false
     - true
-    - true
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:28:08
-  - - "852046107"
-    - 2010-10-19 09:29:00
-    - 2010-10-19 09:28:08
+    - 2010-10-20 11:31:09
+    - 2010-10-21 13:00:16
+    - ""
+  - - "745348199"
+    - 2010-10-21 16:00:00
+    - 2010-10-21 15:00:10
+    - 2010-10-21 15:00:11
+    - "4000"
+    - "20"
+    - !binary |
+      MDI0X9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBINCf0JXQm9CY0JrQ
+      kNCdLdCQ0JLQotCeINCd0JDQm9CY0KfQmNCVIDIg
+
     - 
+    - "1027824399"
+    - ReceiveJob
+    - "1044098171"
+    - "\"PE1.xls\""
+    - false
+    - true
+    - 2010-10-20 11:31:09
+    - 2010-10-21 15:00:11
+    - ""
+  - - "852046107"
+    - 2010-10-21 16:00:00
+    - 2010-10-21 15:00:12
+    - 2010-10-21 15:00:13
     - "7200"
     - "60"
-    - job_for_febest_1
+    - !binary |
+      MTAwX9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBIEZFQkVTVCBTUUw=
+
     - 
     - "738464244"
     - ReceiveJob
     - "854858892"
     - "\"febestrif.txt\""
-    - true
-    - true
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:28:08
-  - - "956220409"
-    - 
-    - 
-    - 
-    - 
-    - "60"
-    - job_for_japancars_1
-    - 
-    - "406352343"
-    - ReceiveJob
-    - "239384643"
-    - LucJC.xls
     - false
     - true
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
-  - - "968521311"
-    - 
-    - 
-    - 
-    - 
-    - 
-    - job_for_major_2
-    - "548612071"
-    - "40464061"
-    - ImportJob
-    - "1026882825"
-    - "\".*\""
-    - false
-    - true
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
-  - - "971193648"
-    - 
-    - 
-    - 
-    - 
-    - 
-    - job_for_autospar_2
-    - "552234132"
-    - "108791894"
-    - ImportJob
-    - "594805345"
-    - "\".*\""
-    - false
-    - true
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
-  - - "980741527"
-    - 
-    - 
-    - 
-    - 
-    - "60"
-    - job_for_stalker_3
-    - "343575742"
-    - "36156209"
-    - ImportJob
-    - "671016813"
-    - avtorif.txt
-    - false
-    - true
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
+    - 2010-10-20 11:31:09
+    - 2010-10-21 15:00:13
+    - ""
   - - "994210086"
     - 
     - 
@@ -1742,62 +2045,1064 @@ jobs:
     - "290985607"
     - ImportJob
     - "610276578"
-    - "\".*\""
+    - 
     - false
     - true
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
-  - - "1026110385"
-    - 2010-10-19 09:29:00
-    - 2010-10-19 09:28:08
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
     - 
-    - "7200"
-    - "60"
-    - !binary |
-      0J/RgNC40LXQvCDQtNCy0YPRhSDRhNCw0LnQu9C+0LIg0L7RgiDQqNCe0J7Q
-      oNCY
-
-    - 
-    - "40847102"
-    - ReceiveJob
-    - "480201602"
-    - "\"sk\\\\S{1}ad.txt\""
-    - true
-    - true
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:28:08
-  - - "1066346021"
-    - 
-    - 
-    - 
-    - "108000"
-    - "1200"
-    - job_for_jeepshop_2
-    - "646346657"
-    - "1053535"
-    - ImportJob
-    - "289598915"
-    - "\"AVTORIF.txt\""
-    - false
-    - true
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
   - - "1066346022"
-    - 2010-10-19 09:37:00
-    - 2010-10-19 09:36:09
+    - 2010-10-21 14:00:00
+    - 2010-10-21 13:00:17
+    - 2010-10-21 13:00:17
     - 
     - 
-    - 
-    - "047"
+    - !binary |
+      MDAyX9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBINCjLdCh0JXQoNCS
+      0JjQoSDQndCY0KHQodCQ0J0g0J3QkNCb0JjQp9CY0JUg
+
     - 
     - "1027824376"
     - ReceiveJob
     - "1072056296"
-    - "\".*\""
+    - "\"U_SERV_COL.xls\""
+    - false
+    - true
+    - 2010-10-20 11:32:07
+    - 2010-10-21 13:00:17
+    - gggg
+  - - "1066346023"
+    - 2010-10-21 14:00:00
+    - 2010-10-21 13:00:17
+    - 2010-10-21 13:00:18
+    - "4000"
+    - "20"
+    - !binary |
+      MDAzX9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBINCjLdCh0JXQoNCS
+      0JjQoSDQndCY0KHQodCQ0J0g0KbQoSA=
+
+    - 
+    - "1027824376"
+    - ReceiveJob
+    - "1072056296"
+    - "\"U_SERV_NMR.xls\""
+    - false
+    - true
+    - 2010-10-20 11:38:45
+    - 2010-10-21 13:00:18
+    - !binary |
+      0J3QmNCh0KHQkNCdINCm0KE=
+
+  - - "1066346024"
+    - 2010-10-21 14:00:00
+    - 2010-10-21 13:00:18
+    - 2010-10-21 13:00:18
+    - "4000"
+    - "20"
+    - !binary |
+      MDA0X9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBINCk0J7QoNCj0Jwt
+      0JDQktCi0J4gU1FM
+
+    - 
+    - "1027824377"
+    - ReceiveJob
+    - "1072056297"
+    - "\"FORUM-AUTO.xls\""
+    - false
+    - true
+    - 2010-10-20 12:03:27
+    - 2010-10-21 13:00:18
+    - !binary |
+      0KTQntCg0KPQnC3QkNCS0KLQniBTUUw=
+
+  - - "1066346025"
+    - 2010-10-21 14:00:00
+    - 2010-10-21 13:00:18
+    - 2010-10-21 13:00:18
+    - "4000"
+    - "20"
+    - !binary |
+      MDA1X9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBINCR0J7QoNCh0J/Q
+      m9CY0J3QotCV0JrQoSBTUUwg
+
+    - 
+    - "1027824378"
+    - ReceiveJob
+    - "1072056298"
+    - "\"splintex_stock.xls\""
+    - false
+    - true
+    - 2010-10-20 13:07:57
+    - 2010-10-21 13:00:18
+    - as
+  - - "1066346026"
+    - 2010-10-21 14:00:00
+    - 2010-10-21 13:00:18
+    - 2010-10-21 13:00:19
+    - "4000"
+    - "20"
+    - !binary |
+      MDA2X9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBINCk0J7QoNCS0JDQ
+      oNCUIFNRTCA=
+
+    - 
+    - "1027824393"
+    - ReceiveJob
+    - "1072056299"
+    - "\"Forward.xls\""
+    - false
+    - true
+    - 2010-10-20 13:09:20
+    - 2010-10-21 13:00:19
+    - ""
+  - - "1066346027"
+    - 2010-10-21 12:00:00
+    - 2010-10-21 11:30:44
+    - 2010-10-20 13:14:10
+    - "4000"
+    - "20"
+    - !binary |
+      MDA3X9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBIEpBUEFOQ0FSUyDQ
+      ndCQ0JvQmNCn0JjQlSDQntCg0JjQk9CY0J3QkNCbIFNRTCDQmCAwMDlf0JfQ
+      sNCz0YDRg9C30LjRgtGMINC/0YDQsNC50YEgSkFQQU5DQVJTINCd0JDQm9CY
+      0KfQmNCVINCd0JXQntCg0JjQk9CY0J0gU1FMIA==
+
+    - 
+    - "1027824379"
+    - ReceiveJob
+    - "239384643"
+    - LucJC.xls
     - true
     - true
-    - 2010-10-19 09:34:14
-    - 2010-10-19 09:36:09
+    - 2010-10-20 13:13:34
+    - 2010-10-21 11:30:44
+    - ""
+  - - "1066346035"
+    - 2010-10-21 12:00:00
+    - 2010-10-21 11:30:44
+    - 2010-10-20 14:13:17
+    - "4000"
+    - "20"
+    - !binary |
+      MDEwX9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBIEFDU0NPTSBTUUwg
+
+    - 
+    - "1027824391"
+    - ReceiveJob
+    - "1072056300"
+    - ACSCOM.xls
+    - true
+    - true
+    - 2010-10-20 14:11:54
+    - 2010-10-21 11:30:44
+    - ""
+  - - "1066346036"
+    - 2010-10-21 12:00:00
+    - 2010-10-21 11:30:44
+    - 
+    - "4000"
+    - "20"
+    - !binary |
+      MDExX9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBINCQ0JLQotCe0KHQ
+      n9CV0KbQptCV0J3QotCgIA==
+
+    - 
+    - "1027824392"
+    - ReceiveJob
+    - "1072056302"
+    - "\"Sklad Himki.xls\""
+    - true
+    - true
+    - 2010-10-20 14:32:41
+    - 2010-10-21 11:30:44
+    - ""
+  - - "1066346037"
+    - 2010-10-21 14:00:00
+    - 2010-10-21 13:00:19
+    - 2010-10-21 13:00:19
+    - "4000"
+    - "60"
+    - !binary |
+      MDEyX9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBIEFTUEkgR3JvdXAg
+      0KHQotCV0JrQm9CQIFNRTCA=
+
+    - 
+    - "1027824394"
+    - ReceiveJob
+    - "1072056303"
+    - "\"skl.xls\""
+    - false
+    - true
+    - 2010-10-20 15:42:31
+    - 2010-10-21 13:00:19
+    - ""
+  - - "1066346038"
+    - 2010-10-21 14:00:00
+    - 2010-10-21 13:00:19
+    - 2010-10-21 13:00:25
+    - "4000"
+    - "20"
+    - !binary |
+      MDEzX9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBIE1BSk9SIE1BWkRB
+      IA==
+
+    - 
+    - "1027824395"
+    - ReceiveJob
+    - "1072056304"
+    - "\"Mazda.txt \""
+    - false
+    - true
+    - 2010-10-20 15:46:57
+    - 2010-10-21 13:00:25
+    - ""
+  - - "1066346039"
+    - 2010-10-21 12:00:00
+    - 2010-10-21 11:30:44
+    - 
+    - 
+    - 
+    - !binary |
+      MDE2X9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBINCU0JbQldCd0KHQ
+      ldCgINCj0KbQldCd0JrQkCBTUUwg
+
+    - 
+    - "1027824396"
+    - ReceiveJob
+    - "1072056305"
+    - !binary |
+      0JzQtdGA0YLQstGL0Lkg0YHQutC70LDQtCAjZGQjI21tIyN5eSMueGxzIA==
+
+    - true
+    - true
+    - 2010-10-21 09:46:07
+    - 2010-10-21 11:30:44
+    - ""
+  - - "1066346040"
+    - 2010-10-21 14:00:00
+    - 2010-10-21 13:01:11
+    - 2010-10-21 13:01:11
+    - "4000"
+    - "20"
+    - !binary |
+      MDE3X9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBINCa0JDQn9Ce0KIg
+
+    - 
+    - "1027824397"
+    - ReceiveJob
+    - "1072056306"
+    - "\"kapot-price.xls\""
+    - false
+    - true
+    - 2010-10-21 09:47:11
+    - 2010-10-21 13:01:11
+    - ""
+  - - "1066346041"
+    - 2010-10-21 14:00:00
+    - 2010-10-21 13:01:11
+    - 2010-10-21 13:01:12
+    - "4000"
+    - "20"
+    - !binary |
+      MDIwX9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBIFNFVkVOLUFVVE8g
+      U1FM
+
+    - 
+    - "1027824398"
+    - ReceiveJob
+    - "1072056307"
+    - "\"stock.csv\""
+    - false
+    - true
+    - 2010-10-21 09:48:32
+    - 2010-10-21 13:01:12
+    - ""
+  - - "1066346045"
+    - 2010-10-21 13:00:00
+    - 2010-10-21 12:05:09
+    - 
+    - "4000"
+    - "20"
+    - !binary |
+      MDI1X9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBINCd0JXQl9CQ0JLQ
+      mNCh0JjQnNCe0KHQotCsIA==
+
+    - 
+    - "1027824401"
+    - ReceiveJob
+    - "1072056308"
+    - !binary |
+      ItCe0J/QoiAwOTA2MTAueGxzIg==
+
+    - true
+    - true
+    - 2010-10-21 12:03:58
+    - 2010-10-21 12:05:09
+    - ""
+  - - "1066346046"
+    - 2010-10-21 16:00:00
+    - 2010-10-21 15:00:07
+    - 2010-10-21 15:00:08
+    - "4000"
+    - "20"
+    - !binary |
+      MDI2X9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBIFRUTSA=
+
+    - 
+    - "1027824402"
+    - ReceiveJob
+    - "1072056309"
+    - "\"Price_TTM-4.xls\""
+    - false
+    - true
+    - 2010-10-21 12:07:38
+    - 2010-10-21 15:00:08
+    - ""
+  - - "1066346047"
+    - 2010-10-21 14:00:00
+    - 2010-10-21 13:00:16
+    - 2010-10-21 13:00:17
+    - "4000"
+    - "20"
+    - !binary |
+      MDI3X9CX0LDQs9GA0YPQt9C40YLRjCDQvtGB0YLQsNGC0LrQuCDQkdCj0KXQ
+      k9CQ0JvQotCV0KDQmNCY
+
+    - 
+    - "1027824403"
+    - ReceiveJob
+    - "1072056310"
+    - "\"BUHLOG.txt\""
+    - false
+    - true
+    - 2010-10-21 12:09:31
+    - 2010-10-21 13:00:17
+    - ""
+  - - "1066346048"
+    - 2010-10-21 16:00:00
+    - 2010-10-21 15:00:11
+    - 2010-10-21 15:00:12
+    - "4000"
+    - "20"
+    - !binary |
+      MDI4X9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBINCQ0JLQotCe0KLQ
+      ldCa0JAgU1FM
+
+    - 
+    - "1027824404"
+    - ReceiveJob
+    - "1072056311"
+    - "\"AVTOTEKA.txt\""
+    - false
+    - true
+    - 2010-10-21 12:12:31
+    - 2010-10-21 15:00:12
+    - ""
+  - - "1066346049"
+    - 2010-10-21 16:00:00
+    - 2010-10-21 15:00:09
+    - 2010-10-21 15:00:10
+    - "4000"
+    - "20"
+    - !binary |
+      MDI5X9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBINCQ0J3QmtCQ0KAg
+      U1FM
+
+    - 
+    - "1027824405"
+    - ReceiveJob
+    - "1072056312"
+    - "\"stoc_ankar_quantity.csv\""
+    - false
+    - true
+    - 2010-10-21 12:14:13
+    - 2010-10-21 15:00:10
+    - ""
+  - - "1066346050"
+    - 2010-10-21 14:00:00
+    - 2010-10-21 13:01:10
+    - 2010-10-21 13:01:11
+    - "4000"
+    - "20"
+    - !binary |
+      MDMwX9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBINCh0KLQkNCb0JrQ
+      ldCgINCd0JDQm9CY0KfQmNCVIDIgU1FM
+
+    - 
+    - "1027824406"
+    - ReceiveJob
+    - "1072056313"
+    - "\"sklad2_price.txt\""
+    - false
+    - true
+    - 2010-10-21 12:18:00
+    - 2010-10-21 13:01:11
+    - ""
+  - - "1066346051"
+    - 2010-10-21 16:00:00
+    - 2010-10-21 15:00:13
+    - 2010-10-21 15:00:14
+    - "4000"
+    - "20"
+    - !binary |
+      MDMxX9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBINCh0KLQkNCb0JrQ
+      ldCgINCd0JDQm9CY0KfQmNCVIFNRTA==
+
+    - 
+    - "1027824406"
+    - ReceiveJob
+    - "1072056313"
+    - "\"stalk_price.txt\""
+    - false
+    - true
+    - 2010-10-21 12:19:12
+    - 2010-10-21 15:00:14
+    - ""
+  - - "1066346052"
+    - 2010-10-21 14:00:00
+    - 2010-10-21 13:01:12
+    - 2010-10-21 13:01:12
+    - "4000"
+    - "20"
+    - !binary |
+      MDMyX9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBIEFTSElLQSDQuCAw
+      MzNf0JfQsNCz0YDRg9C30LjRgtGMINC/0YDQsNC50YEgQVNISUtB
+
+    - 
+    - "1027824407"
+    - ReceiveJob
+    - "1072056314"
+    - "\"RVM -5 s nalichiem.xls\""
+    - false
+    - true
+    - 2010-10-21 12:20:36
+    - 2010-10-21 13:01:12
+    - ""
+  - - "1066346053"
+    - 2010-10-21 14:00:00
+    - 2010-10-21 13:01:12
+    - 2010-10-21 13:01:12
+    - "4000"
+    - "20"
+    - !binary |
+      MDM0X9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBINCi0KPQndCT0KPQ
+      odCe0JIg0JjQnyDQnNCQ0KHQm9CQIA==
+
+    - 
+    - "1027824408"
+    - ReceiveJob
+    - "1072056315"
+    - "\"1.xls\""
+    - false
+    - true
+    - 2010-10-21 12:38:06
+    - 2010-10-21 13:01:12
+    - ""
+  - - "1066346054"
+    - 2010-10-21 14:00:00
+    - 2010-10-21 13:01:12
+    - 2010-10-21 13:01:13
+    - "4000"
+    - "20"
+    - !binary |
+      MDM0X9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBINCi0KPQndCT0KPQ
+      odCe0JIg0JjQnyDQnNCQ0KHQm9CQ
+
+    - 
+    - "1027824408"
+    - ReceiveJob
+    - "1072056315"
+    - "\"1.txt\""
+    - false
+    - true
+    - 2010-10-21 12:38:36
+    - 2010-10-21 13:01:13
+    - ""
+  - - "1066346055"
+    - 2010-10-21 12:40:00
+    - 2010-10-21 12:40:00
+    - 
+    - "4000"
+    - "20"
+    - !binary |
+      MDM3X9Ce0LHQvdC+0LLQuNGC0Ywg0L/RgNCw0LnRgSBDUEQ=
+
+    - 
+    - 
+    - 
+    - "1072056316"
+    - \".*\"
+    - false
+    - true
+    - 2010-10-21 12:40:58
+    - 2010-10-21 12:40:58
+    - ""
+  - - "1066346056"
+    - 2010-10-21 14:00:00
+    - 2010-10-21 13:01:13
+    - 2010-10-21 13:01:13
+    - "4000"
+    - "20"
+    - !binary |
+      MDQyX9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBIEFTIE1PVE9SUyDQ
+      ndCQ0JvQmNCn0JjQlSBTUUw=
+
+    - 
+    - "1027824409"
+    - ReceiveJob
+    - "1072056317"
+    - "\"asmotors_price.csv\""
+    - false
+    - true
+    - 2010-10-21 12:41:34
+    - 2010-10-21 13:01:13
+    - ""
+  - - "1066346057"
+    - 2010-10-21 14:00:00
+    - 2010-10-21 13:01:13
+    - 2010-10-21 13:01:14
+    - "4000"
+    - "20"
+    - !binary |
+      MDQzX9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBIEFTVkEgU1FM
+
+    - 
+    - "1027824410"
+    - ReceiveJob
+    - "1072056318"
+    - "\"asvarif.xls\""
+    - false
+    - true
+    - 2010-10-21 12:42:30
+    - 2010-10-21 13:01:14
+    - ""
+  - - "1066346058"
+    - 2010-10-21 14:00:00
+    - 2010-10-21 13:01:14
+    - 2010-10-21 13:01:14
+    - "4000"
+    - "20"
+    - !binary |
+      MDQ4X9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBINCg0JjQndCQIFNR
+      TA==
+
+    - 
+    - "1027824411"
+    - ReceiveJob
+    - "1072056319"
+    - !binary |
+      ItCg0JjQndCQLnhscyI=
+
+    - false
+    - true
+    - 2010-10-21 12:43:20
+    - 2010-10-21 13:01:14
+    - ""
+  - - "1066346059"
+    - 2010-10-21 14:00:00
+    - 2010-10-21 13:01:14
+    - 2010-10-21 13:01:14
+    - "4000"
+    - "20"
+    - !binary |
+      MDUxX9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBINCuLtChLiDQmNCc
+      0J/QldCa0KEgTUFaREEg0J3QkNCb0JjQp9CY0JU=
+
+    - 
+    - "1027824412"
+    - ReceiveJob
+    - "1072056320"
+    - "\"DMS_05 USI_Stock_Opt.xls\""
+    - false
+    - true
+    - 2010-10-21 12:55:14
+    - 2010-10-21 13:01:14
+    - ""
+  - - "1066346060"
+    - 2010-10-21 16:00:00
+    - 2010-10-21 15:00:11
+    - 2010-10-21 15:00:11
+    - "4000"
+    - "20"
+    - !binary |
+      MDUyX9CX0LDQs9GA0YPQt9C40YLRjCDQqNCe0J7QoNCYIFNRTA==
+
+    - 
+    - "1027824413"
+    - ReceiveJob
+    - "480201602"
+    - "\"sklad.txt\""
+    - false
+    - true
+    - 2010-10-21 12:58:53
+    - 2010-10-21 15:00:11
+    - ""
+  - - "1066346061"
+    - 2010-10-21 14:00:00
+    - 2010-10-21 13:01:08
+    - 2010-10-21 13:01:10
+    - "4000"
+    - "20"
+    - !binary |
+      MDc1X9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBINC90LDQu9C40YfQ
+      uNGPINCc0JjQmtCQ0JTQng==
+
+    - 
+    - "1027824414"
+    - ReceiveJob
+    - "1072056321"
+    - "\"MikStockA_All.csv\""
+    - false
+    - true
+    - 2010-10-21 12:59:55
+    - 2010-10-21 13:01:10
+    - ""
+  - - "1066346062"
+    - 2010-10-21 14:00:00
+    - 2010-10-21 13:01:14
+    - 2010-10-21 13:01:15
+    - "4000"
+    - "20"
+    - !binary |
+      MDc2X9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBINCU0JbQldCd0KHQ
+      ldCgINCd0JjQodCh0JDQnSDQndCQ0JvQmNCn0JjQlQ==
+
+    - 
+    - "1027824396"
+    - ReceiveJob
+    - "1072056305"
+    - "\"GenserNaL.xls\""
+    - false
+    - true
+    - 2010-10-21 13:00:48
+    - 2010-10-21 13:01:15
+    - ""
+  - - "1066346063"
+    - 2010-10-21 14:00:00
+    - 2010-10-21 13:01:41
+    - 2010-10-21 13:01:42
+    - "4000"
+    - "20"
+    - !binary |
+      MDc3X9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBINCU0JbQldCd0KHQ
+      ldCgINCc0JDQl9CU0JAg0KbQoSBTUUw=
+
+    - 
+    - "1027824396"
+    - ReceiveJob
+    - "1072056305"
+    - "\"GenserCS.xls\""
+    - false
+    - true
+    - 2010-10-21 13:01:16
+    - 2010-10-21 13:01:42
+    - ""
+  - - "1066346064"
+    - 2010-10-21 14:00:00
+    - 2010-10-21 13:04:00
+    - 2010-10-21 13:04:59
+    - "4000"
+    - "20"
+    - !binary |
+      MDc5X9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBIFJNUyBUT1lPVEEg
+      0J3QkNCb0JjQp9CY0JUgU1FMINC4IDA4MF/Ql9Cw0LPRgNGD0LfQuNGC0Ywg
+      0L/RgNCw0LnRgSBSTVMgTUFaREEg0J3QkNCb0JjQp9CY0JUgU1FMINC4IDA4
+      MV/Ql9Cw0LPRgNGD0LfQuNGC0Ywg0L/RgNCw0LnRgSBSTVMgTU1DINCd0JDQ
+      m9CY0KfQmNCVIFNRTCDQuCAwODVf0JfQsNCz0YDRg9C30LjRgtGMINC/0YDQ
+      sNC50YEgUk1TIEhPTkRBINCe0JzQkNCdINC4IDA4Nl/Ql9Cw0LPRgNGD0LfQ
+      uNGC0Ywg0L/RgNCw0LnRgSBSTVMgSE9OREEg0J3QkNCb0JjQp9CY0JUgU1FM
+      IA==
+
+    - 
+    - "1027824415"
+    - ReceiveJob
+    - "1072056322"
+    - JapanAr.txt
+    - false
+    - true
+    - 2010-10-21 13:02:43
+    - 2010-10-21 13:10:37
+    - ""
+  - - "1066346065"
+    - 2010-10-21 14:00:00
+    - 2010-10-21 13:08:04
+    - 2010-10-21 13:08:04
+    - "4000"
+    - "20"
+    - !binary |
+      MDgyX9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBIFNQRA==
+
+    - 
+    - "1027824416"
+    - ReceiveJob
+    - "1072056323"
+    - "\"1-500.txt\""
+    - false
+    - true
+    - 2010-10-21 13:07:41
+    - 2010-10-21 13:08:04
+    - ""
+  - - "1066346066"
+    - 2010-10-21 14:00:00
+    - 2010-10-21 13:10:08
+    - 2010-10-21 13:10:08
+    - "4000"
+    - "20"
+    - !binary |
+      MDgzX9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBIFRheW90YSBTUEQo
+      0LzQsNGB0LvQsCk=
+
+    - 
+    - "1027824416"
+    - ReceiveJob
+    - "1072056323"
+    - !binary |
+      ItC80LDRgdC70L4ueGxzIg==
+
+    - false
+    - true
+    - 2010-10-21 13:09:14
+    - 2010-10-21 13:10:08
+    - ""
+  - - "1066346067"
+    - 2010-10-21 14:00:00
+    - 2010-10-21 13:10:08
+    - 2010-10-21 13:10:09
+    - "4000"
+    - "20"
+    - !binary |
+      MDg0X9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBIFRheW90YSBTUEQo
+      0LfQsNC/0YfQsNGB0YLQuCk=
+
+    - 
+    - "1027824416"
+    - ReceiveJob
+    - "1072056323"
+    - !binary |
+      ItCX0LDQv9GH0LDRgdGC0LgueGxzIg==
+
+    - false
+    - true
+    - 2010-10-21 13:09:44
+    - 2010-10-21 13:10:09
+    - ""
+  - - "1066346068"
+    - 2010-10-21 13:12:00
+    - 2010-10-21 13:12:00
+    - 
+    - "4000"
+    - "20"
+    - !binary |
+      MDg5X9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGB0Ysg0LIg0LHQsNC3
+      0YMgUFJJQ0UgU1FM
+
+    - 
+    - "1027824417"
+    - ReceiveJob
+    - "1072056324"
+    - zzz
+    - false
+    - true
+    - 2010-10-21 13:12:41
+    - 2010-10-21 13:12:58
+    - ""
+  - - "1066346069"
+    - 2010-10-21 14:00:00
+    - 2010-10-21 13:13:58
+    - 2010-10-21 13:13:58
+    - "4000"
+    - "20"
+    - !binary |
+      MDkyX9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBINCY0LLQuNC60LAg
+      U1FM
+
+    - 
+    - "1027824418"
+    - ReceiveJob
+    - "1072056325"
+    - "\"ivika.xls\""
+    - false
+    - true
+    - 2010-10-21 13:13:43
+    - 2010-10-21 13:13:58
+    - ""
+  - - "1066346070"
+    - 2010-10-21 13:15:00
+    - 2010-10-21 13:15:00
+    - 
+    - "4000"
+    - "20"
+    - !binary |
+      MDkzX9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBIE1BSk9SIEhPTkRB
+
+    - 
+    - "1027824395"
+    - ReceiveJob
+    - "1072056304"
+    - "\"parts_major.txt\""
+    - false
+    - true
+    - 2010-10-21 13:16:00
+    - 2010-10-21 13:16:05
+    - ""
+  - - "1066346071"
+    - 2010-10-21 13:16:00
+    - 2010-10-21 13:16:00
+    - 
+    - "4000"
+    - "20"
+    - !binary |
+      MDk0X9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBIE1BSk9SIE1BWkRB
+      INCd0JDQm9CY0KfQmNCV
+
+    - 
+    - "1027824395"
+    - ReceiveJob
+    - "1072056304"
+    - "\"parts_major.txt\""
+    - false
+    - true
+    - 2010-10-21 13:16:51
+    - 2010-10-21 13:17:02
+    - ""
+  - - "1066346072"
+    - 2010-10-21 13:18:00
+    - 2010-10-21 13:18:00
+    - 
+    - "4000"
+    - "20"
+    - !binary |
+      MDk2X9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBINCQ0JLQotCe0JjQ
+      nNCf0K3QmtChICjQm9Cj0KbQmNCUKSBTUUw=
+
+    - 
+    - "1027824419"
+    - ReceiveJob
+    - "1072056326"
+    - !binary |
+      ItCQ0LLRgtC+0JjQvNC/0Y3QutGBLnhscyI=
+
+    - false
+    - true
+    - 2010-10-21 13:18:54
+    - 2010-10-21 13:19:18
+    - ""
+  - - "1066346073"
+    - 2010-10-21 14:00:00
+    - 2010-10-21 13:20:21
+    - 2010-10-21 13:20:21
+    - "4000"
+    - "20"
+    - !binary |
+      MDk3X9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBINCc0J7QodCa0JLQ
+      ntCg0JXQp9Cs0JUgU1FM
+
+    - 
+    - "1027824420"
+    - ReceiveJob
+    - "1072056327"
+    - "\"PriceForeign.xls\""
+    - false
+    - true
+    - 2010-10-21 13:19:49
+    - 2010-10-21 13:20:21
+    - ""
+  - - "1066346074"
+    - 2010-10-21 14:00:00
+    - 2010-10-21 13:27:46
+    - 2010-10-21 13:27:47
+    - "4000"
+    - "20"
+    - !binary |
+      MDk4X9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBINCd0JjQmtCQINCQ
+      0JrQodCV0KHQodCj0JDQoNCrINCd0JDQm9CY0KfQmNCV
+
+    - 
+    - "1027824421"
+    - ReceiveJob
+    - "1072056328"
+    - "\"SKLAD-\" + Time.zone.now.strftime('%d %m %y') + \".TXT\""
+    - false
+    - true
+    - 2010-10-21 13:21:20
+    - 2010-10-21 13:27:47
+    - ""
+  - - "1066346075"
+    - 2010-10-21 16:00:00
+    - 2010-10-21 15:00:12
+    - 2010-10-21 15:00:12
+    - "4000"
+    - "20"
+    - !binary |
+      MTAxX9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBIEFVVE9TUEFSIFNR
+      TA==
+
+    - 
+    - "746173547"
+    - ReceiveJob
+    - "594805345"
+    - "\"Autospar.txt\""
+    - false
+    - true
+    - 2010-10-21 13:35:50
+    - 2010-10-21 15:00:12
+    - ""
+  - - "1066346076"
+    - 2010-10-21 13:38:00
+    - 2010-10-21 13:38:00
+    - 
+    - "4000"
+    - "20"
+    - !binary |
+      MTEyX9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGB0Ysg0LIg0LHQsNC3
+      0YMgUFJJQ0UgU1FM
+
+    - 
+    - "1027824417"
+    - ReceiveJob
+    - "1072056324"
+    - "123"
+    - false
+    - true
+    - 2010-10-21 13:39:15
+    - 2010-10-21 13:39:22
+    - ""
+  - - "1066346077"
+    - 2010-10-21 14:00:00
+    - 2010-10-21 13:44:12
+    - 2010-10-21 13:44:12
+    - "4000"
+    - "20"
+    - !binary |
+      MjI3X9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGBINCd0J7QktCb0JDQ
+      mdCd
+
+    - 
+    - "1027824422"
+    - ReceiveJob
+    - "1072056329"
+    - "\"Novline.xls\""
+    - false
+    - true
+    - 2010-10-21 13:43:54
+    - 2010-10-21 13:44:12
+    - ""
+  - - "1066346078"
+    - 2010-10-21 13:45:00
+    - 2010-10-21 13:45:00
+    - 
+    - "4000"
+    - "20"
+    - 001_PriceMoscow-xls.xls
+    - 
+    - 
+    - 
+    - "1072056324"
+    - "123"
+    - false
+    - true
+    - 2010-10-21 13:45:52
+    - 2010-10-21 13:45:52
+    - ""
+  - - "1066346079"
+    - 2010-10-21 14:00:00
+    - 2010-10-21 13:47:30
+    - 2010-10-21 13:47:31
+    - "4000"
+    - "20"
+    - !binary |
+      MDQ3X9CX0LDQs9GA0YPQt9C40YLRjCDRgdC60LvQsNC0IFJPTEYg0JDQmtCh
+      0JXQodCh0KPQkNCg0Ks=
+
+    - 
+    - "1027824423"
+    - ReceiveJob
+    - "1072056330"
+    - "\"ROLF AKS 1.txt\""
+    - false
+    - true
+    - 2010-10-21 13:47:05
+    - 2010-10-21 13:47:31
+    - ""
+  - - "1066346080"
+    - 2010-10-21 14:00:00
+    - 2010-10-21 13:48:23
+    - 2010-10-21 13:48:24
+    - "4000"
+    - "20"
+    - !binary |
+      MDQ3X9CX0LDQs9GA0YPQt9C40YLRjCDRgdC60LvQsNC0IFJPTEYg0J3QldCe
+      0KDQmNCT0JjQndCQ0Js=
+
+    - 
+    - "1027824423"
+    - ReceiveJob
+    - "1072056330"
+    - "\"ROLF.txt\""
+    - false
+    - true
+    - 2010-10-21 13:48:09
+    - 2010-10-21 13:48:24
+    - ""
+  - - "1066346081"
+    - 2010-10-21 13:49:00
+    - 2010-10-21 13:49:00
+    - 
+    - "4000"
+    - "20"
+    - !binary |
+      MDk1X9CX0LDQs9GA0YPQt9C40YLRjCDQv9GA0LDQudGB0Ysg0LIg0LHQsNC3
+      0YMgUFJJQ0UgU1FMIA==
+
+    - 
+    - 
+    - 
+    - "1072056324"
+    - "123"
+    - false
+    - true
+    - 2010-10-21 13:49:19
+    - 2010-10-21 13:49:19
+    - ""
+  - - "1066346082"
+    - 2010-10-21 13:51:00
+    - 2010-10-21 13:51:00
+    - 
+    - "4000"
+    - "20"
+    - !binary |
+      MTQ2X01CQSBNTUMg0JPQldCg0JzQkNCd0JjQrw==
+
+    - 
+    - "1027824424"
+    - ReceiveJob
+    - "1072056331"
+    - "\"Mits030910.txt\""
+    - false
+    - true
+    - 2010-10-21 13:51:18
+    - 2010-10-21 13:51:50
+    - ""
+  - - "1066346083"
+    - 2010-10-21 14:00:00
+    - 2010-10-21 13:58:26
+    - 2010-10-21 13:58:27
+    - "4000"
+    - "20"
+    - !binary |
+      MTQ2X9CX0LDQs9GA0YPQt9C40YLRjCDRgdC60LvQsNC0IFJPTEYgWExTKNCm
+      0JXQndCi0KDQkNCb0KzQndCr0Jkg0KHQmtCb0JDQlCk=
+
+    - 
+    - "1027824425"
+    - ReceiveJob
+    - "1072056330"
+    - "\"sklad\" + Time.zone.now.strftime('%d%m%y') + \".xls\""
+    - false
+    - true
+    - 2010-10-21 13:57:41
+    - 2010-10-21 13:58:27
+    - ""
 
 --- 
 jobs_repeats: 
@@ -1808,49 +3113,157 @@ jobs_repeats:
   - updated_at
   records: 
   - - "859158658"
-    - "84851029"
-    - 
-    - 
+    - "1066346083"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
   - - "859158658"
-    - "839485896"
-    - 
-    - 
+    - "1066346065"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
   - - "859158658"
-    - "143136434"
-    - 
-    - 
+    - "1066346064"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
   - - "859158658"
-    - "548612071"
-    - 
-    - 
+    - "1066346063"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346062"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346061"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346059"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346058"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346057"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346056"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346054"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346053"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346052"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346066"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346067"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346068"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346082"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346081"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346080"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346079"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346078"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346077"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346076"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "552234132"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346074"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346071"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346070"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346069"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346051"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346041"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346040"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
   - - "859158658"
     - "721475712"
     - 
     - 
   - - "859158658"
-    - "1066346021"
-    - 
-    - 
+    - "1066346072"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
   - - "859158658"
     - "646346657"
     - 
     - 
   - - "859158658"
-    - "734027939"
-    - 
-    - 
+    - "1066346075"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
   - - "859158658"
     - "852046107"
     - 
     - 
   - - "859158658"
-    - "499090777"
-    - 
-    - 
+    - "1066346048"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
   - - "859158658"
-    - "1026110385"
-    - 
-    - 
+    - "1066346060"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
   - - "859158658"
     - "745348199"
     - 
@@ -1860,21 +3273,81 @@ jobs_repeats:
     - 
     - 
   - - "859158658"
-    - "263256886"
-    - 
-    - 
+    - "1066346047"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
   - - "859158658"
-    - "200974790"
-    - 
-    - 
+    - "1066346049"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
   - - "859158658"
     - "427111281"
     - 
     - 
   - - "859158658"
+    - "1066346045"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346073"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346046"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346039"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346050"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346036"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346037"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346038"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346035"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346027"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346026"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346025"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346024"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
+  - - "859158658"
+    - "1066346023"
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
+  - - "859158658"
     - "1066346022"
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
+  - - "859158658"
+    - "84851029"
+    - 
+    - 
 
 --- 
 mdb_imports: 
@@ -1886,12 +3359,12 @@ mdb_imports:
   records: 
   - - "298486374"
     - MyString
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "980190962"
     - MyString
-    - 2010-10-19 09:27:54
-    - 2010-10-19 09:27:54
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
 
 --- 
 mies: 
@@ -1901,11 +3374,11 @@ mies:
   - updated_at
   records: 
   - - "298486374"
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "980190962"
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
 
 --- 
 periods: 
@@ -1919,13 +3392,13 @@ periods:
   - - "298486374"
     - "1"
     - "1"
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "980190962"
     - "1"
     - "1"
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
 
 --- 
 receive_jobs: 
@@ -1936,96 +3409,236 @@ receive_jobs:
   - created_at
   - updated_at
   records: 
-  - - "40847102"
-    - "459424539"
-    - FtpReceive
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
-  - - "243069223"
-    - "855325037"
-    - EmailReceive
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
-  - - "280362575"
-    - "365213618"
-    - FtpReceive
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
-  - - "282938205"
-    - "774517123"
-    - FtpReceive
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
   - - "338983884"
     - "302439171"
     - EmailReceive
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
-  - - "406352343"
-    - "928202641"
-    - FtpReceive
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "508517365"
     - "1058689885"
     - FtpReceive
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "584111877"
     - "59105197"
     - FtpReceive
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "609423326"
     - "319468209"
     - FolderReceive
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
-  - - "620387971"
-    - "95376939"
-    - FtpReceive
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
-  - - "667560807"
-    - "325745029"
-    - SmbReceive
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
-  - - "699146256"
-    - "339903779"
-    - SmbReceive
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
-  - - "706831403"
-    - "684181486"
-    - EmailReceive
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
-  - - "729717474"
-    - "729717474"
-    - FtpReceive
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "738464244"
     - "889787413"
     - FtpReceive
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "746173547"
     - "221035715"
     - FtpReceive
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "1027824375"
     - "752622840"
     - EmailReceive
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "1027824376"
     - "1058689886"
     - FtpReceive
-    - 2010-10-19 09:35:41
-    - 2010-10-19 09:35:41
+    - 2010-10-20 11:32:20
+    - 2010-10-20 11:32:20
+  - - "1027824377"
+    - "1058689887"
+    - FtpReceive
+    - 2010-10-20 12:05:44
+    - 2010-10-20 12:05:44
+  - - "1027824378"
+    - "1058689888"
+    - FtpReceive
+    - 2010-10-20 13:08:29
+    - 2010-10-20 13:08:29
+  - - "1027824379"
+    - "1058689889"
+    - FtpReceive
+    - 2010-10-20 13:13:56
+    - 2010-10-20 13:13:56
+  - - "1027824380"
+    - "339903780"
+    - SmbReceive
+    - 2010-10-20 13:19:24
+    - 2010-10-20 13:19:24
+  - - "1027824391"
+    - "339903789"
+    - SmbReceive
+    - 2010-10-20 14:12:30
+    - 2010-10-20 14:12:30
+  - - "1027824392"
+    - "1058689892"
+    - FtpReceive
+    - 2010-10-20 14:33:11
+    - 2010-10-20 14:33:11
+  - - "1027824393"
+    - "1058689893"
+    - FtpReceive
+    - 2010-10-20 14:38:03
+    - 2010-10-20 14:38:03
+  - - "1027824394"
+    - "339903790"
+    - SmbReceive
+    - 2010-10-20 15:43:00
+    - 2010-10-20 15:43:00
+  - - "1027824395"
+    - "1058689894"
+    - FtpReceive
+    - 2010-10-20 15:47:14
+    - 2010-10-20 15:47:14
+  - - "1027824396"
+    - "1058689895"
+    - FtpReceive
+    - 2010-10-21 09:46:31
+    - 2010-10-21 09:46:31
+  - - "1027824397"
+    - "339903791"
+    - SmbReceive
+    - 2010-10-21 09:47:38
+    - 2010-10-21 09:47:38
+  - - "1027824398"
+    - "339903792"
+    - SmbReceive
+    - 2010-10-21 09:49:05
+    - 2010-10-21 09:49:05
+  - - "1027824399"
+    - "1058689896"
+    - FtpReceive
+    - 2010-10-21 11:34:23
+    - 2010-10-21 11:34:23
+  - - "1027824401"
+    - "339903794"
+    - SmbReceive
+    - 2010-10-21 12:04:20
+    - 2010-10-21 12:04:20
+  - - "1027824402"
+    - "1058689897"
+    - FtpReceive
+    - 2010-10-21 12:07:52
+    - 2010-10-21 12:07:52
+  - - "1027824403"
+    - "1058689898"
+    - FtpReceive
+    - 2010-10-21 12:10:54
+    - 2010-10-21 12:10:54
+  - - "1027824404"
+    - "1058689899"
+    - FtpReceive
+    - 2010-10-21 12:12:47
+    - 2010-10-21 12:12:47
+  - - "1027824405"
+    - "1058689900"
+    - FtpReceive
+    - 2010-10-21 12:14:26
+    - 2010-10-21 12:14:26
+  - - "1027824406"
+    - "1058689901"
+    - FtpReceive
+    - 2010-10-21 12:18:19
+    - 2010-10-21 12:18:19
+  - - "1027824407"
+    - "1058689902"
+    - FtpReceive
+    - 2010-10-21 12:20:48
+    - 2010-10-21 12:20:48
+  - - "1027824408"
+    - "1058689903"
+    - FtpReceive
+    - 2010-10-21 12:38:18
+    - 2010-10-21 12:38:18
+  - - "1027824409"
+    - "1058689904"
+    - FtpReceive
+    - 2010-10-21 12:41:48
+    - 2010-10-21 12:41:48
+  - - "1027824410"
+    - "1058689905"
+    - FtpReceive
+    - 2010-10-21 12:42:42
+    - 2010-10-21 12:42:42
+  - - "1027824411"
+    - "339903795"
+    - SmbReceive
+    - 2010-10-21 12:43:39
+    - 2010-10-21 12:43:39
+  - - "1027824412"
+    - "1058689906"
+    - FtpReceive
+    - 2010-10-21 12:56:34
+    - 2010-10-21 12:56:34
+  - - "1027824413"
+    - "1058689907"
+    - FtpReceive
+    - 2010-10-21 12:59:06
+    - 2010-10-21 12:59:06
+  - - "1027824414"
+    - "339903796"
+    - SmbReceive
+    - 2010-10-21 13:00:20
+    - 2010-10-21 13:00:20
+  - - "1027824415"
+    - "1058689908"
+    - FtpReceive
+    - 2010-10-21 13:03:39
+    - 2010-10-21 13:03:39
+  - - "1027824416"
+    - "1058689909"
+    - FtpReceive
+    - 2010-10-21 13:07:56
+    - 2010-10-21 13:07:56
+  - - "1027824417"
+    - "1058689910"
+    - FtpReceive
+    - 2010-10-21 13:12:58
+    - 2010-10-21 13:12:58
+  - - "1027824418"
+    - "1058689911"
+    - FtpReceive
+    - 2010-10-21 13:13:55
+    - 2010-10-21 13:13:55
+  - - "1027824419"
+    - "1058689912"
+    - FtpReceive
+    - 2010-10-21 13:19:18
+    - 2010-10-21 13:19:18
+  - - "1027824420"
+    - "1058689913"
+    - FtpReceive
+    - 2010-10-21 13:20:14
+    - 2010-10-21 13:20:14
+  - - "1027824421"
+    - "339903797"
+    - SmbReceive
+    - 2010-10-21 13:21:49
+    - 2010-10-21 13:21:49
+  - - "1027824422"
+    - "1058689914"
+    - FtpReceive
+    - 2010-10-21 13:44:09
+    - 2010-10-21 13:44:09
+  - - "1027824423"
+    - "1058689915"
+    - FtpReceive
+    - 2010-10-21 13:47:19
+    - 2010-10-21 13:47:19
+  - - "1027824424"
+    - "339903798"
+    - SmbReceive
+    - 2010-10-21 13:51:50
+    - 2010-10-21 13:51:50
+  - - "1027824425"
+    - "339903799"
+    - SmbReceive
+    - 2010-10-21 13:58:18
+    - 2010-10-21 13:58:18
 
 --- 
 repeats: 
@@ -2037,12 +3650,12 @@ repeats:
   - updated_at
   records: 
   - - "859158658"
-    - "* */1 * * *"
+    - 0 */1 * * *
     - !binary |
       0JrQsNC20LTRi9C5INGH0LDRgQ==
 
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:59:21
 
 --- 
 smb_receives: 
@@ -2072,8 +3685,8 @@ smb_receives:
       0JPQvtGB0YLRjA==
 
     - 
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "339903779"
     - rif2010
     - /MAG_ALT/
@@ -2082,8 +3695,552 @@ smb_receives:
     - Office
     - "2"
     - 
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
+  - - "339903781"
+    - 
+    - 
+    - "445"
+    - /
+    - !binary |
+      0JPQvtGB0YLRjA==
+
+    - !binary |
+      0JPQvtGB0YLRjA==
+
+    - 
+    - 2010-10-20 13:20:02
+    - 2010-10-20 13:20:02
+  - - "339903782"
+    - 
+    - 
+    - "445"
+    - /
+    - !binary |
+      0JPQvtGB0YLRjA==
+
+    - !binary |
+      0JPQvtGB0YLRjA==
+
+    - 
+    - 2010-10-20 13:20:19
+    - 2010-10-20 13:20:19
+  - - "339903783"
+    - 
+    - 
+    - "445"
+    - /
+    - !binary |
+      0JPQvtGB0YLRjA==
+
+    - !binary |
+      0JPQvtGB0YLRjA==
+
+    - 
+    - 2010-10-20 13:21:58
+    - 2010-10-20 13:21:58
+  - - "339903784"
+    - "1"
+    - ""
+    - "445"
+    - /
+    - !binary |
+      0JPQvtGB0YLRjA==
+
+    - !binary |
+      0JPQvtGB0YLRjA==
+
+    - ""
+    - 2010-10-20 13:22:20
+    - 2010-10-20 13:22:20
+  - - "339903785"
+    - "56"
+    - ""
+    - "445"
+    - /
+    - !binary |
+      0JPQvtGB0YLRjA==
+
+    - !binary |
+      0JPQvtGB0YLRjA==
+
+    - ""
+    - 2010-10-20 13:22:34
+    - 2010-10-20 13:22:34
+  - - "339903786"
+    - "1"
+    - ""
+    - "445"
+    - /
+    - !binary |
+      0JPQvtGB0YLRjA==
+
+    - !binary |
+      0JPQvtGB0YLRjA==
+
+    - ""
+    - 2010-10-20 13:24:17
+    - 2010-10-20 13:24:17
+  - - "339903787"
+    - !binary |
+      0LXQtdC1
+
+    - ""
+    - "445"
+    - /
+    - !binary |
+      0JPQvtGB0YLRjA==
+
+    - !binary |
+      0JPQvtGB0YLRjA==
+
+    - ""
+    - 2010-10-20 13:24:49
+    - 2010-10-20 13:24:49
+  - - "339903788"
+    - Rif2010
+    - /SCLAD/
+    - "445"
+    - /DATA/ACSCOM/
+    - office
+    - "2"
+    - ""
+    - 2010-10-20 13:26:55
+    - 2010-10-20 13:32:53
+  - - "339903789"
+    - Rif2010
+    - /SCLAD/
+    - "445"
+    - /DATA/ACSCOM/
+    - office
+    - "2"
+    - ""
+    - 2010-10-20 14:12:30
+    - 2010-10-20 14:12:30
+  - - "339903790"
+    - Rif2010
+    - /SCLAD/
+    - "445"
+    - /DATA/ASPI/
+    - office
+    - "2"
+    - ""
+    - 2010-10-20 15:43:00
+    - 2010-10-20 15:43:00
+  - - "339903791"
+    - Rif2010
+    - /SCLAD/
+    - "445"
+    - !binary |
+      L0RBVEEv0JrQkNCf0J7Qoi8=
+
+    - office
+    - "2"
+    - ""
+    - 2010-10-21 09:47:38
+    - 2010-10-21 09:47:38
+  - - "339903792"
+    - Rif2010
+    - /SCLAD/
+    - "445"
+    - !binary |
+      L0RBVEEv0KHQldCS0JXQnSDQkNCS0KLQni93d3cvc3RvY2sv
+
+    - office
+    - "2"
+    - ""
+    - 2010-10-21 09:49:05
+    - 2010-10-21 09:49:05
+  - - "339903793"
+    - rif2010
+    - /ggg/
+    - "445"
+    - /f/
+    - office
+    - "2"
+    - ""
+    - 2010-10-21 12:02:17
+    - 2010-10-21 12:02:17
+  - - "339903794"
+    - rif2010
+    - /sclad/
+    - "445"
+    - !binary |
+      L0RBVEEv0J3QldCX0JDQktCY0KHQmNCc0J7QodCi0Kwv
+
+    - office
+    - "2"
+    - ""
+    - 2010-10-21 12:04:20
+    - 2010-10-21 12:04:20
+  - - "339903795"
+    - rif2010
+    - /SCLAD/
+    - "445"
+    - !binary |
+      L0RBVEEv0KDQmNCd0JAv
+
+    - office
+    - "2"
+    - ""
+    - 2010-10-21 12:43:39
+    - 2010-10-21 12:44:16
+  - - "339903796"
+    - rif2010
+    - /MAG_ALT/
+    - "445"
+    - !binary |
+      L0RBVEEv0JzQmNCa0JDQlNCeLw==
+
+    - office
+    - "2"
+    - ""
+    - 2010-10-21 13:00:20
+    - 2010-10-21 13:00:20
+  - - "339903797"
+    - rif2010
+    - /SCLAD/
+    - "445"
+    - !binary |
+      L0RBVEEv0J3QmNCa0JAv
+
+    - office
+    - "2"
+    - ""
+    - 2010-10-21 13:21:49
+    - 2010-10-21 13:21:49
+  - - "339903798"
+    - rif2010
+    - /SCLAD/
+    - "445"
+    - !binary |
+      L0FWUHJhaWNlL01CQS/QnNC40YLRgdCwLw==
+
+    - office
+    - "2"
+    - ""
+    - 2010-10-21 13:51:50
+    - 2010-10-21 13:51:50
+  - - "339903799"
+    - Netgear
+    - /COMMON/
+    - "445"
+    - !binary |
+      L9Cf0J7QodCi0JDQktCp0JjQmtCYL9Ce0JHQqdCY0Jkg0KHQmtCb0JDQlC/R
+      gNC+0YLQvtC9LdC4Lw==
+
+    - office
+    - "2"
+    - ""
+    - 2010-10-21 13:58:18
+    - 2010-10-21 13:58:18
+
+--- 
+supplier_prices: 
+  columns: 
+  - id
+  - attachment_file_name
+  - attachment_content_type
+  - attachment_file_size
+  - attachment_updated_at
+  - md5
+  - supplier_id
+  - email_id
+  - created_at
+  - updated_at
+  - job_code
+  - job_id
+  records: 
+  - - "53"
+    - avtorif.xls
+    - application/vnd.ms-excel
+    - "97792"
+    - 2010-10-21 11:30:47
+    - 58e5172d3136856e740af00c1ca3f38e
+    - "769483063"
+    - 
+    - 2010-10-21 11:30:47
+    - 2010-10-21 11:30:47
+    - 
+    - "427111281"
+  - - "57"
+    - febestrif.txt
+    - text/plain
+    - "241806"
+    - 2010-10-21 11:30:48
+    - f279639b61468f2138dcf14bd71ab0d2
+    - "854858892"
+    - 
+    - 2010-10-21 11:30:48
+    - 2010-10-21 11:30:48
+    - 
+    - "852046107"
+  - - "58"
+    - stoc_ankar_quantity.csv
+    - text/plain
+    - "382875"
+    - 2010-10-21 11:30:48
+    - 31d00aafb161250ca6160d3d9f5dd2fc
+    - "1072056295"
+    - 
+    - 2010-10-21 11:30:48
+    - 2010-10-21 11:30:48
+    - 
+    - "200974790"
+  - - "61"
+    - AVTORIF.txt
+    - text/plain
+    - "1067860"
+    - 2010-10-21 11:30:48
+    - 1295a81db8843e6b9da5d337a79da808
+    - "289598915"
+    - 
+    - 2010-10-21 11:30:49
+    - 2010-10-21 11:30:49
+    - 
+    - "646346657"
+  - - "62"
+    - U_SERV_COL.xls
+    - application/vnd.ms-office
+    - "263680"
+    - 2010-10-21 11:30:49
+    - 19b23cd6a22559fe47a19c6cdf275f3e
+    - "1072056296"
+    - 
+    - 2010-10-21 11:30:49
+    - 2010-10-21 11:30:49
+    - gggg
+    - "1066346022"
+  - - "63"
+    - U_SERV_NMR.xls
+    - application/vnd.ms-office
+    - "2198528"
+    - 2010-10-21 11:30:49
+    - 64310398f56a39bf386e3cfa95462a4e
+    - "1072056296"
+    - 
+    - 2010-10-21 11:30:49
+    - 2010-10-21 11:30:49
+    - !binary |
+      0J3QmNCh0KHQkNCdINCm0KE=
+
+    - "1066346023"
+  - - "64"
+    - stock.csv
+    - text/plain
+    - "464607"
+    - 2010-10-21 11:30:50
+    - 1ee6ab892b251e66eda77defe3f6e343
+    - "1072056307"
+    - 
+    - 2010-10-21 11:30:50
+    - 2010-10-21 11:30:50
+    - ""
+    - "1066346041"
+  - - "65"
+    - avtorif.txt
+    - text/plain
+    - "309564"
+    - 2010-10-21 11:30:53
+    - d98eed7a0edf2685fafbd7f342f39f32
+    - "671016813"
+    - 
+    - 2010-10-21 11:30:53
+    - 2010-10-21 11:30:53
+    - ""
+    - "343575742"
+  - - "66"
+    - PE1.xls
+    - application/vnd.ms-office
+    - "4776960"
+    - 2010-10-21 11:35:35
+    - 15c16825fe92c56afbf3121b21878ec8
+    - "1044098171"
+    - 
+    - 2010-10-21 11:35:35
+    - 2010-10-21 11:35:35
+    - ""
+    - "745348199"
+  - - "67"
+    - PER.xls
+    - application/vnd.ms-office
+    - "1568256"
+    - 2010-10-21 11:35:39
+    - fd34a279c67982733566c79e570b04fa
+    - "1044098171"
+    - 
+    - 2010-10-21 11:35:39
+    - 2010-10-21 11:35:39
+    - ""
+    - "459943152"
+  - - "68"
+    - PEL.xls
+    - application/vnd.ms-office
+    - "3243008"
+    - 2010-10-21 11:35:40
+    - 8037c109a158ac9518ecdb95067f8fa7
+    - "1044098171"
+    - 
+    - 2010-10-21 11:35:40
+    - 2010-10-21 11:35:40
+    - ""
+    - "84851029"
+  - - "69"
+    - Price_TTM-4.xls
+    - application/vnd.ms-office
+    - "2123776"
+    - 2010-10-21 12:08:13
+    - 48d77db59cad632e8814b8357a12b390
+    - "1072056309"
+    - 
+    - 2010-10-21 12:08:13
+    - 2010-10-21 12:08:13
+    - ""
+    - "1066346046"
+  - - "70"
+    - stoc_ankar_quantity.csv
+    - text/plain
+    - "381926"
+    - 2010-10-21 12:14:29
+    - 814f14540af300704a38095ff072e903
+    - "1072056312"
+    - 
+    - 2010-10-21 12:14:29
+    - 2010-10-21 12:14:29
+    - ""
+    - "1066346049"
+  - - "71"
+    - stalk_price.txt
+    - text/plain
+    - "72647"
+    - 2010-10-21 12:19:32
+    - ce671d4d2238179552787601635e3d8a
+    - "1072056313"
+    - 
+    - 2010-10-21 12:19:32
+    - 2010-10-21 12:19:32
+    - ""
+    - "1066346051"
+  - - "72"
+    - asmotors_price.csv
+    - text/plain
+    - "177808"
+    - 2010-10-21 12:41:53
+    - 78d98e0ac0e4d006003d29b57493c283
+    - "1072056317"
+    - 
+    - 2010-10-21 12:41:53
+    - 2010-10-21 12:41:53
+    - ""
+    - "1066346056"
+  - - "73"
+    - sklad.txt
+    - text/plain
+    - "77150"
+    - 2010-10-21 12:59:09
+    - 4d390e17eed8fa4652009bf195600be7
+    - "480201602"
+    - 
+    - 2010-10-21 12:59:09
+    - 2010-10-21 12:59:09
+    - ""
+    - "1066346060"
+  - - "74"
+    - Price_TTM-4.xls
+    - application/vnd.ms-office
+    - "2170880"
+    - 2010-10-21 13:00:10
+    - f66fc9ce7c7cad3dc3b9a3a25b641fd0
+    - "1072056309"
+    - 
+    - 2010-10-21 13:00:10
+    - 2010-10-21 13:00:10
+    - ""
+    - "1066346046"
+  - - "75"
+    - MikStockA_All.csv
+    - text/plain
+    - "8205330"
+    - 2010-10-21 13:01:10
+    - b5cb89f94090eb4e314111eb4ffe441b
+    - "1072056321"
+    - 
+    - 2010-10-21 13:01:10
+    - 2010-10-21 13:01:10
+    - ""
+    - "1066346061"
+  - - "76"
+    - GenserNaL.xls
+    - application/vnd.ms-office
+    - "425984"
+    - 2010-10-21 13:01:14
+    - 97886167cf4b1791e4cb89ab7d6ca6b8
+    - "1072056305"
+    - 
+    - 2010-10-21 13:01:15
+    - 2010-10-21 13:01:15
+    - ""
+    - "1066346062"
+  - - "77"
+    - GenserCS.xls
+    - application/vnd.ms-office
+    - "2039808"
+    - 2010-10-21 13:01:42
+    - f7f66175470ed5e75264eb1f957a19a8
+    - "1072056305"
+    - 
+    - 2010-10-21 13:01:42
+    - 2010-10-21 13:01:42
+    - ""
+    - "1066346063"
+  - - "78"
+    - JapanAr.txt
+    - text/plain
+    - "745053"
+    - 2010-10-21 13:04:08
+    - 75553928404726f83e61e4d98be30193
+    - "1072056322"
+    - 
+    - 2010-10-21 13:04:09
+    - 2010-10-21 13:04:09
+    - ""
+    - "1066346064"
+  - - "79"
+    - Autospar.txt
+    - text/plain
+    - "2019799"
+    - 2010-10-21 13:36:09
+    - 328eab35de6c76ebe7eb62e9db0bcdaa
+    - "594805345"
+    - 
+    - 2010-10-21 13:36:10
+    - 2010-10-21 13:36:10
+    - ""
+    - "1066346075"
+  - - "80"
+    - ROLF.txt
+    - text/plain
+    - "1497042"
+    - 2010-10-21 13:48:24
+    - 8ba84a801b554da9530f000410a278e0
+    - "1072056330"
+    - 
+    - 2010-10-21 13:48:24
+    - 2010-10-21 13:48:24
+    - ""
+    - "1066346080"
+  - - "81"
+    - stoc_ankar_quantity.csv
+    - text/plain
+    - "382517"
+    - 2010-10-21 15:00:10
+    - c94b631cb27c0bcdb3e59ebf54412b53
+    - "1072056312"
+    - 
+    - 2010-10-21 15:00:10
+    - 2010-10-21 15:00:10
+    - ""
+    - "1066346049"
 
 --- 
 suppliers: 
@@ -2105,19 +4262,19 @@ suppliers:
     - 
     - 
     - 
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "239384643"
+    - JAPANCARS
+    - ""
+    - ""
     - !binary |
-      0LTQttCw0L/QsNC90L0g0LrQsNGA0YE=
+      0YLRg9GCINC00LLQsCDQvNC10YLQvtC00LAg0LjQvNC/0L7RgNGC0LA=
 
-    - "123456789123"
-    - "123456789"
-    - pelikanavto
-    - "123"
+    - ""
     - 
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 13:17:52
   - - "244397494"
     - webtest_avtorif
     - 
@@ -2125,28 +4282,8 @@ suppliers:
     - 
     - 
     - 
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
-  - - "279210589"
-    - woto_mail
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
-  - - "283739987"
-    - !binary |
-      0JDRgNGF0LDRgNC+0LI=
-
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "289598915"
     - !binary |
       0JTQltCY0J/QqNCe0J8=
@@ -2156,8 +4293,8 @@ suppliers:
     - 
     - 
     - 
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "480201602"
     - !binary |
       0KjQntCe0KDQmA==
@@ -2167,8 +4304,8 @@ suppliers:
     - 
     - 
     - 
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "594805345"
     - AUTOSPAR
     - 
@@ -2176,8 +4313,8 @@ suppliers:
     - 
     - 
     - 
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "610276578"
     - local_test
     - 
@@ -2185,41 +4322,19 @@ suppliers:
     - 
     - 
     - 
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
-  - - "671016813"
-    - !binary |
-      0KHRgtCw0LvQutC10YA=
-
-    - "7705826039"
-    - "770501001"
-    - 
-    - 
-    - 
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
-  - - "737667253"
-    - !binary |
-      0JDQstGC0L7RgtC10LrQsA==
-
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "769483063"
     - !binary |
-      0KDQsNC00LjQsNGC0L7RgC3QodC10YDQstC40YE=
+      0KDQkNCU0JjQkNCi0J7QoC3QodCV0KDQktCY0KE=
 
+    - ""
+    - ""
+    - ""
+    - ""
     - 
-    - 
-    - 
-    - 
-    - 
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-21 09:12:21
   - - "854858892"
     - !binary |
       0KTQtdCx0LXRgdGC
@@ -2229,26 +4344,8 @@ suppliers:
     - 
     - 
     - 
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
-  - - "921393248"
-    - woto77_yandex
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
-  - - "1026882825"
-    - Major
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "1044098171"
     - !binary |
       0J/QldCb0JjQmtCQ0J0t0JDQktCi0J4=
@@ -2258,28 +4355,365 @@ suppliers:
     - 
     - 
     - 
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
-  - - "1072056295"
-    - !binary |
-      0JDQvdC60LDRgA==
-
-    - 
-    - 
-    - 
-    - 
-    - 
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "1072056296"
+    - !binary |
+      0KMt0KHQldCg0JLQmNCh
+
+    - ""
+    - ""
+    - ""
+    - ""
+    - 
+    - 2010-10-20 11:31:48
+    - 2010-10-20 11:31:48
+  - - "1072056297"
+    - !binary |
+      0KTQntCg0KPQnC3QkNCS0KLQng==
+
+    - ""
+    - ""
+    - ""
+    - ""
+    - 
+    - 2010-10-20 12:02:50
+    - 2010-10-20 12:02:50
+  - - "1072056298"
+    - !binary |
+      0JHQntCg0KHQn9Cb0JjQndCi0JXQmtCh
+
+    - ""
+    - ""
+    - ""
+    - ""
+    - 
+    - 2010-10-20 13:07:27
+    - 2010-10-20 13:07:27
+  - - "1072056299"
+    - !binary |
+      0KTQntCg0JLQkNCg0JQ=
+
+    - ""
+    - ""
+    - ""
+    - ""
+    - 
+    - 2010-10-20 13:08:53
+    - 2010-10-20 13:08:53
+  - - "1072056300"
+    - ACSCOM
+    - ""
+    - ""
+    - ""
+    - ""
+    - 
+    - 2010-10-20 13:18:08
+    - 2010-10-20 13:18:08
+  - - "1072056302"
+    - !binary |
+      0JDQktCi0J7QodCf0JXQptCm0JXQndCi0KA=
+
+    - ""
+    - ""
+    - ""
+    - ""
+    - 
+    - 2010-10-20 14:32:11
+    - 2010-10-20 14:32:11
+  - - "1072056303"
+    - ASPI Group
+    - ""
+    - ""
+    - ""
+    - ""
+    - 
+    - 2010-10-20 15:42:09
+    - 2010-10-20 15:42:09
+  - - "1072056304"
+    - MAJOR
+    - ""
+    - ""
+    - ""
+    - ""
+    - 
+    - 2010-10-20 15:46:32
+    - 2010-10-20 15:46:32
+  - - "1072056305"
+    - !binary |
+      0JTQltCV0J3QodCV0KA=
+
+    - ""
+    - ""
+    - ""
+    - ""
+    - 
+    - 2010-10-21 09:45:50
+    - 2010-10-21 09:45:50
+  - - "1072056306"
+    - !binary |
+      0JrQkNCf0J7Qog==
+
+    - ""
+    - ""
+    - ""
+    - ""
+    - 
+    - 2010-10-21 09:46:52
+    - 2010-10-21 09:46:52
+  - - "1072056307"
+    - SEVEN-AUTO
+    - ""
+    - ""
+    - ""
+    - ""
+    - 
+    - 2010-10-21 09:48:07
+    - 2010-10-21 09:48:07
+  - - "1072056308"
+    - !binary |
+      0J3QldCX0JDQktCY0KHQmNCc0J7QodCi0Kw=
+
+    - ""
+    - ""
+    - ""
+    - ""
+    - 
+    - 2010-10-21 12:03:20
+    - 2010-10-21 12:03:20
+  - - "1072056309"
+    - TTM
+    - ""
+    - ""
+    - ""
+    - ""
+    - 
+    - 2010-10-21 12:05:13
+    - 2010-10-21 12:05:13
+  - - "1072056310"
+    - !binary |
+      0L7RgdGC0LDRgtC60Lgg0JHQo9Cl0JPQkNCb0KLQldCg0JjQmA==
+
+    - ""
+    - ""
+    - ""
+    - ""
+    - 
+    - 2010-10-21 12:09:12
+    - 2010-10-21 12:09:12
+  - - "1072056311"
+    - !binary |
+      0JDQktCi0J7QotCV0JrQkA==
+
+    - ""
+    - ""
+    - ""
+    - ""
+    - 
+    - 2010-10-21 12:11:48
+    - 2010-10-21 12:11:48
+  - - "1072056312"
+    - !binary |
+      0JDQndCa0JDQoA==
+
+    - ""
+    - ""
+    - ""
+    - ""
+    - 
+    - 2010-10-21 12:13:50
+    - 2010-10-21 12:13:50
+  - - "1072056313"
+    - !binary |
+      0KHQotCQ0JvQmtCV0KA=
+
+    - ""
+    - ""
+    - ""
+    - ""
+    - 
+    - 2010-10-21 12:17:39
+    - 2010-10-21 12:17:39
+  - - "1072056314"
+    - ASHIKA
+    - ""
+    - ""
+    - ""
+    - ""
+    - 
+    - 2010-10-21 12:20:07
+    - 2010-10-21 12:20:07
+  - - "1072056315"
+    - !binary |
+      0KLQo9Cd0JPQo9Ch0J7QkiDQmNCf
+
+    - ""
+    - ""
+    - ""
+    - ""
+    - 
+    - 2010-10-21 12:37:30
+    - 2010-10-21 12:37:30
+  - - "1072056316"
+    - CPD
+    - ""
+    - ""
+    - ""
+    - ""
+    - 
+    - 2010-10-21 12:40:38
+    - 2010-10-21 12:40:38
+  - - "1072056317"
+    - AS MOTORS
+    - ""
+    - ""
+    - ""
+    - ""
+    - 
+    - 2010-10-21 12:41:18
+    - 2010-10-21 12:41:18
+  - - "1072056318"
+    - ASVA
+    - ""
+    - ""
+    - ""
+    - ""
+    - 
+    - 2010-10-21 12:42:13
+    - 2010-10-21 12:42:13
+  - - "1072056319"
+    - !binary |
+      0KDQmNCd0JA=
+
+    - ""
+    - ""
+    - ""
+    - ""
+    - 
+    - 2010-10-21 12:42:54
+    - 2010-10-21 12:42:54
+  - - "1072056320"
+    - !binary |
+      0JjQnNCf0JXQmtCh
+
+    - ""
+    - ""
+    - ""
+    - ""
+    - 
+    - 2010-10-21 12:54:44
+    - 2010-10-21 12:54:44
+  - - "1072056321"
+    - !binary |
+      0JzQmNCa0JDQlNCe
+
+    - ""
+    - ""
+    - ""
+    - ""
+    - 
+    - 2010-10-21 12:59:36
+    - 2010-10-21 12:59:36
+  - - "1072056322"
+    - RMS
+    - ""
+    - ""
+    - ""
+    - ""
+    - 
+    - 2010-10-21 13:02:18
+    - 2010-10-21 13:02:18
+  - - "1072056323"
+    - SPD
+    - ""
+    - ""
+    - ""
+    - ""
+    - 
+    - 2010-10-21 13:06:56
+    - 2010-10-21 13:06:56
+  - - "1072056324"
+    - PRICE - ???
+    - ""
+    - ""
+    - ""
+    - ""
+    - 
+    - 2010-10-21 13:12:18
+    - 2010-10-21 13:39:41
+  - - "1072056325"
+    - !binary |
+      0JjQstC40LrQsA==
+
+    - ""
+    - ""
+    - ""
+    - ""
+    - 
+    - 2010-10-21 13:13:17
+    - 2010-10-21 13:13:17
+  - - "1072056326"
+    - !binary |
+      0JDQktCi0J7QmNCc0J/QrdCa0KEgKNCb0KPQptCY0JQp
+
+    - ""
+    - ""
+    - ""
+    - ""
+    - 
+    - 2010-10-21 13:18:34
+    - 2010-10-21 13:18:34
+  - - "1072056327"
+    - !binary |
+      0JzQntCh0JrQktCe0KDQldCn0KzQlQ==
+
+    - ""
+    - ""
+    - ""
+    - ""
+    - 
+    - 2010-10-21 13:19:32
+    - 2010-10-21 13:19:32
+  - - "1072056328"
+    - !binary |
+      0J3QmNCa0JA=
+
+    - ""
+    - ""
+    - ""
+    - ""
+    - 
+    - 2010-10-21 13:20:47
+    - 2010-10-21 13:20:58
+  - - "1072056329"
+    - !binary |
+      0J3QntCS0JvQkNCZ0J0=
+
+    - ""
+    - ""
+    - ""
+    - ""
+    - 
+    - 2010-10-21 13:43:29
+    - 2010-10-21 13:43:29
+  - - "1072056330"
     - ROLF
     - ""
     - ""
     - ""
     - ""
     - 
-    - 2010-10-19 09:33:30
-    - 2010-10-19 09:33:30
+    - 2010-10-21 13:46:46
+    - 2010-10-21 13:46:46
+  - - "1072056331"
+    - MMC
+    - ""
+    - ""
+    - ""
+    - ""
+    - 
+    - 2010-10-21 13:51:02
+    - 2010-10-21 13:51:02
 
 --- 
 test_receives: 
@@ -2291,12 +4725,12 @@ test_receives:
   records: 
   - - "298486374"
     - MyString
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "980190962"
     - MyString
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
 
 --- 
 transmissions: 
@@ -2308,12 +4742,12 @@ transmissions:
   records: 
   - - "298486374"
     - MyString
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "980190962"
     - MyString
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
 
 --- 
 xls_imports: 
@@ -2331,11 +4765,11 @@ xls_imports:
       0JvQuNGB0YIgMQ==
 
     - "5"
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09
   - - "980190962"
     - "1"
     - 
     - "2"
-    - 2010-10-19 09:27:55
-    - 2010-10-19 09:27:55
+    - 2010-10-20 11:31:09
+    - 2010-10-20 11:31:09

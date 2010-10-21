@@ -11,9 +11,11 @@ class FolderReceiver < AbstractReceiver
         remote_file.flush
         md5 = Digest::MD5.file(remote_file.path).hexdigest
 
-        if Attachment.find(:first, :conditions => ['md5 = ? AND supplier_id = ?',  md5, @receiver.receive_job.job.supplier.id]).nil?
-          attachment = Attachment.new(:attachment => remote_file, :md5 => md5)
+        if SupplierPrice.find(:first, :conditions => ['md5 = ? AND supplier_id = ?',  md5, @receiver.receive_job.job.supplier.id]).nil?
+          attachment = SupplierPrice.new(:attachment => remote_file, :md5 => md5)
           attachment.supplier = @receiver.receive_job.job.supplier
+          attachment.job_code = @receiver.receive_job.job.job_code
+          attachment.job_id = @receiver.receive_job.job.id
           attachment.save
 
           @receiver.receive_job.job.childs.each do |child|

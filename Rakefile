@@ -12,7 +12,7 @@ require 'tasks/rails'
 require 'delayed_job'
 require 'delayed/tasks'
 
-require 'yaml_db'
+#require 'yaml_db'
 #require 'ar_fixtures'
 
 namespace :avtorif do
@@ -32,9 +32,9 @@ namespace :avtorif do
     puts 'Загружаем fixtures'
     Rake::Task['db:fixtures:load'].invoke
 
-    puts 'Очищаем emails и attachments'
+    puts 'Очищаем emails и supplier_prices'
     sh "rm -rf #{Rails.root}/public/system/emails/*"
-    sh "rm -rf #{Rails.root}/public/system/attachments/*"
+    sh "rm -rf #{Rails.root}/public/system/supplier_prices/*"
     sh "rm -rf #{Rails.root}/log/*"
 
     puts "Запускаем God"

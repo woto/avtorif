@@ -9,7 +9,8 @@ class SmbReceiver < AbstractReceiver
       str_server = @receiver.server.to_s[/^\/*(.*?)\/*$/, 1]
       str_share = @receiver.share.to_s[/^\/*(.*?)\/*$/, 1]
       str_path = @receiver.path.to_s[/^\/*(.*?)\/*$/, 1]
-      result = `smbclient \/\/#{str_server}\/#{str_share}\/ #{str_password} -U #{str_login} -p #{str_port} -c \"cd #{str_path}\; dir\;\"`
+      result = `smbclient \/\/#{str_server}\/#{str_share}\/ #{str_password} -U #{str_login} -p #{str_port} -c \"cd \\\"#{str_path}\\\"\; dir\;\"`
+      raise result if result.include?("NT_STATUS_LOGON_FAILURE") or result.include?("NT_STATUS_OBJECT_NAME_NOT_FOUND")
       files = result.split("\n")
       files.collect! do |line|
         begin
@@ -19,7 +20,6 @@ class SmbReceiver < AbstractReceiver
           false
         end
       end
-
 
       #TODO сделать каким-то образом проверку на eval
       files = files.select { |file|
@@ -58,9 +58,11 @@ class SmbReceiver < AbstractReceiver
 
         md5 = Digest::MD5.file(remote_file.path).hexdigest
 
-        if Attachment.find(:first, :conditions => ['md5 = ? AND supplier_id = ?',  md5, @job.supplier.id]).nil?
-          attachment = Attachment.new(:attachment => remote_file, :md5 => md5)
+        if SupplierPrice.find(:first, :conditions => ['md5 = ? AND supplier_id = ?',  md5, @job.supplier.id]).nil?
+          attachment = SupplierPrice.new(:attachment => remote_file, :md5 => md5)
           attachment.supplier = @job.supplier
+          attachment.job_code = @job.job_code
+          attachment.job_id = @job.id
           attachment.save
 
           retval << attachment.id

@@ -7,5 +7,12 @@
 <%= link_to "Получение через локальную папку", new_job_folder_receive_path(@receive_job.job) %><br />
 </p>
 
+<% semantic_form_for(@receive_job, :url => job_receive_jobs_path(params[:job_id])) do |f| %>
+    <%=
+        collection_select(:receive_job, :receiveable_id, ReceiveJob.all(:include => :job, :conditions => {:jobs => {:supplier_id => Job.find(params[:job_id]).supplier.id}}), :id, :identify_string, :prompt => true)        
+    %>
+    <%= f.submit 'Привязать' %>
+
+<% end %>
 
 <%= link_to 'Back', supplier_jobs_path(Job.find(params[:job_id]).supplier) %>

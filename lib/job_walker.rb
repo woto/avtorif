@@ -19,19 +19,8 @@ class JobWalker
 
     jobs.each do |job|
       if job.parent.blank? && (job.next_start.nil? || job.next_start < Time.zone.now) && !job.repeats.blank? && !job.locked
-        nearest_next_time = nil
-        min = nil
-        job.repeats.each do |repeat|
-          r = Rufus::CronLine.new(repeat.cron_string)
-          nearest_next_time = r.next_time(Time.zone.now)
-          if min.blank? or nearest_next_time < min
-            min = nearest_next_time
-          end
-        end
-        job.next_start = min
         # Запускаем задачи, у которых время следующего запуска меньше текущего
         start_job(job)
-#          job.save
       end
     end
   end
@@ -39,6 +28,19 @@ class JobWalker
   def start_job(job, optional = nil)
       #raise StandardError
       #puts job
+
+      nearest_next_time = nil
+      min = nil
+
+      job.repeats.each do |repeat|
+        r = Rufus::CronLine.new(repeat.cron_string)
+        nearest_next_time = r.next_time(Time.zone.now)
+        if min.blank? or nearest_next_time < min
+          min = nearest_next_time
+        end
+      end
+      job.next_start = min
+
       job.last_start = Time.zone.now
       job.locked = true
       

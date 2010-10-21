@@ -1,0 +1,7 @@
+<h1>CheckReceive#index</h1>
+<p>Find me in app/views/check_receive/index.html.erb</p>
+<% @result.each do |line| %>
+    <% unless line[0].blank? && line[1].blank? %> 
+        <%= link_to(line[2].to_s, supplier_job_path(line[0].to_s, line[1].to_s)) %> <br />
+    <% end %>
+<% end %>

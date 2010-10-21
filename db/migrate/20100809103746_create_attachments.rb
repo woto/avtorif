@@ -12,7 +12,7 @@ class CreateAttachments < ActiveRecord::Migration
 
     end
 
-    #add_index(:attachments, [:attachment_file_name, :attachment_file_size, :md5, :supplier_id], :unique => true, :name => 'uniq_attachments')
+    #add_index(:supplier_prices, [:attachment_file_name, :attachment_file_size, :md5, :supplier_id], :unique => true, :name => 'uniq_attachments')
 
   end
 

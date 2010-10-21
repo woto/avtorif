@@ -9,5 +9,9 @@ class ReceiveJob < ActiveRecord::Base
  #   raise args.to_s
  # end
 
+  def identify_string
+    receiveable_type.constantize.find(receiveable_id).identify_string
+  end
+
 
 end

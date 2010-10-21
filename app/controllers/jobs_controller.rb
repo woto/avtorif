@@ -92,7 +92,16 @@ class JobsController < ApplicationController
   def start
     @job = Job.find(params[:id])
     JobWalker.new.start_job(@job)
-    redirect_to(supplier_jobs[@job.supplier.id])
+    redirect_to(supplier_jobs_path(@job.supplier.id))
   end
-  
+
+  def start_all
+    jobs = Job.all(:conditions => {:jobable_type => 'ReceiveJob'})
+    jobs.each do |job|
+      JobWalker.new.start_job(job)
+    end
+
+    redirect_to(suppliers_path)
+  end
+
 end

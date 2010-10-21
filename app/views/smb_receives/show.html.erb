@@ -1,3 +1,6 @@
+<% link = "smb://#{@smb_receive.server}#{@smb_receive.share}#{@smb_receive.path}" %>
+<%= link_to link, link %>
+
 <p>
   <b>Server:</b>
   <%=h @smb_receive.server %>

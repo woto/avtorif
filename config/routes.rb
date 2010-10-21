@@ -1,8 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :jobs
-
-  map.resources :jobs
-
+  map.resources :check_receives
+  
   map.resources :ftp_receives
 
   map.resources :ftp_receives
@@ -32,7 +30,7 @@ ActionController::Routing::Routes.draw do |map|
     sup.resources :jobs
   end
 
-  map.resources :jobs, :member => {:start => :get} do |job|
+  map.resources :jobs, :collection => {:start_all => :get}, :member => {:start => :get} do |job|
     job.resources :import_jobs
     job.resources :receive_jobs
 
@@ -54,7 +52,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :analogues
   map.resources :goods
   map.resources :manufacturers
-  map.resources :attachments
+  map.resources :supplier_prices
   map.resources :prices, :collection => {:search => :get}  
 
   # The priority is based upon order of creation: first created -> highest priority.

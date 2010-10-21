@@ -9,24 +9,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101019095403) do
+ActiveRecord::Schema.define(:version => 20101021120548) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
     t.integer  "analogue_id"
     t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "attachments", :force => true do |t|
-    t.string   "attachment_file_name",    :limit => 50
-    t.string   "attachment_content_type"
-    t.string   "attachment_file_size",    :limit => 20
-    t.datetime "attachment_updated_at"
-    t.string   "md5",                     :limit => 50
-    t.integer  "supplier_id"
-    t.string   "email_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -124,10 +112,10 @@ ActiveRecord::Schema.define(:version => 20101019095403) do
   end
 
   create_table "ftp_receives", :force => true do |t|
-    t.string   "server"
-    t.integer  "port"
-    t.string   "path"
-    t.string   "login"
+    t.string   "server",     :default => "ftp.avtorif.ru"
+    t.integer  "port",       :default => 21
+    t.string   "path",       :default => "/"
+    t.string   "login",      :default => "anonymous"
     t.string   "password"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -181,8 +169,8 @@ ActiveRecord::Schema.define(:version => 20101019095403) do
     t.datetime "next_start"
     t.datetime "last_start"
     t.datetime "last_finish"
-    t.integer  "seconds_between_jobs"
-    t.integer  "seconds_working"
+    t.integer  "seconds_between_jobs", :default => 4000
+    t.integer  "seconds_working",      :default => 20
     t.string   "title"
     t.integer  "job_id"
     t.integer  "jobable_id"
@@ -193,6 +181,7 @@ ActiveRecord::Schema.define(:version => 20101019095403) do
     t.boolean  "active",               :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "job_code"
   end
 
   create_table "jobs_repeats", :id => false, :force => true do |t|
@@ -261,15 +250,29 @@ ActiveRecord::Schema.define(:version => 20101019095403) do
   end
 
   create_table "smb_receives", :force => true do |t|
-    t.string   "server"
+    t.string   "server",     :default => "rif2010"
     t.string   "share"
     t.integer  "port",       :default => 445
     t.string   "path",       :default => "/"
-    t.string   "login",      :default => "Гост\321\214"
-    t.string   "password",   :default => "Гост\321\214"
+    t.string   "login",      :default => "office"
+    t.string   "password",   :default => "2"
     t.string   "workgroup"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "supplier_prices", :force => true do |t|
+    t.string   "attachment_file_name",    :limit => 50
+    t.string   "attachment_content_type"
+    t.string   "attachment_file_size",    :limit => 20
+    t.datetime "attachment_updated_at"
+    t.string   "md5",                     :limit => 50
+    t.integer  "supplier_id"
+    t.string   "email_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "job_code"
+    t.integer  "job_id"
   end
 
   create_table "suppliers", :force => true do |t|

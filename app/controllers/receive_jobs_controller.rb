@@ -42,11 +42,15 @@ class ReceiveJobsController < ApplicationController
   # POST /receive_jobs
   # POST /receive_jobs.xml
   def create
-    @receive_job = ReceiveJob.new(params[:receive_job])
+    @receive_job = ReceiveJob.find(params[:receive_job][:receiveable_id])
+
+    job = Job.find(params[:job_id])
+    job.jobable = @receive_job
+    job.save
 
     respond_to do |format|
-      if @receive_job.save
-        format.html { redirect_to(@receive_job, :notice => 'ReceiveJob was successfully created.') }
+      if Job.find(params[:job_id]).jobable = @receive_job
+        format.html { redirect_to(supplier_jobs_path(job.supplier), :notice => 'ReceiveJob was successfully joined.') }
         format.xml  { render :xml => @receive_job, :status => :created, :location => @receive_job }
       else
         format.html { render :action => "new" }

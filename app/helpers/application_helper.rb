@@ -7,7 +7,8 @@ module ApplicationHelper
       controllers.each do |controller|
       if controller =~ /_controller/ &&
               !(controller =~ /application/) &&
-              !(controller =~ /job/)
+              !(controller =~ /job/) &&
+              !(controller =~ /check_receives/)
         cont << link_to(controller.camelize.gsub("Controller.rb",""), {:controller => controller.camelize.gsub("Controller.rb","").tableize}) 
       end
     end

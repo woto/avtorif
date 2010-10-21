@@ -34,10 +34,12 @@
 
             # attachment.original_filename
             
-            if Attachment.find(:first, :conditions => ['md5 = ? AND supplier_id = ?',  md5, @receiver.receive_job.job.supplier.id]).nil?
+            if SupplierPrice.find(:first, :conditions => ['md5 = ? AND supplier_id = ?',  md5, @receiver.receive_job.job.supplier.id]).nil?
 
-              attachment = Attachment.new(:attachment => attachment, :md5 => md5, :email_id => email_id)
+              attachment = SupplierPrice.new(:attachment => attachment, :md5 => md5, :email_id => email_id)
               attachment.supplier = @receiver.receive_job.job.supplier
+              attachment.job_code = @receiver.receive_job.job.job_code
+              attachment.job_id = @receiver.receive_job.job.id
               attachment.save
 
               @receiver.receive_job.job.childs.each do |child|

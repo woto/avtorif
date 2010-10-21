@@ -1,5 +1,7 @@
 class Job < ActiveRecord::Base
 
+  has_many :supplier_prices
+  
   validates_numericality_of :seconds_between_jobs, :only_integer => true, :if => "!seconds_between_jobs.blank?" 
   validates_numericality_of :seconds_working, :only_integer => true, :if => "!seconds_working.blank?"
   validates_presence_of :title

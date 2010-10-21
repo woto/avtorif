@@ -1,0 +1,24 @@
+<h1>Editing attachment</h1>
+
+<% form_for(@attachment) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :price_file_name %><br />
+    <%= f.text_field :price_file_name %>
+  </p>
+  <p>
+    <%= f.label :price_content_type %><br />
+    <%= f.text_field :price_content_type %>
+  </p>
+  <p>
+    <%= f.label :price_file_size %><br />
+    <%= f.text_field :price_file_size %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @attachment %> |
+<%= link_to 'Back', attachments_path %>

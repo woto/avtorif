@@ -28,13 +28,13 @@ end
         remote_file << @imap.fetch(msgID, "BODY[#{@index}]")[0].attr["BODY[#{@subindex}]"].unpack('m')
         #remote_file << parts.unpack('m')
         md5 =   Digest::MD5.hexdigest(File.read(remote_file.path))
-        attachment = Attachment.new(:attachment => remote_file, :md5 => md5)
+        attachment = SupplierPrice.new(:attachment => remote_file, :md5 => md5)
         attachment.save
 
   #
-  #      if Attachment.find(:first, :conditions => ['md5 = ? AND supplier_id = ?',  md5, @receiver.receive_job.job.supplier.id]).nil?
+  #      if SupplierPrice.find(:first, :conditions => ['md5 = ? AND supplier_id = ?',  md5, @receiver.receive_job.job.supplier.id]).nil?
   #
-  #        attachment = Attachment.new(:attachment => remote_file, :md5 => md5)
+  #        attachment = SupplierPrice.new(:attachment => remote_file, :md5 => md5)
   #        attachment.supplier = @receiver.receive_job.job.supplier
   #        attachment.save
   #

@@ -28,6 +28,14 @@
     <%= f.input :parent, :collection => Job.find(:all, :conditions => {:supplier_id => params[:supplier_id]}) %>    
   </p>
   <p>
+    <%= f.label :repeats %><br />
+    <%= f.input :repeats %>
+  </p>
+  <p>
+    <%= f.label :job_code %><br />
+    <%= f.text_field :job_code %>
+  </p>
+  <p>
     <%= f.label :file_mask %><br />
     <%= f.text_field :file_mask %>
   </p>
