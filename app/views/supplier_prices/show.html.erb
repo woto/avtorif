@@ -13,6 +13,26 @@
   <%=h @attachment.attachment_file_size %>
 </p>
 
+<p>
+  <b>attachment updated at:</b>
+  <%=h @attachment.attachment_updated_at %>
+</p>
+
+<p>
+  <b>created at:</b>
+  <%=h @attachment.created_at %>
+</p>
+
+<p>
+  <b>updated at:</b>
+  <%=h @attachment.updated_at %>
+</p>
+
+
+<p>
+  <b>Download:</b>
+  <%=h link_to "Download", @attachment.attachment.url(:original, false) %>
+</p>
 
 <%= link_to 'Edit', edit_supplier_price_path(@attachment) %> |
 <%= link_to 'Back', supplier_prices_path %> |
