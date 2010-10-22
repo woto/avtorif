@@ -45,8 +45,10 @@
   </p>
   <p>
     <%= f.label :file_mask %><br />
-    <%= f.text_field :file_mask %>
+    <%= f.text_field :file_mask %><br />
+    Для получения с HTTP нельзя указывать маску.
   </p>
+
   <p>
     <%= f.label :locked %><br />
     <%= f.check_box :locked %>

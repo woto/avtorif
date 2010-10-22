@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101021120548) do
+ActiveRecord::Schema.define(:version => 20101022095213) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
@@ -145,6 +145,17 @@ ActiveRecord::Schema.define(:version => 20101021120548) do
   create_table "goods_auto_options", :force => true do |t|
     t.integer  "goods_id"
     t.integer  "auto_option_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "http_receives", :force => true do |t|
+    t.string   "server"
+    t.integer  "port"
+    t.string   "path"
+    t.string   "login"
+    t.string   "password"
+    t.boolean  "ssl"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -29,6 +29,8 @@ class JobWalker
       #raise StandardError
       #puts job
 
+      begin
+
       nearest_next_time = nil
       min = nil
 
@@ -53,5 +55,8 @@ class JobWalker
       #jobber_class.new(job, job.jobable, optional).perform
 
       job.save
+      rescue => e
+        return
+      end
   end
 end

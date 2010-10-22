@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :http_receives
+
   map.resources :check_receives
   
   map.resources :ftp_receives
@@ -38,6 +40,7 @@ ActionController::Routing::Routes.draw do |map|
     job.resources :folder_receives
     job.resources :ftp_receives
     job.resources :smb_receives
+    job.resources :http_receives
 
   end
 

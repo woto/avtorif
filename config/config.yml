@@ -1,6 +1,7 @@
 defaults: &defaults
   ftp_timeout: 3600
   smb_timeout: 3600
+  http_timeout: 3600
   folder_timeout: 3600
   emex_timeout: 3600
   max_emails: 10000

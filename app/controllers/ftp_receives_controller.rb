@@ -25,10 +25,6 @@ class FtpReceivesController < ApplicationController
   # GET /ftp_receives/new.xml
   def new
     @ftp_receive = FtpReceive.new
-    @ftp_receive.server = 'avtorif.ru'
-    @ftp_receive.port = 21
-    @ftp_receive.path = '/'
-    @ftp_receive.login = 'anonymous'
 
     respond_to do |format|
       format.html # new.html.erb

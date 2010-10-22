@@ -1,0 +1,30 @@
+<h1>Listing http_receives</h1>
+
+<table>
+  <tr>
+    <th>Server</th>
+    <th>Port</th>
+    <th>Path</th>
+    <th>Login</th>
+    <th>Password</th>
+    <th>Ssl</th>
+  </tr>
+
+<% @http_receives.each do |http_receive| %>
+  <tr>
+    <td><%=h http_receive.server %></td>
+    <td><%=h http_receive.port %></td>
+    <td><%=h http_receive.path %></td>
+    <td><%=h http_receive.login %></td>
+    <td><%=h http_receive.password %></td>
+    <td><%=h http_receive.ssl %></td>
+    <td><%= link_to 'Show', http_receive %></td>
+    <td><%= link_to 'Edit', edit_http_receive_path(http_receive) %></td>
+    <td><%= link_to 'Destroy', http_receive, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New http_receive', new_http_receive_path %>

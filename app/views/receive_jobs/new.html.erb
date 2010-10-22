@@ -2,6 +2,7 @@
 
 <p>
 <%= link_to "Получение через ftp", new_job_ftp_receive_path(@receive_job.job) %><br />
+<%= link_to "Получение через http", new_job_http_receive_path(@receive_job.job) %><br />
 <%= link_to "Получение через samba", new_job_smb_receive_path(@receive_job.job) %><br />
 <%= link_to "Получение через email", new_job_email_receive_path(@receive_job.job) %><br />
 <%= link_to "Получение через локальную папку", new_job_folder_receive_path(@receive_job.job) %><br />

@@ -1,0 +1,32 @@
+<p>
+  <b>Server:</b>
+  <%=h @http_receive.server %>
+</p>
+
+<p>
+  <b>Port:</b>
+  <%=h @http_receive.port %>
+</p>
+
+<p>
+  <b>Path:</b>
+  <%=h @http_receive.path %>
+</p>
+
+<p>
+  <b>Login:</b>
+  <%=h @http_receive.login %>
+</p>
+
+<p>
+  <b>Password:</b>
+  <%=h @http_receive.password %>
+</p>
+<p>
+  <b>Ssl:</b>
+  <%=h @http_receive.ssl %>
+</p>
+
+
+<%= link_to 'Edit', edit_http_receive_path(@http_receive) %> |
+<%= link_to 'Back', http_receives_path %>

@@ -14,7 +14,7 @@ class FtpReceiver < AbstractReceiver
       files = ftp.nlst
       #TODO сделать каким-то образом проверку на eval
       files = files.select { |file| file =~ Regexp.new(eval(@job.file_mask)) }
-#ftp://radiator:vc0hOPfv9@avtorif.ru
+
       retval = Array.new()
 
       files.each do |file|

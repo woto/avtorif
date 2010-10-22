@@ -6,7 +6,8 @@
     <th>attachment content type</th>
     <th>attachment file size</th>
     <th>attachment job code</th>
-    <th>attachment job id</th>
+    <th>job</th>
+    <th>supplier</th>
   </tr>
 
 <% @attachments.each do |attachment| %>
@@ -15,7 +16,8 @@
     <td><%=h attachment.attachment_content_type %></td>
     <td><%=h attachment.attachment_file_size %></td>
     <td><%=h attachment.job_code %></td>
-    <td><%=h attachment.job_id %></td>
+    <td><%= link_to 'Задача', supplier_job_path(attachment.supplier_id, attachment.job_id) %></td>
+    <td><%= link_to Supplier.find(attachment.supplier_id).title, supplier_jobs_path(attachment.supplier_id) %></td>
     <td><%= link_to 'Show', attachment %></td>
     <td><%= link_to 'Edit', edit_supplier_price_path(attachment) %></td>
     <td><%= link_to 'Destroy', attachment, :confirm => 'Are you sure?', :method => :delete %></td>
