@@ -38,6 +38,7 @@
     <td><%= if job.jobable.blank?
                 link_to("Получение", new_job_receive_job_path(job)) + " " +
                 link_to("Распаковка", new_job_unpack_job_path(job)) + " " +
+                link_to("Конвертирование", new_job_convert_job_path(job)) + " " +
                 link_to("Импорт", new_job_import_job_path(job))
             else
                 link_to("Конкретная задача", edit_polymorphic_path(job.jobable))
