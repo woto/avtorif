@@ -1,0 +1,12 @@
+<h1>Editing unpack_job</h1>
+
+<% form_for(@unpack_job) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @unpack_job %> |
+<%= link_to 'Back', unpack_jobs_path %>

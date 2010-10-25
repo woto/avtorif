@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101022095213) do
+ActiveRecord::Schema.define(:version => 20101025064958) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
@@ -305,6 +305,11 @@ ActiveRecord::Schema.define(:version => 20101022095213) do
 
   create_table "transmissions", :force => true do |t|
     t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "unpack_jobs", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end

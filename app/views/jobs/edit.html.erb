@@ -25,7 +25,7 @@
   </p>
   <p>
     <%= f.label :parent %><br />
-    <%= f.input :parent, :collection => Job.find(:all, :conditions => {:supplier_id => params[:supplier_id]}) %>    
+    <%= f.input :parent, :collection => Job.find(:all, :conditions => {:supplier_id => @job.supplier_id}) %>    
   </p>
   <p>
     <%= f.label :repeats %><br />

@@ -1,0 +1,18 @@
+<h1>Listing unpack_jobs</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% @unpack_jobs.each do |unpack_job| %>
+  <tr>
+    <td><%= link_to 'Show', unpack_job %></td>
+    <td><%= link_to 'Edit', edit_unpack_job_path(unpack_job) %></td>
+    <td><%= link_to 'Destroy', unpack_job, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New unpack_job', new_unpack_job_path %>

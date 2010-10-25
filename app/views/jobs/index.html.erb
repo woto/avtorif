@@ -26,17 +26,18 @@
     <td><%=h job.seconds_between_jobs %></td>
     <td><%=h job.seconds_working %></td>
     <td><%=h job.title %></td>
+    <td><%=h job.repeats.map{ |repeat| repeat.title + ", "} %></td>
     <td>
-    <%
+    <%=
        begin
            job.parent.title
        rescue NoMethodError
        end
     %>
-    </td>
-    <td><%=h job.repeats.map{ |repeat| repeat.title + ", "} %></td>
+    </td>    
     <td><%= if job.jobable.blank?
                 link_to("Получение", new_job_receive_job_path(job)) + " " +
+                link_to("Распаковка", new_job_unpack_job_path(job)) + " " +
                 link_to("Импорт", new_job_import_job_path(job))
             else
                 link_to("Конкретная задача", edit_polymorphic_path(job.jobable))

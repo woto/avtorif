@@ -74,6 +74,7 @@
   <b>Attachments:</b>
   <% SupplierPrice.all(:order => 'id DESC', :conditions => {:job_id => @job.id}).each do |sp| %>
     <%= "<br />" + link_to(sp.attachment_file_name, supplier_price_path(sp.id)) + " " + sp.attachment_updated_at.to_s %>
+    <%= link_to 'Destroy', sp, :confirm => 'Are you sure?', :method => :delete %>
   <% end %>
 </p>
 
