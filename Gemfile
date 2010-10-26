@@ -26,6 +26,13 @@ gem 'delayed_job', :git => 'git://github.com/collectiveidea/delayed_job.git'
 # Use unicorn as the web server
 # gem 'unicorn'
 
+gem 'roo'
+  gem 'rubyzip'
+  gem 'spreadsheet'
+  gem 'google-spreadsheet-ruby'
+
+gem 'god', :git => 'git://github.com/woto/god.git'
+
 # Deploy with Capistrano
 gem 'capistrano'
 gem 'mongrel'
