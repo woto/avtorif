@@ -1,3 +1,6 @@
+<% link = "http://#{@http_receive.login}:#{@http_receive.password}@#{@http_receive.server}:#{@http_receive.port}#{@http_receive.path}" %>
+<%= link_to link, link %>
+
 <p>
   <b>Server:</b>
   <%=h @http_receive.server %>

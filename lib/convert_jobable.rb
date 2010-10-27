@@ -8,6 +8,7 @@ class ConvertJobable < AbstractJobber
     supplier_price = SupplierPrice.find(@optional).attachment
 
     case File.extname(supplier_price.path).sub('.', '')
+
       when 'xls'
 
         s = Excel.new(supplier_price.path)
@@ -31,15 +32,25 @@ class ConvertJobable < AbstractJobber
         end
 
       when 'mdb'
-=begin
-filename = '030910M.mdb'
 
-a = `mdb-tables #{filename}`
-a.split(' ').each do |table|
-  puts `mdb-export #{filename} #{table} > #{table}.csv`
-end
+        a = `mdb-tables #{supplier_price.path}`
+        a.split(' ').each do |table|
+          remote_file = RemoteFile.new(table)
+          `mdb-export #{supplier_price.path} #{table} > #{remote_file.path}`
+          remote_file.original_filename = table
+          md5 = Digest::MD5.file(remote_file.path).hexdigest
 
-=end
+          attachment = SupplierPrice.new(:attachment => remote_file, :md5 => md5)
+          attachment.supplier = @job.supplier
+          attachment.job_code = @job.job_code
+          attachment.job_id = @job.id
+          attachment.save
+
+          retval << attachment.id
+          remote_file.unlink
+          
+        end
+
       else
         raise 'Unknown file extension'
     end
