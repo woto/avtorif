@@ -1,0 +1,30 @@
+<h1>Listing column_relations</h1>
+
+<table>
+  <tr>
+    <th>Catalog number</th>
+    <th>Manufacturer</th>
+    <th>Cost</th>
+    <th>Title</th>
+    <th>Weight</th>
+    <th>Count</th>
+  </tr>
+
+<% @column_relations.each do |column_relation| %>
+  <tr>
+    <td><%=h column_relation.catalog_number %></td>
+    <td><%=h column_relation.manufacturer %></td>
+    <td><%=h column_relation.cost %></td>
+    <td><%=h column_relation.title %></td>
+    <td><%=h column_relation.weight %></td>
+    <td><%=h column_relation.count %></td>
+    <td><%= link_to 'Show', column_relation %></td>
+    <td><%= link_to 'Edit', edit_column_relation_path(column_relation) %></td>
+    <td><%= link_to 'Destroy', column_relation, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New column_relation', new_column_relation_path %>

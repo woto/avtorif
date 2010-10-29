@@ -4,12 +4,68 @@
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :price %><br />
-    <%= f.text_field :price %>
-  </p>
-  <p>
     <%= f.label :importable %><br />
     <%= f.text_field :importable %>
+  </p>
+  <p>
+    <%= f.label :import_method %><br />
+    <%= f.text_field :import_method %>
+  </p>
+  <p>
+    <%= f.label :encoding %><br />
+    <%= f.text_field :encoding %>
+  </p>
+  <p>
+    <%= f.label :presence %><br />
+    <%= f.check_box :presence %>
+  </p>
+  <p>
+    <%= f.label :currency_buy %><br />
+    <%= f.text_field :currency_buy %>
+  </p>
+  <p>
+    <%= f.label :currency_sell %><br />
+    <%= f.text_field :currency_sell %>
+  </p>
+  <p>
+    <%= f.label :currency_weight %><br />
+    <%= f.text_field :currency_weight %>
+  </p>
+  <p>
+    <%= f.label :delivery_type %><br />
+    <%= f.text_field :delivery_type %>
+  </p>
+  <p>
+    <%= f.label :visible_for_site %><br />
+    <%= f.check_box :visible_for_site %>
+  </p>
+  <p>
+    <%= f.label :visible_for_stock %><br />
+    <%= f.check_box :visible_for_stock %>
+  </p>
+  <p>
+    <%= f.label :visible_for_shops %><br />
+    <%= f.check_box :visible_for_shops %>
+  </p>
+  <p>
+    <%= f.label :estimate_days %><br />
+    <%= f.text_field :estimate_days %>
+  </p>
+  <p>
+    <%= f.label :retail_rate %><br />
+    <%= f.text_field :retail_rate %>
+  </p>
+  <p>
+    <%= f.label :income_rate %><br />
+    <%= f.text_field :income_rate %>
+  </p>
+  <p>
+    <%= f.label :kilo_price %><br />
+    <%= f.text_field :kilo_price %>
+  </p>
+  <p>
+    <%= f.label :weight_unavaliable_rate %><br />
+    <%= f.text_field :weight_unavaliable_rate %>
   </p>
   <p>
     <%= f.submit 'Update' %>

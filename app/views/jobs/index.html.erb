@@ -1,5 +1,5 @@
 <% supplier = Supplier.find(params[:supplier_id]) %>
-<h1>Listing jobs for <em><%=h supplier.title %></em> <%= link_to 'Destroy', supplier, :confirm => 'Are you sure?', :method => :delete %></h1>
+<h1>Listing jobs for <em><%= link_to(supplier.title, supplier) %></em> <%= link_to 'Destroy', supplier, :confirm => 'Are you sure?', :method => :delete %></h1>
 
 <table>
   <tr>

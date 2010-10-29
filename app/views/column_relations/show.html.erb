@@ -1,0 +1,33 @@
+<p>
+  <b>Catalog number:</b>
+  <%=h @column_relation.catalog_number %>
+</p>
+
+<p>
+  <b>Manufacturer:</b>
+  <%=h @column_relation.manufacturer %>
+</p>
+
+<p>
+  <b>Cost:</b>
+  <%=h @column_relation.cost %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%=h @column_relation.title %>
+</p>
+
+<p>
+  <b>Weight:</b>
+  <%=h @column_relation.weight %>
+</p>
+
+<p>
+  <b>Count:</b>
+  <%=h @column_relation.count %>
+</p>
+
+
+<%= link_to 'Edit', edit_column_relation_path(@column_relation) %> |
+<%= link_to 'Back', column_relations_path %>

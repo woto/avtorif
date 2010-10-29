@@ -7,8 +7,7 @@ class CreateColumnRelations < ActiveRecord::Migration
       t.integer :title
       t.integer :weight
       t.integer :count
-      t.references :import_rules
-      
+
       t.timestamps
     end
   end

@@ -1,4 +1,24 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :currencies
+
+  map.resources :import_jobs
+
+  map.resources :import_jobs
+
+  map.resources :import_jobs
+
+  map.resources :column_filters
+
+  map.resources :column_filters
+
+  map.resources :column_relations
+
+  map.resources :column_relations
+
+  map.resources :column_relations
+
+  map.resources :import_jobs
+
 
   map.resources :http_receives
 
@@ -50,8 +70,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :folder_receives
   map.resources :ftp_receives
   map.resources :smb_receives
-
-  map.resources :import_jobs
   map.resources :receive_jobs
   map.resources :unpack_jobs
   map.resources :convert_jobs

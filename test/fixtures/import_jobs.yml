@@ -1,75 +1,9 @@
-import_job_for_shoori_1:
-  importable: price_format_settings_for_shoori_1 (CsvImport)
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-import_from_japancars_1:
-  importable: price_format_settings_for_japancars_1 (XlsImport)
+one:
+  importable: 
+  import_method: 
 
-import_from_japancars_2:
-  importable: price_format_settings_for_japancars_2 (XlsImport)
-
-########################################################################
-
-import_job_for_febest:
-  importable: price_format_settings_for_febest (CsvImport)
-
-########################################################################
-
-import_job_for_jeepshop_1:
-  importable: price_format_settings_for_jeepshop_1 (CsvImport)
-
-import_job_for_jeepshop_2:
-  importable: price_format_settings_for_jeepshop_2 (CsvImport)
-
-########################################################################
-
-#import_from_kornev_ruslan:
-#  importable: csv_settings_for_kornev_ruslan (CsvImport)
-#
-#import_from_kornev_ruslan2:
-#  importable: csv_settings_for_kornev_ruslan2 (CsvImport)
-#
-
-########################################################################
-
-import_job_for_webtest:
-  importable: price_format_settings_for_webtest (CsvImport)
-
-
-########################################################################
-
-import_job_for_stalker_1:
-  importable: price_format_settings_for_stalker_1 (CsvImport)
-
-import_job_for_stalker_2:
-  importable: price_format_settings_for_stalker_2 (CsvImport)
-
-########################################################################
-
-import_job_for_local_test_1:
-  import_method: clear_by_supplier
-
-import_job_for_local_test_2:
-  import_method: simple_insert
-
-########################################################################
-
-import_job_for_autospar_1:
-  import_method: clear_by_supplier
-
-import_job_for_autospar_2:
-  import_method: simple_insert
-
-########################################################################
-
-import_job_for_major_1:
-  import_method: clear_by_supplier
-
-import_job_for_major_2:
-  import_method: simple_insert
-  importable: price_format_settings_for_major (CsvImport)
-
-import_job_for_major_3:
-  import_method: simple_insert
-  importable: price_format_settings_for_major (CsvImport)
-
-########################################################################
+two:
+  importable: 
+  import_method: 

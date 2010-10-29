@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101025130130) do
+ActiveRecord::Schema.define(:version => 20101029103058) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
@@ -37,15 +37,16 @@ ActiveRecord::Schema.define(:version => 20101025130130) do
   end
 
   create_table "column_filters", :force => true do |t|
-    t.string   "count"
-    t.string   "cost"
-    t.string   "title"
-    t.string   "catalog_number"
-    t.string   "manufacturer"
-    t.string   "weight"
-    t.integer  "import_rules_id"
-    t.integer  "margin"
-    t.integer  "estimate_days"
+    t.string   "first"
+    t.string   "second"
+    t.string   "third"
+    t.string   "fourth"
+    t.string   "fifth"
+    t.string   "sixth"
+    t.string   "seventh"
+    t.string   "eighth"
+    t.string   "ninth"
+    t.string   "tenth"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -57,7 +58,6 @@ ActiveRecord::Schema.define(:version => 20101025130130) do
     t.integer  "title"
     t.integer  "weight"
     t.integer  "count"
-    t.integer  "import_rules_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -67,12 +67,10 @@ ActiveRecord::Schema.define(:version => 20101025130130) do
     t.datetime "updated_at"
   end
 
-  create_table "csv_imports", :force => true do |t|
-    t.string   "columns_terminator"
-    t.string   "columns_enclosures"
-    t.string   "columns_escape"
-    t.integer  "start_from_line"
-    t.string   "lines_terminator"
+  create_table "currencies", :force => true do |t|
+    t.string   "title"
+    t.string   "foreign_id"
+    t.float    "value"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -168,10 +166,23 @@ ActiveRecord::Schema.define(:version => 20101025130130) do
   create_table "import_jobs", :force => true do |t|
     t.integer  "importable_id"
     t.string   "importable_type"
+    t.string   "import_method"
+    t.string   "encoding"
+    t.boolean  "presence"
+    t.integer  "currency_buy_id"
+    t.integer  "currency_sell_id"
+    t.integer  "currency_weight_id"
+    t.integer  "delivery_type_id"
+    t.boolean  "visible_for_site"
+    t.boolean  "visible_for_stock"
+    t.boolean  "visible_for_shops"
+    t.integer  "estimate_days"
+    t.float    "retail_rate"
+    t.float    "income_rate"
+    t.float    "kilo_price"
+    t.float    "weight_unavaliable_rate"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "encoding"
-    t.integer  "import_method_id"
   end
 
   create_table "import_methods", :force => true do |t|
@@ -209,12 +220,6 @@ ActiveRecord::Schema.define(:version => 20101025130130) do
 
   create_table "manufacturers", :force => true do |t|
     t.string   "title"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "mdb_imports", :force => true do |t|
-    t.string   "table_name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -315,14 +320,6 @@ ActiveRecord::Schema.define(:version => 20101025130130) do
   end
 
   create_table "unpack_jobs", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "xls_imports", :force => true do |t|
-    t.integer  "sheet_number"
-    t.string   "sheet_name"
-    t.integer  "start_from_line"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

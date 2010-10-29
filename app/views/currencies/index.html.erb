@@ -1,0 +1,24 @@
+<h1>Listing currencies</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Foreign</th>
+    <th>Value</th>
+  </tr>
+
+<% @currencies.each do |currency| %>
+  <tr>
+    <td><%=h currency.title %></td>
+    <td><%=h currency.foreign_id %></td>
+    <td><%=h currency.value %></td>
+    <td><%= link_to 'Show', currency %></td>
+    <td><%= link_to 'Edit', edit_currency_path(currency) %></td>
+    <td><%= link_to 'Destroy', currency, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New currency', new_currency_path %>

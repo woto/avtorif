@@ -2,13 +2,42 @@
 
 <table>
   <tr>
-    <th>Price</th>
     <th>Importable</th>
+    <th>Import method</th>
+    <th>Encoding</th>
+    <th>Presence</th>
+    <th>Currency buy</th>
+    <th>Currency sale</th>
+    <th>Currency weight</th>
+    <th>Delivery type</th>
+    <th>Visible for site</th>
+    <th>Visible for stock</th>
+    <th>Visible for shops</th>
+    <th>Estimate days</th>
+    <th>Retail rate</th>
+    <th>Income rate</th>
+    <th>Kilo price</th>
+    <th>Weight unavaliable rate</th>
   </tr>
 
 <% @import_jobs.each do |import_job| %>
   <tr>
     <td><%=h import_job.importable %></td>
+    <td><%=h import_job.import_method %></td>
+    <td><%=h import_job.encoding %></td>
+    <td><%=h import_job.presence %></td>
+    <td><%=h import_job.currency_buy %></td>
+    <td><%=h import_job.currency_sale %></td>
+    <td><%=h import_job.currency_weight %></td>
+    <td><%=h import_job.delivery_type %></td>
+    <td><%=h import_job.visible_for_site %></td>
+    <td><%=h import_job.visible_for_stock %></td>
+    <td><%=h import_job.visible_for_shops %></td>
+    <td><%=h import_job.estimate_days %></td>
+    <td><%=h import_job.retail_rate %></td>
+    <td><%=h import_job.income_rate %></td>
+    <td><%=h import_job.kilo_price %></td>
+    <td><%=h import_job.weight_unavaliable_rate %></td>
     <td><%= link_to 'Show', import_job %></td>
     <td><%= link_to 'Edit', edit_import_job_path(import_job) %></td>
     <td><%= link_to 'Destroy', import_job, :confirm => 'Are you sure?', :method => :delete %></td>

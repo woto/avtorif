@@ -4,4 +4,7 @@ class ImportJob < ActiveRecord::Base
   has_many :column_relations
   has_many :column_filters
   belongs_to :import_method
+  belongs_to :currency_buy, :class_name => 'Currency'
+  belongs_to :currency_sell, :class_name => 'Currency'
+  belongs_to :currency_weight, :class_name => 'Currency'
 end

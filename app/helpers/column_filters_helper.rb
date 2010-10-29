@@ -1,0 +1,2 @@
+module ColumnFiltersHelper
+end

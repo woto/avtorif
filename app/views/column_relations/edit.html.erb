@@ -1,0 +1,36 @@
+<h1>Editing column_relation</h1>
+
+<% form_for(@column_relation) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :catalog_number %><br />
+    <%= f.text_field :catalog_number %>
+  </p>
+  <p>
+    <%= f.label :manufacturer %><br />
+    <%= f.text_field :manufacturer %>
+  </p>
+  <p>
+    <%= f.label :cost %><br />
+    <%= f.text_field :cost %>
+  </p>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :weight %><br />
+    <%= f.text_field :weight %>
+  </p>
+  <p>
+    <%= f.label :count %><br />
+    <%= f.text_field :count %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @column_relation %> |
+<%= link_to 'Back', column_relations_path %>

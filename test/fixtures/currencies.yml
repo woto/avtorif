@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  title: MyString
+  foreign_id: MyString
+  value: 1.5
+
+two:
+  title: MyString
+  foreign_id: MyString
+  value: 1.5

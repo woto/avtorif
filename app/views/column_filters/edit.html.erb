@@ -1,0 +1,52 @@
+<h1>Editing column_filter</h1>
+
+<% form_for(@column_filter) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :first %><br />
+    <%= f.text_field :first %>
+  </p>
+  <p>
+    <%= f.label :second %><br />
+    <%= f.text_field :second %>
+  </p>
+  <p>
+    <%= f.label :third %><br />
+    <%= f.text_field :third %>
+  </p>
+  <p>
+    <%= f.label :fourth %><br />
+    <%= f.text_field :fourth %>
+  </p>
+  <p>
+    <%= f.label :fifth %><br />
+    <%= f.text_field :fifth %>
+  </p>
+  <p>
+    <%= f.label :sixth %><br />
+    <%= f.text_field :sixth %>
+  </p>
+  <p>
+    <%= f.label :seventh %><br />
+    <%= f.text_field :seventh %>
+  </p>
+  <p>
+    <%= f.label :eighth %><br />
+    <%= f.text_field :eighth %>
+  </p>
+  <p>
+    <%= f.label :ninth %><br />
+    <%= f.text_field :ninth %>
+  </p>
+  <p>
+    <%= f.label :tenth %><br />
+    <%= f.text_field :tenth %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @column_filter %> |
+<%= link_to 'Back', column_filters_path %>
