@@ -2,8 +2,8 @@ class CreateImportJobs < ActiveRecord::Migration
   def self.up
     create_table :import_jobs do |t|
       t.references :importable, :polymorphic => true
-      t.string :import_method
-      t.string :encoding
+      t.enum :import_method
+      t.enum :encoding
       t.boolean :presence
       t.references :currency_buy
       t.references :currency_sell

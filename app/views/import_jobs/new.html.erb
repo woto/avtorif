@@ -1,19 +1,15 @@
 <h1>New import_job</h1>
 
-<% form_for(@import_job) do |f| %>
+<% semantic_form_for(@import_job) do |f| %>
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :importable %><br />
-    <%= f.text_field :importable %>
-  </p>
-  <p>
     <%= f.label :import_method %><br />
-    <%= f.text_field :import_method %>
+    <%= f.enum_select :import_method %>
   </p>
   <p>
     <%= f.label :encoding %><br />
-    <%= f.text_field :encoding %>
+    <%= f.enum_select :encoding %>
   </p>
   <p>
     <%= f.label :presence %><br />
@@ -21,19 +17,19 @@
   </p>
   <p>
     <%= f.label :currency_buy %><br />
-    <%= f.text_field :currency_buy %>
+    <%= f.inputs :currency_buy %>
   </p>
   <p>
     <%= f.label :currency_sell %><br />
-    <%= f.text_field :currency_sell %>
+    <%= f.inputs :currency_sell %>
   </p>
   <p>
     <%= f.label :currency_weight %><br />
-    <%= f.text_field :currency_weight %>
+    <%= f.inputs :currency_weight %>
   </p>
   <p>
     <%= f.label :delivery_type %><br />
-    <%= f.text_field :delivery_type %>
+    <%= f.inputs :delivery_type %>
   </p>
   <p>
     <%= f.label :visible_for_site %><br />

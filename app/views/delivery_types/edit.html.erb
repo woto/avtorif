@@ -1,0 +1,16 @@
+<h1>Editing delivery_type</h1>
+
+<% form_for(@delivery_type) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.submit 'Update' %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @delivery_type %> |
+<%= link_to 'Back', delivery_types_path %>

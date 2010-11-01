@@ -18,6 +18,8 @@ gem 'cap-recipes'
 gem 'ar_fixtures'
 #gem 'yaml_db', :git => 'git://github.com/ludicast/yaml_db.git', :branch => 'Rails2'
 
+gem 'enumerated_attribute'
+
 gem 'mysql'
 #gem 'sqlite3-ruby', :require => 'sqlite3'
 #gem 'spreadsheet'

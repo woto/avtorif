@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :delivery_types
+
   map.resources :currencies
 
   map.resources :import_jobs
