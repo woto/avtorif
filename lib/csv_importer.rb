@@ -28,7 +28,7 @@ class CsvImporter < AbstractImporter
           #if columns.size != 5
           #  i = 42
           #end
-          
+
           counter += 1
 
           next if columns.empty?

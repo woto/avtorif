@@ -42,6 +42,11 @@ class ImportJobsController < ApplicationController
   def create
     @import_job = ImportJob.new(params[:import_job])
 
+    job = Job.find(params[:job_id])
+    job.jobable = @import_job
+    job.save
+
+
     respond_to do |format|
       if @import_job.save
         format.html { redirect_to(@import_job, :notice => 'ImportJob was successfully created.') }

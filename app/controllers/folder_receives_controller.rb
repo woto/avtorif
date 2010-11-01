@@ -40,10 +40,9 @@ class FolderReceivesController < ApplicationController
   # POST /folder_receives
   # POST /folder_receives.xml
   def create
-    @folder_receive = FolderReceive.new(params[:receive_folder])
+    @folder_receive = FolderReceive.new(params[:folder_receive])
     receive_job = ReceiveJob.create(:receiveable => @folder_receive)
-    #job = Job.find()
-    Job.update(params[:job_id], :jobable => receive_job)    
+    Job.update(params[:job_id], :jobable => receive_job)
 
     respond_to do |format|
       if @folder_receive.save

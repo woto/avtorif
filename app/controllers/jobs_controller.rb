@@ -91,7 +91,7 @@ class JobsController < ApplicationController
 
   def start
     @job = Job.find(params[:id])
-    JobWalker.new.start_job(@job)
+    JobWalker.new.start_job(@job, :force => params[:force])
     redirect_to(supplier_jobs_path(@job.supplier.id))
   end
 

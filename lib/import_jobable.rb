@@ -6,15 +6,16 @@ class ImportJobable < AbstractJobber
       self.optional = importer.import
     end
 
-    case @jobable.import_method.try(:title)
-      when 'clear_by_supplier'
-        Price.connection.execute("DELETE FROM prices WHERE supplier_id = #{@job.supplier.id}")
-      when 'clear_by_job'
+    case @jobable.import_method.title
+      when /_B_/
         Price.connection.execute("DELETE FROM prices WHERE job_id = #{@job.id}")
-#      when 'clear_by_filters'
-#        Price.connection.execute("DELETE FROM prices WHERE ")
-      when 'simple_insert'
-        raise 'hehey'
+        
+      when /_I_/
+        Вставка
+      when /_U_/
+
+      when /_U0_/
+        
     end
 
     super
