@@ -12,6 +12,7 @@
     <th>Eighth</th>
     <th>Ninth</th>
     <th>Tenth</th>
+    <th>Col Sep</th>
   </tr>
 
 <% @filter_jobs.each do |filter_job| %>
@@ -26,6 +27,7 @@
     <td><%=h filter_job.eighth %></td>
     <td><%=h filter_job.ninth %></td>
     <td><%=h filter_job.tenth %></td>
+    <td><%=h filter_job.col_sep %></td>
     <td><%= link_to 'Show', filter_job %></td>
     <td><%= link_to 'Edit', edit_filter_job_path(filter_job) %></td>
     <td><%= link_to 'Destroy', filter_job, :confirm => 'Are you sure?', :method => :delete %></td>

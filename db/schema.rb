@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101101122718) do
+ActiveRecord::Schema.define(:version => 20101102111315) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
@@ -32,21 +32,6 @@ ActiveRecord::Schema.define(:version => 20101101122718) do
   create_table "autos", :force => true do |t|
     t.integer  "manufacturer_id"
     t.string   "title"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "column_filters", :force => true do |t|
-    t.string   "first"
-    t.string   "second"
-    t.string   "third"
-    t.string   "fourth"
-    t.string   "fifth"
-    t.string   "sixth"
-    t.string   "seventh"
-    t.string   "eighth"
-    t.string   "ninth"
-    t.string   "tenth"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -127,6 +112,7 @@ ActiveRecord::Schema.define(:version => 20101101122718) do
     t.string   "tenth"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "col_sep"
   end
 
   create_table "folder_receives", :force => true do |t|
@@ -202,13 +188,6 @@ ActiveRecord::Schema.define(:version => 20101101122718) do
     t.float    "income_rate"
     t.float    "kilo_price"
     t.float    "weight_unavaliable_rate"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "import_methods", :force => true do |t|
-    t.string   "title"
-    t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -324,12 +303,6 @@ ActiveRecord::Schema.define(:version => 20101101122718) do
     t.string   "login"
     t.string   "password"
     t.string   "contact_info"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "test_receives", :force => true do |t|
-    t.string   "field"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
