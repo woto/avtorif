@@ -27,7 +27,10 @@ class Job < ActiveRecord::Base
 
   belongs_to :supplier
   belongs_to :jobable, :polymorphic => true, :dependent => :destroy
+  
   has_many :childs, :class_name => "Job", :foreign_key => "job_id"
+  named_scope :active, {:conditions => ["active = ?", 1]}
+  
   belongs_to :parent, :class_name => "Job", :foreign_key => "job_id"
   #has_one :child_job, :foreign_key => :job_id, :class_name => "Job"
   #belongs_to :parent_job, :readonly => true, :foreign_key => :job_id, :class_name => "Job"

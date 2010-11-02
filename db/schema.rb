@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101030144013) do
+ActiveRecord::Schema.define(:version => 20101101122718) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
@@ -110,6 +110,21 @@ ActiveRecord::Schema.define(:version => 20101030144013) do
   create_table "email_settings", :force => true do |t|
     t.string   "sender"
     t.string   "topic"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "filter_jobs", :force => true do |t|
+    t.string   "first"
+    t.string   "second"
+    t.string   "third"
+    t.string   "fourth"
+    t.string   "fifth"
+    t.string   "sixth"
+    t.string   "seventh"
+    t.string   "eighth"
+    t.string   "ninth"
+    t.string   "tenth"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

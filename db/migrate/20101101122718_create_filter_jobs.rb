@@ -1,6 +1,6 @@
-class CreateColumnFilters < ActiveRecord::Migration
+class CreateFilterJobs < ActiveRecord::Migration
   def self.up
-    create_table :column_filters do |t|
+    create_table :filter_jobs do |t|
       t.string :first
       t.string :second
       t.string :third
@@ -17,6 +17,6 @@ class CreateColumnFilters < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :column_filters
+    drop_table :filter_jobs
   end
 end

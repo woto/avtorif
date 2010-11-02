@@ -9,10 +9,6 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :import_jobs
 
-  map.resources :column_filters
-
-  map.resources :column_filters
-
   map.resources :column_relations
 
   map.resources :column_relations
@@ -58,6 +54,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :jobs, :collection => {:start_all => :get}, :member => {:start => :get} do |job|
     job.resources :import_jobs
     job.resources :receive_jobs
+    job.resources :filter_jobs
     job.resources :unpack_jobs
     job.resources :convert_jobs
     job.resources :email_receives
@@ -73,6 +70,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :ftp_receives
   map.resources :smb_receives
   map.resources :receive_jobs
+  map.resources :filter_jobs
   map.resources :unpack_jobs
   map.resources :convert_jobs
 

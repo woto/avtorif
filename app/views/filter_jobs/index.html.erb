@@ -1,0 +1,38 @@
+<h1>Listing filter_jobs</h1>
+
+<table>
+  <tr>
+    <th>First</th>
+    <th>Second</th>
+    <th>Third</th>
+    <th>Fourth</th>
+    <th>Fifth</th>
+    <th>Sixth</th>
+    <th>Seventh</th>
+    <th>Eighth</th>
+    <th>Ninth</th>
+    <th>Tenth</th>
+  </tr>
+
+<% @filter_jobs.each do |filter_job| %>
+  <tr>
+    <td><%=h filter_job.first %></td>
+    <td><%=h filter_job.second %></td>
+    <td><%=h filter_job.third %></td>
+    <td><%=h filter_job.fourth %></td>
+    <td><%=h filter_job.fifth %></td>
+    <td><%=h filter_job.sixth %></td>
+    <td><%=h filter_job.seventh %></td>
+    <td><%=h filter_job.eighth %></td>
+    <td><%=h filter_job.ninth %></td>
+    <td><%=h filter_job.tenth %></td>
+    <td><%= link_to 'Show', filter_job %></td>
+    <td><%= link_to 'Edit', edit_filter_job_path(filter_job) %></td>
+    <td><%= link_to 'Destroy', filter_job, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New filter_job', new_filter_job_path %>

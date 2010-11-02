@@ -12,7 +12,7 @@ class UnpackJobable < AbstractJobber
         when /zip/
           `unzip #{supplier_price.path} -d #{tempdir}`
         when /rar/
-          raise "write right shell command for rar"
+          raise "write right shell command for rar archives"
       end
 
       Dir["#{tempdir}/*"].each do |file|
