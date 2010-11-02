@@ -15,7 +15,10 @@ class HttpReceiver < AbstractReceiver
       request.initialize_http_header({"User-Agent" => "avtorif"})
 
       response = http.request(request)
-
+      unless response.is_a? Net::HTTPOK
+        raise response.message
+      end
+      
       remote_file = RemoteFile.new(@job.file_mask)
 
       remote_file.write response.body
@@ -24,7 +27,7 @@ class HttpReceiver < AbstractReceiver
 
       retval = Array.new()
 
-      if SupplierPrice.find(:first, :conditions => ['md5 = ? AND supplier_id = ?',  md5, @job.supplier.id]).nil?
+      if @optional[:force] || SupplierPrice.find(:first, :conditions => ['md5 = ? AND supplier_id = ?',  md5, @job.supplier.id]).nil?
         attachment = SupplierPrice.new(:attachment => remote_file, :md5 => md5)
         attachment.supplier = @job.supplier
         attachment.job_code = @job.job_code
