@@ -62,7 +62,7 @@ class SmbReceivesController < ApplicationController
 
     respond_to do |format|
       if @smb_receive.update_attributes(params[:smb_receive])
-        format.html { redirect_to(@smb_receive, :notice => 'SmbReceive was successfully updated.') }
+        format.html { redirect_to(supplier_jobs_path(params[:supplier_id]), :notice => 'SmbReceive was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

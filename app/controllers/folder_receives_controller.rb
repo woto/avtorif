@@ -62,7 +62,7 @@ class FolderReceivesController < ApplicationController
 
     respond_to do |format|
       if @folder_receive.update_attributes(params[:receive_folder])
-        format.html { redirect_to(@folder_receive, :notice => 'FolderReceive was successfully updated.') }
+        format.html { redirect_to(supplier_jobs_path(params[:supplier_id]), :notice => 'FolderReceive was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

@@ -62,7 +62,7 @@ class FtpReceivesController < ApplicationController
 
     respond_to do |format|
       if @ftp_receive.update_attributes(params[:ftp_receive])
-        format.html { redirect_to(@ftp_receive, :notice => 'FtpReceive was successfully updated.') }
+        format.html { redirect_to(supplier_jobs_path(params[:supplier_id]), :notice => 'FtpReceive was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

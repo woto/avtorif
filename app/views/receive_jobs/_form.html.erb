@@ -27,13 +27,14 @@
                 <%= radio_button_tag('receive_job[receiveable_id]',  rj.receiveable_id, params[:id] == rj.id.to_s) + rj.identify_string  %>
             </td>
             <td>
-            <%= link_to "Редактировать", polymorphic_path([Supplier.find(params[:supplier_id]), Job.find(params[:job_id]), rj.receiveable]) %>
+            <%= link_to "Редактировать", edit_polymorphic_path([Supplier.find(params[:supplier_id]), Job.find(params[:job_id]), rj.receiveable]) %>
             </td>
             </tr>
         <% end  %>
     </table>
-    <br />
-    <% if defined?(once) %>
+    
+    <% if once %>
+      <br />
       <%= f.submit 'Привязать' %>
     <% end %>    
 

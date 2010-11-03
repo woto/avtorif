@@ -1,32 +1,6 @@
 <h1>Editing ftp_receive</h1>
 
-<% form_for(@ftp_receive) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.label :server %><br />
-    <%= f.text_field :server %>
-  </p>
-  <p>
-    <%= f.label :port %><br />
-    <%= f.text_field :port %>
-  </p>
-  <p>
-    <%= f.label :path %><br />
-    <%= f.text_field :path %>
-  </p>
-  <p>
-    <%= f.label :login %><br />
-    <%= f.text_field :login %>
-  </p>
-  <p>
-    <%= f.label :password %><br />
-    <%= f.text_field :password %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
-<% end %>
+<%= render 'form' %>
 
 <%= link_to 'Show', @ftp_receive %> |
 <%= link_to 'Back', ftp_receives_path %>

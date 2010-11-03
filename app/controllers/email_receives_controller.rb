@@ -46,7 +46,7 @@ class EmailReceivesController < ApplicationController
 
     respond_to do |format|
       if @receive_email.save
-        format.html { redirect_to(@receive_email, :notice => 'EmailReceive was successfully created.') }
+        format.html { redirect_to(supplier_jobs_path(params[:supplier_id]), :notice => 'EmailReceive was successfully created.') }
         format.xml  { render :xml => @receive_email, :status => :created, :location => @receive_email }
       else
         format.html { render :action => "new" }
@@ -62,7 +62,7 @@ class EmailReceivesController < ApplicationController
 
     respond_to do |format|
       if @receive_email.update_attributes(params[:receive_email])
-        format.html { redirect_to(@receive_email, :notice => 'EmailReceive was successfully updated.') }
+        format.html { redirect_to(supplier_jobs_path(params[:supplier_id]), :notice => 'EmailReceive was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
