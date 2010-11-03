@@ -53,7 +53,7 @@
     <td><%= link_to 'Show', supplier_job_path(job.supplier, job) %></td>
     <td><%= link_to 'Edit', edit_supplier_job_path(job.supplier, job) %></td>
     <td><%= link_to 'Destroy', supplier_job_path(job.supplier, job), :confirm => 'Are you sure?', :method => :delete %></td>
-    <td><%= link_to 'Start', start_supplier_job_path(job.supplier, supplier) %></td>
+    <td><%= link_to 'Start', start_supplier_job_path(job.supplier, job) %></td>
     <td><%= link_to 'Force Start', start_supplier_job_path(job.supplier, job, :force => true) %></td>
   </tr>
 <% end %>

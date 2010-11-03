@@ -67,7 +67,7 @@
 %></p>
 
 <p>
-  <%= link_to 'Start', start_job_path(@job) %>
+  <%= link_to 'Start', start_supplier_job_path(params[:supplier_id], @job) %>
 </p>
 
 <p>
@@ -79,5 +79,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_job_path(@job) %> |
+<%= link_to 'Edit', edit_supplier_job_path(params[:supplier_id], @job) %> |
 <%= link_to 'Back', supplier_jobs_path(@job.supplier) %>

@@ -1,6 +1,6 @@
 <h1>Editing job</h1>
-
-<% semantic_form_for(@job) do |f| %>
+<% #todo так делать не надо, хочу красиво %>
+    <% semantic_form_for([Supplier.find(params[:supplier_id]), @job]) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -52,5 +52,4 @@
   </p>
 <% end %>
 
-<%= link_to 'Show', @job %> |
 <%= link_to 'Back', supplier_jobs_path(@job.supplier) %>

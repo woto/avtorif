@@ -1,4 +1,13 @@
-<% semantic_form_for(@ftp_receive, :url => {:action => :update}) do |f| %>
+<%
+   case params[:action]
+       when 'new'
+        url = supplier_job_ftp_receives_path(params[:supplier_id], params[:job_id])
+       when 'edit'
+        url = supplier_job_ftp_receive_path(params[:supplier_id], params[:job_id], params[:id])
+   end
+%>
+
+<% semantic_form_for(@ftp_receive, :url => url) do |f| %>
   <%= f.error_messages %>
 
   <p>

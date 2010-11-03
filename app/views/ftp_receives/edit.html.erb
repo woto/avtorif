@@ -2,5 +2,4 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @ftp_receive %> |
-<%= link_to 'Back', ftp_receives_path %>
+<%= link_to 'Back', supplier_jobs_path(Job.find(params[:job_id]).supplier) %>
