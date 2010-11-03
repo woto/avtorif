@@ -46,7 +46,7 @@ class HttpReceivesController < ApplicationController
 
     respond_to do |format|
       if @http_receive.save
-        format.html { redirect_to(@http_receive, :notice => 'HttpReceive was successfully created.') }
+        format.html { redirect_to(supplier_jobs_path(params[:supplier_id]), :notice => 'HttpReceive was successfully created.') }
         format.xml  { render :xml => @http_receive, :status => :created, :location => @http_receive }
       else
         format.html { render :action => "new" }
@@ -62,7 +62,7 @@ class HttpReceivesController < ApplicationController
 
     respond_to do |format|
       if @http_receive.update_attributes(params[:http_receive])
-        format.html { redirect_to(@http_receive, :notice => 'HttpReceive was successfully updated.') }
+        format.html { redirect_to(supplier_jobs_path(params[:supplier_id]), :notice => 'HttpReceive was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

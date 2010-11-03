@@ -1,0 +1,42 @@
+<h1>New receive_job for job <em><%=h Job.find(params[:job_id]).try(:title) %></em> of supplier <em><%= Job.find(params[:job_id]).supplier.title %></em></h1>
+
+<p>
+<%= link_to "Получение через ftp", new_supplier_job_ftp_receive_path(params[:supplier_id], params[:job_id]) %><br />
+<%= link_to "Получение через http", new_supplier_job_http_receive_path(params[:supplier_id], params[:job_id]) %><br />
+<%= link_to "Получение через samba", new_supplier_job_smb_receive_path(params[:supplier_id], params[:job_id]) %><br />
+<%= link_to "Получение через email", new_supplier_job_email_receive_path(params[:supplier_id], params[:job_id]) %><br />
+<%= link_to "Получение через локальную папку", new_supplier_job_folder_receive_path(params[:supplier_id], @receive_job.job) %><br />
+</p>
+
+<%
+   if params[:action] == 'edit'
+     url = supplier_job_receive_job_path(params[:supplier_id], params[:job_id], params[:id])
+   elsif params[:action] == 'new'
+     url = supplier_job_receive_jobs_path(params[:supplier_id], params[:job_id])
+   end
+%>
+
+<% semantic_form_for(@receive_job, :url => url) do |f| %>
+    
+    <table>
+        <% once = false %>
+        <% ReceiveJob.all(:include => :job, :conditions => {:jobs => {:supplier_id => params[:supplier_id]}}).each do |rj| %>
+            <% once = true %>
+            <tr>
+            <td>
+                <%= radio_button_tag('receive_job[receiveable_id]',  rj.receiveable_id, params[:id] == rj.id.to_s) + rj.identify_string  %>
+            </td>
+            <td>
+            <%= link_to "Редактировать", polymorphic_path([Supplier.find(params[:supplier_id]), Job.find(params[:job_id]), rj.receiveable]) %>
+            </td>
+            </tr>
+        <% end  %>
+    </table>
+    <br />
+    <% if defined?(once) %>
+      <%= f.submit 'Привязать' %>
+    <% end %>    
+
+<% end %>
+<br />
+<%= link_to 'Back', supplier_jobs_path(params[:supplier_id]) %>

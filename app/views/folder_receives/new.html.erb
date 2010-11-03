@@ -1,6 +1,6 @@
 <h1>New receive_folder</h1>
 
-<% semantic_form_for(:folder_receive, :url => job_folder_receives_path(params[:job_id])) do |f| %>
+<% semantic_form_for(:folder_receive, :url => supplier_job_folder_receives_path(params[:supplier_id], params[:job_id])) do |f| %>
   <%= f.error_messages %>
 
   <p>

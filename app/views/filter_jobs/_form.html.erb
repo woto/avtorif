@@ -1,0 +1,59 @@
+<% if @filter_job.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@filter_job.errors.count, "error") %> prohibited this convert_job from being saved:</h2>
+
+    <ul>
+    <% @filter_job.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<p>
+  <%= f.label :first %><br />
+  <%= f.text_field :first %>
+</p>
+<p>
+  <%= f.label :second %><br />
+  <%= f.text_field :second %>
+</p>
+<p>
+  <%= f.label :third %><br />
+  <%= f.text_field :third %>
+</p>
+<p>
+  <%= f.label :fourth %><br />
+  <%= f.text_field :fourth %>
+</p>
+<p>
+  <%= f.label :fifth %><br />
+  <%= f.text_field :fifth %>
+</p>
+<p>
+  <%= f.label :sixth %><br />
+  <%= f.text_field :sixth %>
+</p>
+<p>
+  <%= f.label :seventh %><br />
+  <%= f.text_field :seventh %>
+</p>
+<p>
+  <%= f.label :eighth %><br />
+  <%= f.text_field :eighth %>
+</p>
+<p>
+  <%= f.label :ninth %><br />
+  <%= f.text_field :ninth %>
+</p>
+<p>
+  <%= f.label :tenth %><br />
+  <%= f.text_field :tenth %>
+</p>
+<p>
+  <%= f.label :col_sep %><br />
+  <%= f.text_field :col_sep %>
+</p>
+<p>
+  <%= f.buttons %>
+</p>

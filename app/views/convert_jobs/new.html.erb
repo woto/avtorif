@@ -4,4 +4,4 @@
   <%= render :partial => 'form', :locals => {:f => f} %>
 <% end %>
 
-<%= link_to 'Back', convert_jobs_path %>
+<%= link_to 'Back', supplier_jobs_path(params[:supplier_id]) %>

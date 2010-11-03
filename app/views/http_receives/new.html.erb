@@ -1,6 +1,6 @@
 <h1>New http_receive</h1>
 
-<% semantic_form_for(:http_receive, @http_receive, :url => job_http_receives_path(params[:job_id])) do |f| %>
+<% semantic_form_for(:http_receive, @http_receive, :url => supplier_job_http_receives_path(params[:supplier_id], params[:job_id])) do |f| %>
   <%= f.error_messages %>
 
   <p>

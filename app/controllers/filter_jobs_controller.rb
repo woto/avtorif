@@ -48,7 +48,7 @@ class FilterJobsController < ApplicationController
 
     respond_to do |format|
       if @filter_job.save
-        format.html { redirect_to(@filter_job, :notice => 'FilterJob was successfully created.') }
+        format.html { redirect_to(supplier_jobs_path(params[:supplier_id]), :notice => 'FilterJob was successfully created.') }
         format.xml  { render :xml => @filter_job, :status => :created, :location => @filter_job }
       else
         format.html { render :action => "new" }
@@ -64,7 +64,7 @@ class FilterJobsController < ApplicationController
 
     respond_to do |format|
       if @filter_job.update_attributes(params[:filter_job])
-        format.html { redirect_to(@filter_job, :notice => 'FilterJob was successfully updated.') }
+        format.html { redirect_to(supplier_jobs_path(params[:supplier_id]), :notice => 'FilterJob was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

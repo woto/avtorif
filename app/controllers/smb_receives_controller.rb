@@ -46,7 +46,7 @@ class SmbReceivesController < ApplicationController
 
     respond_to do |format|
       if @smb_receive.save
-        format.html { redirect_to(@smb_receive, :notice => 'SmbReceive was successfully created.') }
+        format.html { redirect_to(supplier_jobs_path(params[:supplier_id]), :notice => 'SmbReceive was successfully created.') }
         format.xml  { render :xml => @smb_receive, :status => :created, :location => @smb_receive }
       else
         format.html { render :action => "new" }

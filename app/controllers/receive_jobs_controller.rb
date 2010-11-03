@@ -25,8 +25,6 @@ class ReceiveJobsController < ApplicationController
   # GET /receive_jobs/new.xml
   def new
     @receive_job = ReceiveJob.new
-    @receive_job.receiveable = EmailReceive.new
-    @receive_job.job << Job.find(params[:job_id])
     
     respond_to do |format|
       format.html # new.html.erb
@@ -42,7 +40,7 @@ class ReceiveJobsController < ApplicationController
   # POST /receive_jobs
   # POST /receive_jobs.xml
   def create
-    @receive_job = ReceiveJob.find(params[:receive_job][:receiveable_id])
+    @receive_job = ReceiveJob.find(:first, :conditions => ["receiveable_id = ?", params[:receive_job][:receiveable_id]])
 
     job = Job.find(params[:job_id])
     job.jobable = @receive_job
@@ -50,7 +48,7 @@ class ReceiveJobsController < ApplicationController
 
     respond_to do |format|
       if Job.find(params[:job_id]).jobable = @receive_job
-        format.html { redirect_to(supplier_jobs_path(job.supplier), :notice => 'ReceiveJob was successfully joined.') }
+        format.html { redirect_to(supplier_jobs_path(params[:supplier_id]), :notice => 'ReceiveJob was successfully joined.') }
         format.xml  { render :xml => @receive_job, :status => :created, :location => @receive_job }
       else
         format.html { render :action => "new" }
@@ -62,11 +60,16 @@ class ReceiveJobsController < ApplicationController
   # PUT /receive_jobs/1
   # PUT /receive_jobs/1.xml
   def update
-    @receive_job = ReceiveJob.find(params[:id])
+    @receive_job = ReceiveJob.find(:first, :conditions => ["receiveable_id = ?", params[:receive_job][:receiveable_id]])
+
+    job = Job.find(params[:job_id])
+    job.jobable = @receive_job
+    job.save
+
 
     respond_to do |format|
       if @receive_job.update_attributes(params[:receive_job])
-        format.html { redirect_to(@receive_job, :notice => 'ReceiveJob was successfully updated.') }
+        format.html { redirect_to(supplier_jobs_path(params[:supplier_id]), :notice => 'ReceiveJob was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
