@@ -47,7 +47,7 @@ class ConvertJobsController < ApplicationController
 
     respond_to do |format|
       if @convert_job.save
-        format.html { redirect_to(@convert_job, :notice => 'ConvertJob was successfully created.') }
+        format.html { redirect_to(supplier_jobs_path(params[:supplier_id]), :notice => 'ConvertJob was successfully created.') }
         format.xml  { render :xml => @convert_job, :status => :created, :location => @convert_job }
       else
         format.html { render :action => "new" }
@@ -63,7 +63,7 @@ class ConvertJobsController < ApplicationController
 
     respond_to do |format|
       if @convert_job.update_attributes(params[:convert_job])
-        format.html { redirect_to(@convert_job, :notice => 'ConvertJob was successfully updated.') }
+        format.html { redirect_to(supplier_jobs_path(params[:supplier_id]), :notice => 'ConvertJob was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

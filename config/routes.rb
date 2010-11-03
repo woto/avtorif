@@ -48,10 +48,8 @@ ActionController::Routing::Routes.draw do |map|
 
 
   map.resources :suppliers do |sup|
-    sup.resources :jobs
-  end
-
-  map.resources :jobs, :collection => {:start_all => :get}, :member => {:start => :get} do |job|
+    sup.resources :jobs, :collection => {:start_all => :get}, :member => {:start => :get} do |job|
+      
     job.resources :import_jobs
     job.resources :receive_jobs
     job.resources :filter_jobs
@@ -62,7 +60,10 @@ ActionController::Routing::Routes.draw do |map|
     job.resources :ftp_receives
     job.resources :smb_receives
     job.resources :http_receives
+    end
 
+    #sup.resources :convert_jobs
+    #sup.resources :receive_jobs
   end
 
   map.resources :email_receives

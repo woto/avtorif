@@ -1,7 +1,7 @@
 class SmbReceiver < AbstractReceiver
 
   def receive
-
+     
     Timeout.timeout(AppConfig.smb_timeout) do
       str_password = @receiver.password
       str_login = @receiver.login

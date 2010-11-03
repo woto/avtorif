@@ -26,8 +26,8 @@ class Job < ActiveRecord::Base
   #has_one :import, :as => :importable
 
   belongs_to :supplier
-  belongs_to :jobable, :polymorphic => true, :dependent => :destroy
-  
+  belongs_to :jobable, :polymorphic => true
+
   has_many :childs, :class_name => "Job", :foreign_key => "job_id"
   named_scope :active, {:conditions => ["active = ?", 1]}
   

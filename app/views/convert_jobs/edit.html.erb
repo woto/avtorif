@@ -1,11 +1,7 @@
 <h1>Editing convert_job</h1>
 
-<% form_for(@convert_job) do |f| %>
-  <%= f.error_messages %>
-
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
+<% semantic_form_for(@convert_job, :url => supplier_job_convert_job_path(params[:supplier_id], params[:job_id], params[:id])) do |f| %>
+  <%= render :partial => 'form', :locals => {:f => f} %>
 <% end %>
 
 <%= link_to 'Show', @convert_job %> |

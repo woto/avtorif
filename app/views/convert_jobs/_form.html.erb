@@ -1,0 +1,14 @@
+  <% if @convert_job.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@convert_job.errors.count, "error") %> prohibited this convert_job from being saved:</h2>
+
+      <ul>
+      <% @convert_job.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= f.enum_select :convert_method  %>
+  <%= f.buttons %>

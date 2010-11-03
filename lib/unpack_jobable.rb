@@ -8,11 +8,11 @@ class UnpackJobable < AbstractJobber
     
     Dir.mktmpdir do |tempdir|
 
-      case `file --mime #{supplier_price.path}`
+      case `file --mime #{supplier_price.path.shellescape}`
         when /zip/
-          `unzip #{supplier_price.path} -d #{tempdir}`
+          `unzip "#{supplier_price.path}" -d #{tempdir}`
         when /rar/
-          raise "write right shell command for rar archives"
+          raise "write approriate shell command for rar archives"
       end
 
       Dir["#{tempdir}/*"].each do |file|
@@ -24,7 +24,7 @@ class UnpackJobable < AbstractJobber
           end
 
           def content_type()
-            mime = `file --mime -br #{remote_file.path}`.strip
+            mime = `file --mime -br #{remote_file.path.shellescape.shellescape}`.strip
             mime = mime.gsub(/^.*: */,\"\")
             mime = mime.gsub(/;.*$/,\"\")
             mime = mime.gsub(/,.*$/,\"\")
@@ -49,6 +49,8 @@ class UnpackJobable < AbstractJobber
 
         #end
 
+        #File.unlink remote_file.path
+        
       end
 
     end

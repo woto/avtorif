@@ -36,24 +36,24 @@
     %>
     </td>    
     <td><%= if job.jobable.blank?
-                link_to("Получение", new_job_receive_job_path(job)) + " " +
-                link_to("Распаковка", new_job_unpack_job_path(job)) + " " +
-                link_to("Конвертирование", new_job_convert_job_path(job)) + " " +
-                link_to("Фильтрация", new_job_filter_job_path(job)) + " " +
-                link_to("Импортирование", new_job_import_job_path(job))
+                link_to("Получение", new_supplier_job_receive_job_path(job.supplier, job)) + " " +
+                link_to("Распаковка", new_supplier_job_unpack_job_path(job.supplier, job)) + " " +
+                link_to("Конвертирование", new_supplier_job_convert_job_path(job.supplier, job)) + " " +
+                link_to("Фильтрация", new_supplier_job_filter_job_path(job.supplier, job)) + " " +
+                link_to("Импортирование", new_supplier_job_import_job_path(job.supplier, job))
             else
-                link_to("Конкретная задача", edit_polymorphic_path(job.jobable))
+                link_to("Конкретная задача", edit_polymorphic_path([job.supplier, job, job.jobable]))
             end
     %></td>
     <td><%=h job.file_mask %></td>
     <td><%=h job.locked %></td>
     <td><%=h job.active %></td>
     <td><%= job.critical %></td>
-    <td><%= link_to 'Show', job %></td>
-    <td><%= link_to 'Edit', edit_job_path(job) %></td>
-    <td><%= link_to 'Destroy', job, :confirm => 'Are you sure?', :method => :delete %></td>
-    <td><%= link_to 'Start', start_job_path(job) %></td>
-    <td><%= link_to 'Force Start', start_job_path(job, :force => true) %></td>
+    <td><%= link_to 'Show', supplier_job_path(job.supplier, job) %></td>
+    <td><%= link_to 'Edit', edit_supplier_job_path(job.supplier, job) %></td>
+    <td><%= link_to 'Destroy', supplier_job_path(job.supplier, job), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Start', start_supplier_job_path(job.supplier, supplier) %></td>
+    <td><%= link_to 'Force Start', start_supplier_job_path(job.supplier, job, :force => true) %></td>
   </tr>
 <% end %>
 </table>
