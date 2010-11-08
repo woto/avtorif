@@ -34,7 +34,7 @@
 
             # attachment.original_filename
             
-            if SupplierPrice.find(:first, :conditions => ['md5 = ? AND supplier_id = ?',  md5, @receiver.receive_job.job.supplier.id]).nil?
+            if (@optional.present? && @optional[:force]) || SupplierPrice.find(:first, :conditions => ['md5 = ? AND supplier_id = ?',  md5, @receiver.receive_job.job.supplier.id]).nil?
 
               attachment = SupplierPrice.new(:attachment => attachment, :md5 => md5, :email_id => email_id)
               attachment.supplier = @receiver.receive_job.job.supplier

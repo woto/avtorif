@@ -3,6 +3,7 @@ class JobsController < ApplicationController
   # GET /jobs.xml
   def index
     scope = Job
+    scope = scope.scoped :conditions => "job_id IS NULL"
     scope = scope.scoped :conditions => {:supplier_id => params['supplier_id']} if params['supplier_id']
     @jobs = scope.paginate :include => :supplier,
                          :page => params[:page],
@@ -90,9 +91,13 @@ class JobsController < ApplicationController
   end
 
   def start
-    @job = Job.find(params[:id])
-    JobWalker.new.start_job(@job, :force => params[:force])
-    redirect_to(supplier_jobs_path(@job.supplier.id))
+    @job = Job.find(:first, :conditions => {:jobable_type => 'ReceiveJob', :id => params[:id]})
+    if(!@job)
+      flash[:notice] = "Извините, насильно можно запустить только задачу приема"
+    else
+      JobWalker.new.start_job(@job, :force => params[:force])
+      redirect_to(supplier_jobs_path(@job.supplier.id))
+    end
   end
 
   def start_all

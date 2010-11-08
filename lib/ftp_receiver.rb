@@ -24,8 +24,7 @@ class FtpReceiver < AbstractReceiver
         remote_file.flush        
         md5 = Digest::MD5.file(remote_file.path).hexdigest
 
-
-        if @optional[:force] || SupplierPrice.find(:first, :conditions => ['md5 = ? AND supplier_id = ?',  md5, @job.supplier.id]).nil?
+        if (@optional.present? && @optional[:force]) || SupplierPrice.find(:first, :conditions => ['md5 = ? AND supplier_id = ?',  md5, @job.supplier.id]).nil?
           attachment = SupplierPrice.new(:attachment => remote_file, :md5 => md5)
           attachment.supplier = @job.supplier
           attachment.job_code = @job.job_code

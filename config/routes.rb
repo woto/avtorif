@@ -3,27 +3,14 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :currencies
 
-  map.resources :import_jobs
-
-  map.resources :import_jobs
-
-  map.resources :import_jobs
-
-  map.resources :column_relations
-
-  map.resources :column_relations
-
   map.resources :column_relations
 
   map.resources :import_jobs
-
 
   map.resources :http_receives
 
   map.resources :check_receives
   
-  map.resources :ftp_receives
-
   map.resources :ftp_receives
 
   map.resources :autos
@@ -46,7 +33,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :repeats
   map.resources :repeats_jobs
 
-
+  map.start_all_jobs '/start_all_jobs/', :controller => 'jobs', :action => 'start_all'
   map.resources :suppliers do |sup|
     sup.resources :jobs, :collection => {:start_all => :get}, :member => {:start => :get} do |job|
       

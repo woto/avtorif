@@ -1,3 +1,14 @@
+<%
+scope = Job
+scope = scope.scoped :conditions => {:job_id => params['id']} if params['id']
+scope = scope.scoped :conditions => {:supplier_id => params['supplier_id']} if params['supplier_id']
+@jobs = scope.paginate :include => :supplier,
+                     :page => params[:page],
+                     :order => 'created_at DESC'
+%>
+
+<%= render :file => 'jobs/index.html.erb' if @jobs.size > 0 %>
+
 <p>
   <b>Next start:</b>
   <%=h @job.next_start %>
@@ -29,18 +40,23 @@
 </p>
 
 <p>
-  <b>arent:</b>
-  <%=h @job.parent %>
+  <b>Repeats:</b>
+  <%=h @job.repeats.collect(&:title).join(",") %>
+</p>
+
+<p>
+  <b>Parent:</b>
+  <% if @job.parent.present? %>
+    <%=h link_to @job.parent.try(:title), supplier_job_path(@job.supplier, @job.parent) %>
+  <% else %>
+    <%=h link_to "Список задач приема", supplier_jobs_path(@job.supplier) %>
+
+  <% end %>
 </p>
 
 <p>
   <b>Jobable:</b>
-  <%=h @job.jobable %>
-</p>
-
-<p>
-  <b>Supplier:</b>
-  <%=h @job.supplier %>
+  <%= link_to("Конкретная задача", edit_polymorphic_path([@job.supplier, @job, @job.jobable])) %>
 </p>
 
 <p>
@@ -58,16 +74,8 @@
   <%=h @job.active %>
 </p>
 
-<p><%= if @job.jobable.blank?
-            link_to("Получение", new_job_receive_job_path(@job)) + " " +
-            link_to("Импорт", new_job_import_job_path(@job))
-        else
-            link_to("Конкретная задача", edit_polymorphic_path(@job.jobable))
-        end
-%></p>
-
 <p>
-  <%= link_to 'Start', start_supplier_job_path(params[:supplier_id], @job) %>
+  <%= link_to 'Start', start_supplier_job_path(params[:supplier_id], @job) %> | <%= link_to 'Force Start', start_supplier_job_path(@job.supplier, @job, :force => true) %>
 </p>
 
 <p>
