@@ -11,9 +11,11 @@ class Job < ActiveRecord::Base
     FINISH_FAIL = "<div style='background: yellow'>Задача никогда не завершалась успешно</div>"
     SECONDS_BETWEEN_JOBS_FAIL = "<div style='background: red'>Помещение в очередь не осуществилось в установленный срок</div>"
     SECONDS_WORKING_FAIL = "<div style='background: red'>Выполнение задачи не уложилось в установленный срок</div>"
+    NOT_OK = "<div style='background: red'>Дочерние задачи вернули отрицательный статус</div>"
     LOCKED = "Находится в очереди на выполнение или выполняется"
     NOT_OBSERVED = "Не наблюдается"
     OK = "Ок"
+
   end
 
   cattr_reader :per_page
@@ -34,6 +36,21 @@ class Job < ActiveRecord::Base
   belongs_to :parent, :class_name => "Job", :foreign_key => "job_id"
   #has_one :child_job, :foreign_key => :job_id, :class_name => "Job"
   #belongs_to :parent_job, :readonly => true, :foreign_key => :job_id, :class_name => "Job"
+
+  def critical_tree
+    if childs.count > 0
+      childs.each do |ch|
+        status = ch.critical_tree
+        if(![Status::OK, Status::NOT_OBSERVED].include?(status))
+          return status
+        end
+      end
+    else
+      return critical
+    end
+
+    return critical
+  end
 
   def critical
     if (seconds_between_jobs.blank? || seconds_working.blank?)
