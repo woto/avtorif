@@ -65,7 +65,7 @@ class JobsController < ApplicationController
   # PUT /jobs/1.xml
   def update
     @job = Job.find(params[:id])
-
+    @job.last_finish = nil
     respond_to do |format|
       if @job.update_attributes(params[:job])
         format.html { redirect_to(supplier_jobs_path(params[:supplier_id]), :notice => 'Job was successfully updated.') }

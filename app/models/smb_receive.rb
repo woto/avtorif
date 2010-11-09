@@ -2,6 +2,6 @@ class SmbReceive < ActiveRecord::Base
   has_many :receive_job, :as => :receiveable
 
   def identify_string
-    "#{server} - #{share} - #{port} - #{path} - #{login} - #{password} - #{workgroup}"
+    "smb://#{server}/#{share}/#{path} - #{login} - #{password} - #{workgroup} - #{port}"
   end
 end

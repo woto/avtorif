@@ -36,7 +36,7 @@
         <%= link_to("Фильтрация", new_supplier_job_filter_job_path(job.supplier, job)) %> <br />
         <%= link_to("Импортирование", new_supplier_job_import_job_path(job.supplier, job)) %> <br />
       <% else %>
-        <%= link_to("Конкретная задача", edit_polymorphic_path([job.supplier, job, job.jobable])) %>
+        <%= link_to("Настройки", edit_polymorphic_path([job.supplier, job, job.jobable])) %>
       <% end %>
     </td>
     <td><%=h job.file_mask %></td>
