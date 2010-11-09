@@ -35,16 +35,16 @@ class SmbReceiver < AbstractReceiver
         remote_file_name = remote_file.path
         remote_file.unlink
 
-        str_share.gsub!(/ /, '\ ')
-        str_path.gsub!(/ /, '\ ')
-        file.gsub!(/ /, '\ ')
+        #str_share.gsub!(/ /, '\ ')
+        #str_path.gsub!(/ /, '\ ')
+        #file.gsub!(/ /, '\ ')
 
-        `smbget smb:\/\/#{str_server}\/#{str_share}\/#{str_path}\/#{file} -u #{str_login} -p #{str_password} -o \/#{remote_file_name}`
+        `smbget smb:\/\/#{str_server}\/#{str_share.shellescape}\/#{str_path.shellescape}\/#{file.shellescape} -u #{str_login} -p #{str_password} -o \/#{remote_file_name}`
         remote_file = File.new(remote_file_name)
 
         remote_file.instance_eval("
           def original_filename()
-              \"#{file.to_s}\"
+              \"#{file.shellescape.to_s}\"
           end
 
           def content_type()
