@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101110085721) do
+ActiveRecord::Schema.define(:version => 20101110163441) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
@@ -114,6 +114,18 @@ ActiveRecord::Schema.define(:version => 20101110085721) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "col_sep"
+    t.string   "row_sep"
+    t.string   "quote_char"
+    t.string   "converters"
+    t.string   "encoding"
+    t.string   "field_size_limit"
+    t.string   "unconverted_fields"
+    t.string   "headers"
+    t.string   "return_headers"
+    t.string   "write_headers"
+    t.string   "header_converters"
+    t.string   "skip_blanks"
+    t.string   "force_quotes"
   end
 
   create_table "folder_receives", :force => true do |t|

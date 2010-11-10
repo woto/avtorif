@@ -1,0 +1,51 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  first: MyString
+  second: MyString
+  third: MyString
+  fourth: MyString
+  fifth: 
+  sixth: MyString
+  seventh: MyString
+  eighth: MyString
+  ninth: MyString
+  tenth: MyString
+  col_sep: MyString
+  row_sep: MyString
+  quote_char: MyString
+  converters: MyString
+  encoding: MyString
+  field_size_limit: MyString
+  unconverted_fields: MyString
+  headers: MyString
+  return_headers: MyString
+  write_headers: MyString
+  header_converters: MyString
+  skip_blanks: MyString
+  force_quotes: MyString
+
+two:
+  first: MyString
+  second: MyString
+  third: MyString
+  fourth: MyString
+  fifth: 
+  sixth: MyString
+  seventh: MyString
+  eighth: MyString
+  ninth: MyString
+  tenth: MyString
+  col_sep: MyString
+  row_sep: MyString
+  quote_char: MyString
+  converters: MyString
+  encoding: MyString
+  field_size_limit: MyString
+  unconverted_fields: MyString
+  headers: MyString
+  return_headers: MyString
+  write_headers: MyString
+  header_converters: MyString
+  skip_blanks: MyString
+  force_quotes: MyString

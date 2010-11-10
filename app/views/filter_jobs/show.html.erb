@@ -49,9 +49,70 @@
 </p>
 
 <p>
-  <b>Col Sep:</b>
+  <b>Col sep:</b>
   <%=h @filter_job.col_sep %>
 </p>
+
+<p>
+  <b>Row sep:</b>
+  <%=h @filter_job.row_sep %>
+</p>
+
+<p>
+  <b>Quote char:</b>
+  <%=h @filter_job.quote_char %>
+</p>
+
+<p>
+  <b>Converters:</b>
+  <%=h @filter_job.converters %>
+</p>
+
+<p>
+  <b>Encoding:</b>
+  <%=h @filter_job.encoding %>
+</p>
+
+<p>
+  <b>Field size limit:</b>
+  <%=h @filter_job.field_size_limit %>
+</p>
+
+<p>
+  <b>Unconverted fields:</b>
+  <%=h @filter_job.unconverted_fields %>
+</p>
+
+<p>
+  <b>Headers:</b>
+  <%=h @filter_job.headers %>
+</p>
+
+<p>
+  <b>Return headers:</b>
+  <%=h @filter_job.return_headers %>
+</p>
+
+<p>
+  <b>Write headers:</b>
+  <%=h @filter_job.write_headers %>
+</p>
+
+<p>
+  <b>Header converters:</b>
+  <%=h @filter_job.header_converters %>
+</p>
+
+<p>
+  <b>Skip blanks:</b>
+  <%=h @filter_job.skip_blanks %>
+</p>
+
+<p>
+  <b>Force quotes:</b>
+  <%=h @filter_job.force_quotes %>
+</p>
+
 
 <%= link_to 'Edit', edit_filter_job_path(@filter_job) %> |
 <%= link_to 'Back', filter_jobs_path %>

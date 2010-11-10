@@ -45,14 +45,18 @@ class JobWalker
 
       job.last_start = Time.zone.now
       job.locked = true
-      
-      jobber_class = (job.jobable.class.to_s.split(/(.*?)Job/)[1] + "Jobable").classify.constantize
+
+      if job.jobable
+        jobber_class = (job.jobable.class.to_s.split(/(.*?)Job/)[1] + "Jobable").classify.constantize
+      else
+        return
+      end
 
       #jobber = jobber_class.new(concrete_job)
       #Delayed::Job.enqueue ReceiveJobber.new(ImportJob.first)
 
-      Delayed::Job.enqueue jobber_class.new(job, job.jobable, optional)
-      #jobber_class.new(job, job.jobable, optional).perform
+      #Delayed::Job.enqueue jobber_class.new(job, job.jobable, optional)
+      jobber_class.new(job, job.jobable, optional).perform
 
       job.save
 #      rescue => e

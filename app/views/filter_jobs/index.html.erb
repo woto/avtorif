@@ -12,7 +12,19 @@
     <th>Eighth</th>
     <th>Ninth</th>
     <th>Tenth</th>
-    <th>Col Sep</th>
+    <th>Col sep</th>
+    <th>Row sep</th>
+    <th>Quote char</th>
+    <th>Converters</th>
+    <th>Encoding</th>
+    <th>Field size limit</th>
+    <th>Unconverted fields</th>
+    <th>Headers</th>
+    <th>Return headers</th>
+    <th>Write headers</th>
+    <th>Header converters</th>
+    <th>Skip blanks</th>
+    <th>Force quotes</th>
   </tr>
 
 <% @filter_jobs.each do |filter_job| %>
@@ -28,6 +40,18 @@
     <td><%=h filter_job.ninth %></td>
     <td><%=h filter_job.tenth %></td>
     <td><%=h filter_job.col_sep %></td>
+    <td><%=h filter_job.row_sep %></td>
+    <td><%=h filter_job.quote_char %></td>
+    <td><%=h filter_job.converters %></td>
+    <td><%=h filter_job.encoding %></td>
+    <td><%=h filter_job.field_size_limit %></td>
+    <td><%=h filter_job.unconverted_fields %></td>
+    <td><%=h filter_job.headers %></td>
+    <td><%=h filter_job.return_headers %></td>
+    <td><%=h filter_job.write_headers %></td>
+    <td><%=h filter_job.header_converters %></td>
+    <td><%=h filter_job.skip_blanks %></td>
+    <td><%=h filter_job.force_quotes %></td>
     <td><%= link_to 'Show', filter_job %></td>
     <td><%= link_to 'Edit', edit_filter_job_path(filter_job) %></td>
     <td><%= link_to 'Destroy', filter_job, :confirm => 'Are you sure?', :method => :delete %></td>
