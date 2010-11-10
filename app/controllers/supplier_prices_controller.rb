@@ -41,28 +41,48 @@ class SupplierPricesController < ApplicationController
   # POST /supplier_prices.xml
   def create
 
-    md5 = Digest::MD5.file(params[:attachment][:attachment].path).hexdigest
-    supplier_id = params[:attachment][:supplier_id]
+    begin
+      md5 = Digest::MD5.file(params[:supplier_price][:attachment].path).hexdigest
+    rescue
+      flash[:notice] = "Вы не выбрали файл"
+      return
+    end
     
     #@attachment = SupplierPrice.new(params[:attachment])
     #@attachment.md5 = Digest::MD5.hexdigest(File.read())
 
-    if SupplierPrice.find(:first, :conditions => ['md5 = ? AND supplier_id = ?',  md5, supplier_id]).nil?
-      
-      @attachment = SupplierPrice.new(params[:attachment])
-      @attachment.md5 = md5
+    if params[:force] || SupplierPrice.find(:first, :conditions => ['md5 = ? AND supplier_id = ?',  md5, params[:supplier_id]]).nil?
 
       respond_to do |format|
+        job = Job.find(params[:id])
+
+        @attachment = SupplierPrice.new(params[:supplier_price])
+        @attachment.md5 = md5
+        @attachment.supplier = job.supplier
+        @attachment.job = job
+
         if @attachment.save
 
-          #Job.all(params[:supplier_id])
-          #ijs = ImportJob.find(:all, :conditions => {:job => {:supplier_id => params[:attachment][:supplier_id]}}, :joins => "INNER JOIN import_jobs ij ON ij.id = jobs.jobable_id ")
-          #ijs = ImportJob.find(:all, :conditions => {:jobs => {:supplier_id => params[:attachment][:supplier_id]}}, :joins => "INNER JOIN jobs ON import_jobs.id = jobs.jobable_id ")
-          ijs = ImportJob.find(:all, :conditions => {:jobs => {:supplier_id => params[:attachment][:supplier_id]}}, :joins => :job)
-          ijs = ijs.select{|ij| ij.job.file_mask.match(params[:attachment][:attachment].original_filename)}
-          ijs.each do |ij|
-            Delayed::Job.enqueue(ImportJobber.new(ij, @attachment.id))
-            #ImportJobber.new(ij, @attachment.id).perform
+          job_childs = job.childs.active
+
+          job.last_start = Time.zone.now
+          job.last_finish = Time.zone.now
+          job.save
+          
+          job_childs.each do |job_child|
+            jobber_class = (job_child.jobable.class.to_s.split(/(.*?)Job/)[1] + "Jobable").classify.constantize
+
+            #jobber = jobber_class.new(concrete_job)
+            #Delayed::Job.enqueue ReceiveJobber.new(ImportJob.first)
+
+            #Delayed::Job.enqueue jobber_class.new(job_child, job_child.jobable, @attachment.id)
+            JobWalker.new.start_job(job_child, @attachment.id)            
+
+
+            #ijs = ImportJob.find(:all, :conditions => {:job => {:supplier_id => params[:attachment][:supplier_id]}}, :joins => "INNER JOIN import_jobs ij ON ij.id = jobs.jobable_id ")
+            #ijs = ImportJob.find(:all, :conditions => {:jobs => {:supplier_id => params[:attachment][:supplier_id]}}, :joins => "INNER JOIN jobs ON import_jobs.id = jobs.jobable_id ")
+            #ijs = ImportJob.find(:all, :conditions => {:jobs => {:supplier_id => params[:attachment][:supplier_id]}}, :joins => :job)
+            #ijs = ijs.select{|ij| ij.job.file_mask.match(params[:attachment][:attachment].original_filename)}
           end
 
           format.html { redirect_to(@attachment, :notice => 'SupplierPrice was successfully created.') }
@@ -74,7 +94,7 @@ class SupplierPricesController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { redirect_to(attachments_path, :notice => 'Загружаемый файл уже имеется на сервере.') }
+        format.html { redirect_to(supplier_job_path, :notice => 'Загружаемый файл уже имеется на сервере.') }
       end
     end
   end
@@ -102,7 +122,7 @@ class SupplierPricesController < ApplicationController
     @attachment.destroy
 
     respond_to do |format|
-      format.html { redirect_to(supplier_prices_url) }
+      format.html { redirect_to(supplier_job_path) }
       format.xml  { head :ok }
     end
   end

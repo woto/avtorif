@@ -27,6 +27,12 @@
     <%= f.label :parent %><br />
     <%= f.input :parent, :collection => Job.find(:all, :conditions => {:supplier_id => @job.supplier_id}) %>    
   </p>
+
+  <p>
+    <%= f.label :description %><br />
+    <%= f.input :description %>
+  </p>    
+
   <p>
     <%= f.label :repeats %><br />
     <%= f.input :repeats %>

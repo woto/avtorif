@@ -30,7 +30,6 @@ class JobsController < ApplicationController
   # GET /jobs/new.xml
   def new
     @job = Job.new
-    @job.file_mask = '\".*\"'
     
     respond_to do |format|
       format.html # new.html.erb

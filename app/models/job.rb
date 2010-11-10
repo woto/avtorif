@@ -5,6 +5,7 @@ class Job < ActiveRecord::Base
   validates_numericality_of :seconds_between_jobs, :only_integer => true, :if => "!seconds_between_jobs.blank?" 
   validates_numericality_of :seconds_working, :only_integer => true, :if => "!seconds_working.blank?"
   validates_presence_of :title
+  validates_presence_of :file_mask
   
   module Status
     START_FAIL = "<div style='background: yellow'>Задача ни разу не была запущена</div>"

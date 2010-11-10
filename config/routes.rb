@@ -34,6 +34,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :repeats_jobs
 
   map.start_all_jobs '/start_all_jobs/', :controller => 'jobs', :action => 'start_all'
+  map.new_supplier_job_supplier_price '/suppliers/:supplier_id/job/:id/supplier_price/create/', :controller => 'SupplierPrices', :action => 'create'
+
   map.resources :suppliers do |sup|
     sup.resources :jobs, :collection => {:start_all => :get}, :member => {:start => :get} do |job|
       

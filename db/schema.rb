@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101102154815) do
+ActiveRecord::Schema.define(:version => 20101110085721) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
@@ -204,12 +204,13 @@ ActiveRecord::Schema.define(:version => 20101102154815) do
     t.integer  "jobable_id"
     t.string   "jobable_type"
     t.integer  "supplier_id"
-    t.string   "file_mask"
+    t.string   "file_mask",            :default => ""
     t.boolean  "locked",               :default => false
     t.boolean  "active",               :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "job_code"
+    t.text     "description"
   end
 
   create_table "jobs_repeats", :id => false, :force => true do |t|

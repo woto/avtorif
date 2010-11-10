@@ -1,8 +1,7 @@
 logger = RAILS_DEFAULT_LOGGER
 logger.level = Logger::ERROR
 
-class
-AbstractJobber
+class AbstractJobber
 
   attr_writer :optional
   
