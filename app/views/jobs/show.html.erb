@@ -7,7 +7,7 @@ scope = scope.scoped :conditions => {:supplier_id => params['supplier_id']} if p
                      :order => 'created_at DESC'
 %>
 
-<div style="background: #EEE">
+<div style="background: #FFD">
 <%= render :file => 'jobs/index.html.erb' %>
 </div>
 
@@ -85,16 +85,24 @@ scope = scope.scoped :conditions => {:supplier_id => params['supplier_id']} if p
   <%=h @job.active %>
 </p>
 
-<p>
-  <b>Attachments:</b>
+<div style="background: #FFD">
+<b>Attachments:</b>
+  <table style="width: 100%">
   <% SupplierPrice.all(:order => 'id DESC', :conditions => {:job_id => @job.id}).each do |sp| %>
-    <%= "<br />" + link_to(sp.attachment_file_name, supplier_price_path(sp.id)) + " " + sp.attachment_updated_at.to_s %>
-    <%= link_to 'Destroy', sp, :confirm => 'Are you sure?', :method => :delete %>
+    <tr><td>
+    <%= link_to(sp.attachment_file_name, supplier_price_path(sp.id)) %><br />
+    <%= sp.attachment_updated_at.to_s %><br />
+    <%= sp.attachment_file_size.to_s %><br />
+    wc: <%= `wc #{sp.attachment.path.to_s.shellescape}` %><br />
+    <%= link_to 'Destroy', supplier_job_supplier_price_path(params[:supplier_id], params[:id], sp), :confirm => 'Are you sure?', :method => :delete %>
+    </td></tr>
   <% end %>
-</p>
-
-<div style="background: #EEE">
-<% semantic_form_for(SupplierPrice.new, :html => { :multipart => true }, :url => new_supplier_job_supplier_price_path(params[:supplier_id], params[:id])) do |f| %>
+  </table>
+</div>
+<br/>
+<div style="background: #FFD">
+<b>Ручная загрузка прайса:</b>
+<% semantic_form_for(SupplierPrice.new, :html => { :multipart => true }, :url => supplier_job_supplier_prices_path(params[:supplier_id], params[:id])) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -112,5 +120,4 @@ scope = scope.scoped :conditions => {:supplier_id => params['supplier_id']} if p
 <% end %>
 </div>
 <br/>
-<%= link_to 'Edit', edit_supplier_job_path(params[:supplier_id], @job) %> |
-<%= link_to 'Back', supplier_jobs_path(@job.supplier) %>
+<%= link_to 'Edit', edit_supplier_job_path(params[:supplier_id], @job) %>

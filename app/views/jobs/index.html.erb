@@ -1,5 +1,5 @@
 <% supplier = Supplier.find(params[:supplier_id]) %>
-<h1>Listing jobs for <em><%= link_to(supplier.title, supplier) %></em> <%= link_to 'Destroy', supplier, :confirm => 'Are you sure?', :method => :delete %></h1>
+<h1>Listing jobs for <em><%= link_to(supplier.title, supplier_jobs_path) %></em></h1>
 
 <% if @jobs.size > 0 %>
     
@@ -31,14 +31,13 @@
         <td><%=h link_to job.title, supplier_job_path(job.supplier, job) %></td>
         <td><%=h job.repeats.collect(&:title).join(",") %></td>
         <td>
-          <% if job.jobable.blank? %>
             <%= link_to("Получение", new_supplier_job_receive_job_path(job.supplier, job)) %> <br />
             <%= link_to("Распаковка", new_supplier_job_unpack_job_path(job.supplier, job)) %> <br />
             <%= link_to("Конвертирование", new_supplier_job_convert_job_path(job.supplier, job)) %> <br />
             <%= link_to("Фильтрация", new_supplier_job_filter_job_path(job.supplier, job)) %> <br />
             <%= link_to("Импортирование", new_supplier_job_import_job_path(job.supplier, job)) %> <br />
-          <% else %>
-            <%= link_to("Настройки", edit_polymorphic_path([job.supplier, job, job.jobable])) %>
+          <% if job.jobable.present? %>          
+            <%= link_to("<br/>Настройки", edit_polymorphic_path([job.supplier, job, job.jobable])) %>
           <% end %>
         </td>
         <td><%=h job.file_mask %></td>

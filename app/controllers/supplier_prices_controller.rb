@@ -54,7 +54,7 @@ class SupplierPricesController < ApplicationController
     if params[:force] || SupplierPrice.find(:first, :conditions => ['md5 = ? AND supplier_id = ?',  md5, params[:supplier_id]]).nil?
 
       respond_to do |format|
-        job = Job.find(params[:id])
+        job = Job.find(params[:job_id])
 
         @attachment = SupplierPrice.new(params[:supplier_price])
         @attachment.md5 = md5
@@ -85,7 +85,7 @@ class SupplierPricesController < ApplicationController
             #ijs = ijs.select{|ij| ij.job.file_mask.match(params[:attachment][:attachment].original_filename)}
           end
 
-          format.html { redirect_to(@attachment, :notice => 'SupplierPrice was successfully created.') }
+          format.html { redirect_to(supplier_job_path(params[:supplier_id], params[:job_id]), :notice => 'SupplierPrice was successfully created.') }
           format.xml  { render :xml => @attachment, :status => :created, :location => @attachment }
         else
           format.html { render :action => "new" }
@@ -94,7 +94,7 @@ class SupplierPricesController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { redirect_to(supplier_job_path, :notice => 'Загружаемый файл уже имеется на сервере.') }
+        format.html { redirect_to(supplier_job_path(params[:supplier_id], params[:job_id]), :notice => 'Загружаемый файл уже имеется на сервере.') }
       end
     end
   end
@@ -122,7 +122,7 @@ class SupplierPricesController < ApplicationController
     @attachment.destroy
 
     respond_to do |format|
-      format.html { redirect_to(supplier_job_path) }
+      format.html { redirect_to(supplier_job_path(params[:supplier_id], params[:job_id])) }
       format.xml  { head :ok }
     end
   end
