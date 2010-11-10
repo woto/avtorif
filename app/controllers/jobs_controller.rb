@@ -30,6 +30,7 @@ class JobsController < ApplicationController
   # GET /jobs/new.xml
   def new
     @job = Job.new
+    @job.job_id = params[:job_id]
     
     respond_to do |format|
       format.html # new.html.erb

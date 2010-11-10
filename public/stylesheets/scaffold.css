@@ -8,5 +8,9 @@ td {
 }
 
 tr:nth-child(even) {
-  background: #EED;
+  background: #FED;
+}
+
+tr:nth-child(odd) {
+  background: #FDD;
 }

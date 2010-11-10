@@ -12,10 +12,6 @@ scope = scope.scoped :conditions => {:supplier_id => params['supplier_id']} if p
 </div>
 
 <p>
-  <%= link_to 'Start', start_supplier_job_path(params[:supplier_id], @job) %> | <%= link_to 'Force Start', start_supplier_job_path(@job.supplier, @job, :force => true) %>
-</p>
-
-<p>
   <b>Next start:</b>
   <%=h @job.next_start %>
 </p>
@@ -100,6 +96,7 @@ scope = scope.scoped :conditions => {:supplier_id => params['supplier_id']} if p
   </table>
 </div>
 <br/>
+
 <div style="background: #FFD">
 <b>Ручная загрузка прайса:</b>
 <% semantic_form_for(SupplierPrice.new, :html => { :multipart => true }, :url => supplier_job_supplier_prices_path(params[:supplier_id], params[:id])) do |f| %>
@@ -119,5 +116,8 @@ scope = scope.scoped :conditions => {:supplier_id => params['supplier_id']} if p
   </p>
 <% end %>
 </div>
-<br/>
-<%= link_to 'Edit', edit_supplier_job_path(params[:supplier_id], @job) %>
+<p>
+<%= link_to 'Edit', edit_supplier_job_path(params[:supplier_id], @job) %> |
+<%= link_to 'Start', start_supplier_job_path(params[:supplier_id], @job) %> |
+<%= link_to 'Force Start', start_supplier_job_path(@job.supplier, @job, :force => true) %>
+</p>
