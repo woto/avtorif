@@ -117,6 +117,7 @@ scope = scope.scoped :conditions => {:supplier_id => params['supplier_id']} if p
 <% end %>
 </div>
 <p>
+<%= link_to 'Destroy', supplier_job_path(params[:supplier_id], @job), :confirm => 'Are you sure?', :method => :delete %> |
 <%= link_to 'Edit', edit_supplier_job_path(params[:supplier_id], @job) %> |
 <%= link_to 'Start', start_supplier_job_path(params[:supplier_id], @job) %> |
 <%= link_to 'Force Start', start_supplier_job_path(@job.supplier, @job, :force => true) %>

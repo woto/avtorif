@@ -41,11 +41,23 @@
             <%= link_to("Фильтрация", new_supplier_job_filter_job_path(job.supplier, job)) %> <br />
             <%= link_to("Импортирование", new_supplier_job_import_job_path(job.supplier, job)) %> <br />
           <% if job.jobable.present? %>          
-            <%= link_to("<br/>Настройки", edit_polymorphic_path([job.supplier, job, job.jobable])) %>
+            <%= link_to("<br/>Настройки #{job.jobable.class.to_s}", edit_polymorphic_path([job.supplier, job, job.jobable])) %>
           <% end %>
         </td>
         <td><%=h job.file_mask %></td>
-        <td><%=h job.locked %></td>
+
+        <td>
+        <% if(job.locked) %>
+            <div style='background: yellow'>
+        <% else %>
+            <div>
+        <% end %>
+
+        <%=h job.locked %>
+
+        </div>
+        </td>
+        
         <td><%=h job.active %></td>
         <td><%= job.critical %></td>
         <td><%= job.critical_tree %></td>

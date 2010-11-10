@@ -18,8 +18,12 @@ class HttpReceiver < AbstractReceiver
       unless response.is_a? Net::HTTPOK
         raise response.message
       end
-      
-      remote_file = RemoteFile.new(@job.file_mask)
+
+      begin
+        remote_file = RemoteFile.new(response['content-disposition'].match(/filename="(.*)"/)[1])
+      rescue
+        remote_file = RemoteFile.new(@job.file_mask)
+      end
 
       remote_file.write response.body
       remote_file.flush
