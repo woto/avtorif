@@ -1,6 +1,6 @@
 <h1>Editing unpack_job</h1>
 
-<% form_for(@unpack_job) do |f| %>
+<% semantic_form_for(@unpack_job, :url => supplier_job_unpack_job_path(params[:supplier_id], params[:job_id], params[:id])) do |f| %>
   <%= f.error_messages %>
 
   <p>

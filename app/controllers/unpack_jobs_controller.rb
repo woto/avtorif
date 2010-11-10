@@ -64,7 +64,7 @@ class UnpackJobsController < ApplicationController
 
     respond_to do |format|
       if @unpack_job.update_attributes(params[:unpack_job])
-        format.html { redirect_to(@unpack_job, :notice => 'UnpackJob was successfully updated.') }
+        format.html { redirect_to(supplier_jobs_path(params[:supplier]), :notice => 'UnpackJob was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
