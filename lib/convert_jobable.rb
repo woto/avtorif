@@ -10,13 +10,16 @@ class ConvertJobable < AbstractJobber
     #puts @jobable.convert_method
     case @jobable.convert_method.to_s
       when /csv_normalize_new_line/
+          puts supplier_price.original_filename
           remote_file = RemoteFile.new(supplier_price.path)
           puts "sed ':a;N;$!ba;s/\n/\r\n/g' #{supplier_price.path.shellescape} > #{remote_file.path.shellescape}"
-          `sed ':a;N;$!ba;s/\\n/\\r\\n/g' #{supplier_price.path.shellescape} > #{remote_file.path.shellescape}`
+          `"sed ':a;N;$!ba;s/\\n/\\r\\n/g' #{supplier_price.path.shellescape}" > #{remote_file.path.shellescape}`
           md5 = Digest::MD5.file(remote_file.path).hexdigest
+          wc_stat = `wc #{remote_file.path.to_s.shellescape}`
+
           remote_file.original_filename = File.basename(supplier_price.original_filename)
 
-          attachment = SupplierPrice.new(:attachment => remote_file, :md5 => md5)
+          attachment = SupplierPrice.new(:attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
           attachment.supplier = @job.supplier
           attachment.job_code = @job.job_code
           attachment.job_id = @job.id
@@ -34,9 +37,11 @@ class ConvertJobable < AbstractJobber
           s.default_sheet = sheet
           s.to_csv(remote_file.path)
           md5 = Digest::MD5.file(remote_file.path).hexdigest
+          wc_stat = `wc #{remote_file.path.to_s.shellescape}`
+
           remote_file.original_filename = sheet
 
-          attachment = SupplierPrice.new(:attachment => remote_file, :md5 => md5)
+          attachment = SupplierPrice.new(:attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
           attachment.supplier = @job.supplier
           attachment.job_code = @job.job_code
           attachment.job_id = @job.id
@@ -52,9 +57,11 @@ class ConvertJobable < AbstractJobber
 
         `xls2csv -q3 #{supplier_price.path.shellescape} > #{remote_file.path.shellescape}`
         md5 = Digest::MD5.file(remote_file.path).hexdigest
+        wc_stat = `wc #{remote_file.path.to_s.shellescape}`
+
         remote_file.original_filename = File.basename(remote_file.original_filename, File.extname(remote_file.original_filename))
 
-        attachment = SupplierPrice.new(:attachment => remote_file, :md5 => md5)
+        attachment = SupplierPrice.new(:attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
         attachment.supplier = @job.supplier
         attachment.job_code = @job.job_code
         attachment.job_id = @job.id
@@ -72,8 +79,9 @@ class ConvertJobable < AbstractJobber
           `mdb-export #{supplier_price.path.shellescape} #{table.shellescape} > #{remote_file.path.shellescape}`
           remote_file.original_filename = table
           md5 = Digest::MD5.file(remote_file.path).hexdigest
+          wc_stat = `wc #{remote_file.path.to_s.shellescape}`
 
-          attachment = SupplierPrice.new(:attachment => remote_file, :md5 => md5)
+          attachment = SupplierPrice.new(:attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
           attachment.supplier = @job.supplier
           attachment.job_code = @job.job_code
           attachment.job_id = @job.id

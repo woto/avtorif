@@ -29,6 +29,7 @@ class JobWalker
       if optional.is_a?(Integer)
         supplier_price = SupplierPrice.find(optional)
         unless supplier_price.attachment.original_filename =~ Regexp.new(eval(job.file_mask))
+          puts job.id  
           return
         end
       end
@@ -49,7 +50,8 @@ class JobWalker
 
       job.last_start = Time.zone.now
       job.locked = true
-
+      job.save
+      
       if job.jobable
         jobber_class = (job.jobable.class.to_s.split(/(.*?)Job/)[1] + "Jobable").classify.constantize
       else
@@ -62,9 +64,8 @@ class JobWalker
       #Delayed::Job.enqueue jobber_class.new(job, job.jobable, optional)
       jobber_class.new(job, job.jobable, optional).perform
 
-      job.save
-#      rescue => e
-#        return
+      #rescue => e
+      #  return
       end
   end
 end

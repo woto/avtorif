@@ -23,7 +23,7 @@ class FilterJobable < AbstractJobber
         when "2"
           options[:col_sep] = "\t"
         when "3"
-          options[:col_sep] = ","          
+          options[:col_sep] = ","
       end
     end
 
@@ -51,7 +51,9 @@ class FilterJobable < AbstractJobber
 
     remote_file.flush
     md5 = Digest::MD5.file(remote_file.path).hexdigest
-    attachment = SupplierPrice.new(:attachment => remote_file)
+    wc_stat = `wc #{remote_file.path.to_s.shellescape}`
+
+    attachment = SupplierPrice.new(:attachment => remote_file, :wc_stat => wc_stat)
     attachment.supplier = @job.supplier
     attachment.job_code = @job.job_code
     attachment.job_id = @job.id
