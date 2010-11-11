@@ -12,8 +12,18 @@ class ConvertJobable < AbstractJobber
       when /csv_normalize_new_line/
           puts supplier_price.original_filename
           remote_file = RemoteFile.new(supplier_price.path)
-          puts "sed ':a;N;$!ba;s/\n/\r\n/g' #{supplier_price.path.shellescape} > #{remote_file.path.shellescape}"
-          `"sed ':a;N;$!ba;s/\\n/\\r\\n/g' #{supplier_price.path.shellescape}" > #{remote_file.path.shellescape}`
+
+          file = File.new(supplier_price.path, 'r')
+          file.each_line("\n") do |row|
+            unless row.empty?
+              row.gsub!("\r", "")
+              row.gsub!("\n", "")
+              remote_file.write(row)
+            else
+              next
+            end
+          end
+
           md5 = Digest::MD5.file(remote_file.path).hexdigest
           wc_stat = `wc #{remote_file.path.to_s.shellescape}`
 

@@ -40,7 +40,7 @@ class Job < ActiveRecord::Base
 
   def critical_tree
     if childs.count > 0
-      childs.each do |ch|
+      childs.active.each do |ch|
         status = ch.critical_tree
         if(![Status::OK, Status::NOT_OBSERVED].include?(status))
           return status
