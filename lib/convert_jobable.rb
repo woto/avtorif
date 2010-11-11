@@ -7,8 +7,25 @@ class ConvertJobable < AbstractJobber
     retval = Array.new()
     supplier_price = SupplierPrice.find(@optional).attachment
 
-    puts @jobable.convert_method
+    #puts @jobable.convert_method
     case @jobable.convert_method.to_s
+      when /csv_normalize_new_line/
+          remote_file = RemoteFile.new(supplier_price.path)
+          puts "sed ':a;N;$!ba;s/\n/\r\n/g' #{supplier_price.path.shellescape} > #{remote_file.path.shellescape}"
+          `sed ':a;N;$!ba;s/\\n/\\r\\n/g' #{supplier_price.path.shellescape} > #{remote_file.path.shellescape}`
+          md5 = Digest::MD5.file(remote_file.path).hexdigest
+          remote_file.original_filename = File.basename(supplier_price.original_filename)
+
+          attachment = SupplierPrice.new(:attachment => remote_file, :md5 => md5)
+          attachment.supplier = @job.supplier
+          attachment.job_code = @job.job_code
+          attachment.job_id = @job.id
+          attachment.save
+
+          retval << attachment.id
+
+          remote_file.unlink
+        
       when /xls_roo/
 
         s = Excel.new(supplier_price.path)

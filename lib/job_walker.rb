@@ -14,10 +14,10 @@ require 'date'
 class JobWalker
 
   def call
-    jobs = Job.all(:conditions => {:active => true})
+    #jobs = Job.all(:conditions => {:active => true})
     #logger.error jobs.collect{|job| job.title}
 
-    jobs.each do |job|
+    jobs.active.each do |job|
       if job.parent.blank? && (job.next_start.nil? || job.next_start < Time.zone.now) && !job.repeats.blank? && !job.locked
         # Запускаем задачи, у которых время следующего запуска меньше текущего
         start_job(job)
@@ -26,9 +26,13 @@ class JobWalker
   end
 
   def start_job(job, optional = nil)
-      #raise StandardError
-      #puts job
-
+      if optional.is_a?(Integer)
+        supplier_price = SupplierPrice.find(optional)
+        unless supplier_price.attachment.original_filename =~ Regexp.new(eval(job.file_mask))
+          return
+        end
+      end
+      
       begin
 
       nearest_next_time = nil

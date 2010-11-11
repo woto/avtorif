@@ -5,7 +5,6 @@ class CsvImporter < AbstractImporter
 
     attachments.each do |attachment|
       counter = 0
-
       file = File.new(attachment.attachment.path, 'r')
       #CSVScan.scan(File.open(attachment.attachment.path, 'r')) do |columns|
       #Excelsior::Reader.rows(File.open(attachment.attachment.path, 'rb')) do |columns|
