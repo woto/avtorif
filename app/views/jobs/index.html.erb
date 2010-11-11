@@ -19,10 +19,6 @@
         <th>Critical</th>
         <th>Critical tree</th>
         <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-
       </tr>
 
     <% @jobs.each do |job| %>
@@ -61,10 +57,12 @@
         <td><%=h job.active %></td>
         <td><%= job.critical %></td>
         <td><%= job.critical_tree %></td>
-        <td><%= link_to 'Edit', edit_supplier_job_path(job.supplier, job) %></td>
-        <td><%= link_to 'Destroy', supplier_job_path(job.supplier, job), :confirm => 'Are you sure?', :method => :delete %></td>
-        <td><%= link_to 'Start', start_supplier_job_path(job.supplier, job) %></td>
-        <td><%= link_to 'Force Start', start_supplier_job_path(job.supplier, job, :force => true) %></td>
+        <td>
+          <%= link_to 'Edit', edit_supplier_job_path(job.supplier, job) %> <br />
+            <%= link_to 'Destroy', supplier_job_path(job.supplier, job), :confirm => 'Are you sure?', :method => :delete %> <br />
+            <%= link_to 'Start', start_supplier_job_path(job.supplier, job) %><br />
+            <%= link_to 'Force Start', start_supplier_job_path(job.supplier, job, :force => true) %>
+        </td>
       </tr>
     <% end %>
     </table>

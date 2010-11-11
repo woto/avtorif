@@ -33,9 +33,10 @@ class UnpackJobable < AbstractJobber
         ")
 
         md5 = Digest::MD5.file(file).hexdigest
+        wc_stat = `wc #{file.shellescape}`
 
         #if SupplierPrice.find(:first, :conditions => ['md5 = ? AND supplier_id = ?',  md5, @job.supplier.id]).nil?
-          attachment = SupplierPrice.new(:attachment => remote_file, :md5 => md5)
+          attachment = SupplierPrice.new(:attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
           attachment.supplier = @job.supplier
           attachment.job_code = @job.job_code
           attachment.job_id = @job.id

@@ -47,7 +47,9 @@ class SupplierPricesController < ApplicationController
       flash[:notice] = "Вы не выбрали файл"
       return
     end
-    
+
+    wc_stat = `wc #{params[:supplier_price][:attachment].path.to_s.shellescape}`
+
     #@attachment = SupplierPrice.new(params[:attachment])
     #@attachment.md5 = Digest::MD5.hexdigest(File.read())
 
@@ -58,6 +60,7 @@ class SupplierPricesController < ApplicationController
 
         @attachment = SupplierPrice.new(params[:supplier_price])
         @attachment.md5 = md5
+        @attachment.wc_stat = wc_stat
         @attachment.supplier = job.supplier
         @attachment.job = job
 

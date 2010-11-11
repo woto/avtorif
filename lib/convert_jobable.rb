@@ -18,7 +18,7 @@ class ConvertJobable < AbstractJobber
             unless row.empty?
               row.gsub!("\r", "")
               row.gsub!("\n", "")
-              remote_file.write(row)
+              remote_file.write(row + "\r\n")
             else
               next
             end
