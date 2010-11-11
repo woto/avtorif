@@ -63,7 +63,7 @@ scope = scope.scoped :conditions => {:supplier_id => params['supplier_id']} if p
 
 <p>
   <b>Jobable:</b>
-  <%= link_to("Конкретная задача", edit_polymorphic_path([@job.supplier, @job, @job.jobable])) %>
+  <%= link_to("Настройки #{@job.jobable.class.to_s}", edit_polymorphic_path([@job.supplier, @job, @job.jobable])) %>  
 </p>
 
 <p>
@@ -80,22 +80,6 @@ scope = scope.scoped :conditions => {:supplier_id => params['supplier_id']} if p
   <b>Active:</b>
   <%=h @job.active %>
 </p>
-
-<div style="background: #FFD">
-<b>Attachments:</b>
-  <table style="width: 100%">
-  <% SupplierPrice.all(:order => 'id DESC', :conditions => {:job_id => @job.id}).each do |sp| %>
-    <tr><td>
-    <%= link_to(sp.attachment_file_name, supplier_price_path(sp.id)) %><br />
-    <%= sp.attachment_updated_at.to_s %><br />
-    <%= sp.attachment_file_size.to_s %><br />
-    wc: <%= `wc #{sp.attachment.path.to_s.shellescape}` %><br />
-    <%= link_to 'Destroy', supplier_job_supplier_price_path(params[:supplier_id], params[:id], sp), :confirm => 'Are you sure?', :method => :delete %>
-    </td></tr>
-  <% end %>
-  </table>
-</div>
-<br/>
 
 <div style="background: #FFD">
 <b>Ручная загрузка прайса:</b>
@@ -122,3 +106,20 @@ scope = scope.scoped :conditions => {:supplier_id => params['supplier_id']} if p
 <%= link_to 'Start', start_supplier_job_path(params[:supplier_id], @job) %> |
 <%= link_to 'Force Start', start_supplier_job_path(@job.supplier, @job, :force => true) %>
 </p>
+
+<div style="background: #FFD">
+<b>Attachments:</b>
+  <table style="width: 100%">
+  <% SupplierPrice.all(:order => 'id DESC', :conditions => {:job_id => @job.id}).each do |sp| %>
+    <tr><td>
+    <%= link_to(sp.attachment_file_name, supplier_price_path(sp.id)) %> |
+    <%= link_to "Download", sp.attachment.url(:original, false) %> |
+    <%= link_to 'Destroy', supplier_job_supplier_price_path(params[:supplier_id], params[:id], sp), :confirm => 'Are you sure?', :method => :delete %> |
+    <%= sp.attachment_updated_at.to_s %> |
+    <%= sp.attachment_file_size.to_s %><br />
+    wc: <%= sp.wc_stat %><br />
+    </td></tr>
+  <% end %>
+  </table>
+</div>
+<br/>

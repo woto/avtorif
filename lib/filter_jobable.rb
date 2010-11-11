@@ -4,7 +4,33 @@ class FilterJobable < AbstractJobber
     remote_file = RemoteFile.new(@job.job_code)
     remote_file_name = @job.job_code
 
-    FasterCSV.foreach(supplier_price.path, { :quote_char =>  eval(@jobable.quote_char), :col_sep => eval(@jobable.col_sep)})  do |row|
+    options = Hash.new
+    #puts @jobable.quote_char
+    #puts eval(@jobable.quote_char)
+    if @jobable.col_sep.present?
+      case @jobable.quote_char
+        when "1"
+          options[:quote_char] =  "\x0"
+        when "2"
+          options[:quote_char] =  "\""
+      end
+    end
+
+    if @jobable.col_sep.present?
+      case @jobable.col_sep
+        when "1"
+          options[:col_sep] = ";"
+        when "2"
+          options[:col_sep] = "\t"
+        when "3"
+          options[:col_sep] = ","          
+      end
+    end
+
+
+    #options[:row_sep] = "\r\n"
+
+    FasterCSV.foreach(supplier_price.path, options)  do |row|
       #puts row
       if(
         (@jobable.first.present? ? row[0] =~ Regexp.new(@jobable.first) : true) &&
