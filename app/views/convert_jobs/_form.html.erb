@@ -11,4 +11,11 @@
 <% end %>
 
 <%= f.enum_select :convert_method  %>
+<br /><br />
+Используется только для csv
+<br />
+<%= f.enum_select :col_sep %>
+<br />
+<%= f.enum_select :encoding %>
+
 <%= f.buttons %>

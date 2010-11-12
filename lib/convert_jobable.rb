@@ -1,4 +1,5 @@
 class ConvertJobable < AbstractJobber
+
   def perform
     #unpack_class = (@jobable.receiveable.type.to_s.split(/Receive/).first + "Receiver").classify.constantize
     #receiver = receiver_class.new(@job, @jobable, @jobable.receiveable, @optional)
@@ -9,26 +10,47 @@ class ConvertJobable < AbstractJobber
 
     #puts @jobable.convert_method
     case @jobable.convert_method.to_s
+      when /_csv_encode_/
+        remote_file = RemoteFile.new(supplier_price.path)
+
+        encode(@jobable.encoding, supplier_price.path.shellescape, remote_file.path.shellescape)
+
+
+        md5 = Digest::MD5.file(remote_file.path).hexdigest
+        wc_stat = `wc #{remote_file.path.to_s.shellescape}`
+
+        remote_file.original_filename = File.basename(supplier_price.original_filename)
+
+        attachment = SupplierPrice.new(:attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
+        attachment.supplier = @job.supplier
+        attachment.job_code = @job.job_code
+        attachment.job_id = @job.id
+        attachment.save
+
+        retval << attachment.id
+
+        remote_file.unlink
+        
       when /csv_normalize_new_line/
           #puts supplier_price.original_filename
           remote_file = RemoteFile.new(supplier_price.path)
           remote_file2 = RemoteFile.new(supplier_price.path)
 
-
           file = File.new(supplier_price.path, 'r')
           file.each_line("\n") do |row|
             row.gsub!("\"", "")
             unless row.empty?
-                remote_file.write( row.split("\t").collect(&:strip).to_csv )
+                remote_file.write(row.split(eval("\"#{@jobable.col_sep.to_s}\"")).collect(&:strip).to_csv )
             else
               next
             end
           end
 
           # wanna street magic?
-          source_encoding = `enca -L ru #{remote_file.path.shellescape} -i`
-          `iconv -f #{source_encoding} -t utf-8 #{remote_file.path.shellescape} > #{remote_file2.path.shellescape}`
+          # source_encoding = `enca -L ru #{remote_file.path.shellescape} -i`
+          # suxx
 
+          encode(@jobable.encoding, remote_file.path.shellescape, remote_file2.path.shellescape)
 
           md5 = Digest::MD5.file(remote_file2.path).hexdigest
           wc_stat = `wc #{remote_file2.path.to_s.shellescape}`
@@ -118,4 +140,12 @@ class ConvertJobable < AbstractJobber
 
   end
 
+  private
+
+  def encode(encoding, source, destination)
+    `iconv -f #{encoding} -t utf-8 #{source} > #{destination}`
+    if $?.to_i != 0
+      raise 'Ошибка перекодирования в iconv вероятно входная кодировка выставлена неверно, id задачи ' + @job.id.to_s
+    end
+  end
 end

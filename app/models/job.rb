@@ -15,6 +15,7 @@ class Job < ActiveRecord::Base
     NOT_OK = "<div style='background: red'>Дочерние задачи вернули отрицательный статус</div>"
     LOCKED = "Находится в очереди на выполнение или выполняется"
     NOT_OBSERVED = "Не наблюдается"
+    LOCKED = "<div style='background: yellow'>Залочена</div>"
     OK = "Ок"
 
   end
@@ -54,6 +55,10 @@ class Job < ActiveRecord::Base
   end
 
   def critical
+    if locked
+      return Status::LOCKED
+    end
+    
     if (seconds_between_jobs.blank? || seconds_working.blank?)
       return Status::NOT_OBSERVED
     end
