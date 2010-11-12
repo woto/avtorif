@@ -7,14 +7,6 @@ class FilterJobable < AbstractJobber
     options = Hash.new
     #puts @jobable.quote_char
     #puts eval(@jobable.quote_char)
-    if @jobable.col_sep.present?
-      case @jobable.quote_char
-        when "1"
-          options[:quote_char] =  "\x0"
-        when "2"
-          options[:quote_char] =  "\""
-      end
-    end
 
     if @jobable.col_sep.present?
       case @jobable.col_sep
@@ -24,6 +16,15 @@ class FilterJobable < AbstractJobber
           options[:col_sep] = "\t"
         when "3"
           options[:col_sep] = ","
+      end
+    end
+
+    if @jobable.col_sep.present?
+      case @jobable.quote_char
+        when "1"
+          options[:quote_char] =  "\x0"
+        when "2"
+          options[:quote_char] =  "\""
       end
     end
 

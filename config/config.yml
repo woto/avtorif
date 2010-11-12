@@ -1,9 +1,9 @@
 defaults: &defaults
-  ftp_timeout: 3600
-  smb_timeout: 3600
-  http_timeout: 3600
-  folder_timeout: 3600
-  emex_timeout: 3600
+  ftp_timeout: 36000000
+  smb_timeout: 36000000
+  http_timeout: 36000000
+  folder_timeout: 36000000
+  emex_timeout: 36000000
   max_emails: 10000
   emex_login: 14616
   emex_password: 2b0ffb38
