@@ -49,7 +49,9 @@ class ConvertJobable < AbstractJobber
           # wanna street magic?
           # source_encoding = `enca -L ru #{remote_file.path.shellescape} -i`
           # suxx
-
+          remote_file.flush
+          remote_file2.flush
+          
           encode(@jobable.encoding, remote_file.path.shellescape, remote_file2.path.shellescape)
 
           md5 = Digest::MD5.file(remote_file2.path).hexdigest
