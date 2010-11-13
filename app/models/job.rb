@@ -13,10 +13,10 @@ class Job < ActiveRecord::Base
     SECONDS_BETWEEN_JOBS_FAIL = "<div style='background: red'>Помещение в очередь не осуществилось в установленный срок</div>"
     SECONDS_WORKING_FAIL = "<div style='background: red'>Выполнение задачи не уложилось в установленный срок</div>"
     NOT_OK = "<div style='background: red'>Дочерние задачи вернули отрицательный статус</div>"
-    LOCKED = "Находится в очереди на выполнение или выполняется"
+    LOCKED = "<div style='background: yellow'>Находится в очереди на выполнение или выполняется</div>"
     NOT_OBSERVED = "Не наблюдается"
-    LOCKED = "<div style='background: yellow'>Залочена</div>"
     OK = "Ок"
+    DISABLED = "Отключена"
 
   end
 
@@ -55,6 +55,10 @@ class Job < ActiveRecord::Base
   end
 
   def critical
+    if !active
+      return Status::DISABLED
+    end
+    
     if locked
       return Status::LOCKED
     end

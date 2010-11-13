@@ -101,9 +101,9 @@ class JobsController < ApplicationController
   end
 
   def start_all
-    jobs = Job.all(:conditions => {:jobable_type => 'ReceiveJob'})
+    jobs = Job.all(:conditions => "jobable_type = 'ReceiveJob' AND next_start IS NOT NULL AND active = 1")
     jobs.each do |job|
-      JobWalker.new.start_job(job)
+      JobWalker.new.start_job(job, :force=>true)
     end
 
     redirect_to(suppliers_path)

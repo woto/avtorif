@@ -1,36 +1,5 @@
 <h1>Editing http_receive</h1>
 
-<% form_for(@http_receive) do |f| %>
-  <%= f.error_messages %>
+<%= render 'form' %>
 
-  <p>
-    <%= f.label :server %><br />
-    <%= f.text_field :server %>
-  </p>
-  <p>
-    <%= f.label :port %><br />
-    <%= f.text_field :port %>
-  </p>
-  <p>
-    <%= f.label :path %><br />
-    <%= f.text_field :path %>
-  </p>
-  <p>
-    <%= f.label :login %><br />
-    <%= f.text_field :login %>
-  </p>
-  <p>
-    <%= f.label :password %><br />
-    <%= f.text_field :password %>
-  </p>
-  <p>
-    <%= f.label :ssl %><br />
-    <%= f.text_field :ssl %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
-<% end %>
-
-<%= link_to 'Show', @http_receive %> |
-<%= link_to 'Back', http_receives_path %>
+<%= link_to 'Back', supplier_jobs_path(Job.find(params[:job_id]).supplier) %>

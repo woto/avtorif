@@ -28,7 +28,7 @@ gem 'delayed_job', :git => 'git://github.com/collectiveidea/delayed_job.git', :r
 # Use unicorn as the web server
 # gem 'unicorn'
 
-gem 'roo', :git => "http://github.com/hmcgowan/roo.git"
+gem 'roo', :git => "git@github.com:woto/roo.git"
   gem 'rubyzip'
   gem 'spreadsheet'
   gem 'google-spreadsheet-ruby'
