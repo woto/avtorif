@@ -13,7 +13,7 @@ class ConvertJobable < AbstractJobber
       when /_csv_encode_/
         remote_file = RemoteFile.new(supplier_price.path)
 
-        encode(@jobable.encoding, supplier_price.path.shellescape, remote_file.path.shellescape)
+        encode(@jobable.encoding_in, @jobable.encoding_out, supplier_price.path.shellescape, remote_file.path.shellescape)
 
 
         md5 = Digest::MD5.file(remote_file.path).hexdigest
@@ -52,7 +52,7 @@ class ConvertJobable < AbstractJobber
           remote_file.flush
           remote_file2.flush
           
-          encode(@jobable.encoding, remote_file.path.shellescape, remote_file2.path.shellescape)
+          encode(@jobable.encoding_in, @jobable.encoding_out, remote_file.path.shellescape, remote_file2.path.shellescape)
 
           md5 = Digest::MD5.file(remote_file2.path).hexdigest
           wc_stat = `wc #{remote_file2.path.to_s.shellescape}`
@@ -144,8 +144,17 @@ class ConvertJobable < AbstractJobber
 
   private
 
-  def encode(encoding, source, destination)
-    `iconv -f #{encoding} -t utf-8 #{source} > #{destination}`
+  def encode(encoding_in, encoding_out,  source, destination)
+
+    if encoding_in.present?
+      encoding_in = "-f #{encoding_in}"
+    end
+
+    if encoding_out.present?
+      encoding_out = "-t #{encoding_out}"
+    end
+
+    `iconv #{encoding_in} #{encoding_out} #{source} > #{destination}`
     if $?.to_i != 0
       raise 'Ошибка перекодирования в iconv вероятно входная кодировка выставлена неверно, id задачи ' + @job.id.to_s
     end

@@ -11,11 +11,22 @@
 <% end %>
 
 <%= f.enum_select :convert_method  %>
-<br /><br />
+<hr/>
 Используется только для csv
+
+<br/>
+Разделитель столбцов
 <br />
 <%= f.enum_select :col_sep %>
+
+<br/>
+Входная кодировка
 <br />
-<%= f.enum_select :encoding %>
+<%= f.enum_select :encoding_in %>
+
+<br/>
+Выходная кодировка
+<br />
+<%= f.enum_select :encoding_out %>
 
 <%= f.buttons %>

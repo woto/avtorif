@@ -15,11 +15,22 @@ class ConvertJob < ActiveRecord::Base
     ' '
   ], :nil=>true
 
-  enum_attr :encoding, [
+  enum_attr :encoding_in, [
     'CP1251',
+    'CP1252',
     'KOI8-R',
     'CP866',
-    'UTF-8'
+    'UTF-8',
+    ' '
+  ]
+
+  enum_attr :encoding_out, [
+    'CP1251',
+    'CP1252',
+    'KOI8-R',
+    'CP866',
+    'UTF-8',
+    ' '
   ]
 
   validates_presence_of :convert_method
