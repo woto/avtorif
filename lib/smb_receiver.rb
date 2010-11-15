@@ -30,6 +30,9 @@ class SmbReceiver < AbstractReceiver
         file =~ Regexp.new(eval(@job.file_mask)) }
 
       retval = Array.new()
+
+      group_code = 'r' + Time.now.to_s
+      
       files.each do |file|
 
         #TODO it's stupid, sorry
@@ -62,7 +65,7 @@ class SmbReceiver < AbstractReceiver
         wc_stat = `wc #{remote_file.path.to_s.shellescape}`
 
         if (@optional.present? && @optional[:force]) || SupplierPrice.find(:first, :conditions => ['md5 = ? AND supplier_id = ?',  md5, @job.supplier.id]).nil?
-          attachment = SupplierPrice.new(:group_code => Time.now.to_s, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
+          attachment = SupplierPrice.new(:group_code => group_code, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
           attachment.supplier = @job.supplier
           attachment.job_code = @job.job_code
           attachment.job_id = @job.id
