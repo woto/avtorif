@@ -39,8 +39,13 @@ ActionController::Routing::Routes.draw do |map|
   #map.new_supplier_job_supplier_price '/suppliers/:supplier_id/job/:id/supplier_price/create/', :controller => 'SupplierPrices', :action => 'create'
 
   map.resources :suppliers do |sup|
-    sup.resources :jobs, :collection => {:start_all => :get}, :member => {:start => :get} do |job|
-    job.resources :supplier_prices 
+    sup.resources :supplier_prices, :collection => {:destroy_by_supplier => :delete}
+
+    sup.resources :jobs, :collection => {
+            :start_all => :get,
+            :start_by_supplier => :get
+    }, :member => {:start => :get} do |job|
+    job.resources :supplier_prices
     job.resources :import_jobs
     job.resources :receive_jobs
     job.resources :filter_jobs

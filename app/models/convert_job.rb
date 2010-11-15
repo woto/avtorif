@@ -21,7 +21,8 @@ class ConvertJob < ActiveRecord::Base
     'KOI8-R',
     'CP866',
     'UTF-8',
-    ' '
+    'UCS-2LE',
+    'AUTO'
   ]
 
   enum_attr :encoding_out, [
@@ -30,7 +31,8 @@ class ConvertJob < ActiveRecord::Base
     'KOI8-R',
     'CP866',
     'UTF-8',
-    ' '
+    'UCS-2LE',    
+    'AUTO'
   ]
 
   validates_presence_of :convert_method

@@ -1,5 +1,7 @@
 <h1>Listing attachments</h1>
 
+<br/><%= will_paginate @attachments %><br/>
+
 <table>
   <tr>
     <th>attachment file name</th>
@@ -31,5 +33,7 @@
 </table>
 
 <br />
+
+<br/><%= will_paginate @attachments %><br/>
 
 <%= link_to 'New attachment', new_supplier_price_path %>

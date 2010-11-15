@@ -100,4 +100,26 @@
   </p>
 <% end %>
 
+<pre>
+  case @jobable.col_sep
+    when "1"
+      options[:col_sep] = ";"
+    when "2"
+      options[:col_sep] = "\t"
+    when "3"
+      options[:col_sep] = ","
+  end
+end
+
+if @jobable.col_sep.present?
+  case @jobable.quote_char
+    when "1"
+      options[:quote_char] =  "\x0"
+    when "2"
+      options[:quote_char] =  "\""
+  end
+end
+  
+</pre>
+
 <%= link_to 'Back', filter_jobs_path %>

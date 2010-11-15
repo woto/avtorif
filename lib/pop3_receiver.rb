@@ -8,6 +8,8 @@
     else
       Net::POP3.disable_ssl
     end
+
+    group_code = 'r' + Time.now.to_s
     
     Net::POP3.start(@receiver.server, @receiver.port, @receiver.login, @receiver.password) do |pop|
       # pop.set_debug_output $stderr
@@ -36,7 +38,7 @@
             
             if (@optional.present? && @optional[:force]) || SupplierPrice.find(:first, :conditions => ['md5 = ? AND supplier_id = ?',  md5, @receiver.receive_job.job.supplier.id]).nil?
 
-              attachment = SupplierPrice.new(:attachment => attachment, :md5 => md5, :email_id => email_id)
+              attachment = SupplierPrice.new(:group_code => group_code, :attachment => attachment, :md5 => md5, :email_id => email_id)
               attachment.supplier = @receiver.receive_job.job.supplier
               attachment.job_code = @receiver.receive_job.job.job_code
               attachment.job_id = @receiver.receive_job.job.id

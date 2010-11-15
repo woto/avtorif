@@ -2,7 +2,7 @@ class SupplierPricesController < ApplicationController
   # GET /supplier_prices
   # GET /supplier_prices.xml
   def index
-    @attachments = SupplierPrice.all(:order => "id DESC")
+    @attachments = SupplierPrice.paginate(:page => params[:page], :order => "id DESC")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -128,5 +128,14 @@ class SupplierPricesController < ApplicationController
       format.html { redirect_to(supplier_job_path(params[:supplier_id], params[:job_id])) }
       format.xml  { head :ok }
     end
+  end
+
+  def destroy_by_supplier
+    SupplierPrice.destroy_all(["supplier_id = ?", params[:supplier_id]])
+
+    respond_to do |format|
+      format.html { redirect_to(supplier_path(params[:supplier_id])) }
+      format.xml  { head :ok }
+    end    
   end
 end

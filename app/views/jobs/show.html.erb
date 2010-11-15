@@ -60,7 +60,10 @@ scope = scope.scoped :conditions => {:supplier_id => params['supplier_id']} if p
 
   <% end %>
 </p>
-
+<p>
+  <b>Job</b>
+  <%=h link_to @job.try(:title), supplier_job_path(@job.supplier, @job) %>
+</p>
 <p>
   <b>Jobable:</b>
   <%= link_to("Настройки #{@job.jobable.class.to_s}", edit_polymorphic_path([@job.supplier, @job, @job.jobable])) %>  
@@ -111,7 +114,7 @@ scope = scope.scoped :conditions => {:supplier_id => params['supplier_id']} if p
 <b>Attachments:</b>
   <table style="width: 100%">
   <% SupplierPrice.all(:order => 'id DESC', :conditions => {:job_id => @job.id}).each do |sp| %>
-    <tr><td>
+    <tr style="background: #<%= Digest::MD5.hexdigest(sp.group_code.to_s)[0...6] if sp.group_code.present? %>"><td>
     <%= link_to(sp.attachment_file_name, supplier_price_path(sp.id)) %> |
     <%= link_to "Download", sp.attachment.url(:original, false) %> |
     <%= link_to 'Destroy', supplier_job_supplier_price_path(params[:supplier_id], params[:id], sp), :confirm => 'Are you sure?', :method => :delete %> |

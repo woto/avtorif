@@ -8,8 +8,9 @@ module ApplicationHelper
       if controller =~ /_controller/ &&
               !(controller =~ /application/) &&
               !(controller =~ /job/) &&
-              !(controller =~ /check_receives/)
-              !(controller =~ /repeats/)
+              !(controller =~ /check_receives/) &&
+              !(controller =~ /repeats/) &&
+              !(controller =~ /supplier_prices/)
         cont << link_to(controller.camelize.gsub("Controller.rb",""), {:controller => controller.camelize.gsub("Controller.rb","").tableize})
       end
     end

@@ -21,6 +21,8 @@ class SmbReceiver < AbstractReceiver
         end
       end
 
+      group_code = 'r' + Time.now.to_s
+
       #TODO сделать каким-то образом проверку на eval
       files = files.select { |file|
         file != '.' and
@@ -60,7 +62,7 @@ class SmbReceiver < AbstractReceiver
         wc_stat = `wc #{remote_file.path.to_s.shellescape}`
 
         if (@optional.present? && @optional[:force]) || SupplierPrice.find(:first, :conditions => ['md5 = ? AND supplier_id = ?',  md5, @job.supplier.id]).nil?
-          attachment = SupplierPrice.new(:attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
+          attachment = SupplierPrice.new(:group_code => Time.now.to_s, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
           attachment.supplier = @job.supplier
           attachment.job_code = @job.job_code
           attachment.job_id = @job.id

@@ -91,17 +91,29 @@ class JobsController < ApplicationController
   end
 
   def start
-    @job = Job.find(:first, :conditions => {:jobable_type => 'ReceiveJob', :id => params[:id]})
+    @job = Job.find(:first, :conditions => {:jobable_type => 'ReceiveJob', :active => '1', :id => params[:id]})
     if(!@job)
       flash[:notice] = "Извините, насильно можно запустить только задачу приема"
     else
       JobWalker.new.start_job(@job, :force => params[:force])
-      redirect_to(supplier_jobs_path(@job.supplier.id))
     end
+    redirect_to(supplier_jobs_path(params[:supplier_id]))    
   end
 
   def start_all
-    jobs = Job.all(:conditions => "jobable_type = 'ReceiveJob' AND next_start IS NOT NULL AND active = 1")
+    jobs = Job.all(:conditions => "jobable_type = 'ReceiveJob' AND active = 1 AND next_start IS NOT NULL AND active = 1")
+    jobs.each do |job|
+      JobWalker.new.start_job(job, :force=>true)
+    end
+
+    redirect_to(suppliers_path)
+  end
+
+  def start_by_supplier
+    jobs = Job.all(:conditions => ["jobable_type = 'ReceiveJob' AND next_start IS NOT NULL AND active = 1 AND supplier_id = ?", params[:supplier_id]])
+    if(jobs.size)
+      flash[:notice] = "Задачи поставщика успешно запущены"
+    end
     jobs.each do |job|
       JobWalker.new.start_job(job, :force=>true)
     end

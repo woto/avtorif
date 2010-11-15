@@ -12,6 +12,8 @@
     <th></th>
     <th></th>
     <th></th>
+    <th></th>
+    <th></th>
   </tr>
 
 <% @suppliers.each do |supplier| %>
@@ -26,6 +28,8 @@
     <td><%= link_to 'Show', supplier %></td>
     <td><%= link_to 'Edit', edit_supplier_path(supplier) %></td>
     <td><%= link_to 'Destroy', supplier, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Destroy supplier prices', destroy_by_supplier_supplier_supplier_prices_path(supplier.id), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Start supplier jobs', start_by_supplier_supplier_jobs_path(supplier.id) %></td>
   </tr>
 <% end %>
 </table>

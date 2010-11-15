@@ -14,7 +14,7 @@ require 'date'
 class JobWalker
 
   def call
-    #jobs = Job.all(:conditions => {:active => true})
+    jobs = Job
     #logger.error jobs.collect{|job| job.title}
 
     jobs.active.each do |job|
@@ -61,8 +61,8 @@ class JobWalker
       #jobber = jobber_class.new(concrete_job)
       #Delayed::Job.enqueue ReceiveJobber.new(ImportJob.first)
 
-      #Delayed::Job.enqueue jobber_class.new(job, job.jobable, optional)
-      jobber_class.new(job, job.jobable, optional).perform
+      Delayed::Job.enqueue jobber_class.new(job, job.jobable, optional)
+      #jobber_class.new(job, job.jobable, optional).perform
 
       #rescue => e
       #  return

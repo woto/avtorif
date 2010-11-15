@@ -13,7 +13,7 @@ class Job < ActiveRecord::Base
     SECONDS_BETWEEN_JOBS_FAIL = "<div style='background: red'>Помещение в очередь не осуществилось в установленный срок</div>"
     SECONDS_WORKING_FAIL = "<div style='background: red'>Выполнение задачи не уложилось в установленный срок</div>"
     NOT_OK = "<div style='background: red'>Дочерние задачи вернули отрицательный статус</div>"
-    LOCKED = "<div style='background: yellow'>Находится в очереди на выполнение или выполняется</div>"
+    LOCKED = "Находится в очереди на выполнение или выполняется"
     NOT_OBSERVED = "Не наблюдается"
     OK = "Ок"
     DISABLED = "Отключена"
@@ -22,7 +22,7 @@ class Job < ActiveRecord::Base
 
   cattr_reader :per_page
   @@per_page = 100
-  has_many :prices
+  has_many :prices, :dependent => :destroy
 
   has_and_belongs_to_many :repeats
 
@@ -32,7 +32,7 @@ class Job < ActiveRecord::Base
   belongs_to :supplier
   belongs_to :jobable, :polymorphic => true
 
-  has_many :childs, :class_name => "Job", :foreign_key => "job_id"
+  has_many :childs, :class_name => "Job", :foreign_key => "job_id", :dependent => :destroy
   named_scope :active, {:conditions => ["active = ?", 1]}
   
   belongs_to :parent, :class_name => "Job", :foreign_key => "job_id"
