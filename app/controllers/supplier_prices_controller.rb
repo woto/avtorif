@@ -44,7 +44,14 @@ class SupplierPricesController < ApplicationController
     begin
       md5 = Digest::MD5.file(params[:supplier_price][:attachment].path).hexdigest
     rescue
-      flash[:notice] = "Вы не выбрали файл"
+      redirect_to(supplier_job_path(params[:supplier_id], params[:job_id]), :notice => 'Вы не выбрали файл')
+      return
+    end
+
+    job = Job.find(params[:job_id])
+    
+    unless params[:supplier_price][:attachment].original_filename =~ Regexp.new(eval(job.file_mask))
+      redirect_to(supplier_job_path(params[:supplier_id], params[:job_id]), :notice => 'Имя файла не подходит под регулярное выражение задачи')
       return
     end
 
@@ -56,10 +63,10 @@ class SupplierPricesController < ApplicationController
     if params[:force] || SupplierPrice.find(:first, :conditions => ['md5 = ? AND supplier_id = ?',  md5, params[:supplier_id]]).nil?
 
       respond_to do |format|
-        job = Job.find(params[:job_id])
-
+        group_code = 'r' + Time.now.to_s
         @attachment = SupplierPrice.new(params[:supplier_price])
         @attachment.md5 = md5
+        @attachment.group_code = group_code
         @attachment.wc_stat = wc_stat
         @attachment.supplier = job.supplier
         @attachment.job = job
