@@ -19,7 +19,7 @@ class FilterJobable < AbstractJobber
       end
     end
 
-    if @jobable.col_sep.present?
+    if @jobable.quote_char.present?
       case @jobable.quote_char
         when "1"
           options[:quote_char] =  "\x0"
