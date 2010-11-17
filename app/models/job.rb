@@ -79,7 +79,13 @@ class Job < ActiveRecord::Base
 
     
   end
-  
+
+def before_save
+  if self.repeats.size == 0
+    self.next_start = nil
+  end
+end
+
 =begin
   def after_save
     jw = JobWalker.new
@@ -91,7 +97,6 @@ end
 =end
 
 end
-
 
 public
 
@@ -109,7 +114,7 @@ def critical_tree(job)
     @critical_tree << job.critical
   end
 
-   z = (@critical_tree.dup).uniq
-   @critical_tree = Array.new
-   (z.size > 1) ? z - [Job::Status::NOT_OBSERVED, Job::Status::DISABLED] : z
+    z = (@critical_tree.dup).uniq
+    @critical_tree = Array.new
+    (z.size > 1) ? z - [Job::Status::NOT_OBSERVED, Job::Status::DISABLED] : z
 end

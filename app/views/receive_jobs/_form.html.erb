@@ -5,7 +5,7 @@
 <%= link_to "Получение через http", new_supplier_job_http_receive_path(params[:supplier_id], params[:job_id]) %><br />
 <%= link_to "Получение через samba", new_supplier_job_smb_receive_path(params[:supplier_id], params[:job_id]) %><br />
 <%= link_to "Получение через email", new_supplier_job_email_receive_path(params[:supplier_id], params[:job_id]) %><br />
-<%= link_to "Получение через локальную папку", new_supplier_job_folder_receive_path(params[:supplier_id], @receive_job.job) %><br />
+<%= link_to "Получение через локальную папку", new_supplier_job_folder_receive_path(params[:supplier_id], params[:job_id]) %><br />
 </p>
 
 <%

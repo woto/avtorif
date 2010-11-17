@@ -1,0 +1,81 @@
+<%
+   case params[:action]
+       when 'new', 'create'
+       url = supplier_jobs_path(params[:supplier_id], :job_id => params[:job_id])
+       when 'edit', 'update'
+       url = supplier_job_path(params[:supplier_id], params[:id], :job_id => params[:job_id])
+   end
+%>
+
+<% semantic_form_for(@job, :url => url) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :next_start %><br />
+    <%= f.datetime_select :next_start %>
+  </p>
+  <p>
+    <%= f.label :last_start %><br />
+    <%= f.datetime_select :last_start %>
+  </p>
+  <p>
+    <%= f.label :seconds_between_jobs %><br />
+    <%= f.text_field :seconds_between_jobs %>
+  </p>
+    86400 - сутки<br>
+    129600 - 1,5 суток<br>
+    172800 - 2 суток<br>
+    259200 - 3 суток<br>
+    345600 - 4 суток<br>
+  <p>
+    <%= f.label :seconds_working %><br />
+    <%= f.text_field :seconds_working %>
+  </p>
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :parent %><br />
+    <%= f.input :parent, :collection => Job.find(:all, :conditions => {:supplier_id => params[:supplier_id]}) %>
+  </p>
+
+    <!--
+  <p>
+    <%= f.label :jobable %><br />
+    <%= f.text_field :jobable %>
+  </p>
+    -->
+
+  <p>
+    <%= f.label :description %><br />
+    <%= f.input :description %>
+  </p>
+
+  <p>
+    <%= f.label :repeats %><br />
+    <input type="hidden" name="job[repeat_ids][]" value="">
+    <%= f.input :repeats %>
+  </p>
+  <p>
+    <%= f.label :job_code %><br />
+    <%= f.text_field :job_code %>
+  </p>
+  <p>
+    <%= f.label :file_mask %><br />
+    <%= f.text_field :file_mask %><br />
+    Для получения с HTTP нельзя указывать маску.
+  </p>
+
+  <p>
+    <%= f.label :locked %><br />
+    <%= f.check_box :locked %>
+  </p>
+  <p>
+    <%= f.label :active %><br />
+    <%= f.check_box :active %>
+  </p>
+  <p>
+    <%= f.buttons %>
+  </p>
+<% end %>

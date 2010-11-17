@@ -52,7 +52,7 @@ class JobsController < ApplicationController
 
     respond_to do |format|
       if @job.save
-        format.html { redirect_to(supplier_jobs_url(params[:supplier_id]), :notice => 'Job was successfully created.') }
+        format.html { redirect_to(params[:job][:job_id].present? ? supplier_job_path(params[:supplier_id], params[:job][:job_id]) : supplier_jobs_url(params[:supplier_id]), :notice => 'Job was successfully created.') }
         format.xml  { render :xml => @job, :status => :created, :location => @job }
       else
         format.html { render :action => "new" }
@@ -68,7 +68,7 @@ class JobsController < ApplicationController
     @job.last_finish = nil
     respond_to do |format|
       if @job.update_attributes(params[:job])
-        format.html { redirect_to(supplier_jobs_path(params[:supplier_id]), :notice => 'Job was successfully updated.') }
+        format.html { redirect_to(@job.parent.present? ? supplier_job_path(params[:supplier_id], @job.parent.id) : supplier_jobs_path(params[:supplier_id]), :notice => 'Job was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -81,11 +81,11 @@ class JobsController < ApplicationController
   # DELETE /jobs/1.xml
   def destroy
     @job = Job.find(params[:id])
-    supplier = @job.supplier
+    parent = @job.parent
     @job.destroy
 
     respond_to do |format|
-      format.html { redirect_to(supplier_jobs_url(supplier)) }
+      format.html { redirect_to(parent.present? ? supplier_job_path(params[:supplier_id], parent.id) : supplier_jobs_path(params[:supplier_id])) }
       format.xml  { head :ok }
     end
   end
