@@ -50,6 +50,7 @@ class JobWalker
 
       job.last_start = Time.zone.now
       job.locked = true
+      job.started_once = true
       job.save
       
       if job.jobable

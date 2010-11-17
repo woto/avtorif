@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101115105043) do
+ActiveRecord::Schema.define(:version => 20101117144045) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
@@ -226,6 +226,7 @@ ActiveRecord::Schema.define(:version => 20101115105043) do
     t.datetime "updated_at"
     t.string   "job_code"
     t.text     "description"
+    t.boolean  "started_once"
   end
 
   create_table "jobs_repeats", :id => false, :force => true do |t|

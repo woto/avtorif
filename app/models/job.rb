@@ -8,7 +8,8 @@ class Job < ActiveRecord::Base
   validates_presence_of :file_mask
   
   module Status
-    START_FAIL = "<div style='background: yellow'>Задача ни разу не была запущена</div><br/>"
+    STARTED_ONCE = "<div style='background: yellow'>Задача ни разу не была запущена с момента последнего изменения</div><br/>"
+    START_FAIL = "<div style='background: yellow'>ПРИДУМАТЬ КОД ВЫПОЛНЕНИЯ ЗАДАЧИ</div><br/>"
     FINISH_FAIL = "<div style='background: yellow'>Задача никогда не завершалась успешно</div><br/>"
     SECONDS_BETWEEN_JOBS_FAIL = "<div style='background: red'>Помещение в очередь не осуществилось в установленный срок</div><br/>"
     SECONDS_WORKING_FAIL = "<div style='background: red'>Выполнение задачи не уложилось в установленный срок</div><br/>"
@@ -42,7 +43,11 @@ class Job < ActiveRecord::Base
     if !active
       return Status::DISABLED
     end
-    
+
+    if !started_once
+      return Status::STARTED_ONCE
+    end
+
     if locked
       return Status::LOCKED
     end
@@ -79,7 +84,13 @@ class Job < ActiveRecord::Base
 
     
   end
-  
+
+def before_save
+  if self.repeats.size == 0
+    self.next_start = nil
+  end
+end
+
 =begin
   def after_save
     jw = JobWalker.new
@@ -91,7 +102,6 @@ end
 =end
 
 end
-
 
 public
 
@@ -109,7 +119,7 @@ def critical_tree(job)
     @critical_tree << job.critical
   end
 
-   z = (@critical_tree.dup).uniq
-   @critical_tree = Array.new
-   (z.size > 1) ? z - [Job::Status::NOT_OBSERVED, Job::Status::DISABLED] : z
+    z = (@critical_tree.dup).uniq
+    @critical_tree = Array.new
+    (z.size > 1) ? z - [Job::Status::NOT_OBSERVED, Job::Status::DISABLED] : z
 end
