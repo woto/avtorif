@@ -56,7 +56,7 @@ class JobWalker
       if job.jobable
         jobber_class = (job.jobable.class.to_s.split(/(.*?)Job/)[1] + "Jobable").classify.constantize
       else
-        return
+        raise 'Невозможно запустить задачу без Конкретной Задачи'
       end
 
       #jobber = jobber_class.new(concrete_job)
