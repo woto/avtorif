@@ -77,6 +77,7 @@ class SupplierPricesController < ApplicationController
 
           job.last_start = Time.zone.now
           job.last_finish = Time.zone.now
+          job.started_once = true
           job.save
           
           job_childs.each do |job_child|
