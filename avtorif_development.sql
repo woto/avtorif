@@ -19,9 +19,9 @@
 -- Current Database: `avtorif_development`
 --
 
-CREATE DATABASE /*!32312 IF NOT EXISTS*/ `avtorif_development` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `avtorif_production` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci */;
 
-USE `avtorif_development`;
+USE `avtorif_production`;
 
 --
 -- Table structure for table `analogues`

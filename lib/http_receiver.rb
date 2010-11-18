@@ -6,6 +6,10 @@ class HttpReceiver < AbstractReceiver
 
       http = Net::HTTP.new(@receiver.server, @receiver.port)
 
+      http.read_timeout=AppConfig.http_timeout
+      http.open_timeout=AppConfig.http_timeout
+
+
       if(@receiver.ssl)
         http.use_ssl = true
         http.verify_mode = OpenSSL::SSL::VERIFY_NONE
