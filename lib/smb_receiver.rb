@@ -1,7 +1,6 @@
 class SmbReceiver < AbstractReceiver
 
   def receive
-     
     Timeout.timeout(AppConfig.smb_timeout) do
       str_password = @receiver.password
       str_login = @receiver.login
@@ -10,8 +9,9 @@ class SmbReceiver < AbstractReceiver
       str_share = @receiver.share.to_s[/^\/*(.*?)\/*$/, 1]
       str_path = @receiver.path.to_s[/^\/*(.*?)\/*$/, 1]
       result = `smbclient \/\/#{str_server}\/#{str_share}\/ #{str_password} -U #{str_login} -p #{str_port} -c \"cd \\\"#{str_path}\\\"\; dir\;\"`
-      raise result if result.include?("NT_STATUS_LOGON_FAILURE") or result.include?("NT_STATUS_OBJECT_NAME_NOT_FOUND")
+      raise result if result.grep /NT_STATUS_BAD_NETWORK_NAME|NT_STATUS_LOGON_FAILURE|NT_STATUS_OBJECT_NAME_NOT_FOUND/
       files = result.split("\n")
+      puts files
       files.collect! do |line|
         begin
           # Ничего лучше я придумать не смог :\

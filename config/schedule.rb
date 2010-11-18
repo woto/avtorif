@@ -19,6 +19,7 @@ set :environment, :development
 # end
 
 every 1.minute do
+  require 'lib/job_walker'
   runner "JobWalker.new.call"
 end
 

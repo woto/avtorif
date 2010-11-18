@@ -71,3 +71,5 @@ gem 'formtastic'
 gem 'simple_form'
 gem 'whenever'
 gem 'rufus-scheduler'
+
+gem 'dynamic_form'
