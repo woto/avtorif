@@ -64,10 +64,12 @@ end
 
 group :development do
   gem 'ruby-debug-base'
-  gem 'ruby-debug-ide'
+#  gem 'ruby-debug-ide'
 end
                      
-gem 'formtastic'
+gem 'formtastic', '1.0.0.beta4'
 gem 'simple_form'
 gem 'whenever'
 gem 'rufus-scheduler'
+gem 'octopus', :git => 'git://github.com/tchandy/octopus.git', :branch => 'rails2'
+#gem 'httparty'
