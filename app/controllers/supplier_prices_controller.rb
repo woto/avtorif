@@ -42,7 +42,7 @@ class SupplierPricesController < ApplicationController
   def create
 
     begin
-      md5 = Digest::MD5.file(params[:supplier_price][:attachment].path).hexdigest
+      md5 = Digest::MD5.file(params[:supplier_price][:attachment].tempfile.path).hexdigest
     rescue
       redirect_to(supplier_job_path(params[:supplier_id], params[:job_id]), :notice => 'Вы не выбрали файл')
       return
@@ -55,7 +55,7 @@ class SupplierPricesController < ApplicationController
       return
     end
 
-    wc_stat = `wc #{params[:supplier_price][:attachment].path.to_s.shellescape}`
+    wc_stat = `wc #{params[:supplier_price][:attachment].tempfile.path.to_s.shellescape}`
 
     #@attachment = SupplierPrice.new(params[:attachment])
     #@attachment.md5 = Digest::MD5.hexdigest(File.read())
