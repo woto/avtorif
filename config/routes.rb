@@ -33,6 +33,10 @@ Avtorif::Application.routes.draw do
     member do
       get 'start'
     end
+    collection do
+      get 'start_all'
+      get 'start_by_supplier'
+    end
     
           resources :supplier_prices
       resources :import_jobs

@@ -8,3 +8,9 @@
 #   inflect.irregular 'person', 'people'
 #   inflect.uncountable %w( fish sheep )
 # end
+# sun of the bitch
+ActiveSupport::Inflector.inflections do |inflection|
+  inflection.irregular "receive", "receives"
+  #inflection.irregular "folder_receives", "folder_receives"
+  #inflection.irregular "folder_receives", "folder_receives"
+end

@@ -23,7 +23,7 @@ gem 'enumerated_attribute'
 gem 'mysql2'
 #gem 'sqlite3-ruby', :require => 'sqlite3'
 #gem 'spreadsheet'
-gem 'delayed_job', :git => 'git://github.com/collectiveidea/delayed_job.git', :ref => 'b983b7e5b9ca37260b2640f2b0a847f91a9a2d0f'
+gem 'delayed_job'
 
 # Use unicorn as the web server
 # gem 'unicorn'
