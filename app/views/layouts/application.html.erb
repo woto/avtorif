@@ -1,26 +1,12 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
-       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
-  <title>Prices: <%= controller.action_name %></title>
-  <%= stylesheet_link_tag 'scaffold' %>
+  <title>Avtorif</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
 </head>
 <body>
-
-<p>
-<%= link_to "Поставщики", suppliers_path %><br />
-<%= link_to "Принятые файлы", supplier_prices_path %><br />
-<%= link_to "Группы интервалов работы задач", repeats_path %><br />
-<%= link_to "Задачи приема без единого приема", check_receives_path %><br />
-<%= link_to "Стартануть насильно все задачи приема", start_all_jobs_path %> <br />
-</p>
-
-<div>
-    <%= pages.join(" ") %>
-</div>
-
-<p style="color: green"><%= notice %></p>
 
 <%= yield %>
 
