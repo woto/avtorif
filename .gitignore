@@ -1,4 +1,7 @@
+.bundle
+db/*.sqlite3
 log/*.log
+tmp/**/*
 log/*.pid
 tmp/**/*
 .idea
@@ -15,6 +18,6 @@ vendor/gems/gems
 vendor/gems/specifications
 vendor/gems/doc
 vendor/gems/environment.rb
-.bundle
 Gemfile.lock
 public/system
+
