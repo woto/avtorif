@@ -5,10 +5,8 @@ require 'rufus-scheduler'
 require 'time'
 require 'date'
 
-#require 'receive_jobber'
-
-#logger = RAILS_DEFAULT_LOGGER
-#logger.level = Logger::ERROR
+logger = Rails.logger
+logger.level = Logger::ERROR
 
 
 class JobWalker

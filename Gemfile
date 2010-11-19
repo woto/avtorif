@@ -1,7 +1,7 @@
-source :gemcutter
-#source 'http://rubygems.org'
+#source :gemcutter
+source 'http://rubygems.org'
 
-gem 'rails', '2.3.8'
+gem 'rails', '3.0.2'
 #gem 'actionmailer'
 #gem 'actionpack'
 #gem 'activeresource'
@@ -20,10 +20,10 @@ gem 'ar_fixtures'
 
 gem 'enumerated_attribute'
 
-gem 'mysql'
+gem 'mysql2'
 #gem 'sqlite3-ruby', :require => 'sqlite3'
 #gem 'spreadsheet'
-gem 'delayed_job', :git => 'git://github.com/collectiveidea/delayed_job.git', :ref => 'b983b7e5b9ca37260b2640f2b0a847f91a9a2d0f'
+gem 'delayed_job'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -54,7 +54,7 @@ gem 'nokogiri'
 # gem 'sqlite3-ruby', :require => 'sqlite3'
 # gem 'aws-s3', :require => 'aws/s3'
 
-gem 'exception_notification', :git => 'git://github.com/rails/exception_notification.git', :branch => '2-3-stable'
+gem 'exception_notification'
 
 # Bundle gems for certain environments:
 group :test do
@@ -63,13 +63,16 @@ group :test do
 end
 
 group :development do
+  gem 'ruby-debug'
   gem 'ruby-debug-base'
 #  gem 'ruby-debug-ide'
 end
                      
-gem 'formtastic', '1.0.0.beta4'
+gem 'formtastic'
 gem 'simple_form'
 gem 'whenever'
 gem 'rufus-scheduler'
-#gem 'octopus', :git => 'git://github.com/tchandy/octopus.git', :branch => 'rails2'
-#gem 'httparty'
+
+gem 'octopus'
+gem 'httparty'
+gem 'dynamic_form'
