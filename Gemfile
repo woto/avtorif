@@ -17,12 +17,12 @@ gem 'fastercsv'
 gem 'cap-recipes'
 gem 'ar_fixtures'
 #gem 'yaml_db', :git => 'git://github.com/ludicast/yaml_db.git', :branch => 'Rails2'
+gem 'yaml_db'
 
 gem 'enumerated_attribute'
 
 gem 'mysql2'
 #gem 'sqlite3-ruby', :require => 'sqlite3'
-#gem 'spreadsheet'
 gem 'delayed_job'
 
 # Use unicorn as the web server
@@ -41,7 +41,7 @@ gem 'mongrel'
 gem 'rake'
 gem 'rack'
 gem 'paperclip'
-gem 'will_paginate'
+gem 'will_paginate', :git => 'git://github.com/mislav/will_paginate.git', :branch => 'rails3'
 #gem 'mail'
 #gem 'tlsmail'
 
