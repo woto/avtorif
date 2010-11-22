@@ -4,58 +4,62 @@ class UnpackJobable < AbstractJobber
     #receiver = receiver_class.new(@job, @jobable, @jobable.receiveable, @optional)
     #self.optional = receiver.receive
     retval = Array.new()
-    supplier_price = SupplierPrice.find(@optional).attachment
-    
-    Dir.mktmpdir do |tempdir|
+    @optional.each do |opt|
 
-      case `file --mime #{supplier_price.path.shellescape}`
-        when /zip/
-          `unzip "#{supplier_price.path}" -d #{tempdir}`
-        when /rar/
-          `unrar e "#{supplier_price.path}" #{tempdir}`
-      end
+      supplier_price = SupplierPrice.find(opt).attachment
+      
+      Dir.mktmpdir do |tempdir|
 
-      Dir["#{tempdir}/*"].each do |file|
-        remote_file = File.new(file)
+        case `file --mime #{supplier_price.path.shellescape}`
+          when /zip/
+            `unzip "#{supplier_price.path}" -d #{tempdir}`
+          when /rar/
+            `unrar e "#{supplier_price.path}" #{tempdir}`
+        end
 
-        remote_file.instance_eval("
-          def original_filename()
-              \"#{File.basename(remote_file.path)}\"
-          end
+        Dir["#{tempdir}/*"].each do |file|
+          remote_file = File.new(file)
 
-          def content_type()
-            mime = `file --mime -br #{remote_file.path.shellescape.shellescape}`.strip
-            mime = mime.gsub(/^.*: */,\"\")
-            mime = mime.gsub(/;.*$/,\"\")
-            mime = mime.gsub(/,.*$/,\"\")
-            mime
-          end
-        ")
+          remote_file.instance_eval("
+            def original_filename()
+                \"#{File.basename(remote_file.path)}\"
+            end
 
-        md5 = Digest::MD5.file(file).hexdigest
-        wc_stat = `wc #{file.shellescape}`
+            def content_type()
+              mime = `file --mime -br #{remote_file.path.shellescape.shellescape}`.strip
+              mime = mime.gsub(/^.*: */,\"\")
+              mime = mime.gsub(/;.*$/,\"\")
+              mime = mime.gsub(/,.*$/,\"\")
+              mime
+            end
+          ")
 
-        #if SupplierPrice.find(:first, :conditions => ['md5 = ? AND supplier_id = ?',  md5, @job.supplier.id]).nil?
-          attachment = SupplierPrice.new(:group_code => 'u' + @optional.to_s, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
-          attachment.supplier = @job.supplier
-          attachment.job_code = @job.job_code
-          attachment.job_id = @job.id
-          attachment.save
+          md5 = Digest::MD5.file(file).hexdigest
+          wc_stat = `wc #{file.shellescape}`
 
-          retval << attachment.id
+          #if SupplierPrice.find(:first, :conditions => ['md5 = ? AND supplier_id = ?',  md5, @job.supplier.id]).nil?
+            attachment = SupplierPrice.new(:group_code => 'u' + @optional.to_s, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
+            attachment.supplier = @job.supplier
+            attachment.job_code = @job.job_code
+            attachment.job_id = @job.id
+            attachment.save
 
-          #@receiver.receive_job.job.childs.each do |child|
-          #  JobWalker.new.start_job(child, attachment.id)
+            retval << attachment.id
+
+            #@receiver.receive_job.job.childs.each do |child|
+            #  JobWalker.new.start_job(child, attachment.id)
+            #end
+
           #end
 
-        #end
+          #File.unlink remote_file.path
+          
+        end
 
-        #File.unlink remote_file.path
-        
       end
 
     end
-    
+
     self.optional = retval
     super    
   

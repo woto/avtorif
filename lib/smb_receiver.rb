@@ -31,8 +31,6 @@ class SmbReceiver < AbstractReceiver
 
       retval = Array.new()
 
-      group_code = 'r' + Time.now.to_s
-      
       files.each do |file|
 
         #TODO it's stupid, sorry

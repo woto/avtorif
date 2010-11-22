@@ -4,6 +4,7 @@
 class AbstractJobber
 
   attr_writer :optional
+  attr_reader :optional
 
   def failure(job)
     # https://github.com/collectiveidea/delayed_job hooks
@@ -27,8 +28,9 @@ class AbstractJobber
 
     #TODO Тут сделать вызов либо at_once, либо one_by_one 
     @job.childs.active.each do |job|
-      @optional.each do |opt|
-        JobWalker.new.start_job(job, @priority, opt)
+      #debugger
+      if @optional.size > 0
+        JobWalker.new.start_job(job, @priority, @optional)
       end
     end
     

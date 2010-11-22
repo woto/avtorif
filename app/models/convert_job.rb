@@ -21,6 +21,7 @@ class ConvertJob < ActiveRecord::Base
     'KOI8-R',
     'CP866',
     'UTF-8',
+    'UTF-16LE',
     'UCS-2LE',
     'AUTO'
   ]
@@ -31,6 +32,7 @@ class ConvertJob < ActiveRecord::Base
     'KOI8-R',
     'CP866',
     'UTF-8',
+    'UTF-16LE',
     'UCS-2LE',    
     'AUTO'
   ]

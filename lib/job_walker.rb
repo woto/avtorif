@@ -24,14 +24,17 @@ class JobWalker
   end
 
   def start_job(job, priority, optional = nil)
-      if optional.is_a?(Integer)
-        supplier_price = SupplierPrice.find(optional)
-        unless supplier_price.attachment.original_filename =~ Regexp.new(eval(job.file_mask))
-          puts job.id  
-          return
+      if optional.is_a?(Array)
+        grepped_optional = []
+        optional.each do |opt|
+          supplier_price = SupplierPrice.find(opt)
+          if supplier_price.attachment.original_filename =~ Regexp.new(eval(job.file_mask))
+            grepped_optional << supplier_price.id
+          end
         end
+      optional = grepped_optional
       end
-      
+
       begin
 
       nearest_next_time = nil
@@ -61,7 +64,7 @@ class JobWalker
       #Delayed::Job.enqueue ReceiveJobber.new(ImportJob.first)
 
       Delayed::Job.enqueue(jobber_class.new(job, job.jobable, priority, optional), priority)
-      #jobber_class.new(job, job.jobable, optional).perform
+      #jobber_class.new(job, job.jobable, priority, optional).perform
 
       #rescue => e
       #  return

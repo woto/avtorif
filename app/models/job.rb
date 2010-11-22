@@ -121,6 +121,5 @@ def critical_tree(job)
 
     z = (@critical_tree.dup).uniq
     @critical_tree = Array.new
-    #(z.size > 1) ? z - [Job::Status::NOT_OBSERVED, Job::Status::DISABLED, Job::] : z
-    z
+    ((z - [Job::Status::NOT_OBSERVED, Job::Status::DISABLED]).size > 1) ? z - [Job::Status::OK] : z-[Job::Status::NOT_OBSERVED]
 end

@@ -1,7 +1,5 @@
 class MiesController < ApplicationController
 
-  include ExceptionNotification::Notifiable
-  
   # GET /mies
   # GET /mies.xml
   def index
