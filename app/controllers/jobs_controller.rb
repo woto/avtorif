@@ -96,7 +96,7 @@ class JobsController < ApplicationController
     if(!@job)
       flash[:notice] = "Извините, насильно можно запустить только задачу приема"
     else
-      JobWalker.new.start_job(@job, :force => params[:force])
+      JobWalker.new.start_job(@job, 50, :force => params[:force])
     end
     redirect_to(supplier_jobs_path(params[:supplier_id]))    
   end
@@ -104,7 +104,7 @@ class JobsController < ApplicationController
   def start_all
     jobs = Job.all(:conditions => "jobable_type = 'ReceiveJob' AND active = 1 AND next_start IS NOT NULL AND active = 1")
     jobs.each do |job|
-      JobWalker.new.start_job(job, :force=>true)
+      JobWalker.new.start_job(job, 50, :force=>true)
     end
 
     redirect_to(suppliers_path)
@@ -116,7 +116,7 @@ class JobsController < ApplicationController
       flash[:notice] = "Задачи поставщика успешно запущены"
     end
     jobs.each do |job|
-      JobWalker.new.start_job(job, :force=>true)
+      JobWalker.new.start_job(job, 50, :force=>true)
     end
 
     redirect_to(suppliers_path)

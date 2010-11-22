@@ -54,7 +54,7 @@ gem 'nokogiri'
 # gem 'sqlite3-ruby', :require => 'sqlite3'
 # gem 'aws-s3', :require => 'aws/s3'
 
-gem 'exception_notification'
+gem 'exception_notification', :git => 'git://github.com/rails/exception_notification.git', :require => 'exception_notifier'
 
 # Bundle gems for certain environments:
 group :test do

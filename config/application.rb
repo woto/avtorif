@@ -40,5 +40,13 @@ module Avtorif
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+
+    config.middleware.use(
+      ::ExceptionNotifier,
+      :email_prefix => "Server-Price Error: ",
+      :sender_address => %w{robot@avtorif.ru},
+      :exception_recipients => %w{webmaster@avtorif.ru}
+    )
+
   end
 end

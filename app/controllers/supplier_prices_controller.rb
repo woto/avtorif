@@ -87,7 +87,7 @@ class SupplierPricesController < ApplicationController
             #Delayed::Job.enqueue ReceiveJobber.new(ImportJob.first)
 
             #Delayed::Job.enqueue jobber_class.new(job_child, job_child.jobable, @attachment.id)
-            JobWalker.new.start_job(job_child, @attachment.id)            
+            JobWalker.new.start_job(job_child, 50, @attachment.id)            
 
 
             #ijs = ImportJob.find(:all, :conditions => {:job => {:supplier_id => params[:attachment][:supplier_id]}}, :joins => "INNER JOIN import_jobs ij ON ij.id = jobs.jobable_id ")

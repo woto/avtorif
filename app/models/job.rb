@@ -109,17 +109,18 @@ def critical_tree(job)
   if !defined?(@critical_tree)
     @critical_tree = Array.new
   end
+  
+  @critical_tree << job.critical
 
   if job.childs.count > 0
     job.childs.active.each do |ch|
       @critical_tree << ch.critical
       return critical_tree(ch)
     end
-  else
-    @critical_tree << job.critical
   end
 
     z = (@critical_tree.dup).uniq
     @critical_tree = Array.new
-    (z.size > 1) ? z - [Job::Status::NOT_OBSERVED, Job::Status::DISABLED] : z
+    #(z.size > 1) ? z - [Job::Status::NOT_OBSERVED, Job::Status::DISABLED, Job::] : z
+    z
 end

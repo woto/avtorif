@@ -46,7 +46,7 @@
 
               @receiver.receive_job.job.childs.each do |child|
                 # а что если тут смотреть дочерние правила с фильтрами мыла?
-                JobWalker.new.start_job(child, attachment.id)
+                JobWalker.new.start_job(child, @priority, attachment.id)
               end
 
             end
