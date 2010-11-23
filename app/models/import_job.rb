@@ -15,4 +15,29 @@ class ImportJob < ActiveRecord::Base
   belongs_to :currency_weight, :class_name => 'Currency'
   belongs_to :delivery_type
 
+  validates_presence_of :import_method
+  validates_presence_of :currency_buy
+  validates_presence_of :currency_sell
+  #validates_presence_of :currency_weight
+
+  validates_presence_of :estimate_days
+  validates_presence_of :income_rate
+  validates_presence_of :retail_rate
+  validates_presence_of :income_price_colnum
+  validates_presence_of :catalog_number_colnum
+
+  validates_numericality_of :estimate_days, :greater_than_or_equal_to => 0, :less_than_or_equal_to => 1000
+  validates_numericality_of :retail_rate, :greater_than => 0, :less_than => 1000
+  validates_numericality_of :income_rate, :greater_than => 0, :less_than => 1000
+  validates_numericality_of :kilo_price, :greater_than_or_equal_to => 0, :less_than => 1000, :allow_nil => true
+  validates_numericality_of :weight_unavaliable_rate, :greater_than_or_equal_to => 0, :less_than => 1000, :allow_nil => true
+
+  validates_numericality_of :manufacturer_colnum, :greater_than_or_equal_to => 1, :less_than_or_equal_to => 100, :allow_nil => true
+  validates_numericality_of :catalog_number_colnum, :greater_than_or_equal_to => 1, :less_than_or_equal_to => 100
+  validates_numericality_of :title_colnum, :greater_than_or_equal_to => 1, :less_than_or_equal_to => 100, :allow_nil => true
+  validates_numericality_of :count_colnum, :greater_than_or_equal_to => 1, :less_than_or_equal_to => 100, :allow_nil => true
+  validates_numericality_of :income_price_colnum, :greater_than_or_equal_to => 1, :less_than_or_equal_to => 100
+  validates_numericality_of :external_id_colnum, :greater_than_or_equal_to => 1, :less_than_or_equal_to => 100, :allow_nil => true
+  validates_numericality_of :weight_colnum, :greater_than_or_equal_to => 1, :less_than_or_equal_to => 100, :allow_nil => true
+
 end

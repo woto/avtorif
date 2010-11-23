@@ -52,7 +52,7 @@ class PricesController < ApplicationController
             :kpp => '',
             :manufacturer => '',
             :margin => '',
-            :supplier => '',
+            #:supplier => '',
             :updated_at => ''
           )
 

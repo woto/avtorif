@@ -4,6 +4,9 @@ class FilterJobable < AbstractJobber
     @optional.each do |opt|
       supplier_price = SupplierPrice.find(opt).attachment
       remote_file = RemoteFile.new(@job.job_code)
+      if @job.job_code.blank? 
+        raise 'У задачи фильтрации должно быть имя!' 
+      end
       remote_file_name = @job.job_code
 
       options = Hash.new

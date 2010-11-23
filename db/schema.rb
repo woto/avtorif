@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101117144045) do
+ActiveRecord::Schema.define(:version => 20101123121303) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
@@ -191,7 +191,6 @@ ActiveRecord::Schema.define(:version => 20101117144045) do
     t.integer  "importable_id"
     t.string   "importable_type"
     t.string   "import_method"
-    t.string   "encoding"
     t.boolean  "presence"
     t.integer  "currency_buy_id"
     t.integer  "currency_sell_id"
@@ -207,6 +206,14 @@ ActiveRecord::Schema.define(:version => 20101117144045) do
     t.float    "weight_unavaliable_rate"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "manufacturer_colnum"
+    t.integer  "catalog_number_colnum"
+    t.integer  "title_colnum"
+    t.integer  "count_colnum"
+    t.integer  "multiplicity_colnum"
+    t.integer  "income_price_colnum"
+    t.integer  "weight_colnum"
+    t.integer  "external_id_colnum"
   end
 
   create_table "jobs", :force => true do |t|
@@ -220,7 +227,7 @@ ActiveRecord::Schema.define(:version => 20101117144045) do
     t.integer  "jobable_id"
     t.string   "jobable_type"
     t.integer  "supplier_id"
-    t.string   "file_mask"
+    t.string   "file_mask",            :default => ""
     t.boolean  "locked",               :default => false
     t.boolean  "active",               :default => true
     t.datetime "created_at"

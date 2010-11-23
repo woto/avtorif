@@ -15,15 +15,13 @@ class AbstractJobber
     @jobable = jobable
     @optional = optional
     @priority = priority
+    puts job.title.to_s + ' от ' + job.supplier.title
   end
 
   def perform
     #job = @jobable.job
-    #job.last_finish = Time.zone.now
     @job.last_finish = Time.zone.now
-    #job.locked = false
     @job.locked = false
-    #job.save
     @job.save
 
     #TODO Тут сделать вызов либо at_once, либо one_by_one 

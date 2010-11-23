@@ -59,7 +59,7 @@ class SupplierPricesController < ApplicationController
 
     #@attachment = SupplierPrice.new(params[:attachment])
     #@attachment.md5 = Digest::MD5.hexdigest(File.read())
-
+    debugger
     if params[:force] || SupplierPrice.find(:first, :conditions => ['md5 = ? AND supplier_id = ?',  md5, params[:supplier_id]]).nil?
 
       respond_to do |format|

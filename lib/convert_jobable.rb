@@ -88,7 +88,7 @@ class ConvertJobable < AbstractJobber
             md5 = Digest::MD5.file(remote_file.path).hexdigest
             wc_stat = `wc #{remote_file.path.to_s.shellescape}`
 
-            remote_file.original_filename = sheet
+            remote_file.original_filename = sheet + ".csv"
 
             attachment = SupplierPrice.new(:group_code => 'c' + @optional.to_s, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
             attachment.supplier = @job.supplier

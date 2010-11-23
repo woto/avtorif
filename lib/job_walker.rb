@@ -53,18 +53,12 @@ class JobWalker
       job.locked = true
       job.started_once = true
       job.save
-      
-      if job.jobable
+
+      if job.jobable.present?
         jobber_class = (job.jobable.class.to_s.split(/(.*?)Job/)[1] + "Jobable").classify.constantize
-      else
-        raise 'Невозможно запустить задачу без Конкретной Задачи'
+        Delayed::Job.enqueue(jobber_class.new(job, job.jobable, priority, optional), priority)
+        #jobber_class.new(job, job.jobable, priority, optional).perform
       end
-
-      #jobber = jobber_class.new(concrete_job)
-      #Delayed::Job.enqueue ReceiveJobber.new(ImportJob.first)
-
-      Delayed::Job.enqueue(jobber_class.new(job, job.jobable, priority, optional), priority)
-      #jobber_class.new(job, job.jobable, priority, optional).perform
 
       #rescue => e
       #  return

@@ -89,18 +89,12 @@ scope = scope.scoped :conditions => {:supplier_id => params['supplier_id']} if p
 <% semantic_form_for(SupplierPrice.new, :html => { :multipart => true }, :url => supplier_job_supplier_prices_path(params[:supplier_id], params[:id])) do |f| %>
   <%= f.error_messages %>
 
-  <p>
-    <%= f.input :attachment %>
-  </p>
+    <%= f.inputs :attachment %>
 
-  <p>
     <%= check_box_tag("force", value = "1", checked = false, options = {}) %>
     Force start? 
-  </p>
 
-  <p>
     <%= f.buttons %>
-  </p>
 <% end %>
 </div>
 <p>
