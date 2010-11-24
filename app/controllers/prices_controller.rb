@@ -8,86 +8,85 @@ class PricesController < ApplicationController
     #joe = Customer.new("Joe Smith", "123 Maple, Anytown NC", 12345)
 
     #@prices << Struct.new(:catalog_number => 'b')
-
-    Timeout.timeout(AppConfig.emex_timeout) do
-      begin
+    if(defined?(params[:OnlyOurWS]) && params[:OnlyOurWS] == "1")
+      Timeout.timeout(AppConfig.emex_timeout) do
         begin
-          FileUtils::mkdir(Rails.root.to_s + '/tmp/emex-prices/')
-        rescue Errno::EEXIST => e
-        end
-        response = Net::HTTP.post_form(URI.parse('http://ws.emex.ru/EmExService.asmx/FindDetailAdv'),
-                                  {'login'=>AppConfig.emex_login,
-                                   'password'=> AppConfig.emex_password,
-                                   'makeLogo' => 'true',
-                                   'detailNum' => params[:price][:catalog_number],
-                                   'findSubstitutes' => 'true'})
-        doc = ''
-
-        File.open(Rails.root.to_s + '/tmp/emex-prices/' + rand.to_s, 'w') do |f|
-          f.write(response.body)
+          response = Net::HTTP.post_form(URI.parse('http://ws.emex.ru/EmExService.asmx/FindDetailAdv'),
+                                    {'login'=>AppConfig.emex_login,
+                                     'password'=> AppConfig.emex_password,
+                                     'makeLogo' => 'true',
+                                     'detailNum' => params[:price][:catalog_number],
+                                     'findSubstitutes' => 'true'})
           doc = Nokogiri::XML(response.body)
-        end
 
-
-=begin
-        File.open('./' + '0.981295776905799', 'r') { |f|
-          doc = Nokogiri::XML(f)
-        }
-=end
-
-        detail_items = doc.children.children
-        detail_items.each do |z|
-          if z.blank?
-            next
-          end
-          p = Price.new(
-            :created_at => '',
-            :estimate_days => '',
-            :goods_id => '',
-            :id => '',
-            :initial_cost => '',
-            :inn => '',
-            :job_id => '',
-            :job_title => '',
-            :kpp => '',
-            :manufacturer => '',
-            :margin => '',
-            #:supplier => '',
-            :updated_at => ''
-          )
-
-          z.children.children.each do |c|
-
-            if c.blank?
+          detail_items = doc.children.children
+          detail_items.each do |z|
+            if z.blank?
               next
             end
+            p = Price.new(
+              :created_at => '',
+              :estimate_days => '',
+              :goods_id => '',
+              :id => '',
+              :initial_cost => '',
+              :inn => '',
+              :job_id => '',
+              :job_title => '',
+              :kpp => '',
+              :manufacturer => '',
+              :margin => '',
+              #:supplier => '',
+              :updated_at => ''
+            )
 
-            value = CGI.unescapeHTML(c.children.to_s)
+            z.children.children.each do |c|
 
-            p[(c.name.underscore + "-emex").to_sym] = value
-            p[:supplier] = "emex"
+              if c.blank?
+                next
+              end
 
-            case c.name
-              when /^DateChange$/
-                p[:created_at] = value
-                p[:updated_at] = value
-              when /^DetailNum$/
-                p[:catalog_number] = value
-              when /^Quantity$/
-                p[:count] = value
-              when /^DetailNameRus$/
-                p[:title] = value
-              when /^ResultPrice$/
-                p[:initial_cost] = value
+              value = CGI.unescapeHTML(c.children.to_s)
+
+              p[(c.name.underscore + "-emex").to_sym] = value
+              p[:inn] = 7716542310
+              p[:kpp] = 771601001
+              #p['supplier'] = 'emex'
+              p[:margin] = 1
+
+              case c.name
+                when /^DateChange$/
+                  p[:created_at] = value
+                  p[:updated_at] = value
+                when /^DetailNum$/
+                  p[:catalog_number] = value
+                when /^QuantityText$/
+                  p[:count] = value.gsub(/[><=]/, "").to_i
+                when /^DetailNameRus$/
+                  p[:title] = value
+                when /^ResultPrice$/
+                  p[:initial_cost] = value
+                  p[:result_cost] = value
+                when /^MakeName$/
+                  p[:manufacturer] = value.to_s
+                when /^DeliverTimeGuaranteed/
+                  p[:estimate_days] = value.to_s
+                when /^PriceDesc$/
+                  p[:supplier] = value
+                when /^PriceLogo$/
+                  p[:job_title] = value.to_s
+                when /^QuantityChangeDate$/
+                  p[:updated_at] = value.to_s
+              end
+
             end
             
-          end
-          
-          @prices.push p
+            @prices.push p
 
+          end
+        rescue Exception => e
+          raise e
         end
-      rescue Exception => e
-        raise e
       end
     end
     #puts res.body
