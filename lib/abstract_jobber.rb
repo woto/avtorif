@@ -15,7 +15,7 @@ class AbstractJobber
     @jobable = jobable
     @optional = optional
     @priority = priority
-    puts job.title.to_s + ' от ' + job.supplier.title
+    puts job.title + ' от ' + job.supplier.title
   end
 
   def perform
@@ -31,6 +31,8 @@ class AbstractJobber
         JobWalker.new.start_job(job, @priority, @optional)
       end
     end
+
+    puts "Завершили выполнение " + @job.title + " от " + @job.supplier.title
     
   end
 end

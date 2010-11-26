@@ -6,40 +6,40 @@
 </p>
 <br />
 
-  <%= f.inputs :currency_buy %>
-  <%= f.inputs :currency_sell %>
-  <%= f.inputs :currency_weight %>
+  <%= f.association :currency_buy %>
+  <%= f.association :currency_sell %>
+  <%= f.association :currency_weight %>
 
-  <%= f.inputs :presence %>
-  <%= f.inputs :visible_for_site %>
-  <%= f.inputs :visible_for_stock %>
-  <%= f.inputs :visible_for_shops %>
+  <%= f.input :presence %>
+  <%= f.input :visible_for_site %>
+  <%= f.input :visible_for_stock %>
+  <%= f.input :visible_for_shops %>
   <hr />
-  <%= f.inputs :estimate_days %>
+  <%= f.input :estimate_days %>
   Ожидаемое количество дней
   <hr />
-  <%= f.inputs :retail_rate %>
+  <%= f.input :retail_rate %>
   Розничный коэффициент
   <hr />
 
-   <%= f.inputs :income_rate %>
+   <%= f.input :income_rate %>
    Коэффициент, на который будет умножаться цена в прайсе (т.е. цена прихода)
    <hr />
 
-   <%= f.inputs :kilo_price %>
-  <%= f.inputs :weight_unavaliable_rate %>
-  <%= f.inputs :manufacturer_colnum %>
+   <%= f.input :kilo_price %>
+  <%= f.input :weight_unavaliable_rate %>
+  <%= f.input :manufacturer_colnum %>
   <hr />
-  <%= f.inputs :catalog_number_colnum %>
+  <%= f.input :catalog_number_colnum %>
   Каталожный номер детали
   <hr />
-  <%= f.inputs :title_colnum %>
-  <%= f.inputs :count_colnum %>
-  <%= f.inputs :weight_colnum %>
+  <%= f.input :title_colnum %>
+  <%= f.input :count_colnum %>
+  <%= f.input :weight_colnum %>
   <hr />
-  <%= f.inputs :income_price_colnum %>
+  <%= f.input :income_price_colnum %>
   Цена детали
   <hr />
-  <%= f.inputs :external_id_colnum %>
+  <%= f.input :external_id_colnum %>
 
-<%= f.buttons %>
+<%= f.submit 'Update' %>

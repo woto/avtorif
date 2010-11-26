@@ -20,7 +20,7 @@ class ImportJobable < AbstractJobber
             p.supplier_id = @job.supplier_id
             p.supplier = @job.supplier
             p.title = row[@jobable.title_colnum - 1] if @jobable.title_colnum.present?
-            p.count = row[@jobable.count_colnum - 1].gsub(',', '.').to_s.to_f if @jobable.count_colnum.present?
+            p.count = row[@jobable.count_colnum - 1].to_s if @jobable.count_colnum.present?
             p.initial_cost = row[@jobable.income_price_colnum - 1].to_s.gsub(',','.')
             p.result_cost = row[@jobable.income_price_colnum - 1].to_s.gsub(',', '.').to_f * @jobable.income_rate.to_s.gsub(',','.').to_f
             p.margin = @jobable.income_rate.to_s.gsub(',','.').to_f

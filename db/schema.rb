@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101123121303) do
+ActiveRecord::Schema.define(:version => 20101125105101) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
@@ -269,7 +269,7 @@ ActiveRecord::Schema.define(:version => 20101123121303) do
     t.integer  "supplier_id"
     t.string   "supplier"
     t.string   "title"
-    t.decimal  "count",                        :precision => 10, :scale => 0
+    t.string   "count"
     t.decimal  "initial_cost",                 :precision => 10, :scale => 3
     t.decimal  "result_cost",                  :precision => 10, :scale => 3
     t.decimal  "margin",                       :precision => 10, :scale => 3
@@ -281,6 +281,8 @@ ActiveRecord::Schema.define(:version => 20101123121303) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "prices", ["catalog_number"], :name => "catalog_number_IDX"
 
   create_table "receive_jobs", :force => true do |t|
     t.integer  "receiveable_id"
@@ -326,13 +328,34 @@ ActiveRecord::Schema.define(:version => 20101123121303) do
 
   create_table "suppliers", :force => true do |t|
     t.string   "title"
-    t.string   "inn",          :limit => 12
-    t.string   "kpp",          :limit => 9
+    t.string   "inn",                   :limit => 12
+    t.string   "kpp",                   :limit => 9
     t.string   "login"
     t.string   "password"
     t.string   "contact_info"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "title_en"
+    t.string   "title_full"
+    t.string   "okpo"
+    t.string   "okato"
+    t.string   "ogrn"
+    t.string   "legal_address"
+    t.string   "actual_address"
+    t.string   "bik_bank"
+    t.string   "bank_title"
+    t.string   "current_account"
+    t.string   "correspondent_account"
+    t.string   "buyer"
+    t.string   "seller"
+    t.string   "contract"
+    t.string   "fio_head"
+    t.string   "position_head"
+    t.string   "fio_buh"
+    t.string   "phone"
+    t.string   "fax"
+    t.string   "email"
+    t.string   "emaildocs"
   end
 
   create_table "transmissions", :force => true do |t|

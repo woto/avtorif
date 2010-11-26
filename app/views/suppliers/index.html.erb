@@ -3,6 +3,8 @@
 <table>
   <tr>
     <th>Title</th>
+    <th>Title En</th>   
+    <th>Title Full</th>   
     <th>Inn</th>
     <th>Kpp</th>
     <th>Login</th>
@@ -19,6 +21,8 @@
 <% @suppliers.each do |supplier| %>
   <tr>
     <td><%=h supplier.title %></td>
+    <td><%=h supplier.title_en %></td>
+    <td><%=h supplier.title_full %></td>
     <td><%=h supplier.inn %></td>
     <td><%=h supplier.kpp %></td>
     <td><%=h supplier.login %></td>
