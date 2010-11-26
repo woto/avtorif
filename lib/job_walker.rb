@@ -5,8 +5,8 @@ require 'rufus-scheduler'
 require 'time'
 require 'date'
 
-logger = Rails.logger
-logger.level = Logger::ERROR
+#logger = Rails.logger
+#logger.level = Logger::ERROR
 
 
 class JobWalker
@@ -37,31 +37,27 @@ class JobWalker
 
       begin
 
-      nearest_next_time = nil
-      min = nil
+        nearest_next_time = nil
+        min = nil
 
-      job.repeats.each do |repeat|
-        r = Rufus::CronLine.new(repeat.cron_string)
-        nearest_next_time = r.next_time(Time.zone.now)
-        if min.blank? or nearest_next_time < min
-          min = nearest_next_time
+        job.repeats.each do |repeat|
+          r = Rufus::CronLine.new(repeat.cron_string)
+          nearest_next_time = r.next_time(Time.zone.now)
+          if min.blank? or nearest_next_time < min
+            min = nearest_next_time
+          end
         end
-      end
-      job.next_start = min
+        job.next_start = min
+        job.save
 
-      job.last_start = Time.zone.now
-      job.locked = true
-      job.started_once = true
-      job.save
-
-      if job.jobable.present?
-        jobber_class = (job.jobable.class.to_s.split(/(.*?)Job/)[1] + "Jobable").classify.constantize
-        Delayed::Job.enqueue(jobber_class.new(job, job.jobable, priority, optional), priority)
-        #jobber_class.new(job, job.jobable, priority, optional).perform
-      end
+        if job.jobable.present?
+          jobber_class = (job.jobable.class.to_s.split(/(.*?)Job/)[1] + "Jobable").classify.constantize
+          Delayed::Job.enqueue(jobber_class.new(job, job.jobable, priority, optional), priority)
+          #jobber_class.new(job, job.jobable, priority, optional).perform
+        end
 
       #rescue => e
-      #  return
+        #return
       end
   end
 end

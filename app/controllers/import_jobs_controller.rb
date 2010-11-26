@@ -49,7 +49,7 @@ class ImportJobsController < ApplicationController
 
     respond_to do |format|
       if @import_job.save
-        format.html { redirect_to(@import_job, :notice => 'ImportJob was successfully created.') }
+        format.html { redirect_to(supplier_jobs_path(params[:supplier_id]), :notice => 'ImportJob was successfully created.') }
         format.xml  { render :xml => @import_job, :status => :created, :location => @import_job }
       else
         format.html { render :action => "new" }
@@ -65,7 +65,7 @@ class ImportJobsController < ApplicationController
 
     respond_to do |format|
       if @import_job.update_attributes(params[:import_job])
-        format.html { redirect_to(@import_job, :notice => 'ImportJob was successfully updated.') }
+        format.html { redirect_to(supplier_jobs_path(params[:supplier_id]), :notice => 'ImportJob was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
