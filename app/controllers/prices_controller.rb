@@ -11,6 +11,84 @@ class PricesController < ApplicationController
     if(defined?(params[:OnlyOurWS]) && params[:OnlyOurWS] == "1")
       Timeout.timeout(AppConfig.emex_timeout) do
         begin
+          response = Net::HTTP.post_form(URI.parse('http://62.5.214.110/partnersws/Service.asmx/SearchResultOneCurrencyXml'), 
+                                         {'sPartCode' => params[:price][:catalog_number], 
+                                           'sAuthCode' => '303190193312', 
+                                           'iReplaces' => '1', 
+                                           'sCurrency' => 'RUR'})
+#          response = Net::HTTP.post_form(URI.parse('http://ws.emex.ru/EmExService.asmx/FindDetailAdv'),
+#                                    {'login'=>AppConfig.emex_login,
+#                                     'password'=> AppConfig.emex_password,
+#                                     'makeLogo' => 'true',
+#                                     'detailNum' => params[:price][:catalog_number],
+#                                     'findSubstitutes' => 'true'})
+          doc = Nokogiri::XML(response.body)
+
+          detail_items = doc.children.children
+          detail_items.each do |z|
+            if z.blank?
+              next
+            end
+            p = Price.new(
+              :created_at => '',
+              :estimate_days => '',
+              :goods_id => '',
+              :id => '',
+              :initial_cost => '',
+              :inn => '',
+              :job_id => '',
+              :job_title => '',
+              :kpp => '',
+              :manufacturer => '',
+              :margin => '',
+              #:supplier => '',
+              :updated_at => ''
+            )
+
+            z.children.children.each do |c|
+
+              if c.blank?
+                next
+              end
+
+              value = CGI.unescapeHTML(c.children.to_s)
+
+              p[(c.name.underscore + "-a4c").to_sym] = value
+              p[:inn] = 1111111
+              p[:kpp] = 2222222
+              #p['supplier'] = 'emex'
+              p[:margin] = 1
+              #debugger
+              case c.name
+                when /^DateChange$/
+                  p[:created_at] = value
+                  p[:updated_at] = value
+                when /^DetailNum$/
+                  p[:catalog_number] = value
+                when /^QuantityText$/
+                  p[:count] = value.gsub(/[><=]/, "").to_i
+                when /^DetailNameRus$/
+                  p[:title] = value
+                when /^ResultPrice$/
+                  p[:initial_cost] = value
+                  p[:result_cost] = value
+                when /^MakeName$/
+                  p[:manufacturer] = value.to_s
+                when /^DeliverTimeGuaranteed/
+                  p[:estimate_days] = value.to_s
+                when /^PriceDesc$/
+                  p[:supplier] = value
+                when /^PriceLogo$/
+                  p[:job_title] = value.to_s
+                when /^QuantityChangeDate$/
+                  p[:updated_at] = value.to_s
+              end
+
+            end
+            
+            @prices.push p
+
+          end
           response = Net::HTTP.post_form(URI.parse('http://ws.emex.ru/EmExService.asmx/FindDetailAdv'),
                                     {'login'=>AppConfig.emex_login,
                                      'password'=> AppConfig.emex_password,

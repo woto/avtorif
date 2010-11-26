@@ -1,0 +1,4557 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfDetailItem xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://tempuri.org/">
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>1</GroupId>
+      <DetailId>80201679</DetailId>
+      <DetailNum>1YR6151930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>MF</MakeLogo>
+      <MakeName>Motorcraft</MakeName>
+      <bitOriginal>false</bitOriginal>
+      <Country>СОЕДИНЕННЫЕ ШТАТЫ</Country>
+      <CodeTNVED />
+      <DetailNameEng>PK BELT</DetailNameEng>
+      <DetailNameRus>Ремень зубчатый</DetailNameRus>
+      <DetailNameRusNoCust>Ремень зубчатый</DetailNameRusNoCust>
+      <PriceId>504</PriceId>
+      <PriceLogo>NPOL</PriceLogo>
+      <PriceDesc>Япония, заказ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-10-25T19:17:07.73</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>16</ADDays>
+      <DeliverTimeGuaranteed>30</DeliverTimeGuaranteed>
+      <DITPercent xsi:nil="true" />
+      <DDPercent xsi:nil="true" />
+      <MDPercent xsi:nil="true" />
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Япония</PriceCountry>
+      <PriceGroup>Original</PriceGroup>
+      <CalcDeliveryPercent>-1</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>1YR6151930</DetailNum>
+      <MakeLogo>MF</MakeLogo>
+      <PriceLogo>NPOL</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>3251.8700</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>1</GroupId>
+      <DetailId>80201679</DetailId>
+      <DetailNum>1YR6151930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>MF</MakeLogo>
+      <MakeName>Motorcraft</MakeName>
+      <bitOriginal>false</bitOriginal>
+      <Country>СОЕДИНЕННЫЕ ШТАТЫ</Country>
+      <CodeTNVED />
+      <DetailNameEng>PK BELT</DetailNameEng>
+      <DetailNameRus>Ремень зубчатый</DetailNameRus>
+      <DetailNameRusNoCust>Ремень зубчатый</DetailNameRusNoCust>
+      <PriceId>505</PriceId>
+      <PriceLogo>NPOT</PriceLogo>
+      <PriceDesc>Япония, заказ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-11-01T19:15:56.9</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>21</DestinationId>
+      <DestinationLogo>CNT</DestinationLogo>
+      <DestinationDesc>Контейнер</DestinationDesc>
+      <ADDays>45</ADDays>
+      <DeliverTimeGuaranteed>70</DeliverTimeGuaranteed>
+      <DITPercent xsi:nil="true" />
+      <DDPercent xsi:nil="true" />
+      <MDPercent xsi:nil="true" />
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Япония</PriceCountry>
+      <PriceGroup>Original</PriceGroup>
+      <CalcDeliveryPercent>-1</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>1YR6151930</DetailNum>
+      <MakeLogo>MF</MakeLogo>
+      <PriceLogo>NPOT</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>3251.8700</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>1</GroupId>
+      <DetailId>80201679</DetailId>
+      <DetailNum>1YR6151930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>MF</MakeLogo>
+      <MakeName>Motorcraft</MakeName>
+      <bitOriginal>false</bitOriginal>
+      <Country>СОЕДИНЕННЫЕ ШТАТЫ</Country>
+      <CodeTNVED />
+      <DetailNameEng>PK BELT</DetailNameEng>
+      <DetailNameRus>Ремень зубчатый</DetailNameRus>
+      <DetailNameRusNoCust>Ремень зубчатый</DetailNameRusNoCust>
+      <PriceId>845</PriceId>
+      <PriceLogo>NPOG</PriceLogo>
+      <PriceDesc>Япония, заказ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-11-01T19:15:56.893</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>16</ADDays>
+      <DeliverTimeGuaranteed>30</DeliverTimeGuaranteed>
+      <DITPercent xsi:nil="true" />
+      <DDPercent xsi:nil="true" />
+      <MDPercent xsi:nil="true" />
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Япония</PriceCountry>
+      <PriceGroup>Original</PriceGroup>
+      <CalcDeliveryPercent>-1</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>1YR6151930</DetailNum>
+      <MakeLogo>MF</MakeLogo>
+      <PriceLogo>NPOG</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>3357.2100</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>66285118</DetailId>
+      <DetailNum>99366D1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TOOTHED BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRusNoCust>
+      <PriceId>507</PriceId>
+      <PriceLogo>HOLL</PriceLogo>
+      <PriceDesc>Голландия</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-11-12T22:04:51.983</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>26</ADDays>
+      <DeliverTimeGuaranteed>30</DeliverTimeGuaranteed>
+      <DITPercent>71.6700000000000</DITPercent>
+      <DDPercent>31.0</DDPercent>
+      <MDPercent>31.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Европа</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>31.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>99366D1930</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>HOLL</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>1133.4700</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>66285118</DetailId>
+      <DetailNum>99366D1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TOOTHED BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRusNoCust>
+      <PriceId>802</PriceId>
+      <PriceLogo>HOLG</PriceLogo>
+      <PriceDesc>Голландия, заказ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-11-13T01:48:54.817</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>25</DestinationId>
+      <DestinationLogo>CNR</DestinationLogo>
+      <DestinationDesc>Контейнер</DestinationDesc>
+      <ADDays>33</ADDays>
+      <DeliverTimeGuaranteed>40</DeliverTimeGuaranteed>
+      <DITPercent xsi:nil="true" />
+      <DDPercent>31.0</DDPercent>
+      <MDPercent>31.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Европа</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>31.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>99366D1930</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>HOLG</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>1172.8700</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>66285118</DetailId>
+      <DetailNum>99366D1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TOOTHED BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRusNoCust>
+      <PriceId>555</PriceId>
+      <PriceLogo>USAG</PriceLogo>
+      <PriceDesc>Америка, заказ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-11-23T10:08:37.023</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>19</DestinationId>
+      <DestinationLogo>CRG</DestinationLogo>
+      <DestinationDesc>Обычный</DestinationDesc>
+      <ADDays>14</ADDays>
+      <DeliverTimeGuaranteed>45</DeliverTimeGuaranteed>
+      <DITPercent xsi:nil="true" />
+      <DDPercent>31.0</DDPercent>
+      <MDPercent>31.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Америка</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>31.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>99366D1930</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>USAG</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>1247.4600</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>66285118</DetailId>
+      <DetailNum>99366D1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TOOTHED BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRusNoCust>
+      <PriceId>522</PriceId>
+      <PriceLogo>MAJT</PriceLogo>
+      <PriceDesc>Москва, ЦС Toyota</PriceDesc>
+      <bitStorehouse>true</bitStorehouse>
+      <DateChange>2010-11-25T17:30:49.55</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText>&gt;50</QuantityText>
+      <QuantityChangeDate>2010-11-25T19:33:00</QuantityChangeDate>
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>4</ADDays>
+      <DeliverTimeGuaranteed>6</DeliverTimeGuaranteed>
+      <DITPercent>65.4600000000000</DITPercent>
+      <DDPercent>98.0</DDPercent>
+      <MDPercent>98.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Москва</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>98.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>99366D1930</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>MAJT</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>1345.6600</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>66285118</DetailId>
+      <DetailNum>99366D1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TOOTHED BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRusNoCust>
+      <PriceId>881</PriceId>
+      <PriceLogo>AVOP</PriceLogo>
+      <PriceDesc>Склад.  Москва</PriceDesc>
+      <bitStorehouse>true</bitStorehouse>
+      <DateChange>2010-11-25T09:45:11.003</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText>=2</QuantityText>
+      <QuantityChangeDate>2010-11-25T09:45:00</QuantityChangeDate>
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>2</ADDays>
+      <DeliverTimeGuaranteed>3</DeliverTimeGuaranteed>
+      <DITPercent>53.3300000000000</DITPercent>
+      <DDPercent>96.0</DDPercent>
+      <MDPercent>96.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Москва</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>96.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>99366D1930</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>AVOP</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>1346.5700</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>66285118</DetailId>
+      <DetailNum>99366D1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TOOTHED BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRusNoCust>
+      <PriceId>152</PriceId>
+      <PriceLogo>CPDB</PriceLogo>
+      <PriceDesc>Москва, Центральный склад TOYOTA</PriceDesc>
+      <bitStorehouse>true</bitStorehouse>
+      <DateChange>2010-11-26T10:34:12.513</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText>&gt;10</QuantityText>
+      <QuantityChangeDate>2010-11-26T10:34:00</QuantityChangeDate>
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>2</ADDays>
+      <DeliverTimeGuaranteed>5</DeliverTimeGuaranteed>
+      <DITPercent>43.3300000000000</DITPercent>
+      <DDPercent>98.0</DDPercent>
+      <MDPercent>98.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Москва</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>98.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>99366D1930</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>CPDB</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>1349.1300</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>66285118</DetailId>
+      <DetailNum>99366D1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TOOTHED BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRusNoCust>
+      <PriceId>162</PriceId>
+      <PriceLogo>CPDJ</PriceLogo>
+      <PriceDesc>Европа - заказ Toyota</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-07-08T08:10:01.33</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>15</ADDays>
+      <DeliverTimeGuaranteed>120</DeliverTimeGuaranteed>
+      <DITPercent>56.8300000000000</DITPercent>
+      <DDPercent>87.0</DDPercent>
+      <MDPercent>87.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Япония</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>87.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>99366D1930</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>CPDJ</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>1349.1300</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>66285118</DetailId>
+      <DetailNum>99366D1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TOOTHED BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRusNoCust>
+      <PriceId>250</PriceId>
+      <PriceLogo>FOZ_</PriceLogo>
+      <PriceDesc>Европа, заказ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-11-24T00:39:47.193</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>19</DestinationId>
+      <DestinationLogo>CRG</DestinationLogo>
+      <DestinationDesc>Обычный</DestinationDesc>
+      <ADDays>21</ADDays>
+      <DeliverTimeGuaranteed>55</DeliverTimeGuaranteed>
+      <DITPercent xsi:nil="true" />
+      <DDPercent xsi:nil="true" />
+      <MDPercent xsi:nil="true" />
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Европа</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>-1</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>99366D1930</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>FOZ_</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>1398.1300</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>66285118</DetailId>
+      <DetailNum>99366D1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TOOTHED BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRusNoCust>
+      <PriceId>245</PriceId>
+      <PriceLogo>FOMC</PriceLogo>
+      <PriceDesc>Европа, заказ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-11-24T00:23:32.087</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>12</ADDays>
+      <DeliverTimeGuaranteed>30</DeliverTimeGuaranteed>
+      <DITPercent xsi:nil="true" />
+      <DDPercent xsi:nil="true" />
+      <MDPercent xsi:nil="true" />
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Европа</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>-1</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>99366D1930</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>FOMC</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>1487.5100</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>66285118</DetailId>
+      <DetailNum>99366D1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TOOTHED BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRusNoCust>
+      <PriceId>96</PriceId>
+      <PriceLogo>ROAS</PriceLogo>
+      <PriceDesc>Москва, склад</PriceDesc>
+      <bitStorehouse>true</bitStorehouse>
+      <DateChange>2010-11-26T16:10:22.403</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText>=3</QuantityText>
+      <QuantityChangeDate>2010-11-26T16:10:00</QuantityChangeDate>
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>3</ADDays>
+      <DeliverTimeGuaranteed>5</DeliverTimeGuaranteed>
+      <DITPercent>40.1100000000000</DITPercent>
+      <DDPercent>94.0</DDPercent>
+      <MDPercent>94.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Москва</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>94.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>99366D1930</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>ROAS</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>1541.4300</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>66285118</DetailId>
+      <DetailNum>99366D1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TOOTHED BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRusNoCust>
+      <PriceId>648</PriceId>
+      <PriceLogo>DIOL</PriceLogo>
+      <PriceDesc>Склад Москва</PriceDesc>
+      <bitStorehouse>true</bitStorehouse>
+      <DateChange>2010-11-26T03:15:21.083</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText>&gt;5</QuantityText>
+      <QuantityChangeDate>2010-11-26T03:15:00</QuantityChangeDate>
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>4</ADDays>
+      <DeliverTimeGuaranteed>6</DeliverTimeGuaranteed>
+      <DITPercent xsi:nil="true" />
+      <DDPercent>36.0</DDPercent>
+      <MDPercent>36.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Москва</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>36.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>99366D1930</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>DIOL</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>1552.3400</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>66285118</DetailId>
+      <DetailNum>99366D1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TOOTHED BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRusNoCust>
+      <PriceId>156</PriceId>
+      <PriceLogo>SPES</PriceLogo>
+      <PriceDesc>Москва, склад</PriceDesc>
+      <bitStorehouse>true</bitStorehouse>
+      <DateChange>2010-11-26T12:13:32.743</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText>=3</QuantityText>
+      <QuantityChangeDate>2010-11-26T12:14:00</QuantityChangeDate>
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>2</ADDays>
+      <DeliverTimeGuaranteed>2</DeliverTimeGuaranteed>
+      <DITPercent xsi:nil="true" />
+      <DDPercent>36.0</DDPercent>
+      <MDPercent>36.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Москва</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>36.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>99366D1930</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>SPES</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>1616.2100</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>66285118</DetailId>
+      <DetailNum>99366D1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TOOTHED BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRusNoCust>
+      <PriceId>1168</PriceId>
+      <PriceLogo>APPZ</PriceLogo>
+      <PriceDesc>Европа, заказ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-10-11T01:05:07.16</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>21</ADDays>
+      <DeliverTimeGuaranteed>30</DeliverTimeGuaranteed>
+      <DITPercent xsi:nil="true" />
+      <DDPercent>31.0</DDPercent>
+      <MDPercent>31.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Европа</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>31.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>99366D1930</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>APPZ</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>1674.7500</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>66285118</DetailId>
+      <DetailNum>99366D1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TOOTHED BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRusNoCust>
+      <PriceId>136</PriceId>
+      <PriceLogo>SOAS</PriceLogo>
+      <PriceDesc>Склад, Москва</PriceDesc>
+      <bitStorehouse>true</bitStorehouse>
+      <DateChange>2010-11-26T12:11:23.5</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText>=3</QuantityText>
+      <QuantityChangeDate>2010-11-26T12:11:00</QuantityChangeDate>
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>4</ADDays>
+      <DeliverTimeGuaranteed>5</DeliverTimeGuaranteed>
+      <DITPercent>59.2400000000000</DITPercent>
+      <DDPercent>90.0</DDPercent>
+      <MDPercent>90.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Москва</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>90.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>99366D1930</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>SOAS</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>1799.5700</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>66285118</DetailId>
+      <DetailNum>99366D1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TOOTHED BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRusNoCust>
+      <PriceId>238</PriceId>
+      <PriceLogo>AKDA</PriceLogo>
+      <PriceDesc>Америка, заказ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-09-17T00:13:19.85</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>21</ADDays>
+      <DeliverTimeGuaranteed>30</DeliverTimeGuaranteed>
+      <DITPercent xsi:nil="true" />
+      <DDPercent xsi:nil="true" />
+      <MDPercent xsi:nil="true" />
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Америка</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>-1</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>99366D1930</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>AKDA</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>1870.2500</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>66285118</DetailId>
+      <DetailNum>99366D1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TOOTHED BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRusNoCust>
+      <PriceId>911</PriceId>
+      <PriceLogo>SOLO</PriceLogo>
+      <PriceDesc>Склад, Москва</PriceDesc>
+      <bitStorehouse>true</bitStorehouse>
+      <DateChange>2010-11-26T12:24:07.56</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText>=1</QuantityText>
+      <QuantityChangeDate>2010-11-26T12:24:00</QuantityChangeDate>
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>7</ADDays>
+      <DeliverTimeGuaranteed>8</DeliverTimeGuaranteed>
+      <DITPercent>41.9200000000000</DITPercent>
+      <DDPercent>83.0</DDPercent>
+      <MDPercent>83.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Москва</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>83.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>99366D1930</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>SOLO</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>1996.7300</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>66285118</DetailId>
+      <DetailNum>99366D1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TOOTHED BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRusNoCust>
+      <PriceId>1075</PriceId>
+      <PriceLogo>ANEK</PriceLogo>
+      <PriceDesc>ОАЭ, заказ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-11-23T00:32:24.163</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>15</ADDays>
+      <DeliverTimeGuaranteed>40</DeliverTimeGuaranteed>
+      <DITPercent>63.9100000000000</DITPercent>
+      <DDPercent>31.0</DDPercent>
+      <MDPercent>31.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Эмираты</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>31.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>99366D1930</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>ANEK</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>2187.0800</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>66285118</DetailId>
+      <DetailNum>99366D1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TOOTHED BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRusNoCust>
+      <PriceId>786</PriceId>
+      <PriceLogo>ANEV</PriceLogo>
+      <PriceDesc>ОАЭ, заказ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-11-20T02:26:20.72</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>20</ADDays>
+      <DeliverTimeGuaranteed>45</DeliverTimeGuaranteed>
+      <DITPercent>44.5400000000000</DITPercent>
+      <DDPercent>94.0</DDPercent>
+      <MDPercent>94.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Эмираты</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>94.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>99366D1930</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>ANEV</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>2198.9400</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>66285118</DetailId>
+      <DetailNum>99366D1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TOOTHED BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRusNoCust>
+      <PriceId>788</PriceId>
+      <PriceLogo>ANUT</PriceLogo>
+      <PriceDesc>ОАЭ, заказ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-11-20T04:11:24.653</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>18</ADDays>
+      <DeliverTimeGuaranteed>40</DeliverTimeGuaranteed>
+      <DITPercent>57.3300000000000</DITPercent>
+      <DDPercent>72.0</DDPercent>
+      <MDPercent>72.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Эмираты</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>72.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>99366D1930</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>ANUT</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>2218.3400</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>66285118</DetailId>
+      <DetailNum>99366D1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TOOTHED BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRusNoCust>
+      <PriceId>783</PriceId>
+      <PriceLogo>ANEN</PriceLogo>
+      <PriceDesc>ОАЭ, заказ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-11-22T11:35:37.27</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>11</ADDays>
+      <DeliverTimeGuaranteed>40</DeliverTimeGuaranteed>
+      <DITPercent>53.3300000000000</DITPercent>
+      <DDPercent>31.0</DDPercent>
+      <MDPercent>31.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Эмираты</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>31.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>99366D1930</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>ANEN</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>2242.4000</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>66285118</DetailId>
+      <DetailNum>99366D1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TOOTHED BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRusNoCust>
+      <PriceId>1447</PriceId>
+      <PriceLogo>TOLE</PriceLogo>
+      <PriceDesc>Склад Москва</PriceDesc>
+      <bitStorehouse>true</bitStorehouse>
+      <DateChange>2010-11-26T16:33:23.593</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText>=1</QuantityText>
+      <QuantityChangeDate>2010-11-26T16:33:00</QuantityChangeDate>
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>2</ADDays>
+      <DeliverTimeGuaranteed>6</DeliverTimeGuaranteed>
+      <DITPercent xsi:nil="true" />
+      <DDPercent>99.0</DDPercent>
+      <MDPercent>99.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Москва</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>99.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>99366D1930</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>TOLE</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>2313.0400</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>66285118</DetailId>
+      <DetailNum>99366D1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TOOTHED BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRusNoCust>
+      <PriceId>1128</PriceId>
+      <PriceLogo>DGAS</PriceLogo>
+      <PriceDesc>Склад Эмирaты</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-11-26T00:11:32.777</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>16</ADDays>
+      <DeliverTimeGuaranteed>16</DeliverTimeGuaranteed>
+      <DITPercent>47.8600000000000</DITPercent>
+      <DDPercent>83.0</DDPercent>
+      <MDPercent>83.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Эмираты</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>83.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>99366D1930</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>DGAS</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>2330.9300</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>66285118</DetailId>
+      <DetailNum>99366D1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TOOTHED BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRusNoCust>
+      <PriceId>1172</PriceId>
+      <PriceLogo>AVTY</PriceLogo>
+      <PriceDesc>Россия, склад</PriceDesc>
+      <bitStorehouse>true</bitStorehouse>
+      <DateChange>2010-11-22T11:14:37.26</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText>&gt;50</QuantityText>
+      <QuantityChangeDate>2010-11-22T11:15:00</QuantityChangeDate>
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>17</ADDays>
+      <DeliverTimeGuaranteed>23</DeliverTimeGuaranteed>
+      <DITPercent>56.0100000000000</DITPercent>
+      <DDPercent>90.0</DDPercent>
+      <MDPercent>90.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Россия</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>90.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>99366D1930</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>AVTY</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>2442.2300</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>66285118</DetailId>
+      <DetailNum>99366D1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TOOTHED BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRusNoCust>
+      <PriceId>681</PriceId>
+      <PriceLogo>MEGA</PriceLogo>
+      <PriceDesc>Эмираты, Заказ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-07-27T19:19:28.43</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate>2010-07-27T19:19:00</QuantityChangeDate>
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>31</DestinationId>
+      <DestinationLogo>MCN</DestinationLogo>
+      <DestinationDesc>Контейнер</DestinationDesc>
+      <ADDays>55</ADDays>
+      <DeliverTimeGuaranteed>80</DeliverTimeGuaranteed>
+      <DITPercent>84.6600000000000</DITPercent>
+      <DDPercent>72.0</DDPercent>
+      <MDPercent>72.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Эмираты</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>72.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>99366D1930</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>MEGA</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>2454.2100</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>66285118</DetailId>
+      <DetailNum>99366D1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TOOTHED BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRusNoCust>
+      <PriceId>503</PriceId>
+      <PriceLogo>NALR</PriceLogo>
+      <PriceDesc>ОАЭ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-07-15T20:04:31.38</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>25</DestinationId>
+      <DestinationLogo>CNR</DestinationLogo>
+      <DestinationDesc>Контейнер</DestinationDesc>
+      <ADDays>25</ADDays>
+      <DeliverTimeGuaranteed>40</DeliverTimeGuaranteed>
+      <DITPercent>17.7500000000000</DITPercent>
+      <DDPercent>58.0</DDPercent>
+      <MDPercent>58.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Эмираты</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>58.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>99366D1930</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>NALR</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>2536.6600</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>66285118</DetailId>
+      <DetailNum>99366D1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TOOTHED BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRusNoCust>
+      <PriceId>502</PriceId>
+      <PriceLogo>NALG</PriceLogo>
+      <PriceDesc>ОАЭ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-07-15T20:43:03.473</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>19</DestinationId>
+      <DestinationLogo>CRG</DestinationLogo>
+      <DestinationDesc>Обычный</DestinationDesc>
+      <ADDays>9</ADDays>
+      <DeliverTimeGuaranteed>12</DeliverTimeGuaranteed>
+      <DITPercent>57.7000000000000</DITPercent>
+      <DDPercent>72.0</DDPercent>
+      <MDPercent>72.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Эмираты</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>72.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>99366D1930</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>NALG</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>2544.6700</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>66285118</DetailId>
+      <DetailNum>99366D1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TOOTHED BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRusNoCust>
+      <PriceId>501</PriceId>
+      <PriceLogo>NALL</PriceLogo>
+      <PriceDesc>ОАЭ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-07-15T19:15:59.15</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>5</ADDays>
+      <DeliverTimeGuaranteed>7</DeliverTimeGuaranteed>
+      <DITPercent>68.7300000000000</DITPercent>
+      <DDPercent>72.0</DDPercent>
+      <MDPercent>72.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Эмираты</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>72.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>99366D1930</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>NALL</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>2596.0700</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>66285118</DetailId>
+      <DetailNum>99366D1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TOOTHED BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRusNoCust>
+      <PriceId>714</PriceId>
+      <PriceLogo>MEGG</PriceLogo>
+      <PriceDesc>Эмираты, Заказ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-09-26T12:24:32.47</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>32</DestinationId>
+      <DestinationLogo>MCG</DestinationLogo>
+      <DestinationDesc>Обычный</DestinationDesc>
+      <ADDays>8</ADDays>
+      <DeliverTimeGuaranteed>12</DeliverTimeGuaranteed>
+      <DITPercent>57.3300000000000</DITPercent>
+      <DDPercent>58.0</DDPercent>
+      <MDPercent>58.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Эмираты</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>58.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>99366D1930</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>MEGG</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>2623.3500</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>66285118</DetailId>
+      <DetailNum>99366D1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TOOTHED BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRusNoCust>
+      <PriceId>142</PriceId>
+      <PriceLogo>JAPV</PriceLogo>
+      <PriceDesc>Заказ, Япония</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-10-22T00:54:51.133</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>14</ADDays>
+      <DeliverTimeGuaranteed>50</DeliverTimeGuaranteed>
+      <DITPercent>53.1200000000000</DITPercent>
+      <DDPercent>72.0</DDPercent>
+      <MDPercent>72.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Япония</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>72.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>99366D1930</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>JAPV</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>3245.9200</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>66285118</DetailId>
+      <DetailNum>99366D1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TOOTHED BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRusNoCust>
+      <PriceId>158</PriceId>
+      <PriceLogo>NOVS</PriceLogo>
+      <PriceDesc>Склад, Россия</PriceDesc>
+      <bitStorehouse>true</bitStorehouse>
+      <DateChange>2010-11-26T12:13:46.827</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText>=2</QuantityText>
+      <QuantityChangeDate>2010-11-26T12:14:00</QuantityChangeDate>
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>23</ADDays>
+      <DeliverTimeGuaranteed>41</DeliverTimeGuaranteed>
+      <DITPercent>35.2900000000000</DITPercent>
+      <DDPercent>98.0</DDPercent>
+      <MDPercent>98.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Россия</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>98.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>99366D1930</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>NOVS</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>3413.4400</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>66285118</DetailId>
+      <DetailNum>99366D1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TOOTHED BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRusNoCust>
+      <PriceId>505</PriceId>
+      <PriceLogo>NPOT</PriceLogo>
+      <PriceDesc>Япония, заказ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-11-02T16:54:57.87</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>21</DestinationId>
+      <DestinationLogo>CNT</DestinationLogo>
+      <DestinationDesc>Контейнер</DestinationDesc>
+      <ADDays>8</ADDays>
+      <DeliverTimeGuaranteed>70</DeliverTimeGuaranteed>
+      <DITPercent>80.0000000000000</DITPercent>
+      <DDPercent>31.0</DDPercent>
+      <MDPercent>31.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Япония</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>31.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>99366D1930</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>NPOT</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>3851.5200</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>66285118</DetailId>
+      <DetailNum>99366D1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TOOTHED BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRusNoCust>
+      <PriceId>504</PriceId>
+      <PriceLogo>NPOL</PriceLogo>
+      <PriceDesc>Япония, заказ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-10-26T01:27:33.803</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>8</ADDays>
+      <DeliverTimeGuaranteed>30</DeliverTimeGuaranteed>
+      <DITPercent>67.8300000000000</DITPercent>
+      <DDPercent>72.0</DDPercent>
+      <MDPercent>72.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Япония</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>72.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>99366D1930</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>NPOL</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>3875.1800</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>66285118</DetailId>
+      <DetailNum>99366D1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TOOTHED BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRusNoCust>
+      <PriceId>845</PriceId>
+      <PriceLogo>NPOG</PriceLogo>
+      <PriceDesc>Япония, заказ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-11-02T16:54:57.84</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>6</ADDays>
+      <DeliverTimeGuaranteed>30</DeliverTimeGuaranteed>
+      <DITPercent xsi:nil="true" />
+      <DDPercent>31.0</DDPercent>
+      <MDPercent>31.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Япония</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>31.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>99366D1930</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>NPOG</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>4000.7100</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>66285118</DetailId>
+      <DetailNum>99366D1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TOOTHED BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ ГЕНЕРАТОРА</DetailNameRusNoCust>
+      <PriceId>506</PriceId>
+      <PriceLogo>JAPL</PriceLogo>
+      <PriceDesc>Япония</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-09-17T20:18:10.81</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate>2010-09-17T20:18:00</QuantityChangeDate>
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>35</ADDays>
+      <DeliverTimeGuaranteed>50</DeliverTimeGuaranteed>
+      <DITPercent xsi:nil="true" />
+      <DDPercent>31.0</DDPercent>
+      <MDPercent>31.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Япония</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>31.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>99366D1930</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>JAPL</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>5135.6100</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>61186538</DetailId>
+      <DetailNum>9091602412</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TRIANGULAR BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ</DetailNameRusNoCust>
+      <PriceId>507</PriceId>
+      <PriceLogo>HOLL</PriceLogo>
+      <PriceDesc>Голландия</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-11-25T06:45:22.743</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>26</ADDays>
+      <DeliverTimeGuaranteed>30</DeliverTimeGuaranteed>
+      <DITPercent>71.6700000000000</DITPercent>
+      <DDPercent>31.0</DDPercent>
+      <MDPercent>31.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Европа</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>31.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>9091602412</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>HOLL</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>1141.2600</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>61186538</DetailId>
+      <DetailNum>9091602412</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TRIANGULAR BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ</DetailNameRusNoCust>
+      <PriceId>802</PriceId>
+      <PriceLogo>HOLG</PriceLogo>
+      <PriceDesc>Голландия, заказ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-11-25T07:25:52.933</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>25</DestinationId>
+      <DestinationLogo>CNR</DestinationLogo>
+      <DestinationDesc>Контейнер</DestinationDesc>
+      <ADDays>33</ADDays>
+      <DeliverTimeGuaranteed>40</DeliverTimeGuaranteed>
+      <DITPercent xsi:nil="true" />
+      <DDPercent>31.0</DDPercent>
+      <MDPercent>31.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Европа</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>31.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>9091602412</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>HOLG</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>1181.3700</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>61186538</DetailId>
+      <DetailNum>9091602412</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TRIANGULAR BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ</DetailNameRusNoCust>
+      <PriceId>555</PriceId>
+      <PriceLogo>USAG</PriceLogo>
+      <PriceDesc>Америка, заказ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-11-25T06:46:25.11</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>19</DestinationId>
+      <DestinationLogo>CRG</DestinationLogo>
+      <DestinationDesc>Обычный</DestinationDesc>
+      <ADDays>14</ADDays>
+      <DeliverTimeGuaranteed>45</DeliverTimeGuaranteed>
+      <DITPercent xsi:nil="true" />
+      <DDPercent>31.0</DDPercent>
+      <MDPercent>31.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Америка</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>31.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>9091602412</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>USAG</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>1254.3900</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>61186538</DetailId>
+      <DetailNum>9091602412</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TRIANGULAR BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ</DetailNameRusNoCust>
+      <PriceId>1447</PriceId>
+      <PriceLogo>TOLE</PriceLogo>
+      <PriceDesc>Склад Москва</PriceDesc>
+      <bitStorehouse>true</bitStorehouse>
+      <DateChange>2010-11-26T16:33:23.593</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText>=1</QuantityText>
+      <QuantityChangeDate>2010-11-26T16:33:00</QuantityChangeDate>
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>2</ADDays>
+      <DeliverTimeGuaranteed>6</DeliverTimeGuaranteed>
+      <DITPercent xsi:nil="true" />
+      <DDPercent>99.0</DDPercent>
+      <MDPercent>99.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Москва</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>99.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>9091602412</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>TOLE</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>1372.5700</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>61186538</DetailId>
+      <DetailNum>9091602412</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TRIANGULAR BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ</DetailNameRusNoCust>
+      <PriceId>250</PriceId>
+      <PriceLogo>FOZ_</PriceLogo>
+      <PriceDesc>Европа, заказ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-11-24T00:39:07.93</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>19</DestinationId>
+      <DestinationLogo>CRG</DestinationLogo>
+      <DestinationDesc>Обычный</DestinationDesc>
+      <ADDays>21</ADDays>
+      <DeliverTimeGuaranteed>55</DeliverTimeGuaranteed>
+      <DITPercent xsi:nil="true" />
+      <DDPercent xsi:nil="true" />
+      <MDPercent xsi:nil="true" />
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Европа</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>-1</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>9091602412</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>FOZ_</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>1404.8200</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>61186538</DetailId>
+      <DetailNum>9091602412</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TRIANGULAR BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ</DetailNameRusNoCust>
+      <PriceId>245</PriceId>
+      <PriceLogo>FOMC</PriceLogo>
+      <PriceDesc>Европа, заказ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-11-24T00:22:27.333</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>12</ADDays>
+      <DeliverTimeGuaranteed>30</DeliverTimeGuaranteed>
+      <DITPercent xsi:nil="true" />
+      <DDPercent xsi:nil="true" />
+      <MDPercent xsi:nil="true" />
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Европа</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>-1</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>9091602412</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>FOMC</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>1511.4200</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>61186538</DetailId>
+      <DetailNum>9091602412</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TRIANGULAR BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ</DetailNameRusNoCust>
+      <PriceId>1168</PriceId>
+      <PriceLogo>APPZ</PriceLogo>
+      <PriceDesc>Европа, заказ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-10-11T00:58:11.587</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>21</ADDays>
+      <DeliverTimeGuaranteed>30</DeliverTimeGuaranteed>
+      <DITPercent xsi:nil="true" />
+      <DDPercent>31.0</DDPercent>
+      <MDPercent>31.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Европа</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>31.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>9091602412</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>APPZ</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>1674.7500</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>61186538</DetailId>
+      <DetailNum>9091602412</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TRIANGULAR BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ</DetailNameRusNoCust>
+      <PriceId>1075</PriceId>
+      <PriceLogo>ANEK</PriceLogo>
+      <PriceDesc>ОАЭ, заказ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-11-23T00:31:37.47</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>15</ADDays>
+      <DeliverTimeGuaranteed>40</DeliverTimeGuaranteed>
+      <DITPercent>63.9100000000000</DITPercent>
+      <DDPercent>31.0</DDPercent>
+      <MDPercent>31.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Эмираты</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>31.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>9091602412</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>ANEK</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>1852.0400</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>61186538</DetailId>
+      <DetailNum>9091602412</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TRIANGULAR BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ</DetailNameRusNoCust>
+      <PriceId>783</PriceId>
+      <PriceLogo>ANEN</PriceLogo>
+      <PriceDesc>ОАЭ, заказ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-11-22T11:34:38.493</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>11</ADDays>
+      <DeliverTimeGuaranteed>40</DeliverTimeGuaranteed>
+      <DITPercent>53.3300000000000</DITPercent>
+      <DDPercent>31.0</DDPercent>
+      <MDPercent>31.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Эмираты</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>31.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>9091602412</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>ANEN</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>1888.2500</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>61186538</DetailId>
+      <DetailNum>9091602412</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TRIANGULAR BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ</DetailNameRusNoCust>
+      <PriceId>911</PriceId>
+      <PriceLogo>SOLO</PriceLogo>
+      <PriceDesc>Склад, Москва</PriceDesc>
+      <bitStorehouse>true</bitStorehouse>
+      <DateChange>2010-11-26T12:24:01.34</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText>=2</QuantityText>
+      <QuantityChangeDate>2010-11-26T12:24:00</QuantityChangeDate>
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>7</ADDays>
+      <DeliverTimeGuaranteed>8</DeliverTimeGuaranteed>
+      <DITPercent>41.9200000000000</DITPercent>
+      <DDPercent>83.0</DDPercent>
+      <MDPercent>83.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Москва</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>83.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>9091602412</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>SOLO</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>2011.0700</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>61186538</DetailId>
+      <DetailNum>9091602412</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TRIANGULAR BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ</DetailNameRusNoCust>
+      <PriceId>681</PriceId>
+      <PriceLogo>MEGA</PriceLogo>
+      <PriceDesc>Эмираты, Заказ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-11-25T07:01:17.233</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>31</DestinationId>
+      <DestinationLogo>MCN</DestinationLogo>
+      <DestinationDesc>Контейнер</DestinationDesc>
+      <ADDays>55</ADDays>
+      <DeliverTimeGuaranteed>80</DeliverTimeGuaranteed>
+      <DITPercent>84.6600000000000</DITPercent>
+      <DDPercent>72.0</DDPercent>
+      <MDPercent>72.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Эмираты</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>72.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>9091602412</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>MEGA</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>2306.7900</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>61186538</DetailId>
+      <DetailNum>9091602412</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TRIANGULAR BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ</DetailNameRusNoCust>
+      <PriceId>503</PriceId>
+      <PriceLogo>NALR</PriceLogo>
+      <PriceDesc>ОАЭ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-11-25T05:05:09.75</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>25</DestinationId>
+      <DestinationLogo>CNR</DestinationLogo>
+      <DestinationDesc>Контейнер</DestinationDesc>
+      <ADDays>25</ADDays>
+      <DeliverTimeGuaranteed>40</DeliverTimeGuaranteed>
+      <DITPercent>17.7500000000000</DITPercent>
+      <DDPercent>58.0</DDPercent>
+      <MDPercent>58.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Эмираты</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>58.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>9091602412</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>NALR</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>2384.3900</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>61186538</DetailId>
+      <DetailNum>9091602412</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TRIANGULAR BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ</DetailNameRusNoCust>
+      <PriceId>502</PriceId>
+      <PriceLogo>NALG</PriceLogo>
+      <PriceDesc>ОАЭ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-11-25T05:19:54.953</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>19</DestinationId>
+      <DestinationLogo>CRG</DestinationLogo>
+      <DestinationDesc>Обычный</DestinationDesc>
+      <ADDays>9</ADDays>
+      <DeliverTimeGuaranteed>12</DeliverTimeGuaranteed>
+      <DITPercent>57.7000000000000</DITPercent>
+      <DDPercent>72.0</DDPercent>
+      <MDPercent>72.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Эмираты</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>72.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>9091602412</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>NALG</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>2389.5900</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>61186538</DetailId>
+      <DetailNum>9091602412</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TRIANGULAR BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ</DetailNameRusNoCust>
+      <PriceId>501</PriceId>
+      <PriceLogo>NALL</PriceLogo>
+      <PriceDesc>ОАЭ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-11-25T04:52:49.287</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>5</ADDays>
+      <DeliverTimeGuaranteed>7</DeliverTimeGuaranteed>
+      <DITPercent>68.7300000000000</DITPercent>
+      <DDPercent>72.0</DDPercent>
+      <MDPercent>72.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Эмираты</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>72.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>9091602412</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>NALL</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>2444.2000</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>61186538</DetailId>
+      <DetailNum>9091602412</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TRIANGULAR BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ</DetailNameRusNoCust>
+      <PriceId>714</PriceId>
+      <PriceLogo>MEGG</PriceLogo>
+      <PriceDesc>Эмираты, Заказ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-11-25T07:16:56.287</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>32</DestinationId>
+      <DestinationLogo>MCG</DestinationLogo>
+      <DestinationDesc>Обычный</DestinationDesc>
+      <ADDays>8</ADDays>
+      <DeliverTimeGuaranteed>12</DeliverTimeGuaranteed>
+      <DITPercent>57.3300000000000</DITPercent>
+      <DDPercent>58.0</DDPercent>
+      <MDPercent>58.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Эмираты</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>58.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>9091602412</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>MEGG</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>2467.0000</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>61186538</DetailId>
+      <DetailNum>9091602412</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TRIANGULAR BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ</DetailNameRusNoCust>
+      <PriceId>793</PriceId>
+      <PriceLogo>REAR</PriceLogo>
+      <PriceDesc>Склад, Москва</PriceDesc>
+      <bitStorehouse>true</bitStorehouse>
+      <DateChange>2010-11-26T12:03:37.797</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText>=1</QuantityText>
+      <QuantityChangeDate>2010-11-26T12:04:00</QuantityChangeDate>
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>5</ADDays>
+      <DeliverTimeGuaranteed>5</DeliverTimeGuaranteed>
+      <DITPercent>63.6400000000000</DITPercent>
+      <DDPercent>90.0</DDPercent>
+      <MDPercent>90.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Москва</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>90.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>9091602412</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>REAR</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>2566.3800</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>61186538</DetailId>
+      <DetailNum>9091602412</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TRIANGULAR BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ</DetailNameRusNoCust>
+      <PriceId>1151</PriceId>
+      <PriceLogo>RIAR</PriceLogo>
+      <PriceDesc>Склвд, Москва</PriceDesc>
+      <bitStorehouse>true</bitStorehouse>
+      <DateChange>2010-11-26T12:06:34.073</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText>=1</QuantityText>
+      <QuantityChangeDate>2010-11-26T12:07:00</QuantityChangeDate>
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>7</ADDays>
+      <DeliverTimeGuaranteed>8</DeliverTimeGuaranteed>
+      <DITPercent>45.0000000000000</DITPercent>
+      <DDPercent>76.0</DDPercent>
+      <MDPercent>76.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Москва</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>76.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>9091602412</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>RIAR</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>2588.8900</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>61186538</DetailId>
+      <DetailNum>9091602412</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TRIANGULAR BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ</DetailNameRusNoCust>
+      <PriceId>142</PriceId>
+      <PriceLogo>JAPV</PriceLogo>
+      <PriceDesc>Заказ, Япония</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-10-22T00:50:02.803</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>14</ADDays>
+      <DeliverTimeGuaranteed>50</DeliverTimeGuaranteed>
+      <DITPercent>53.1200000000000</DITPercent>
+      <DDPercent>72.0</DDPercent>
+      <MDPercent>72.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Япония</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>72.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>9091602412</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>JAPV</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>3265.8900</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>3</GroupId>
+      <DetailId>61186538</DetailId>
+      <DetailNum>9091602412</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>TY</MakeLogo>
+      <MakeName>Toyota</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>DRIVING TRIANGULAR BELT</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ</DetailNameRusNoCust>
+      <PriceId>506</PriceId>
+      <PriceLogo>JAPL</PriceLogo>
+      <PriceDesc>Япония</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-09-10T20:18:53.96</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate>2010-09-10T20:19:00</QuantityChangeDate>
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>35</ADDays>
+      <DeliverTimeGuaranteed>50</DeliverTimeGuaranteed>
+      <DITPercent xsi:nil="true" />
+      <DDPercent>31.0</DDPercent>
+      <MDPercent>31.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Япония</PriceCountry>
+      <PriceGroup>ReplacementOriginal</PriceGroup>
+      <CalcDeliveryPercent>31.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>9091602412</DetailNum>
+      <MakeLogo>TY</MakeLogo>
+      <PriceLogo>JAPL</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>3584.4600</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>4</GroupId>
+      <DetailId>74941188</DetailId>
+      <DetailNum>6PK1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>MS</MakeLogo>
+      <MakeName>Mitsuboshi</MakeName>
+      <bitOriginal>false</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>BELTFAN</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ РУЧЕЙКОВЫЙ</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ РУЧЕЙКОВЫЙ</DetailNameRusNoCust>
+      <PriceId>681</PriceId>
+      <PriceLogo>MEGA</PriceLogo>
+      <PriceDesc>Эмираты, Заказ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-11-11T05:04:34.463</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>31</DestinationId>
+      <DestinationLogo>MCN</DestinationLogo>
+      <DestinationDesc>Контейнер</DestinationDesc>
+      <ADDays>55</ADDays>
+      <DeliverTimeGuaranteed>80</DeliverTimeGuaranteed>
+      <DITPercent>100.0000000000000</DITPercent>
+      <DDPercent>31.0</DDPercent>
+      <MDPercent>31.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Эмираты</PriceCountry>
+      <PriceGroup>ReplacementNonOriginal</PriceGroup>
+      <CalcDeliveryPercent>31.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>6PK1930</DetailNum>
+      <MakeLogo>MS</MakeLogo>
+      <PriceLogo>MEGA</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>401.2700</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>4</GroupId>
+      <DetailId>74941188</DetailId>
+      <DetailNum>6PK1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>MS</MakeLogo>
+      <MakeName>Mitsuboshi</MakeName>
+      <bitOriginal>false</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>BELTFAN</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ РУЧЕЙКОВЫЙ</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ РУЧЕЙКОВЫЙ</DetailNameRusNoCust>
+      <PriceId>503</PriceId>
+      <PriceLogo>NALR</PriceLogo>
+      <PriceDesc>ОАЭ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-11-09T06:21:25.9</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>25</DestinationId>
+      <DestinationLogo>CNR</DestinationLogo>
+      <DestinationDesc>Контейнер</DestinationDesc>
+      <ADDays>25</ADDays>
+      <DeliverTimeGuaranteed>40</DeliverTimeGuaranteed>
+      <DITPercent xsi:nil="true" />
+      <DDPercent>31.0</DDPercent>
+      <MDPercent>31.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Эмираты</PriceCountry>
+      <PriceGroup>ReplacementNonOriginal</PriceGroup>
+      <CalcDeliveryPercent>31.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>6PK1930</DetailNum>
+      <MakeLogo>MS</MakeLogo>
+      <PriceLogo>NALR</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>416.1100</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>4</GroupId>
+      <DetailId>74941188</DetailId>
+      <DetailNum>6PK1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>MS</MakeLogo>
+      <MakeName>Mitsuboshi</MakeName>
+      <bitOriginal>false</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>BELTFAN</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ РУЧЕЙКОВЫЙ</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ РУЧЕЙКОВЫЙ</DetailNameRusNoCust>
+      <PriceId>502</PriceId>
+      <PriceLogo>NALG</PriceLogo>
+      <PriceDesc>ОАЭ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-11-09T17:31:30.193</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>19</DestinationId>
+      <DestinationLogo>CRG</DestinationLogo>
+      <DestinationDesc>Обычный</DestinationDesc>
+      <ADDays>10</ADDays>
+      <DeliverTimeGuaranteed>12</DeliverTimeGuaranteed>
+      <DITPercent>49.7300000000000</DITPercent>
+      <DDPercent>31.0</DDPercent>
+      <MDPercent>31.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Эмираты</PriceCountry>
+      <PriceGroup>ReplacementNonOriginal</PriceGroup>
+      <CalcDeliveryPercent>31.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>6PK1930</DetailNum>
+      <MakeLogo>MS</MakeLogo>
+      <PriceLogo>NALG</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>421.7400</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>4</GroupId>
+      <DetailId>74941188</DetailId>
+      <DetailNum>6PK1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>MS</MakeLogo>
+      <MakeName>Mitsuboshi</MakeName>
+      <bitOriginal>false</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>BELTFAN</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ РУЧЕЙКОВЫЙ</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ РУЧЕЙКОВЫЙ</DetailNameRusNoCust>
+      <PriceId>714</PriceId>
+      <PriceLogo>MEGG</PriceLogo>
+      <PriceDesc>Эмираты, Заказ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-11-11T08:49:07.92</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>32</DestinationId>
+      <DestinationLogo>MCG</DestinationLogo>
+      <DestinationDesc>Обычный</DestinationDesc>
+      <ADDays>10</ADDays>
+      <DeliverTimeGuaranteed>12</DeliverTimeGuaranteed>
+      <DITPercent>42.5000000000000</DITPercent>
+      <DDPercent>31.0</DDPercent>
+      <MDPercent>31.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Эмираты</PriceCountry>
+      <PriceGroup>ReplacementNonOriginal</PriceGroup>
+      <CalcDeliveryPercent>31.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>6PK1930</DetailNum>
+      <MakeLogo>MS</MakeLogo>
+      <PriceLogo>MEGG</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>435.4000</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>4</GroupId>
+      <DetailId>74941188</DetailId>
+      <DetailNum>6PK1930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>MS</MakeLogo>
+      <MakeName>Mitsuboshi</MakeName>
+      <bitOriginal>false</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>BELTFAN</DetailNameEng>
+      <DetailNameRus>РЕМЕНЬ РУЧЕЙКОВЫЙ</DetailNameRus>
+      <DetailNameRusNoCust>РЕМЕНЬ РУЧЕЙКОВЫЙ</DetailNameRusNoCust>
+      <PriceId>501</PriceId>
+      <PriceLogo>NALL</PriceLogo>
+      <PriceDesc>ОАЭ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-11-08T22:37:10.41</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>9</ADDays>
+      <DeliverTimeGuaranteed>7</DeliverTimeGuaranteed>
+      <DITPercent>57.5500000000000</DITPercent>
+      <DDPercent>58.0</DDPercent>
+      <MDPercent>58.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Эмираты</PriceCountry>
+      <PriceGroup>ReplacementNonOriginal</PriceGroup>
+      <CalcDeliveryPercent>58.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>6PK1930</DetailNum>
+      <MakeLogo>MS</MakeLogo>
+      <PriceLogo>NALL</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>440.3800</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>4</GroupId>
+      <DetailId>79074646</DetailId>
+      <DetailNum>V98D61930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>D2</MakeLogo>
+      <MakeName>Drive Joy</MakeName>
+      <bitOriginal>false</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>V_BELT</DetailNameEng>
+      <DetailNameRus>V_BELT</DetailNameRus>
+      <DetailNameRusNoCust>V_BELT</DetailNameRusNoCust>
+      <PriceId>158</PriceId>
+      <PriceLogo>NOVS</PriceLogo>
+      <PriceDesc>Склад, Россия</PriceDesc>
+      <bitStorehouse>true</bitStorehouse>
+      <DateChange>2010-11-26T12:13:46.827</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText>&gt;10</QuantityText>
+      <QuantityChangeDate>2010-11-26T12:14:00</QuantityChangeDate>
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>8</ADDays>
+      <DeliverTimeGuaranteed>41</DeliverTimeGuaranteed>
+      <DITPercent xsi:nil="true" />
+      <DDPercent>83.0</DDPercent>
+      <MDPercent>83.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Россия</PriceCountry>
+      <PriceGroup>ReplacementNonOriginal</PriceGroup>
+      <CalcDeliveryPercent>83.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>V98D61930</DetailNum>
+      <MakeLogo>D2</MakeLogo>
+      <PriceLogo>NOVS</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>1822.7300</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>4</GroupId>
+      <DetailId>79074646</DetailId>
+      <DetailNum>V98D61930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>D2</MakeLogo>
+      <MakeName>Drive Joy</MakeName>
+      <bitOriginal>false</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>V_BELT</DetailNameEng>
+      <DetailNameRus>V_BELT</DetailNameRus>
+      <DetailNameRusNoCust>V_BELT</DetailNameRusNoCust>
+      <PriceId>504</PriceId>
+      <PriceLogo>NPOL</PriceLogo>
+      <PriceDesc>Япония, заказ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-10-26T05:05:43.87</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>8</ADDays>
+      <DeliverTimeGuaranteed>30</DeliverTimeGuaranteed>
+      <DITPercent xsi:nil="true" />
+      <DDPercent xsi:nil="true" />
+      <MDPercent xsi:nil="true" />
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Япония</PriceCountry>
+      <PriceGroup>ReplacementNonOriginal</PriceGroup>
+      <CalcDeliveryPercent>-1</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>V98D61930</DetailNum>
+      <MakeLogo>D2</MakeLogo>
+      <PriceLogo>NPOL</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>2472.6200</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>4</GroupId>
+      <DetailId>79074646</DetailId>
+      <DetailNum>V98D61930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>D2</MakeLogo>
+      <MakeName>Drive Joy</MakeName>
+      <bitOriginal>false</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>V_BELT</DetailNameEng>
+      <DetailNameRus>V_BELT</DetailNameRus>
+      <DetailNameRusNoCust>V_BELT</DetailNameRusNoCust>
+      <PriceId>505</PriceId>
+      <PriceLogo>NPOT</PriceLogo>
+      <PriceDesc>Япония, заказ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-11-02T22:46:02.22</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>21</DestinationId>
+      <DestinationLogo>CNT</DestinationLogo>
+      <DestinationDesc>Контейнер</DestinationDesc>
+      <ADDays>45</ADDays>
+      <DeliverTimeGuaranteed>70</DeliverTimeGuaranteed>
+      <DITPercent xsi:nil="true" />
+      <DDPercent xsi:nil="true" />
+      <MDPercent xsi:nil="true" />
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Япония</PriceCountry>
+      <PriceGroup>ReplacementNonOriginal</PriceGroup>
+      <CalcDeliveryPercent>-1</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>V98D61930</DetailNum>
+      <MakeLogo>D2</MakeLogo>
+      <PriceLogo>NPOT</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>2472.6200</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>-1</MakeSynonymGroupId>
+      <GroupId>4</GroupId>
+      <DetailId>79074646</DetailId>
+      <DetailNum>V98D61930</DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>D2</MakeLogo>
+      <MakeName>Drive Joy</MakeName>
+      <bitOriginal>false</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng>V_BELT</DetailNameEng>
+      <DetailNameRus>V_BELT</DetailNameRus>
+      <DetailNameRusNoCust>V_BELT</DetailNameRusNoCust>
+      <PriceId>845</PriceId>
+      <PriceLogo>NPOG</PriceLogo>
+      <PriceDesc>Япония, заказ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-11-02T22:46:02.203</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>16</ADDays>
+      <DeliverTimeGuaranteed>30</DeliverTimeGuaranteed>
+      <DITPercent xsi:nil="true" />
+      <DDPercent xsi:nil="true" />
+      <MDPercent xsi:nil="true" />
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Япония</PriceCountry>
+      <PriceGroup>ReplacementNonOriginal</PriceGroup>
+      <CalcDeliveryPercent>-1</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>V98D61930</DetailNum>
+      <MakeLogo>D2</MakeLogo>
+      <PriceLogo>NPOG</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>2552.7200</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>9</MakeSynonymGroupId>
+      <GroupId>1</GroupId>
+      <DetailId>82109632</DetailId>
+      <DetailNum>1YR6151930          </DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>MZ</MakeLogo>
+      <MakeName>Mazda</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng />
+      <DetailNameRus />
+      <DetailNameRusNoCust />
+      <PriceId>977</PriceId>
+      <PriceLogo>NPOX</PriceLogo>
+      <PriceDesc>Оригинальные запчасти из Японии под заказ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-11-02T23:34:14.67</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>10</ADDays>
+      <DeliverTimeGuaranteed>50</DeliverTimeGuaranteed>
+      <DITPercent>50.6300000000000</DITPercent>
+      <DDPercent>72.0</DDPercent>
+      <MDPercent>72.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Япония</PriceCountry>
+      <PriceGroup>Original</PriceGroup>
+      <CalcDeliveryPercent>72.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>1YR6151930          </DetailNum>
+      <MakeLogo>MZ</MakeLogo>
+      <PriceLogo>NPOX</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>3251.8700</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>9</MakeSynonymGroupId>
+      <GroupId>1</GroupId>
+      <DetailId>82109632</DetailId>
+      <DetailNum>1YR6151930          </DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>MZ</MakeLogo>
+      <MakeName>Mazda</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng />
+      <DetailNameRus />
+      <DetailNameRusNoCust />
+      <PriceId>504</PriceId>
+      <PriceLogo>NPOL</PriceLogo>
+      <PriceDesc>Япония, заказ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-10-25T19:17:07.737</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>7</ADDays>
+      <DeliverTimeGuaranteed>30</DeliverTimeGuaranteed>
+      <DITPercent>66.8200000000000</DITPercent>
+      <DDPercent>83.0</DDPercent>
+      <MDPercent>83.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Япония</PriceCountry>
+      <PriceGroup>Original</PriceGroup>
+      <CalcDeliveryPercent>83.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>1YR6151930          </DetailNum>
+      <MakeLogo>MZ</MakeLogo>
+      <PriceLogo>NPOL</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>3623.5100</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>9</MakeSynonymGroupId>
+      <GroupId>1</GroupId>
+      <DetailId>82109632</DetailId>
+      <DetailNum>1YR6151930          </DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>MZ</MakeLogo>
+      <MakeName>Mazda</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng />
+      <DetailNameRus />
+      <DetailNameRusNoCust />
+      <PriceId>505</PriceId>
+      <PriceLogo>NPOT</PriceLogo>
+      <PriceDesc>Япония, заказ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-11-01T19:15:56.91</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>21</DestinationId>
+      <DestinationLogo>CNT</DestinationLogo>
+      <DestinationDesc>Контейнер</DestinationDesc>
+      <ADDays>8</ADDays>
+      <DeliverTimeGuaranteed>70</DeliverTimeGuaranteed>
+      <DITPercent xsi:nil="true" />
+      <DDPercent>31.0</DDPercent>
+      <MDPercent>31.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Япония</PriceCountry>
+      <PriceGroup>Original</PriceGroup>
+      <CalcDeliveryPercent>31.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>1YR6151930          </DetailNum>
+      <MakeLogo>MZ</MakeLogo>
+      <PriceLogo>NPOT</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>3623.5100</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+  <DetailItem>
+    <DetailInfo>
+      <MakeSynonymGroupId>9</MakeSynonymGroupId>
+      <GroupId>1</GroupId>
+      <DetailId>82109632</DetailId>
+      <DetailNum>1YR6151930          </DetailNum>
+      <DetailWeight xsi:nil="true" />
+      <MakeLogo>MZ</MakeLogo>
+      <MakeName>Mazda</MakeName>
+      <bitOriginal>true</bitOriginal>
+      <Country>ЯПОНИЯ</Country>
+      <CodeTNVED />
+      <DetailNameEng />
+      <DetailNameRus />
+      <DetailNameRusNoCust />
+      <PriceId>845</PriceId>
+      <PriceLogo>NPOG</PriceLogo>
+      <PriceDesc>Япония, заказ</PriceDesc>
+      <bitStorehouse>false</bitStorehouse>
+      <DateChange>2010-11-01T19:15:56.907</DateChange>
+      <LotQuantity>1</LotQuantity>
+      <Quantity xsi:nil="true" />
+      <QuantityText />
+      <QuantityChangeDate xsi:nil="true" />
+      <ArrivalDatePlan xsi:nil="true" />
+      <DestinationId>1</DestinationId>
+      <DestinationLogo>AFL</DestinationLogo>
+      <DestinationDesc>Срочный</DestinationDesc>
+      <ADDays>6</ADDays>
+      <DeliverTimeGuaranteed>30</DeliverTimeGuaranteed>
+      <DITPercent xsi:nil="true" />
+      <DDPercent>31.0</DDPercent>
+      <MDPercent>31.0</MDPercent>
+      <OptovikId xsi:nil="true" />
+      <PriceCountry>Япония</PriceCountry>
+      <PriceGroup>Original</PriceGroup>
+      <CalcDeliveryPercent>31.0</CalcDeliveryPercent>
+    </DetailInfo>
+    <Prices>
+      <DetailNum>1YR6151930          </DetailNum>
+      <MakeLogo>MZ</MakeLogo>
+      <PriceLogo>NPOG</PriceLogo>
+      <LotQuantity>1</LotQuantity>
+      <ResultPrice>3740.8900</ResultPrice>
+      <NDSPaymentType>0</NDSPaymentType>
+      <DealerResultPrice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+        <Gprice>
+          <Dealer_ResultPrice xsi:nil="true" />
+          <DealerID>0</DealerID>
+        </Gprice>
+      </DealerResultPrice>
+    </Prices>
+    <LCriteria />
+  </DetailItem>
+</ArrayOfDetailItem>

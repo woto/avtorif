@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<searchResult>
+  <main>
+    <part id="361770236">
+      <from partId="361770236">main</from>
+      <code weightKg="0.180" amount="LS">99366D1930</code>
+      <price curr="RUR" plPrice="32.09" plCurr="USD">1010.84</price>
+      <descr>"BELT, V-RIBBED"</descr>
+      <supplier k="1.000" sId="3339" make="LS" supplDays100="29" supplDays30="29" supplDate30="2010-12-25" rgb="008000" kgPrice="393.75" Delivery="avia" RusName="true" info="габарит 18 долл/кг" successProc="69.307">USA Lexus (через ОАЭ)</supplier>
+      <supplierInfo>габарит 18 долл/кг</supplierInfo>
+      <probability>
+      </probability>
+      <version>24.09.2010</version>
+      <weightPrice>12.50</weightPrice>
+      <message>
+      </message>
+      <srok>18</srok>
+      <region>США</region>
+      <amount>
+      </amount>
+    </part>
+    <part id="307476240">
+      <from partId="307476240">main</from>
+      <code weightKg="0.180" amount="LS">99366D1930</code>
+      <price curr="RUR" plPrice="36.23" plCurr="USD">1141.25</price>
+      <descr>Ремень</descr>
+      <supplier k="1.000" sId="3254" make="LS" supplDays100="20" supplDays30="18" supplDate30="2010-12-14" rgb="008000" kgPrice="393.75" Delivery="avia" RusName="false" info="" successProc="81.466">USA Lexus (s)</supplier>
+      <supplierInfo>
+      </supplierInfo>
+      <probability>
+      </probability>
+      <version>12.02.2010</version>
+      <weightPrice>12.50</weightPrice>
+      <message>
+      </message>
+      <srok>40</srok>
+      <region>США</region>
+      <amount>
+      </amount>
+    </part>
+    <part id="349238235">
+      <from partId="349238235">main</from>
+      <code weightKg="0.180" amount="TY">99366D1930</code>
+      <price curr="RUR" plPrice="58.11" plCurr="USD">1830.47</price>
+      <descr>Ремень</descr>
+      <supplier k="0.810" sId="60" make="TY" supplDays100="10" supplDays30="10" supplDate30="2010-12-06" rgb="FFFF00" kgPrice="378.00" Delivery="avia" RusName="false" info="габарит 20$/кг+10 дней" successProc="93.232">ОАЭ Toyota</supplier>
+      <supplierInfo>габарит 20$/кг+10 дней</supplierInfo>
+      <probability>
+      </probability>
+      <version>23.11.2010</version>
+      <weightPrice>12.00</weightPrice>
+      <message>
+      </message>
+      <srok>13</srok>
+      <region>ОАЭ</region>
+      <amount>64</amount>
+    </part>
+    <part id="349238235">
+      <from partId="349238235">main</from>
+      <code weightKg="0.180" amount="TY">99366D1930</code>
+      <price curr="RUR" plPrice="58.11" plCurr="USD">1830.47</price>
+      <descr>Ремень</descr>
+      <supplier k="0.810" sId="60" make="TY" supplDays100="19" supplDays30="20" supplDate30="2010-12-16" rgb="FFFF00" kgPrice="252.00" Delivery="cargo" RusName="false" info="Габарит 15$/кг" successProc="93.232">ОАЭ Toyota</supplier>
+      <supplierInfo>Габарит 15$/кг</supplierInfo>
+      <probability>
+      </probability>
+      <version>23.11.2010</version>
+      <weightPrice>8.00</weightPrice>
+      <message>
+      </message>
+      <srok>20</srok>
+      <region>ОАЭ</region>
+      <amount>64</amount>
+    </part>
+    <part id="349238235">
+      <from partId="349238235">main</from>
+      <code weightKg="0.180" amount="TY">99366D1930</code>
+      <price curr="RUR" plPrice="58.11" plCurr="USD">1830.47</price>
+      <descr>Ремень</descr>
+      <supplier k="0.810" sId="60" make="TY" supplDays100="67" supplDays30="68" supplDate30="2011-02-02" rgb="FFFF00" kgPrice="132.30" Delivery="cont" RusName="false" info="" successProc="93.232">ОАЭ Toyota</supplier>
+      <supplierInfo>
+      </supplierInfo>
+      <probability>
+      </probability>
+      <version>23.11.2010</version>
+      <weightPrice>4.20</weightPrice>
+      <message>
+      </message>
+      <srok>50</srok>
+      <region>ОАЭ</region>
+      <amount>64</amount>
+    </part>
+    <part id="370621109">
+      <from partId="370621109">main</from>
+      <code weightKg="0.180" amount="TOYOTA">99366D1930</code>
+      <price curr="RUR" plPrice="91.45" plCurr="USD">2880.68</price>
+      <descr>Ремень</descr>
+      <supplier k="0.810" sId="3126" make="TOYOTA" supplDays100="13" supplDays30="12" supplDate30="2010-12-08" rgb="FF0000" kgPrice="504.00" Delivery="avia" RusName="true" info="" successProc="80.464">Япония TY (габарит и AirBag+30 дней)</supplier>
+      <supplierInfo>
+      </supplierInfo>
+      <probability>
+      </probability>
+      <version>26.10.2010</version>
+      <weightPrice>16.00</weightPrice>
+      <message>
+      </message>
+      <srok>15</srok>
+      <region>Япония</region>
+      <amount>
+      </amount>
+    </part>
+  </main>
+  <extWH>
+    <part id="166698064">
+      <from partId="166698064">extWH</from>
+      <code>99366D1930</code>
+      <price curr="RUR" plPrice="40.19" plCurr="USD">1265.99</price>
+      <amount>19</amount>
+      <descr>РЕМЕНЬ</descr>
+      <supplier sId="218" make="TOYOTA" supplDays100="2" supplDays30="2" supplDate30="2010-11-28" Delivery="msc" RusName="false" info="" successProc="96.649">наличие Москва(Ц) ВОЗВРАТЫ НЕ ПРИНИМАЮТСЯ!</supplier>
+      <days>2</days>
+      <version>26.11.2010</version>
+      <region>Москва</region>
+    </part>
+    <part id="166036479">
+      <from partId="166036479">extWH</from>
+      <code>99366D1930</code>
+      <price curr="RUR" plPrice="42.08" plCurr="USD">1325.52</price>
+      <amount>2</amount>
+      <descr>РЕМЕНЬ\BELT, V-RIBBED</descr>
+      <supplier sId="3149" make="Toyota" supplDays100="4" supplDays30="5" supplDate30="2010-12-01" Delivery="msc" RusName="false" info="" successProc="91.696">наличие Москва (MR) ВОЗВРАТЫ НЕ ПРИНИМАЮТСЯ!</supplier>
+      <days>6</days>
+      <version>24.11.2010</version>
+      <region>Москва</region>
+    </part>
+    <part id="166214977">
+      <from partId="166214977">extWH</from>
+      <code>99366D1930</code>
+      <price curr="RUR" plPrice="49.41" plCurr="USD">1556.42</price>
+      <amount>1</amount>
+      <descr>РЕМЕНЬ ПРИВОДНОЙ</descr>
+      <supplier sId="3028" make="TOYOTA" supplDays100="1" supplDays30="1" supplDate30="2010-11-27" Delivery="msc" RusName="false" info="" successProc="94.316">наличие Москва(S)</supplier>
+      <days>1</days>
+      <version>25.11.2010</version>
+      <region>Москва</region>
+    </part>
+    <part id="165335961">
+      <from partId="165335961">extWH</from>
+      <code>99366D1930</code>
+      <price curr="RUR" plPrice="1547.91" plCurr="RUR">1547.91</price>
+      <amount>1</amount>
+      <descr>Ремень</descr>
+      <supplier sId="3241" make="TOYOTA" supplDays100="2" supplDays30="1" supplDate30="2010-11-27" Delivery="msc" RusName="false" info="" successProc="85.049">наличие Москва(3241)</supplier>
+      <days>2</days>
+      <version>23.11.2010</version>
+      <region>Москва</region>
+    </part>
+    <part id="166435399">
+      <from partId="166435399">extWH</from>
+      <code>99366D1930</code>
+      <price curr="RUR" plPrice="1576.97" plCurr="RUR">1576.97</price>
+      <amount>3</amount>
+      <descr>Ремень ручейковый E</descr>
+      <supplier sId="3013" make="TOYOTA" supplDays100="2" supplDays30="2" supplDate30="2010-11-28" Delivery="msc" RusName="false" info="" successProc="81.820">наличие Москва(E)</supplier>
+      <days>2</days>
+      <version>26.11.2010</version>
+      <region>Москва</region>
+    </part>
+    <part id="164007081">
+      <from partId="164007081">extWH</from>
+      <code>99366D1930</code>
+      <price curr="RUR" plPrice="1732.19" plCurr="RUR">1732.19</price>
+      <amount>4</amount>
+      <descr>РЕМЕНЬ</descr>
+      <supplier sId="3315" make="TOYOTA" supplDays100="5" supplDays30="6" supplDate30="2010-12-02" Delivery="msc" RusName="false" info="" successProc="61.582">наличие Москва(3315)</supplier>
+      <days>4</days>
+      <version>18.11.2010</version>
+      <region>Москва</region>
+    </part>
+    <part id="166512677">
+      <from partId="166512677">extWH</from>
+      <code>99366D1930</code>
+      <price curr="RUR" plPrice="1797.47" plCurr="RUR">1797.47</price>
+      <amount>50</amount>
+      <descr>РЕМЕНЬ ПРИВОДНОЙ</descr>
+      <supplier sId="3289" make="TOYOTA//VVT" supplDays100="3" supplDays30="2" supplDate30="2010-11-28" Delivery="msc" RusName="false" info="" successProc="81.802">наличие Москва(3289)</supplier>
+      <days>5</days>
+      <version>26.11.2010</version>
+      <region>Москва</region>
+    </part>
+    <part id="166512678">
+      <from partId="166512678">extWH</from>
+      <code>99366D1930</code>
+      <price curr="RUR" plPrice="1857.49" plCurr="RUR">1857.49</price>
+      <amount>50</amount>
+      <descr>РЕМЕНЬ ПРИВОДНОЙ</descr>
+      <supplier sId="3289" make="TOYOTA//VVT" supplDays100="3" supplDays30="2" supplDate30="2010-11-28" Delivery="msc" RusName="false" info="" successProc="81.802">наличие Москва(3289)</supplier>
+      <days>5</days>
+      <version>26.11.2010</version>
+      <region>Москва</region>
+    </part>
+    <part id="166654554">
+      <from partId="166654554">extWH</from>
+      <code>99366D1930</code>
+      <price curr="RUR" plPrice="2196.56" plCurr="RUR">2196.56</price>
+      <amount>1</amount>
+      <descr>Ремень 6PK1930</descr>
+      <supplier sId="3322" make="TOYOTA" supplDays100="5" supplDays30="5" supplDate30="2010-12-01" Delivery="msc" RusName="false" info="" successProc="81.301">наличие Москва(IS) ВОЗВРАТЫ НЕ ПРИНИМАЮТСЯ!</supplier>
+      <days>3</days>
+      <version>26.11.2010</version>
+      <region>Москва</region>
+    </part>
+    <part id="166665412">
+      <from partId="166665412">extWH</from>
+      <code>99366D1930</code>
+      <price curr="RUR" plPrice="2196.56" plCurr="RUR">2196.56</price>
+      <amount>1</amount>
+      <descr>Ремень 6PK1930</descr>
+      <supplier sId="3329" make="TOYOTA" supplDays100="4" supplDays30="3" supplDate30="2010-11-29" Delivery="msc" RusName="false" info="" successProc="78.423">наличие Москва(ISmsc) ВОЗВРАТЫ НЕ ПРИНИМАЮТСЯ!</supplier>
+      <days>3</days>
+      <version>26.11.2010</version>
+      <region>Москва</region>
+    </part>
+    <part id="165335960">
+      <from partId="165335960">extWH</from>
+      <code>99366D1930</code>
+      <price curr="RUR" plPrice="2200.77" plCurr="RUR">2200.77</price>
+      <amount>1</amount>
+      <descr>Ремень</descr>
+      <supplier sId="3241" make="TOYOTA" supplDays100="2" supplDays30="1" supplDate30="2010-11-27" Delivery="msc" RusName="false" info="" successProc="85.049">наличие Москва(3241)</supplier>
+      <days>2</days>
+      <version>23.11.2010</version>
+      <region>Москва</region>
+    </part>
+  </extWH>
+  <replaces>
+    <r>1YR6151930</r>
+    <r>99366D1930</r>
+  </replaces>
+  <weightKg byCodeKg="0.17">0.18</weightKg>
+  <searchRequest execMillisec="2375">
+    <code>1YR6151930</code>
+  </searchRequest>
+</searchResult>

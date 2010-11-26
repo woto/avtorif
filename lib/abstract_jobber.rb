@@ -31,7 +31,7 @@ class AbstractJobber
 
   def error(j, e)
     puts Time.zone.now.to_s + " Условный error: '#{job.title}' от '#{job.supplier.title}'."
-    #raise e
+    puts e.message
   end
 
   def failure
