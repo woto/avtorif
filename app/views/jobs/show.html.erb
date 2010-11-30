@@ -86,7 +86,7 @@ scope = scope.scoped :conditions => {:supplier_id => params['supplier_id']} if p
 
 <div style="background: #FFD">
 <b>Ручная загрузка прайса:</b>
-<% semantic_form_for(SupplierPrice.new, :html => { :multipart => true }, :url => supplier_job_supplier_prices_path(params[:supplier_id], params[:id])) do |f| %>
+<%= semantic_form_for(SupplierPrice.new, :html => { :multipart => true }, :url => supplier_job_supplier_prices_path(params[:supplier_id], params[:id])) do |f| %>
   <%= f.error_messages %>
 
     <%= f.inputs :attachment %>

@@ -14,11 +14,69 @@
     <th>job-id</th>
     <th>kpp</th>
     <th>manufacturer</th>
+    <th>manufacturer-short</th>
     <th>margin</th>
     <th>result-cost</th>
     <th>supplier</th>
     <th>title</th>
+    <th>title-en</th>
+    <th>country</th>
     <th>updated-at</th>
+    <th>e-Группа тождественности деталей</th>
+    <th>e-Оригинальная?</th>
+    <th>e-Новый номер детали</th>
+    <th>e-Лого прайса</th>
+    <th>e-Описание прайса</th>
+    <th>e-На складе?</th>
+    <th>e-Дата обн. цены</th>
+    <th>e-Кратность заказа</th>
+    <th>e-Количество</th>
+    <th>e-Дата обн. кол-ва</th>
+    <th>e-Количество которое прибудет на склад</th>
+    <th>e-Дата прибытия на склад</th>
+    <th>e-Лого способа доставки</th>
+    <th>e-Описание способа доставки</th>
+    <th>e-Средний срок доставки</th>
+    <th>e-Гарантированный срок доставки</th>
+    <th>e-% вовремя выполн. заказов</th>
+    <th>e-% выполн. заказов по детали в прайсе</th>
+    <th>e-% выполн. по производителю в прайсе</th>
+    <th>e-Местонахождение поставщика</th>
+    <th>e-Группа деталей</th>
+    <th>e-% доставки</th>
+    <th>a-from</th>
+    <th>a-code</th>
+    <th>a-code weightKg</th>
+    <th>a-code amount</th>
+    <th>a-price</th>
+    <th>a-price curr</th>
+    <th>a-price plPrice</th>
+    <th>a-price plCurr</th>
+    <th>a-amount</th>
+    <th>a-descr</th>
+    <th>a-supplier</th>
+    <th>a-supplier k</th>
+    <th>a-supplier sId</th>
+    <th>a-supplier make</th>
+    <th>a-supplier supplDays100</th>
+    <th>a-supplier supplDays30</th>
+    <th>a-supplier supplDate30</th>
+    <th>a-supplier kgPrice</th>
+    <th>a-supplier Delivery</th>
+    <th>a-supplier RusName</th>
+    <th>a-supplier info</th>
+    <th>a-supplier successProc</th>
+    <th>a-days</th>
+    <th>a-supplierInfo</th>
+    <th>a-probability</th>
+    <th>a-version</th>
+    <th>a-weightPrice</th>
+    <th>a-message</th>
+    <th>a-srok</th>
+    <th>a-region</th>
+    <th>a-amount</th>
+    <th>a-whId</th>
+    <th>a-weightInfo</th>
   </tr>
 
 <% @prices.each do |price| %>
@@ -35,11 +93,179 @@
     <td><%=h price.job_id %></td>
     <td><%=h price.kpp %></td>
     <td><%=h price.manufacturer %></td>
+    <td><%=h price.manufacturer_short %></td>
     <td><%=h price.margin %></td>
     <td><%=h price.result_cost %></td>
     <td><%=h price.supplier %></td>
     <td><%=h price.title %></td>
+    <td><%=h price.title_en %></td>
+    <td><%=h price.country %></td>
     <td><%=h price.updated_at %></td>
+    <% begin %>
+      <td><%=h price.make_synonym_group_id_emex %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.bit_original_emex %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.new_detail_num_emex %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.price_logo_emex %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.price_desc_emex %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.price_bit_storehouse_emex %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.date_change_emex %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.lot_quantity_emex %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.quantity_text_emex %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.quantity_change_date_emex %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.arrivial_quantity_emex %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.arrivial_date_plan_emex %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.destination_logo_emex %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.destination_desc_emex %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.ad_days_emex %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.deliver_time_guaranteed_emex %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.dit_percent_emex %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.dd_percent_emex %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.md_percent_emex %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.price_country_emex %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.price_group_emex %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.calc_delivery_percent_emex %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.from_a4c %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.code_a4c %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.code_weight_kg_a4c %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.code_amoun_a4c %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.price_a4c %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.price_curr_a4c %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.price_pl_price_a4c %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.price_pl_curr_a4c %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.amount_a4c %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.descr_a4c %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.supplier_a4c %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.supplier_k_a4c %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.supplier_s_id_a4c %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.supplier_make_a4c %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.supplier_suppl_days100_a4c %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.supplier_suppl_days_30_a4c %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.supplier_date_30_a4c %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.supplier_kg_price_a4c %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.supplier_delivery_a4c %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.supplier_rus_name_a4c %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.supplier_info_a4c %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.supplier_success_proc_a4c %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.days_a4c %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.supplier_info_a4c %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.probability_a4c %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.version_a4c %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.weight_price_a4c %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.message_a4c %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.srok_a4c %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.region_a4c %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.amount_a4c %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.wh_id_a4c %></td>
+    <% rescue => e; end %>
+    <% begin %>
+      <td><%=h price.weight_info_a4c %></td>
+    <% rescue => e; end %>
   </tr>
 <% end %>
 </table>

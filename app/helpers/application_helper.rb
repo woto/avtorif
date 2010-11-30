@@ -2,7 +2,7 @@
 module ApplicationHelper
 
   def pages
-    controllers = Dir.new("#{RAILS_ROOT}/app/controllers").entries.sort
+    controllers = Dir.new("#{Rails.root}/app/controllers").entries.sort
     cont = Array.[]
       controllers.each_with_index do |controller, i|
       if controller =~ /_controller/ &&

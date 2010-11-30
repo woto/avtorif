@@ -1,4 +1,5 @@
 Avtorif::Application.routes.draw do
+  devise_for :users
   resources :filter_jobs
   resources :delivery_types
   resources :currencies
@@ -73,6 +74,7 @@ Avtorif::Application.routes.draw do
   end
 
   match '/:controller(/:action(/:id))'
+  root :to => 'suppliers#index'
 end
 
   # The priority is based upon order of creation:

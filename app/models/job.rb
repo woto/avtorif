@@ -6,6 +6,8 @@ class Job < ActiveRecord::Base
   validates_numericality_of :seconds_working, :only_integer => true, :if => "!seconds_working.blank?"
   validates_presence_of :title
   validates_presence_of :file_mask
+
+  before_save :reset_next_start_appropriate
   
   module Status
     STARTED_ONCE = "<div style='background: yellow'>Задача ни разу не была запущена с момента последнего изменения</div><br/>"
@@ -33,7 +35,7 @@ class Job < ActiveRecord::Base
   belongs_to :jobable, :polymorphic => true
 
   has_many :childs, :class_name => "Job", :foreign_key => "job_id", :dependent => :destroy
-  named_scope :active, {:conditions => ["active = ?", 1]}
+  scope :active, {:conditions => ["active = ?", 1]}
   
   belongs_to :parent, :class_name => "Job", :foreign_key => "job_id"
   #has_one :child_job, :foreign_key => :job_id, :class_name => "Job"
@@ -85,7 +87,7 @@ class Job < ActiveRecord::Base
     
   end
 
-def before_save
+def reset_next_start_appropriate
   if self.repeats.size == 0
     self.next_start = nil
   end

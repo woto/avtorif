@@ -1,224 +1,176 @@
 class PricesController < ApplicationController
 
   def search
-    #sleep(10)
-    @prices = []
-    @prices = Price.find(:all, :conditions => ['catalog_number = ?', params[:price][:catalog_number]])
-    
-    #joe = Customer.new("Joe Smith", "123 Maple, Anytown NC", 12345)
 
-    #@prices << Struct.new(:catalog_number => 'b')
+    @prices = []
+    threads = []
+
+    # Локальная работа
+    threads << Thread.new() do
+      Thread.current["prices"] = Price.find(:all, :conditions => ['catalog_number = ?', params[:price][:catalog_number]])
+    end
+
+    # Работа со сторонними сервисами
     if(defined?(params[:OnlyOurWS]) && params[:OnlyOurWS] == "1")
       Timeout.timeout(AppConfig.emex_timeout) do
         begin
-          response = Net::HTTP.post_form(URI.parse('http://62.5.214.110/partnersws/Service.asmx/SearchResultOneCurrencyXml'), 
-                                         {'sPartCode' => params[:price][:catalog_number], 
-                                           'sAuthCode' => '303190193312', 
-                                           'iReplaces' => '1', 
-                                           'sCurrency' => 'RUR'})
-#          response = Net::HTTP.post_form(URI.parse('http://ws.emex.ru/EmExService.asmx/FindDetailAdv'),
-#                                    {'login'=>AppConfig.emex_login,
-#                                     'password'=> AppConfig.emex_password,
-#                                     'makeLogo' => 'true',
-#                                     'detailNum' => params[:price][:catalog_number],
-#                                     'findSubstitutes' => 'true'})
-          doc = Nokogiri::XML(response.body)
 
-          detail_items = doc.children.children
-          detail_items.each do |z|
-            if z.blank?
-              next
-            end
-            p = Price.new(
-              :created_at => '',
-              :estimate_days => '',
-              :goods_id => '',
-              :id => '',
-              :initial_cost => '',
-              :inn => '',
-              :job_id => '',
-              :job_title => '',
-              :kpp => '',
-              :manufacturer => '',
-              :margin => '',
-              #:supplier => '',
-              :updated_at => ''
-            )
+          # ALL4CAR
+          threads << Thread.new() do
+            Thread.current["prices"] = []
+            response = Net::HTTP.post_form(URI.parse('http://62.5.214.110/partnersws/Service.asmx/SearchResultOneCurrencyXml'), {
+              'sPartCode' => params[:price][:catalog_number], 
+              'sAuthCode' => '303190193312', 
+              'iReplaces' => '1', 
+              'sCurrency' => 'RUR'
+            })
 
-            z.children.children.each do |c|
+            doc = Nokogiri::XML(response.body)
+            
+            places = doc.xpath('/searchResult')
 
-              if c.blank?
+            places.children.each do |place|
+              unless(place.is_a?(Nokogiri::XML::Element) && ["main", "extWH", "mainWH"].include?(place.name))
                 next
               end
 
-              value = CGI.unescapeHTML(c.children.to_s)
+              place.children.each do |part|
+                if part.blank?
+                  next
+                end
+                
+                p = Price.new
+                p[:inn] = 7733732181
+                p[:kpp] = 773301001
+                p[:margin] = 1
 
-              p[(c.name.underscore + "-a4c").to_sym] = value
-              p[:inn] = 1111111
-              p[:kpp] = 2222222
-              #p['supplier'] = 'emex'
-              p[:margin] = 1
-              #debugger
-              case c.name
-                when /^DateChange$/
-                  p[:created_at] = value
-                  p[:updated_at] = value
-                when /^DetailNum$/
-                  p[:catalog_number] = value
-                when /^QuantityText$/
-                  p[:count] = value.gsub(/[><=]/, "").to_i
-                when /^DetailNameRus$/
-                  p[:title] = value
-                when /^ResultPrice$/
-                  p[:initial_cost] = value
-                  p[:result_cost] = value
-                when /^MakeName$/
-                  p[:manufacturer] = value.to_s
-                when /^DeliverTimeGuaranteed/
-                  p[:estimate_days] = value.to_s
-                when /^PriceDesc$/
-                  p[:supplier] = value
-                when /^PriceLogo$/
-                  p[:job_title] = value.to_s
-                when /^QuantityChangeDate$/
-                  p[:updated_at] = value.to_s
+                part.children.each do |option|
+                  if option.blank?
+                    next
+                  end
+                  
+                  value = CGI.unescapeHTML(option.children.to_s)
+
+                  if option.keys.size > 0
+                    option.keys.each do |key|
+                      p[(option.name.underscore + "_" + key.underscore + "_a4c").to_sym] = option[key].strip
+                    end
+                  end
+                  p[(option.name.underscore + "_a4c").to_sym] = value.strip
+
+                  case option.name
+                    when /^descr$/
+                      p[:title] = value.strip
+                    when /^price$/
+                      p[:initial_cost] = value.strip
+                      p[:result_cost] = value.strip
+                    when /^code$/
+                      p[:catalog_number] = value.strip
+                  end
+
+                end
+
+                Thread.current["prices"] << p
+
               end
-
             end
-            
-            @prices.push p
-
           end
-          response = Net::HTTP.post_form(URI.parse('http://ws.emex.ru/EmExService.asmx/FindDetailAdv'),
-                                    {'login'=>AppConfig.emex_login,
-                                     'password'=> AppConfig.emex_password,
-                                     'makeLogo' => 'true',
-                                     'detailNum' => params[:price][:catalog_number],
-                                     'findSubstitutes' => 'true'})
-          doc = Nokogiri::XML(response.body)
 
-          detail_items = doc.children.children
-          detail_items.each do |z|
-            if z.blank?
-              next
-            end
-            p = Price.new(
-              :created_at => '',
-              :estimate_days => '',
-              :goods_id => '',
-              :id => '',
-              :initial_cost => '',
-              :inn => '',
-              :job_id => '',
-              :job_title => '',
-              :kpp => '',
-              :manufacturer => '',
-              :margin => '',
-              #:supplier => '',
-              :updated_at => ''
-            )
+          #EMEX
+          threads << Thread.new() do
 
-            z.children.children.each do |c|
+            Thread.current["prices"] = []
+            response = Net::HTTP.post_form(URI.parse('http://ws.emex.ru/EmExService.asmx/FindDetailAdv'), {
+              'login'=>AppConfig.emex_login,
+              'password'=> AppConfig.emex_password,
+              'makeLogo' => 'true',
+              'detailNum' => params[:price][:catalog_number],
+              'findSubstitutes' => 'true'
+            })
 
-              if c.blank?
+            doc = Nokogiri::XML(response.body)
+
+            detail_items = doc.children.children
+            detail_items.each do |z|
+
+              if z.blank?
                 next
               end
 
-              value = CGI.unescapeHTML(c.children.to_s)
+              p = Price.new
 
-              p[(c.name.underscore + "-emex").to_sym] = value
-              p[:inn] = 7716542310
-              p[:kpp] = 771601001
-              #p['supplier'] = 'emex'
-              p[:margin] = 1
+              z.children.children.each do |c|
 
-              case c.name
-                when /^DateChange$/
-                  p[:created_at] = value
-                  p[:updated_at] = value
-                when /^DetailNum$/
-                  p[:catalog_number] = value
-                when /^QuantityText$/
-                  p[:count] = value.gsub(/[><=]/, "").to_i
-                when /^DetailNameRus$/
-                  p[:title] = value
-                when /^ResultPrice$/
-                  p[:initial_cost] = value
-                  p[:result_cost] = value
-                when /^MakeName$/
-                  p[:manufacturer] = value.to_s
-                when /^DeliverTimeGuaranteed/
-                  p[:estimate_days] = value.to_s
-                when /^PriceDesc$/
-                  p[:supplier] = value
-                when /^PriceLogo$/
-                  p[:job_title] = value.to_s
-                when /^QuantityChangeDate$/
-                  p[:updated_at] = value.to_s
+                if c.blank?
+                  next
+                end
+
+                value = CGI.unescapeHTML(c.children.to_s)
+
+                p[:inn] = 7716542310
+                p[:kpp] = 771601001
+  #             p['supplier'] = 'emex'
+                p[:margin] = 1
+
+                case c.name
+ #               when /^DateChange$/
+ #                 p[:created_at] = value
+ #                 p[:updated_at] = value
+                  when /^DetailNum$/
+                    p[:catalog_number] = value.strip
+ #                when /^QuantityText$/
+ #                 p[:count] = value.gsub(/[><=]/, "").to_i
+                  when /^DetailNameRus$/
+                    p[:title] = value.strip
+                  when /^DetailNameEng$/
+                    p[:title_en] = value.strip
+                  when /^ResultPrice$/
+                    p[:initial_cost] = value.strip
+                    p[:result_cost] = value.strip
+                  when /^MakeName$/
+                    p[:manufacturer] = value.strip
+                  when /^MakeLogo$/
+                    p[:manufacturer_short] = value.strip
+ #                when /^DeliverTimeGuaranteed/
+ #                  p[:estimate_days] = value.to_s
+ #                when /^PriceDesc$/
+ #                  p[:supplier] = value
+ #                when /^PriceLogo$/
+ #                  p[:job_title] = value.to_s
+ #                when /^QuantityChangeDate$/
+ #                  p[:updated_at] = value.to_s
+                  when /^Country$/
+                    p[:country] = value.strip
+                  else
+                    p[(c.name.underscore + "_emex").to_sym] = value.strip
+                end
+
               end
-
-            end
-            
-            @prices.push p
-
+            Thread.current['prices'] << p
           end
+
+        end
+
         rescue Exception => e
           raise e
         end
-      end
+
+        threads.join
+
+        threads.each do |t| 
+          t.join
+          @prices = @prices + t["prices"]
+        end
+      end    
     end
-    #puts res.body
-
-=begin
-   /// <summary>
-    /// Тест для метода FindDetailAdv сервиса Поиска детали
-    /// </summary>
-    private void btnDetAdv_Click(object sender, EventArgs e)
-    {
-    try
-    {
-    Test_EmExService.EmExService.DetailItem[] details = null;
-    TimeSpan ts;
-    using (Test_EmExService.EmExService.EmExService serv = new Test_EmExService.EmExService.EmExService())
-    {
-    this.textBoxExcp.Text = String.Empty;
-    this.textBoxMess.Text = String.Empty;
-    DateTime dt1 = DateTime.Now;
-
-    details = serv.FindDetailAdv(<login>, "<password>", String.Empty, "357407182", true);
-
-    DateTime dt2 = DateTime.Now;
-    ts = dt2 - dt1;
-    }
-
-    this.textBoxMess.Text = String.Format("Найдено деталей: {0} за {1} mc", details.Length.ToString(), ts.TotalMilliseconds.ToString("#0.00"));
-    }
-    catch (Exception excp)
-    {
-    this.textBoxExcp.Text = excp.Message;
-    }
-    }
-
-  http://ws.emex.ru/EmExService.asmx
-    FindDetailAdv
-
-    ЛОГИН:14616
-    ПАРОЛЬ:2b0ffb38
-
-=end
-
-
-
-
-
 
     respond_to do |format|
       format.html {render :action => :index }
       format.xml  { render :xml => @prices }
     end
 
-    # 90948-01003
   end
+
   # GET /prices
   # GET /prices.xml
   def index
