@@ -10,6 +10,11 @@
 <% semantic_form_for(@job, :url => url) do |f| %>
   <%= f.error_messages %>
 
+
+  <p>
+    <%= f.label :supplier %><br />
+    <%= f.inputs :supplier %>
+  </p>
   <p>
     <%= f.label :next_start %><br />
     <%= f.datetime_select :next_start %>

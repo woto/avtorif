@@ -3,11 +3,8 @@ class FilterJobable < AbstractJobber
     retval = []
     @optional.each do |opt|
       supplier_price = SupplierPrice.find(opt).attachment
-      remote_file = RemoteFile.new(@job.job_code)
-      if @job.job_code.blank? 
-        raise 'У задачи фильтрации должно быть имя!' 
-      end
-      remote_file_name = @job.job_code
+      remote_file = RemoteFile.new(@job.title)
+      remote_file_name = @job.job_title
 
       options = Hash.new
       #puts @jobable.quote_char
@@ -35,6 +32,15 @@ class FilterJobable < AbstractJobber
         end
       end
 
+
+      if @jobable.row_sep.present?
+        case @jobable.row_sep
+          when "1"
+            options[:quote_char] =  "\x0d"
+          when "2"
+            options[:quote_char] =  "0d"
+        end
+      end
 
       #options[:row_sep] = "\r\n"
 
@@ -66,7 +72,7 @@ class FilterJobable < AbstractJobber
 
       attachment = SupplierPrice.new(:group_code => 'f' + @optional.to_s, :attachment => remote_file, :wc_stat => wc_stat)
       attachment.supplier = @job.supplier
-      attachment.job_code = @job.job_code
+      attachment.job_code = @job.title
       attachment.job_id = @job.id
       attachment.save
       remote_file.close

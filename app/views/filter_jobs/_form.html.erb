@@ -72,6 +72,14 @@
     <%= f.label :row_sep %><br />
     <%= f.text_field :row_sep %>
   </p>
+  <pre>
+    case @jobable.row_sep
+      when "1"
+        options[:quote_char] =  "\x0d"
+      when "2"
+        options[:quote_char] =  "0d"
+    end
+  </pre>
   <p>
     <%= f.label :quote_char %><br />
     <%= f.text_field :quote_char %>

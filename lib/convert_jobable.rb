@@ -24,47 +24,49 @@ class ConvertJobable < AbstractJobber
 
           attachment = SupplierPrice.new(:group_code => 'c' + @optional.to_s, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
           attachment.supplier = @job.supplier
-          attachment.job_code = @job.job_code
+          attachment.job_code = @job.title
           attachment.job_id = @job.id
           attachment.save
 
           retval << attachment.id
 
           remote_file.unlink
-          
+=begin        
+        when /csv_tr/
+=end        
         when /csv_normalize_new_line/
-            #puts supplier_price.original_filename
-            remote_file = RemoteFile.new(supplier_price.path)
+          #puts supplier_price.original_filename
+          remote_file = RemoteFile.new(supplier_price.path)
 
-            file = File.new(supplier_price.path, 'r')
-            file.each_line("\n") do |row|
-              #row.gsub!("\"", "")
-              row.gsub!("\r", "")
-              row.gsub!("\n", "")
-              unless row.empty?
-                  #remote_file.write(row.split(eval("\"#{@jobable.col_sep.to_s}\"")).collect(&:strip).to_csv )
-                  remote_file.write(row+"\r\n")
-              else
-                next
-              end
+          file = File.new(supplier_price.path, 'r')
+          file.each_line("\n") do |row|
+            #row.gsub!("\"", "")
+            row.gsub!("\r", "")
+            row.gsub!("\n", "")
+            unless row.empty?
+                #remote_file.write(row.split(eval("\"#{@jobable.col_sep.to_s}\"")).collect(&:strip).to_csv )
+                remote_file.write(row+"\r\n")
+            else
+              next
             end
+          end
 
-            remote_file.flush
+          remote_file.flush
 
-            md5 = Digest::MD5.file(remote_file.path).hexdigest
-            wc_stat = `wc #{remote_file.path.to_s.shellescape}`
+          md5 = Digest::MD5.file(remote_file.path).hexdigest
+          wc_stat = `wc #{remote_file.path.to_s.shellescape}`
 
-            remote_file.original_filename = File.basename(supplier_price.original_filename)
+          remote_file.original_filename = File.basename(supplier_price.original_filename)
 
-            attachment = SupplierPrice.new(:group_code => 'c' + @optional.to_s, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
-            attachment.supplier = @job.supplier
-            attachment.job_code = @job.job_code
-            attachment.job_id = @job.id
-            attachment.save
+          attachment = SupplierPrice.new(:group_code => 'c' + @optional.to_s, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
+          attachment.supplier = @job.supplier
+          attachment.job_code = @job.title
+          attachment.job_id = @job.id
+          attachment.save
 
-            retval << attachment.id
+          retval << attachment.id
 
-            remote_file.unlink
+          remote_file.unlink
           
         when /xls_roo/
           if(@jobable.encoding_out).present? && @jobable.encoding_out.to_s != 'AUTO'
@@ -92,7 +94,7 @@ class ConvertJobable < AbstractJobber
 
             attachment = SupplierPrice.new(:group_code => 'c' + @optional.to_s, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
             attachment.supplier = @job.supplier
-            attachment.job_code = @job.job_code
+            attachment.job_code = @job.title
             attachment.job_id = @job.id
             attachment.save
 
@@ -112,7 +114,7 @@ class ConvertJobable < AbstractJobber
 
           attachment = SupplierPrice.new(:group_code => 'c' + @optional.to_s, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
           attachment.supplier = @job.supplier
-          attachment.job_code = @job.job_code
+          attachment.job_code = @job.title
           attachment.job_id = @job.id
           attachment.save
 
@@ -132,7 +134,7 @@ class ConvertJobable < AbstractJobber
 
             attachment = SupplierPrice.new(:group_code => 'c' + @optional.to_s, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
             attachment.supplier = @job.supplier
-            attachment.job_code = @job.job_code
+            attachment.job_code = @job.title
             attachment.job_id = @job.id
             attachment.save
 
@@ -159,12 +161,12 @@ class ConvertJobable < AbstractJobber
     end
 
     if encoding_out.present?
-      encoding_out = "-t #{encoding_out}"
+      encoding_out = "-t #{encoding_out}//IGNORE"
     end
 
     `iconv #{encoding_in} #{encoding_out} #{source} > #{destination}`
     if $?.to_i != 0
-      raise 'Ошибка перекодирования в iconv вероятно входная кодировка выставлена неверно, id задачи ' + @job.id.to_s
+      raise 'Ошибка перекодирования в iconv вероятно входная кодировка выставлена неверно, id задачи ' + @job.id.to_s + "\r\niconv #{encoding_in} #{encoding_out} #{source} > #{destination}"
     end
   end
 end

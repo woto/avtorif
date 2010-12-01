@@ -2,7 +2,7 @@ class AppConfig
   protected
 
   def self.config
-    @@config ||= YAML.load_file("#{RAILS_ROOT}/config/config.yml")[RAILS_ENV].symbolize_keys
+    @@config ||= YAML.load_file("#{Rails.root}/config/config.yml")[RAILS_ENV].symbolize_keys
   end
 
   def self.method_missing method_name

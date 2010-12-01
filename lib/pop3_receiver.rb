@@ -40,7 +40,7 @@
 
               attachment = SupplierPrice.new(:group_code => group_code, :attachment => attachment, :md5 => md5, :email_id => email_id)
               attachment.supplier = @receiver.receive_job.job.supplier
-              attachment.job_code = @receiver.receive_job.job.job_code
+              attachment.job_code = @receiver.receive_job.job.title
               attachment.job_id = @receiver.receive_job.job.id
               attachment.save
 

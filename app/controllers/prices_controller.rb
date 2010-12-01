@@ -12,67 +12,75 @@ class PricesController < ApplicationController
 
     # Работа со сторонними сервисами
     if(defined?(params[:OnlyOurWS]) && params[:OnlyOurWS] == "1")
-      Timeout.timeout(AppConfig.emex_timeout) do
-        begin
+      #Timeout.timeout(AppConfig.emex_timeout) do
+        #begin
 
           # ALL4CAR
           threads << Thread.new() do
             Thread.current["prices"] = []
-            response = Net::HTTP.post_form(URI.parse('http://62.5.214.110/partnersws/Service.asmx/SearchResultOneCurrencyXml'), {
-              'sPartCode' => params[:price][:catalog_number], 
-              'sAuthCode' => '303190193312', 
-              'iReplaces' => '1', 
-              'sCurrency' => 'RUR'
-            })
+            Timeout.timeout(AppConfig.emex_timeout) do
+              begin
+              response = Net::HTTP.post_form(URI.parse('http://62.5.214.110/partnersws/Service.asmx/SearchResultOneCurrencyXml'), {
+                'sPartCode' => params[:price][:catalog_number], 
+                'sAuthCode' => '303190193312', 
+                'iReplaces' => '1', 
+                'sCurrency' => 'RUR'
+              })
 
-            doc = Nokogiri::XML(response.body)
-            
-            places = doc.xpath('/searchResult')
+              doc = Nokogiri::XML(response.body)
+              
+              places = doc.xpath('/searchResult')
 
-            places.children.each do |place|
-              unless(place.is_a?(Nokogiri::XML::Element) && ["main", "extWH", "mainWH"].include?(place.name))
-                next
-              end
-
-              place.children.each do |part|
-                if part.blank?
+              places.children.each do |place|
+                unless(place.is_a?(Nokogiri::XML::Element) && ["main", "extWH", "mainWH"].include?(place.name))
                   next
                 end
-                
-                p = Price.new
-                p[:inn] = 7733732181
-                p[:kpp] = 773301001
-                p[:margin] = 1
 
-                part.children.each do |option|
-                  if option.blank?
+                place.children.each do |part|
+                  if part.blank?
                     next
                   end
                   
-                  value = CGI.unescapeHTML(option.children.to_s)
+                  p = Price.new
+                  p[:inn] = 7733732181
+                  p[:kpp] = 773301001
+                  p[:margin] = 1
 
-                  if option.keys.size > 0
-                    option.keys.each do |key|
-                      p[(option.name.underscore + "_" + key.underscore + "_a4c").to_sym] = option[key].strip
+                  part.children.each do |option|
+                    if option.blank?
+                      next
                     end
-                  end
-                  p[(option.name.underscore + "_a4c").to_sym] = value.strip
+                    
+                    value = CGI.unescapeHTML(option.children.to_s)
 
-                  case option.name
-                    when /^descr$/
-                      p[:title] = value.strip
-                    when /^price$/
-                      p[:initial_cost] = value.strip
-                      p[:result_cost] = value.strip
-                    when /^code$/
-                      p[:catalog_number] = value.strip
+                    if option.keys.size > 0
+                      option.keys.each do |key|
+                        p[(option.name.underscore + "_" + key.underscore + "_a4c").to_sym] = option[key].strip
+                      end
+                    end
+                    p[(option.name.underscore + "_a4c").to_sym] = value.strip
+
+                    case option.name
+                      when /^descr$/
+                        p[:title] = value.strip
+                      when /^price$/
+                        p[:initial_cost] = value.strip
+                        p[:result_cost] = value.strip
+                      when /^code$/
+                        p[:catalog_number] = value.strip
+                    end
+
                   end
+
+                  puts '1'
+
+                  Thread.current["prices"] << p
 
                 end
-
-                Thread.current["prices"] << p
-
               end
+            rescue Exception => e
+              #raise e
+            end
             end
           end
 
@@ -80,88 +88,98 @@ class PricesController < ApplicationController
           threads << Thread.new() do
 
             Thread.current["prices"] = []
-            response = Net::HTTP.post_form(URI.parse('http://ws.emex.ru/EmExService.asmx/FindDetailAdv'), {
-              'login'=>AppConfig.emex_login,
-              'password'=> AppConfig.emex_password,
-              'makeLogo' => 'true',
-              'detailNum' => params[:price][:catalog_number],
-              'findSubstitutes' => 'true'
-            })
+            Timeout.timeout(AppConfig.emex_timeout) do
+              begin
+              response = Net::HTTP.post_form(URI.parse('http://ws.emex.ru/EmExService.asmx/FindDetailAdv'), {
+                'login'=>AppConfig.emex_login,
+                'password'=> AppConfig.emex_password,
+                'makeLogo' => 'true',
+                'detailNum' => params[:price][:catalog_number],
+                'findSubstitutes' => 'true'
+              })
 
-            doc = Nokogiri::XML(response.body)
+              doc = Nokogiri::XML(response.body)
 
-            detail_items = doc.children.children
-            detail_items.each do |z|
+              detail_items = doc.children.children
+              detail_items.each do |z|
 
-              if z.blank?
-                next
-              end
-
-              p = Price.new
-
-              z.children.children.each do |c|
-
-                if c.blank?
+                if z.blank?
                   next
                 end
 
-                value = CGI.unescapeHTML(c.children.to_s)
+                p = Price.new
 
-                p[:inn] = 7716542310
-                p[:kpp] = 771601001
-  #             p['supplier'] = 'emex'
-                p[:margin] = 1
+                z.children.children.each do |c|
 
-                case c.name
- #               when /^DateChange$/
- #                 p[:created_at] = value
- #                 p[:updated_at] = value
-                  when /^DetailNum$/
-                    p[:catalog_number] = value.strip
- #                when /^QuantityText$/
- #                 p[:count] = value.gsub(/[><=]/, "").to_i
-                  when /^DetailNameRus$/
-                    p[:title] = value.strip
-                  when /^DetailNameEng$/
-                    p[:title_en] = value.strip
-                  when /^ResultPrice$/
-                    p[:initial_cost] = value.strip
-                    p[:result_cost] = value.strip
-                  when /^MakeName$/
-                    p[:manufacturer] = value.strip
-                  when /^MakeLogo$/
-                    p[:manufacturer_short] = value.strip
- #                when /^DeliverTimeGuaranteed/
- #                  p[:estimate_days] = value.to_s
- #                when /^PriceDesc$/
- #                  p[:supplier] = value
- #                when /^PriceLogo$/
- #                  p[:job_title] = value.to_s
- #                when /^QuantityChangeDate$/
- #                  p[:updated_at] = value.to_s
-                  when /^Country$/
-                    p[:country] = value.strip
-                  else
-                    p[(c.name.underscore + "_emex").to_sym] = value.strip
+                  if c.blank?
+                    next
+                  end
+
+                  value = CGI.unescapeHTML(c.children.to_s)
+
+                  p[:inn] = 7716542310
+                  p[:kpp] = 771601001
+    #             p['supplier'] = 'emex'
+                  p[:margin] = 1
+
+                  case c.name
+   #               when /^DateChange$/
+   #                 p[:created_at] = value
+   #                 p[:updated_at] = value
+                    when /^DetailNum$/
+                      p[:catalog_number] = value.strip
+   #                when /^QuantityText$/
+   #                 p[:count] = value.gsub(/[><=]/, "").to_i
+                    when /^DetailNameRus$/
+                      p[:title] = value.strip
+                    when /^DetailNameEng$/
+                      p[:title_en] = value.strip
+                    when /^ResultPrice$/
+                      p[:initial_cost] = value.strip
+                      p[:result_cost] = value.strip
+                    when /^MakeName$/
+                      p[:manufacturer] = value.strip
+                    when /^MakeLogo$/
+                      p[:manufacturer_short] = value.strip
+   #                when /^DeliverTimeGuaranteed/
+   #                  p[:estimate_days] = value.to_s
+   #                when /^PriceDesc$/
+   #                  p[:supplier] = value
+   #                when /^PriceLogo$/
+   #                  p[:job_title] = value.to_s
+   #                when /^QuantityChangeDate$/
+   #                  p[:updated_at] = value.to_s
+                    when /^Country$/
+                      p[:country] = value.strip
+                    else
+                      p[(c.name.underscore + "_emex").to_sym] = value.strip
+                  end
+
                 end
 
-              end
-            Thread.current['prices'] << p
+              puts '2'
+
+              Thread.current['prices'] << p
+            end
+
+            rescue Exception => e
+              #raise e
+            end
           end
-
         end
 
-        rescue Exception => e
-          raise e
-        end
+        #rescue Exception => e
+        #  raise e
+        #end
 
-        threads.join
+        #threads.join
 
-        threads.each do |t| 
+        threads.each do |t|
           t.join
+          #debugger
           @prices = @prices + t["prices"]
         end
-      end    
+      #end    
     end
 
     respond_to do |format|

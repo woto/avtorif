@@ -93,15 +93,18 @@ class JobsController < ApplicationController
 
   def start
     @job = Job.find(:first, :conditions => {:active => '1', :id => params[:id], :locked => 'false'})
-    if(@job.jobable_type == "ReceiveJob")
+    if @job.nil?
+      flash[:alert] = "Задача заблокирована"
+    elsif(@job.jobable_type == "ReceiveJob")
       JobWalker.new.start_job(@job, 50, :force => params[:force])
+      flash[:notice] = "Задача поставщика успешно поставлена в очередь"
     else
       group_code = SupplierPrice.where("job_id = #{@job.job_id}").order("id desc").limit(1).first.group_code
       optional = SupplierPrice.where("group_code = '#{group_code}'").all.map(&:id)
       JobWalker.new.start_job(@job, 50, optional)
+      flash[:notice] = "Задача поставщика успешно поставлена в очередь"
     end
 
-    flash[:notice] = "Задача поставщика успешно поставлена в очередь"
 
     redirect_to(supplier_jobs_path(params[:supplier_id]))
   end
