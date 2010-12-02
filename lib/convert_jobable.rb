@@ -128,7 +128,7 @@ class ConvertJobable < AbstractJobber
           a.split(' ').each do |table|
             remote_file = RemoteFile.new(table)
             `mdb-export #{supplier_price.path.shellescape} #{table.shellescape} > #{remote_file.path.shellescape}`
-            remote_file.original_filename = table
+            remote_file.original_filename = File.basename(supplier_price.original_filename) + " - " + table + ".csv"
             md5 = Digest::MD5.file(remote_file.path).hexdigest
             wc_stat = `wc #{remote_file.path.to_s.shellescape}`
 

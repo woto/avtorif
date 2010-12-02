@@ -3,8 +3,8 @@ class FilterJobable < AbstractJobber
     retval = []
     @optional.each do |opt|
       supplier_price = SupplierPrice.find(opt).attachment
-      remote_file = RemoteFile.new(@job.title)
-      remote_file_name = @job.job_title
+      remote_file = RemoteFile.new(File.basename(supplier_price.original_filename) + ".csv")
+      #remote_file_name = supplier_price.@job.title + ".csv"
 
       options = Hash.new
       #puts @jobable.quote_char
@@ -44,7 +44,7 @@ class FilterJobable < AbstractJobber
 
       #options[:row_sep] = "\r\n"
 
-      begin
+      #begin
         FasterCSV.foreach(supplier_price.path, options)  do |row|
           if(
             (@jobable.first.present? ? row[0] =~ Regexp.new(@jobable.first) : true) &&
@@ -62,9 +62,9 @@ class FilterJobable < AbstractJobber
 
           end
         end
-      rescue => e
-        raise e.to_s + " in " + supplier_price.path
-      end
+      #rescue => e
+      #  raise e.to_s + " in " + supplier_price.path
+      #end
 
       remote_file.flush
       md5 = Digest::MD5.file(remote_file.path).hexdigest

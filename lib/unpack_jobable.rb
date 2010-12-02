@@ -22,7 +22,7 @@ class UnpackJobable < AbstractJobber
 
           remote_file.instance_eval("
             def original_filename()
-                \"#{File.basename(remote_file.path)}\"
+                \"#{File.basename(supplier_price.original_filename) + " - " + File.basename(remote_file.path)}\"
             end
 
             def content_type()
