@@ -15,15 +15,15 @@ class ImportJobable < AbstractJobber
             end
             p = Price.new()
             p.job_id = @job.id
-            p.job_title = @job.title
+            #p.job_title = @job.title
             p.goods_id = -1
             p.supplier_id = @job.supplier_id
             p.supplier = @job.supplier
             p.title = row[@jobable.title_colnum - 1].strip if @jobable.title_colnum.present? && row[@jobable.title_colnum - 1].present?
             p.count = row[@jobable.count_colnum - 1].strip if @jobable.count_colnum.present? && row[@jobable.count_colnum - 1].present?
             p.initial_cost = row[@jobable.income_price_colnum - 1].to_s.strip.gsub(',','.')
-            p.result_cost = row[@jobable.income_price_colnum - 1].to_s.strip.gsub(',', '.').to_f * @jobable.income_rate.to_s.gsub(',','.').to_f
-            p.margin = @jobable.income_rate.to_s.strip.gsub(',','.').to_f
+            p.income_cost = row[@jobable.income_price_colnum - 1].to_s.strip.gsub(',', '.').to_f * @jobable.income_rate.to_s.gsub(',','.').to_f
+            p.retail_cost = p.income_cost * @jobable.retail_rate
             p.manufacturer = row[@jobable.manufacturer_colnum - 1].strip if @jobable.manufacturer_colnum.present? && row[@jobable.manufacturer_colnum - 1].present?
             p.catalog_number = row[@jobable.catalog_number_colnum - 1].strip if row[@jobable.catalog_number_colnum - 1].present?
             p.inn = @job.supplier.inn

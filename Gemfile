@@ -65,6 +65,7 @@ end
 group :development do
   gem 'ruby-debug'
   gem 'ruby-debug-base'
+  #gem 'rack-bug', :git => 'git://github.com/brynary/rack-bug.git', :branch => 'rails3'
 #  gem 'ruby-debug-ide'
 end
                      
@@ -77,3 +78,6 @@ gem 'octopus'
 gem 'httparty'
 gem 'dynamic_form'
 gem 'devise'
+
+gem 'newrelic_rpm'
+gem 'rails-footnotes', :git => 'git://github.com/indirect/rails-footnotes.git'

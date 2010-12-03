@@ -1,13 +1,13 @@
 class PricesController < ApplicationController
 
   def search
-
     # Локальная работа
-    @prices = Price.find(:all, :conditions => ['catalog_number = ?', params[:price][:catalog_number]])
+    @prices = Price.where('catalog_number = ?', params[:price][:catalog_number]).includes(:supplier).includes(:job => :jobable)
 
     # Работа со сторонними сервисами
     if(defined?(params[:OnlyOurWS]) && params[:OnlyOurWS] == "1")
       threads = []
+
       # ALL4CAR
       threads << Thread.new() do
         Thread.current["prices"] = []
@@ -35,9 +35,17 @@ class PricesController < ApplicationController
                 end
                 
                 p = Price.new
-                p[:inn] = 7733732181
-                p[:kpp] = 773301001
-                p[:margin] = 1
+
+                p.supplier = Supplier.new(
+                  :title => 'a4c', 
+                  :inn => 7733732181, 
+                  :kpp => 773301001)
+
+                p.job = Job.new(:title => "ws")
+
+                p.job.jobable = ImportJob.new(
+                  :income_rate => 1, 
+                  :retail_rate => 1.55)
 
                 part.children.each do |option|
                   if option.blank?
@@ -97,12 +105,20 @@ class PricesController < ApplicationController
                 next
               end
 
-
               p = Price.new
-              p[:inn] = 7716542310
-              p[:kpp] = 771601001
-#             p['supplier'] = 'emex'
-              p[:margin] = 1
+
+              p.supplier = Supplier.new(
+                :title => 'emex', 
+                :inn => 7716542310, 
+                :kpp => 771601001
+              )
+
+              p.job = Job.new(:title => "ws")
+
+              p.job.jobable = ImportJob.new(
+                :income_rate => 1, 
+                :retail_rate => 1.55
+              )
 
               z.children.children.each do |c|
 
@@ -113,13 +129,13 @@ class PricesController < ApplicationController
                 value = CGI.unescapeHTML(c.children.to_s)
 
                 case c.name
-  #               when /^DateChange$/
-  #                 p[:created_at] = value
-  #                 p[:updated_at] = value
+#                when /^DateChange$/
+#                  p[:created_at] = value
+#                  p[:updated_at] = value
                   when /^DetailNum$/
                     p[:catalog_number] = value.strip
-  #                when /^QuantityText$/
-  #                 p[:count] = value.gsub(/[><=]/, "").to_i
+#                 when /^QuantityText$/
+#                   p[:count] = value.gsub(/[><=]/, "").to_i
                   when /^DetailNameRus$/
                     p[:title] = value.strip
                   when /^DetailNameEng$/
@@ -131,14 +147,14 @@ class PricesController < ApplicationController
                     p[:manufacturer] = value.strip
                   when /^MakeLogo$/
                     p[:manufacturer_short] = value.strip
-  #                when /^DeliverTimeGuaranteed/
-  #                  p[:estimate_days] = value.to_s
-  #                when /^PriceDesc$/
-  #                  p[:supplier] = value
-  #                when /^PriceLogo$/
-  #                  p[:job_title] = value.to_s
-  #                when /^QuantityChangeDate$/
-  #                  p[:updated_at] = value.to_s
+#                 when /^DeliverTimeGuaranteed/
+#                   p[:estimate_days] = value.to_s
+#                 when /^PriceDesc$/
+#                   p[:supplier] = value
+#                 when /^PriceLogo$/
+#                   p[:job_title] = value.to_s
+#                 when /^QuantityChangeDate$/
+#                   p[:updated_at] = value.to_s
                   when /^Country$/
                     p[:country] = value.strip
                   else
@@ -159,10 +175,9 @@ class PricesController < ApplicationController
       end
     end
 
-
     respond_to do |format|
       format.html {render :action => :index }
-      format.xml  { render :xml => @prices }
+      format.xml  { render :xml => @prices.to_xml(:include => {:supplier => {}, :job => {:include => {:jobable => {:except => [:kilo_price]}}}})}
     end
 
   end
@@ -170,12 +185,15 @@ class PricesController < ApplicationController
   # GET /prices
   # GET /prices.xml
   def index
-    @prices = Price.all
+    render :text => "Unavaliable"
+    return
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @prices }
-    end
+#    @prices = Price.all
+#
+#    respond_to do |format|
+#      format.html # index.html.erb
+#      format.xml  { render :xml => @prices }
+#    end
   end
 
   # GET /prices/1

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101129113234) do
+ActiveRecord::Schema.define(:version => 20101203165844) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
@@ -264,25 +264,23 @@ ActiveRecord::Schema.define(:version => 20101129113234) do
 
   create_table "prices", :force => true do |t|
     t.integer  "job_id"
-    t.string   "job_title"
     t.integer  "goods_id"
     t.integer  "supplier_id"
-    t.string   "supplier"
     t.string   "title"
     t.string   "count"
-    t.decimal  "initial_cost",                     :precision => 10, :scale => 3
-    t.decimal  "result_cost",                      :precision => 10, :scale => 3
-    t.decimal  "margin",                           :precision => 10, :scale => 3
+    t.decimal  "price_cost",             :precision => 10, :scale => 3
+    t.decimal  "income_cost",            :precision => 10, :scale => 3
+    t.decimal  "margin",                 :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "catalog_number"
-    t.string   "inn",                :limit => 12
-    t.string   "kpp",                :limit => 9
-    t.integer  "estimate_days"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
+    t.float    "retail_cost"
+    t.string   "delivery_days_declared"
+    t.string   "delivery_days_average"
   end
 
   add_index "prices", ["catalog_number"], :name => "catalog_number_IDX"

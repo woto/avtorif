@@ -2,24 +2,21 @@
 
 <table>
   <tr>
-    <th>supplier-title</th>
-    <th>job-title</th>
+    <th>supplier</th>
+    <th>job</th>
+    <th>jobable</th>
     <th>catalog-number</th>
     <th>count</th>
     <th>created-at</th>
     <th>estimate-days</th>
     <th>goods-id</th>
     <th>id</th>
-    <th>job-title</th>
-    <th>initial-cost</th>
-    <th>inn</th>
+    <th>price-cost</th>
+    <th>income-cost</th>
+    <th>retail-cost</th>
     <th>job-id</th>
-    <th>kpp</th>
     <th>manufacturer</th>
     <th>manufacturer-short</th>
-    <th>margin</th>
-    <th>result-cost</th>
-    <th>supplier</th>
     <th>title</th>
     <th>title-en</th>
     <th>country</th>
@@ -83,24 +80,21 @@
 
 <% @prices.each do |price| %>
   <tr>
-    <td><%=h price.supplier.title %></td>
-    <td><%=h price.job_title %></td>
+    <td><%=h price.supplier %></td>
+    <td><%=h price.job %></td>
+    <td><%=h price.job.jobable %></td>
     <td><%=h price.catalog_number %></td>
     <td><%=h price.count %></td>
     <td><%=h price.created_at %></td>
     <td><%=h price.estimate_days %></td>
     <td><%=h price.goods_id %></td>
     <td><%=h price.id %></td>
-    <td><%=h price.job_title %></td>
-    <td><%=h price.initial_cost %></td>
-    <td><%=h price.inn %></td>
+    <td><%=h price.price_cost %></td>
+    <td><%=h price.income_cost %></td>
+    <td><%=h price.retail_cost %></td>
     <td><%=h price.job_id %></td>
-    <td><%=h price.kpp %></td>
     <td><%=h price.manufacturer %></td>
     <td><%=h price.manufacturer_short %></td>
-    <td><%=h price.margin %></td>
-    <td><%=h price.result_cost %></td>
-    <td><%=h price.supplier %></td>
     <td><%=h price.title %></td>
     <td><%=h price.title_en %></td>
     <td><%=h price.country %></td>
