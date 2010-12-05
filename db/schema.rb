@@ -212,8 +212,8 @@ ActiveRecord::Schema.define(:version => 20101203165844) do
     t.integer  "count_colnum"
     t.integer  "multiplicity_colnum"
     t.integer  "income_price_colnum"
-    t.integer  "weight_colnum"
     t.integer  "external_id_colnum"
+    t.integer  "weight_colnum"
   end
 
   create_table "jobs", :force => true do |t|
@@ -283,8 +283,6 @@ ActiveRecord::Schema.define(:version => 20101203165844) do
     t.string   "delivery_days_average"
   end
 
-  add_index "prices", ["catalog_number"], :name => "catalog_number_IDX"
-
   create_table "receive_jobs", :force => true do |t|
     t.integer  "receiveable_id"
     t.string   "receiveable_type"
@@ -336,6 +334,7 @@ ActiveRecord::Schema.define(:version => 20101203165844) do
     t.string   "contact_info"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "title_short"
     t.string   "title_en"
     t.string   "title_full"
     t.string   "okpo"

@@ -5,7 +5,7 @@ class FtpReceiver < AbstractReceiver
     Timeout.timeout(AppConfig.ftp_timeout) do
 
       ftp = Net::FTP.new
-      ftp.debug_mode = true
+      #ftp.debug_mode = false
       ftp.connect(@receiver.server, @receiver.port)
       ftp.passive = true
       ftp.login(@receiver.login, @receiver.password)
