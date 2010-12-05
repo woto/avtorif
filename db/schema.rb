@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101203165844) do
+ActiveRecord::Schema.define(:version => 20101205162835) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
@@ -357,6 +357,7 @@ ActiveRecord::Schema.define(:version => 20101203165844) do
     t.string   "fax"
     t.string   "email"
     t.string   "emaildocs"
+    t.integer  "delivery_days"
   end
 
   create_table "transmissions", :force => true do |t|
