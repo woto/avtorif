@@ -28,7 +28,6 @@ class PricesController < ApplicationController
               unless(place.is_a?(Nokogiri::XML::Element) && ["main", "extWH", "mainWH"].include?(place.name))
                 next
               end
-
               place.children.each do |part|
                 if part.blank?
                   next
@@ -50,6 +49,10 @@ class PricesController < ApplicationController
                   :presence => false
                 )
 
+                if(["mainWH", "extWH"].include?(place.name))
+                  p.job.import_job[:presence] = true
+                end
+
                 part.children.each do |option|
                   if option.blank?
                     next
@@ -59,44 +62,44 @@ class PricesController < ApplicationController
 
                   if option.keys.size > 0
                     option.keys.each do |key|
-                      p[(option.name.underscore + "_" + key.underscore + "_a4c").to_sym] = option[key].strip
+                      p[(option.name.underscore + "_" + key.underscore + "_a4c").to_sym] = option[key].to_s.strip
                     end
                   end
-                  p[(option.name.underscore + "_a4c").to_sym] = value.strip
+                  p[(option.name.underscore + "_a4c").to_sym] = value.to_s.strip
 
                   case option.name
                     when /^version$/
-                      p[:created_at] = DateTime.parse(value.strip)
+                      p[:created_at] = DateTime.parse(value.to_s.strip)
                       p[:updated_at] = DateTime.now
                     # TODO сделать список стандартных замен для региона (оаэ, япония, москва и т.д.)
                     when /^region$/
-                      p.job.import_job[:country_short] = value.strip
+                      p.job.import_job[:country_short] = value.to_s.strip
                     when /^amount$/
-                      p[:count] = value.strip
+                      p[:count] = value.to_s.strip
                     #when /^supplier$/
                     #  p[:manufacturer] = value.strip
                     when /^descr$/
-                      p[:title] = value.strip
+                      p[:title] = value.to_s.strip
                     when /^price$/
-                      p[:price_cost] = value.strip
+                      p[:price_cost] = value.to_s.strip
                     when/^from$/
-                      p.job.import_job[:delivery_summary] = (p.job.import_job[:delivery_summary].to_s + " " + value.strip).strip
+                      p.job.import_job[:delivery_summary] = (p.job.import_job[:delivery_summary].to_s + " " + value.to_s.strip).to_s.strip
                     when /^code$/
-                      p[:catalog_number] = value.strip
+                      p[:catalog_number] = value.to_s.strip
                     # TODO сделать список стандартных замен (NS, Nissan, NISSAN и т.д.)
                     when /^supplier$/
-                      p.job.import_job[:delivery_summary] = (p.job.import_job[:delivery_summary].to_s + " " + option['Delivery'].strip + " " + (option['info'].present? ? option['info'].strip : "")).strip
-                      p[:manufacturer] = option['make'].strip
-                      p.job.import_job[:country] = value.strip
-                      p.job.import_job[:kilo_price] = option['kgPrice'].strip
-                      p.job.import_job[:delivery_days_average] = option['supplDays100'].strip.to_i
-                      p.job.import_job[:success_percent] = option['successProc'].strip
+                      p.job.import_job[:delivery_summary] = (p.job.import_job[:delivery_summary].to_s + " " + option['Delivery'].to_s.strip + " " + (option['info'].present? ? option['info'].to_s.strip : "")).to_s.strip
+                      p[:manufacturer] = option['make'].to_s.strip
+                      p.job.import_job[:country] = value.to_s.strip
+                      p.job.import_job[:kilo_price] = option['kgPrice'].to_s.strip
+                      p.job.import_job[:delivery_days_average] = option['supplDays100'].to_s.strip.to_i
+                      p.job.import_job[:success_percent] = option['successProc'].to_s.strip
                     when /^probability$/
-                      p[:success_percent] = value.strip
+                      p[:success_percent] = value.to_s.strip
                     when /^srok$/
-                      p.job.import_job[:delivery_days_declared] = value.strip if value.strip.present?
+                      p.job.import_job[:delivery_days_declared] = value.to_s.strip if value.to_s.strip.present?
                     when /^days$/
-                      p.job.import_job[:delivery_days_declared] = value.strip if value.strip.present?
+                      p.job.import_job[:delivery_days_declared] = value.to_s.strip if value.to_s.strip.present?
                   end
 
                 end
@@ -105,7 +108,7 @@ class PricesController < ApplicationController
 
               end
             end
-            rescue Exception => e
+            rescue Timeout::Error => e
           end
         end
       end
@@ -160,32 +163,32 @@ class PricesController < ApplicationController
 
                 case c.name
                  when /^DestinationLogo$/
-                   p.job.import_job[:delivery_summary] = (p.job.import_job[:delivery_summary].to_s + " " + value.strip).strip
+                   p.job.import_job[:delivery_summary] = (p.job.import_job[:delivery_summary].to_s + " " + value.to_s.strip).to_s.strip
                  when /^DestinationDesc$/
-                   p.job.import_job[:delivery_summary] = (p.job.import_job[:delivery_summary].to_s + " " + value.strip).strip
+                   p.job.import_job[:delivery_summary] = (p.job.import_job[:delivery_summary].to_s + " " + value.to_s.strip).to_s.strip
                  when /^bitStorehouse$/
-                   p.job.import_job[:presence] = true if value.strip == 'true'
+                   p.job.import_job[:presence] = true if value.to_s.strip == 'true'
                  when /^PriceCountry$/
-                   p.job.import_job[:country_short] = value.strip
+                   p.job.import_job[:country_short] = value.to_s.strip
                  when /^PriceDesc$/
-                   p.job.import_job[:country] = value.strip
+                   p.job.import_job[:country] = value.to_s.strip
                  when /^QuantityText$/
-                   p[:count] = value.strip 
+                   p[:count] = value.to_s.strip 
                  when /^DateChange$/
-                   p[:created_at] = DateTime.parse(value.strip)
+                   p[:created_at] = DateTime.parse(value.to_s.strip)
                    p[:updated_at] = DateTime.now
                   when /^DetailNum$/
-                    p[:catalog_number] = value.strip
+                    p[:catalog_number] = value.to_s.strip
                   when /^DetailNameRus$/
-                    p[:title] = value.strip
+                    p[:title] = value.to_s.strip
                   when /^DetailNameEng$/
-                    p[:title_en] = value.strip
+                    p[:title_en] = value.to_s.strip
                   when /^ResultPrice$/
-                    p[:price_cost] = value.strip
+                    p[:price_cost] = value.to_s.strip
                   when /^MakeName$/
-                    p[:manufacturer] = value.strip
+                    p[:manufacturer] = value.to_s.strip
                   when /^MakeLogo$/
-                    p[:manufacturer_short] = value.strip
+                    p[:manufacturer_short] = value.to_s.strip
                  when /^ADDays$/
                     p.job.import_job[:delivery_days_average] = value.to_s
                  when /^DeliverTimeGuaranteed$/
@@ -194,15 +197,15 @@ class PricesController < ApplicationController
                     p.job.import_job[:success_percent] = value.to_s
                     p[:success_percent] = value.to_s
                   when /^Country$/
-                    p[:country] = value.strip
+                    p[:country] = value.to_s.strip
                   else
-                    p[(c.name.underscore + "_emex").to_sym] = value.strip
+                    p[(c.name.underscore + "_emex").to_sym] = value.to_s.strip
                 end
 
               end
               Thread.current['prices'] << p
             end
-            rescue Exception => e
+            rescue Timeout::Error => e
           end
         end
       end
