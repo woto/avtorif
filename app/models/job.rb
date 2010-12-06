@@ -1,7 +1,7 @@
 class Job < ActiveRecord::Base
 
   has_many :supplier_prices, :dependent => :destroy
-  
+ 
   validates_numericality_of :seconds_between_jobs, :only_integer => true, :if => "!seconds_between_jobs.blank?" 
   validates_numericality_of :seconds_working, :only_integer => true, :if => "!seconds_working.blank?"
   validates_presence_of :title
@@ -33,6 +33,7 @@ class Job < ActiveRecord::Base
 
   belongs_to :supplier
   belongs_to :jobable, :polymorphic => true
+  belongs_to :import_job, :foreign_key => 'jobable_id', :conditions => "jobs.jobable_type = 'ImportJob'" 
 
   has_many :childs, :class_name => "Job", :foreign_key => "job_id", :dependent => :destroy
   scope :active, {:conditions => ["active = ?", 1]}

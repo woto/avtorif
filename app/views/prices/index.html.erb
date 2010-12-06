@@ -8,7 +8,6 @@
     <th>catalog-number</th>
     <th>count</th>
     <th>created-at</th>
-    <th>estimate-days</th>
     <th>goods-id</th>
     <th>id</th>
     <th>price-cost</th>
@@ -44,19 +43,14 @@
     <th>e-Группа деталей</th>
     <th>e-% доставки</th>
     <th>a-from</th>
-    <th>a-code</th>
     <th>a-code weightKg</th>
     <th>a-code amount</th>
     <th>a-price</th>
     <th>a-price curr</th>
     <th>a-price plPrice</th>
     <th>a-price plCurr</th>
-    <th>a-amount</th>
-    <th>a-descr</th>
     <th>a-supplier</th>
     <th>a-supplier k</th>
-    <th>a-supplier sId</th>
-    <th>a-supplier make</th>
     <th>a-supplier supplDays100</th>
     <th>a-supplier supplDays30</th>
     <th>a-supplier supplDate30</th>
@@ -65,15 +59,11 @@
     <th>a-supplier RusName</th>
     <th>a-supplier info</th>
     <th>a-supplier successProc</th>
-    <th>a-days</th>
     <th>a-supplierInfo</th>
     <th>a-probability</th>
     <th>a-version</th>
     <th>a-weightPrice</th>
     <th>a-message</th>
-    <th>a-srok</th>
-    <th>a-region</th>
-    <th>a-amount</th>
     <th>a-whId</th>
     <th>a-weightInfo</th>
   </tr>
@@ -82,11 +72,10 @@
   <tr>
     <td><%=h price.supplier %></td>
     <td><%=h price.job %></td>
-    <td><%=h price.job.jobable %></td>
+    <td><%=h price.job.import_job.delivery_days %></td>
     <td><%=h price.catalog_number %></td>
     <td><%=h price.count %></td>
     <td><%=h price.created_at %></td>
-    <td><%=h price.estimate_days %></td>
     <td><%=h price.goods_id %></td>
     <td><%=h price.id %></td>
     <td><%=h price.price_cost %></td>
@@ -169,13 +158,10 @@
       <td><%=h price.from_a4c %></td>
     <% rescue => e; end %>
     <% begin %>
-      <td><%=h price.code_a4c %></td>
-    <% rescue => e; end %>
-    <% begin %>
       <td><%=h price.code_weight_kg_a4c %></td>
     <% rescue => e; end %>
     <% begin %>
-      <td><%=h price.code_amoun_a4c %></td>
+      <td><%=h price.code_amount_a4c %></td>
     <% rescue => e; end %>
     <% begin %>
       <td><%=h price.price_a4c %></td>
@@ -190,22 +176,10 @@
       <td><%=h price.price_pl_curr_a4c %></td>
     <% rescue => e; end %>
     <% begin %>
-      <td><%=h price.amount_a4c %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.descr_a4c %></td>
-    <% rescue => e; end %>
-    <% begin %>
       <td><%=h price.supplier_a4c %></td>
     <% rescue => e; end %>
     <% begin %>
       <td><%=h price.supplier_k_a4c %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.supplier_s_id_a4c %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.supplier_make_a4c %></td>
     <% rescue => e; end %>
     <% begin %>
       <td><%=h price.supplier_suppl_days100_a4c %></td>
@@ -232,9 +206,6 @@
       <td><%=h price.supplier_success_proc_a4c %></td>
     <% rescue => e; end %>
     <% begin %>
-      <td><%=h price.days_a4c %></td>
-    <% rescue => e; end %>
-    <% begin %>
       <td><%=h price.supplier_info_a4c %></td>
     <% rescue => e; end %>
     <% begin %>
@@ -248,15 +219,6 @@
     <% rescue => e; end %>
     <% begin %>
       <td><%=h price.message_a4c %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.srok_a4c %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.region_a4c %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.amount_a4c %></td>
     <% rescue => e; end %>
     <% begin %>
       <td><%=h price.wh_id_a4c %></td>

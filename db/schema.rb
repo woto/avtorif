@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101205162835) do
+ActiveRecord::Schema.define(:version => 20101205224200) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
@@ -212,8 +212,10 @@ ActiveRecord::Schema.define(:version => 20101205162835) do
     t.integer  "count_colnum"
     t.integer  "multiplicity_colnum"
     t.integer  "income_price_colnum"
-    t.integer  "external_id_colnum"
     t.integer  "weight_colnum"
+    t.integer  "external_id_colnum"
+    t.string   "country"
+    t.string   "delivery_days"
   end
 
   create_table "jobs", :force => true do |t|
@@ -232,7 +234,6 @@ ActiveRecord::Schema.define(:version => 20101205162835) do
     t.boolean  "active",               :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "job_code"
     t.text     "description"
     t.boolean  "started_once"
   end
@@ -282,6 +283,8 @@ ActiveRecord::Schema.define(:version => 20101205162835) do
     t.string   "delivery_days_declared"
     t.string   "delivery_days_average"
   end
+
+  add_index "prices", ["catalog_number"], :name => "catalog_number_IDX"
 
   create_table "receive_jobs", :force => true do |t|
     t.integer  "receiveable_id"
@@ -334,7 +337,6 @@ ActiveRecord::Schema.define(:version => 20101205162835) do
     t.string   "contact_info"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "title_short"
     t.string   "title_en"
     t.string   "title_full"
     t.string   "okpo"
@@ -356,7 +358,6 @@ ActiveRecord::Schema.define(:version => 20101205162835) do
     t.string   "fax"
     t.string   "email"
     t.string   "emaildocs"
-    t.integer  "delivery_days"
   end
 
   create_table "transmissions", :force => true do |t|

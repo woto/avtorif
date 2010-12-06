@@ -2,7 +2,7 @@ class PricesController < ApplicationController
 
   def search
     # Локальная работа
-    @prices = Price.where('catalog_number = ?', params[:price][:catalog_number]).includes(:supplier).includes(:job => :jobable)
+    @prices = Price.select("prices.*, jobs.*, import_jobs.*, suppliers.*").where('catalog_number = ?', params[:price][:catalog_number]).includes(:job => :import_job).includes(:supplier)
 
     # Работа со сторонними сервисами
     if(defined?(params[:OnlyOurWS]) && params[:OnlyOurWS] == "1")
@@ -43,7 +43,7 @@ class PricesController < ApplicationController
 
                 p.job = Job.new(:title => "ws")
 
-                p.job.jobable = ImportJob.new(
+                p.job.import_job = ImportJob.new(
                   :income_rate => 1, 
                   :retail_rate => 1.55)
 
@@ -62,13 +62,26 @@ class PricesController < ApplicationController
                   p[(option.name.underscore + "_a4c").to_sym] = value.strip
 
                   case option.name
+                    # TODO сделать список стандартных замен для региона (оаэ, япония, москва и т.д.)
+                    when /^region$/
+                      p.job.import_job[:country] = value.strip
+                    when /^amount$/
+                      p[:count] = value.strip
+                    #when /^supplier$/
+                    #  p[:manufacturer] = value.strip
                     when /^descr$/
                       p[:title] = value.strip
                     when /^price$/
-                      p[:initial_cost] = value.strip
-                      p[:result_cost] = value.strip
+                      p[:price_cost] = value.strip
                     when /^code$/
                       p[:catalog_number] = value.strip
+                    # TODO сделать список стандартных замен (NS, Nissan, NISSAN и т.д.)
+                    when /^supplier$/
+                      p[:manufacturer] = option['make'].strip
+                    when /^srok$/
+                      p.job.import_job[:delivery_days] = value.strip if value.strip.present?
+                    when /^days$/
+                      p.job.import_job[:delivery_days] = value.strip if value.strip.present?
                   end
 
                 end
@@ -115,7 +128,7 @@ class PricesController < ApplicationController
 
               p.job = Job.new(:title => "ws")
 
-              p.job.jobable = ImportJob.new(
+              p.job.import_job = ImportJob.new(
                 :income_rate => 1, 
                 :retail_rate => 1.55
               )
@@ -129,6 +142,8 @@ class PricesController < ApplicationController
                 value = CGI.unescapeHTML(c.children.to_s)
 
                 case c.name
+                 when /^QuantityText$/
+                   p[:count] = value.strip 
 #                when /^DateChange$/
 #                  p[:created_at] = value
 #                  p[:updated_at] = value
@@ -141,8 +156,7 @@ class PricesController < ApplicationController
                   when /^DetailNameEng$/
                     p[:title_en] = value.strip
                   when /^ResultPrice$/
-                    p[:initial_cost] = value.strip
-                    p[:result_cost] = value.strip
+                    p[:price_cost] = value.strip
                   when /^MakeName$/
                     p[:manufacturer] = value.strip
                   when /^MakeLogo$/
