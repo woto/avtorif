@@ -2,7 +2,7 @@ class PricesController < ApplicationController
 
   def search
     # Локальная работа
-    @prices = Price.select("prices.*, jobs.*, import_jobs.*, suppliers.*").where('catalog_number = ?', params[:price][:catalog_number]).includes(:job => :import_job).includes(:supplier)
+    @prices = Price.select("prices.*, jobs.*, import_jobs.*, suppliers.*").where('catalog_number = ?', params[:price][:catalog_number]).includes(:job => {:import_job => [:currency_buy, :currency_sell, :currency_weight]}).includes(:supplier)
 
     # Работа со сторонними сервисами
     if(defined?(params[:OnlyOurWS]) && params[:OnlyOurWS] == "1")
@@ -45,7 +45,10 @@ class PricesController < ApplicationController
 
                 p.job.import_job = ImportJob.new(
                   :income_rate => 1, 
-                  :retail_rate => 1.55)
+                  :retail_rate => 1.55,
+                  :kilo_price => 0,
+                  :presence => false
+                )
 
                 part.children.each do |option|
                   if option.blank?
@@ -62,9 +65,12 @@ class PricesController < ApplicationController
                   p[(option.name.underscore + "_a4c").to_sym] = value.strip
 
                   case option.name
+                    when /^version$/
+                      p[:created_at] = DateTime.parse(value.strip)
+                      p[:updated_at] = DateTime.now
                     # TODO сделать список стандартных замен для региона (оаэ, япония, москва и т.д.)
                     when /^region$/
-                      p.job.import_job[:country] = value.strip
+                      p.job.import_job[:country_short] = value.strip
                     when /^amount$/
                       p[:count] = value.strip
                     #when /^supplier$/
@@ -78,6 +84,8 @@ class PricesController < ApplicationController
                     # TODO сделать список стандартных замен (NS, Nissan, NISSAN и т.д.)
                     when /^supplier$/
                       p[:manufacturer] = option['make'].strip
+                      p.job.import_job[:country] = value.strip
+                      p.job.import_job[:kilo_price] = option['kgPrice'].strip
                     when /^srok$/
                       p.job.import_job[:delivery_days] = value.strip if value.strip.present?
                     when /^days$/
@@ -130,7 +138,9 @@ class PricesController < ApplicationController
 
               p.job.import_job = ImportJob.new(
                 :income_rate => 1, 
-                :retail_rate => 1.55
+                :retail_rate => 1.55,
+                :kilo_price => 0,
+                :presence => false
               )
 
               z.children.children.each do |c|
@@ -142,11 +152,17 @@ class PricesController < ApplicationController
                 value = CGI.unescapeHTML(c.children.to_s)
 
                 case c.name
+                 when /^bitStorehouse$/
+                   p.job.import_job[:presence] = true if value.strip == 'true'
+                 when /^PriceCountry$/
+                   p.job.import_job[:country_short] = value.strip
+                 when /^PriceDesc$/
+                   p.job.import_job[:country] = value.strip
                  when /^QuantityText$/
                    p[:count] = value.strip 
-#                when /^DateChange$/
-#                  p[:created_at] = value
-#                  p[:updated_at] = value
+                 when /^DateChange$/
+                   p[:created_at] = DateTime.parse(value.strip)
+                   p[:updated_at] = DateTime.now
                   when /^DetailNum$/
                     p[:catalog_number] = value.strip
 #                 when /^QuantityText$/
@@ -191,7 +207,17 @@ class PricesController < ApplicationController
 
     respond_to do |format|
       format.html {render :action => :index }
-      format.xml  { render :xml => @prices.to_xml(:include => {:supplier => {}, :job => {:include => {:jobable => {:except => [:kilo_price]}}}})}
+      format.xml  { render :xml => @prices.to_xml(
+        :include => {
+        :supplier => {
+          :except => [:fio_head, :email, :correspondent_account, :title_en, :password, :login, :current_account, :phone, :okpo, :position_head, :seller, :created_at, :emaildocs, :delivery_days, :title, :bank_title, :bik_bank, :buyer, :updated_at, :contact_info, :fio_buh, :title_full, :actual_address, :id, :contract, :fax, :legal_address, :okato, :ogrn]
+        }, 
+        :job => {
+          :except => [ :created_at, :jobable_id, :last_start, :updated_at, :next_start, :id, :file_mask, :jobable_type, :seconds_between_jobs, :seconds_working, :supplier_id, :description, :last_finish, :job_id, :started_once, :active, :locked],
+          :include => {
+            :import_job => {
+              :except => [:currency_weight_id, :income_price_colnum, :manufacturer_colnum, :created_at, :catalog_number_colnum, :count_colnum, :currency_buy_id, :external_id_colnum, :title_colnum, :delivery_type_id, :updated_at, :importable_type, :weight_colnum, :id, :currency_sell_id, :multiplicity_colnum, :weight_unavaliable_rate, :importable_id, :import_method],
+              :include => [:currency_buy, :currency_sell, :currency_weight]}}}})}
     end
 
   end

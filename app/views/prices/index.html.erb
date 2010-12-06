@@ -25,11 +25,8 @@
     <th>e-Новый номер детали</th>
     <th>e-Лого прайса</th>
     <th>e-Описание прайса</th>
-    <th>e-На складе?</th>
-    <th>e-Дата обн. цены</th>
     <th>e-Кратность заказа</th>
     <th>e-Количество</th>
-    <th>e-Дата обн. кол-ва</th>
     <th>e-Количество которое прибудет на склад</th>
     <th>e-Дата прибытия на склад</th>
     <th>e-Лого способа доставки</th>
@@ -39,29 +36,21 @@
     <th>e-% вовремя выполн. заказов</th>
     <th>e-% выполн. заказов по детали в прайсе</th>
     <th>e-% выполн. по производителю в прайсе</th>
-    <th>e-Местонахождение поставщика</th>
     <th>e-Группа деталей</th>
     <th>e-% доставки</th>
     <th>a-from</th>
     <th>a-code weightKg</th>
     <th>a-code amount</th>
-    <th>a-price</th>
-    <th>a-price curr</th>
-    <th>a-price plPrice</th>
-    <th>a-price plCurr</th>
-    <th>a-supplier</th>
     <th>a-supplier k</th>
     <th>a-supplier supplDays100</th>
     <th>a-supplier supplDays30</th>
     <th>a-supplier supplDate30</th>
-    <th>a-supplier kgPrice</th>
     <th>a-supplier Delivery</th>
     <th>a-supplier RusName</th>
     <th>a-supplier info</th>
     <th>a-supplier successProc</th>
     <th>a-supplierInfo</th>
     <th>a-probability</th>
-    <th>a-version</th>
     <th>a-weightPrice</th>
     <th>a-message</th>
     <th>a-whId</th>
@@ -72,7 +61,8 @@
   <tr>
     <td><%=h price.supplier %></td>
     <td><%=h price.job %></td>
-    <td><%=h price.job.import_job.delivery_days %></td>
+    <td>
+      <%= price.job.import_job.presence %> | <%=h price.job.import_job.kilo_price %> | <%=h price.job.import_job.country%> |  <%=h price.job.import_job.country_short %> | <%=h price.job.import_job.delivery_days %></td>
     <td><%=h price.catalog_number %></td>
     <td><%=h price.count %></td>
     <td><%=h price.created_at %></td>
@@ -104,19 +94,10 @@
       <td><%=h price.price_desc_emex %></td>
     <% rescue => e; end %>
     <% begin %>
-      <td><%=h price.price_bit_storehouse_emex %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.date_change_emex %></td>
-    <% rescue => e; end %>
-    <% begin %>
       <td><%=h price.lot_quantity_emex %></td>
     <% rescue => e; end %>
     <% begin %>
       <td><%=h price.quantity_text_emex %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.quantity_change_date_emex %></td>
     <% rescue => e; end %>
     <% begin %>
       <td><%=h price.arrivial_quantity_emex %></td>
@@ -146,9 +127,6 @@
       <td><%=h price.md_percent_emex %></td>
     <% rescue => e; end %>
     <% begin %>
-      <td><%=h price.price_country_emex %></td>
-    <% rescue => e; end %>
-    <% begin %>
       <td><%=h price.price_group_emex %></td>
     <% rescue => e; end %>
     <% begin %>
@@ -164,21 +142,6 @@
       <td><%=h price.code_amount_a4c %></td>
     <% rescue => e; end %>
     <% begin %>
-      <td><%=h price.price_a4c %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.price_curr_a4c %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.price_pl_price_a4c %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.price_pl_curr_a4c %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.supplier_a4c %></td>
-    <% rescue => e; end %>
-    <% begin %>
       <td><%=h price.supplier_k_a4c %></td>
     <% rescue => e; end %>
     <% begin %>
@@ -189,9 +152,6 @@
     <% rescue => e; end %>
     <% begin %>
       <td><%=h price.supplier_date_30_a4c %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.supplier_kg_price_a4c %></td>
     <% rescue => e; end %>
     <% begin %>
       <td><%=h price.supplier_delivery_a4c %></td>
@@ -210,9 +170,6 @@
     <% rescue => e; end %>
     <% begin %>
       <td><%=h price.probability_a4c %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.version_a4c %></td>
     <% rescue => e; end %>
     <% begin %>
       <td><%=h price.weight_price_a4c %></td>

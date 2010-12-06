@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101205224200) do
+ActiveRecord::Schema.define(:version => 20101206030803) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
@@ -216,6 +216,7 @@ ActiveRecord::Schema.define(:version => 20101205224200) do
     t.integer  "external_id_colnum"
     t.string   "country"
     t.string   "delivery_days"
+    t.string   "country_short"
   end
 
   create_table "jobs", :force => true do |t|
@@ -271,7 +272,6 @@ ActiveRecord::Schema.define(:version => 20101205224200) do
     t.string   "count"
     t.decimal  "price_cost",             :precision => 10, :scale => 3
     t.decimal  "income_cost",            :precision => 10, :scale => 3
-    t.decimal  "margin",                 :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "catalog_number"
     t.datetime "created_at"
@@ -358,6 +358,7 @@ ActiveRecord::Schema.define(:version => 20101205224200) do
     t.string   "fax"
     t.string   "email"
     t.string   "emaildocs"
+    t.integer  "delivery_days"
   end
 
   create_table "transmissions", :force => true do |t|
