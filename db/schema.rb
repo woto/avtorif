@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101206030803) do
+ActiveRecord::Schema.define(:version => 20101206083257) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
@@ -215,8 +215,11 @@ ActiveRecord::Schema.define(:version => 20101206030803) do
     t.integer  "weight_colnum"
     t.integer  "external_id_colnum"
     t.string   "country"
-    t.string   "delivery_days"
     t.string   "country_short"
+    t.string   "delivery_summary"
+    t.integer  "delivery_days_declared"
+    t.integer  "delivery_days_average"
+    t.string   "success_percent"
   end
 
   create_table "jobs", :force => true do |t|
@@ -270,8 +273,8 @@ ActiveRecord::Schema.define(:version => 20101206030803) do
     t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
-    t.decimal  "price_cost",             :precision => 10, :scale => 3
-    t.decimal  "income_cost",            :precision => 10, :scale => 3
+    t.decimal  "price_cost",         :precision => 10, :scale => 3
+    t.decimal  "income_cost",        :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "catalog_number"
     t.datetime "created_at"
@@ -280,8 +283,7 @@ ActiveRecord::Schema.define(:version => 20101206030803) do
     t.string   "title_en"
     t.string   "manufacturer_short"
     t.float    "retail_cost"
-    t.string   "delivery_days_declared"
-    t.string   "delivery_days_average"
+    t.string   "success_percent"
   end
 
   add_index "prices", ["catalog_number"], :name => "catalog_number_IDX"

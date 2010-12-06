@@ -79,17 +79,24 @@ class PricesController < ApplicationController
                       p[:title] = value.strip
                     when /^price$/
                       p[:price_cost] = value.strip
+                    when/^from$/
+                      p.job.import_job[:delivery_summary] = (p.job.import_job[:delivery_summary].to_s + " " + value.strip).strip
                     when /^code$/
                       p[:catalog_number] = value.strip
                     # TODO сделать список стандартных замен (NS, Nissan, NISSAN и т.д.)
                     when /^supplier$/
+                      p.job.import_job[:delivery_summary] = (p.job.import_job[:delivery_summary].to_s + " " + option['Delivery'].strip + " " + (option['info'].present? ? option['info'].strip : "")).strip
                       p[:manufacturer] = option['make'].strip
                       p.job.import_job[:country] = value.strip
                       p.job.import_job[:kilo_price] = option['kgPrice'].strip
+                      p.job.import_job[:delivery_days_average] = option['supplDays100'].strip.to_i
+                      p.job.import_job[:success_percent] = option['successProc'].strip
+                    when /^probability$/
+                      p[:success_percent] = value.strip
                     when /^srok$/
-                      p.job.import_job[:delivery_days] = value.strip if value.strip.present?
+                      p.job.import_job[:delivery_days_declared] = value.strip if value.strip.present?
                     when /^days$/
-                      p.job.import_job[:delivery_days] = value.strip if value.strip.present?
+                      p.job.import_job[:delivery_days_declared] = value.strip if value.strip.present?
                   end
 
                 end
@@ -152,6 +159,10 @@ class PricesController < ApplicationController
                 value = CGI.unescapeHTML(c.children.to_s)
 
                 case c.name
+                 when /^DestinationLogo$/
+                   p.job.import_job[:delivery_summary] = (p.job.import_job[:delivery_summary].to_s + " " + value.strip).strip
+                 when /^DestinationDesc$/
+                   p.job.import_job[:delivery_summary] = (p.job.import_job[:delivery_summary].to_s + " " + value.strip).strip
                  when /^bitStorehouse$/
                    p.job.import_job[:presence] = true if value.strip == 'true'
                  when /^PriceCountry$/
@@ -165,8 +176,6 @@ class PricesController < ApplicationController
                    p[:updated_at] = DateTime.now
                   when /^DetailNum$/
                     p[:catalog_number] = value.strip
-#                 when /^QuantityText$/
-#                   p[:count] = value.gsub(/[><=]/, "").to_i
                   when /^DetailNameRus$/
                     p[:title] = value.strip
                   when /^DetailNameEng$/
@@ -177,14 +186,13 @@ class PricesController < ApplicationController
                     p[:manufacturer] = value.strip
                   when /^MakeLogo$/
                     p[:manufacturer_short] = value.strip
-#                 when /^DeliverTimeGuaranteed/
-#                   p[:estimate_days] = value.to_s
-#                 when /^PriceDesc$/
-#                   p[:supplier] = value
-#                 when /^PriceLogo$/
-#                   p[:job_title] = value.to_s
-#                 when /^QuantityChangeDate$/
-#                   p[:updated_at] = value.to_s
+                 when /^ADDays$/
+                    p.job.import_job[:delivery_days_average] = value.to_s
+                 when /^DeliverTimeGuaranteed$/
+                    p.job.import_job[:delivery_days_declared] = value.to_s
+                 when /^CalcDeliveryPercent$/
+                    p.job.import_job[:success_percent] = value.to_s
+                    p[:success_percent] = value.to_s
                   when /^Country$/
                     p[:country] = value.strip
                   else
@@ -217,7 +225,11 @@ class PricesController < ApplicationController
           :include => {
             :import_job => {
               :except => [:currency_weight_id, :income_price_colnum, :manufacturer_colnum, :created_at, :catalog_number_colnum, :count_colnum, :currency_buy_id, :external_id_colnum, :title_colnum, :delivery_type_id, :updated_at, :importable_type, :weight_colnum, :id, :currency_sell_id, :multiplicity_colnum, :weight_unavaliable_rate, :importable_id, :import_method],
-              :include => [:currency_buy, :currency_sell, :currency_weight]}}}})}
+              :include => {
+                :currency_buy => {:except => [:foreign_id, :created_at, :updated_at, :id, :value]},
+                :currency_sell => {:except => [:foreign_id, :created_at, :updated_at, :id, :value]},
+                :currency_weight => {:except => [:foreign_id, :created_at, :updated_at, :id, :value]},
+              }}}}})}
     end
 
   end

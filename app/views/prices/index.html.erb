@@ -5,6 +5,7 @@
     <th>supplier</th>
     <th>job</th>
     <th>jobable</th>
+    <th>success-percent</th>
     <th>catalog-number</th>
     <th>count</th>
     <th>created-at</th>
@@ -23,38 +24,9 @@
     <th>e-Группа тождественности деталей</th>
     <th>e-Оригинальная?</th>
     <th>e-Новый номер детали</th>
-    <th>e-Лого прайса</th>
-    <th>e-Описание прайса</th>
     <th>e-Кратность заказа</th>
-    <th>e-Количество</th>
-    <th>e-Количество которое прибудет на склад</th>
-    <th>e-Дата прибытия на склад</th>
-    <th>e-Лого способа доставки</th>
-    <th>e-Описание способа доставки</th>
-    <th>e-Средний срок доставки</th>
-    <th>e-Гарантированный срок доставки</th>
-    <th>e-% вовремя выполн. заказов</th>
-    <th>e-% выполн. заказов по детали в прайсе</th>
-    <th>e-% выполн. по производителю в прайсе</th>
     <th>e-Группа деталей</th>
-    <th>e-% доставки</th>
-    <th>a-from</th>
     <th>a-code weightKg</th>
-    <th>a-code amount</th>
-    <th>a-supplier k</th>
-    <th>a-supplier supplDays100</th>
-    <th>a-supplier supplDays30</th>
-    <th>a-supplier supplDate30</th>
-    <th>a-supplier Delivery</th>
-    <th>a-supplier RusName</th>
-    <th>a-supplier info</th>
-    <th>a-supplier successProc</th>
-    <th>a-supplierInfo</th>
-    <th>a-probability</th>
-    <th>a-weightPrice</th>
-    <th>a-message</th>
-    <th>a-whId</th>
-    <th>a-weightInfo</th>
   </tr>
 
 <% @prices.each do |price| %>
@@ -62,7 +34,16 @@
     <td><%=h price.supplier %></td>
     <td><%=h price.job %></td>
     <td>
-      <%= price.job.import_job.presence %> | <%=h price.job.import_job.kilo_price %> | <%=h price.job.import_job.country%> |  <%=h price.job.import_job.country_short %> | <%=h price.job.import_job.delivery_days %></td>
+(Вероятность наличия (по поставщику)) success_percent:     <%=h price.job.import_job.success_percent %> |
+(Дней в среднем по пост) delivery_days_average:      <%=h price.job.import_job.delivery_days_average %> | 
+(Дней заявлено по пост)delivery_days_declared:      <%=h price.job.import_job.delivery_days_declared %> | 
+(Иногда важная инф по доставке)delivery_summary      <%=h price.job.import_job.delivery_summary %> | 
+(Наличие) presence:     <%=h price.job.import_job.presence %> | 
+(Цена килограмма) kilo_price:      <%=h price.job.import_job.kilo_price %> | 
+(Местонахождение постащика)country:      <%=h price.job.import_job.country%> |  
+(Короткое местонахождение))country_short:      <%=h price.job.import_job.country_short %> | 
+    </td>
+    <td><%=h price.success_percent %></td>
     <td><%=h price.catalog_number %></td>
     <td><%=h price.count %></td>
     <td><%=h price.created_at %></td>
@@ -88,100 +69,13 @@
       <td><%=h price.new_detail_num_emex %></td>
     <% rescue => e; end %>
     <% begin %>
-      <td><%=h price.price_logo_emex %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.price_desc_emex %></td>
-    <% rescue => e; end %>
-    <% begin %>
       <td><%=h price.lot_quantity_emex %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.quantity_text_emex %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.arrivial_quantity_emex %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.arrivial_date_plan_emex %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.destination_logo_emex %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.destination_desc_emex %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.ad_days_emex %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.deliver_time_guaranteed_emex %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.dit_percent_emex %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.dd_percent_emex %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.md_percent_emex %></td>
     <% rescue => e; end %>
     <% begin %>
       <td><%=h price.price_group_emex %></td>
     <% rescue => e; end %>
     <% begin %>
-      <td><%=h price.calc_delivery_percent_emex %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.from_a4c %></td>
-    <% rescue => e; end %>
-    <% begin %>
       <td><%=h price.code_weight_kg_a4c %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.code_amount_a4c %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.supplier_k_a4c %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.supplier_suppl_days100_a4c %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.supplier_suppl_days_30_a4c %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.supplier_date_30_a4c %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.supplier_delivery_a4c %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.supplier_rus_name_a4c %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.supplier_info_a4c %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.supplier_success_proc_a4c %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.supplier_info_a4c %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.probability_a4c %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.weight_price_a4c %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.message_a4c %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.wh_id_a4c %></td>
-    <% rescue => e; end %>
-    <% begin %>
-      <td><%=h price.weight_info_a4c %></td>
     <% rescue => e; end %>
   </tr>
 <% end %>
