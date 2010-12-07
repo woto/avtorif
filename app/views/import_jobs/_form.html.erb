@@ -6,22 +6,30 @@
 </p>
 <br />
 
-  <%= f.association :currency_buy %>
-  <%= f.association :currency_sell %>
-  <%= f.association :currency_weight %>
+  <%= f.inputs :currency_buy %>
+  <%= f.inputs :currency_sell %>
+  <%= f.inputs :currency_weight %>
 
   <%= f.input :presence %>
   <%= f.input :visible_for_site %>
   <%= f.input :visible_for_stock %>
   <%= f.input :visible_for_shops %>
   <hr />
-  <%= f.input :estimate_days %>
-  Ожидаемое количество дней
+  <%= f.input :delivery_days_declared %>
+  Заявленное количество дней
   <hr />
   <%= f.input :retail_rate %>
   Розничный коэффициент
   <hr />
-
+  <%= f.input :country, :as => :string %>
+    Местонахождение поставщика (город, округ, область)
+  <hr />
+  <%= f.input :country_short %>
+    То же самое, только коротко
+  <hr />
+  <%= f.input :delivery_summary %>
+    Полезная информация для покупателей о заказе (отсутствие возвратов и т.д.)
+  <hr />
    <%= f.input :income_rate %>
    Коэффициент, на который будет умножаться цена в прайсе (т.е. цена прихода)
    <hr />

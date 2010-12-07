@@ -1,6 +1,6 @@
 <h1>New import_job</h1>
 
-<% simple_form_for(@import_job, :url => supplier_job_import_jobs_path(params[:supplier_id], params[:job_id])) do |f| %>
+<% semantic_form_for(@import_job, :url => supplier_job_import_jobs_path(params[:supplier_id], params[:job_id])) do |f| %>
   <%= render :partial => 'form', :locals => {:f => f} %>
 <% end %>
 

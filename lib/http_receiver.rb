@@ -38,7 +38,7 @@ class HttpReceiver < AbstractReceiver
 
       retval = Array.new()
 
-      if @optional[:force] || SupplierPrice.find(:first, :conditions => ['md5 = ? AND supplier_id = ?',  md5, @job.supplier.id]).nil?
+      if (@optional.present? && @optional[:force]) || SupplierPrice.find(:first, :conditions => ['md5 = ? AND supplier_id = ?',  md5, @job.supplier.id]).nil?
         attachment = SupplierPrice.new(:group_code => group_code, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
         attachment.supplier = @job.supplier
         attachment.job_code = @job.title

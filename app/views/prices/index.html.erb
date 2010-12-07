@@ -31,17 +31,21 @@
 
 <% @prices.each do |price| %>
   <tr>
-    <td><%=h price.supplier %></td>
-    <td><%=h price.job %></td>
     <td>
-(Вероятность наличия (по поставщику)) success_percent:     <%=h price.job.import_job.success_percent %> |
-(Дней в среднем по пост) delivery_days_average:      <%=h price.job.import_job.delivery_days_average %> | 
-(Дней заявлено по пост)delivery_days_declared:      <%=h price.job.import_job.delivery_days_declared %> | 
-(Иногда важная инф по доставке)delivery_summary      <%=h price.job.import_job.delivery_summary %> | 
-(Наличие) presence:     <%=h price.job.import_job.presence %> | 
-(Цена килограмма) kilo_price:      <%=h price.job.import_job.kilo_price %> | 
-(Местонахождение постащика)country:      <%=h price.job.import_job.country%> |  
-(Короткое местонахождение))country_short:      <%=h price.job.import_job.country_short %> | 
+      <%=h price.supplier.title %> <br />
+      <%=h price.supplier.title_en %> <br />
+      <%=h price.supplier.title_full %> <br />
+    </td>
+    <td><%=h price.job.title %></td>
+    <td>
+      (Вероятность наличия (по поставщику)) success_percent:     <%=h price.job.import_job.success_percent %><br /><br />
+      (Дней в среднем по пост) delivery_days_average:      <%=h price.job.import_job.delivery_days_average %><br /><br />
+      (Дней заявлено по пост) delivery_days_declared:      <%=h price.job.import_job.delivery_days_declared %><br /><br />
+      (Иногда важная инф по доставке) delivery_summary      <%=h price.job.import_job.delivery_summary %><br /><br />
+      (Наличие) presence: <%=h price.job.import_job.presence %><br /><br />
+      (Цена килограмма) kilo_price:      <%=h price.job.import_job.kilo_price %><br /><br />
+      (Местонахождение постащика) country:      <%=h price.job.import_job.country%><br /><br />
+      (Короткое местонахождение)) country_short:      <%=h price.job.import_job.country_short %><br /><br />
     </td>
     <td><%=h price.success_percent %></td>
     <td><%=h price.catalog_number %></td>

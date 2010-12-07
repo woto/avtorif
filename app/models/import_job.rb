@@ -20,13 +20,11 @@ class ImportJob < ActiveRecord::Base
   validates_presence_of :currency_sell
   #validates_presence_of :currency_weight
 
-  validates_presence_of :estimate_days
   validates_presence_of :income_rate
   validates_presence_of :retail_rate
   validates_presence_of :income_price_colnum
   validates_presence_of :catalog_number_colnum
 
-  validates_numericality_of :estimate_days, :greater_than_or_equal_to => 0, :less_than_or_equal_to => 1000
   validates_numericality_of :retail_rate, :greater_than => 0, :less_than => 1000
   validates_numericality_of :income_rate, :greater_than => 0, :less_than => 1000
   validates_numericality_of :kilo_price, :greater_than_or_equal_to => 0, :less_than => 1000, :allow_nil => true

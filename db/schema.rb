@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101206083257) do
+ActiveRecord::Schema.define(:version => 20101207092205) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
@@ -226,8 +226,8 @@ ActiveRecord::Schema.define(:version => 20101206083257) do
     t.datetime "next_start"
     t.datetime "last_start"
     t.datetime "last_finish"
-    t.integer  "seconds_between_jobs", :default => 4000
-    t.integer  "seconds_working",      :default => 20
+    t.integer  "seconds_between_jobs"
+    t.integer  "seconds_working"
     t.string   "title"
     t.integer  "job_id"
     t.integer  "jobable_id"
