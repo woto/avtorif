@@ -67,7 +67,47 @@ class ConvertJobable < AbstractJobber
           retval << attachment.id
 
           remote_file.unlink
-          
+        
+        when /python_xls2csv/
+          Dir.mktmpdir do |tempdir|
+            exec = "#{Rails.root}/external_tools/py_xls2csv #{tempdir} #{@jobable.encoding_out} #{supplier_price.path}"
+            `#{exec}`
+            unless $?.success?
+              raise "Error during execution of #{exec}"
+            end
+
+            files = Dir.entries(tempdir) - ['.', '..']
+
+            files.each do |file|
+
+              remote_file = File.new(tempdir + "/" + file)
+
+              remote_file.instance_eval("
+                def original_filename()
+                    \"#{File.basename(supplier_price.original_filename) + " - " + File.basename(remote_file.path)}.csv\"
+                end
+
+                def content_type()
+                  mime = `file --mime -br #{remote_file.path.shellescape.shellescape}`.strip
+                  mime = mime.gsub(/^.*: */,\"\")
+                  mime = mime.gsub(/;.*$/,\"\")
+                  mime = mime.gsub(/,.*$/,\"\")
+                  mime
+                end
+              ")
+
+              md5 = Digest::MD5.file(remote_file.path).hexdigest
+              wc_stat = `wc #{remote_file.path.to_s.shellescape}`
+
+              attachment = SupplierPrice.new(:group_code => 'c' + @optional.to_s, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
+              attachment.supplier = @job.supplier
+              attachment.job_code = @job.title
+              attachment.job_id = @job.id
+              attachment.save
+
+              retval << attachment.id
+            end
+          end 
         when /xls_roo/
           if(@jobable.encoding_out).present? && @jobable.encoding_out.to_s != 'AUTO'
             Spreadsheet.client_encoding = @jobable.encoding_out.to_s

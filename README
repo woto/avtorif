@@ -1,6 +1,7 @@
 #TODO
 Имеется такая проблема, что если в задачу попадает более одного файла, то первый обработанный файл выставит результат выполнения задачи в успешный
 
+#TODO Сделать во всех консольных вызовах проверку на $?.success?
 == Welcome to Rails
 
 Rails is a web-application framework that includes everything needed to create
