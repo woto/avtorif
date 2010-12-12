@@ -1,0 +1,33 @@
+<%= form_for(@discount_rule) do |f| %>
+  <% if @discount_rule.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@discount_rule.errors.count, "error") %> prohibited this discount_rule from being saved:</h2>
+
+      <ul>
+      <% @discount_rule.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :job %><br />
+    <%= f.text_field :job %>
+  </div>
+  <div class="field">
+    <%= f.label :buy_sell %><br />
+    <%= f.check_box :buy_sell %>
+  </div>
+  <div class="field">
+    <%= f.label :rate %><br />
+    <%= f.text_field :rate %>
+  </div>
+  <div class="field">
+    <%= f.label :discount_group %><br />
+    <%= f.text_field :discount_group %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

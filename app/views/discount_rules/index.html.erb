@@ -1,0 +1,29 @@
+<h1>Listing discount_rules</h1>
+
+<table>
+  <tr>
+    <th>Job</th>
+    <th>Buy sell</th>
+    <th>Rate</th>
+    <th>Discount group</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @discount_rules.each do |discount_rule| %>
+  <tr>
+    <td><%= discount_rule.job %></td>
+    <td><%= discount_rule.buy_sell %></td>
+    <td><%= discount_rule.rate %></td>
+    <td><%= discount_rule.discount_group %></td>
+    <td><%= link_to 'Show', discount_rule %></td>
+    <td><%= link_to 'Edit', edit_discount_rule_path(discount_rule) %></td>
+    <td><%= link_to 'Destroy', discount_rule, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Discount rule', new_discount_rule_path %>

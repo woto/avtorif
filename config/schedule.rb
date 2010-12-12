@@ -23,4 +23,8 @@ every 1.minute do
   runner "JobWalker.new.call"
 end
 
+every 1.day do
+  rake "avtorif:destroy_old_supplier_prices"
+end
+
 # Learn more: http://github.com/javan/whenever

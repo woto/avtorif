@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Job:</b>
+  <%= @discount_rule.job %>
+</p>
+
+<p>
+  <b>Buy sell:</b>
+  <%= @discount_rule.buy_sell %>
+</p>
+
+<p>
+  <b>Rate:</b>
+  <%= @discount_rule.rate %>
+</p>
+
+<p>
+  <b>Discount group:</b>
+  <%= @discount_rule.discount_group %>
+</p>
+
+
+<%= link_to 'Edit', edit_discount_rule_path(@discount_rule) %> |
+<%= link_to 'Back', discount_rules_path %>

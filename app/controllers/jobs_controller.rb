@@ -92,10 +92,8 @@ class JobsController < ApplicationController
   end
 
   def start
-    @job = Job.find(:first, :conditions => {:active => '1', :id => params[:id], :locked => 'false'})
-    if @job.nil?
-      flash[:alert] = "Задача заблокирована"
-    elsif(@job.jobable_type == "ReceiveJob")
+    @job = Job.find(:first, :conditions => {:active => '1', :id => params[:id]})
+    if(@job.jobable_type == "ReceiveJob")
       JobWalker.new.start_job(@job, 50, :force => params[:force])
       flash[:notice] = "Задача поставщика успешно поставлена в очередь"
     else
@@ -110,7 +108,7 @@ class JobsController < ApplicationController
   end
 
   def start_all
-    jobs = Job.all(:conditions => "locked = false AND jobable_type = 'ReceiveJob' AND active = 1 AND next_start IS NOT NULL AND active = 1")
+    jobs = Job.all(:conditions => "jobable_type = 'ReceiveJob' AND active = 1 AND next_start IS NOT NULL AND active = 1")
     jobs.each do |job|
       JobWalker.new.start_job(job, 50, :force=>true)
     end
@@ -119,7 +117,7 @@ class JobsController < ApplicationController
   end
 
   def start_by_supplier
-    jobs = Job.all(:conditions => ["locked = false AND jobable_type = 'ReceiveJob' AND next_start IS NOT NULL AND active = 1 AND supplier_id = ?", params[:supplier_id]])
+    jobs = Job.all(:conditions => ["jobable_type = 'ReceiveJob' AND next_start IS NOT NULL AND active = 1 AND supplier_id = ?", params[:supplier_id]])
     if(jobs.size)
       flash[:notice] = "Задачи поставщика успешно поставлены в очередь"
     end

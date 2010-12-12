@@ -1,4 +1,8 @@
 Avtorif::Application.routes.draw do
+  resources :discount_rules
+
+  resources :discount_groups
+
   devise_for :users
   resources :filter_jobs
   resources :delivery_types

@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  job: 
+  buy_sell: false
+  rate: 1
+  discount_group: 
+
+two:
+  job: 
+  buy_sell: false
+  rate: 1
+  discount_group: 

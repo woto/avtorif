@@ -1,0 +1,23 @@
+<h1>Listing discount_groups</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @discount_groups.each do |discount_group| %>
+  <tr>
+    <td><%= discount_group.title %></td>
+    <td><%= link_to 'Show', discount_group %></td>
+    <td><%= link_to 'Edit', edit_discount_group_path(discount_group) %></td>
+    <td><%= link_to 'Destroy', discount_group, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Discount group', new_discount_group_path %>

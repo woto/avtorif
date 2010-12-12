@@ -30,7 +30,26 @@ class ImportJobable < AbstractJobber
             p.save
           end
         when /_I_/
-          Вставка
+          FasterCSV.foreach(SupplierPrice.find(opt).attachment.path) do |row|
+            if(@jobable.manufacturer_colnum)
+              #TODO сделать какую-то реализацию нормализации производителей
+            end
+            p = Price.new()
+            p.job_id = @job.id
+            #p.job_title = @job.title
+            p.goods_id = -1
+            p.supplier_id = @job.supplier_id
+            p.supplier = @job.supplier
+            p.title = row[@jobable.title_colnum - 1].strip if @jobable.title_colnum.present? && row[@jobable.title_colnum - 1].present?
+            p.count = row[@jobable.count_colnum - 1].strip if @jobable.count_colnum.present? && row[@jobable.count_colnum - 1].present?
+            p.price_cost = row[@jobable.income_price_colnum - 1].to_s.strip.gsub(',','.')
+            p.manufacturer = row[@jobable.manufacturer_colnum - 1].strip if @jobable.manufacturer_colnum.present? && row[@jobable.manufacturer_colnum - 1].present?
+            p.catalog_number = row[@jobable.catalog_number_colnum - 1].strip if row[@jobable.catalog_number_colnum - 1].present?
+            #p.inn = @job.supplier.inn
+            #p.kpp = @job.supplier.kpp
+            #p.estimate_days = @jobable.estimate_days
+            p.save
+          end
         when /_U_/
 
         when /_U0_/

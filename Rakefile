@@ -31,4 +31,21 @@ namespace :avtorif do
     puts "Запускаем God"
     sh "sudo /etc/init.d/god start"
   end 
+
+  task :destroy_old_supplier_prices => :environment do
+    Supplier.all.each do |supplier|
+      supplier.jobs.all.each do |job|       
+        begin
+          group_code = SupplierPrice.where("job_id = #{job.id}").order("id desc").limit(1).first.group_code
+        rescue => e
+          next
+        end
+        job.supplier_prices.all.each do |supplier_price|
+          if supplier_price.group_code != group_code
+            supplier_price.destroy
+          end
+        end
+      end
+    end
+  end
 end
