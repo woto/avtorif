@@ -10,7 +10,7 @@
 
 <% @discount_groups.each do |discount_group| %>
   <tr>
-    <td><%= discount_group.title %></td>
+    <td><%= link_to discount_group.title, discount_group_discount_rules_path(discount_group) %></td>
     <td><%= link_to 'Show', discount_group %></td>
     <td><%= link_to 'Edit', edit_discount_group_path(discount_group) %></td>
     <td><%= link_to 'Destroy', discount_group, :confirm => 'Are you sure?', :method => :delete %></td>

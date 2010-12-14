@@ -23,11 +23,12 @@ class HttpReceiver < AbstractReceiver
         raise response.message
       end
 
-      begin
-        remote_file = RemoteFile.new(response['content-disposition'].match(/filename="(.*)"/)[1])
-      rescue
+      # Нельзя так делать, т.к. нарушается логика
+      #begin
+      #  remote_file = RemoteFile.new(response['content-disposition'].match(/filename="(.*)"/)[1])
+      #rescue
         remote_file = RemoteFile.new(@job.file_mask)
-      end
+      #end
 
       group_code = 'r' + Time.now.to_s
       

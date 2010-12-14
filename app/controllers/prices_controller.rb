@@ -2,7 +2,33 @@ class PricesController < ApplicationController
 
   def search
     # Локальная работа
-    @prices = Price.select("prices.*, jobs.*, import_jobs.*, suppliers.*").where('catalog_number = ?', params[:price][:catalog_number]).includes(:job => {:import_job => [:currency_buy, :currency_sell, :currency_weight]}).includes(:supplier)
+    #@prices = Price.select("prices.*, jobs.*, import_jobs.*, suppliers.*").where('catalog_number = ?', params[:price][:catalog_number]).includes(:job => {:import_job => [:currency_buy, :currency_sell, :currency_weight]}).includes(:supplier)
+    @prices = Price.find_by_sql("
+      SELECT *, 
+             p.price_cost * ij.income_rate AS income_cost, 
+             p.price_cost * ij.income_rate * ij.retail_rate AS retail_cost, 
+             CASE udr.buy_sell 
+               WHEN 0 THEN p.price_cost * ij.income_rate * udr.rate 
+               WHEN 1 THEN p.price_cost * ij.income_rate * ij.retail_rate * udr.rate 
+               ELSE p.price_cost * ij.income_rate * ij.retail_rate
+             END AS result_cost 
+      FROM   prices p 
+             INNER JOIN jobs j 
+               ON p.job_id = j.id 
+             INNER JOIN import_jobs ij 
+               ON j.jobable_id = ij.id 
+             LEFT JOIN (SELECT dg.title, 
+                               dr.buy_sell, 
+                               dr.rate, 
+                               dr.job_id 
+                        FROM   suppliers s 
+                               INNER JOIN discount_groups dg 
+                                 ON dg.id = s.discount_group_id 
+                               INNER JOIN discount_rules dr 
+                                 ON dr.discount_group_id = dg.id 
+                        WHERE  s.id = 222198489) udr 
+               ON p.job_id = udr.job_id 
+      WHERE  p.catalog_number = #{Price.connection.quote(params[:price][:catalog_number])};")
 
     # Работа со сторонними сервисами
     if(defined?(params[:OnlyOurWS]) && params[:OnlyOurWS] == "1")
@@ -217,6 +243,7 @@ class PricesController < ApplicationController
     end
 
     respond_to do |format|
+      debugger
       format.html {render :action => :index }
       format.xml  { render :xml => @prices.to_xml(
         :include => {

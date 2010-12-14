@@ -2,7 +2,7 @@ class DiscountRulesController < ApplicationController
   # GET /discount_rules
   # GET /discount_rules.xml
   def index
-    @discount_rules = DiscountRule.all
+    @discount_rules = DiscountRule.where(:discount_group_id => params[:discount_group_id])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -25,6 +25,7 @@ class DiscountRulesController < ApplicationController
   # GET /discount_rules/new.xml
   def new
     @discount_rule = DiscountRule.new
+    @discount_rule.discount_group_id = params[:discount_group_id]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -44,7 +45,7 @@ class DiscountRulesController < ApplicationController
 
     respond_to do |format|
       if @discount_rule.save
-        format.html { redirect_to(@discount_rule, :notice => 'Discount rule was successfully created.') }
+        format.html { redirect_to(discount_group_discount_rule_path(params[:discount_group_id], @discount_rule), :notice => 'Discount rule was successfully created.') }
         format.xml  { render :xml => @discount_rule, :status => :created, :location => @discount_rule }
       else
         format.html { render :action => "new" }
@@ -60,7 +61,7 @@ class DiscountRulesController < ApplicationController
 
     respond_to do |format|
       if @discount_rule.update_attributes(params[:discount_rule])
-        format.html { redirect_to(@discount_rule, :notice => 'Discount rule was successfully updated.') }
+        format.html { redirect_to(discount_group_discount_rule_path(params[:discount_group_id], @discount_rule), :notice => 'Discount rule was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

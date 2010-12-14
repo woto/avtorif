@@ -21,4 +21,4 @@ vendor/gems/doc
 vendor/gems/environment.rb
 Gemfile.lock
 public/system
-
+system/prices_archive

@@ -45,20 +45,56 @@ class FilterJobable < AbstractJobber
       #options[:row_sep] = "\r\n"
 
       #begin
+
+            boolean_first = @jobable.first.present?
+            regexp_first = Regexp.new(@jobable.first)
+
+            boolean_second = @jobable.second.present? 
+            regext_second = Regexp.new(@jobable.second)
+
+            boolean_third = @jobable.third.present? 
+            regexp_third = Regexp.new(@jobable.third)
+
+            boolean_fourth = @jobable.fourth.present?
+            regext_fourth = Regexp.new(@jobable.fourth)
+
+            boolean_fifth = @jobable.fifth.present?
+            regexp_fifth = Regexp.new(@jobable.fifth)
+
+            boolean_sixth = @jobable.sixth.present?
+            regexp_sixth = Regexp.new(@jobable.sixth)
+
+            boolean_seventh = @jobable.seventh.present?
+            regexp_seventh = Regexp.new(@jobable.seventh)
+
+            boolean_eighth = @jobable.eighth.present?
+            regexp_eighth = Regexp.new(@jobable.eighth)
+
+            boolean_ninth = @jobable.ninth.present?
+            regexp_ninth = Regexp.new(@jobable.ninth)
+
+            boolean_tenth = @jobable.tenth.present?
+            regexp_tenth = Regexp.new(@jobable.tenth)
+        
+        i = 0
         FasterCSV.foreach(supplier_price.path, options)  do |row|
-          if(
-            (@jobable.first.present? ? row[0] =~ Regexp.new(@jobable.first) : true) &&
-            (@jobable.second.present? ? row[1] =~ Regexp.new(@jobable.second) : true) &&
-            (@jobable.third.present? ? row[2] =~ Regexp.new(@jobable.third) : true) &&
-            (@jobable.fourth.present? ? row[3] =~ Regexp.new(@jobable.fourth) : true) &&
-            (@jobable.fifth.present? ? row[4] =~ Regexp.new(@jobable.fifth) : true) &&
-            (@jobable.sixth.present? ? row[5] =~ Regexp.new(@jobable.sixth) : true) &&
-            (@jobable.seventh.present? ? row[6] =~ Regexp.new(@jobable.seventh) : true) &&
-            (@jobable.eighth.present? ? row[7] =~ Regexp.new(@jobable.eighth) : true) &&
-            (@jobable.ninth.present? ? row[8] =~ Regexp.new(@jobable.ninth) : true) &&
-            (@jobable.tenth.present? ? row[9] =~ Regexp.new(@jobable.tenth) : true)
+          i = i+1
+          puts i if i.modulo(10000) == 0
+          if(1
+#            (boolean_first.present? ? row[0] =~ regexp_first : true) &&
+#            (boolean_second.present? ? row[1] =~ regexp_second : true) &&
+#            (boolean_third.present? ? row[2] =~ regexp_third : true) &&
+#            (boolean_fourth.present? ? row[3] =~ regexp_fourth : true) &&
+#            (boolean_fifth.present? ? row[4] =~ regexp_fifth : true) &&
+#            (boolean_sixth.present? ? row[5] =~  regexp_sixth : true) &&
+#            (boolean_seventh.present? ? row[6] =~ regexp_seventh : true) &&
+#            (boolean_eighth.present? ? row[7] =~ regexp_eighth : true) &&
+#            (boolean_ninth.present? ? row[8] =~ regexp_ninth : true) &&
+#            (boolean_tenth.present? ? row[9] =~ regexp_tenth : true)
           )then
-            remote_file.write(row.to_csv)
+            #remote_file.write(row.to_csv)
+          row.to_csv
+          puts i if i.modulo(20000) == 0
 
           end
         end

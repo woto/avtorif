@@ -1,11 +1,10 @@
-<h1>Listing discount_rules</h1>
+<h1>Listing discount_rules for <%= DiscountGroup.find(params[:discount_group_id]) %></h1>
 
 <table>
   <tr>
     <th>Job</th>
     <th>Buy sell</th>
     <th>Rate</th>
-    <th>Discount group</th>
     <th></th>
     <th></th>
     <th></th>
@@ -16,14 +15,13 @@
     <td><%= discount_rule.job %></td>
     <td><%= discount_rule.buy_sell %></td>
     <td><%= discount_rule.rate %></td>
-    <td><%= discount_rule.discount_group %></td>
-    <td><%= link_to 'Show', discount_rule %></td>
-    <td><%= link_to 'Edit', edit_discount_rule_path(discount_rule) %></td>
-    <td><%= link_to 'Destroy', discount_rule, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', discount_group_discount_rule_path(params[:discount_group_id], discount_rule.id) %></td>
+    <td><%= link_to 'Edit', edit_discount_group_discount_rule_path(params[:discount_group_id], discount_rule.id) %></td>
+    <td><%= link_to 'Destroy', discount_group_discount_rule_path(:discount_group_id, discount_rule.id), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Discount rule', new_discount_rule_path %>
+<%= link_to 'New Discount rule', new_discount_group_discount_rule_path %>

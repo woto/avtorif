@@ -12,6 +12,7 @@ class Supplier < ActiveRecord::Base
   validates_length_of :kpp, :maximum=>9
   has_many :supplier_prices
   has_many :prices
+  belongs_to :discount_group
 
   def status
 #    Job.all

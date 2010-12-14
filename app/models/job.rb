@@ -22,6 +22,10 @@ class Job < ActiveRecord::Base
     DISABLED = "<div>Отключена</div><br/>"
   end
 
+  def to_s
+    title
+  end
+
   cattr_reader :per_page
   @@per_page = 100
   has_many :prices, :dependent => :destroy

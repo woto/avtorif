@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101210075401) do
+ActiveRecord::Schema.define(:version => 20101213123931) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(:version => 20101210075401) do
   create_table "discount_rules", :force => true do |t|
     t.integer  "job_id"
     t.boolean  "buy_sell"
-    t.integer  "rate"
+    t.float    "rate"
     t.integer  "discount_group_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -289,7 +289,6 @@ ActiveRecord::Schema.define(:version => 20101210075401) do
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
-    t.decimal  "income_cost",        :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "catalog_number"
     t.datetime "created_at"
@@ -376,6 +375,7 @@ ActiveRecord::Schema.define(:version => 20101210075401) do
     t.string   "email"
     t.string   "emaildocs"
     t.integer  "delivery_days"
+    t.integer  "discount_group_id"
   end
 
   create_table "transmissions", :force => true do |t|

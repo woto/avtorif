@@ -1,7 +1,8 @@
 Avtorif::Application.routes.draw do
-  resources :discount_rules
 
-  resources :discount_groups
+  resources :discount_groups do
+    resources :discount_rules
+  end
 
   devise_for :users
   resources :filter_jobs
@@ -24,26 +25,22 @@ Avtorif::Application.routes.draw do
   resources :repeats_jobs
   match '/start_all_jobs/' => 'jobs#start_all', :as => :start_all_jobs
   resources :suppliers do
-  
-  
-      resources :supplier_prices do
-        collection do
-    delete :destroy_by_supplier
-    end
-    
-    
+    resources :supplier_prices do
+      collection do
+        delete :destroy_by_supplier
+      end
     end
 
     resources :jobs do
-    member do
-      get 'start'
-    end
-    collection do
-      get 'start_all'
-      get 'start_by_supplier'
-    end
-    
-          resources :supplier_prices
+      member do
+        get 'start'
+      end
+      collection do
+        get 'start_all'
+        get 'start_by_supplier'
+      end
+      
+      resources :supplier_prices
       resources :import_jobs
       resources :receive_jobs
       resources :filter_jobs
@@ -71,10 +68,8 @@ Avtorif::Application.routes.draw do
   resources :supplier_prices
   resources :prices do
     collection do
-  get :search
-  end
-  
-  
+      get :search
+    end
   end
 
   match '/:controller(/:action(/:id))'
