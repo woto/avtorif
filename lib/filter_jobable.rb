@@ -4,6 +4,17 @@ class FilterJobable < AbstractJobber
     @optional.each do |opt|
       supplier_price = SupplierPrice.find(opt).attachment
       remote_file = RemoteFile.new(File.basename(supplier_price.original_filename) + ".csv")
+      
+      exec = "#{Rails.root}/system/external_tools/py_csv_filter.py #{supplier_price.path.shellescape} #{remote_file.path.shellescape}"
+      puts '---'
+      `#{exec}`
+      puts '---'
+      unless $?.success?
+        puts "ОШИБКА В ПРОЦЕССЕ ПАРСИНГА #{supplier_price.path}"
+        #raise "Error during execution of #{exec}"
+      end
+
+=begin      
       #remote_file_name = supplier_price.@job.title + ".csv"
 
       options = Hash.new
@@ -101,7 +112,7 @@ class FilterJobable < AbstractJobber
       #rescue => e
       #  raise e.to_s + " in " + supplier_price.path
       #end
-
+=end
       remote_file.flush
       md5 = Digest::MD5.file(remote_file.path).hexdigest
       wc_stat = `wc #{remote_file.path.to_s.shellescape}`
