@@ -13,9 +13,6 @@ class ImportJobable < AbstractJobber
           query = ""
           job_id = title_colnum = title_boolean = count_colnum = count_boolean =  manufacturer_colnum = manufacturer_boolean = price_colnum = catalog_number_colnum = false
 
-          FasterCSV.foreach(SupplierPrice.find(opt).attachment.path) do |row|
-            if i == 0
-              query = "INSERT INTO prices (job_id, title, count, price_cost, manufacturer, catalog_number) VALUES "
               job_id = Price.connection.quote(@job.id)
 
               if @jobable.title_colnum.present?
@@ -35,6 +32,10 @@ class ImportJobable < AbstractJobber
 
               price_colnum = @jobable.income_price_colnum - 1
               catalog_number_colnum = @jobable.catalog_number_colnum - 1
+
+          FasterCSV.foreach(SupplierPrice.find(opt).attachment.path) do |row|
+            if i == 0
+              query = "INSERT INTO prices (job_id, title, count, price_cost, manufacturer, catalog_number) VALUES "
             end
 
             if i < 1000

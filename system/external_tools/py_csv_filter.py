@@ -6,21 +6,25 @@ import csv
 from StringIO import StringIO
 import textwrap
 import pprint
+import os
+import pdb
 
-#print sys
-#print 'hello wfrom python'
-in_file, out_file = sys.argv[0], sys.argv[1]
+#pdb.set_trace()
 
-csvfile = open(in_file, 'rb')
-f = open(out_file, 'wt')
-writer = csv.writer(f)
+in_file, out_file = sys.argv[1], sys.argv[2]
 
-dialect = csv.Sniffer().sniff(csvfile.read(1024))
-csvfile.seek(0)
-reader = csv.reader(csvfile, dialect)
-counter = 0
-for row in reader:
-    counter += 1
-    writer.writerow(row)
-    if counter % 100 == 0:
-        print row
+if(os.path.getsize(in_file)):
+    csvfile = open(in_file, 'rb')
+    f = open(out_file, 'wt')
+    writer = csv.writer(f)
+
+    dialect = csv.Sniffer().sniff(csvfile.read(10240), [',', '\t', ';', ' ', ':', '|'])
+    csvfile.seek(0)
+    reader = csv.reader(csvfile, dialect)
+    counter = 0
+    for row in reader:
+        if counter == 0:
+            print row
+
+        counter += 1
+        writer.writerow(row)

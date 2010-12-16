@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101213123931) do
+ActiveRecord::Schema.define(:version => 20101216122015) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
@@ -300,8 +300,6 @@ ActiveRecord::Schema.define(:version => 20101213123931) do
     t.string   "success_percent"
   end
 
-  add_index "prices", ["catalog_number"], :name => "catalog_number_IDX"
-
   create_table "receive_jobs", :force => true do |t|
     t.integer  "receiveable_id"
     t.string   "receiveable_type"
@@ -329,7 +327,7 @@ ActiveRecord::Schema.define(:version => 20101213123931) do
   end
 
   create_table "supplier_prices", :force => true do |t|
-    t.string   "attachment_file_name",    :limit => 50
+    t.string   "attachment_file_name"
     t.string   "attachment_content_type"
     t.string   "attachment_file_size",    :limit => 20
     t.datetime "attachment_updated_at"

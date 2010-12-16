@@ -31,6 +31,11 @@ namespace :avtorif do
     puts "Запускаем God"
     sh "sudo /etc/init.d/god start"
   end 
+  
+  task :renice_dj => :environment do
+    sql = "UPDATE delayed_jobs set run_at = 0"
+    ActiveRecord::Base.connection.execute(sql)
+  end
 
   task :destroy_old_supplier_prices => :environment do
     Rake::Task['avtorif:prices_archive'].invoke

@@ -7,10 +7,11 @@ class FilterJobable < AbstractJobber
       
       exec = "#{Rails.root}/system/external_tools/py_csv_filter.py #{supplier_price.path.shellescape} #{remote_file.path.shellescape}"
       puts '---'
+      puts exec
       `#{exec}`
       puts '---'
       unless $?.success?
-        puts "ОШИБКА В ПРОЦЕССЕ ПАРСИНГА #{supplier_price.path}"
+        raise "ОШИБКА В ПРОЦЕССЕ ПАРСИНГА #{supplier_price.path}"
         #raise "Error during execution of #{exec}"
       end
 
