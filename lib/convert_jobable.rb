@@ -12,6 +12,8 @@ class ConvertJobable < AbstractJobber
       #puts @jobable.convert_method
       case @jobable.convert_method.to_s
         when /_csv_encode_/
+          raise 'Obsolete'
+=begin          
           remote_file = RemoteFile.new(supplier_price.path)
 
           encode(@jobable.encoding_in, @jobable.encoding_out, supplier_price.path.shellescape, remote_file.path.shellescape)
@@ -31,10 +33,36 @@ class ConvertJobable < AbstractJobber
           retval << attachment.id
 
           remote_file.unlink
-=begin        
-        when /csv_tr/
-=end        
+=end       
+        when /_arbitrary_console_/
+          remote_file = RemoteFile.new(File.basename(supplier_price.original_filename))
+          exec = @jobable.exec_string.dup
+          exec["[in_file]"] = supplier_price.path.shellescape
+          exec["[out_file]"] = remote_file.path.shellescape
+          stdin, stdout, stderr = Open3.popen3(exec)
+          if (error_string = stderr.read).present?
+            raise "'#{error_string}' в результате запуска '#{exec}'"
+          end
+
+          md5 = Digest::MD5.file(remote_file.path).hexdigest
+          wc_stat = `wc #{remote_file.path.to_s.shellescape}`
+          head_stat = `head #{remote_file.path.to_s.shellescape}`
+
+          remote_file.original_filename = File.basename(supplier_price.original_filename)
+
+          attachment = SupplierPrice.new(:group_code => 'c' + @optional.to_s, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
+          attachment.supplier = @job.supplier
+          attachment.job_code = @job.title
+          attachment.job_id = @job.id
+          attachment.save
+
+          retval << attachment.id
+
+          remote_file.unlink
+
         when /csv_normalize_new_line/
+        raise 'Obsolete'          
+=begin          
           #puts supplier_price.original_filename
           remote_file = RemoteFile.new(supplier_price.path)
 
@@ -66,7 +94,7 @@ class ConvertJobable < AbstractJobber
 
           retval << attachment.id
           remote_file.unlink
-        
+=end        
         when /python_xls2csv/
           Dir.mktmpdir do |tempdir|
             exec = "#{Rails.root}/system/external_tools/py_xls2csv.py #{tempdir} #{@jobable.encoding_out} #{supplier_price.path.shellescape}"
@@ -142,7 +170,9 @@ class ConvertJobable < AbstractJobber
             remote_file.unlink
           end
         when /xls_console/
+          raise 'Obsolete'
 
+=begin          
           remote_file = RemoteFile.new(supplier_price.path)
 
           `xls2csv -q3 #{supplier_price.path.shellescape} > #{remote_file.path.shellescape}`
@@ -160,10 +190,12 @@ class ConvertJobable < AbstractJobber
           retval << attachment.id
 
           remote_file.unlink
+=end
 
         when /mdb_console/
 
           a = `mdb-tables #{supplier_price.path.shellescape}`
+
           a.split(' ').each do |table|
             remote_file = RemoteFile.new(table)
             `mdb-export #{supplier_price.path.shellescape} #{table.shellescape} > #{remote_file.path.shellescape}`
@@ -191,6 +223,8 @@ class ConvertJobable < AbstractJobber
 
   end
 
+=begin
+
   private
 
   def encode(encoding_in, encoding_out,  source, destination)
@@ -208,4 +242,5 @@ class ConvertJobable < AbstractJobber
       raise 'Ошибка перекодирования в iconv вероятно входная кодировка выставлена неверно, id задачи ' + @job.id.to_s + "\r\niconv #{encoding_in} #{encoding_out} #{source} > #{destination}"
     end
   end
+=end  
 end

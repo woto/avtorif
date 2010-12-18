@@ -18,6 +18,7 @@
         <th>Active</th>
         <th>Critical</th>
         <th>Critical tree</th>
+        <th>Last Error</th>
         <th></th>
       </tr>
 
@@ -58,6 +59,7 @@
         <td><%=h job.active %></td>
         <td><%= job.critical.html_safe %></td>
         <td><%= critical_tree(job).join.html_safe %></td>
+        <td><%= job.last_error %></td>
         
         <td>
           <%= link_to 'Edit', edit_supplier_job_path(job.supplier, job) %> <br />

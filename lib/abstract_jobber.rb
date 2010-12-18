@@ -20,16 +20,20 @@ class AbstractJobber
 
   def after(j)
     puts Time.zone.now.to_s + " Безусловный after: '#{job.title}' от '#{job.supplier.title}'."
+    job.last_error = ''
   end
 
   def success(j)
     job.locked = false
     job.last_finish = Time.zone.now.to_s
+    job.last_error = ''
     job.save
     puts Time.zone.now.to_s + " Условный success: '#{job.title}' от '#{job.supplier.title}'."
   end
 
   def error(j, e)
+    job.last_error = e.message
+    job.save
     puts Time.zone.now.to_s + " Условный error: '#{job.title}' от '#{job.supplier.title}'."
     puts e.message
   end

@@ -1,18 +1,15 @@
+require 'open3'
+
 class FilterJobable < AbstractJobber
   def perform
     retval = []
     @optional.each do |opt|
       supplier_price = SupplierPrice.find(opt).attachment
       remote_file = RemoteFile.new(File.basename(supplier_price.original_filename) + ".csv")
-      
       exec = "#{Rails.root}/system/external_tools/py_csv_filter.py #{supplier_price.path.shellescape} #{remote_file.path.shellescape}"
-      puts '---'
-      puts exec
-      `#{exec}`
-      puts '---'
-      unless $?.success?
-        raise "ОШИБКА В ПРОЦЕССЕ ПАРСИНГА #{supplier_price.path}"
-        #raise "Error during execution of #{exec}"
+      stdin, stdout, stderr = Open3.popen3(exec)
+      if (error_string = stderr.read).present?
+        raise "\r\n\r\n#{error_string} during \r\n\r\n#{exec}\r\n\r\n"
       end
 
 =begin      

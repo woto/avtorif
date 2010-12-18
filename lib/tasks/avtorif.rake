@@ -25,7 +25,7 @@ namespace :avtorif do
   end 
   
   task :renice_dj => :environment do
-    sql = "UPDATE delayed_jobs set run_at = 0"
+    sql = "update delayed_jobs set run_at = 0, attempts = 0, locked_by = null"
     ActiveRecord::Base.connection.execute(sql)
   end
 

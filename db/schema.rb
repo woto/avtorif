@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101216122015) do
+ActiveRecord::Schema.define(:version => 20101217164357) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(:version => 20101216122015) do
     t.string   "encoding_in"
     t.string   "col_sep"
     t.string   "encoding_out"
+    t.string   "exec_string"
   end
 
   create_table "currencies", :force => true do |t|
@@ -255,6 +256,7 @@ ActiveRecord::Schema.define(:version => 20101216122015) do
     t.datetime "updated_at"
     t.text     "description"
     t.boolean  "started_once"
+    t.text     "last_error"
   end
 
   create_table "jobs_repeats", :id => false, :force => true do |t|
@@ -299,6 +301,428 @@ ActiveRecord::Schema.define(:version => 20101216122015) do
     t.float    "retail_cost"
     t.string   "success_percent"
   end
+
+  add_index "prices", ["catalog_number"], :name => "catalog_number_IDX"
+
+  create_table "prices_1066346346", :force => true do |t|
+    t.integer  "job_id"
+    t.integer  "goods_id"
+    t.integer  "supplier_id"
+    t.string   "title"
+    t.string   "count"
+    t.decimal  "price_cost",         :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "catalog_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "country"
+    t.string   "title_en"
+    t.string   "manufacturer_short"
+    t.float    "retail_cost"
+    t.string   "success_percent"
+  end
+
+  add_index "prices_1066346346", ["catalog_number"], :name => "catalog_number_IDX"
+
+  create_table "prices_1066346347", :force => true do |t|
+    t.integer  "job_id"
+    t.integer  "goods_id"
+    t.integer  "supplier_id"
+    t.string   "title"
+    t.string   "count"
+    t.decimal  "price_cost",         :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "catalog_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "country"
+    t.string   "title_en"
+    t.string   "manufacturer_short"
+    t.float    "retail_cost"
+    t.string   "success_percent"
+  end
+
+  add_index "prices_1066346347", ["catalog_number"], :name => "catalog_number_IDX"
+
+  create_table "prices_1066346364", :force => true do |t|
+    t.integer  "job_id"
+    t.integer  "goods_id"
+    t.integer  "supplier_id"
+    t.string   "title"
+    t.string   "count"
+    t.decimal  "price_cost",         :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "catalog_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "country"
+    t.string   "title_en"
+    t.string   "manufacturer_short"
+    t.float    "retail_cost"
+    t.string   "success_percent"
+  end
+
+  add_index "prices_1066346364", ["catalog_number"], :name => "catalog_number_IDX"
+
+  create_table "prices_1066346370", :force => true do |t|
+    t.integer  "job_id"
+    t.integer  "goods_id"
+    t.integer  "supplier_id"
+    t.string   "title"
+    t.string   "count"
+    t.decimal  "price_cost",         :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "catalog_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "country"
+    t.string   "title_en"
+    t.string   "manufacturer_short"
+    t.float    "retail_cost"
+    t.string   "success_percent"
+  end
+
+  add_index "prices_1066346370", ["catalog_number"], :name => "catalog_number_IDX"
+
+  create_table "prices_1066346372", :force => true do |t|
+    t.integer  "job_id"
+    t.integer  "goods_id"
+    t.integer  "supplier_id"
+    t.string   "title"
+    t.string   "count"
+    t.decimal  "price_cost",         :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "catalog_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "country"
+    t.string   "title_en"
+    t.string   "manufacturer_short"
+    t.float    "retail_cost"
+    t.string   "success_percent"
+  end
+
+  add_index "prices_1066346372", ["catalog_number"], :name => "catalog_number_IDX"
+
+  create_table "prices_1066346374", :force => true do |t|
+    t.integer  "job_id"
+    t.integer  "goods_id"
+    t.integer  "supplier_id"
+    t.string   "title"
+    t.string   "count"
+    t.decimal  "price_cost",         :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "catalog_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "country"
+    t.string   "title_en"
+    t.string   "manufacturer_short"
+    t.float    "retail_cost"
+    t.string   "success_percent"
+  end
+
+  add_index "prices_1066346374", ["catalog_number"], :name => "catalog_number_IDX"
+
+  create_table "prices_1066346376", :force => true do |t|
+    t.integer  "job_id"
+    t.integer  "goods_id"
+    t.integer  "supplier_id"
+    t.string   "title"
+    t.string   "count"
+    t.decimal  "price_cost",         :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "catalog_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "country"
+    t.string   "title_en"
+    t.string   "manufacturer_short"
+    t.float    "retail_cost"
+    t.string   "success_percent"
+  end
+
+  add_index "prices_1066346376", ["catalog_number"], :name => "catalog_number_IDX"
+
+  create_table "prices_1066346377", :force => true do |t|
+    t.integer  "job_id"
+    t.integer  "goods_id"
+    t.integer  "supplier_id"
+    t.string   "title"
+    t.string   "count"
+    t.decimal  "price_cost",         :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "catalog_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "country"
+    t.string   "title_en"
+    t.string   "manufacturer_short"
+    t.float    "retail_cost"
+    t.string   "success_percent"
+  end
+
+  add_index "prices_1066346377", ["catalog_number"], :name => "catalog_number_IDX"
+
+  create_table "prices_1066346379", :force => true do |t|
+    t.integer  "job_id"
+    t.integer  "goods_id"
+    t.integer  "supplier_id"
+    t.string   "title"
+    t.string   "count"
+    t.decimal  "price_cost",         :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "catalog_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "country"
+    t.string   "title_en"
+    t.string   "manufacturer_short"
+    t.float    "retail_cost"
+    t.string   "success_percent"
+  end
+
+  add_index "prices_1066346379", ["catalog_number"], :name => "catalog_number_IDX"
+
+  create_table "prices_1066346382", :force => true do |t|
+    t.integer  "job_id"
+    t.integer  "goods_id"
+    t.integer  "supplier_id"
+    t.string   "title"
+    t.string   "count"
+    t.decimal  "price_cost",         :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "catalog_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "country"
+    t.string   "title_en"
+    t.string   "manufacturer_short"
+    t.float    "retail_cost"
+    t.string   "success_percent"
+  end
+
+  add_index "prices_1066346382", ["catalog_number"], :name => "catalog_number_IDX"
+
+  create_table "prices_1066346383", :force => true do |t|
+    t.integer  "job_id"
+    t.integer  "goods_id"
+    t.integer  "supplier_id"
+    t.string   "title"
+    t.string   "count"
+    t.decimal  "price_cost",         :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "catalog_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "country"
+    t.string   "title_en"
+    t.string   "manufacturer_short"
+    t.float    "retail_cost"
+    t.string   "success_percent"
+  end
+
+  add_index "prices_1066346383", ["catalog_number"], :name => "catalog_number_IDX"
+
+  create_table "prices_1066346384", :force => true do |t|
+    t.integer  "job_id"
+    t.integer  "goods_id"
+    t.integer  "supplier_id"
+    t.string   "title"
+    t.string   "count"
+    t.decimal  "price_cost",         :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "catalog_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "country"
+    t.string   "title_en"
+    t.string   "manufacturer_short"
+    t.float    "retail_cost"
+    t.string   "success_percent"
+  end
+
+  add_index "prices_1066346384", ["catalog_number"], :name => "catalog_number_IDX"
+
+  create_table "prices_1066346394", :force => true do |t|
+    t.integer  "job_id"
+    t.integer  "goods_id"
+    t.integer  "supplier_id"
+    t.string   "title"
+    t.string   "count"
+    t.decimal  "price_cost",         :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "catalog_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "country"
+    t.string   "title_en"
+    t.string   "manufacturer_short"
+    t.float    "retail_cost"
+    t.string   "success_percent"
+  end
+
+  add_index "prices_1066346394", ["catalog_number"], :name => "catalog_number_IDX"
+
+  create_table "prices_1066346396", :force => true do |t|
+    t.integer  "job_id"
+    t.integer  "goods_id"
+    t.integer  "supplier_id"
+    t.string   "title"
+    t.string   "count"
+    t.decimal  "price_cost",         :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "catalog_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "country"
+    t.string   "title_en"
+    t.string   "manufacturer_short"
+    t.float    "retail_cost"
+    t.string   "success_percent"
+  end
+
+  add_index "prices_1066346396", ["catalog_number"], :name => "catalog_number_IDX"
+
+  create_table "prices_1066346400", :force => true do |t|
+    t.integer  "job_id"
+    t.integer  "goods_id"
+    t.integer  "supplier_id"
+    t.string   "title"
+    t.string   "count"
+    t.decimal  "price_cost",         :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "catalog_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "country"
+    t.string   "title_en"
+    t.string   "manufacturer_short"
+    t.float    "retail_cost"
+    t.string   "success_percent"
+  end
+
+  add_index "prices_1066346400", ["catalog_number"], :name => "catalog_number_IDX"
+
+  create_table "prices_1066346421", :force => true do |t|
+    t.integer  "job_id"
+    t.integer  "goods_id"
+    t.integer  "supplier_id"
+    t.string   "title"
+    t.string   "count"
+    t.decimal  "price_cost",         :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "catalog_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "country"
+    t.string   "title_en"
+    t.string   "manufacturer_short"
+    t.float    "retail_cost"
+    t.string   "success_percent"
+  end
+
+  add_index "prices_1066346421", ["catalog_number"], :name => "catalog_number_IDX"
+
+  create_table "prices_1066346422", :force => true do |t|
+    t.integer  "job_id"
+    t.integer  "goods_id"
+    t.integer  "supplier_id"
+    t.string   "title"
+    t.string   "count"
+    t.decimal  "price_cost",         :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "catalog_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "country"
+    t.string   "title_en"
+    t.string   "manufacturer_short"
+    t.float    "retail_cost"
+    t.string   "success_percent"
+  end
+
+  add_index "prices_1066346422", ["catalog_number"], :name => "catalog_number_IDX"
+
+  create_table "prices_1066346423", :force => true do |t|
+    t.integer  "job_id"
+    t.integer  "goods_id"
+    t.integer  "supplier_id"
+    t.string   "title"
+    t.string   "count"
+    t.decimal  "price_cost",         :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "catalog_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "country"
+    t.string   "title_en"
+    t.string   "manufacturer_short"
+    t.float    "retail_cost"
+    t.string   "success_percent"
+  end
+
+  add_index "prices_1066346423", ["catalog_number"], :name => "catalog_number_IDX"
+
+  create_table "prices_1066346424", :force => true do |t|
+    t.integer  "job_id"
+    t.integer  "goods_id"
+    t.integer  "supplier_id"
+    t.string   "title"
+    t.string   "count"
+    t.decimal  "price_cost",         :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "catalog_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "country"
+    t.string   "title_en"
+    t.string   "manufacturer_short"
+    t.float    "retail_cost"
+    t.string   "success_percent"
+  end
+
+  add_index "prices_1066346424", ["catalog_number"], :name => "catalog_number_IDX"
+
+  create_table "prices_1066346425", :force => true do |t|
+    t.integer  "job_id"
+    t.integer  "goods_id"
+    t.integer  "supplier_id"
+    t.string   "title"
+    t.string   "count"
+    t.decimal  "price_cost",         :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "catalog_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "country"
+    t.string   "title_en"
+    t.string   "manufacturer_short"
+    t.float    "retail_cost"
+    t.string   "success_percent"
+  end
+
+  add_index "prices_1066346425", ["catalog_number"], :name => "catalog_number_IDX"
+
+  create_table "prices_1066346426", :force => true do |t|
+    t.integer  "job_id"
+    t.integer  "goods_id"
+    t.integer  "supplier_id"
+    t.string   "title"
+    t.string   "count"
+    t.decimal  "price_cost",         :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "catalog_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "country"
+    t.string   "title_en"
+    t.string   "manufacturer_short"
+    t.float    "retail_cost"
+    t.string   "success_percent"
+  end
+
+  add_index "prices_1066346426", ["catalog_number"], :name => "catalog_number_IDX"
 
   create_table "receive_jobs", :force => true do |t|
     t.integer  "receiveable_id"

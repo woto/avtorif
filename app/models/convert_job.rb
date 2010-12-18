@@ -6,7 +6,8 @@ class ConvertJob < ActiveRecord::Base
     "Excel - многостраничный (быстрее) - _python_xls2csv_",
     "Acceess - _mdb_console_ ",
     'Замена одиночного \n на \r\n - _csv_normalize_new_line_',
-    'Просто перекодировка _csv_encode_'
+    'Просто перекодировка _csv_encode_',
+    'Выполнение произвольной коносольной команды _arbitrary_console_'
   ]
 
   enum_attr :col_sep, [

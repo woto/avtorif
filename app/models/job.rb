@@ -59,9 +59,9 @@ class Job < ActiveRecord::Base
       return Status::LOCKED
     end
     
-    if (seconds_between_jobs.blank? || seconds_working.blank?)
-      return Status::NOT_OBSERVED
-    end
+    #if (seconds_between_jobs.blank? || seconds_working.blank?)
+    #  return Status::NOT_OBSERVED
+    #end
 
     # Если задача еще ниразу не сработала
     if !last_start
@@ -74,13 +74,17 @@ class Job < ActiveRecord::Base
     end
 
     # проверка на периодичность выполнения задачи
-    if (DateTime.now > last_start + seconds_between_jobs.seconds) && !locked
-      return Status::SECONDS_BETWEEN_JOBS_FAIL
+    if seconds_between_jobs.present?
+      if (DateTime.now > last_start + seconds_between_jobs.seconds) && !locked
+        return Status::SECONDS_BETWEEN_JOBS_FAIL
+      end
     end
 
     # проверка на длительность выполнения
-    if (DateTime.now > last_start + seconds_working.seconds) && locked
-      return Status::SECONDS_WORKING_FAIL
+    if seconds_working.present?
+      if (DateTime.now > last_start + seconds_working.seconds) && locked
+        return Status::SECONDS_WORKING_FAIL
+      end
     end
 
     if locked
@@ -112,22 +116,24 @@ end
 
 public
 
-def critical_tree(job)
-  if !defined?(@critical_tree)
-    @critical_tree = Array.new
-  end
-  
+def critical_tree_help(job)
   @critical_tree << job.critical
 
   if job.childs.count > 0
     job.childs.active.each do |ch|
-      @critical_tree << ch.critical
-      return critical_tree(ch)
+      critical_tree_help(ch)
     end
   end
 
-    z = (@critical_tree.dup).uniq
-    @critical_tree = Array.new
-    #((z - [Job::Status::NOT_OBSERVED, Job::Status::DISABLED]).size > 1) ? z - [Job::Status::OK] : z-[Job::Status::NOT_OBSERVED]
-    z
+  @critical_tree
+end
+
+def critical_tree(job)
+  @critical_tree = Array.new
+  critical_tree_help(job).uniq
+
+  #z = (@critical_tree.dup).uniq
+  #@critical_tree = Array.new
+  #((z - [Job::Status::NOT_OBSERVED, Job::Status::DISABLED]).size > 1) ? z - [Job::Status::OK] : z-[Job::Status::NOT_OBSERVED]
+  #z
 end

@@ -31,4 +31,16 @@ Auto выставляется, когда кодировка у прайса п�
 <br />
 <%= f.enum_select :encoding_out %>
 
+<br />
+Строка для запуска, [in_file] - входной файл, [out_file] - выходной файл<br/>
+<%= f.text_field :exec_string, :size => 60 %>
+<br/><br/>
+
+<pre>
+iconv -f CP1251 -t UTF-8//IGNORE [in_file] > [out_file]
+//IGNORE
+//TRANSLIT
+-f и -t могут быть опущены
+</pre>
+
 <%= f.buttons %>
