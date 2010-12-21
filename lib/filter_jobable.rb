@@ -6,7 +6,11 @@ class FilterJobable < AbstractJobber
     @optional.each do |opt|
       supplier_price = SupplierPrice.find(opt).attachment
       remote_file = RemoteFile.new(File.basename(supplier_price.original_filename) + ".csv")
-      exec = "#{Rails.root}/system/external_tools/py_csv_filter.py #{supplier_price.path.shellescape} #{remote_file.path.shellescape}"
+      if @jobable.col_sep.present? && @jobable.quote_char.present?
+        exec = "#{Rails.root}/system/external_tools/py_csv_filter.py -i #{supplier_price.path.shellescape} -o #{remote_file.path.shellescape} -c #{@jobable.col_sep} -q #{@jobable.quote_char}"
+      else
+        exec = "#{Rails.root}/system/external_tools/py_csv_filter.py -i #{supplier_price.path.shellescape} -o #{remote_file.path.shellescape} -a"
+      end
       stdin, stdout, stderr = Open3.popen3(exec)
       if (error_string = stderr.read).present?
         raise "\r\n\r\n#{error_string} during \r\n\r\n#{exec}\r\n\r\n"

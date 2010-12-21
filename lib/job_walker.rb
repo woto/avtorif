@@ -52,6 +52,7 @@ class JobWalker
         if job.jobable.present?
           jobber_class = (job.jobable.class.to_s.split(/(.*?)Job/)[1] + "Jobable").classify.constantize
           Delayed::Job.enqueue(jobber_class.new(job, job.jobable, priority, optional), priority)
+          #debugger
           #jobber_class.new(job, job.jobable, priority, optional).perform
         end
 

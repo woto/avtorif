@@ -8,7 +8,7 @@ class ImportJobable < AbstractJobber
     @optional.each do |opt|
       case @jobable.import_method.to_s
         when /_B_/
-          debugger
+          #debugger
           i = 0
           query = ""
           title_colnum = title_boolean = count_colnum = count_boolean =  manufacturer_colnum = manufacturer_boolean = price_colnum = catalog_number_colnum = false

@@ -92,6 +92,7 @@ class JobsController < ApplicationController
   end
 
   def start
+    debugger
     @job = Job.find(:first, :conditions => {:active => '1', :id => params[:id]})
     if(@job.jobable_type == "ReceiveJob")
       JobWalker.new.start_job(@job, 50, :force => params[:force])
