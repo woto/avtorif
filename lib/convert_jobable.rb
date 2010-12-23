@@ -4,6 +4,10 @@ class ConvertJobable < AbstractJobber
     #unpack_class = (@jobable.receiveable.type.to_s.split(/Receive/).first + "Receiver").classify.constantize
     #receiver = receiver_class.new(@job, @jobable, @jobable.receiveable, opt)
     #self.optional = receiver.receive
+
+    
+    group_code = 'c' + @optional.to_s + Time.now.to_s
+
     retval = Array.new()
     @optional.each do |opt|
 
@@ -24,7 +28,7 @@ class ConvertJobable < AbstractJobber
 
           remote_file.original_filename = File.basename(supplier_price.original_filename)
 
-          attachment = SupplierPrice.new(:group_code => 'c' + @optional.to_s, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
+          attachment = SupplierPrice.new(:group_code => group_code, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
           attachment.supplier = @job.supplier
           attachment.job_code = @job.title
           attachment.job_id = @job.id
@@ -50,7 +54,7 @@ class ConvertJobable < AbstractJobber
 
           remote_file.original_filename = File.basename(supplier_price.original_filename)
 
-          attachment = SupplierPrice.new(:group_code => 'c' + @optional.to_s, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
+          attachment = SupplierPrice.new(:group_code => group_code, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
           attachment.supplier = @job.supplier
           attachment.job_code = @job.title
           attachment.job_id = @job.id
@@ -86,7 +90,7 @@ class ConvertJobable < AbstractJobber
 
           remote_file.original_filename = File.basename(supplier_price.original_filename)
 
-          attachment = SupplierPrice.new(:group_code => 'c' + @optional.to_s, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
+          attachment = SupplierPrice.new(:group_code => group_code, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
           attachment.supplier = @job.supplier
           attachment.job_code = @job.title
           attachment.job_id = @job.id
@@ -126,7 +130,7 @@ class ConvertJobable < AbstractJobber
               md5 = Digest::MD5.file(remote_file.path).hexdigest
               wc_stat = `wc #{remote_file.path.to_s.shellescape}`
 
-              attachment = SupplierPrice.new(:group_code => 'c' + @optional.to_s, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
+              attachment = SupplierPrice.new(:group_code => group_code, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
               attachment.supplier = @job.supplier
               attachment.job_code = @job.title
               attachment.job_id = @job.id
@@ -159,7 +163,7 @@ class ConvertJobable < AbstractJobber
 
             remote_file.original_filename = File.basename(supplier_price.original_filename) + " - " + sheet + ".csv"
 
-            attachment = SupplierPrice.new(:group_code => 'c' + @optional.to_s, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
+            attachment = SupplierPrice.new(:group_code => group_code, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
             attachment.supplier = @job.supplier
             attachment.job_code = @job.title
             attachment.job_id = @job.id
@@ -181,7 +185,7 @@ class ConvertJobable < AbstractJobber
 
           remote_file.original_filename = File.basename(remote_file.original_filename, File.extname(remote_file.original_filename))
 
-          attachment = SupplierPrice.new(:group_code => 'c' + @optional.to_s, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
+          attachment = SupplierPrice.new(:group_code => group_code, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
           attachment.supplier = @job.supplier
           attachment.job_code = @job.title
           attachment.job_id = @job.id
@@ -203,7 +207,7 @@ class ConvertJobable < AbstractJobber
             md5 = Digest::MD5.file(remote_file.path).hexdigest
             wc_stat = `wc #{remote_file.path.to_s.shellescape}`
 
-            attachment = SupplierPrice.new(:group_code => 'c' + @optional.to_s, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
+            attachment = SupplierPrice.new(:group_code => group_code, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
             attachment.supplier = @job.supplier
             attachment.job_code = @job.title
             attachment.job_id = @job.id

@@ -92,14 +92,13 @@ class JobsController < ApplicationController
   end
 
   def start
-    debugger
     @job = Job.find(:first, :conditions => {:active => '1', :id => params[:id]})
     if(@job.jobable_type == "ReceiveJob")
       JobWalker.new.start_job(@job, 50, :force => params[:force])
       flash[:notice] = "Задача поставщика успешно поставлена в очередь"
     else
       group_code = SupplierPrice.where("job_id = #{@job.job_id}").order("id desc").limit(1).first.group_code
-      optional = SupplierPrice.where("group_code = '#{group_code}'").all.map(&:id)
+      optional = SupplierPrice.where("job_id = #{@job.job_id}").where("group_code = '#{group_code}'").all.map(&:id)
       JobWalker.new.start_job(@job, 50, optional)
       flash[:notice] = "Задача поставщика успешно поставлена в очередь"
     end
@@ -115,6 +114,16 @@ class JobsController < ApplicationController
     end
 
     redirect_to(suppliers_path)
+  end
+
+  def display_import_jobs
+    @jobs = Job.where(:jobable_type => "ImportJob").includes(:supplier)
+        #sql = "SELECT * FROM prices_#{@job.id limit 10"
+    #ActiveRecord::Base.connection.execute(sql)
+    respond_to do |format|
+      format.html { render :action => :index} # index.html.erb
+      format.xml  { render :xml => @jobs }
+    end
   end
 
   def start_by_supplier

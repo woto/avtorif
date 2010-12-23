@@ -49,5 +49,34 @@
   Цена детали
   <hr />
   <%= f.input :external_id_colnum %>
+  Внешний номер
+  <hr />
+  <%= f.input :default_manufacturer %>
+  Производитель по-умолчанию (если не указан столбец производителя)
+  <hr />
+  <%= f.input :applicability_colnum %>
+  Применимость (куда, для какой машины, двигателя, и т.д. где можно использовать)
+  <hr />
+  <%= f.input :unit_colnum %>
+  Единица измерения
+  <hr />
+  <%= f.input :description_colnum %>
+  Описание наименования
+  <hr />
+  <%= f.input :min_order_colnum %>
+  Минимальное кол-во для заказа
+  <hr />
+  <%= f.input :multiply_factor_colnum %>
+  Кратность для заказа
+  <hr />
+  <%= f.input :unit_package_colnum %>
+  Штук в упаковке
+  <hr />
+  <%= f.input :country_colnum %>
+  Страна изготовитель запчасти
+  <hr />
+  <%= f.input :title_en_colnum %>
+  Название детали на английском яз.
+  <hr />
 
 <%= f.submit 'Update' %>

@@ -1,5 +1,7 @@
-<% supplier = Supplier.find(params[:supplier_id]) %>
-<h1>Listing jobs for <em><%= link_to(supplier.title, supplier_jobs_path) %></em></h1>
+<% if params[:supplier_id] %>
+  <% supplier = Supplier.find(params[:supplier_id]) %>
+  <h1>Listing jobs for <em><%= link_to(supplier.title, supplier_jobs_path) %></em></h1>
+<% end %>
 
 <% if @jobs.size > 0 %>
     
@@ -74,4 +76,6 @@
     <br />
 <% end %>
 
-<%= link_to 'New job', new_supplier_job_path({:job_id => params[:id]}) %>
+<% if params[:id] %>
+  <%= link_to 'New job', new_supplier_job_path({:job_id => params[:id]}) %>
+<% end %>

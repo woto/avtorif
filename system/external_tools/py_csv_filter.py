@@ -31,8 +31,10 @@ out_file = options.output_file
 
 if(quote_char == '1'):
     quote_char = '\x07'
+    fcuk = False
 elif(quote_char == '2'):
     quote_char = '"'
+    fcuk = True
 
 if(column_separator == '1'):
     column_separator = ';'
@@ -53,7 +55,7 @@ skip_bytes = 1024
 if(size):
     csvfile = open(in_file, 'rb')
     f = open(out_file, 'wt')
-    writer = csv.writer(f)
+    writer = csv.writer(f, dialect='excel')
     counter = 0
 
     try:
@@ -68,6 +70,8 @@ if(size):
         if not autodetect:
             dialect.quotechar = quote_char
             dialect.delimiter = column_separator
+            if(fcuk == True):
+                dialect.doublequote = fcuk
 
         csvfile.seek(0)
         reader = csv.reader(csvfile, dialect)
