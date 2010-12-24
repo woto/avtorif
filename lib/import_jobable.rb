@@ -120,6 +120,10 @@ class ImportJobable < AbstractJobber
               Price.connection.execute(query)
             end
           end
+
+          query = "INSERT INTO prices (title, count, price_cost, manufacturer, catalog_number, title_en, unit_package, description, min_order, applicability, country, external_id, unit, multiply_factor) SELECT title, count, price_cost, manufacturer, catalog_number, title_en, unit_package, description, min_order, applicability, country, external_id, unit, multiply_factor FROM prices_#{job_id}"
+          Price.connection.execute(query)
+
         when /_I_/
         when /_U_/
         when /_U0_/

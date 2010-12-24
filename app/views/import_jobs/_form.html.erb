@@ -1,3 +1,36 @@
+<style>
+  div {
+    padding: 5px 0;
+    margin: 5px 0;
+  }
+  #weight {
+    background: #89A;
+  }
+
+  #manufacturer {
+    background: #AAD;
+  }
+
+  #title {
+    background: #99D;
+  }
+
+  #visibility {
+    background: #DDA;
+  }
+
+  #info {
+    background: #EA9;
+  }
+
+  #presence {
+    background : #9A5;
+  }
+
+  #price {
+    background: #6D9;
+  }
+</style>
 <%= f.error_messages %>
 <br />
 <p>
@@ -8,18 +41,29 @@
 
   <%= f.inputs :currency_buy %>
   <%= f.inputs :currency_sell %>
-  <%= f.inputs :currency_weight %>
 
-  <%= f.input :presence %>
-  <%= f.input :visible_for_site %>
-  <%= f.input :visible_for_stock %>
-  <%= f.input :visible_for_shops %>
-  <hr />
+  <div id="presence">
+    <%= f.input :presence %>
+    Прайс наличия
+    <hr />
+    <%= f.input :count_colnum %>
+    Колонка: количество. Может содержать 3, >10, =15 и т.д.
+  </div>
+
+
+  <div id="visibility">
+    <%= f.input :visible_for_site %>
+    Видим на сайте
+    <hr />
+    <%= f.input :visible_for_stock %>
+    Видим для складских заказов
+    <hr />
+    <%= f.input :visible_for_shops %>
+    Видим для магазинов
+  </div>
+
   <%= f.input :delivery_days_declared %>
   Заявленное количество дней
-  <hr />
-  <%= f.input :retail_rate %>
-  Розничный коэффициент
   <hr />
   <%= f.input :country, :as => :string %>
     Местонахождение поставщика (город, округ, область)
@@ -30,53 +74,124 @@
   <%= f.input :delivery_summary %>
     Полезная информация для покупателей о заказе (отсутствие возвратов и т.д.)
   <hr />
-   <%= f.input :income_rate %>
-   Коэффициент, на который будет умножаться цена в прайсе (т.е. цена прихода)
-   <hr />
 
-   <%= f.input :kilo_price %>
-  <%= f.input :weight_unavaliable_rate %>
-  <%= f.input :manufacturer_colnum %>
-  <hr />
+  <div id="manufacturer">
+    <%= f.input :manufacturer_colnum %>
+    Колонка: Производитель
+    <hr />
+    <%= f.input :default_manufacturer %>
+    Для всех. Производитель по-умолчанию. Например TOYOTA, TY, toyota
+  </div>
   <%= f.input :catalog_number_colnum %>
   Каталожный номер детали
   <hr />
-  <%= f.input :title_colnum %>
-  <%= f.input :count_colnum %>
-  <%= f.input :weight_colnum %>
-  <hr />
-  <%= f.input :income_price_colnum %>
-  Цена детали
-  <hr />
+
+  <div id="title">
+    <%= f.input :title_colnum %>
+    Колонка: Название детали на русском языке
+    <hr />
+    <%= f.input :title_en_colnum %>
+    Колонка: Название детали на английском языке
+  </div>
+
+  <div id="price">
+    <%= f.input :income_price_colnum %>
+    Колонка: Цена детали. В качестве дробного разделителя может использоваться как точка, так и запятая. Пробелы (разделители разрядов), как и нули вначале, игнорируются
+    <hr />
+    <%= f.input :income_rate %>
+    Для всех. Динамический. Коэффициент, на который будет умножаться цена в прайсе (т.е. цена прихода)
+    <hr />
+    <%= f.input :retail_rate %>
+    Для всех. Динамический. Розничный коэффициент
+  </div>
+
   <%= f.input :external_id_colnum %>
   Внешний номер
   <hr />
-  <%= f.input :default_manufacturer %>
-  Производитель по-умолчанию (если не указан столбец производителя)
-  <hr />
+
   <%= f.input :applicability_colnum %>
   Применимость (куда, для какой машины, двигателя, и т.д. где можно использовать)
   <hr />
+
   <%= f.input :unit_colnum %>
   Единица измерения
   <hr />
+
   <%= f.input :description_colnum %>
   Описание наименования
   <hr />
+
   <%= f.input :min_order_colnum %>
   Минимальное кол-во для заказа
   <hr />
+
   <%= f.input :multiply_factor_colnum %>
   Кратность для заказа
   <hr />
+
   <%= f.input :unit_package_colnum %>
   Штук в упаковке
   <hr />
+
   <%= f.input :country_colnum %>
   Страна изготовитель запчасти
   <hr />
-  <%= f.input :title_en_colnum %>
-  Название детали на английском яз.
-  <hr />
 
+  <div id="weight">
+    <%= f.input :weight_colnum %>
+    Колонка: Вес в граммах, если вес не в граммах, то указываем коэффициент ниже для перевода в граммы
+    <hr />
+    <%= f.input :weight_koefficient %>
+    Коэффициент для перевода в граммы
+    <hr />
+    <%= f.input :kilo_price %>
+    Стоимость килограмма
+    <hr />
+    <%= f.inputs :currency_weight %>
+    Валюта веса
+    <hr />
+   <%= f.input :weight_unavaliable_rate %>
+  </div>
+
+  <div id="info">
+    <%= f.input :new_catalog_number_colnum %>
+    Колонка: Новый каталожный номер
+    <hr />
+
+    <%= f.input :r1_colnum %>
+    Колонка: Замена 1
+    <hr />
+
+    <%= f.input :r2_colnum %>
+    Колонка: Замена 2
+    <hr />
+
+    <%= f.input :r3_colnum %>
+    Колонка: Замена 3
+    <hr />
+
+    <%= f.input :r4_colnum %>
+    Колонка: Замена 4
+    <hr />
+
+    <%= f.input :r5_colnum %>
+    Колонка: Замена 5
+    <hr />
+
+    <%= f.input :r6_colnum %>
+    Колонка: Замена 6
+    <hr />
+
+    <%= f.input :r7_colnum %>
+    Колонка: Замена 7
+    <hr />
+
+    <%= f.input :r8_colnum %>
+    Колонка: Замена 8
+    <hr />
+
+    <%= f.input :r9_colnum %>
+    Колонка: Замена 9
+    <hr />
+  </div>
 <%= f.submit 'Update' %>

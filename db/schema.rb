@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101223121608) do
+ActiveRecord::Schema.define(:version => 20101224181255) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
@@ -228,8 +228,8 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.integer  "count_colnum"
     t.integer  "multiplicity_colnum"
     t.integer  "income_price_colnum"
-    t.integer  "weight_colnum"
     t.integer  "external_id_colnum"
+    t.integer  "weight_colnum"
     t.string   "country"
     t.string   "country_short"
     t.string   "delivery_summary"
@@ -245,6 +245,24 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.integer  "unit_package_colnum"
     t.integer  "title_en_colnum"
     t.integer  "country_colnum"
+    t.integer  "replacement_colnum"
+    t.string   "replacement_delimiter"
+    t.integer  "r0_colnum"
+    t.integer  "r1_colnum"
+    t.integer  "r2_colnum"
+    t.integer  "r3_colnum"
+    t.integer  "r4_colnum"
+    t.integer  "r5_colnum"
+    t.integer  "r6_colnum"
+    t.integer  "r7_colnum"
+    t.integer  "r8_colnum"
+    t.integer  "r9_colnum"
+    t.float    "weight_koefficient"
+    t.integer  "new_catalog_number_colnum"
+    t.float    "absolute_buy_currency"
+    t.float    "relative_buy_currency"
+    t.float    "absolute_weight_currency"
+    t.float    "relative_weight_currency"
   end
 
   create_table "jobs", :force => true do |t|
@@ -258,7 +276,7 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.integer  "jobable_id"
     t.string   "jobable_type"
     t.integer  "supplier_id"
-    t.string   "file_mask",            :default => ""
+    t.string   "file_mask"
     t.boolean  "locked",               :default => false
     t.boolean  "active",               :default => true
     t.datetime "created_at"
@@ -314,12 +332,23 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "multiply_factor"
     t.string   "unit_package"
     t.string   "external_id"
+    t.string   "new_catalog_number"
+    t.float    "weight_grams"
+    t.string   "r0"
+    t.string   "r1"
+    t.string   "r2"
+    t.string   "r3"
+    t.string   "r4"
+    t.string   "r5"
+    t.string   "r6"
+    t.string   "r7"
+    t.string   "r8"
+    t.string   "r9"
   end
 
   create_table "prices_1066346320", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -330,7 +359,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -344,7 +372,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
   create_table "prices_1066346346", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -355,7 +382,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -369,7 +395,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
   create_table "prices_1066346347", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -380,7 +405,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -394,7 +418,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
   create_table "prices_1066346351", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -405,7 +428,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -419,7 +441,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
   create_table "prices_1066346352", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -430,7 +451,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -444,7 +464,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
   create_table "prices_1066346353", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -455,7 +474,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -467,122 +485,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
   end
 
   create_table "prices_1066346354", :force => true do |t|
-    t.integer  "job_id"
-    t.integer  "goods_id"
-    t.integer  "supplier_id"
-    t.string   "title"
-    t.string   "count"
-    t.decimal  "price_cost",         :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "catalog_number"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "country"
-    t.string   "title_en"
-    t.string   "manufacturer_short"
-    t.float    "retail_cost"
-    t.string   "success_percent"
-    t.string   "applicability"
-    t.string   "unit"
-    t.string   "description"
-    t.string   "min_order"
-    t.string   "multiply_factor"
-    t.string   "unit_package"
-    t.string   "external_id"
-  end
-
-  create_table "prices_1066346355", :force => true do |t|
-    t.integer  "job_id"
-    t.integer  "goods_id"
-    t.integer  "supplier_id"
-    t.string   "title"
-    t.string   "count"
-    t.decimal  "price_cost",         :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "catalog_number"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "country"
-    t.string   "title_en"
-    t.string   "manufacturer_short"
-    t.float    "retail_cost"
-    t.string   "success_percent"
-    t.string   "applicability"
-    t.string   "unit"
-    t.string   "description"
-    t.string   "min_order"
-    t.string   "multiply_factor"
-    t.string   "unit_package"
-    t.string   "external_id"
-  end
-
-  create_table "prices_1066346356", :force => true do |t|
-    t.integer  "job_id"
-    t.integer  "goods_id"
-    t.integer  "supplier_id"
-    t.string   "title"
-    t.string   "count"
-    t.decimal  "price_cost",         :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "catalog_number"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "country"
-    t.string   "title_en"
-    t.string   "manufacturer_short"
-    t.float    "retail_cost"
-    t.string   "success_percent"
-    t.string   "applicability"
-    t.string   "unit"
-    t.string   "description"
-    t.string   "min_order"
-    t.string   "multiply_factor"
-    t.string   "unit_package"
-  end
-
-  create_table "prices_1066346357", :force => true do |t|
-    t.integer  "job_id"
-    t.integer  "goods_id"
-    t.integer  "supplier_id"
-    t.string   "title"
-    t.string   "count"
-    t.decimal  "price_cost",         :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "catalog_number"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "country"
-    t.string   "title_en"
-    t.string   "manufacturer_short"
-    t.float    "retail_cost"
-    t.string   "success_percent"
-    t.string   "applicability"
-    t.string   "unit"
-    t.string   "description"
-    t.string   "min_order"
-    t.string   "multiply_factor"
-    t.string   "unit_package"
-  end
-
-  create_table "prices_1066346358", :force => true do |t|
-    t.integer  "job_id"
-    t.integer  "goods_id"
-    t.integer  "supplier_id"
-    t.string   "title"
-    t.string   "count"
-    t.decimal  "price_cost",         :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "catalog_number"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "country"
-    t.string   "title_en"
-    t.string   "manufacturer_short"
-    t.float    "retail_cost"
-    t.string   "success_percent"
-  end
-
-  create_table "prices_1066346359", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
     t.string   "title"
@@ -608,7 +510,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
   create_table "prices_1066346360", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -619,7 +520,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -656,7 +556,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
   create_table "prices_1066346362", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -667,7 +566,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -681,7 +579,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
   create_table "prices_1066346364", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -692,7 +589,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -701,48 +597,11 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "multiply_factor"
     t.string   "unit_package"
     t.string   "external_id"
-  end
-
-  create_table "prices_1066346367", :force => true do |t|
-    t.integer  "job_id"
-    t.integer  "goods_id"
-    t.integer  "supplier_id"
-    t.string   "title"
-    t.string   "count"
-    t.decimal  "price_cost",         :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "catalog_number"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "country"
-    t.string   "title_en"
-    t.string   "manufacturer_short"
-    t.float    "retail_cost"
-    t.string   "success_percent"
-  end
-
-  create_table "prices_1066346368", :force => true do |t|
-    t.integer  "job_id"
-    t.integer  "goods_id"
-    t.integer  "supplier_id"
-    t.string   "title"
-    t.string   "count"
-    t.decimal  "price_cost",         :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "catalog_number"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "country"
-    t.string   "title_en"
-    t.string   "manufacturer_short"
-    t.float    "retail_cost"
-    t.string   "success_percent"
   end
 
   create_table "prices_1066346369", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -753,7 +612,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -762,12 +620,23 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "multiply_factor"
     t.string   "unit_package"
     t.string   "external_id"
+    t.string   "new_catalog_number"
+    t.float    "weight_grams"
+    t.string   "r0"
+    t.string   "r1"
+    t.string   "r2"
+    t.string   "r3"
+    t.string   "r4"
+    t.string   "r5"
+    t.string   "r6"
+    t.string   "r7"
+    t.string   "r8"
+    t.string   "r9"
   end
 
   create_table "prices_1066346370", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -778,7 +647,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -787,36 +655,11 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "multiply_factor"
     t.string   "unit_package"
     t.string   "external_id"
-  end
-
-  create_table "prices_1066346371", :force => true do |t|
-    t.integer  "job_id"
-    t.integer  "goods_id"
-    t.integer  "supplier_id"
-    t.string   "title"
-    t.string   "count"
-    t.decimal  "price_cost",         :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "catalog_number"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "country"
-    t.string   "title_en"
-    t.string   "manufacturer_short"
-    t.float    "retail_cost"
-    t.string   "success_percent"
-    t.string   "applicability"
-    t.string   "unit"
-    t.string   "description"
-    t.string   "min_order"
-    t.string   "multiply_factor"
-    t.string   "unit_package"
   end
 
   create_table "prices_1066346372", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -827,7 +670,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -836,30 +678,11 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "multiply_factor"
     t.string   "unit_package"
     t.string   "external_id"
-  end
-
-  create_table "prices_1066346374", :force => true do |t|
-    t.integer  "job_id"
-    t.integer  "goods_id"
-    t.integer  "supplier_id"
-    t.string   "title"
-    t.string   "count"
-    t.decimal  "price_cost",         :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "catalog_number"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "country"
-    t.string   "title_en"
-    t.string   "manufacturer_short"
-    t.float    "retail_cost"
-    t.string   "success_percent"
   end
 
   create_table "prices_1066346375", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -870,7 +693,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -879,12 +701,23 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "multiply_factor"
     t.string   "unit_package"
     t.string   "external_id"
+    t.string   "new_catalog_number"
+    t.float    "weight_grams"
+    t.string   "r0"
+    t.string   "r1"
+    t.string   "r2"
+    t.string   "r3"
+    t.string   "r4"
+    t.string   "r5"
+    t.string   "r6"
+    t.string   "r7"
+    t.string   "r8"
+    t.string   "r9"
   end
 
   create_table "prices_1066346376", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -895,7 +728,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -909,7 +741,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
   create_table "prices_1066346377", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -920,7 +751,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -934,7 +764,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
   create_table "prices_1066346378", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -945,7 +774,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -959,7 +787,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
   create_table "prices_1066346379", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -970,7 +797,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -981,34 +807,9 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "external_id"
   end
 
-  create_table "prices_1066346380", :force => true do |t|
-    t.integer  "job_id"
-    t.integer  "goods_id"
-    t.integer  "supplier_id"
-    t.string   "title"
-    t.string   "count"
-    t.decimal  "price_cost",         :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "catalog_number"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "country"
-    t.string   "title_en"
-    t.string   "manufacturer_short"
-    t.float    "retail_cost"
-    t.string   "success_percent"
-    t.string   "applicability"
-    t.string   "unit"
-    t.string   "description"
-    t.string   "min_order"
-    t.string   "multiply_factor"
-    t.string   "unit_package"
-  end
-
   create_table "prices_1066346381", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -1019,7 +820,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -1033,7 +833,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
   create_table "prices_1066346382", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -1044,7 +843,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -1058,7 +856,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
   create_table "prices_1066346383", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -1069,7 +866,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -1083,7 +879,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
   create_table "prices_1066346384", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -1094,7 +889,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -1105,28 +899,9 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "external_id"
   end
 
-  create_table "prices_1066346385", :force => true do |t|
-    t.integer  "job_id"
-    t.integer  "goods_id"
-    t.integer  "supplier_id"
-    t.string   "title"
-    t.string   "count"
-    t.decimal  "price_cost",         :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "catalog_number"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "country"
-    t.string   "title_en"
-    t.string   "manufacturer_short"
-    t.float    "retail_cost"
-    t.string   "success_percent"
-  end
-
   create_table "prices_1066346390", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -1137,7 +912,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -1151,7 +925,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
   create_table "prices_1066346391", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -1162,7 +935,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -1176,7 +948,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
   create_table "prices_1066346392", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -1187,7 +958,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -1201,7 +971,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
   create_table "prices_1066346393", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -1212,7 +981,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -1226,7 +994,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
   create_table "prices_1066346394", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -1237,7 +1004,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -1251,7 +1017,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
   create_table "prices_1066346396", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -1262,7 +1027,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -1270,12 +1034,12 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "min_order"
     t.string   "multiply_factor"
     t.string   "unit_package"
+    t.string   "external_id"
   end
 
   create_table "prices_1066346398", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -1286,7 +1050,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -1300,7 +1063,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
   create_table "prices_1066346399", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -1311,7 +1073,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -1325,7 +1086,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
   create_table "prices_1066346400", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -1336,7 +1096,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -1350,7 +1109,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
   create_table "prices_1066346401", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -1361,7 +1119,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -1375,7 +1132,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
   create_table "prices_1066346402", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -1386,7 +1142,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -1400,7 +1155,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
   create_table "prices_1066346403", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -1411,7 +1165,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -1425,7 +1178,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
   create_table "prices_1066346404", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -1436,7 +1188,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -1450,7 +1201,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
   create_table "prices_1066346405", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -1461,7 +1211,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -1475,7 +1224,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
   create_table "prices_1066346406", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -1486,7 +1234,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -1500,7 +1247,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
   create_table "prices_1066346421", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -1511,7 +1257,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -1519,12 +1264,12 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "min_order"
     t.string   "multiply_factor"
     t.string   "unit_package"
+    t.string   "external_id"
   end
 
   create_table "prices_1066346422", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -1535,7 +1280,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -1543,12 +1287,12 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "min_order"
     t.string   "multiply_factor"
     t.string   "unit_package"
+    t.string   "external_id"
   end
 
   create_table "prices_1066346423", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -1559,7 +1303,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -1567,12 +1310,12 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "min_order"
     t.string   "multiply_factor"
     t.string   "unit_package"
+    t.string   "external_id"
   end
 
   create_table "prices_1066346424", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -1583,7 +1326,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -1591,12 +1333,12 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "min_order"
     t.string   "multiply_factor"
     t.string   "unit_package"
+    t.string   "external_id"
   end
 
   create_table "prices_1066346425", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -1607,7 +1349,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -1615,12 +1356,12 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "min_order"
     t.string   "multiply_factor"
     t.string   "unit_package"
+    t.string   "external_id"
   end
 
   create_table "prices_1066346426", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -1631,7 +1372,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -1639,12 +1379,12 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "min_order"
     t.string   "multiply_factor"
     t.string   "unit_package"
+    t.string   "external_id"
   end
 
   create_table "prices_1066346427", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -1655,7 +1395,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -1669,7 +1408,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
   create_table "prices_1066346428", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -1680,7 +1418,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -1694,7 +1431,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
   create_table "prices_1066346429", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -1705,7 +1441,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -1719,7 +1454,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
   create_table "prices_1066346430", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -1730,7 +1464,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -1744,7 +1477,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
   create_table "prices_1066346431", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -1755,7 +1487,29 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
+    t.string   "success_percent"
+    t.string   "applicability"
+    t.string   "unit"
+    t.string   "description"
+    t.string   "min_order"
+    t.string   "multiply_factor"
+    t.string   "unit_package"
+    t.string   "external_id"
+  end
+
+  create_table "prices_1066346432", :force => true do |t|
+    t.integer  "job_id"
+    t.integer  "goods_id"
+    t.string   "title"
+    t.string   "count"
+    t.decimal  "price_cost",         :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "catalog_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "country"
+    t.string   "title_en"
+    t.string   "manufacturer_short"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -1769,7 +1523,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
   create_table "prices_1066346433", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -1780,7 +1533,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -1794,7 +1546,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
   create_table "prices_1066346434", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -1805,7 +1556,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -1819,7 +1569,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
   create_table "prices_1066346435", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -1830,7 +1579,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -1844,7 +1592,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
   create_table "prices_1066346436", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -1855,7 +1602,6 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
     t.string   "applicability"
     t.string   "unit"
@@ -1866,10 +1612,9 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "external_id"
   end
 
-  create_table "prices_1066346442", :force => true do |t|
+  create_table "prices_1066346447", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -1880,14 +1625,19 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
+    t.string   "applicability"
+    t.string   "unit"
+    t.string   "description"
+    t.string   "min_order"
+    t.string   "multiply_factor"
+    t.string   "unit_package"
+    t.string   "external_id"
   end
 
-  create_table "prices_1066346445", :force => true do |t|
+  create_table "prices_1066346449", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
-    t.integer  "supplier_id"
     t.string   "title"
     t.string   "count"
     t.decimal  "price_cost",         :precision => 10, :scale => 3
@@ -1898,8 +1648,26 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "country"
     t.string   "title_en"
     t.string   "manufacturer_short"
-    t.float    "retail_cost"
     t.string   "success_percent"
+    t.string   "applicability"
+    t.string   "unit"
+    t.string   "description"
+    t.string   "min_order"
+    t.string   "multiply_factor"
+    t.string   "unit_package"
+    t.string   "external_id"
+    t.string   "new_catalog_number"
+    t.float    "weight_grams"
+    t.string   "r0"
+    t.string   "r1"
+    t.string   "r2"
+    t.string   "r3"
+    t.string   "r4"
+    t.string   "r5"
+    t.string   "r6"
+    t.string   "r7"
+    t.string   "r8"
+    t.string   "r9"
   end
 
   create_table "receive_jobs", :force => true do |t|
@@ -1946,13 +1714,14 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
 
   create_table "suppliers", :force => true do |t|
     t.string   "title"
-    t.string   "inn",                   :limit => 12
-    t.string   "kpp",                   :limit => 9
+    t.string   "inn",                    :limit => 12
+    t.string   "kpp",                    :limit => 9
     t.string   "login"
     t.string   "password"
     t.string   "contact_info"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "title_short"
     t.string   "title_en"
     t.string   "title_full"
     t.string   "okpo"
@@ -1974,8 +1743,9 @@ ActiveRecord::Schema.define(:version => 20101223121608) do
     t.string   "fax"
     t.string   "email"
     t.string   "emaildocs"
-    t.integer  "delivery_days"
     t.integer  "discount_group_id"
+    t.integer  "delivery_days_declared"
+    t.integer  "delivery_days_average"
   end
 
   create_table "transmissions", :force => true do |t|
