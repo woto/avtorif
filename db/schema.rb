@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101224181255) do
+ActiveRecord::Schema.define(:version => 20101225124702) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
@@ -194,13 +194,14 @@ ActiveRecord::Schema.define(:version => 20101224181255) do
 
   create_table "http_receives", :force => true do |t|
     t.string   "server"
-    t.string   "port",       :default => "80"
+    t.string   "port",           :default => "80"
     t.string   "path"
     t.string   "login"
     t.string   "password"
     t.boolean  "ssl"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "need_to_escape"
   end
 
   create_table "import_jobs", :force => true do |t|

@@ -102,10 +102,14 @@ class ConvertJobable < AbstractJobber
         when /python_xls2csv/
           Dir.mktmpdir do |tempdir|
             exec = "#{Rails.root}/system/external_tools/py_xls2csv.py -t #{tempdir} -e #{@jobable.encoding_out} -i #{supplier_price.path.shellescape}"
-            `#{exec}`
-            unless $?.success?
-              raise "Error during execution of #{exec}"
+            stdin, stdout, stderr = Open3.popen3(exec)
+            if (error_string = stderr.read).present?
+              raise "'#{error_string}' в результате запуска '#{exec}'"
             end
+            #`#{exec}`
+            #unless $?.success?
+            #  raise "Error during execution of #{exec}"
+            #end
 
             files = Dir.entries(tempdir) - ['.', '..']
 
