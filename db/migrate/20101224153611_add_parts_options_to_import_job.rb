@@ -12,13 +12,11 @@ class AddPartsOptionsToImportJob < ActiveRecord::Migration
     add_column :import_jobs, :r7_colnum, :integer
     add_column :import_jobs, :r8_colnum, :integer
     add_column :import_jobs, :r9_colnum, :integer
-    add_column :import_jobs, :weight_colnum, :integer
     add_column :import_jobs, :weight_koefficient, :float
   end
 
   def self.down
     remove_column :import_jobs, :weight_koefficient
-    remove_column :import_jobs, :weight_colnum
     remove_column :import_jobs, :r9_colnum
     remove_column :import_jobs, :r8_colnum
     remove_column :import_jobs, :r7_colnum
