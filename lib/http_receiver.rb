@@ -14,14 +14,8 @@ class HttpReceiver < AbstractReceiver
         http.use_ssl = true
         http.verify_mode = OpenSSL::SSL::VERIFY_NONE
       end
-      
-      if @receiver.need_to_escape
-        request = Net::HTTP::Get.new(URI::escape(@receiver.path + @job.file_mask))
-      else
-        request = Net::HTTP::Get.new(@receiver.path + @job.file_mask)
-      end
 
-      # TODO сделать возможность подставки чужого User-Agent'a
+      request = Net::HTTP::Get.new(URI::escape(@receiver.path + @job.file_mask))
       request.initialize_http_header({"User-Agent" => "avtorif"})
 
       response = http.request(request)

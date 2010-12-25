@@ -1,4 +1,6 @@
 Avtorif::Application.routes.draw do
+  
+  match 'uri_decoder' => "uri_decoder#index" 
 
   resources :discount_groups do
     resources :discount_rules
