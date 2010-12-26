@@ -1,0 +1,5 @@
+apt-get source -b ...
+там наложил патч
+внутри распакованного пакета dpkg-buildpackage
+
+http://www.cyberciti.biz/ref/apt-dpkg-ref.html
