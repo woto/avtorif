@@ -42,7 +42,7 @@ for sheet_name, values in parse_xls(arg, str(encoding)): # parse_xls(arg) -- def
 #            first_idx = col_idx
 #        pdb.set_trace()
         v = values[(row_idx, col_idx)]
-        pdb.set_trace()
+        #pdb.set_trace()
         if isinstance(v, unicode):
             v = v.encode(str(encoding), 'backslashreplace')
         else:
