@@ -15,7 +15,7 @@ class HttpReceiver < AbstractReceiver
         http.verify_mode = OpenSSL::SSL::VERIFY_NONE
       end
 
-      request = Net::HTTP::Get.new(URI::escape(@receiver.path + @job.file_mask))
+      request = Net::HTTP::Get.new(URI::escape(@receiver.path + eval(@job.file_mask)))
       request.initialize_http_header({"User-Agent" => "avtorif"})
 
       response = http.request(request)
