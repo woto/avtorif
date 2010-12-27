@@ -27,7 +27,7 @@ class HttpReceiver < AbstractReceiver
       #begin
       #  remote_file = RemoteFile.new(response['content-disposition'].match(/filename="(.*)"/)[1])
       #rescue
-        remote_file = RemoteFile.new(@job.file_mask)
+        remote_file = RemoteFile.new(eval(@job.file_mask))
       #end
 
       group_code = 'r' + Time.now.to_s
