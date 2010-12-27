@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101225124702) do
+ActiveRecord::Schema.define(:version => 20101225171616) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
@@ -194,14 +194,13 @@ ActiveRecord::Schema.define(:version => 20101225124702) do
 
   create_table "http_receives", :force => true do |t|
     t.string   "server"
-    t.string   "port",           :default => "80"
+    t.string   "port",       :default => "80"
     t.string   "path"
     t.string   "login"
     t.string   "password"
     t.boolean  "ssl"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "need_to_escape"
   end
 
   create_table "import_jobs", :force => true do |t|
@@ -313,6 +312,146 @@ ActiveRecord::Schema.define(:version => 20101225124702) do
   end
 
   create_table "prices", :force => true do |t|
+    t.integer  "job_id"
+    t.integer  "goods_id"
+    t.string   "title"
+    t.string   "count"
+    t.decimal  "price_cost",         :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "catalog_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "country"
+    t.string   "title_en"
+    t.string   "manufacturer_short"
+    t.string   "success_percent"
+    t.string   "applicability"
+    t.string   "unit"
+    t.string   "description"
+    t.string   "min_order"
+    t.string   "multiply_factor"
+    t.string   "unit_package"
+    t.string   "external_id"
+    t.string   "new_catalog_number"
+    t.float    "weight_grams"
+    t.string   "r0"
+    t.string   "r1"
+    t.string   "r2"
+    t.string   "r3"
+    t.string   "r4"
+    t.string   "r5"
+    t.string   "r6"
+    t.string   "r7"
+    t.string   "r8"
+    t.string   "r9"
+  end
+
+  create_table "prices_16", :force => true do |t|
+    t.integer  "job_id"
+    t.integer  "goods_id"
+    t.string   "title"
+    t.string   "count"
+    t.decimal  "price_cost",         :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "catalog_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "country"
+    t.string   "title_en"
+    t.string   "manufacturer_short"
+    t.string   "success_percent"
+    t.string   "applicability"
+    t.string   "unit"
+    t.string   "description"
+    t.string   "min_order"
+    t.string   "multiply_factor"
+    t.string   "unit_package"
+    t.string   "external_id"
+    t.string   "new_catalog_number"
+    t.float    "weight_grams"
+    t.string   "r0"
+    t.string   "r1"
+    t.string   "r2"
+    t.string   "r3"
+    t.string   "r4"
+    t.string   "r5"
+    t.string   "r6"
+    t.string   "r7"
+    t.string   "r8"
+    t.string   "r9"
+  end
+
+  create_table "prices_20", :force => true do |t|
+    t.integer  "job_id"
+    t.integer  "goods_id"
+    t.string   "title"
+    t.string   "count"
+    t.decimal  "price_cost",         :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "catalog_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "country"
+    t.string   "title_en"
+    t.string   "manufacturer_short"
+    t.string   "success_percent"
+    t.string   "applicability"
+    t.string   "unit"
+    t.string   "description"
+    t.string   "min_order"
+    t.string   "multiply_factor"
+    t.string   "unit_package"
+    t.string   "external_id"
+    t.string   "new_catalog_number"
+    t.float    "weight_grams"
+    t.string   "r0"
+    t.string   "r1"
+    t.string   "r2"
+    t.string   "r3"
+    t.string   "r4"
+    t.string   "r5"
+    t.string   "r6"
+    t.string   "r7"
+    t.string   "r8"
+    t.string   "r9"
+  end
+
+  create_table "prices_4", :force => true do |t|
+    t.integer  "job_id"
+    t.integer  "goods_id"
+    t.string   "title"
+    t.string   "count"
+    t.decimal  "price_cost",         :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "catalog_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "country"
+    t.string   "title_en"
+    t.string   "manufacturer_short"
+    t.string   "success_percent"
+    t.string   "applicability"
+    t.string   "unit"
+    t.string   "description"
+    t.string   "min_order"
+    t.string   "multiply_factor"
+    t.string   "unit_package"
+    t.string   "external_id"
+    t.string   "new_catalog_number"
+    t.float    "weight_grams"
+    t.string   "r0"
+    t.string   "r1"
+    t.string   "r2"
+    t.string   "r3"
+    t.string   "r4"
+    t.string   "r5"
+    t.string   "r6"
+    t.string   "r7"
+    t.string   "r8"
+    t.string   "r9"
+  end
+
+  create_table "prices_8", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
     t.string   "title"
