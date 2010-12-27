@@ -45,9 +45,13 @@ for sheet_name, values in parse_xls(arg, str(encoding)): # parse_xls(arg) -- def
         #pdb.set_trace()
         if isinstance(v, unicode):
             v = v.encode(str(encoding), 'backslashreplace')
+            v = '%s' % v.strip()
+        elif v == int(v):
+            v = int(v)
         else:
             v = `v`
-        v = '%s' % v.strip()
+            v = '%s' % v.strip()
+
         last_row, last_col = len(matrix), len(matrix[-1])
         while last_row <= row_idx:
             matrix.extend([[]])
