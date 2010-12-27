@@ -73,7 +73,8 @@ class ImportJobable < AbstractJobber
             price_colnum = @jobable.income_price_colnum - 1
             catalog_number_colnum = @jobable.catalog_number_colnum - 1
 
-            FasterCSV.foreach(SupplierPrice.find(opt).attachment.path) do |row|
+            #BUG Проверить, на работоспособность (Потребовалось после конвертирования из Excel в csv, где были переносы \r)
+            FasterCSV.foreach(SupplierPrice.find(opt).attachment.path, {:row_sep => "\r\n"}) do |row|
               if i == 0
                 query = query_template
               end
@@ -121,7 +122,7 @@ class ImportJobable < AbstractJobber
             end
           end
 
-          query = "INSERT INTO prices (title, count, price_cost, manufacturer, catalog_number, title_en, unit_package, description, min_order, applicability, country, external_id, unit, multiply_factor) SELECT title, count, price_cost, manufacturer, catalog_number, title_en, unit_package, description, min_order, applicability, country, external_id, unit, multiply_factor FROM prices_#{job_id}"
+          query = "INSERT INTO prices (job_id, title, count, price_cost, manufacturer, catalog_number, title_en, unit_package, description, min_order, applicability, country, external_id, unit, multiply_factor) SELECT job_id, title, count, price_cost, manufacturer, catalog_number, title_en, unit_package, description, min_order, applicability, country, external_id, unit, multiply_factor FROM prices_#{job_id}"
           Price.connection.execute(query)
 
         when /_I_/
