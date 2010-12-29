@@ -1,0 +1,16 @@
+<% if @unpack_job.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@unpack_job.errors.count, "error") %> prohibited this unpack_job from being saved:</h2>
+
+    <ul>
+    <% @unpack_job.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= f.enum_select :archive_type, {:include_blank => true}  %><br />
+Если тип архива будет не указан, то разорхивирование произойдет в соответствии с расширением файла. *.zip, *.rar и т.д.<br />(Не используется, тип архива вычисляется не по расширению, а по заголовкам файла)
+<br /><br />
+<%= f.buttons %>

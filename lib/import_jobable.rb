@@ -74,7 +74,7 @@ class ImportJobable < AbstractJobber
             catalog_number_colnum = @jobable.catalog_number_colnum - 1
 
             #BUG Проверить, на работоспособность (Потребовалось после конвертирования из Excel в csv, где были переносы \r)
-            FasterCSV.foreach(SupplierPrice.find(opt).attachment.path, {:row_sep => "\r\n"}) do |row|
+            FasterCSV.foreach(SupplierPrice.find(opt).attachment.path) do |row|
               if i == 0
                 query = query_template
               end

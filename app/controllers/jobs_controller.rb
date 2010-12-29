@@ -103,14 +103,13 @@ class JobsController < ApplicationController
       flash[:notice] = "Задача поставщика успешно поставлена в очередь"
     end
 
-
-    redirect_to(supplier_jobs_path(params[:supplier_id]))
+    redirect_to(@job.parent.present? ? supplier_job_path(params[:supplier_id], @job.parent.id) : supplier_jobs_path(params[:supplier_id]))
   end
 
   def start_all
     jobs = Job.all(:conditions => "jobable_type = 'ReceiveJob' AND active = 1 AND next_start IS NOT NULL AND active = 1")
     jobs.each do |job|
-      JobWalker.new.start_job(job, 50, :force=>true)
+      JobWalker.new.start_job(job, 75, :force=>true)
     end
 
     redirect_to(suppliers_path)

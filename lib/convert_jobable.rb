@@ -101,7 +101,7 @@ class ConvertJobable < AbstractJobber
 =end        
         when /python_xls2csv/
           Dir.mktmpdir do |tempdir|
-            exec = "#{Rails.root}/system/external_tools/xlrd_xls2csv.py -t #{tempdir} -e #{@jobable.encoding_out} -i #{supplier_price.path.shellescape}"
+            exec = "#{Rails.root}/system/external_tools/pyExcelerator_xls2csv.py -t #{tempdir} -e #{@jobable.encoding_out} -i #{supplier_price.path.shellescape}"
             stdin, stdout, stderr = Open3.popen3(exec)
             if (error_string = stderr.read).present?
               raise "'#{error_string}' в результате запуска '#{exec}'"
