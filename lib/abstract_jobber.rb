@@ -1,5 +1,5 @@
-#logger = Rails::logger
-#logger.level = Logger::ERROR
+logger = Rails::logger
+logger.level = Logger::ERROR
 
 class AbstractJobber
 

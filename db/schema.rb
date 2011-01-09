@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110108155341) do
+ActiveRecord::Schema.define(:version => 20110109065946) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
@@ -265,6 +265,7 @@ ActiveRecord::Schema.define(:version => 20110108155341) do
     t.float    "relative_buy_currency"
     t.float    "absolute_weight_currency"
     t.float    "relative_weight_currency"
+    t.integer  "parts_group_colnum"
   end
 
   create_table "jobs", :force => true do |t|
@@ -346,6 +347,7 @@ ActiveRecord::Schema.define(:version => 20110108155341) do
     t.string   "r7"
     t.string   "r8"
     t.string   "r9"
+    t.string   "parts_group"
   end
 
   create_table "prices_1066346346", :force => true do |t|
@@ -2134,6 +2136,41 @@ ActiveRecord::Schema.define(:version => 20110108155341) do
   end
 
   create_table "prices_1066346522", :force => true do |t|
+    t.integer  "job_id"
+    t.integer  "goods_id"
+    t.string   "title"
+    t.string   "count"
+    t.decimal  "price_cost",         :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "catalog_number"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "country"
+    t.string   "title_en"
+    t.string   "manufacturer_short"
+    t.string   "success_percent"
+    t.string   "applicability"
+    t.string   "unit"
+    t.string   "description"
+    t.string   "min_order"
+    t.string   "multiply_factor"
+    t.string   "unit_package"
+    t.string   "external_id"
+    t.string   "new_catalog_number"
+    t.float    "weight_grams"
+    t.string   "r0"
+    t.string   "r1"
+    t.string   "r2"
+    t.string   "r3"
+    t.string   "r4"
+    t.string   "r5"
+    t.string   "r6"
+    t.string   "r7"
+    t.string   "r8"
+    t.string   "r9"
+  end
+
+  create_table "prices_1066346527", :force => true do |t|
     t.integer  "job_id"
     t.integer  "goods_id"
     t.string   "title"

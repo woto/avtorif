@@ -115,8 +115,8 @@ class JobsController < ApplicationController
     redirect_to(suppliers_path)
   end
   
-  def display_import_jobs
-    @jobs = Job.where(:jobable_type => "ImportJob").includes(:supplier).paginate(:page => params[:page])
+  def display_jobs
+    @jobs = Job.where(:jobable_type => params[:job_type] || "ImportJob").includes(:supplier).paginate(:page => params[:page])
         #sql = "SELECT * FROM prices_#{@job.id limit 10"
     #ActiveRecord::Base.connection.execute(sql)
     respond_to do |format|
