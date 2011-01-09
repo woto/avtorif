@@ -25,6 +25,7 @@ Avtorif::Application.routes.draw do
   resources :mies
   resources :repeats
   resources :repeats_jobs
+  resources :http_crawlers
   match '/start_all_jobs/' => 'jobs#start_all', :as => :start_all_jobs
   match '/display_import_jobs/' => 'jobs#display_import_jobs', :as => :display_import_jobs
   resources :delayed_jobs
