@@ -13,6 +13,10 @@ class Supplier < ActiveRecord::Base
   has_many :supplier_prices
   has_many :prices
   belongs_to :discount_group
+  
+  def to_s
+    title
+  end
 
   def status
 #    Job.all

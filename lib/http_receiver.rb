@@ -16,7 +16,13 @@ class HttpReceiver < AbstractReceiver
         http.verify_mode = OpenSSL::SSL::VERIFY_NONE
       end
 
-      request = Net::HTTP::Get.new(@receiver.path + eval(@job.file_mask))
+      get_string = @receiver.path + eval(@job.file_mask)
+
+      if(@receiver.encoding.present?)
+        get_string = URI::encode(Iconv.iconv('UTF-8', @receiver.encoding.to_s, get_string).join)
+      end
+
+      request = Net::HTTP::Get.new(get_string)
 
       request.initialize_http_header({
         "User-Agent" => "avtorif"

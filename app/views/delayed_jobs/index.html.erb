@@ -1,0 +1,105 @@
+<style>
+  #jobs .locked_at {
+    background: #999;
+  }
+  #jobs .last_error {
+    background: red;
+  }
+</style>
+
+<% if @delayed_jobs.size > 0 %>
+    
+    <%= will_paginate @delayed_jobs %>
+    <br />
+   
+    <table id="delayed_jobs">
+      <tr>
+        <th>Next start</th>
+        <th>Last start</th>
+        <th>Last finish</th>
+        <th>Seconds between jobs</th>
+        <th>Seconds working</th>
+        <th>Supplier</th>
+        <th>Title</th>
+        <th>Repeats</th>
+        <th>Jobable</th>
+        <th>File mask</th>
+        <th>Locked</th>
+        <th>Active</th>
+        <th>Critical</th>
+        <th>Last Error</th>
+        <th>Priority</th>
+        <th>Attempts</th>
+        <th>Handler</th>
+        <th>Last Error</th>
+        <th>Run At</th>
+        <th>Locked At</th>
+        <th>Failed At</th>
+        <th>Locked By</th>
+        <th>Created At</th>
+        <th>Updated At</th>
+      </tr>
+
+    <% @delayed_jobs.each do |delayed_job| %>
+
+      <tr>
+        <td><%=h delayed_job.job.next_start %></td>
+        <td><%=h delayed_job.job.last_start %></td>
+        <td><%=h delayed_job.job.last_finish %></td>
+        <td><%=h delayed_job.job.seconds_between_jobs %></td>
+        <td><%=h delayed_job.job.seconds_working %></td>
+        <td><%=h link_to delayed_job.job.supplier, supplier_jobs_path(delayed_job.job.supplier) %></td>
+        <td><%=h link_to delayed_job.job.title, supplier_job_path(delayed_job.job.supplier, delayed_job.job) %></td>
+        <td><%=h delayed_job.job.repeats.collect(&:title).join(",") %></td>
+        <td>
+            <%= link_to("Получение", new_supplier_job_receive_job_path(delayed_job.job.supplier, delayed_job.job)) %> <br />
+            <%= link_to("Распаковка", new_supplier_job_unpack_job_path(delayed_job.job.supplier, delayed_job.job)) %> <br />
+            <%= link_to("Конвертирование", new_supplier_job_convert_job_path(delayed_job.job.supplier, delayed_job.job)) %> <br />
+            <%= link_to("Фильтрация", new_supplier_job_filter_job_path(delayed_job.job.supplier, delayed_job.job)) %> <br />
+            <%= link_to("Импортирование", new_supplier_job_import_job_path(delayed_job.job.supplier, delayed_job.job)) %> <br />
+          <% if delayed_job.job.jobable.present? %>          
+            <br />
+            <%= link_to("Настройки #{delayed_job.job.jobable.class.to_s}", edit_polymorphic_path([delayed_job.job.supplier, delayed_job.job, delayed_job.job.jobable])) %>
+          <% end %>
+        </td>
+        <td><%=h delayed_job.job.file_mask %></td>
+
+        <td>
+        <% if(delayed_job.job.locked) %>
+            <div style='background: yellow'>
+        <% else %>
+            <div>
+        <% end %>
+
+        <%=h delayed_job.job.locked %>
+
+        </div>
+        </td>
+        
+        <td><%=h delayed_job.job.active %></td>
+        <td><%= delayed_job.job.critical.html_safe %></td>
+        <td><%= delayed_job.job.last_error %></td>
+        
+        <td><%= delayed_job.priority %></td>
+        <td><%= delayed_job.attempts %></td>
+        <td><%= delayed_job.handler %></td>
+        <td><%= delayed_job.last_error %></td>
+        <td><%= delayed_job.run_at %></td>
+        <td><%= delayed_job.locked_at %></td>
+        <td><%= delayed_job.failed_at %></td>
+        <td><%= delayed_job.locked_by %></td>
+        <td><%= delayed_job.created_at %></td>
+        <td><%= delayed_job.updated_at %></td>
+        
+        <td>
+          <%= link_to 'Edit', edit_delayed_job_path(delayed_job) %> <br />
+          <%= link_to 'Destroy', delayed_job, :confirm => 'Are you sure?', :method => :delete %> <br />
+        </td>
+      </tr>
+    <% end %>
+    </table>
+
+    <br />
+
+    <%= will_paginate @delayed_jobs %>
+<% end %>

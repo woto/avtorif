@@ -6,6 +6,8 @@ class AbstractJobber
   attr_accessor :optional, :job, :jobable, :priority
 
   def enqueue(j)
+    j.job_id = job.id
+    j.save
     puts Time.zone.now.to_s + " Безусловный enqueue: '#{job.title}' от '#{job.supplier.title}'."
     job.locked = true
     job.save

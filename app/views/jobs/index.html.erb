@@ -5,6 +5,9 @@
 
 <% if @jobs.size > 0 %>
     
+    <%= will_paginate @jobs %>
+    <br />
+
     <table>
       <tr>
         <th>Next start</th>
@@ -74,6 +77,7 @@
     </table>
 
     <br />
+    <%= will_paginate @jobs %>
 <% end %>
 
 <% if params[:supplier_id] %>

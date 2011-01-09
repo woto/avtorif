@@ -27,6 +27,7 @@ Avtorif::Application.routes.draw do
   resources :repeats_jobs
   match '/start_all_jobs/' => 'jobs#start_all', :as => :start_all_jobs
   match '/display_import_jobs/' => 'jobs#display_import_jobs', :as => :display_import_jobs
+  resources :delayed_jobs
   resources :suppliers do
     resources :supplier_prices do
       collection do

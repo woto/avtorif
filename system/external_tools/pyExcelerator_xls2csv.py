@@ -47,7 +47,10 @@ for sheet_name, values in parse_xls(arg, str(encoding)): # parse_xls(arg) -- def
             v = v.encode(str(encoding), 'backslashreplace')
             v = '%s' % v.strip()
         elif isinstance(v, float):
-            v = int(v)
+	    if (v == int(v)):
+            	v = int(v)
+	    else:
+	    	v
         else:
             v = `v`
             v = '%s' % v.strip()
