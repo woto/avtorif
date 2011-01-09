@@ -3,6 +3,16 @@
   <h1>Listing jobs for <em><%= link_to(supplier.title, supplier_jobs_path) %></em></h1>
 <% end %>
 
+<% if params[:action] == 'display_jobs' %>
+  <p>
+  <a href="display_jobs?job_type=ReceiveJob"%>Задачи приема</a> |
+  <a href="display_jobs?job_type=ConvertJob"%>Задачи конвертирования</a> |
+  <a href="display_jobs?job_type=FilterJob"%>Задачи фильтрации</a> |
+  <a href="display_jobs?job_type=ImportJob"%>Задачи импорта</a>
+  </p>
+  <br />
+<% end %>
+
 <% if @jobs.size > 0 %>
     
     <%= will_paginate @jobs %>

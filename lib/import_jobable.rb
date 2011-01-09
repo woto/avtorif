@@ -16,11 +16,11 @@ class ImportJobable < AbstractJobber
             #debugger
             i = 0
             query = ""
-            unit_colnum, multiply_factor_colnum, external_id_colnum = country_colnum = applicability_colnum =  min_order_colnum = description_colnum = unit_package_colnum = title_en_colnum = title_colnum = count_colnum = manufacturer_colnum = price_colnum = catalog_number_colnum = false
+            unit_colnum, multiply_factor_colnum, external_id_colnum = country_colnum = applicability_colnum =  min_order_colnum = description_colnum = unit_package_colnum = title_en_colnum = title_colnum = count_colnum = manufacturer_colnum = price_colnum = catalog_number_colnum = parts_group_colnum = false
 
             #Price.connection.execute("DELETE FROM prices WHERE job_id = #{job_id}")
 
-            query_template = "INSERT INTO prices_#{job_id} (job_id, title, count, price_cost, manufacturer, catalog_number, title_en, unit_package, description, min_order, applicability, country, external_id, unit, multiply_factor) VALUES "
+            query_template = "INSERT INTO prices_#{job_id} (job_id, title, count, price_cost, manufacturer, catalog_number, title_en, unit_package, description, min_order, applicability, country, external_id, unit, multiply_factor, parts_group) VALUES "
 
             if @jobable.title_colnum.present?
               title_colnum = @jobable.title_colnum - 1
@@ -70,11 +70,15 @@ class ImportJobable < AbstractJobber
               external_id_colnum = @jobable.external_id_colnum - 1
             end
 
+            if @jobable.parts_group_colnum.present?              
+              parts_group_colnum = @jobable.parts_group_colnum - 1
+            end
+
             price_colnum = @jobable.income_price_colnum - 1
             catalog_number_colnum = @jobable.catalog_number_colnum - 1
 
             #BUG Проверить, на работоспособность (Потребовалось после конвертирования из Excel в csv, где были переносы \r)
-            FasterCSV.foreach(SupplierPrice.find(opt).attachment.path) do |row|
+            FasterCSV.foreach(SupplierPrice.find(opt).attachment.path, :row_sep => "\r\n") do |row|
               if i == 0
                 query = query_template
               end
@@ -83,6 +87,7 @@ class ImportJobable < AbstractJobber
                 
                 applicability = applicability_colnum ? Price.connection.quote(row[applicability_colnum].to_s.strip) : "''"
                 external_id = external_id_colnum ? Price.connection.quote(row[external_id_colnum].to_s.strip) : "''"
+                parts_group = parts_group_colnum ? Price.connection.quote(row[parts_group_colnum].to_s.strip) : "''"
                 title = title_colnum ? Price.connection.quote(row[title_colnum].to_s.strip) : "''"
                 title_en = title_en_colnum ? Price.connection.quote(row[title_en_colnum].to_s.strip) : "''"
                 unit_package = unit_package_colnum ? Price.connection.quote(row[unit_package_colnum].to_s.strip) : "''"
@@ -96,7 +101,8 @@ class ImportJobable < AbstractJobber
                 price = Price.connection.quote(row[price_colnum].to_s.gsub(',','.').gsub(' ',''))
                 catalog_number = Price.connection.quote(row[catalog_number_colnum].to_s.strip)
 
-                query = query + "(#{job_id}, #{title}, #{count}, #{price}, #{manufacturer}, #{catalog_number}, #{title_en}, #{unit_package}, #{description}, #{min_order}, #{applicability}, #{country}, #{external_id}, #{unit}, #{multiply_factor}),"
+                query = query + "(#{job_id}, #{title}, #{count}, #{price}, #{manufacturer}, #{catalog_number}, #{title_en}, #{unit_package}, #{description}, #{min_order}, #{applicability}, #{country}, #{external_id}, #{unit}, #{multiply_factor}, #{parts_group}),"
+
                 i = i + 1
               end
 
@@ -111,6 +117,7 @@ class ImportJobable < AbstractJobber
                 end
                 query = ""
                 i = 0
+                break
               end
 
             end
@@ -122,7 +129,7 @@ class ImportJobable < AbstractJobber
             end
           end
 
-          query = "INSERT INTO prices (job_id, title, count, price_cost, manufacturer, catalog_number, title_en, unit_package, description, min_order, applicability, country, external_id, unit, multiply_factor) SELECT job_id, title, count, price_cost, manufacturer, catalog_number, title_en, unit_package, description, min_order, applicability, country, external_id, unit, multiply_factor FROM prices_#{job_id}"
+          query = "INSERT INTO prices (job_id, title, count, price_cost, manufacturer, catalog_number, title_en, unit_package, description, min_order, applicability, country, external_id, unit, multiply_factor, parts_group) SELECT job_id, title, count, price_cost, manufacturer, catalog_number, title_en, unit_package, description, min_order, applicability, country, external_id, unit, multiply_factor, parts_group FROM prices_#{job_id}"
           Price.connection.execute(query)
 
         when /_I_/
