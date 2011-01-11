@@ -8,7 +8,7 @@ class ConvertJob < ActiveRecord::Base
     'Замена одиночного \n на \r\n - _csv_normalize_new_line_',
     'Просто перекодировка _csv_encode_',
     'Выполнение произвольной коносольной команды _arbitrary_console_'
-  ]
+  ], :nil => true
 
   enum_attr :col_sep, [
     '\t',
@@ -26,7 +26,7 @@ class ConvertJob < ActiveRecord::Base
     'UTF-16LE',
     'UCS-2LE',
     'AUTO'
-  ]
+  ], :nil => true
 
   enum_attr :encoding_out, [
     'CP1251',
@@ -37,7 +37,7 @@ class ConvertJob < ActiveRecord::Base
     'UTF-16LE',
     'UCS-2LE',    
     'AUTO'
-  ]
+  ], :nil => true
 
   validates_presence_of :convert_method
 

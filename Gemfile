@@ -1,7 +1,7 @@
 #source :gemcutter
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.2'
+gem 'rails', '3.0.3'
 #gem 'actionmailer'
 #gem 'actionpack'
 #gem 'activeresource'

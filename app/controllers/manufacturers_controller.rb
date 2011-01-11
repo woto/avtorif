@@ -2,7 +2,7 @@ class ManufacturersController < ApplicationController
   # GET /manufacturers
   # GET /manufacturers.xml
   def index
-    @manufacturers = Manufacturer.all
+    @manufacturers = Manufacturer.order(:title).paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

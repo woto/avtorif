@@ -24,14 +24,16 @@ namespace :avtorif do
     sh "sudo /etc/init.d/god start"
   end 
   
-  task :drop_derived_prices => :environment do
+  task :drop_prices => :environment do
     connection = "mysql -u root -D avtorif_development"
     sql = "#{connection} -BNe \"show tables like 'prices_%'\" | awk '{print \"drop table `\" $1 \"`;\"}' | #{connection}"
     sh sql
+    ActiveRecord::Base.connection.execute("TRUNCATE prices")
+    ActiveRecord::Base.connection.execute("TRUNCATE delayed_jobs")
   end
 
   task :renice_dj => :environment do
-    sql = "update delayed_jobs set run_at = 0, attempts = 0, locked_by = null"
+    sql = "update delayed_jobs set run_at = 0, attempts = NULL, locked_by = NULL, locked_at = NULL"
     ActiveRecord::Base.connection.execute(sql)
   end
 

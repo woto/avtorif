@@ -1,5 +1,6 @@
 Avtorif::Application.routes.draw do
   
+
   match 'uri_decoder' => "uri_decoder#index" 
 
   resources :discount_groups do
@@ -69,7 +70,9 @@ Avtorif::Application.routes.draw do
   resources :convert_jobs
   resources :analogues
   resources :goods
-  resources :manufacturers
+  resources :manufacturers do
+    resources :manufacturer_synonyms
+  end
   resources :supplier_prices
   resources :prices do
     collection do

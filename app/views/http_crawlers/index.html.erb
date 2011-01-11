@@ -1,0 +1,23 @@
+<h1>Listing http_crawlers</h1>
+
+<table>
+  <tr>
+    <th>Instruction</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @http_crawlers.each do |http_crawler| %>
+  <tr>
+    <td><%= http_crawler.instruction %></td>
+    <td><%= link_to 'Show', http_crawler %></td>
+    <td><%= link_to 'Edit', edit_http_crawler_path(http_crawler) %></td>
+    <td><%= link_to 'Destroy', http_crawler, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Http crawler', new_http_crawler_path %>

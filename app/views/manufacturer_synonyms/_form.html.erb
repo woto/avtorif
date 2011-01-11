@@ -1,0 +1,28 @@
+<%= semantic_form_for([:manufacturer, @manufacturer_synonym]) do |f| %>
+  <% if @manufacturer_synonym.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@manufacturer_synonym.errors.count, "error") %> prohibited this manufacturer_synonym from being saved:</h2>
+
+      <ul>
+      <% @manufacturer_synonym.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :manufacturer %><br />
+    <%= f.input :manufacturer %>
+  </div>
+  <br />
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <br />
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<br />

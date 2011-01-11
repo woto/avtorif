@@ -1,6 +1,6 @@
 class HttpReceive < ActiveRecord::Base
   has_many :receive_job, :as => :receiveable
-  enum_attr :encoding, ['^utf8' ,'cp1251', 'koi8-r', 'cp866']
+  enum_attr :encoding, ['^utf8' ,'cp1251', 'koi8-r', 'cp866'], :nil => true
   
   def identify_string
       credentials = "#{login}:#{password}@" if login or password
