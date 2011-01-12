@@ -27,4 +27,8 @@ every 1.day do
   rake "avtorif:destroy_old_supplier_prices"
 end
 
+every 1.day, :at => '11am' do
+  rake "avtorif:destroy_old_supplier_prices"
+end
+
 # Learn more: http://github.com/javan/whenever
