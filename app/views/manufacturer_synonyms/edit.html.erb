@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', manufacturer_manufacturer_synonym_path(@manufacturer_synonym.manufacturer_id, @manufacturer_synonym) %> |
-<%= link_to 'Back', manufacturer_manufacturer_synonyms_path(@manufacturer) %>
+<%= link_to 'Show', manufacturer_manufacturer_synonym_path(@manufacturer_synonym.manufacturer_id, @manufacturer_synonym, {:page => params[:page], :letter => params[:letter]}) %> |
+<%= link_to 'Back', manufacturer_manufacturer_synonyms_path(:page => params[:page], :letter => params[:letter])%>

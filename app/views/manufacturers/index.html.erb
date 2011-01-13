@@ -1,8 +1,16 @@
 <h1>Listing manufacturers</h1>
 
+<% "A".upto("Z") do |l| %>
+  <%= link_to l, manufacturers_path(:letter => l) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<% end %>
+<br /><br />
+<% "А".upto("Я") do |l| %>
+  <%= link_to l, manufacturers_path(:letter => l) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<% end %>
+<br /><br />
 <table>
   <tr>
-    <th>Title</th>
+    <th style="width: 400px">Title</th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,8 +25,8 @@
     <td><%= manufacturer.title %></td>
     <td><%= link_to 'Show', manufacturer %></td>
     <td><%= link_to 'Edit', edit_manufacturer_path(manufacturer) %></td>
-    <td><%= link_to 'Destroy', manufacturer, :confirm => 'Are you sure?', :method => :delete %></td>
-    <td><%= link_to 'Синонимы', manufacturer_manufacturer_synonyms_path(manufacturer) %></td>
+    <td><%= link_to 'Destroy', manufacturer_path(manufacturer, {:letter => params[:letter], :page => params[:page]}), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Синонимы', manufacturer_manufacturer_synonyms_path(manufacturer, {:letter => params[:letter], :page => params[:page]}) %></td>
   </tr>
 <% end %>
 </table>

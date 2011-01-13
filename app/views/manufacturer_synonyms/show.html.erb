@@ -11,5 +11,5 @@
 </p>
 
 
-<%= link_to 'Edit', edit_manufacturer_manufacturer_synonym_path(@manufacturer_synonym) %> |
-<%= link_to 'Back', manufacturer_manufacturer_synonyms_path %>
+<%= link_to 'Edit', edit_manufacturer_manufacturer_synonym_path(@manufacturer_synonym, {:page => params[:page], :letter => params[:letter]}) %> |
+<%= link_to 'Back', manufacturer_manufacturer_synonyms_path(:page => params[:page], :letter => params[:letter])%>

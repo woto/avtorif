@@ -15,7 +15,7 @@ class ImportJobable < AbstractJobber
           @optional.each do |opt|
             i = 0
             query = ""
-            manufacturer_synonyms_hs = unit_colnum = multiply_factor_colnum = external_id_colnum = country_colnum = applicability_colnum =  min_order_colnum = description_colnum = unit_package_colnum = title_en_colnum = title_colnum = count_colnum = manufacturer_colnum = price_colnum = catalog_number_colnum = parts_group_colnum = false
+            manufacturer = manufacturer_orig = manufacturer_synonyms_hs = unit_colnum = multiply_factor_colnum = external_id_colnum = country_colnum = applicability_colnum =  min_order_colnum = description_colnum = unit_package_colnum = title_en_colnum = title_colnum = count_colnum = manufacturer_colnum = price_colnum = catalog_number_colnum = parts_group_colnum = false
 
             #Price.connection.execute("DELETE FROM prices WHERE job_id = #{job_id}")
 
@@ -53,7 +53,7 @@ class ImportJobable < AbstractJobber
 
             if @jobable.manufacturer_colnum.present?              
               manufacturer_colnum = @jobable.manufacturer_colnum - 1
-              query_template = query_template + "manufacturer, "
+              query_template = query_template + "manufacturer, manufacturer_orig, "
             end
 
             if @jobable.applicability_colnum.present?              
@@ -90,7 +90,7 @@ class ImportJobable < AbstractJobber
               manufacturer_synonyms_ar = ManufacturerSynonym.includes(:manufacturer).select('manufacturers.id, manufacturers.title, manufacturer_synonyms.title')
               manufacturer_synonyms_hs = Hash.new
               manufacturer_synonyms_ar.each do |ms|
-                manufacturer_synonyms_hs[ms.title.to_s.dup.to_s] = ms.manufacturer.title.to_s.dup.to_s
+                manufacturer_synonyms_hs[ms.title.to_s.dup.to_s] = ms.manufacturer.title.to_s.mb_chars.strip.upcase.to_s
               end
               manufacturer_synonyms_ar = nil
             used_in_this_price = Hash.new
@@ -108,7 +108,7 @@ class ImportJobable < AbstractJobber
                 query = query_template
               end
               
-              if i < 100
+              if i < 10
 
                 query = query + "(#{job_id},"
 
@@ -122,26 +122,24 @@ class ImportJobable < AbstractJobber
                 if manufacturer_colnum
                   # получаем значение производителя в прайсе
                   #debugger
-                  synonym = row[manufacturer_colnum].to_s.mb_chars.strip.to_s
+                  manufacturer_orig = row[manufacturer_colnum].to_s.mb_chars.strip.upcase.to_s
                   # если встретили этот синоним в прайсе впервые
-                  unless manufacturer = used_in_this_price[synonym]
+                  unless manufacturer = used_in_this_price[manufacturer_orig]
                     # если не нашли в глобальной таблице соответствия синонимов и производителей
-                    unless manufacturer = manufacturer_synonyms_hs[synonym]
+                    unless manufacturer = manufacturer_synonyms_hs[manufacturer_orig]
                       # то создаем синоним и такого же производителя
-                      ManufacturerSynonym.create(:title => synonym, :manufacturer => Manufacturer.create(:title => synonym))
+                      ManufacturerSynonym.create(:title => manufacturer_orig, :manufacturer => Manufacturer.create(:title => manufacturer_orig))
 
-                      manufacturer = synonym
-                      manufacturer_synonyms_hs[synonym] = manufacturer
+                      manufacturer = manufacturer_orig
+                      manufacturer_synonyms_hs[manufacturer_orig] = manufacturer
                     end
                     # обновляем, что синоним встречался в прайсе ранее из найденного в глобальной таблице, или нового созданного
-                    used_in_this_price[synonym] = manufacturer
+                    used_in_this_price[manufacturer_orig] = manufacturer
                   end
-                else
-                  # если колонки производителя нет, то null
-                  manufacturer = ""
                 end
                 
                 query = query + manufacturer = manufacturer_colnum ? Price.connection.quote(manufacturer) + ", " : ""
+                query = query + manufacturer_orig = manufacturer_colnum ? Price.connection.quote(manufacturer_orig) + ", " : ""
                 query = query + applicability = applicability_colnum ? Price.connection.quote(row[applicability_colnum].to_s.strip) + ", " : ""
                 query = query + multiply_factor = multiply_factor_colnum ? Price.connection.quote(row[multiply_factor_colnum].to_s.strip) + ", " : ""
                 query = query + unit = unit_colnum ? Price.connection.quote(row[unit_colnum].to_s.strip) + ", " : ""
@@ -156,7 +154,7 @@ class ImportJobable < AbstractJobber
                 i = i + 1
               end
 
-              if i == 100
+              if i == 10
                 query.chop!
                 begin
                   Price.connection.execute(query)
@@ -178,7 +176,7 @@ class ImportJobable < AbstractJobber
             end
           end
 
-          query = "INSERT INTO prices (job_id, title, count, price_cost, manufacturer, catalog_number, title_en, unit_package, description, min_order, applicability, country, external_id, unit, multiply_factor, parts_group) SELECT job_id, title, count, price_cost, manufacturer, catalog_number, title_en, unit_package, description, min_order, applicability, country, external_id, unit, multiply_factor, parts_group FROM prices_#{job_id}"
+          query = "INSERT INTO prices (job_id, title, count, price_cost, manufacturer, catalog_number, title_en, unit_package, description, min_order, applicability, country, external_id, unit, multiply_factor, parts_group, manufacturer_orig) SELECT job_id, title, count, price_cost, manufacturer, catalog_number, title_en, unit_package, description, min_order, applicability, country, external_id, unit, multiply_factor, parts_group, manufacturer_orig FROM prices_#{job_id}"
           Price.connection.execute(query)
 
         when /_I_/

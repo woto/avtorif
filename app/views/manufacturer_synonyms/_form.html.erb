@@ -1,4 +1,14 @@
-<%= semantic_form_for([:manufacturer, @manufacturer_synonym]) do |f| %>
+<%
+  case params[:action]
+    when 'new', 'create'
+      url = manufacturer_manufacturer_synonyms_path(params[:manufacturer_id], {:manufacturer_synonym_id => params[:manufacturer_synonym_id], :page => params[:page], :letter => params[:letter]})
+    when 'edit', 'update'
+      url = manufacturer_manufacturer_synonym_path(params[:manufacturer_id], params[:id], {:manufacturer_synonym_id => params[:manufacturer_synonym_id], :page => params[:page], :letter => params[:letter]})
+  end
+%>
+
+
+<%= semantic_form_for(@manufacturer_synonym, :url => url) do |f| %>
   <% if @manufacturer_synonym.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@manufacturer_synonym.errors.count, "error") %> prohibited this manufacturer_synonym from being saved:</h2>

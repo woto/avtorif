@@ -13,14 +13,14 @@
   <tr>
     <td><%= manufacturer_synonym.manufacturer %></td>
     <td><%= manufacturer_synonym.title %></td>
-    <td><%= link_to 'Show', manufacturer_manufacturer_synonym_path(manufacturer_synonym.manufacturer_id, manufacturer_synonym) %></td>
-    <td><%= link_to 'Edit', edit_manufacturer_manufacturer_synonym_path(manufacturer_synonym.manufacturer_id, manufacturer_synonym) %></td>
-    <td><%= link_to 'Destroy', manufacturer_manufacturer_synonym_path(manufacturer_synonym.manufacturer_id, manufacturer_synonym), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', manufacturer_manufacturer_synonym_path(manufacturer_synonym.manufacturer_id, manufacturer_synonym, {:page => params[:page], :letter => params[:letter]}) %></td>
+    <td><%= link_to 'Edit', edit_manufacturer_manufacturer_synonym_path(manufacturer_synonym.manufacturer_id, manufacturer_synonym, :page => params[:page], :letter => params[:letter]) %></td>
+    <td><%= link_to 'Destroy', manufacturer_manufacturer_synonym_path(manufacturer_synonym.manufacturer_id, manufacturer_synonym, :page => params[:page], :letter => params[:letter]), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
-<%= link_to 'New Manufacturer synonym', new_manufacturer_manufacturer_synonym_path %> <br />
+<%= link_to 'New Manufacturer synonym', new_manufacturer_manufacturer_synonym_path(:letter => params[:letter], :page => params[:page]) %> <br />
 <br />
-<%= link_to 'Список производителей', manufacturers_path %> 
+<%= link_to 'Список производителей', manufacturers_path(:page => params[:page], :letter => params[:letter]) %> 

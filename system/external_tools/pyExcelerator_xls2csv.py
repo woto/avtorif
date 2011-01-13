@@ -27,20 +27,14 @@ arg = options.input_file
 #    for arg in args:
         #print >>sys.stderr, 'extracting data from', arg
 for sheet_name, values in parse_xls(arg, str(encoding)): # parse_xls(arg) -- default encoding
-    matrix = [[None]]
+    matrix = [[]]
 
     #print 'Sheet = "%s"' % sheet_name.encode('cp866', 'backslashreplace')
     #print '----------------'
 
     sheet_file = csv.writer(open(temp_path + "/" + sheet_name.encode('UTF-8', 'backslashreplace'), 'wb'), delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-#    once = True
-#    first_idx = 0
-
     for row_idx, col_idx in sorted(values.keys()):
-#        if(once):
-#            once = False
-#            first_idx = col_idx
-#        pdb.set_trace()
+        #pdb.set_trace()
         v = values[(row_idx, col_idx)]
         #pdb.set_trace()
         if isinstance(v, unicode):
@@ -56,6 +50,7 @@ for sheet_name, values in parse_xls(arg, str(encoding)): # parse_xls(arg) -- def
             v = '%s' % v.strip()
 
         last_row, last_col = len(matrix), len(matrix[-1])
+
         while last_row <= row_idx:
             matrix.extend([[]])
             last_row = len(matrix)

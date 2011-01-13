@@ -2,7 +2,8 @@ class ManufacturersController < ApplicationController
   # GET /manufacturers
   # GET /manufacturers.xml
   def index
-    @manufacturers = Manufacturer.order(:title).paginate(:page => params[:page])
+    m = Manufacturer.arel_table
+    @manufacturers = Manufacturer.order(:title).where(m[:title].matches("#{params[:letter]}%")).paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -76,7 +77,7 @@ class ManufacturersController < ApplicationController
     @manufacturer.destroy
 
     respond_to do |format|
-      format.html { redirect_to(manufacturers_url) }
+      format.html { redirect_to(manufacturers_path(:page => params[:page], :letter => params[:letter])) }
       format.xml  { head :ok }
     end
   end

@@ -44,7 +44,7 @@ class ManufacturerSynonymsController < ApplicationController
 
     respond_to do |format|
       if @manufacturer_synonym.save
-        format.html { redirect_to(manufacturer_manufacturer_synonym_path(@manufacturer_synonym.manufacturer_id, @manufacturer_synonym), :notice => 'manufacturer synonym was successfully created.') }
+        format.html { redirect_to(manufacturer_manufacturer_synonym_path(@manufacturer_synonym.manufacturer_id, @manufacturer_synonym, {:page => params[:page], :letter => params[:letter]}), :notice => 'manufacturer synonym was successfully created.') }
         format.xml  { render :xml => @manufacturer_synonym, :status => :created, :location => @manufacturer_synonym }
       else
         format.html { render :action => "new" }
@@ -60,7 +60,7 @@ class ManufacturerSynonymsController < ApplicationController
 
     respond_to do |format|
       if @manufacturer_synonym.update_attributes(params[:manufacturer_synonym])
-        format.html { redirect_to(manufacturer_manufacturer_synonym_path(@manufacturer_synonym.manufacturer_id, @manufacturer_synonym), :notice => 'Manufacturer synonym was successfully updated.') }
+        format.html { redirect_to(manufacturer_manufacturer_synonym_path(@manufacturer_synonym.manufacturer_id, @manufacturer_synonym,{:page => params[:page], :letter => params[:letter]}), :notice => 'Manufacturer synonym was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -77,7 +77,7 @@ class ManufacturerSynonymsController < ApplicationController
     @manufacturer_synonym.destroy
 
     respond_to do |format|
-      format.html { redirect_to(manufacturer_manufacturer_synonyms_url) }
+      format.html { redirect_to(manufacturer_manufacturer_synonyms_url(:page => params[:page], :letter => params[:letter])) }
       format.xml  { head :ok }
     end
   end
