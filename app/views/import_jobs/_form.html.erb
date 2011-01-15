@@ -38,6 +38,11 @@
   <%= f.enum_select :import_method %>
 </p>
 <br />
+<p>
+  <%= f.label :job_code %>
+  <%= f.enum_select :job_code, :include_blank => true %>
+</p>
+<br />
 
   <%= f.inputs :currency_buy %>
   <%= f.inputs :currency_sell %>

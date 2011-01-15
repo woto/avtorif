@@ -1,3 +1,5 @@
+require 'digest/md5'
+
 class ImportJobable < AbstractJobber
   def perform
     #unless @jobable.importable.blank?
@@ -86,6 +88,13 @@ class ImportJobable < AbstractJobber
               query_template = query_template + "parts_group, "
             end
 
+            if @jobable.job_code.present?              
+              job_code = Price.connection.quote(@jobable.job_code) + ", "
+              query_template = query_template + "job_code, "
+            else
+              job_code = ""
+            end
+
             if manufacturer_colnum
               manufacturer_synonyms_ar = ManufacturerSynonym.includes(:manufacturer).select('manufacturers.id, manufacturers.title, manufacturer_synonyms.title')
               manufacturer_synonyms_hs = Hash.new
@@ -98,8 +107,9 @@ class ImportJobable < AbstractJobber
 
             price_colnum = @jobable.income_price_colnum - 1
             catalog_number_colnum = @jobable.catalog_number_colnum - 1
+            supplier_id = Price.connection.quote(@job.supplier_id)
 
-            query_template = query_template + "price_cost, catalog_number) VALUES "
+            query_template = query_template + "price_cost, catalog_number, supplier_id, doublet) VALUES "
 
             #BUG Проверить, на работоспособность (Потребовалось после конвертирования из Excel в csv, где были переносы \r)
             FasterCSV.foreach(SupplierPrice.find(opt).attachment.path) do |row|
@@ -146,9 +156,11 @@ class ImportJobable < AbstractJobber
                 query = query + country = country_colnum ? Price.connection.quote(row[country_colnum].to_s.strip) + ", " : ""
                 query = query + external_id = external_id_colnum ? Price.connection.quote(row[external_id_colnum].to_s.strip) + ", " : ""
                 query = query + parts_group = parts_group_colnum ? Price.connection.quote(row[parts_group_colnum].to_s.strip) + ", " : ""
+                query = query + job_code
                 query = query + price = Price.connection.quote(row[price_colnum].to_s.gsub(',','.').gsub(' ','')) + ", "
-                query = query + catalog_number = Price.connection.quote(row[catalog_number_colnum].to_s.strip)
-                
+                query = query + catalog_number = Price.connection.quote(row[catalog_number_colnum].to_s.strip) + ", "
+                query = query + supplier_id + ", "
+                query = query + "'" + Digest::MD5.hexdigest(row[catalog_number_colnum].to_s.strip)[0..1] + "'"
                 query = query + "),"
 
                 i = i + 1
@@ -176,8 +188,15 @@ class ImportJobable < AbstractJobber
             end
           end
 
-          query = "INSERT INTO prices (job_id, title, count, price_cost, manufacturer, catalog_number, title_en, unit_package, description, min_order, applicability, country, external_id, unit, multiply_factor, parts_group, manufacturer_orig) SELECT job_id, title, count, price_cost, manufacturer, catalog_number, title_en, unit_package, description, min_order, applicability, country, external_id, unit, multiply_factor, parts_group, manufacturer_orig FROM prices_#{job_id}"
+          query = "ALTER TABLE prices_#{job_id} ADD INDEX doublet_idx (doublet)"
           Price.connection.execute(query)
+
+          alpha_numerics = ('0'..'9').to_a + ('a'..'f').to_a
+          alpha_numerics.product(alpha_numerics).map{ |doublet| doublet.join ''}.each do |l|
+            query = "INSERT INTO prices_costs_#{l} (job_id, title, count, price_cost, manufacturer, manufacturer_orig, catalog_number, title_en, unit_package, description, min_order, applicability, country, external_id, unit, multiply_factor, parts_group, job_code, supplier_id, doublet) SELECT job_id, title, count, price_cost, manufacturer, manufacturer_orig, catalog_number, title_en, unit_package, description, min_order, applicability, country, external_id, unit, multiply_factor, parts_group, job_code, supplier_id, doublet FROM prices_#{job_id} WHERE doublet = '#{l}'"
+            Price.connection.execute(query)
+          end
+
 
         when /_I_/
         when /_U_/

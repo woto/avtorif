@@ -1,4 +1,5 @@
 namespace :avtorif do
+  desc "Очистка"
   task :reclean do
     puts 'Рестартуем Cron'
     sh 'sudo /etc/init.d/cron restart'
@@ -26,8 +27,8 @@ namespace :avtorif do
   
   task :drop_prices => :environment do
     connection = "mysql -u root -D avtorif_development"
-    sql = "#{connection} -BNe \"show tables like 'prices_%'\" | awk '{print \"drop table `\" $1 \"`;\"}' | #{connection}"
-    sh sql
+    #sql = "#{connection} -BNe \"show tables like 'prices_%'\" | awk '{print \"drop table `\" $1 \"`;\"}' | #{connection}"
+    #sh sql
     ActiveRecord::Base.connection.execute("TRUNCATE prices")
     ActiveRecord::Base.connection.execute("TRUNCATE delayed_jobs")
   end
@@ -37,6 +38,25 @@ namespace :avtorif do
     ActiveRecord::Base.connection.execute(sql)
   end
 
+  task :create_prices_costs => :environment do
+    alpha_numerics = ('0'..'9').to_a + ('a'..'f').to_a
+    alpha_numerics.product(alpha_numerics).map{ |doublet| doublet.join ''}.each do |l|
+      sql = "CREATE TABLE prices_costs_#{l} like prices"
+      ActiveRecord::Base.connection.execute(sql)
+      #sql = "ALTER TABLE prices_#{l} ADD INDEX job_code_IDX on (supplier_id, job_code)"
+      #ActiveRecord::Base.connection.execute(sql)
+    end
+  end
+
+  task :drop_prices_costs => :environment do
+    alpha_numerics = ('0'..'9').to_a + ('a'..'f').to_a
+    alpha_numerics.product(alpha_numerics).map{ |doublet| doublet.join ''}.each do |l|
+      sql = "DROP TABLE prices_costs_#{l}"
+      ActiveRecord::Base.connection.execute(sql)
+    end
+  end
+
+  desc "Удалить старые прайсы (файлы). В соответствии с group_code"
   task :destroy_old_supplier_prices => :environment do
     Rake::Task['avtorif:prices_archive'].invoke
 
@@ -67,7 +87,6 @@ namespace :avtorif do
     end
 
     def recursive_job(job, path = "")
-      
       begin
         group_code =  SupplierPrice.where("job_id = #{job.id}").order("id desc").limit(1).first.group_code
       rescue => e

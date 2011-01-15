@@ -1,3 +1,7 @@
+$MYSQL -BNe "show tables like 'prices_%'" | awk '{print "select \"`"$1"`\"; select catalog_number, count(*) from `" $1 "` group by catalog_number, manufacturer_orig having count(*) > 1;"}' | $MYSQL
+
+select count(*), manufacturer, manufacturer_orig from prices where manufacturer != manufacturer_orig group by manufacturer_orig order by manufacturer;
+
 #TODO
 Имеется такая проблема, что если в задачу попадает более одного файла, то первый обработанный файл выставит результат выполнения задачи в успешный
 
