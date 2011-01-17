@@ -4,6 +4,7 @@ class ConvertJob < ActiveRecord::Base
     "Excel - одностраничный (быстрый) - _xls_console_",
     "Excel - многостраничный (медленный) - _xls_roo_",
     "Excel - многостраничный (быстрее) - _python_xls2csv_",
+    "Excel 2007 - _dilshod_temirkhodjaev_xlsx2csv_",
     "Acceess - _mdb_console_ ",
     'Замена одиночного \n на \r\n - _csv_normalize_new_line_',
     'Просто перекодировка _csv_encode_',

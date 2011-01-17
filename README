@@ -1,3 +1,14 @@
+Развертывание:
+	1. sudo dpkg-reconfigure dash
+		Баг связан с http://stackoverflow.com/questions/4546285/problem-with-cyrillic-symbols-in-console
+		Для проверки сохранено в system/мистика
+	2. sudo dpkg -i unzip...
+		Баг связан с неверной кодировкой в архивах DOS
+		Дистрибутивы в system/packages/patched/unzip_6.0-1build1_*.deb
+
+Вспомогательные
+
+
 $MYSQL -BNe "show tables like 'prices_%'" | awk '{print "select \"`"$1"`\"; select catalog_number, count(*) from `" $1 "` group by catalog_number, manufacturer_orig having count(*) > 1;"}' | $MYSQL
 
 select count(*), manufacturer, manufacturer_orig from prices where manufacturer != manufacturer_orig group by manufacturer_orig order by manufacturer;
@@ -32,4 +43,3 @@ au-auto.ru
 Рейтинги
 	http://top.mail.ru/Rating/Cars-Spare/Today/Visitors/1.html#1
 	http://www.liveinternet.ru/rating/ru/auto/index.html
-

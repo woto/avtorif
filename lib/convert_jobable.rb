@@ -143,6 +143,50 @@ class ConvertJobable < AbstractJobber
               retval << attachment.id
             end
           end 
+        when /dilshod_temirkhodjaev_xlsx2csv/
+          Dir.mktmpdir do |tempdir|
+            exec = "#{Rails.root}/system/external_tools/dilshod_temirkhodjaev_xlsx2csv.py -t #{tempdir} #{supplier_price.path.shellescape}"
+            stdin, stdout, stderr = Open3.popen3(exec)
+            if (error_string = stderr.read).present?
+              raise "'#{error_string}' в результате запуска '#{exec}'"
+            end
+            #`#{exec}`
+            #unless $?.success?
+            #  raise "Error during execution of #{exec}"
+            #end
+
+            files = Dir.entries(tempdir) - ['.', '..']
+
+            files.each do |file|
+
+              remote_file = File.new(tempdir + "/" + file)
+
+              remote_file.instance_eval("
+                def original_filename()
+                    \"#{File.basename(supplier_price.original_filename) + " - " + File.basename(remote_file.path)}.csv\"
+                end
+
+                def content_type()
+                  mime = `file --mime -br #{remote_file.path.shellescape.shellescape}`.strip
+                  mime = mime.gsub(/^.*: */,\"\")
+                  mime = mime.gsub(/;.*$/,\"\")
+                  mime = mime.gsub(/,.*$/,\"\")
+                  mime
+                end
+              ")
+
+              md5 = Digest::MD5.file(remote_file.path).hexdigest
+              wc_stat = `wc #{remote_file.path.to_s.shellescape}`
+
+              attachment = SupplierPrice.new(:group_code => group_code, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
+              attachment.supplier = @job.supplier
+              attachment.job_code = @job.title
+              attachment.job_id = @job.id
+              attachment.save
+
+              retval << attachment.id
+            end
+          end 
         when /xls_roo/
           if(@jobable.encoding_out).present? && @jobable.encoding_out.to_s != 'AUTO'
             Spreadsheet.client_encoding = @jobable.encoding_out.to_s

@@ -6,6 +6,8 @@ import csv, datetime, zipfile, sys
 import xml.parsers.expat
 from xml.dom import minidom
 from optparse import OptionParser
+import pdb
+
 
 # see also ruby-roo lib at: http://github.com/hmcgowan/roo
 FORMATS = {
@@ -86,29 +88,24 @@ STANDARD_FORMATS = {
 #   delimiter - csv columns delimiter symbol
 #   sheet_delimiter - sheets delimiter used when processing all sheets
 #
-def xlsx2csv(infilepath, outfile, sheetid=1, dateformat=None, delimiter=",", sheetdelimiter="--------"):
-    writer = csv.writer(outfile, quoting=csv.QUOTE_MINIMAL, delimiter=delimiter)
+def xlsx2csv(infilepath, outfile, sheetid, temp_path, dateformat=None, delimiter=",", sheetdelimiter="--------"):
     ziphandle = zipfile.ZipFile(infilepath)
     try:
         shared_strings = parse(ziphandle, SharedStrings, "xl/sharedStrings.xml")
         styles = parse(ziphandle, Styles, "xl/styles.xml")
         workbook = parse(ziphandle, Workbook, "xl/workbook.xml")
-
+	
+	#pdb.set_trace()
         if sheetid > 0:
-            sheet = None
-            for s in workbook.sheets:
-                if s['id'] == sheetid:
-                    sheet = Sheet(shared_strings, styles, ziphandle.read("xl/worksheets/sheet%i.xml" %s['id']))
-                    break
-            if not sheet:
-                raise Exception("Sheet %i Not Found" %sheetid)
-            sheet.set_dateformat(dateformat)
-            sheet.to_csv(writer)
+	    raise Exception('not implemented')
         else:
+	    counter = 0
             for s in workbook.sheets:
-                if sheetdelimiter != "":
-                    outfile.write(sheetdelimiter + " " + str(s['id']) + " - " + s['name'] + "\r\n")
-                sheet = Sheet(shared_strings, styles, ziphandle.read("xl/worksheets/sheet%i.xml" %s['id']))
+	    	counter = counter + 1
+                #if sheetdelimiter != "":
+                #    outfile.write(sheetdelimiter + " " + str(s['id']) + " - " + s['name'] + "\r\n")
+		writer = csv.writer(open(temp_path + "/" + s['name'], 'wb'), delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+                sheet = Sheet(shared_strings, styles, ziphandle.read("xl/worksheets/sheet%i.xml" %counter))
                 sheet.set_dateformat(dateformat)
                 sheet.to_csv(writer)
     finally:
@@ -283,6 +280,9 @@ class Sheet:
             self.rowNum = attrs['r']
             self.in_row = True
             self.columns = {}
+            self.spans = None
+            if attrs.has_key('spans'):
+                self.spans = [int(i) for i in attrs['spans'].split(":")]
         elif name == 'sheetData':
             self.in_sheet = True
 
@@ -301,6 +301,10 @@ class Sheet:
                 d = [""] * (max(self.columns.keys()) + 1)
                 for k in self.columns.keys():
                     d[k] = self.columns[k].encode("utf-8")
+                if self.spans:
+                    l = self.spans[0] + self.spans[1] - 1
+                    if len(d) < l:
+                        d+= (l - len(d)) * ['']
                 self.writer.writerow(d)
             self.in_row = False
         elif self.in_sheet and name == 'sheetData':
@@ -308,7 +312,7 @@ class Sheet:
 
 if __name__ == "__main__":
     parser = OptionParser(usage = "%prog [options] infile [outfile]", version="0.11")
-    parser.add_option("-s", "--sheet", dest="sheetid", default=1, type="int",
+    parser.add_option("-s", "--sheet", dest="sheetid", type="int",
       help="sheet no to convert (0 for all sheets)")
     parser.add_option("-d", "--delimiter", dest="delimiter", default=",",
       help="delimiter - csv columns delimiter, 'tab' or 'x09' for tab (comma is default)")
@@ -316,6 +320,8 @@ if __name__ == "__main__":
       help="sheets delimiter used to separate sheets, pass '' if you don't want delimiters (default '--------')")
     parser.add_option("-f", "--dateformat", dest="dateformat",
       help="override date/time format (ex. %Y/%m/%d)")
+    parser.add_option("-t", "--temp-path", dest="temp_path", help="temp path", metavar="TEMP_PATH") 
+
 
     (options, args) = parser.parse_args()
 
@@ -334,10 +340,12 @@ if __name__ == "__main__":
       'sheetid' : options.sheetid,
       'delimiter' : delimiter,
       'sheetdelimiter' : options.sheetdelimiter,
-      'dateformat' : options.dateformat
+      'dateformat' : options.dateformat,
+      'temp_path' : options.temp_path
     }
 
     if len(args) == 1:
+    	#pdb.set_trace()
         xlsx2csv(args[0], sys.stdout, **kwargs)
     elif len(args) == 2:
         f = open(args[1], "w+")
