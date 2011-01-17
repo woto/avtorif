@@ -1,47 +1,61 @@
 class ConvertJobable < AbstractJobber
+  
+  def python_excel(exec)
+    retval = Array.new
+    Dir.mktmpdir do |tempdir|
+      stdin, stdout, stderr = Open3.popen3(exec + " -t #{tempdir}")
+      if (error_string = stderr.read).present?
+        raise "'#{error_string}' в результате запуска '#{exec}'"
+      end
+
+      files = Dir.entries(tempdir) - ['.', '..']
+      files.each do |file|
+        remote_file = File.new(tempdir + "/" + file)
+        remote_file.instance_eval("
+          def original_filename()
+              \"#{File.basename(@supplier_price.original_filename) + " - " + File.basename(remote_file.path)}.csv\"
+          end
+
+          def content_type()
+            mime = `file --mime -br #{remote_file.path.shellescape.shellescape}`.strip
+            mime = mime.gsub(/^.*: */,\"\")
+            mime = mime.gsub(/;.*$/,\"\")
+            mime = mime.gsub(/,.*$/,\"\")
+            mime
+          end
+        ")
+
+        md5 = Digest::MD5.file(remote_file.path).hexdigest
+        wc_stat = `wc #{remote_file.path.to_s.shellescape}`
+
+        attachment = SupplierPrice.new(:group_code => @group_code, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
+        attachment.supplier = @job.supplier
+        attachment.job_code = @job.title
+        attachment.job_id = @job.id
+        attachment.save
+
+        retval << attachment.id
+      end
+    end 
+    return retval
+  end
 
   def perform
-    #unpack_class = (@jobable.receiveable.type.to_s.split(/Receive/).first + "Receiver").classify.constantize
-    #receiver = receiver_class.new(@job, @jobable, @jobable.receiveable, opt)
-    #self.optional = receiver.receive
 
-    
-    group_code = 'c' + @optional.to_s + Time.now.to_s
-
+    @group_code = 'c' + @optional.to_s + Time.now.to_s
     retval = Array.new()
+
     @optional.each do |opt|
 
-      supplier_price = SupplierPrice.find(opt).attachment
+      @supplier_price = SupplierPrice.find(opt).attachment
 
-      #puts @jobable.convert_method
       case @jobable.convert_method.to_s
         when /_csv_encode_/
           raise 'Obsolete'
-=begin          
-          remote_file = RemoteFile.new(supplier_price.path)
-
-          encode(@jobable.encoding_in, @jobable.encoding_out, supplier_price.path.shellescape, remote_file.path.shellescape)
-
-
-          md5 = Digest::MD5.file(remote_file.path).hexdigest
-          wc_stat = `wc #{remote_file.path.to_s.shellescape}`
-
-          remote_file.original_filename = File.basename(supplier_price.original_filename)
-
-          attachment = SupplierPrice.new(:group_code => group_code, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
-          attachment.supplier = @job.supplier
-          attachment.job_code = @job.title
-          attachment.job_id = @job.id
-          attachment.save
-
-          retval << attachment.id
-
-          remote_file.unlink
-=end       
         when /_arbitrary_console_/
-          remote_file = RemoteFile.new(File.basename(supplier_price.original_filename))
+          remote_file = RemoteFile.new(File.basename(@supplier_price.original_filename))
           exec = @jobable.exec_string.dup
-          exec["[in_file]"] = supplier_price.path.shellescape
+          exec["[in_file]"] = @supplier_price.path.shellescape
           exec["[out_file]"] = remote_file.path.shellescape
           stdin, stdout, stderr = Open3.popen3(exec)
           if (error_string = stderr.read).present?
@@ -52,9 +66,9 @@ class ConvertJobable < AbstractJobber
           wc_stat = `wc #{remote_file.path.to_s.shellescape}`
           head_stat = `head #{remote_file.path.to_s.shellescape}`
 
-          remote_file.original_filename = File.basename(supplier_price.original_filename)
+          remote_file.original_filename = File.basename(@supplier_price.original_filename)
 
-          attachment = SupplierPrice.new(:group_code => group_code, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
+          attachment = SupplierPrice.new(:group_code => @group_code, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
           attachment.supplier = @job.supplier
           attachment.job_code = @job.title
           attachment.job_id = @job.id
@@ -65,135 +79,18 @@ class ConvertJobable < AbstractJobber
           remote_file.unlink
 
         when /csv_normalize_new_line/
-        raise 'Obsolete'          
-=begin          
-          #puts supplier_price.original_filename
-          remote_file = RemoteFile.new(supplier_price.path)
-
-          file = File.new(supplier_price.path, 'r')
-          file.each_line("\n") do |row|
-            #row.gsub!("\"", "")
-            row.gsub!("\r", "")
-            row.gsub!("\n", "")
-            unless row.empty?
-                #remote_file.write(row.split(eval("\"#{@jobable.col_sep.to_s}\"")).collect(&:strip).to_csv )
-                remote_file.write(row+"\r\n")
-            else
-              next
-            end
-          end
-
-          remote_file.flush
-
-          md5 = Digest::MD5.file(remote_file.path).hexdigest
-          wc_stat = `wc #{remote_file.path.to_s.shellescape}`
-
-          remote_file.original_filename = File.basename(supplier_price.original_filename)
-
-          attachment = SupplierPrice.new(:group_code => group_code, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
-          attachment.supplier = @job.supplier
-          attachment.job_code = @job.title
-          attachment.job_id = @job.id
-          attachment.save
-
-          retval << attachment.id
-          remote_file.unlink
-=end        
+          raise 'Obsolete'          
         when /python_xls2csv/
-          Dir.mktmpdir do |tempdir|
-            exec = "#{Rails.root}/system/external_tools/pyExcelerator_xls2csv.py -t #{tempdir} -e #{@jobable.encoding_out} -i #{supplier_price.path.shellescape}"
-            stdin, stdout, stderr = Open3.popen3(exec)
-            if (error_string = stderr.read).present?
-              raise "'#{error_string}' в результате запуска '#{exec}'"
-            end
-            #`#{exec}`
-            #unless $?.success?
-            #  raise "Error during execution of #{exec}"
-            #end
-
-            files = Dir.entries(tempdir) - ['.', '..']
-
-            files.each do |file|
-
-              remote_file = File.new(tempdir + "/" + file)
-
-              remote_file.instance_eval("
-                def original_filename()
-                    \"#{File.basename(supplier_price.original_filename) + " - " + File.basename(remote_file.path)}.csv\"
-                end
-
-                def content_type()
-                  mime = `file --mime -br #{remote_file.path.shellescape.shellescape}`.strip
-                  mime = mime.gsub(/^.*: */,\"\")
-                  mime = mime.gsub(/;.*$/,\"\")
-                  mime = mime.gsub(/,.*$/,\"\")
-                  mime
-                end
-              ")
-
-              md5 = Digest::MD5.file(remote_file.path).hexdigest
-              wc_stat = `wc #{remote_file.path.to_s.shellescape}`
-
-              attachment = SupplierPrice.new(:group_code => group_code, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
-              attachment.supplier = @job.supplier
-              attachment.job_code = @job.title
-              attachment.job_id = @job.id
-              attachment.save
-
-              retval << attachment.id
-            end
-          end 
+          retval = python_excel("#{Rails.root}/system/external_tools/pyExcelerator_xls2csv.py -e #{@jobable.encoding_out} -i #{@supplier_price.path.shellescape}")
         when /dilshod_temirkhodjaev_xlsx2csv/
-          Dir.mktmpdir do |tempdir|
-            exec = "#{Rails.root}/system/external_tools/dilshod_temirkhodjaev_xlsx2csv.py -t #{tempdir} #{supplier_price.path.shellescape}"
-            stdin, stdout, stderr = Open3.popen3(exec)
-            if (error_string = stderr.read).present?
-              raise "'#{error_string}' в результате запуска '#{exec}'"
-            end
-            #`#{exec}`
-            #unless $?.success?
-            #  raise "Error during execution of #{exec}"
-            #end
-
-            files = Dir.entries(tempdir) - ['.', '..']
-
-            files.each do |file|
-
-              remote_file = File.new(tempdir + "/" + file)
-
-              remote_file.instance_eval("
-                def original_filename()
-                    \"#{File.basename(supplier_price.original_filename) + " - " + File.basename(remote_file.path)}.csv\"
-                end
-
-                def content_type()
-                  mime = `file --mime -br #{remote_file.path.shellescape.shellescape}`.strip
-                  mime = mime.gsub(/^.*: */,\"\")
-                  mime = mime.gsub(/;.*$/,\"\")
-                  mime = mime.gsub(/,.*$/,\"\")
-                  mime
-                end
-              ")
-
-              md5 = Digest::MD5.file(remote_file.path).hexdigest
-              wc_stat = `wc #{remote_file.path.to_s.shellescape}`
-
-              attachment = SupplierPrice.new(:group_code => group_code, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
-              attachment.supplier = @job.supplier
-              attachment.job_code = @job.title
-              attachment.job_id = @job.id
-              attachment.save
-
-              retval << attachment.id
-            end
-          end 
+          retval = python_excel("#{Rails.root}/system/external_tools/dilshod_temirkhodjaev_xlsx2csv.py #{@supplier_price.path.shellescape}")
         when /xls_roo/
           if(@jobable.encoding_out).present? && @jobable.encoding_out.to_s != 'AUTO'
             Spreadsheet.client_encoding = @jobable.encoding_out.to_s
           end
 
           begin
-            s = Excel.new(supplier_price.path)
+            s = Excel.new(@supplier_price.path)
           rescue => e
             raise e.to_s + "in file #{opt.to_s}"
           end
@@ -209,9 +106,9 @@ class ConvertJobable < AbstractJobber
             md5 = Digest::MD5.file(remote_file.path).hexdigest
             wc_stat = `wc #{remote_file.path.to_s.shellescape}`
 
-            remote_file.original_filename = File.basename(supplier_price.original_filename) + " - " + sheet + ".csv"
+            remote_file.original_filename = File.basename(@supplier_price.original_filename) + " - " + sheet + ".csv"
 
-            attachment = SupplierPrice.new(:group_code => group_code, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
+            attachment = SupplierPrice.new(:group_code => @group_code, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
             attachment.supplier = @job.supplier
             attachment.job_code = @job.title
             attachment.job_id = @job.id
@@ -223,39 +120,18 @@ class ConvertJobable < AbstractJobber
           end
         when /xls_console/
           raise 'Obsolete'
-
-=begin          
-          remote_file = RemoteFile.new(supplier_price.path)
-
-          `xls2csv -q3 #{supplier_price.path.shellescape} > #{remote_file.path.shellescape}`
-          md5 = Digest::MD5.file(remote_file.path).hexdigest
-          wc_stat = `wc #{remote_file.path.to_s.shellescape}`
-
-          remote_file.original_filename = File.basename(remote_file.original_filename, File.extname(remote_file.original_filename))
-
-          attachment = SupplierPrice.new(:group_code => group_code, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
-          attachment.supplier = @job.supplier
-          attachment.job_code = @job.title
-          attachment.job_id = @job.id
-          attachment.save
-
-          retval << attachment.id
-
-          remote_file.unlink
-=end
-
         when /mdb_console/
 
-          a = `mdb-tables #{supplier_price.path.shellescape}`
+          a = `mdb-tables #{@supplier_price.path.shellescape}`
 
           a.split(' ').each do |table|
             remote_file = RemoteFile.new(table)
-            `mdb-export #{supplier_price.path.shellescape} #{table.shellescape} > #{remote_file.path.shellescape}`
-            remote_file.original_filename = File.basename(supplier_price.original_filename) + " - " + table + ".csv"
+            `mdb-export #{@supplier_price.path.shellescape} #{table.shellescape} > #{remote_file.path.shellescape}`
+            remote_file.original_filename = File.basename(@supplier_price.original_filename) + " - " + table + ".csv"
             md5 = Digest::MD5.file(remote_file.path).hexdigest
             wc_stat = `wc #{remote_file.path.to_s.shellescape}`
 
-            attachment = SupplierPrice.new(:group_code => group_code, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
+            attachment = SupplierPrice.new(:group_code => @group_code, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
             attachment.supplier = @job.supplier
             attachment.job_code = @job.title
             attachment.job_id = @job.id
@@ -275,24 +151,4 @@ class ConvertJobable < AbstractJobber
 
   end
 
-=begin
-
-  private
-
-  def encode(encoding_in, encoding_out,  source, destination)
-
-    if encoding_in.present?
-      encoding_in = "-f #{encoding_in}"
-    end
-
-    if encoding_out.present?
-      encoding_out = "-t #{encoding_out}//IGNORE"
-    end
-
-    `iconv #{encoding_in} #{encoding_out} #{source} > #{destination}`
-    if $?.to_i != 0
-      raise 'Ошибка перекодирования в iconv вероятно входная кодировка выставлена неверно, id задачи ' + @job.id.to_s + "\r\niconv #{encoding_in} #{encoding_out} #{source} > #{destination}"
-    end
-  end
-=end  
 end

@@ -217,7 +217,6 @@ class ImportJobable < AbstractJobber
       case @jobable.import_method.to_s
         when /_B_/
 
-          debugger
           # Удаляем либо по id задачи, либо по объединяющему коду
           if @jobable.job_code.present?
             all_prices_costs do |l|
