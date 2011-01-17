@@ -37,7 +37,7 @@ for sheet_name, values in parse_xls(arg, str(encoding)): # parse_xls(arg) -- def
         #pdb.set_trace()
         v = values[(row_idx, col_idx)]
         #pdb.set_trace()
-        if isinstance(v, unicode):
+        if isinstance(v, unicode) or isinstance(v, str):
             v = v.encode(str(encoding), 'backslashreplace')
             v = '%s' % v.strip()
         elif isinstance(v, float):
