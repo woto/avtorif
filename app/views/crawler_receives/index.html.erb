@@ -1,0 +1,24 @@
+<h1>Listing crawler_receives</h1>
+
+<table>
+  <tr>
+    <th>Instructions</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @crawler_receives.each do |crawler_receive| %>
+  <tr>
+    <td><%= crawler_receive.instructions %></td>
+    <td><%= link_to 'Start', start_crawler_receive_path(crawler_receive) %></td>
+    <td><%= link_to 'Show', crawler_receive %></td>
+    <td><%= link_to 'Edit', edit_crawler_receive_path(crawler_receive) %></td>
+    <td><%= link_to 'Destroy', crawler_receive, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Crawler receive', new_crawler_receive_path %>

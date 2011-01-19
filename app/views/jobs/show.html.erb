@@ -108,6 +108,10 @@ scope = scope.scoped :conditions => {:supplier_id => params['supplier_id']} if p
 <div style="background: #FFD">
   <% if @job.jobable.class == ImportJob %>
     
+    <%= link_to 'Очистить прайсы-цены и временную', clean_supplier_job_path(params[:supplier_id], @job) %>
+
+    <br /><br />
+
     <% xm = Builder::XmlMarkup.new
     xm.table {
       header = ActiveRecord::Base.connection.execute("DESCRIBE prices_#{@job.id}", {:as => :hash}).map{|line| line[0]}

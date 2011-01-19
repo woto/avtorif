@@ -5,12 +5,12 @@ class FtpReceiver < AbstractReceiver
     Timeout.timeout(AppConfig.ftp_timeout) do
 
       ftp = Net::FTP.new
-      #ftp.debug_mode = false
+      ftp.debug_mode = false
       ftp.connect(@receiver.server, @receiver.port)
       ftp.passive = true
       ftp.login(@receiver.login, @receiver.password)
-      ftp.chdir(@receiver.path)
-
+      ftp.chdir(Iconv.iconv('CP1251', 'UTF-8', @receiver.path).join)
+      
       files = ftp.nlst
       #TODO сделать каким-то образом проверку на eval
       

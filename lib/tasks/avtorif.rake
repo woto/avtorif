@@ -39,21 +39,17 @@ namespace :avtorif do
     ActiveRecord::Base.connection.execute(sql)
   end
 
-  desc "Удалить основное хранилище прайсов prices_costs_00 .. prices_costs_ff"
+  desc "Создать основное хранилище хранения прайсов prices_costs_00 .. prices_costs_ff"
   task :create_prices_costs => :environment do
-    alpha_numerics = ('0'..'9').to_a + ('a'..'f').to_a
-    alpha_numerics.product(alpha_numerics).map{ |doublet| doublet.join ''}.each do |l|
+    CommonModule::all_prices_costs do |l|
       sql = "CREATE TABLE prices_costs_#{l} like prices"
       ActiveRecord::Base.connection.execute(sql)
-      #sql = "ALTER TABLE prices_#{l} ADD INDEX job_code_IDX on (supplier_id, job_code)"
-      #ActiveRecord::Base.connection.execute(sql)
     end
   end
   
-  desc "Создать основное хранилище хранения прайсов prices_costs_00 .. prices_costs_ff"
+  desc "Удалить основное хранилище прайсов prices_costs_00 .. prices_costs_ff"
   task :drop_prices_costs => :environment do
-    alpha_numerics = ('0'..'9').to_a + ('a'..'f').to_a
-    alpha_numerics.product(alpha_numerics).map{ |doublet| doublet.join ''}.each do |l|
+    CommonModule::all_prices_costs do |l|
       sql = "DROP TABLE prices_costs_#{l}"
       ActiveRecord::Base.connection.execute(sql)
     end
@@ -75,6 +71,7 @@ namespace :avtorif do
             begin
               supplier_price.destroy
             rescue => e
+              #SupplierPrice.delete(supplier_price.id)
               puts e
             end
           end
@@ -83,6 +80,7 @@ namespace :avtorif do
     end
   end
 
+  desc 'Выгрузить прайсы (файлы) в samba'
   task :prices_archive => :environment do
 
     def safe_name(file_name)

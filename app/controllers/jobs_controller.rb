@@ -137,4 +137,17 @@ class JobsController < ApplicationController
     redirect_to(suppliers_path)
   end
 
+  def clean
+
+     query = "TRUNCATE prices_#{params[:id]}"
+     ActiveRecord::Base.connection.execute(query)
+
+     CommonModule::all_prices_costs do |l|
+       query = "DELETE FROM prices_costs_#{l} WHERE job_id = #{params[:id]}"
+       ActiveRecord::Base.connection.execute(query)
+     end
+    
+     redirect_to(supplier_job_path(params[:supplier_id], params[:id]))
+  end
+
 end

@@ -81,3 +81,4 @@ gem 'devise'
 
 #gem 'newrelic_rpm'
 #gem 'rails-footnotes', :git => 'git://github.com/indirect/rails-footnotes.git'
+gem 'mechanize', :git => 'git@github.com:woto/mechanize.git'

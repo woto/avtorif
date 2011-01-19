@@ -1,0 +1,2 @@
+module CrawlerReceivesHelper
+end

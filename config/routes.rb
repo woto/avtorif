@@ -1,6 +1,5 @@
 Avtorif::Application.routes.draw do
   
-
   match 'uri_decoder' => "uri_decoder#index" 
 
   resources :discount_groups do
@@ -26,7 +25,11 @@ Avtorif::Application.routes.draw do
   resources :mies
   resources :repeats
   resources :repeats_jobs
-  resources :http_crawlers
+  resources :crawler_receives do
+    member do
+      get 'start'
+    end
+  end
   match '/start_all_jobs/' => 'jobs#start_all', :as => :start_all_jobs
   match '/display_jobs/' => 'jobs#display_jobs', :as => :display_jobs
   resources :delayed_jobs
@@ -40,6 +43,7 @@ Avtorif::Application.routes.draw do
     resources :jobs do
       member do
         get 'start'
+        get 'clean'
       end
       collection do
         get 'start_all'
@@ -57,6 +61,7 @@ Avtorif::Application.routes.draw do
       resources :ftp_receives
       resources :smb_receives
       resources :http_receives
+      resources :crawler_receives
     end
   end
 

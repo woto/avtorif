@@ -1,0 +1,30 @@
+<%
+   case params[:action]
+       when 'new' 
+        url = supplier_job_crawler_receives_path(params[:supplier_id], params[:job_id])
+       when 'edit'
+        url = supplier_job_crawler_receive_path(params[:supplier_id], params[:job_id], params[:id])
+   end
+%>
+
+<% semantic_form_for(@crawler_receive, :url => url) do |f| %>
+  <% if @crawler_receive.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@crawler_receive.errors.count, "error") %> prohibited this crawler_receive from being saved:</h2>
+
+      <ul>
+      <% @crawler_receive.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :instructions %><br />
+    <%= f.text_area :instructions %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

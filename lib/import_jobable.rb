@@ -2,7 +2,44 @@ require 'digest/md5'
 
 class ImportJobable < AbstractJobber
 
-  def all_prices_costs
+  def update_prices_costs
+
+    if @jobable.job_code.present?
+      CommonModule::all_prices_costs do |l|
+        query = "
+        UPDATE prices_#{@job.id} p 
+          JOIN prices_costs_#{l} pc 
+            ON  p.job_code = pc.job_code 
+              AND p.catalog_number = pc.catalog_number 
+              AND p.manufacturer_orig = pc.manufacturer_orig
+          SET 
+            p.processed = 1, 
+            pc.price_cost = p.price_cost,
+            pc.count = p.count
+        WHERE p.doublet = '#{l}'"
+        Price.connection.execute(query)
+      end
+
+    end
+  end
+
+  def move_to_prices_costs processed_condition = false
+    additional = ""
+    if processed_condition
+      additional = " AND processed != 1"
+    end
+
+    CommonModule::all_prices_costs do |l|
+      query = "INSERT INTO prices_costs_#{l} (job_id, title, count, price_cost, manufacturer, manufacturer_orig, catalog_number, title_en, unit_package, description, min_order, applicability, country, external_id, unit, multiply_factor, parts_group, job_code, supplier_id, doublet) SELECT job_id, title, count, price_cost, manufacturer, manufacturer_orig, catalog_number, title_en, unit_package, description, min_order, applicability, country, external_id, unit, multiply_factor, parts_group, job_code, supplier_id, doublet FROM prices_#{@job.id} WHERE doublet = '#{l}' #{additional}"
+      Price.connection.execute(query)
+
+      query = "UPDATE prices_#{@job.id} SET processed = 1 WHERE doublet = '#{l}'"
+      Price.connection.execute(query)
+
+    end
+  end
+
+  def CommonModule::all_prices_costs
     alpha_numerics = ('0'..'9').to_a + ('a'..'f').to_a
     alpha_numerics.product(alpha_numerics).map{ |doublet| doublet.join ''}.each do |l|
       yield l
@@ -191,11 +228,6 @@ class ImportJobable < AbstractJobber
 
     add_doublet_idx
     
-    all_prices_costs do |l|
-      query = "INSERT INTO prices_costs_#{l} (job_id, title, count, price_cost, manufacturer, manufacturer_orig, catalog_number, title_en, unit_package, description, min_order, applicability, country, external_id, unit, multiply_factor, parts_group, job_code, supplier_id, doublet) SELECT job_id, title, count, price_cost, manufacturer, manufacturer_orig, catalog_number, title_en, unit_package, description, min_order, applicability, country, external_id, unit, multiply_factor, parts_group, job_code, supplier_id, doublet FROM prices_#{@job.id} WHERE doublet = '#{l}'"
-      Price.connection.execute(query)
-    end
-
   end
 
   def prepare_insertion_table
@@ -215,30 +247,46 @@ class ImportJobable < AbstractJobber
     #  self.optional = importer.import
     #end
       case @jobable.import_method.to_s
+
         when /_B_/
 
           # Удаляем либо по id задачи, либо по объединяющему коду
           if @jobable.job_code.present?
-            all_prices_costs do |l|
+            CommonModule::all_prices_costs do |l|
               query = "DELETE FROM prices_costs_#{l} WHERE job_code = '#{@jobable.job_code}'"
               Price.connection.execute(query)
             end
           else
-            all_prices_costs do |l|
+            CommonModule::all_prices_costs do |l|
               query = "DELETE FROM prices_costs_#{l} WHERE job_id = #{@job.id}"
               Price.connection.execute(query)
             end
           end
           
-          # Вставляем новоиспеченные записи
+          # Вставляем все записи, которые имеются в прайсе в временную таблицу
           make_insertion
 
+          # Переносим все записи в таблицу прайсов - цен
+          move_to_prices_costs
+
         when /_I_/
-          # Вставляем
+
           make_insertion
+          move_to_prices_costs
+
         when /_U_/
+
+          make_insertion
+          # Обновляем цены в таблице прайсы - цены на тех записях, которые имеются в только что вставленной таблице
+          # и обновляем статус у связанных записей, что они обработаны.
+          update_prices_costs
+
+          # Вставляем записи, которые не обработаны предыдущей процедурой
+          move_to_prices_costs true
+
         when /_U0_/
-         
+          make_insertion
+          update_prices_costs
       end
 
     super

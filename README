@@ -43,3 +43,88 @@ au-auto.ru
 Рейтинги
 	http://top.mail.ru/Rating/Cars-Spare/Today/Visitors/1.html#1
 	http://www.liveinternet.ru/rating/ru/auto/index.html
+
+
+
+ПАУКИ
+#  require 'rubygems'
+#  require '~/.bundler/ruby/1.8/mechanize-fd28194/lib/mechanize'
+#  require 'ruby-debug'
+#eval "
+
+  agent = Mechanize.new
+  login_page = agent.get('http://www.fe-best.ru/index.php?r=site/login')
+  #a = login_page.form_with(:name => 'form1') do |form|
+  a = login_page.forms.first
+  a["LoginForm[username]"] = "aan203"
+  a["LoginForm[password]"] = "4215495"
+  res = a.submit
+  #download_price_page = agent.get('http://www.fe-best.ru/index.php?r=site/products')
+  #a = download_price_page.form_with(:name => 'dwn_form')
+  #a["action"] = "http://www.fe-best.ru/index.php?r=site/products"
+  #a["dwn"] = "1"
+  #a["dwn_btn"] = "Скачать весь каталог"
+
+  #debugger
+  res = agent.post("http://www.fe-best.ru/index.php?r=site/products", {"dwn" => "1", "dwn_btn" => "Скачать весь каталог"})
+
+  res.save_as(Rails.root + res.filename)
+  #debugger
+  #puts res
+
+--------------
+
+
+agent = Mechanize.new
+page = agent.get('http://www.berg.ru/docs/pricelist/')
+page.search('html body div#wrap div#main div.catalog-sections-top ul.doc li table a').each do |l|
+    file = agent.get(l.attributes['href'].value)
+    file.save_as(l.children[0].to_str)
+end
+
+
+
+------------
+
+
+agent = Mechanize.new
+page = agent.get('http://auto-parts-opt.ru/')
+page.search('html body#color1 table tr td table tr td table tr td.body ul li').each do |l|
+    begin
+            file = agent.get(URI::encode(l.children[1].attributes['href'].value))
+        file.save_as(l.children[1].children.text)
+    rescue => e
+        next
+    end
+end
+
+
+
+------------
+
+
+agent = Mechanize.new 
+page = agent.get('http://auto-parts-opt.ru/') 
+group_code = 'r' + Time.now.to_s 
+retval = Array.new() 
+page.search('html body#color1 table tr td table tr td table tr td.body ul li').each do |l| 
+  if(l.children[1].children.text =~ Regexp.new(eval(@job.file_mask))) 
+    remote_file = RemoteFile.new(l.children[1].children.text.gsub(/[\+,\."]/,'')) 
+    file = agent.get(URI::encode(l.children[1].attributes['href'].value)) 
+    file.save_as(remote_file.path) 
+    remote_file.flush 
+    #l.children[1].children.text 
+    md5 = Digest::MD5.file(remote_file.path).hexdigest 
+    wc_stat = `wc #{remote_file.path.to_s.shellescape}` 
+    if (@optional.present? && @optional[:force]) || SupplierPrice.find(:first, :conditions => ['md5 = ? AND supplier_id = ?', md5, @job.supplier.id]).nil?
+      attachment = SupplierPrice.new(:group_code => group_code, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat) 
+      attachment.supplier = @job.supplier
+      attachment.job_code = @job.title
+      attachment.job_id = @job.id 
+      attachment.save 
+      retval << attachment.id 
+    end 
+    remote_file.unlink 
+  end
+end
+return retval

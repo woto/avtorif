@@ -62,7 +62,7 @@ class ImportJobsController < ApplicationController
   # PUT /import_jobs/1.xml
   def update
     @import_job = ImportJob.find(params[:id])
-
+    
     respond_to do |format|
       if @import_job.update_attributes(params[:import_job])
         format.html { redirect_to(supplier_jobs_path(params[:supplier_id]), :notice => 'ImportJob was successfully updated.') }
