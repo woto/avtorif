@@ -26,7 +26,7 @@ namespace :avtorif do
   end 
   
   task :drop_prices => :environment do
-    connection = "mysql -u root -D avtorif_development"
+    #connection = "mysql -u root -D avtorif_development"
     #sql = "#{connection} -BNe \"show tables like 'prices_%'\" | awk '{print \"drop table `\" $1 \"`;\"}' | #{connection}"
     #sh sql
     ActiveRecord::Base.connection.execute("TRUNCATE prices")

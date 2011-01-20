@@ -7,6 +7,31 @@
   }
 </style>
 
+<script>
+  $(document).ready(function() {
+    $(".handler, .last_error").each(function(){
+      $(this).data('long', $(this).text());
+      $(this).data('short', $(this).text().slice(0, 20));
+      $(this).text($(this).text($(this).data('short')));
+      $(this).click(function(){
+        if($(this).data('version') == 1)
+        {
+          $(this).data('version', 0);
+          $(this).text($(this).data('short'))
+        }
+        else
+        {
+          $(this).data('version', 1);
+          $(this).text($(this).data('long'))
+        }
+      })
+
+    })    
+    //  $("p").toggle();
+    //});
+  });
+</script>
+
 <% if @delayed_jobs.size > 0 %>
     
     <%= will_paginate @delayed_jobs %>
@@ -82,8 +107,8 @@
         
         <td><%= delayed_job.priority %></td>
         <td><%= delayed_job.attempts %></td>
-        <td><%= delayed_job.handler %></td>
-        <td><%= delayed_job.last_error %></td>
+        <td class="handler"><%= delayed_job.handler %></td>
+        <td class="last_error"><%= delayed_job.last_error %></td>
         <td><%= delayed_job.run_at %></td>
         <td><%= delayed_job.locked_at %></td>
         <td><%= delayed_job.failed_at %></td>

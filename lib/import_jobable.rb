@@ -137,7 +137,12 @@ class ImportJobable < AbstractJobber
         manufacturer_synonyms_ar = ManufacturerSynonym.includes(:manufacturer).select('manufacturers.id, manufacturers.title, manufacturer_synonyms.title')
         manufacturer_synonyms_hs = Hash.new
         manufacturer_synonyms_ar.each do |ms|
-          manufacturer_synonyms_hs[ms.title.to_s.dup.to_s] = ms.manufacturer.title.to_s.mb_chars.strip.upcase.to_s
+          begin
+            manufacturer_synonyms_hs[ms.title.to_s.dup.to_s] = ms.manufacturer.title.to_s.mb_chars.strip.upcase.to_s
+          rescue
+            debugger
+            puts '1'
+          end
         end
         manufacturer_synonyms_ar = nil
       used_in_this_price = Hash.new
