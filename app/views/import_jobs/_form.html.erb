@@ -3,11 +3,24 @@
     padding: 5px 0;
     margin: 5px 0;
   }
+
+  #replacement {
+    background: #494;
+  }
+
+  #replacement_array {
+    background: #A9D;
+  }
+
+  #new_number {
+    background: #947;
+  }
+
   #weight {
     background: #89A;
   }
 
-  #manufacturer {
+  #parts_info {
     background: #AAD;
   }
 
@@ -30,6 +43,10 @@
   #price {
     background: #6D9;
   }
+
+  #delivery_days {
+    background: #8CA;
+  }
 </style>
 <%= f.error_messages %>
 <br />
@@ -45,7 +62,6 @@
 <br />
 
   <%= f.inputs :currency_buy %>
-  <%= f.inputs :currency_sell %>
 
   <div id="presence">
     <%= f.input :presence %>
@@ -67,9 +83,15 @@
     Видим для магазинов
   </div>
 
-  <%= f.input :delivery_days_declared %>
-  Заявленное количество дней
-  <hr />
+  <div id="delivery_days">
+    <%= f.input :delivery_days_declared %>
+    Заявленное количество дней
+    <hr />
+
+    <%= f.input :delivery_days_declared_colnum %>
+    Колонка: Заявленное количество дней
+  </div>
+
   <%= f.input :country, :as => :string %>
     Местонахождение поставщика (город, округ, область)
   <hr />
@@ -80,16 +102,18 @@
     Полезная информация для покупателей о заказе (отсутствие возвратов и т.д.)
   <hr />
 
-  <div id="manufacturer">
+  <div id="parts_info">
+    <%= f.input :catalog_number_colnum %>
+    Каталожный номер детали
+    <hr />
+
     <%= f.input :manufacturer_colnum %>
     Колонка: Производитель
     <hr />
+
     <%= f.input :default_manufacturer %>
     Для всех. Производитель по-умолчанию. Например TOYOTA, TY, toyota
   </div>
-  <%= f.input :catalog_number_colnum %>
-  Каталожный номер детали
-  <hr />
 
   <div id="title">
     <%= f.input :title_colnum %>
@@ -162,45 +186,111 @@
    <%= f.input :weight_unavaliable_rate %>
   </div>
 
-  <div id="info">
+  <div id="new_number">
     <%= f.input :new_catalog_number_colnum %>
     Колонка: Новый каталожный номер
+  </div>
+
+
+  <div id="replacement_array">
+    <%= f.input :ar_colnum %>
+    Колонка: Список замен/аналогов через разделитель
     <hr />
+
+    <%= f.input :arm_colnum %>
+    Колонка: Производитель для списка замен/аналогов
+    <hr />
+
+    <%= f.input :ardm %>
+    Производитель по-умолчанию для списка замен/аналогов
+    <hr />
+
+    <%= f.input :ar_delimiter %>
+    Символ разделителя для списка замен/аналогов
+  </div>
+
+  <div id="replacement">
 
     <%= f.input :r1_colnum %>
     Колонка: Замена 1
+    <%= f.input :rm1_colnum %>
+    Колонка: Производитель 1
+    <%= f.input :rdm1 %>
+    Производитель 1 по-умолчанию
     <hr />
+
 
     <%= f.input :r2_colnum %>
     Колонка: Замена 2
+    <%= f.input :rm2_colnum %>
+    Колонка: Производитель 2
+    <%= f.input :rdm2 %>
+    Производитель 2 по-умолчанию
     <hr />
 
     <%= f.input :r3_colnum %>
     Колонка: Замена 3
+    <%= f.input :rm3_colnum %>
+    Колонка: Производитель 3
+    <%= f.input :rdm3 %>
+    Производитель 3 по-умолчанию
     <hr />
 
     <%= f.input :r4_colnum %>
     Колонка: Замена 4
+    <%= f.input :rm4_colnum %>
+    Колонка: Производитель 4
+    <%= f.input :rdm4 %>
+    Производитель 4 по-умолчанию
     <hr />
 
     <%= f.input :r5_colnum %>
     Колонка: Замена 5
+    <%= f.input :rm5_colnum %>
+    Колонка: Производитель 5
+    <%= f.input :rdm5 %>
+    Производитель 5 по-умолчанию
     <hr />
 
     <%= f.input :r6_colnum %>
     Колонка: Замена 6
+    <%= f.input :rm6_colnum %>
+    Колонка: Производитель 6
+    <%= f.input :rdm6 %>
+    Производитель 6 по-умолчанию
     <hr />
 
     <%= f.input :r7_colnum %>
     Колонка: Замена 7
+    <%= f.input :rm7_colnum %>
+    Колонка: Производитель 7
+    <%= f.input :rdm7 %>
+    Производитель 7 по-умолчанию
     <hr />
 
     <%= f.input :r8_colnum %>
     Колонка: Замена 8
+    <%= f.input :rm8_colnum %>
+    Колонка: Производитель 8
+    <%= f.input :rdm8 %>
+    Производитель 8 по-умолчанию
     <hr />
 
     <%= f.input :r9_colnum %>
     Колонка: Замена 9
+    <%= f.input :rm9_colnum %>
+    Колонка: Производитель 9
+    <%= f.input :rdm9 %>
+    Производитель 9 по-умолчанию
     <hr />
+
+    <%= f.input :r0_colnum %>
+    Колонка: Замена 0
+    <%= f.input :rm0_colnum %>
+    Колонка: Производитель 0
+    <%= f.input :rdm0 %>
+    Производитель 0 по-умолчанию
+
   </div>
+
 <%= f.submit 'Update' %>
