@@ -10,7 +10,6 @@ class HttpReceiver < AbstractReceiver
       http.read_timeout=AppConfig.http_timeout
       http.open_timeout=AppConfig.http_timeout
 
-
       if(@receiver.ssl)
         http.use_ssl = true
         http.verify_mode = OpenSSL::SSL::VERIFY_NONE
@@ -19,7 +18,7 @@ class HttpReceiver < AbstractReceiver
       get_string = @receiver.path + eval(@job.file_mask)
 
       if(@receiver.encoding.present?)
-        get_string = URI::encode(Iconv.iconv('UTF-8', @receiver.encoding.to_s, get_string).join)
+        get_string = URI::encode(Iconv.iconv(@receiver.encoding.to_s, 'UTF-8', get_string).join)
       end
 
       request = Net::HTTP::Get.new(get_string)

@@ -50,7 +50,7 @@ class SupplierPricesController < ApplicationController
 
     job = Job.find(params[:job_id])
     
-    unless params[:supplier_price][:attachment].original_filename =~ Regexp.new(eval(job.file_mask))
+    if !params[:force] && !(params[:supplier_price][:attachment].original_filename =~ Regexp.new(eval(job.file_mask)))
       redirect_to(supplier_job_path(params[:supplier_id], params[:job_id]), :notice => 'Имя файла не подходит под регулярное выражение задачи')
       return
     end

@@ -32,7 +32,11 @@ Avtorif::Application.routes.draw do
   end
   match '/start_all_jobs/' => 'jobs#start_all', :as => :start_all_jobs
   match '/display_jobs/' => 'jobs#display_jobs', :as => :display_jobs
-  resources :delayed_jobs
+  resources :delayed_jobs do
+    get 'clean', :on => :collection
+    get 'renice', :on => :member
+    get 'unlock', :on => :member
+  end
   resources :suppliers do
     resources :supplier_prices do
       collection do

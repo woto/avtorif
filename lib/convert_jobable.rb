@@ -50,8 +50,6 @@ class ConvertJobable < AbstractJobber
       @supplier_price = SupplierPrice.find(opt).attachment
 
       case @jobable.convert_method.to_s
-        when /_csv_encode_/
-          raise 'Obsolete'
         when /_arbitrary_console_/
           remote_file = RemoteFile.new(File.basename(@supplier_price.original_filename))
           exec = @jobable.exec_string.dup
@@ -78,48 +76,12 @@ class ConvertJobable < AbstractJobber
 
           remote_file.unlink
 
-        when /csv_normalize_new_line/
-          raise 'Obsolete'          
-        when /python_xls2csv/
+        when /xlrd/
+          retval = python_excel("#{Rails.root}/system/external_tools/xlrd_xls2csv.py -e #{@jobable.encoding_out} -i #{@supplier_price.path.shellescape}")
+        when /pyExcelerator/
           retval = python_excel("#{Rails.root}/system/external_tools/pyExcelerator_xls2csv.py -e #{@jobable.encoding_out} -i #{@supplier_price.path.shellescape}")
         when /dilshod_temirkhodjaev_xlsx2csv/
           retval = python_excel("#{Rails.root}/system/external_tools/dilshod_temirkhodjaev_xlsx2csv.py #{@supplier_price.path.shellescape}")
-        when /xls_roo/
-          if(@jobable.encoding_out).present? && @jobable.encoding_out.to_s != 'AUTO'
-            Spreadsheet.client_encoding = @jobable.encoding_out.to_s
-          end
-
-          begin
-            s = Excel.new(@supplier_price.path)
-          rescue => e
-            raise e.to_s + "in file #{opt.to_s}"
-          end
-
-          if(@jobable.encoding_in).present? && @jobable.encoding_in.to_s != 'AUTO'
-            s.encoding = @jobable.encoding_in.to_s
-          end
-
-          s.sheets.each do |sheet|
-            remote_file = RemoteFile.new(sheet)
-            s.default_sheet = sheet
-            s.to_csv(remote_file.path)
-            md5 = Digest::MD5.file(remote_file.path).hexdigest
-            wc_stat = `wc #{remote_file.path.to_s.shellescape}`
-
-            remote_file.original_filename = File.basename(@supplier_price.original_filename) + " - " + sheet + ".csv"
-
-            attachment = SupplierPrice.new(:group_code => @group_code, :attachment => remote_file, :md5 => md5, :wc_stat => wc_stat)
-            attachment.supplier = @job.supplier
-            attachment.job_code = @job.title
-            attachment.job_id = @job.id
-            attachment.save
-
-            retval << attachment.id
-
-            remote_file.unlink
-          end
-        when /xls_console/
-          raise 'Obsolete'
         when /mdb_console/
 
           a = `mdb-tables #{@supplier_price.path.shellescape}`

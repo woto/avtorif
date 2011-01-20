@@ -78,9 +78,9 @@
         
         <td>
           <%= link_to 'Edit', edit_supplier_job_path(job.supplier, job) %> <br />
-          <%= link_to 'Destroy', supplier_job_path(job.supplier, job), :confirm => 'Are you sure?', :method => :delete %> <br />
-          <%= link_to 'Start', start_supplier_job_path(job.supplier, job) %><br />
-          <%= link_to 'Force Start', start_supplier_job_path(job.supplier, job, :force => true) %>
+          <%= link_to 'Destroy', supplier_job_path(job.supplier, job), :confirm => 'Are you sure?', :method => :delete, :remote => true %> <br />
+          <%= link_to 'Start', start_supplier_job_path(job.supplier, job), :remote => true %><br />
+          <%= link_to 'Force Start', start_supplier_job_path(job.supplier, job, :force => true), :remote => true %>
         </td>
       </tr>
     <% end %>

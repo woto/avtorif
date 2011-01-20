@@ -1,3 +1,5 @@
+<%= link_to "Clean Delayed Jobs", clean_delayed_jobs_path %><br />
+
 <style>
   #jobs .locked_at {
     background: #999;
@@ -103,7 +105,7 @@
         
         <td><%=h delayed_job.job.active %></td>
         <td><%= delayed_job.job.critical.html_safe %></td>
-        <td><%= delayed_job.job.last_error %></td>
+        <td class="last_error"><%= delayed_job.job.last_error %></td>
         
         <td><%= delayed_job.priority %></td>
         <td><%= delayed_job.attempts %></td>
@@ -117,8 +119,10 @@
         <td><%= delayed_job.updated_at %></td>
         
         <td>
+          <%= link_to 'Unlock', unlock_delayed_job_path(delayed_job), :remote => true %> <br />
+          <%= link_to 'Renice', renice_delayed_job_path(delayed_job), :remote => true %> <br />
           <%= link_to 'Edit', edit_delayed_job_path(delayed_job) %> <br />
-          <%= link_to 'Destroy', delayed_job, :confirm => 'Are you sure?', :method => :delete %> <br />
+          <%= link_to 'Destroy', delayed_job, :confirm => 'Are you sure?', :method => :delete, :remote => true %> <br />
         </td>
       </tr>
     <% end %>

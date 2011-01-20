@@ -33,12 +33,6 @@ namespace :avtorif do
     ActiveRecord::Base.connection.execute("TRUNCATE delayed_jobs")
   end
 
-  desc "Сбросить состояние DJ для мгновенного запуска"
-  task :renice_dj => :environment do
-    sql = "update delayed_jobs set run_at = 0, attempts = NULL, locked_by = NULL, locked_at = NULL"
-    ActiveRecord::Base.connection.execute(sql)
-  end
-
   desc "Создать основное хранилище хранения прайсов prices_costs_00 .. prices_costs_ff"
   task :create_prices_costs => :environment do
     CommonModule::all_prices_costs do |l|

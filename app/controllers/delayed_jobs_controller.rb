@@ -7,6 +7,37 @@ class DelayedJobsController < ApplicationController
     end
   end
 
+  def renice
+    job = DelayedJob.find(params[:id])
+    job.run_at = DateTime.now
+    job.attempts = 0
+    job.priority = job.priority - 1
+    job.save
+
+    respond_to do |format|
+      format.html { redirect_to delayed_jobs_path, :notice => "Статус задачи обновлен успешно (сброшены attempts, увеличен приоритет, время запуска установлено в 'сейчас')" }
+      format.js {render :text => "Заглушка"}
+    end
+
+  end
+
+  def unlock
+    job = DelayedJob.find(params[:id])
+    job.locked_by = nil
+    job.locked_at = nil
+    job.save
+
+    respond_to do |format|
+      format.html { redirect_to delayed_jobs_path, :notice => "Сброс состояния (locked_by и locked_at) задачи выполнен успешно" }
+      format.js {render :text => "Заглушка"}
+    end
+      end
+
+  def clean
+    DelayedJob.delete_all
+    redirect_to delayed_jobs_path
+  end
+
   def destroy
     @delayed_job = DelayedJob.find(params[:id])
     @delayed_job.destroy
@@ -14,6 +45,7 @@ class DelayedJobsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(delayed_jobs_path) }
       format.xml  { head :ok }
+      format.js { render :text => "Заглушка" }
     end
   end
 

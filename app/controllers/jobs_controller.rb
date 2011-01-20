@@ -102,8 +102,11 @@ class JobsController < ApplicationController
       JobWalker.new.start_job(@job, 50, optional)
       flash[:notice] = "Задача поставщика успешно поставлена в очередь"
     end
-
-    redirect_to(@job.parent.present? ? supplier_job_path(params[:supplier_id], @job.parent.id) : supplier_jobs_path(params[:supplier_id]))
+    
+    respond_to do |format|
+      format.html { redirect_to(@job.parent.present? ? supplier_job_path(params[:supplier_id], @job.parent.id) : supplier_jobs_path(params[:supplier_id])) }
+      format.js { render :text => "Заглушка" }
+    end
   end
 
   def start_all
@@ -112,7 +115,10 @@ class JobsController < ApplicationController
       JobWalker.new.start_job(job, 75, :force=>true)
     end
 
-    redirect_to(suppliers_path)
+    respond_to do |format|
+      format.html { redirect_to(suppliers_path) }
+      format.js { render :text => "Заглушка" }
+    end
   end
   
   def display_jobs
@@ -134,11 +140,13 @@ class JobsController < ApplicationController
       JobWalker.new.start_job(job, 50, :force=>true)
     end
 
-    redirect_to(suppliers_path)
+    respond_to do |format|
+      format.html { redirect_to(suppliers_path) }
+      format.js { render :text => "Заглушка" }
+    end
   end
 
   def clean
-
      query = "TRUNCATE prices_#{params[:id]}"
      ActiveRecord::Base.connection.execute(query)
 
