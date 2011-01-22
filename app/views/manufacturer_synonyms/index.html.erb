@@ -15,7 +15,7 @@
     <td><%= manufacturer_synonym.title %></td>
     <td><%= link_to 'Show', manufacturer_manufacturer_synonym_path(manufacturer_synonym.manufacturer_id, manufacturer_synonym, {:page => params[:page], :letter => params[:letter]}) %></td>
     <td><%= link_to 'Edit', edit_manufacturer_manufacturer_synonym_path(manufacturer_synonym.manufacturer_id, manufacturer_synonym, :page => params[:page], :letter => params[:letter]) %></td>
-    <td><%= link_to 'Destroy', manufacturer_manufacturer_synonym_path(manufacturer_synonym.manufacturer_id, manufacturer_synonym, :page => params[:page], :letter => params[:letter]), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Destroy', manufacturer_manufacturer_synonym_path(manufacturer_synonym.manufacturer_id, manufacturer_synonym, :page => params[:page], :letter => params[:letter]), :confirm => 'Are you sure?', :method => :delete, :remote => true %></td>
   </tr>
 <% end %>
 </table>

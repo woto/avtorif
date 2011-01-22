@@ -109,8 +109,24 @@ scope = scope.scoped :conditions => {:supplier_id => params['supplier_id']} if p
   <% if @job.jobable.class == ImportJob %>
     
     <%= link_to 'Очистить прайсы-цены и временную', clean_supplier_job_path(params[:supplier_id], @job) %>
+    <br /><br />
+    <% 
+      query = "SELECT processed, COUNT(*) as count FROM prices_#{params[:id]} GROUP BY processed"
+      ActiveRecord::Base.connection.execute(query).each do |row|
+        if row[0] == 1
+        %>
+          Обработано: <%= row[1] %>
+        <%  
+        elsif row[0] == 0
+        %>
+          Не обработано: <%= row[1] %>
+        <%
+        end
+      end
+    %>
 
     <br /><br />
+
 
     <% xm = Builder::XmlMarkup.new
     xm.table {

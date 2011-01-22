@@ -79,6 +79,7 @@ class ManufacturersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(manufacturers_path(:page => params[:page], :letter => params[:letter])) }
       format.xml  { head :ok }
+      format.js { render :text => "Заглушка" }
     end
   end
 end

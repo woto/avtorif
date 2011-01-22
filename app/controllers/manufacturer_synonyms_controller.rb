@@ -79,6 +79,7 @@ class ManufacturerSynonymsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(manufacturer_manufacturer_synonyms_url(:page => params[:page], :letter => params[:letter])) }
       format.xml  { head :ok }
+      format.js  { render :text => "Заглушка" }
     end
   end
 end

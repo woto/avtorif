@@ -23,11 +23,7 @@ every 1.minute do
   runner "JobWalker.new.call"
 end
 
-every 1.day do
-  rake "avtorif:destroy_old_supplier_prices"
-end
-
-every 1.day, :at => '11am' do
+every 1.hours do
   rake "avtorif:destroy_old_supplier_prices"
 end
 

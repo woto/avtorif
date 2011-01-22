@@ -141,7 +141,8 @@ class ImportJobable < AbstractJobber
             manufacturer_synonyms_hs[ms.title.to_s.dup.to_s] = ms.manufacturer.title.to_s.mb_chars.strip.upcase.to_s
           rescue
             debugger
-            puts '1'
+            ManufacturerSynonym.delete(ms.id)
+            puts '.'
           end
         end
         manufacturer_synonyms_ar = nil
@@ -174,17 +175,20 @@ class ImportJobable < AbstractJobber
 
           if manufacturer_colnum
             # получаем значение производителя в прайсе
-            #debugger
             manufacturer_orig = row[manufacturer_colnum].to_s.mb_chars.strip.upcase.to_s
             # если встретили этот синоним в прайсе впервые
             unless manufacturer = used_in_this_price[manufacturer_orig]
               # если не нашли в глобальной таблице соответствия синонимов и производителей
               unless manufacturer = manufacturer_synonyms_hs[manufacturer_orig]
                 # то создаем синоним и такого же производителя
-                ManufacturerSynonym.create(:title => manufacturer_orig, :manufacturer => Manufacturer.create(:title => manufacturer_orig))
+                if ManufacturerSynonym.create(:title => manufacturer_orig, :manufacturer => Manufacturer.create(:title => manufacturer_orig)).invalid?
+                  ms = ManufacturerSynonym.includes(:manufacturer).select('manufacturers.id, manufacturers.title, manufacturer_synonyms.title').where(:title => manufacturer_orig)
+                  used_in_this_price[ms.title.to_s.dup.to_s] = ms.manufacturer.title.to_s.mb_chars.strip.upcase.to_s
+                  debugger
+                  puts '.'
+                end
 
                 manufacturer = manufacturer_orig
-                manufacturer_synonyms_hs[manufacturer_orig] = manufacturer
               end
               # обновляем, что синоним встречался в прайсе ранее из найденного в глобальной таблице, или нового созданного
               used_in_this_price[manufacturer_orig] = manufacturer
@@ -215,7 +219,7 @@ class ImportJobable < AbstractJobber
             Price.connection.execute(query)
           rescue => e
             #puts query
-            #debugger
+            debugger
             raise e
           end
           query = ""
