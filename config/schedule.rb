@@ -18,7 +18,7 @@ set :environment, :development
 #   runner "AnotherModel.prune_old_records"
 # end
 
-every 1.minute do
+every 5.minute do
   require 'lib/job_walker'
   runner "JobWalker.new.call"
 end

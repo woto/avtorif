@@ -114,7 +114,13 @@
         <td><%= delayed_job.run_at %></td>
         <td><%= delayed_job.locked_at %></td>
         <td><%= delayed_job.failed_at %></td>
-        <td><%= delayed_job.locked_by %></td>
+        <td><%= delayed_job.locked_by %>
+          <% if delayed_job.locked_by.present? %>
+            <% pid = /\d+$/.match(delayed_job.locked_by)[0] %>
+            <%= pid %>
+            Really? <%= `ps -p #{pid} -o comm= ` %>
+          <% end %>
+        </td>
         <td><%= delayed_job.created_at %></td>
         <td><%= delayed_job.updated_at %></td>
         

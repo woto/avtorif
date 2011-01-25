@@ -53,7 +53,6 @@ class ImportJobable < AbstractJobber
   def make_insertion
 
     prepare_insertion_table
-
     @optional.each do |opt|
       i = 0
       query = ""
@@ -137,17 +136,18 @@ class ImportJobable < AbstractJobber
         manufacturer_synonyms_ar = ManufacturerSynonym.includes(:manufacturer).select('manufacturers.id, manufacturers.title, manufacturer_synonyms.title')
         manufacturer_synonyms_hs = Hash.new
         manufacturer_synonyms_ar.each do |ms|
-          begin
+          unless ms.manufacturer.nil?
+            # Заполняем хеш таблицу, где ключ - ManufacturerSynonym, а значение Manufacturer. Т.е. под одним ключем ManufacturerSynonym может быть несколько Manufacturer'ов
             manufacturer_synonyms_hs[ms.title.to_s.dup.to_s] = ms.manufacturer.title.to_s.mb_chars.strip.upcase.to_s
-          rescue
-            debugger
+          else
+            # Удалим ManufacturerSynonym, если у него нет ни одного Manufacturer'a
             ManufacturerSynonym.delete(ms.id)
-            puts '.'
           end
         end
         manufacturer_synonyms_ar = nil
-      used_in_this_price = Hash.new
       end
+
+      used_in_this_price = Hash.new
 
       price_colnum = @jobable.income_price_colnum - 1
       catalog_number_colnum = @jobable.catalog_number_colnum - 1
@@ -180,18 +180,18 @@ class ImportJobable < AbstractJobber
             unless manufacturer = used_in_this_price[manufacturer_orig]
               # если не нашли в глобальной таблице соответствия синонимов и производителей
               unless manufacturer = manufacturer_synonyms_hs[manufacturer_orig]
-                # то создаем синоним и такого же производителя
-                if ManufacturerSynonym.create(:title => manufacturer_orig, :manufacturer => Manufacturer.create(:title => manufacturer_orig)).invalid?
-                  ms = ManufacturerSynonym.includes(:manufacturer).select('manufacturers.id, manufacturers.title, manufacturer_synonyms.title').where(:title => manufacturer_orig)
-                  used_in_this_price[ms.title.to_s.dup.to_s] = ms.manufacturer.title.to_s.mb_chars.strip.upcase.to_s
-                  debugger
-                  puts '.'
+                # то надо создавать
+                unless create_manufacturer_and_synonym(manufacturer_orig)
+                  # возможна ситуация, в случае Race condition
+                  unless create_manufacturer_and_synonym(manufacturer_orig)
+                    raise 'Не восстановимая ошибка при создании производителей/синонимов. Задача должна разрешиться при следующем запуске'
+                  end
                 end
 
                 manufacturer = manufacturer_orig
               end
               # обновляем, что синоним встречался в прайсе ранее из найденного в глобальной таблице, или нового созданного
-              used_in_this_price[manufacturer_orig] = manufacturer
+              used_in_this_price[manufacturer_orig] = manufacturer 
             end
           end
           
@@ -237,6 +237,23 @@ class ImportJobable < AbstractJobber
 
     add_doublet_idx
     
+  end
+
+  
+  def create_manufacturer_and_synonym(manufacturer_orig)
+    m = Manufacturer.where(:title => manufacturer_orig).first
+    ms = ManufacturerSynonym.where(:title => manufacturer_orig).first
+
+    if m.blank?
+      m = Manufacturer.create(:title => manufacturer_orig, :job_id => @job.id)
+    end
+
+    if ms.blank?
+      ms = ManufacturerSynonym.create(:title => manufacturer_orig, :job_id => @job.id)
+    end
+
+    ms.manufacturer = m
+    ms.save
   end
 
   def prepare_insertion_table

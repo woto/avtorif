@@ -4,6 +4,7 @@
   <tr>
     <th>Manufacturer</th>
     <th>Title</th>
+    <th>Job</th>
     <th></th>
     <th></th>
     <th></th>
@@ -13,6 +14,11 @@
   <tr>
     <td><%= manufacturer_synonym.manufacturer %></td>
     <td><%= manufacturer_synonym.title %></td>
+    <td>
+      <% if manufacturer_synonym.job_id %>
+        <%= link_to Job.find(manufacturer_synonym.job_id), supplier_job_path(Job.find(manufacturer_synonym.job_id).supplier_id, manufacturer_synonym.job_id) %>
+      <% end %>
+    </td>
     <td><%= link_to 'Show', manufacturer_manufacturer_synonym_path(manufacturer_synonym.manufacturer_id, manufacturer_synonym, {:page => params[:page], :letter => params[:letter]}) %></td>
     <td><%= link_to 'Edit', edit_manufacturer_manufacturer_synonym_path(manufacturer_synonym.manufacturer_id, manufacturer_synonym, :page => params[:page], :letter => params[:letter]) %></td>
     <td><%= link_to 'Destroy', manufacturer_manufacturer_synonym_path(manufacturer_synonym.manufacturer_id, manufacturer_synonym, :page => params[:page], :letter => params[:letter]), :confirm => 'Are you sure?', :method => :delete, :remote => true %></td>

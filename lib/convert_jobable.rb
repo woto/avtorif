@@ -77,11 +77,11 @@ class ConvertJobable < AbstractJobber
           remote_file.unlink
 
         when /xlrd/
-          retval = python_excel("#{Rails.root}/system/external_tools/xlrd_xls2csv.py -e #{@jobable.encoding_out} -i #{@supplier_price.path.shellescape}")
+          retval = retval + python_excel("#{Rails.root}/system/external_tools/xlrd_xls2csv.py -e #{@jobable.encoding_out} -i #{@supplier_price.path.shellescape}")
         when /pyExcelerator/
-          retval = python_excel("#{Rails.root}/system/external_tools/pyExcelerator_xls2csv.py -e #{@jobable.encoding_out} -i #{@supplier_price.path.shellescape}")
+          retval = retval + python_excel("#{Rails.root}/system/external_tools/pyExcelerator_xls2csv.py -e #{@jobable.encoding_out} -i #{@supplier_price.path.shellescape}")
         when /dilshod_temirkhodjaev_xlsx2csv/
-          retval = python_excel("#{Rails.root}/system/external_tools/dilshod_temirkhodjaev_xlsx2csv.py #{@supplier_price.path.shellescape}")
+          retval = retval + python_excel("#{Rails.root}/system/external_tools/dilshod_temirkhodjaev_xlsx2csv.py #{@supplier_price.path.shellescape}")
         when /mdb_console/
 
           a = `mdb-tables #{@supplier_price.path.shellescape}`

@@ -1,8 +1,8 @@
 class Manufacturer < ActiveRecord::Base
   has_many :autos
-  validates :title, :uniqueness => {:case_sensitive => false}
   has_many :manufacturer_synonyms, :dependent => :destroy
-  validates_associated :manufacturer_synonyms
+  #accepts_nested_attributes_for :manufacturer_synonyms
+  validates :title, :uniqueness => {:case_sensitive => false}
 
   before_save :upcase
 

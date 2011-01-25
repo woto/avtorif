@@ -11,6 +11,7 @@
 <table>
   <tr>
     <th style="width: 400px">Title</th>
+    <th>Job</th>
     <th></th>
     <th></th>
     <th></th>
@@ -23,6 +24,11 @@
 <% @manufacturers.each do |manufacturer| %>
   <tr>
     <td><%= manufacturer.title %></td>
+    <td>
+      <% if manufacturer.job_id %>
+        <%= link_to Job.find(manufacturer.job_id), supplier_job_path(Job.find(manufacturer.job_id).supplier_id, manufacturer.job_id) %>
+      <% end %>
+    </td>
     <td><%= link_to 'Show', manufacturer %></td>
     <td><%= link_to 'Edit', edit_manufacturer_path(manufacturer) %></td>
     <td><%= link_to 'Destroy', manufacturer_path(manufacturer, {:letter => params[:letter], :page => params[:page]}), :confirm => 'Are you sure?', :method => :delete, :remote => true %></td>

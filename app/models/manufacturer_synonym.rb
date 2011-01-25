@@ -1,6 +1,6 @@
 class ManufacturerSynonym < ActiveRecord::Base
   belongs_to :manufacturer
-  validates_associated :manufacturer
+  validates_presence_of :manufacturer
   validates :title, :uniqueness => {:case_sensitive => false}
 
   before_save :upcase
