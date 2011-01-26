@@ -193,103 +193,39 @@
 
 
   <div id="replacement_array">
-    <%= f.input :ar_colnum %>
+    <%= f.input :array_replacement_colnum %>
     Колонка: Список замен/аналогов через разделитель
     <hr />
 
-    <%= f.input :arm_colnum %>
+    <%= f.input :array_replacement_manufacturer_colnum %>
     Колонка: Производитель для списка замен/аналогов
     <hr />
 
-    <%= f.input :ardm %>
+    <%= f.input :array_replacement_default_manufacturer %>
     Производитель по-умолчанию для списка замен/аналогов
     <hr />
 
-    <%= f.input :ar_delimiter %>
+    <%= f.input :array_replacement_delimiter %>
     Символ разделителя для списка замен/аналогов
+
+
+    <%= f.input :array_replacement_direction, :as => :select, :collection => {"Прямая" => 1, "Обратная" => 2, "Двунаправленная" => 3} %>
+    Направление замены для списка
   </div>
 
   <div id="replacement">
 
-    <%= f.input :r1_colnum %>
-    Колонка: Замена 1
-    <%= f.input :rm1_colnum %>
-    Колонка: Производитель 1
-    <%= f.input :rdm1 %>
-    Производитель 1 по-умолчанию
-    <hr />
-
-
-    <%= f.input :r2_colnum %>
-    Колонка: Замена 2
-    <%= f.input :rm2_colnum %>
-    Колонка: Производитель 2
-    <%= f.input :rdm2 %>
-    Производитель 2 по-умолчанию
-    <hr />
-
-    <%= f.input :r3_colnum %>
-    Колонка: Замена 3
-    <%= f.input :rm3_colnum %>
-    Колонка: Производитель 3
-    <%= f.input :rdm3 %>
-    Производитель 3 по-умолчанию
-    <hr />
-
-    <%= f.input :r4_colnum %>
-    Колонка: Замена 4
-    <%= f.input :rm4_colnum %>
-    Колонка: Производитель 4
-    <%= f.input :rdm4 %>
-    Производитель 4 по-умолчанию
-    <hr />
-
-    <%= f.input :r5_colnum %>
-    Колонка: Замена 5
-    <%= f.input :rm5_colnum %>
-    Колонка: Производитель 5
-    <%= f.input :rdm5 %>
-    Производитель 5 по-умолчанию
-    <hr />
-
-    <%= f.input :r6_colnum %>
-    Колонка: Замена 6
-    <%= f.input :rm6_colnum %>
-    Колонка: Производитель 6
-    <%= f.input :rdm6 %>
-    Производитель 6 по-умолчанию
-    <hr />
-
-    <%= f.input :r7_colnum %>
-    Колонка: Замена 7
-    <%= f.input :rm7_colnum %>
-    Колонка: Производитель 7
-    <%= f.input :rdm7 %>
-    Производитель 7 по-умолчанию
-    <hr />
-
-    <%= f.input :r8_colnum %>
-    Колонка: Замена 8
-    <%= f.input :rm8_colnum %>
-    Колонка: Производитель 8
-    <%= f.input :rdm8 %>
-    Производитель 8 по-умолчанию
-    <hr />
-
-    <%= f.input :r9_colnum %>
-    Колонка: Замена 9
-    <%= f.input :rm9_colnum %>
-    Колонка: Производитель 9
-    <%= f.input :rdm9 %>
-    Производитель 9 по-умолчанию
-    <hr />
-
-    <%= f.input :r0_colnum %>
-    Колонка: Замена 0
-    <%= f.input :rm0_colnum %>
-    Колонка: Производитель 0
-    <%= f.input :rdm0 %>
-    Производитель 0 по-умолчанию
+    <% 0.upto(89) do |i| %>
+      <%= eval("f.input :replacement_#{i}_colnum") %>
+      <%= "Колонка: Замена #{i}" %>
+      <%= eval("f.input :replacement_manufacturer_#{i}_colnum") %>
+      <%= "Колонка: Производитель #{i}" %>
+      <%= eval("f.input :replacement_default_manufacturer_#{i}") %>
+      <%= "Производитель #{i} по-умолчанию" %>
+      <%= eval("f.input :replacement_direction_#{i}, :as => :select, :collection => {'Прямая' => 1, 'Обратная' => 2, 'Двунаправленная' => 3}") %>
+      <%= eval("Направление замены #{i}") %>
+      <hr />
+    <% end %>
 
   </div>
 

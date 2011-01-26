@@ -25,27 +25,41 @@ namespace :avtorif do
     sh "sudo /etc/init.d/god start"
   end 
   
-  task :drop_prices => :environment do
-    #connection = "mysql -u root -D avtorif_development"
-    #sql = "#{connection} -BNe \"show tables like 'prices_%'\" | awk '{print \"drop table `\" $1 \"`;\"}' | #{connection}"
-    #sh sql
-    ActiveRecord::Base.connection.execute("TRUNCATE prices")
-    ActiveRecord::Base.connection.execute("TRUNCATE delayed_jobs")
-  end
+  desc "Создать хранилища на основе шаблонов"
+  task :create_price_store => :environment do
+    CommonModule::all_doublets do |l|
+      begin
+        sql = "CREATE TABLE price_cost_#{l} like prices"
+        ActiveRecord::Base.connection.execute(sql)
+      rescue => e
+        puts e
+      end
 
-  desc "Создать основное хранилище хранения прайсов prices_costs_00 .. prices_costs_ff"
-  task :create_prices_costs => :environment do
-    CommonModule::all_prices_costs do |l|
-      sql = "CREATE TABLE prices_costs_#{l} like prices"
-      ActiveRecord::Base.connection.execute(sql)
+      begin
+        sql = "CREATE TABLE price_catalog_#{l} like price_import_templates"
+        ActiveRecord::Base.connection.execute(sql)
+      rescue => e
+        puts e
+      end
     end
   end
   
-  desc "Удалить основное хранилище прайсов prices_costs_00 .. prices_costs_ff"
-  task :drop_prices_costs => :environment do
-    CommonModule::all_prices_costs do |l|
-      sql = "DROP TABLE prices_costs_#{l}"
-      ActiveRecord::Base.connection.execute(sql)
+  desc "Удалить хранилища созданные на основе шаблона"
+  task :drop_price_store => :environment do
+    CommonModule::all_doublets do |l|
+      begin
+        sql = "DROP TABLE price_cost_#{l}"
+        ActiveRecord::Base.connection.execute(sql)
+      rescue => e
+        puts e
+      end
+
+      begin
+        sql = "DROP TABLE price_catalog_#{l}"
+        ActiveRecord::Base.connection.execute(sql)
+      rescue => e
+        puts e
+      end
     end
   end
 

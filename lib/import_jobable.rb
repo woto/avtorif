@@ -5,10 +5,10 @@ class ImportJobable < AbstractJobber
   def update_prices_costs
 
     if @jobable.job_code.present?
-      CommonModule::all_prices_costs do |l|
+      CommonModule::all_doublets do |l|
         query = "
-        UPDATE prices_#{@job.id} p 
-          JOIN prices_costs_#{l} pc 
+        UPDATE price_import_#{@job.id} p 
+          JOIN price_cost_#{l} pc 
             ON  p.job_code = pc.job_code 
               AND p.catalog_number = pc.catalog_number 
               AND p.manufacturer_orig = pc.manufacturer_orig
@@ -29,26 +29,23 @@ class ImportJobable < AbstractJobber
       additional = " AND processed != 1"
     end
 
-    CommonModule::all_prices_costs do |l|
-      query = "INSERT INTO prices_costs_#{l} (job_id, title, count, price_cost, manufacturer, manufacturer_orig, catalog_number, title_en, unit_package, description, min_order, applicability, country, external_id, unit, multiply_factor, parts_group, job_code, supplier_id, doublet) SELECT job_id, title, count, price_cost, manufacturer, manufacturer_orig, catalog_number, title_en, unit_package, description, min_order, applicability, country, external_id, unit, multiply_factor, parts_group, job_code, supplier_id, doublet FROM prices_#{@job.id} WHERE doublet = '#{l}' #{additional}"
+    CommonModule::all_doublets do |l|
+      query = "INSERT INTO price_cost_#{l} (job_id, title, count, price_cost, manufacturer, manufacturer_orig, catalog_number, title_en, unit_package, description, min_order, applicability, country, external_id, unit, multiply_factor, parts_group, job_code, supplier_id, doublet) SELECT job_id, title, count, price_cost, manufacturer, manufacturer_orig, catalog_number, title_en, unit_package, description, min_order, applicability, country, external_id, unit, multiply_factor, parts_group, job_code, supplier_id, doublet FROM price_import_#{@job.id} WHERE doublet = '#{l}' #{additional}"
       Price.connection.execute(query)
 
-      query = "UPDATE prices_#{@job.id} SET processed = 1 WHERE doublet = '#{l}'"
+      query = "UPDATE price_import_#{@job.id} SET processed = 1 WHERE doublet = '#{l}'"
       Price.connection.execute(query)
 
     end
   end
 
-  def CommonModule::all_prices_costs
+  def CommonModule::all_doublets
     alpha_numerics = ('0'..'9').to_a + ('a'..'f').to_a
     alpha_numerics.product(alpha_numerics).map{ |doublet| doublet.join ''}.each do |l|
       yield l
     end
   end
 
-  def normalize_catalog_number catalog_number
-    catalog_number.to_s.mb_chars.upcase.strip.gsub(/[ ,-.]/, '').to_s
-  end
 
   def make_insertion
 
@@ -58,7 +55,7 @@ class ImportJobable < AbstractJobber
       query = ""
       manufacturer = manufacturer_orig = manufacturer_synonyms_hs = unit_colnum = multiply_factor_colnum = external_id_colnum = country_colnum = applicability_colnum =  min_order_colnum = description_colnum = unit_package_colnum = title_en_colnum = title_colnum = count_colnum = manufacturer_colnum = price_colnum = catalog_number_colnum = parts_group_colnum = false
 
-      query_template = "INSERT INTO prices_#{@job.id} (job_id, "
+      query_template = "INSERT INTO price_import_#{@job.id} (job_id, "
       
       if @jobable.title_colnum.present?
         title_colnum = @jobable.title_colnum - 1
@@ -153,7 +150,7 @@ class ImportJobable < AbstractJobber
       catalog_number_colnum = @jobable.catalog_number_colnum - 1
       supplier_id = Price.connection.quote(@job.supplier_id)
 
-      query_template = query_template + "price_cost, catalog_number, supplier_id, doublet) VALUES "
+      query_template = query_template + "price_cost, catalog_number, supplier_id) VALUES "
 
       #BUG Проверить, на работоспособность (Потребовалось после конвертирования из Excel в csv, где были переносы \r)
       FasterCSV.foreach(SupplierPrice.find(opt).attachment.path) do |row|
@@ -205,9 +202,9 @@ class ImportJobable < AbstractJobber
           query = query + parts_group = parts_group_colnum ? Price.connection.quote(row[parts_group_colnum].to_s.strip) + ", " : ""
           query = query + job_code
           query = query + price = Price.connection.quote(row[price_colnum].to_s.gsub(',','.').gsub(' ','')) + ", "
-          query = query + catalog_number = Price.connection.quote(normalize_catalog_number(row[catalog_number_colnum])) + ", "
-          query = query + supplier_id + ", "
-          query = query + "'" + Digest::MD5.hexdigest(normalize_catalog_number(row[catalog_number_colnum]))[0..1] + "'"
+          query = query + catalog_number = Price.connection.quote(CommonModule::normalize_catalog_number(row[catalog_number_colnum])) + ", "
+          query = query + supplier_id
+          #query = query + "'" + Digest::MD5.hexdigest(CommonModule::normalize_catalog_number(row[catalog_number_colnum]))[0..1] + "'"
           query = query + "),"
 
           i = i + 1
@@ -257,12 +254,12 @@ class ImportJobable < AbstractJobber
   end
 
   def prepare_insertion_table
-    Price.connection.execute("DROP TABLE IF EXISTS prices_#{@job.id}")
-    Price.connection.execute("CREATE TABLE prices_#{@job.id} like prices")
+    Price.connection.execute("DROP TABLE IF EXISTS price_import_#{@job.id}")
+    Price.connection.execute("CREATE TABLE price_import_#{@job.id} like price_import_templates")
   end
 
   def add_doublet_idx
-    query = "ALTER TABLE prices_#{@job.id} ADD INDEX doublet_idx (doublet)"
+    query = "ALTER TABLE price_import_#{@job.id} ADD INDEX doublet_idx (doublet)"
     Price.connection.execute(query)
   end
 
@@ -278,13 +275,13 @@ class ImportJobable < AbstractJobber
 
           # Удаляем либо по id задачи, либо по объединяющему коду
           if @jobable.job_code.present?
-            CommonModule::all_prices_costs do |l|
-              query = "DELETE FROM prices_costs_#{l} WHERE job_code = '#{@jobable.job_code}'"
+            CommonModule::all_doublets do |l|
+              query = "DELETE FROM price_cost_#{l} WHERE job_code = '#{@jobable.job_code}'"
               Price.connection.execute(query)
             end
           else
-            CommonModule::all_prices_costs do |l|
-              query = "DELETE FROM prices_costs_#{l} WHERE job_id = #{@job.id}"
+            CommonModule::all_doublets do |l|
+              query = "DELETE FROM price_cost_#{l} WHERE job_id = #{@job.id}"
               Price.connection.execute(query)
             end
           end

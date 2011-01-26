@@ -84,3 +84,6 @@ gem 'devise'
 gem 'mechanize', :git => 'git@github.com:woto/mechanize.git'
 gem 'jquery-rails', '>= 0.2.6'
 gem 'builder'
+
+gem 'savon', :git => 'https://github.com/rubiii/savon.git'
+gem 'httpi'

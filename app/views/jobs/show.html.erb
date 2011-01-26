@@ -111,8 +111,9 @@ scope = scope.scoped :conditions => {:supplier_id => params['supplier_id']} if p
     <%= link_to 'Очистить прайсы-цены и временную', clean_supplier_job_path(params[:supplier_id], @job) %>
     <br /><br />
     <% 
-      query = "SELECT processed, COUNT(*) as count FROM prices_#{params[:id]} GROUP BY processed"
+      query = "SELECT processed, COUNT(*) as count FROM price_import_#{params[:id]} GROUP BY processed"
       ActiveRecord::Base.connection.execute(query).each do |row|
+        debugger
         if row[0] == 1
         %>
           Обработано: <%= row[1] %>
@@ -130,9 +131,9 @@ scope = scope.scoped :conditions => {:supplier_id => params['supplier_id']} if p
 
     <% xm = Builder::XmlMarkup.new
     xm.table {
-      header = ActiveRecord::Base.connection.execute("DESCRIBE prices_#{@job.id}", {:as => :hash}).map{|line| line[0]}
+      header = ActiveRecord::Base.connection.execute("DESCRIBE price_import_#{@job.id}", {:as => :hash}).map{|line| line[0]}
       xm.tr {header.each {|value| xm.th(value)}}
-      ActiveRecord::Base.connection.execute("SELECT * FROM prices_#{@job.id} LIMIT 20").each_with_index do |line, index|
+      ActiveRecord::Base.connection.execute("SELECT * FROM price_import_#{@job.id} LIMIT 20").each_with_index do |line, index|
         xm.tr {line.each {|value| xm.td(value)} }
       end
     } %>

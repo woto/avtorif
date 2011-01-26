@@ -12,13 +12,13 @@ class ImportJob < ActiveRecord::Base
   has_many :column_relations
   has_many :column_filters
   belongs_to :currency_buy, :class_name => 'Currency'
-  belongs_to :currency_sell, :class_name => 'Currency'
+  #belongs_to :currency_sell, :class_name => 'Currency'
   belongs_to :currency_weight, :class_name => 'Currency'
   belongs_to :delivery_type
 
   validates_presence_of :import_method
   validates_presence_of :currency_buy
-  validates_presence_of :currency_sell
+  #validates_presence_of :currency_sell
   #validates_presence_of :currency_weight
 
   validates_presence_of :income_rate

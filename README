@@ -10,7 +10,20 @@
 
 select * from manufacturer_synonyms ms right join manufacturers m on ms.manufacturer_id = m.id join jobs j on j.id = m.job_id join suppliers s on s.id = j.supplier_id where ms.id is null;
 
-$MYSQL -BNe "show tables like 'prices_%'" | awk '{print "select \"`"$1"`\"; select catalog_number, count(*) from `" $1 "` group by catalog_number, manufacturer_orig having count(*) > 1;"}' | $MYSQL
+------------
+
+MYSQL="mysql -u root -D avtorif_development"
+$MYSQL -BNe "show tables like 'prices_1%'" | awk '{print "select \"`"$1"`\"; select catalog_number, count(*) from `" $1 "` group by catalog_number, manufacturer_orig having count(*) > 1;"}' | $MYSQL
+
+любой вариант работает:
+$MYSQL -BNe "show tables like 'prices_1%'" | awk '{print "drop table \""$1"\";"}' | $MYSQL
+$MYSQL -BNe "show tables like 'prices_1%'" | awk '{print "drop table `"$1"`;"}' | $MYSQL
+
+#{connection} -BNe \"show tables like 'prices_%'\" | awk '{print \"drop table `\" $1 \"`;\"}' | #{connection}
+
+
+-------------
+
 
 select count(*), manufacturer, manufacturer_orig from prices where manufacturer != manufacturer_orig group by manufacturer_orig order by manufacturer;
 
