@@ -24,9 +24,10 @@ class CreatePriceImportTemplates < ActiveRecord::Migration
       t.string :description
       t.string :unit
       t.string :applicability
-      1.upto(79) do |i|
+      0.upto(79) do |i|
         eval("t.string :r#{i}, :limit => 20")
         eval("t.string :rm#{i}, :limit => 20")
+        eval("t.integer :rdi#{i}")
       end
       t.timestamps
     end

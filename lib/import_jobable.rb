@@ -53,7 +53,13 @@ class ImportJobable < AbstractJobber
     @optional.each do |opt|
       i = 0
       query = ""
-      manufacturer = manufacturer_orig = manufacturer_synonyms_hs = unit_colnum = multiply_factor_colnum = external_id_colnum = country_colnum = applicability_colnum =  min_order_colnum = description_colnum = unit_package_colnum = title_en_colnum = title_colnum = count_colnum = manufacturer_colnum = price_colnum = catalog_number_colnum = parts_group_colnum = false
+      manufacturer, manufacturer_orig, manufacturer_synonyms_hs, unit_colnum, multiply_factor_colnum, external_id_colnum, country_colnum, applicability_colnum ,  min_order_colnum , description_colnum , unit_package_colnum , title_en_colnum , title_colnum , count_colnum , manufacturer_colnum , price_colnum , catalog_number_colnum , parts_group_colnum = false
+      r_colnum = Array.new
+      rm_colnum = Array.new
+      rdm = Array.new
+      rdi = Array.new
+      rde = Array.new
+      r = Array.new
 
       query_template = "INSERT INTO price_import_#{@job.id} (job_id, "
       
@@ -129,6 +135,36 @@ class ImportJobable < AbstractJobber
         job_code = ""
       end
 
+
+      if @jobable.activate_replacements.present?
+
+        for j in 0..79 do
+
+          if eval("@jobable.r#{j}_colnum.present?")
+            r_colnum[j] = eval "@jobable.r#{j}_colnum - 1"
+          end
+
+          if eval("@jobable.rm#{j}_colnum.present?")
+            rm_colnum[j] = eval "@jobable.rm#{j}_colnum - 1"
+          end
+
+          if eval("@jobable.rdm#{j}.present?")
+            rdm[j] = eval "Price.connection.quote(@jobable.rdm#{j})"
+          end
+
+          if eval("@jobable.rdi#{j}.present?")
+            rdi[j] = eval "@jobable.rdi#{j}"
+          end
+
+          if eval("@jobable.rde#{j}.present?")
+            rde[j] = eval "@jobable.rde#{j}"
+          end
+          
+          query_template = query_template + "r#{j}, rm#{j}, rdi#{j}, "
+
+        end
+      end
+
       if manufacturer_colnum
         manufacturer_synonyms_ar = ManufacturerSynonym.includes(:manufacturer).select('manufacturers.id, manufacturers.title, manufacturer_synonyms.title')
         manufacturer_synonyms_hs = Hash.new
@@ -154,7 +190,6 @@ class ImportJobable < AbstractJobber
 
       #BUG Проверить, на работоспособность (Потребовалось после конвертирования из Excel в csv, где были переносы \r)
       FasterCSV.foreach(SupplierPrice.find(opt).attachment.path) do |row|
-        #debugger
         if i == 0
           query = query_template
         end
@@ -201,6 +236,47 @@ class ImportJobable < AbstractJobber
           query = query + external_id = external_id_colnum ? Price.connection.quote(row[external_id_colnum].to_s.strip) + ", " : ""
           query = query + parts_group = parts_group_colnum ? Price.connection.quote(row[parts_group_colnum].to_s.strip) + ", " : ""
           query = query + job_code
+
+
+          if @jobable.activate_replacements.present?
+            replaces_counter = 0
+
+            for j in 0..79 do
+              r = nil
+              rm = nil
+
+              # Если указана колонка замен
+              if r_colnum[j]
+                r = (row[r_colnum[j]].to_s.split(rde[j])).delete("").map{|catalog_number| Price.connection.quote(CommonModule.normalize_catalog_number(catalog_number))}
+                if rm_colnum[j]
+                  # Если указан колонка производитель замены
+                  rm = Price.connection.quote(row[rm_colnum[j]]).to_s
+                elsif rdm[j]
+                  # Иначе если у колонки производитель по-умолчанию
+                  rm = rdm[j]
+                else
+                  rm = 'NULL'
+                end
+ 
+                for k in r do
+                  replaces_counter = replaces_counter + 1
+                  if k.size <= 2
+                    debugger
+                  end
+                  query = query + k + ", "
+                  query = query + rm + ", "
+                  query = query + rdi[j].to_s + ", "
+                end
+              end
+            end
+
+            for j in 0..(79-replaces_counter) do
+              query = query + "NULL, NULL, NULL, "
+            end
+
+          end
+
+
           query = query + price = Price.connection.quote(row[price_colnum].to_s.gsub(',','.').gsub(' ','')) + ", "
           query = query + catalog_number = Price.connection.quote(CommonModule::normalize_catalog_number(row[catalog_number_colnum])) + ", "
           query = query + supplier_id
@@ -235,6 +311,9 @@ class ImportJobable < AbstractJobber
     
   end
 
+  def get_manufacturer manufacturer_synonym
+    zzz
+  end
   
   def create_manufacturer_and_synonym(manufacturer_orig)
     m = Manufacturer.where(:title => manufacturer_orig).first

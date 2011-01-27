@@ -6,8 +6,8 @@ class CreatePriceCatalogTemplates < ActiveRecord::Migration
       t.string :catalog_number
       t.decimal :weight_grams
       0.upto(79) do |i|
-        eval("t.string :r#{i}, :limit => 50")
-        eval("t.string :rm#{i}, :limit => 50")
+        eval("t.string :r#{i}, :limit => 20")
+        eval("t.string :rm#{i}, :limit => 20")
       end
       t.string :new_catalog_number
       t.timestamps

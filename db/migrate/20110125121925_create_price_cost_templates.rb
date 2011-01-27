@@ -6,8 +6,8 @@ class CreatePriceCostTemplates < ActiveRecord::Migration
       t.string :title_en
       t.integer :count
       t.decimal :price_cost
-      t.string :manufacturer
-      t.string :manufacturer_orig
+      t.string :manufacturer, :limit => 20
+      t.string :manufacturer_orig, :limit => 20
       t.string :catalog_number
       t.string :country
       t.string :parts_group
