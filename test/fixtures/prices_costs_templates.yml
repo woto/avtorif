@@ -1,0 +1,53 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  job: 
+  title: MyString
+  title_en: MyString
+  count: 1
+  price_cost: 9.99
+  manufacturer: MyString
+  manufacturer_orig: MyString
+  catalog_number: MyString
+  country: MyString
+  parts_group: MyString
+  supplier: 
+  job_code: MyString
+  doublet: MyString
+  processed: 1
+  delivery_days_price: MyString
+  weight_grams: 9.99
+  external_id: MyString
+  unit_package: MyString
+  multiply_factor: MyString
+  min_order: MyString
+  description: MyString
+  unit: MyString
+  applicability: MyString
+  success_percent: MyString
+
+two:
+  job: 
+  title: MyString
+  title_en: MyString
+  count: 1
+  price_cost: 9.99
+  manufacturer: MyString
+  manufacturer_orig: MyString
+  catalog_number: MyString
+  country: MyString
+  parts_group: MyString
+  supplier: 
+  job_code: MyString
+  doublet: MyString
+  processed: 1
+  delivery_days_price: MyString
+  weight_grams: 9.99
+  external_id: MyString
+  unit_package: MyString
+  multiply_factor: MyString
+  min_order: MyString
+  description: MyString
+  unit: MyString
+  applicability: MyString
+  success_percent: MyString

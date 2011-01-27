@@ -37,6 +37,22 @@ class CurrenciesController < ApplicationController
     @currency = Currency.find(params[:id])
   end
 
+  def add_currency_rate
+    client = Savon::Client.new do |wsdl, http|
+       wsdl.document = "#{AppConfig.lc_ws_address}/currencies.1cws?wsdl"
+       http.auth.basic AppConfig.lc_ws_login, AppConfig.lc_ws_password
+    end
+
+    client.request :wsdl, :add_currency_rate do |r|
+      r.body = {
+        "currency_code" => params['currency']['foreign_id'], 
+        "currencyName" => params['currency']['title'], 
+        "rate" => params['currency']['value'],
+        :order! => ["currency_code", "currencyName", "rate"]
+      }
+    end
+  end
+
   # POST /currencies
   # POST /currencies.xml
   def create
@@ -44,6 +60,9 @@ class CurrenciesController < ApplicationController
 
     respond_to do |format|
       if @currency.save
+
+        add_currency_rate
+
         format.html { redirect_to(@currency, :notice => 'Currency was successfully created.') }
         format.xml  { render :xml => @currency, :status => :created, :location => @currency }
       else
@@ -60,6 +79,9 @@ class CurrenciesController < ApplicationController
 
     respond_to do |format|
       if @currency.update_attributes(params[:currency])
+
+        add_currency_rate
+
         format.html { redirect_to(@currency, :notice => 'Currency was successfully updated.') }
         format.xml  { head :ok }
       else

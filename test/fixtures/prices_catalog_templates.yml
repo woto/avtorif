@@ -1,0 +1,53 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  job: 
+  manufacturer: MyString
+  catalog_number: MyString
+  weight_grams: 9.99
+  r0: MyString
+  rm0: MyString
+  r1: MyString
+  rm1: MyString
+  r2: MyString
+  rm2: MyString
+  r3: MyString
+  rm3: MyString
+  r4: MyString
+  rm4: MyString
+  r5: MyString
+  rm5: MyString
+  r6: MyString
+  rm6: MyString
+  r7: MyString
+  rm7: MyString
+  r8: MyString
+  rm8: MyString
+  r9: MyString
+  rm9: MyString
+
+two:
+  job: 
+  manufacturer: MyString
+  catalog_number: MyString
+  weight_grams: 9.99
+  r0: MyString
+  rm0: MyString
+  r1: MyString
+  rm1: MyString
+  r2: MyString
+  rm2: MyString
+  r3: MyString
+  rm3: MyString
+  r4: MyString
+  rm4: MyString
+  r5: MyString
+  rm5: MyString
+  r6: MyString
+  rm6: MyString
+  r7: MyString
+  rm7: MyString
+  r8: MyString
+  rm8: MyString
+  r9: MyString
+  rm9: MyString

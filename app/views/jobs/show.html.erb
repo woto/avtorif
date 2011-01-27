@@ -113,7 +113,6 @@ scope = scope.scoped :conditions => {:supplier_id => params['supplier_id']} if p
     <% 
       query = "SELECT processed, COUNT(*) as count FROM price_import_#{params[:id]} GROUP BY processed"
       ActiveRecord::Base.connection.execute(query).each do |row|
-        debugger
         if row[0] == 1
         %>
           Обработано: <%= row[1] %>

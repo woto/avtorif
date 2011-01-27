@@ -7,6 +7,9 @@ defaults: &defaults
   max_emails: 10000
   emex_login: 14616
   emex_password: 2b0ffb38
+  lc_ws_address: http://192.168.1.42/trade_dda/ws
+  lc_ws_login: webservice
+  lc_ws_password: webservice
 
 development:
   <<: *defaults

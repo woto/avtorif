@@ -204,7 +204,6 @@ class ImportJobable < AbstractJobber
           query = query + price = Price.connection.quote(row[price_colnum].to_s.gsub(',','.').gsub(' ','')) + ", "
           query = query + catalog_number = Price.connection.quote(CommonModule::normalize_catalog_number(row[catalog_number_colnum])) + ", "
           query = query + supplier_id
-          #query = query + "'" + Digest::MD5.hexdigest(CommonModule::normalize_catalog_number(row[catalog_number_colnum]))[0..1] + "'"
           query = query + "),"
 
           i = i + 1
@@ -232,7 +231,7 @@ class ImportJobable < AbstractJobber
       end
     end
 
-    add_doublet_idx
+    add_doublet
     
   end
 
@@ -258,7 +257,10 @@ class ImportJobable < AbstractJobber
     Price.connection.execute("CREATE TABLE price_import_#{@job.id} like price_import_templates")
   end
 
-  def add_doublet_idx
+  def add_doublet
+    query = "UPDATE price_import_#{@job.id} SET doublet = SUBSTRING(MD5(catalog_number), 1, 2)"
+    Price.connection.execute(query)
+
     query = "ALTER TABLE price_import_#{@job.id} ADD INDEX doublet_idx (doublet)"
     Price.connection.execute(query)
   end

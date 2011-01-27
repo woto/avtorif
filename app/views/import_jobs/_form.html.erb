@@ -193,37 +193,37 @@
 
 
   <div id="replacement_array">
-    <%= f.input :array_replacement_colnum %>
+    <%= f.input :ar_colnum %>
     Колонка: Список замен/аналогов через разделитель
     <hr />
 
-    <%= f.input :array_replacement_manufacturer_colnum %>
+    <%= f.input :arm_colnum %>
     Колонка: Производитель для списка замен/аналогов
     <hr />
 
-    <%= f.input :array_replacement_default_manufacturer %>
+    <%= f.input :ardm %>
     Производитель по-умолчанию для списка замен/аналогов
     <hr />
 
-    <%= f.input :array_replacement_delimiter %>
+    <%= f.input :ar_delimiter %>
     Символ разделителя для списка замен/аналогов
 
 
-    <%= f.input :array_replacement_direction, :as => :select, :collection => {"Прямая" => 1, "Обратная" => 2, "Двунаправленная" => 3} %>
+    <%= f.input :ard, :as => :select, :collection => {"Прямая" => 1, "Обратная" => 2, "Двунаправленная" => 3} %>
     Направление замены для списка
   </div>
 
   <div id="replacement">
 
-    <% 0.upto(89) do |i| %>
-      <%= eval("f.input :replacement_#{i}_colnum") %>
+    <% 0.upto(79) do |i| %>
+      <%= eval("f.input :r#{i}_colnum") %>
       <%= "Колонка: Замена #{i}" %>
-      <%= eval("f.input :replacement_manufacturer_#{i}_colnum") %>
+      <%= eval("f.input :rm#{i}_colnum") %>
       <%= "Колонка: Производитель #{i}" %>
-      <%= eval("f.input :replacement_default_manufacturer_#{i}") %>
+      <%= eval("f.input :rdm#{i}") %>
       <%= "Производитель #{i} по-умолчанию" %>
-      <%= eval("f.input :replacement_direction_#{i}, :as => :select, :collection => {'Прямая' => 1, 'Обратная' => 2, 'Двунаправленная' => 3}") %>
-      <%= eval("Направление замены #{i}") %>
+      <%= eval("f.input :rd#{i}, :as => :select, :collection => {'Прямая' => 1, 'Обратная' => 2, 'Двунаправленная' => 3}") %>
+      <%= "Направление замены #{i}" %>
       <hr />
     <% end %>
 

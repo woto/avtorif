@@ -1,0 +1,89 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  job: 
+  title: MyString
+  title_en: MyString
+  count: 1
+  price_cost: 9.99
+  manufacturer: MyString
+  manufacturer_orig: MyString
+  catalog_number: MyString
+  country: MyString
+  parts_group: MyString
+  supplier: 
+  job_code: MyString
+  processed: 1
+  delivery_days_price: MyString
+  weight_grams: 9.99
+  external_id: MyString
+  unit_package: MyString
+  multiply_factor: MyString
+  min_order: MyString
+  description: MyString
+  unit: MyString
+  applicability: MyString
+  r0: MyString
+  rm0: MyString
+  r1: MyString
+  rm1: MyString
+  r2: MyString
+  rm2: MyString
+  r3: MyString
+  rm3: MyString
+  r4: MyString
+  rm4: MyString
+  r5: MyString
+  rm5: MyString
+  r6: MyString
+  rm6: MyString
+  r7: MyString
+  rm7: MyString
+  r8: MyString
+  rm8: MyString
+  r9: MyString
+  rm9: MyString
+
+two:
+  job: 
+  title: MyString
+  title_en: MyString
+  count: 1
+  price_cost: 9.99
+  manufacturer: MyString
+  manufacturer_orig: MyString
+  catalog_number: MyString
+  country: MyString
+  parts_group: MyString
+  supplier: 
+  job_code: MyString
+  processed: 1
+  delivery_days_price: MyString
+  weight_grams: 9.99
+  external_id: MyString
+  unit_package: MyString
+  multiply_factor: MyString
+  min_order: MyString
+  description: MyString
+  unit: MyString
+  applicability: MyString
+  r0: MyString
+  rm0: MyString
+  r1: MyString
+  rm1: MyString
+  r2: MyString
+  rm2: MyString
+  r3: MyString
+  rm3: MyString
+  r4: MyString
+  rm4: MyString
+  r5: MyString
+  rm5: MyString
+  r6: MyString
+  rm6: MyString
+  r7: MyString
+  rm7: MyString
+  r8: MyString
+  rm8: MyString
+  r9: MyString
+  rm9: MyString
