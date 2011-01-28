@@ -27,17 +27,20 @@ namespace :avtorif do
   
   desc "Создать хранилища на основе шаблонов"
   task :create_price_store => :environment do
+    result = []
+    sql = "SHOW CREATE TABLE price_cost_templates"
+    result[0] = ActiveRecord::Base.connection.execute(sql)
+    sql = "SHOW CREATE TABLE price_catalog_templates"
+    result[1] = ActiveRecord::Base.connection.execute(sql)
     CommonModule::all_doublets do |l|
       begin
-        sql = "CREATE TABLE price_cost_#{l} like prices"
-        ActiveRecord::Base.connection.execute(sql)
+        ActiveRecord::Base.connection.execute(result[0].first[1].gsub(/`price_cost_templates`/, "`price_cost_#{l}`"))
       rescue => e
         puts e
       end
 
       begin
-        sql = "CREATE TABLE price_catalog_#{l} like price_import_templates"
-        ActiveRecord::Base.connection.execute(sql)
+        ActiveRecord::Base.connection.execute(result[1].first[1].gsub(/`price_catalog_templates`/, "`price_catalog_#{l}`"))
       rescue => e
         puts e
       end
