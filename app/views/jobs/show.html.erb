@@ -130,14 +130,17 @@ scope = scope.scoped :conditions => {:supplier_id => params['supplier_id']} if p
 
     <% xm = Builder::XmlMarkup.new
     xm.table {
-      header = ActiveRecord::Base.connection.execute("DESCRIBE price_import_#{@job.id}", {:as => :hash}).map{|line| line[0]}
+      query = "DESCRIBE price_import_#{@job.id}"
+      header = ActiveRecord::Base.connection.execute(query, {:as => :hash}).map{|line| line[0]}
       xm.tr {header.each {|value| xm.th(value)}}
-      ActiveRecord::Base.connection.execute("SELECT * FROM price_import_#{@job.id} LIMIT 20").each_with_index do |line, index|
+      query = "SELECT * FROM price_import_#{@job.id} LIMIT 20"
+      ActiveRecord::Base.connection.execute(query).each_with_index do |line, index|
         xm.tr {line.each {|value| xm.td(value)} }
       end
     } %>
     <%= raw xm.target %>
-
+    <br />
+    <%= query %>
   <% else %>
 
     <table style="width: 100%">

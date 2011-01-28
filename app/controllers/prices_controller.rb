@@ -243,7 +243,7 @@ class PricesController < ApplicationController
     end
 
     respond_to do |format|
-      debugger
+      #debugger
       format.html {render :action => :index }
       format.xml  { render :xml => @prices.to_xml(
         :include => {

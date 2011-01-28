@@ -5,7 +5,7 @@ class CreatePriceImportTemplates < ActiveRecord::Migration
       t.string :title
       t.string :title_en
       t.integer :count
-      t.decimal :price_cost
+      t.decimal :price_cost, :precision => 10, :scale => 3
       t.string :manufacturer
       t.string :manufacturer_orig
       t.string :catalog_number

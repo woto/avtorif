@@ -147,11 +147,11 @@ class JobsController < ApplicationController
   end
 
   def clean
-     query = "TRUNCATE prices_#{params[:id]}"
+     query = "TRUNCATE price_import_#{params[:id]}"
      ActiveRecord::Base.connection.execute(query)
 
-     CommonModule::all_prices_costs do |l|
-       query = "DELETE FROM prices_costs_#{l} WHERE job_id = #{params[:id]}"
+     CommonModule::all_doublets do |l|
+       query = "DELETE FROM price_cost_#{l} WHERE job_id = #{params[:id]}"
        ActiveRecord::Base.connection.execute(query)
      end
     

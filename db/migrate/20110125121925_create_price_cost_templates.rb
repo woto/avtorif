@@ -5,7 +5,7 @@ class CreatePriceCostTemplates < ActiveRecord::Migration
       t.string :title
       t.string :title_en
       t.integer :count
-      t.decimal :price_cost
+      t.decimal :price_cost, :precision => 10, :scale => 3
       t.string :manufacturer, :limit => 20
       t.string :manufacturer_orig, :limit => 20
       t.string :catalog_number
@@ -27,6 +27,11 @@ class CreatePriceCostTemplates < ActiveRecord::Migration
 
       t.timestamps
     end
+
+      add_index :price_cost_templates, [:supplier_id, :job_code]
+      add_index :price_cost_templates, :job_id
+      add_index :price_cost_templates, [:catalog_number, :manufacturer]
+
   end
 
   def self.down
