@@ -5,11 +5,18 @@ defaults: &defaults
   folder_timeout: 3600
   emex_timeout: 20
   max_emails: 10000
+
   emex_login: 14616
   emex_password: 2b0ffb38
+
   lc_ws_address: http://192.168.1.42/trade_dda/ws
   lc_ws_login: webservice
   lc_ws_password: webservice
+
+  catalog_number_len: 20
+  manufacturer_len: 20
+  max_replaces: 80
+  max_inserts: 10
 
 development:
   <<: *defaults

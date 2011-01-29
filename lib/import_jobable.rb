@@ -197,7 +197,7 @@ class ImportJobable < AbstractJobber
 
       if @jobable.import_method.to_s =~ /_R_/
 
-        for j in 0..79 do
+        for j in 0..@max_replaces do
 
           if eval("@jobable.r#{j}_colnum.present?")
             r_colnum[j] = eval "@jobable.r#{j}_colnum - 1"
@@ -224,9 +224,6 @@ class ImportJobable < AbstractJobber
         end
       end
 
-
-
-
       price_colnum = @jobable.income_price_colnum - 1
       catalog_number_colnum = @jobable.catalog_number_colnum - 1
       @supplier_id = Price.connection.quote(@job.supplier_id)
@@ -239,7 +236,7 @@ class ImportJobable < AbstractJobber
           query = query_template
         end
         
-        if i < 10
+        if i < @max_inserts
 
           query = query + "(#{@job.id},"
 
@@ -251,7 +248,7 @@ class ImportJobable < AbstractJobber
           query = query + count = count_colnum ? Price.connection.quote(row[count_colnum].to_s.strip) + ", " : ""
 
           if manufacturer_colnum
-            manufacturer_orig = row[manufacturer_colnum].to_s.mb_chars.strip.upcase.to_s
+            manufacturer_orig = row[manufacturer_colnum].to_s.mb_chars.strip.upcase[0, @manufacturer_len]
             manufacturer = find_manufacturer_synonym(manufacturer_orig)
             query = query + manufacturer = Price.connection.quote(manufacturer) + ", "
             query = query + manufacturer_orig = Price.connection.quote(manufacturer_orig) + ", "
@@ -269,7 +266,7 @@ class ImportJobable < AbstractJobber
           if @jobable.import_method.to_s =~ /_R_/
             replaces_counter = 0
 
-            for j in 0..79 do
+            for j in 0..@max_replaces do
               r = nil
               rm = nil
 
@@ -303,7 +300,7 @@ class ImportJobable < AbstractJobber
               end
             end
 
-            for j in 0..(79-replaces_counter) do
+            for j in 0..(@max_replaces-replaces_counter) do
               query = query + "NULL, NULL, NULL, "
             end
 
@@ -318,7 +315,7 @@ class ImportJobable < AbstractJobber
           i = i + 1
         end
 
-        if i == 10
+        if i == @max_inserts
           query.chop!
           begin
             Price.connection.execute(query)
@@ -345,6 +342,7 @@ class ImportJobable < AbstractJobber
   end
 
   def create_manufacturer_and_synonym(manufacturer_orig)
+    
     m = Manufacturer.where(:title => manufacturer_orig).first
     ms = ManufacturerSynonym.where(:title => manufacturer_orig).first
 
@@ -374,6 +372,10 @@ class ImportJobable < AbstractJobber
   end
 
   def perform
+    @max_replaces = AppConfig.max_replaces - 1
+    @max_inserts = AppConfig.max_inserts
+    @manufacturer_len = AppConfig.manufacturer_len
+
     #unless @jobable.importable.blank?
     #  importer_class = (@jobable.importable.type.to_s.split(/Import/).first + "Importer").classify.constantize
     #  importer = importer_class.new(@job, @jobable, @jobable.importable, @optional)
