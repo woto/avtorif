@@ -24,9 +24,9 @@ class CreatePriceImportTemplates < ActiveRecord::Migration
       t.string :description
       t.string :unit
       t.string :applicability
-      0.upto(79) do |i|
-        eval("t.string :r#{i}, :limit => 20")
-        eval("t.string :rm#{i}, :limit => 20")
+      0.upto(AppConfig.mar_replaces) do |i|
+        eval("t.string :r#{i}, :limit => #{AppConfig.catalog_number_len}")
+        eval("t.string :rm#{i}, :limit => #{AppConfig.manufacturer_len}")
         eval("t.integer :rdi#{i}")
       end
       t.timestamps

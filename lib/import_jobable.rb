@@ -138,7 +138,7 @@ class ImportJobable < AbstractJobber
 
       if @jobable.activate_replacements.present?
 
-        for j in 0..79 do
+        for j in 0..(AppConfig.max_replaces - 1) do
 
           if eval("@jobable.r#{j}_colnum.present?")
             r_colnum[j] = eval "@jobable.r#{j}_colnum - 1"
@@ -194,7 +194,7 @@ class ImportJobable < AbstractJobber
           query = query_template
         end
         
-        if i < 10
+        if i < (AppConfig.max_insrets)
 
           query = query + "(#{@job.id},"
 
@@ -207,7 +207,7 @@ class ImportJobable < AbstractJobber
 
           if manufacturer_colnum
             # получаем значение производителя в прайсе
-            manufacturer_orig = row[manufacturer_colnum].to_s.mb_chars.strip.upcase.to_s
+            manufacturer_orig = row[manufacturer_colnum].to_s.mb_chars.strip.upcase[0,AppConfig.manufacturer_len]
             # если встретили этот синоним в прайсе впервые
             unless manufacturer = used_in_this_price[manufacturer_orig]
               # если не нашли в глобальной таблице соответствия синонимов и производителей
@@ -215,6 +215,7 @@ class ImportJobable < AbstractJobber
                 # то надо создавать
                 unless create_manufacturer_and_synonym(manufacturer_orig)
                   # возможна ситуация, в случае Race condition
+                  debugger
                   unless create_manufacturer_and_synonym(manufacturer_orig)
                     raise 'Не восстановимая ошибка при создании производителей/синонимов. Задача должна разрешиться при следующем запуске'
                   end
@@ -241,7 +242,7 @@ class ImportJobable < AbstractJobber
           if @jobable.activate_replacements.present?
             replaces_counter = 0
 
-            for j in 0..79 do
+            for j in 0..(AppConfig.max_replaces - 1) do
               r = nil
               rm = nil
 
@@ -270,7 +271,7 @@ class ImportJobable < AbstractJobber
               end
             end
 
-            for j in 0..(79-replaces_counter) do
+            for j in 0..((AppConfig.max_replaces - 1)-replaces_counter) do
               query = query + "NULL, NULL, NULL, "
             end
 
@@ -285,7 +286,7 @@ class ImportJobable < AbstractJobber
           i = i + 1
         end
 
-        if i == 10
+        if i == (AppConfig.max_inserts)
           query.chop!
           begin
             Price.connection.execute(query)
@@ -311,11 +312,8 @@ class ImportJobable < AbstractJobber
     
   end
 
-  def get_manufacturer manufacturer_synonym
-    zzz
-  end
-  
   def create_manufacturer_and_synonym(manufacturer_orig)
+    
     m = Manufacturer.where(:title => manufacturer_orig).first
     ms = ManufacturerSynonym.where(:title => manufacturer_orig).first
 
