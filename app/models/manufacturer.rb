@@ -7,7 +7,7 @@ class Manufacturer < ActiveRecord::Base
   before_save :upcase
 
   def upcase
-    self.title = self.title.mb_chars.strip.upcase.to_s
+    self.title = self.title.to_s.mb_chars.strip.upcase.to_s
   end
 
   def to_s
