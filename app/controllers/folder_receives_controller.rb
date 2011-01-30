@@ -61,7 +61,7 @@ class FolderReceivesController < ApplicationController
     @folder_receive = FolderReceive.find(params[:id])
 
     respond_to do |format|
-      if @folder_receive.update_attributes(params[:receive_folder])
+      if @folder_receive.update_attributes(params[:folder_receive])
         format.html { redirect_to(supplier_jobs_path(params[:supplier_id]), :notice => 'FolderReceive was successfully updated.') }
         format.xml  { head :ok }
       else

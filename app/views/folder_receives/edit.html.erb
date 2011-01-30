@@ -1,24 +1,5 @@
-<h1>Editing receive_folder</h1>
+<h1>Editing folder_receive</h1>
 
-<% form_for(@receive_folder) do |f| %>
-  <%= f.error_messages %>
+<%= render 'form' %>
 
-  <p>
-    <%= f.label :path %><br />
-    <%= f.text_field :path %>
-  </p>
-  <p>
-    <%= f.label :login %><br />
-    <%= f.text_field :login %>
-  </p>
-  <p>
-    <%= f.label :password %><br />
-    <%= f.text_field :password %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
-<% end %>
-
-<%= link_to 'Show', @receive_folder %> |
-<%= link_to 'Back', receive_folders_path %>
+<%= link_to 'Back', supplier_jobs_path(Job.find(params[:job_id]).supplier) %>

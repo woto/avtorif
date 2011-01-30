@@ -89,7 +89,7 @@ class ImportJobable < AbstractJobber
     end
 
     CommonModule::all_doublets do |l|
-      query = "INSERT INTO price_cost_#{l} (job_id, title, count, price_cost, manufacturer, manufacturer_orig, catalog_number, title_en, unit_package, description, min_order, applicability, country, external_id, unit, multiply_factor, parts_group, job_code, supplier_id) SELECT job_id, title, count, price_cost, manufacturer, manufacturer_orig, catalog_number, title_en, unit_package, description, min_order, applicability, country, external_id, unit, multiply_factor, parts_group, job_code, supplier_id FROM price_import_#{@job.id} WHERE doublet = '#{l}' #{additional}"
+      query = "INSERT INTO price_cost_#{l} (job_id, title, count, price_cost, manufacturer, manufacturer_orig, catalog_number, title_en, weight_grams, unit_package, description, min_order, applicability, country, external_id, unit, multiply_factor, parts_group, job_code, supplier_id) SELECT job_id, title, count, price_cost, manufacturer, manufacturer_orig, catalog_number, title_en, weight_grams, unit_package, description, min_order, applicability, country, external_id, unit, multiply_factor, parts_group, job_code, supplier_id FROM price_import_#{@job.id} WHERE doublet = '#{l}' #{additional}"
       Price.connection.execute(query)
 
       query = "UPDATE price_import_#{@job.id} SET processed = 1 WHERE doublet = '#{l}'"
@@ -109,10 +109,11 @@ class ImportJobable < AbstractJobber
   def make_insertion
 
     prepare_insertion_table
+    weight_coefficient = @jobable.weight_coefficient
     @optional.each do |opt|
       i = 0
       query = ""
-      manufacturer, manufacturer_orig, manufacturer_synonyms_hs, unit_colnum, multiply_factor_colnum, external_id_colnum, country_colnum, applicability_colnum ,  min_order_colnum , description_colnum , unit_package_colnum , title_en_colnum , title_colnum , count_colnum , manufacturer_colnum , price_colnum , catalog_number_colnum , parts_group_colnum = false
+      manufacturer, manufacturer_orig, manufacturer_synonyms_hs, unit_colnum, multiply_factor_colnum, external_id_colnum, country_colnum, applicability_colnum ,  min_order_colnum , description_colnum , unit_package_colnum , title_en_colnum , weight_grams_colnum, title_colnum , count_colnum , manufacturer_colnum , price_colnum , catalog_number_colnum , parts_group_colnum = false
       r_colnum = Array.new
       rm_colnum = Array.new
       rdm = Array.new
@@ -130,6 +131,11 @@ class ImportJobable < AbstractJobber
       if @jobable.title_en_colnum.present?
         title_en_colnum = @jobable.title_en_colnum - 1
         query_template = query_template + "title_en, "
+      end
+
+      if @jobable.weight_grams_colnum.present?
+        weight_grams_colnum = @jobable.weight_grams_colnum - 1
+        query_template = query_template + "weight_grams, "
       end
 
       if @jobable.unit_package_colnum.present?
@@ -242,6 +248,7 @@ class ImportJobable < AbstractJobber
 
           query = query + title = title_colnum ? Price.connection.quote(row[title_colnum].to_s.strip) + ", " : ""
           query = query + title_en = title_en_colnum ? Price.connection.quote(row[title_en_colnum].to_s.strip) + ", " : ""
+          query = query + weight_grams = weight_grams_colnum ? Price.connection.quote(row[weight_grams_colnum].to_s.gsub(',','.').gsub(' ', '').to_f * weight_coefficient) + ", " : ""
           query = query + unit_package = unit_package_colnum ? Price.connection.quote(row[unit_package_colnum].to_s.strip) + ", " : ""
           query = query + description = description_colnum ? Price.connection.quote(row[description_colnum].to_s.strip) + ", " : ""
           query = query + min_order = min_order_colnum ? Price.connection.quote(row[min_order_colnum].to_s.strip) + ", " : ""

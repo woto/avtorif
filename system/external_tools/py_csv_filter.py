@@ -49,40 +49,42 @@ elif(column_separator == '4'):
 #in_file, out_file = sys.argv[1], sys.argv[2]
 
 size = os.path.getsize(in_file)
-bytes_to_detect = 10240
+bytes_to_detect = 20480
 skip_bytes = 1024
 #pdb.set_trace()
 if(size):
-    csvfile = open(in_file, 'rb')
+    csvfile = open(in_file, 'rbU')
     f = open(out_file, 'wt')
     writer = csv.writer(f, dialect='excel')
     counter = 0
 
+    #pdb.set_trace()
+    if(size < bytes_to_detect + skip_bytes):
+        max_size = size
+    else:
+        max_size = bytes_to_detect
+        csvfile.seek(1024)
     try:
-        #pdb.set_trace()
-        if(size < bytes_to_detect + skip_bytes):
-            max_size = size
-        else:
-            max_size = bytes_to_detect
-            csvfile.seek(1024)
-
         dialect = csv.Sniffer().sniff(csvfile.read(max_size), [',', '\t', ';', ' ', ':', '|'])
-        if not autodetect:
-            dialect.quotechar = quote_char
-            dialect.delimiter = column_separator
-            if(fcuk == True):
-                dialect.doublequote = fcuk
+    except csv.Error:
+        pass
+        dialect = csv.Sniffer()
+    
+    if not autodetect:
+        dialect.quotechar = quote_char
+        dialect.delimiter = column_separator
+        if(fcuk == True):
+            dialect.doublequote = fcuk
 
-        csvfile.seek(0)
-        reader = csv.reader(csvfile, dialect)
-        for row in reader:
-            #if counter == 0:
-                #print row
+    csvfile.seek(0)
+    reader = csv.reader(csvfile, dialect)
+    for row in reader:
+        #if counter == 0:
+            #print row
 
-            counter += 1
-            if len(str(row)) > 3500:
-                print str(row) + "------- \r\n"
-            writer.writerow(row)
-    except:
-        #pdb.set_trace()
-        raise Exception("" + str(sys.exc_info()[1]) + " in parsing file on line: " + str(counter))
+        counter += 1
+        if len(str(row)) > 3500:
+            print str(row) + "------- \r\n"
+        writer.writerow(row)
+    #pdb.set_trace()
+    #raise Exception("" + str(sys.exc_info()[1]) + " in parsing file on line: " + str(counter))
