@@ -248,7 +248,7 @@ class ImportJobable < AbstractJobber
           query = query + count = count_colnum ? Price.connection.quote(row[count_colnum].to_s.strip) + ", " : ""
 
           if manufacturer_colnum
-            manufacturer_orig = row[manufacturer_colnum].to_s.mb_chars.strip.upcase[0, @manufacturer_len]
+            manufacturer_orig = row[manufacturer_colnum].to_s.mb_chars.strip.upcase.to_s[0, @manufacturer_len]
             manufacturer = find_manufacturer_synonym(manufacturer_orig)
             query = query + manufacturer = Price.connection.quote(manufacturer) + ", "
             query = query + manufacturer_orig = Price.connection.quote(manufacturer_orig) + ", "
