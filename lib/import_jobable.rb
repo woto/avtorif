@@ -431,6 +431,7 @@ class ImportJobable < AbstractJobber
           update_prices_costs
 
         when /_R_/
+          prepare_insertion_table
           make_insertion
       end
 

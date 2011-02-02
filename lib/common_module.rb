@@ -11,7 +11,7 @@ module CommonModule
     end
 
     def normalize_catalog_number catalog_number
-      catalog_number.to_s.mb_chars.upcase.strip.gsub(/[ ,-.]/, '').to_s[0, CATALOG_NUMBER_LEN]
+      catalog_number.to_s.mb_chars.upcase.strip.gsub(/[^a-z0-9]/i, '').to_s[0, CATALOG_NUMBER_LEN]
     end
   end
 end

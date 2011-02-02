@@ -25,8 +25,12 @@
   <tr>
     <td><%= manufacturer.title %></td>
     <td>
-      <% if manufacturer.job_id %>
-        <%= link_to Job.find(manufacturer.job_id), supplier_job_path(Job.find(manufacturer.job_id).supplier_id, manufacturer.job_id) %>
+      <% if manufacturer.job_id.present? %>
+        <%= 
+          begin 
+            link_to Job.find(manufacturer.job_id), supplier_job_path(Job.find(manufacturer.job_id).supplier_id, manufacturer.job_id) 
+          rescue => e;
+          end %>
       <% end %>
     </td>
     <td><%= link_to 'Show', manufacturer %></td>
