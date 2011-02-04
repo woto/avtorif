@@ -3,8 +3,7 @@ class ImportJob < ActiveRecord::Base
   enum_attr :import_method, ["Очищаем и вставляем - _B_",
     "Вставляем _I_",
     "Имеющиеся в бд и в прайсе обновляем, имеющиеся в прайсе и отсутствующие в бд вставляем - _U_ ",
-    "Имеющиеся в бд и в прайсе обновляем, имеющиеся в прайсе и отсутствующие в бд не вставляем - _U0_",
-    "Загрузка замен - _R_"
+    "Имеющиеся в бд и в прайсе обновляем, имеющиеся в прайсе и отсутствующие в бд не вставляем - _U0_"
   ], :nil => true
   enum_attr :job_code, ["Alpha", "Bravo", "Charlie", "Delta", "Echo", "Foxtrot", "Golf", "Hotel", "India", "Juliet", "Kilo", "Lima", "Mike", "November", "Oscar", "Papa", "Quebec", "Romeo", "Sierra", "Tango", "Uniform", "Victor", "Whiskey", "X-ray", "Yankee", "Zulu"], :nil => true
 

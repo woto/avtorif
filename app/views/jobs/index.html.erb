@@ -8,7 +8,8 @@
   <a href="display_jobs?job_type=ReceiveJob"%>Задачи приема</a> |
   <a href="display_jobs?job_type=ConvertJob"%>Задачи конвертирования</a> |
   <a href="display_jobs?job_type=FilterJob"%>Задачи фильтрации</a> |
-  <a href="display_jobs?job_type=ImportJob"%>Задачи импорта</a>
+  <a href="display_jobs?job_type=ImportJob"%>Задачи импорта</a> |
+  <a href="display_jobs?job_type=ReplaceJob"%>Задачи загрузки замен</a>
   </p>
   <br />
 <% end %>
@@ -52,6 +53,7 @@
             <%= link_to("Конвертирование", new_supplier_job_convert_job_path(job.supplier, job)) %> <br />
             <%= link_to("Фильтрация", new_supplier_job_filter_job_path(job.supplier, job)) %> <br />
             <%= link_to("Импортирование", new_supplier_job_import_job_path(job.supplier, job)) %> <br />
+            <%= link_to("Замены", new_supplier_job_replace_job_path(job.supplier, job)) %> <br />
           <% if job.jobable.present? %>          
             <br />
             <%= link_to("Настройки #{job.jobable.class.to_s}", edit_polymorphic_path([job.supplier, job, job.jobable])) %>

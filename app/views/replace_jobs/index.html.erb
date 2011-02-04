@@ -1,0 +1,37 @@
+<h1>Listing replace_jobs</h1>
+
+<table>
+  <tr>
+    <th>Rx colnum</th>
+    <th>Rmx colnum</th>
+    <th>Rdmx</th>
+    <th>Rdix</th>
+    <th>Rdex</th>
+    <th>Weight grams colnum</th>
+    <th>Weight coefficient</th>
+    <th>New catalog number colnum</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @replace_jobs.each do |replace_job| %>
+  <tr>
+    <td><%= replace_job.rx_colnum %></td>
+    <td><%= replace_job.rmx_colnum %></td>
+    <td><%= replace_job.rdmx %></td>
+    <td><%= replace_job.rdix %></td>
+    <td><%= replace_job.rdex %></td>
+    <td><%= replace_job.weight_grams_colnum %></td>
+    <td><%= replace_job.weight_coefficient %></td>
+    <td><%= replace_job.new_catalog_number_colnum %></td>
+    <td><%= link_to 'Show', replace_job %></td>
+    <td><%= link_to 'Edit', edit_replace_job_path(replace_job) %></td>
+    <td><%= link_to 'Destroy', replace_job, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Replace job', new_replace_job_path %>

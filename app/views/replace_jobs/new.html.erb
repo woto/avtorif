@@ -1,0 +1,7 @@
+<h1>New replace_job</h1>
+
+<% semantic_form_for(@replace_job, :url => supplier_job_replace_jobs_path(params[:supplier_id], params[:job_id])) do |f| %>
+    <%= render :partial => 'form', :locals => {:f => f} %>
+<% end %>
+
+<%= link_to 'Back', supplier_jobs_path(params[:supplier_id]) %>

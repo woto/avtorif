@@ -2,51 +2,12 @@ require 'digest/md5'
 
 class ImportJobable < AbstractJobber
 
-  def find_manufacturer_synonym(manufacturer_orig)
-
-    # Выполняем единожды для всех обрабтываемых файлов
-    unless defined? @manufacturer_synonyms_hs
-      @manufacturer_synonyms_hs = Hash.new
-      @used_in_this_price = Hash.new
-      manufacturer_synonyms_ar = ManufacturerSynonym.includes(:manufacturer).select('manufacturers.id, manufacturers.title, manufacturer_synonyms.title')
-      manufacturer_synonyms_ar.each do |ms|
-        unless ms.manufacturer.nil?
-          # Заполняем хеш таблицу, где ключ - ManufacturerSynonym, а значение Manufacturer.
-          # Т.е. под одним ключем ManufacturerSynonym может быть несколько Manufacturer'ов
-          @manufacturer_synonyms_hs[ms.title.to_s.dup.to_s] = ms.manufacturer.title.to_s.mb_chars.strip.upcase.to_s
-        else
-          # Удалим ManufacturerSynonym, если у него нет ни одного Manufacturer'a
-          ManufacturerSynonym.delete(ms.id)
-        end
-      end
-      manufacturer_synonyms_ar = nil
-    end
-
-    # если встретили этот синоним в прайсе впервые
-    unless manufacturer = @used_in_this_price[manufacturer_orig]
-      # если не нашли в глобальной таблице соответствия синонимов и производителей
-      unless manufacturer = @manufacturer_synonyms_hs[manufacturer_orig]
-        # то надо создавать
-        unless create_manufacturer_and_synonym(manufacturer_orig)
-          # возможна ситуация, в случае Race condition
-          unless create_manufacturer_and_synonym(manufacturer_orig)
-            raise 'Не восстановимая ошибка при создании производителей/синонимов. Задача должна разрешиться при следующем запуске'
-          end
-        end
-
-        manufacturer = manufacturer_orig
-      end
-      # обновляем, что синоним встречался в прайсе ранее из найденного в глобальной таблице, или нового созданного
-      @used_in_this_price[manufacturer_orig] = manufacturer
-    end
-    return manufacturer
-  end
 
   def update_prices_costs
     if @jobable.job_code.present?
       CommonModule::all_doublets do |l|
         query = "
-          UPDATE price_import_#{@job.id} pi
+          UPDATE price_import_#{@job_id} pi
             JOIN price_cost_#{l} pc 
               ON  pc.supplier_id = #{@supplier_id} 
                 AND pi.job_code = pc.job_code 
@@ -64,10 +25,10 @@ class ImportJobable < AbstractJobber
     else
       CommonModule::all_doublets do |l|
         query = "
-          UPDATE price_import_#{@job.id} pi
+          UPDATE price_import_#{@job_id} pi
             JOIN price_cost_#{l} pc 
               ON  pc.supplier_id = #{@supplier_id} 
-                AND pc.job_id = #{@job.id}
+                AND pc.job_id = #{@job_id}
                 AND pi.catalog_number = pc.catalog_number 
                 AND ( (pi.manufacturer_orig = pc.manufacturer_orig)
                   OR ( pi.manufacturer_orig IS NULL 
@@ -89,10 +50,10 @@ class ImportJobable < AbstractJobber
     end
 
     CommonModule::all_doublets do |l|
-      query = "INSERT INTO price_cost_#{l} (job_id, title, count, price_cost, manufacturer, manufacturer_orig, catalog_number, title_en, weight_grams, unit_package, description, min_order, applicability, country, external_id, unit, multiply_factor, parts_group, job_code, supplier_id) SELECT job_id, title, count, price_cost, manufacturer, manufacturer_orig, catalog_number, title_en, weight_grams, unit_package, description, min_order, applicability, country, external_id, unit, multiply_factor, parts_group, job_code, supplier_id FROM price_import_#{@job.id} WHERE doublet = '#{l}' #{additional}"
+      query = "INSERT INTO price_cost_#{l} (job_id, title, count, price_cost, manufacturer, manufacturer_orig, catalog_number, catalog_number_orig, title_en, weight_grams, unit_package, description, min_order, applicability, country, external_id, unit, multiply_factor, parts_group, job_code, supplier_id) SELECT job_id, title, count, price_cost, manufacturer, manufacturer_orig, catalog_number, catalog_number_orig, title_en, weight_grams, unit_package, description, min_order, applicability, country, external_id, unit, multiply_factor, parts_group, job_code, supplier_id FROM price_import_#{@job_id} WHERE doublet = '#{l}' #{additional}"
       Price.connection.execute(query)
 
-      query = "UPDATE price_import_#{@job.id} SET processed = 1 WHERE doublet = '#{l}'"
+      query = "UPDATE price_import_#{@job_id} SET processed = 1 WHERE doublet = '#{l}'"
       Price.connection.execute(query)
 
     end
@@ -105,23 +66,16 @@ class ImportJobable < AbstractJobber
     end
   end
 
-
   def make_insertion
+    CommonModule::prepare_insertion_table(@job_id)
+    catalog_number_colnum = @jobable.catalog_number_colnum - 1
 
-    prepare_insertion_table
-    weight_coefficient = @jobable.weight_coefficient
     @optional.each do |opt|
       i = 0
       query = ""
-      manufacturer, manufacturer_orig, manufacturer_synonyms_hs, unit_colnum, multiply_factor_colnum, external_id_colnum, country_colnum, applicability_colnum ,  min_order_colnum , description_colnum , unit_package_colnum , title_en_colnum , weight_grams_colnum, title_colnum , count_colnum , manufacturer_colnum , price_colnum , catalog_number_colnum , parts_group_colnum = false
-      r_colnum = Array.new
-      rm_colnum = Array.new
-      rdm = Array.new
-      rdi = Array.new
-      rde = Array.new
-      r = Array.new
+      manufacturer, manufacturer_orig, manufacturer_synonyms_hs, unit_colnum, multiply_factor_colnum, external_id_colnum, country_colnum, applicability_colnum ,  min_order_colnum , description_colnum , unit_package_colnum , title_en_colnum , weight_grams_colnum, title_colnum , count_colnum , manufacturer_colnum , parts_group_colnum = false
 
-      query_template = "INSERT INTO price_import_#{@job.id} (job_id, "
+      query_template = "INSERT INTO price_import_#{@job_id} (job_id, "
       
       if @jobable.title_colnum.present?
         title_colnum = @jobable.title_colnum - 1
@@ -200,41 +154,7 @@ class ImportJobable < AbstractJobber
         job_code = ""
       end
 
-
-      if @jobable.import_method.to_s =~ /_R_/
-
-        for j in 0..@max_replaces do
-
-          if eval("@jobable.r#{j}_colnum.present?")
-            r_colnum[j] = eval "@jobable.r#{j}_colnum - 1"
-          end
-
-          if eval("@jobable.rm#{j}_colnum.present?")
-            rm_colnum[j] = eval "@jobable.rm#{j}_colnum - 1"
-          end
-
-          if eval("@jobable.rdm#{j}.present?")
-            rdm[j] = eval "Price.connection.quote(find_manufacturer_synonym(@jobable.rdm#{j}))"
-          end
-
-          if eval("@jobable.rdi#{j}.present?")
-            rdi[j] = eval "@jobable.rdi#{j}"
-          end
-
-          if eval("@jobable.rde#{j}.present?")
-            rde[j] = eval "@jobable.rde#{j}"
-          end
-          
-          query_template = query_template + "r#{j}, rm#{j}, rdi#{j}, "
-
-        end
-      end
-
-      price_colnum = @jobable.income_price_colnum - 1
-      catalog_number_colnum = @jobable.catalog_number_colnum - 1
-      @supplier_id = Price.connection.quote(@job.supplier_id)
-
-      query_template = query_template + "price_cost, catalog_number, supplier_id) VALUES "
+      query_template = query_template + "price_cost, catalog_number, catalog_number_orig, supplier_id) VALUES "
 
       #BUG Проверить, на работоспособность (Потребовалось после конвертирования из Excel в csv, где были переносы \r)
       FasterCSV.foreach(SupplierPrice.find(opt).attachment.path) do |row|
@@ -244,21 +164,19 @@ class ImportJobable < AbstractJobber
         
         if i < @max_inserts
 
-          query = query + "(#{@job.id},"
+          query = query + "(#{@job_id},"
 
           query = query + title = title_colnum ? Price.connection.quote(row[title_colnum].to_s.strip) + ", " : ""
           query = query + title_en = title_en_colnum ? Price.connection.quote(row[title_en_colnum].to_s.strip) + ", " : ""
-          query = query + weight_grams = weight_grams_colnum ? Price.connection.quote(row[weight_grams_colnum].to_s.gsub(',','.').gsub(' ', '').to_f * weight_coefficient) + ", " : ""
+          query = query + weight_grams = weight_grams_colnum ? Price.connection.quote(row[weight_grams_colnum].to_s.gsub(',','.').gsub(' ', '').to_f * @weight_coefficient) + ", " : ""
           query = query + unit_package = unit_package_colnum ? Price.connection.quote(row[unit_package_colnum].to_s.strip) + ", " : ""
           query = query + description = description_colnum ? Price.connection.quote(row[description_colnum].to_s.strip) + ", " : ""
           query = query + min_order = min_order_colnum ? Price.connection.quote(row[min_order_colnum].to_s.strip) + ", " : ""
           query = query + count = count_colnum ? Price.connection.quote(row[count_colnum].to_s.strip) + ", " : ""
 
           if manufacturer_colnum
-            manufacturer_orig = row[manufacturer_colnum].to_s.mb_chars.strip.upcase.to_s[0, @manufacturer_len]
-            manufacturer = find_manufacturer_synonym(manufacturer_orig)
-            query = query + manufacturer = Price.connection.quote(manufacturer) + ", "
-            query = query + manufacturer_orig = Price.connection.quote(manufacturer_orig) + ", "
+            query = query + manufacturer = CommonModule::find_manufacturer_synonym(row[manufacturer_colnum], @job_id) + ", "
+            query = query + manufacturer_orig = CommonModule::manufacturer_orig(row[manufacturer_colnum]) + ", "
           end
           
           query = query + applicability = applicability_colnum ? Price.connection.quote(row[applicability_colnum].to_s.strip) + ", " : ""
@@ -268,54 +186,9 @@ class ImportJobable < AbstractJobber
           query = query + external_id = external_id_colnum ? Price.connection.quote(row[external_id_colnum].to_s.strip) + ", " : ""
           query = query + parts_group = parts_group_colnum ? Price.connection.quote(row[parts_group_colnum].to_s.strip) + ", " : ""
           query = query + job_code
-
-
-          if @jobable.import_method.to_s =~ /_R_/
-            replaces_counter = 0
-
-            for j in 0..@max_replaces do
-              r = nil
-              rm = nil
-
-              # Если указана колонка замен
-              if r_colnum[j]
-                r = row[r_colnum[j]].to_s.split(rde[j])
-                r.map!{|catalog_number| CommonModule.normalize_catalog_number(catalog_number)}
-                r.delete("")
-                r.map!{|catalog_number| Price.connection.quote(catalog_number)}
-                if rm_colnum[j]
-                  # Если указан колонка производитель замены
-                  rm = Price.connection.quote(find_manufacturer_synonym(row[rm_colnum[j]])).to_s
-                elsif rdm[j]
-                  # Иначе если у колонки производитель по-умолчанию
-                  rm = rdm[j]
-                else
-                  rm = 'NULL'
-                end
- 
-                for k in r do
-                  replaces_counter = replaces_counter + 1
-                  if replaces_counter-1 <= 79
-                    if k.size <= 2
-                      debugger
-                    end
-                    query = query + k + ", "
-                    query = query + rm + ", "
-                    query = query + rdi[j].to_s + ", "
-                  end
-                end
-              end
-            end
-
-            for j in 0..(@max_replaces-replaces_counter) do
-              query = query + "NULL, NULL, NULL, "
-            end
-
-          end
-
-
-          query = query + price = Price.connection.quote(row[price_colnum].to_s.gsub(',','.').gsub(' ','')) + ", "
+          query = query + price = Price.connection.quote(row[@price_colnum].to_s.gsub(',','.').gsub(' ','')) + ", "
           query = query + catalog_number = Price.connection.quote(CommonModule::normalize_catalog_number(row[catalog_number_colnum])) + ", "
+          query = query + catalog_number_orig = Price.connection.quote(CommonModule::catalog_number_orig(row[catalog_number_colnum])) + ", "
           query = query + @supplier_id
           query = query + "),"
 
@@ -344,50 +217,19 @@ class ImportJobable < AbstractJobber
       end
     end
 
-    add_doublet
+    CommonModule::add_doublet(@job_id)
     
-  end
-
-  def create_manufacturer_and_synonym(manufacturer_orig)
-    
-    m = Manufacturer.where(:title => manufacturer_orig).first
-    ms = ManufacturerSynonym.where(:title => manufacturer_orig).first
-
-    if m.blank?
-      m = Manufacturer.create(:title => manufacturer_orig, :job_id => @job.id)
-    end
-
-    if ms.blank?
-      ms = ManufacturerSynonym.create(:title => manufacturer_orig, :job_id => @job.id)
-    end
-
-    ms.manufacturer = m
-    ms.save
-  end
-
-  def prepare_insertion_table
-    Price.connection.execute("DROP TABLE IF EXISTS price_import_#{@job.id}")
-    Price.connection.execute("CREATE TABLE price_import_#{@job.id} like price_import_templates")
-  end
-
-  def add_doublet
-    query = "UPDATE price_import_#{@job.id} SET doublet = SUBSTRING(MD5(catalog_number), 1, 2)"
-    Price.connection.execute(query)
-
-    query = "ALTER TABLE price_import_#{@job.id} ADD INDEX doublet_idx (doublet)"
-    Price.connection.execute(query)
   end
 
   def perform
-    @max_replaces = AppConfig.max_replaces - 1
     @max_inserts = AppConfig.max_inserts
     @manufacturer_len = AppConfig.manufacturer_len
+    @catalog_number_len = AppConfig.catalog_number_len
+    @weight_coefficient = @jobable.weight_coefficient
+    @price_colnum = @jobable.income_price_colnum - 1
+    @supplier_id = Price.connection.quote(@job.supplier_id)
+    @job_id = @job.id
 
-    #unless @jobable.importable.blank?
-    #  importer_class = (@jobable.importable.type.to_s.split(/Import/).first + "Importer").classify.constantize
-    #  importer = importer_class.new(@job, @jobable, @jobable.importable, @optional)
-    #  self.optional = importer.import
-    #end
       case @jobable.import_method.to_s
 
         when /_B_/
@@ -395,12 +237,12 @@ class ImportJobable < AbstractJobber
           # Удаляем либо по id задачи, либо по объединяющему коду
           if @jobable.job_code.present?
             CommonModule::all_doublets do |l|
-              query = "DELETE FROM price_cost_#{l} WHERE supplier_id = #{@supplier_id} job_code = '#{@jobable.job_code}'"
+              query = "DELETE FROM price_cost_#{l} WHERE supplier_id = #{@supplier_id} AND job_code = '#{@jobable.job_code}'"
               Price.connection.execute(query)
             end
           else
             CommonModule::all_doublets do |l|
-              query = "DELETE FROM price_cost_#{l} WHERE job_id = #{@job.id}"
+              query = "DELETE FROM price_cost_#{l} WHERE job_id = #{@job_id}"
               Price.connection.execute(query)
             end
           end
@@ -430,9 +272,6 @@ class ImportJobable < AbstractJobber
           make_insertion
           update_prices_costs
 
-        when /_R_/
-          prepare_insertion_table
-          make_insertion
       end
 
     super

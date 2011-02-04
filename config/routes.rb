@@ -12,6 +12,7 @@ Avtorif::Application.routes.draw do
   resources :currencies
   resources :column_relations
   resources :import_jobs
+  resources :replace_jobs
   resources :http_receives
   resources :check_receives
   resources :ftp_receives
@@ -56,6 +57,7 @@ Avtorif::Application.routes.draw do
       
       resources :supplier_prices
       resources :import_jobs
+      resources :replace_jobs
       resources :receive_jobs
       resources :filter_jobs
       resources :unpack_jobs

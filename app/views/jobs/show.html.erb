@@ -106,7 +106,7 @@ scope = scope.scoped :conditions => {:supplier_id => params['supplier_id']} if p
 </p>
 
 <div style="background: #FFD">
-  <% if @job.jobable.class == ImportJob %>
+  <% if [ImportJob, ReplaceJob].include? @job.jobable.class%>
     
     <%= link_to 'Очистить прайсы-цены и временную', clean_supplier_job_path(params[:supplier_id], @job) %>
     <br /><br />

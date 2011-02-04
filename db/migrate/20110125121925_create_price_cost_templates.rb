@@ -9,13 +9,14 @@ class CreatePriceCostTemplates < ActiveRecord::Migration
       t.string :manufacturer, :limit => AppConfig.manufacturer_len
       t.string :manufacturer_orig, :limit => AppConfig.manufacturer_len
       t.string :catalog_number, :limit => AppConfig.catalog_number_len
+      t.string :catalog_number_orig, :limit => AppConfig.catalog_number_len
       t.string :country
       t.string :parts_group
       t.references :supplier
       t.string :job_code
       t.integer :processed
       t.string :delivery_days_price
-      t.decimal :weight_grams
+      t.integer :weight_grams
       t.string :external_id
       t.string :unit_package
       t.string :multiply_factor

@@ -4,18 +4,6 @@
     margin: 5px 0;
   }
 
-  #replacement {
-    background: #494;
-  }
-
-  #replacement_array {
-    background: #A9D;
-  }
-
-  #new_number {
-    background: #947;
-  }
-
   #weight {
     background: #89A;
   }
@@ -47,19 +35,21 @@
   #delivery_days {
     background: #8CA;
   }
+
 </style>
-<%= f.error_messages %>
-<br />
-<p>
-  <%= f.label :import_method %>
-  <%= f.enum_select :import_method %>
-</p>
-<br />
-<p>
-  <%= f.label :job_code %>
-  <%= f.enum_select :job_code, :include_blank => true %><br />
-</p>
-<br />
+
+  <%= f.error_messages %>
+  <br />
+  <p>
+    <%= f.label :import_method %>
+    <%= f.enum_select :import_method %>
+  </p>
+  <br />
+  <p>
+    <%= f.label :job_code %>
+    <%= f.enum_select :job_code, :include_blank => true %><br />
+  </p>
+  <br />
 
   <%= f.inputs :currency_buy %>
 
@@ -184,29 +174,6 @@
     Валюта веса
     <hr />
    <%= f.input :weight_unavaliable_rate %>
-  </div>
-
-  <div id="new_number">
-    <%= f.input :new_catalog_number_colnum %>
-    Колонка: Новый каталожный номер
-  </div>
-
-  <div id="replacement">
-
-    <% 0.upto(79) do |i| %>
-      <%= eval("f.input :r#{i}_colnum") %>
-      <%= "Колонка: Замена #{i}" %>
-      <%= eval("f.input :rm#{i}_colnum") %>
-      <%= "Колонка: Производитель #{i}" %>
-      <%= eval("f.input :rdm#{i}") %>
-      <%= "Производитель #{i} по-умолчанию" %>
-      <%= eval("f.input :rde#{i}") %>
-      <%= "Разделитель #{i}" %>
-      <%= eval("f.input :rdi#{i}, :as => :select, :collection => {'Прямая' => 1, 'Обратная' => 2, 'Двунаправленная' => 3}") %>
-      <%= "Направление замены #{i}" %>
-      <hr />
-    <% end %>
-
   </div>
 
 <%= f.submit 'Update' %>

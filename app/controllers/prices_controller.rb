@@ -1,8 +1,11 @@
 class PricesController < ApplicationController
 
   def search
+    @prices = []
     # Локальная работа
     #@prices = Price.select("prices.*, jobs.*, import_jobs.*, suppliers.*").where('catalog_number = ?', params[:price][:catalog_number]).includes(:job => {:import_job => [:currency_buy, :currency_sell, :currency_weight]}).includes(:supplier)
+    #
+=begin
     @prices = Price.find_by_sql("
       SELECT *, 
              p.price_cost * ij.income_rate AS income_cost, 
@@ -29,11 +32,12 @@ class PricesController < ApplicationController
                         WHERE  s.id = 222198489) udr 
                ON p.job_id = udr.job_id 
       WHERE  p.catalog_number = #{Price.connection.quote(params[:price][:catalog_number])};")
-
+=end
     # Работа со сторонними сервисами
-    if(defined?(params[:OnlyOurWS]) && params[:OnlyOurWS] == "1")
+    if(params[:ext_ws].present?)
       threads = []
 
+=begin
       # ALL4CAR
       threads << Thread.new() do
         Thread.current["prices"] = []
@@ -138,20 +142,23 @@ class PricesController < ApplicationController
           end
         end
       end
-
+=end
       #EMEX
       threads << Thread.new() do
 
         Thread.current["prices"] = []
         Timeout.timeout(AppConfig.emex_timeout) do
           begin
-            response = Net::HTTP.post_form(URI.parse('http://ws.emex.ru/EmExService.asmx/FindDetailAdv'), {
-              'login'=>AppConfig.emex_login,
+
+            hash =  {
+              'login'=> AppConfig.emex_login.to_s,
               'password'=> AppConfig.emex_password,
-              'makeLogo' => 'true',
+              'makeLogo' => params[:make_logo],
               'detailNum' => params[:price][:catalog_number],
-              'findSubstitutes' => 'true'
-            })
+              'findSubstitutes' => (params[:replacements] == '1') ? 'true' : 'false'
+            }
+
+            response = Net::HTTP.post_form(URI.parse('http://ws.emex.ru/EmExService.asmx/FindDetailAdv'), hash)
 
             doc = Nokogiri::XML(response.body)
 
@@ -193,7 +200,11 @@ class PricesController < ApplicationController
                  when /^DestinationDesc$/
                    p.job.import_job[:delivery_summary] = (p.job.import_job[:delivery_summary].to_s + " " + value.to_s.strip).to_s.strip
                  when /^bitStorehouse$/
-                   p.job.import_job[:presence] = true if value.to_s.strip == 'true'
+                   if(value.to_s.strip == 'true')
+                     p.job.import_job[:presence] = true 
+                    else
+                     p.job.import_job[:presence] = false
+                   end
                  when /^PriceCountry$/
                    p.job.import_job[:country_short] = value.to_s.strip
                  when /^PriceDesc$/
@@ -205,26 +216,36 @@ class PricesController < ApplicationController
                    p[:updated_at] = DateTime.now
                   when /^DetailNum$/
                     p[:catalog_number] = value.to_s.strip
+                    p[:catalog_number_orig] = value.to_s.strip
                   when /^DetailNameRus$/
                     p[:title] = value.to_s.strip
                   when /^DetailNameEng$/
                     p[:title_en] = value.to_s.strip
                   when /^ResultPrice$/
                     p[:price_cost] = value.to_s.strip
+                    p[:income_cost] = value.to_s.strip
+                    p[:retail_cost] = value.to_f * p.job.import_job[:retail_rate]
                   when /^MakeName$/
                     p[:manufacturer] = value.to_s.strip
                   when /^MakeLogo$/
                     p[:manufacturer_short] = value.to_s.strip
+                  when /^bitOriginal/
+                    if value.to_s.strip == 'true'
+                      p[:bit_original] = true
+                    else
+                      p[:bit_original] = false
+                    end
+                # TODO LOL
                  when /^ADDays$/
-                    p.job.import_job[:delivery_days_average] = value.to_s
-                 when /^DeliverTimeGuaranteed$/
                     p.job.import_job[:delivery_days_declared] = value.to_s
+                 when /^DeliverTimeGuaranteed$/
+                    p.job.import_job[:delivery_days_average] = value.to_s
                  when /^CalcDeliveryPercent$/
                     p.job.import_job[:success_percent] = value.to_s
                     p[:success_percent] = value.to_s
-                  when /^Country$/
+                 when /^Country$/
                     p[:country] = value.to_s.strip
-                  else
+                 else
                     p[(c.name.underscore + "_emex").to_sym] = value.to_s.strip
                 end
 
@@ -243,7 +264,6 @@ class PricesController < ApplicationController
     end
 
     respond_to do |format|
-      #debugger
       format.html {render :action => :index }
       format.xml  { render :xml => @prices.to_xml(
         :include => {
@@ -256,10 +276,12 @@ class PricesController < ApplicationController
             :import_job => {
               :except => [:currency_weight_id, :income_price_colnum, :manufacturer_colnum, :created_at, :catalog_number_colnum, :count_colnum, :currency_buy_id, :external_id_colnum, :title_colnum, :delivery_type_id, :updated_at, :importable_type, :weight_colnum, :id, :currency_sell_id, :multiplicity_colnum, :weight_unavaliable_rate, :importable_id, :import_method],
               :include => {
-                :currency_buy => {:except => [:foreign_id, :created_at, :updated_at, :id, :value]},
-                :currency_sell => {:except => [:foreign_id, :created_at, :updated_at, :id, :value]},
-                :currency_weight => {:except => [:foreign_id, :created_at, :updated_at, :id, :value]},
-              }}}}})}
+                :currency_buy => {:except => [:foreign_id, :created_at, :updated_at, :id, :value]}
+                #:currency_sell => {:except => [:foreign_id, :created_at, :updated_at, :id, :value]},
+                #:currency_weight => {:except => [:foreign_id, :created_at, :updated_at, :id, :value]},
+              }
+        
+        }}}})}
     end
 
   end
