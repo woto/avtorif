@@ -31,6 +31,7 @@ class JobsController < ApplicationController
   def new
     @job = Job.new
     @job.job_id = params[:job_id]
+    @job.supplier_id = params[:supplier_id]
     
     respond_to do |format|
       format.html # new.html.erb
@@ -47,7 +48,7 @@ class JobsController < ApplicationController
   # POST /jobs.xml
   def create
     @job = Job.new(params[:job])
-    @job.supplier_id = params[:supplier_id]
+    #@job.supplier_id = params[:supplier_id]
     #supplier = @job.supplier
 
     respond_to do |format|

@@ -1,5 +1,5 @@
 <%= semantic_form_for(@supplier) do |f| %>
-  <% f.inputs do %>
+  <%= f.inputs do %>
     <%= f.input :title %>
     <%= f.input :inn %>
     <%= f.input :kpp %>
@@ -28,6 +28,7 @@
     <%= f.input :email %>
     <%= f.input :emaildocs %>
     <%= f.input :discount_group %>
+    <%= f.input :web_site %>
   <% end %>
   <%= f.buttons %>
 <% end %>
