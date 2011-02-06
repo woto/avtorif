@@ -274,7 +274,7 @@ class PricesController < ApplicationController
           :except => [ :created_at, :jobable_id, :last_start, :updated_at, :next_start, :id, :file_mask, :jobable_type, :seconds_between_jobs, :seconds_working, :supplier_id, :description, :last_finish, :job_id, :started_once, :active, :locked],
           :include => {
             :import_job => {
-              :except => [:currency_weight_id, :income_price_colnum, :manufacturer_colnum, :created_at, :catalog_number_colnum, :count_colnum, :currency_buy_id, :external_id_colnum, :title_colnum, :delivery_type_id, :updated_at, :importable_type, :weight_colnum, :id, :currency_sell_id, :multiplicity_colnum, :weight_unavaliable_rate, :importable_id, :import_method],
+              :except => [:currency_weight_id, :income_price_colnum, :manufacturer_colnum, :created_at, :catalog_number_colnum, :count_colnum, :currency_buy_id, :external_id_colnum, :title_colnum, :delivery_type_id, :updated_at, :importable_type, :weight_grams_colnum, :id, :currency_sell_id, :multiplicity_colnum, :weight_unavaliable_rate, :importable_id, :import_method],
               :include => {
                 :currency_buy => {:except => [:foreign_id, :created_at, :updated_at, :id, :value]}
                 #:currency_sell => {:except => [:foreign_id, :created_at, :updated_at, :id, :value]},
