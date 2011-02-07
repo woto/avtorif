@@ -55,7 +55,6 @@ class ImportJobable < AbstractJobber
 
       query = "UPDATE price_import_#{@job_id} SET processed = 1 WHERE doublet = '#{l}'"
       Price.connection.execute(query)
-
     end
   end
 
@@ -158,11 +157,12 @@ class ImportJobable < AbstractJobber
 
       #BUG Проверить, на работоспособность (Потребовалось после конвертирования из Excel в csv, где были переносы \r)
       FasterCSV.foreach(SupplierPrice.find(opt).attachment.path) do |row|
-        if i == 0
+        begin
+#        if i == 0
           query = query_template
-        end
+#        end
         
-        if i < @max_inserts
+#        if i < @max_inserts
 
           query = query + "(#{@job_id},"
 
@@ -190,13 +190,14 @@ class ImportJobable < AbstractJobber
           query = query + catalog_number = Price.connection.quote(CommonModule::normalize_catalog_number(row[catalog_number_colnum])) + ", "
           query = query + catalog_number_orig = Price.connection.quote(CommonModule::catalog_number_orig(row[catalog_number_colnum])) + ", "
           query = query + @supplier_id
-          query = query + "),"
+#          query = query + "),"
+          query = query + ")"
 
-          i = i + 1
-        end
+#          i = i + 1
+#        end
 
-        if i == @max_inserts
-          query.chop!
+#        if i == @max_inserts
+          #query.chop!
           begin
             Price.connection.execute(query)
           rescue => e
@@ -204,21 +205,21 @@ class ImportJobable < AbstractJobber
             debugger
             raise e
           end
-          query = ""
-          i = 0
-        end
-
-      end
+#          query = ""
+#          i = 0
+#        end
 
       #TODO Объединить с верхним (это на случай если записей меньше n)
-      if query.present?
-        query.chop!
-        Price.connection.execute(query)
+#      if query.present?
+#        query.chop!
+#        Price.connection.execute(query)
+#      end
+        rescue CatalogNumberException
+          next
+        end
       end
     end
-
     CommonModule::add_doublet(@job_id)
-    
   end
 
   def perform

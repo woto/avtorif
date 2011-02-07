@@ -33,13 +33,15 @@ module CommonModule
     end
 
     def normalize_catalog_number catalog_number
-      catalog_number.to_s.mb_chars.upcase.strip[0, CATALOG_NUMBER_LEN].gsub(/[^a-z0-9]/i, '').to_s
+      cn = catalog_number.to_s.mb_chars.upcase.strip[0, CATALOG_NUMBER_LEN].gsub(/[^a-z0-9]/i, '').to_s
+      if cn.length > 0
+        return cn
+      else
+        raise CatalogNumberException
+      end
     end
 
   def create_manufacturer_and_synonym(manufacturer_orig, job_id)
-    if manufacturer_orig == "K"
-      debugger
-    end
     
     m = Manufacturer.where(:title => manufacturer_orig).first
     ms = ManufacturerSynonym.where(:title => manufacturer_orig).first

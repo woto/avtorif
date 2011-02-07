@@ -105,111 +105,120 @@ class ReplaceJobable < AbstractJobber
               end
 
               for k in r do
-                if(rdi[j] == 1 || rdi[j] == 3)
-                  query = query_template.dup
+                begin
+                  if(rdi[j] == 1 || rdi[j] == 3)
+                    query = query_template.dup
 
-                  catalog_number = Price.connection.quote(CommonModule::normalize_catalog_number(row[catalog_number_colnum]))
-                  catalog_number_orig = Price.connection.quote(CommonModule::catalog_number_orig(row[catalog_number_colnum]))
+                    catalog_number = Price.connection.quote(CommonModule::normalize_catalog_number(row[catalog_number_colnum]))
+                    catalog_number_orig = Price.connection.quote(CommonModule::catalog_number_orig(row[catalog_number_colnum]))
 
-                  if manufacturer_colnum.present?
-                    manufacturer_orig = CommonModule::manufacturer_orig(row[manufacturer_colnum])
-                  elsif default_manufacturer.present? 
-                    manufacturer_orig = CommonModule::manufacturer_orig(default_manufacturer)
-                  else
-                    manufacturer_orig = "NULL"
+                    if manufacturer_colnum.present?
+                      manufacturer_orig = CommonModule::manufacturer_orig(row[manufacturer_colnum])
+                    elsif default_manufacturer.present? 
+                      manufacturer_orig = CommonModule::manufacturer_orig(default_manufacturer)
+                    else
+                      manufacturer_orig = "NULL"
+                    end
+
+                    if manufacturer_colnum.present?
+                      manufacturer = CommonModule::find_manufacturer_synonym(row[manufacturer_colnum], @job_id)
+                    elsif default_manufacturer.present?
+                      manufacturer = CommonModule::find_manufacturer_synonym(default_manufacturer, @job_id)
+                    else
+                      manufacturer = "NULL"
+                    end
+
+                    new_catalog_number = new_catalog_number_colnum.present? ? Price.connection.quote(CommonModule::normalize_catalog_number(row[new_catalog_number_colnum])) : "NULL"
+                    new_catalog_number_orig = new_catalog_number_colnum.present? ? Price.connection.quote(CommonModule::catalog_number_orig(row[new_catalog_number_colnum])) : "NULL"
+                    weight_grams = weight_grams_colnum.present? ? Price.connection.quote(row[weight_grams_colnum].to_s.gsub(',','.').gsub(' ', '').to_f * weight_grams_coefficient) : "NULL"
+                    replacement = Price.connection.quote(CommonModule::normalize_catalog_number(k))
+                    replacement_orig = Price.connection.quote(CommonModule::catalog_number_orig(k))
+                    replacement_manufacturer = rm
+                    replacement_manufacturer_orig = rm_orig
+                    query << insert(catalog_number, catalog_number_orig, new_catalog_number, new_catalog_number_orig, manufacturer, manufacturer_orig, weight_grams, replacement, replacement_orig, replacement_manufacturer, replacement_manufacturer_orig)
+
+                    ActiveRecord::Base.connection.execute(query)
                   end
 
-                  if manufacturer_colnum.present?
-                    manufacturer = CommonModule::find_manufacturer_synonym(row[manufacturer_colnum], @job_id)
-                  elsif default_manufacturer.present?
-                    manufacturer = CommonModule::find_manufacturer_synonym(default_manufacturer, @job_id)
-                  else
-                    manufacturer = "NULL"
+                  if(rdi[j] == 2 || rdi[j] == 3)
+                    query = query_template.dup
+
+                    catalog_number = Price.connection.quote(CommonModule::normalize_catalog_number(k))
+                    catalog_number_orig = Price.connection.quote(CommonModule::catalog_number_orig(k))
+                    new_catalog_number = new_catalog_number_colnum.present? ? Price.connection.quote(CommonModule::normalize_catalog_number(row[new_catalog_number_colnum])) : "NULL"
+                    new_catalog_number_orig = new_catalog_number_colnum.present? ? Price.connection.quote(CommonModule::catalog_number_orig(row[new_catalog_number_colnum])) : "NULL"
+                    manufacturer = rm
+                    manufacturer_orig = rm_orig
+                    weight_grams = weight_grams_colnum.present? ? Price.connection.quote(row[weight_grams_colnum].to_s.gsub(',','.').gsub(' ', '').to_f * weight_grams_coefficient) : "NULL"
+                    replacement = Price.connection.quote(CommonModule::normalize_catalog_number(row[catalog_number_colnum]))
+                    replacement_orig = Price.connection.quote(CommonModule::catalog_number_orig(row[catalog_number_colnum]))
+
+                    if manufacturer_colnum.present?
+                      replacement_manufacturer = CommonModule::find_manufacturer_synonym(row[manufacturer_colnum], @job_id)
+                    elsif default_manufacturer.present?
+                      replacement_manufacturer = CommonModule::find_manufacturer_synonym(default_manufacturer, @job_id)
+                    else
+                      replacement_manufacturer = "NULL"
+                    end
+
+                    if manufacturer_colnum.present? 
+                      replacement_manufacturer_orig = CommonModule::manufacturer_orig(row[manufacturer_colnum])
+                    elsif default_manufacturer.present?
+                      replacement_manufacturer_orig = CommonModule::manufacturer_orig(default_manufacturer)
+                    else
+                      replacement_manufacturer_orig = "NULL"
+                    end
+    
+                    query << insert(catalog_number, catalog_number_orig, new_catalog_number, new_catalog_number_orig, manufacturer, manufacturer_orig, weight_grams, replacement, replacement_orig, replacement_manufacturer, replacement_manufacturer_orig)
+                    ActiveRecord::Base.connection.execute(query)
                   end
-
-                  new_catalog_number = new_catalog_number_colnum.present? ? Price.connection.quote(CommonModule::normalize_catalog_number(row[new_catalog_number_colnum])) : "NULL"
-                  new_catalog_number_orig = new_catalog_number_colnum.present? ? Price.connection.quote(CommonModule::catalog_number_orig(row[new_catalog_number_colnum])) : "NULL"
-                  weight_grams = weight_grams_colnum.present? ? Price.connection.quote(row[weight_grams_colnum].to_s.gsub(',','.').gsub(' ', '').to_f * weight_grams_coefficient) : "NULL"
-                  replacement = Price.connection.quote(CommonModule::normalize_catalog_number(k))
-                  replacement_orig = Price.connection.quote(CommonModule::catalog_number_orig(k))
-                  replacement_manufacturer = rm
-                  replacement_manufacturer_orig = rm_orig
-                  query << insert(catalog_number, catalog_number_orig, new_catalog_number, new_catalog_number_orig, manufacturer, manufacturer_orig, weight_grams, replacement, replacement_orig, replacement_manufacturer, replacement_manufacturer_orig)
-
-                  ActiveRecord::Base.connection.execute(query)
+                rescue CatalogNumberException
+                  next
                 end
-
-                if(rdi[j] == 2 || rdi[j] == 3)
-                  query = query_template.dup
-
-                  catalog_number = Price.connection.quote(CommonModule::normalize_catalog_number(k))
-                  catalog_number_orig = Price.connection.quote(CommonModule::catalog_number_orig(k))
-                  new_catalog_number = new_catalog_number_colnum.present? ? Price.connection.quote(CommonModule::normalize_catalog_number(row[new_catalog_number_colnum])) : "NULL"
-                  new_catalog_number_orig = new_catalog_number_colnum.present? ? Price.connection.quote(CommonModule::catalog_number_orig(row[new_catalog_number_colnum])) : "NULL"
-                  manufacturer = rm
-                  manufacturer_orig = rm_orig
-                  weight_grams = weight_grams_colnum.present? ? Price.connection.quote(row[weight_grams_colnum].to_s.gsub(',','.').gsub(' ', '').to_f * weight_grams_coefficient) : "NULL"
-                  replacement = Price.connection.quote(CommonModule::normalize_catalog_number(row[catalog_number_colnum]))
-                  replacement_orig = Price.connection.quote(CommonModule::catalog_number_orig(row[catalog_number_colnum]))
-
-                  if manufacturer_colnum.present?
-                    replacement_manufacturer = CommonModule::find_manufacturer_synonym(row[manufacturer_colnum], @job_id)
-                  elsif default_manufacturer.present?
-                    replacement_manufacturer = CommonModule::find_manufacturer_synonym(default_manufacturer, @job_id)
-                  else
-                    replacement_manufacturer = "NULL"
-                  end
-
-                  if manufacturer_colnum.present? 
-                    replacement_manufacturer_orig = CommonModule::manufacturer_orig(row[manufacturer_colnum])
-                  elsif default_manufacturer.present?
-                    replacement_manufacturer_orig = CommonModule::manufacturer_orig(default_manufacturer)
-                  else
-                    replacement_manufacturer_orig = "NULL"
-                  end
-  
-                  query << insert(catalog_number, catalog_number_orig, new_catalog_number, new_catalog_number_orig, manufacturer, manufacturer_orig, weight_grams, replacement, replacement_orig, replacement_manufacturer, replacement_manufacturer_orig)
-                  ActiveRecord::Base.connection.execute(query)
-                end
-
               end
             end
           end
         else
-          query = query_template.dup
+          begin
+            query = query_template.dup
 
-          catalog_number = Price.connection.quote(CommonModule::normalize_catalog_number(row[catalog_number_colnum]))
-          catalog_number_orig = Price.connection.quote(CommonModule::catalog_number_orig(row[catalog_number_colnum]))
-          new_catalog_number = new_catalog_number_colnum.present? ? Price.connection.quote(CommonModule::normalize_catalog_number(row[new_catalog_number_colnum])) : "NULL"
-          new_catalog_number_orig = new_catalog_number_colnum.present? ? Price.connection.quote(CommonModule::catalog_number_orig(row[new_catalog_number_colnum])) : "NULL"
+            catalog_number = Price.connection.quote(CommonModule::normalize_catalog_number(row[catalog_number_colnum]))
+            catalog_number_orig = Price.connection.quote(CommonModule::catalog_number_orig(row[catalog_number_colnum]))
+            new_catalog_number = new_catalog_number_colnum.present? ? Price.connection.quote(CommonModule::normalize_catalog_number(row[new_catalog_number_colnum])) : "NULL"
+            new_catalog_number_orig = new_catalog_number_colnum.present? ? Price.connection.quote(CommonModule::catalog_number_orig(row[new_catalog_number_colnum])) : "NULL"
 
-          if manufacturer_colnum.present?
-            manufacturer_orig = CommonModule::manufacturer_orig(row[manufacturer_colnum])
-          elsif default_manufacturer.present? 
-            manufacturer_orig = CommonModule::manufacturer_orig(default_manufacturer)
-          else
-            manufacturer_orig = "NULL"
+            if manufacturer_colnum.present?
+              manufacturer_orig = CommonModule::manufacturer_orig(row[manufacturer_colnum])
+            elsif default_manufacturer.present? 
+              manufacturer_orig = CommonModule::manufacturer_orig(default_manufacturer)
+            else
+              manufacturer_orig = "NULL"
+            end
+
+            if manufacturer_colnum.present?
+              manufacturer = CommonModule::find_manufacturer_synonym(row[manufacturer_colnum], @job_id)
+            elsif default_manufacturer.present?
+              manufacturer = CommonModule::find_manufacturer_synonym(default_manufacturer, @job_id)
+            else
+              manufacturer = "NULL"
+            end
+
+            weight_grams = weight_grams_colnum.present? ? Price.connection.quote(row[weight_grams_colnum].to_s.gsub(',','.').gsub(' ', '').to_f * weight_coefficient) : "NULL"
+            replacement = "NULL"
+            replacement_orig = "NULL"
+            replacement_manufacturer = "NULL"
+            replacement_manufacturer_orig = "NULL"
+            query << insert(catalog_number, catalog_number_orig, new_catalog_number, new_catalog_number_orig, manufacturer, manufacturer_orig, weight_grams, replacement, replacement_orig, replacement_manufacturer, replacement_manufacturer_orig)
+
+            ActiveRecord::Base.connection.execute(query)
+          rescue CatalogNumberException
+            next
           end
-
-          if manufacturer_colnum.present?
-            manufacturer = CommonModule::find_manufacturer_synonym(row[manufacturer_colnum], @job_id)
-          elsif default_manufacturer.present?
-            manufacturer = CommonModule::find_manufacturer_synonym(default_manufacturer, @job_id)
-          else
-            manufacturer = "NULL"
-          end
-
-          weight_grams = weight_grams_colnum.present? ? Price.connection.quote(row[weight_grams_colnum].to_s.gsub(',','.').gsub(' ', '').to_f * weight_coefficient) : "NULL"
-          replacement = "NULL"
-          replacement_orig = "NULL"
-          replacement_manufacturer = "NULL"
-          replacement_manufacturer_orig = "NULL"
-          query << insert(catalog_number, catalog_number_orig, new_catalog_number, new_catalog_number_orig, manufacturer, manufacturer_orig, weight_grams, replacement, replacement_orig, replacement_manufacturer, replacement_manufacturer_orig)
-
-          ActiveRecord::Base.connection.execute(query)
         end
       end
     end
+
+    CommonModule::add_doublet(@job_id)
 
   end
 

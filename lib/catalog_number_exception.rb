@@ -1,0 +1,2 @@
+class CatalogNumberException < Exception
+end
