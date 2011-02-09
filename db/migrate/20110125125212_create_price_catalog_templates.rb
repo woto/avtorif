@@ -4,6 +4,8 @@ class CreatePriceCatalogTemplates < ActiveRecord::Migration
       t.references :job
       t.string :manufacturer, :limit => AppConfig.manufacturer_len
       t.string :catalog_number, :limit => AppConfig.catalog_number_len
+      t.string :title
+      t.string :title_en
       t.integer :weight_grams
       0.upto(79) do |i|
         eval("t.string :r#{i}, :limit => #{AppConfig.catalog_number_len}")

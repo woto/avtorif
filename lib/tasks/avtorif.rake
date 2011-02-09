@@ -29,6 +29,18 @@ namespace :avtorif do
             price_import_manufacturer_condition = " IS "
           end
 
+          if price_import_row['title'].present?
+            price_import_title = ActiveRecord::Base.connection.quote(price_import_row['title'])
+          else
+            price_import_title = nil
+          end
+
+          if price_import_row['title_en'].present?
+            price_import_title_en = ActiveRecord::Base.connection.quote(price_import_row['title_en'])
+          else
+            price_import_title_en = nil
+          end
+
           if price_import_row['weight_grams'].present?
             price_import_weight_grams = "'" + price_import_row['weight_grams'].to_s + "'"
           else
@@ -50,7 +62,23 @@ namespace :avtorif do
           if (price_catalog_row = price_catalog_result.first).present?
             price_catalog_id = price_catalog_row['id']
 
-            # Обновляем вес, если он есть в таблице каталога
+            # Обновляем название детали
+            if price_import_title.present?
+              if price_import_title != price_catalog_row['title']
+                query = "UPDATE price_catalog_#{d} SET title = #{price_import_title} WHERE id = #{price_catalog_id}"
+                ActiveRecord::Base.connection.execute(query)
+              end
+            end
+
+            # Обновляем англ. название детали
+            if price_import_title_en.present?
+              if price_import_title_en != price_catalog_row['title_en']
+                query = "UPDATE price_catalog_#{d} SET title_en = #{price_import_title_en} WHERE id = #{price_catalog_id}"
+                ActiveRecord::Base.connection.execute(query)
+              end
+            end
+
+            # Обновляем вес, если он есть в таблице импорта
             if price_import_row['weight_grams'].present? && price_import_row['weight_grams'] > 0
               if price_import_row['weight_grams'] != price_catalog_row['weight_grams']
                 query = "UPDATE price_catalog_#{d} SET weight_grams = #{price_import_weight_grams} WHERE id = #{price_catalog_id}"

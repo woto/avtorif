@@ -1,12 +1,14 @@
 class ReplaceJobable < AbstractJobber
 
-  def insert(catalog_number, catalog_number_orig, new_catalog_number, new_catalog_number_orig, manufacturer, manufacturer_orig, weight_grams, replacement, replacement_orig, replacement_manufacturer, replacement_manufacturer_orig)
+  def insert(catalog_number, catalog_number_orig, new_catalog_number, new_catalog_number_orig, title, title_en, manufacturer, manufacturer_orig, weight_grams, replacement, replacement_orig, replacement_manufacturer, replacement_manufacturer_orig)
     query = ""
     query << "(#{@job_id}, "
     query << catalog_number + ", "
     query << catalog_number_orig + ", "
     query << new_catalog_number + ", "
     query << new_catalog_number_orig + ", "
+    query << title + ", "
+    query << title_en + ", "
     query << manufacturer + ", "
     query << manufacturer_orig + ", "
     query << weight_grams + ", "
@@ -27,6 +29,14 @@ class ReplaceJobable < AbstractJobber
     if @jobable.weight_grams_colnum.present?
       weight_grams_colnum = @jobable.weight_grams_colnum - 1
       weight_coefficient = @jobable.weight_coefficient.to_f
+    end
+
+    if @jobable.title_colnum.present?              
+      title_colnum = @jobable.title_colnum - 1
+    end
+
+    if @jobable.title_en_colnum.present?              
+      title_en_colnum = @jobable.title_en_colnum - 1
     end
 
     if @jobable.manufacturer_colnum.present?              
@@ -73,7 +83,7 @@ class ReplaceJobable < AbstractJobber
 
     CommonModule::prepare_insertion_table(@job_id)
 
-    query_template = "INSERT INTO price_import_#{@job_id} (job_id, catalog_number, catalog_number_orig, new_catalog_number, new_catalog_number_orig, manufacturer, manufacturer_orig, weight_grams, supplier_id, replacement, replacement_orig, replacement_manufacturer, replacement_manufacturer_orig) VALUES "
+    query_template = "INSERT INTO price_import_#{@job_id} (job_id, catalog_number, catalog_number_orig, new_catalog_number, new_catalog_number_orig, title, title_en, manufacturer, manufacturer_orig, weight_grams, supplier_id, replacement, replacement_orig, replacement_manufacturer, replacement_manufacturer_orig) VALUES "
 
     @optional.each do |opt|
       FasterCSV.foreach(SupplierPrice.find(opt).attachment.path) do |row|
@@ -131,11 +141,13 @@ class ReplaceJobable < AbstractJobber
                     new_catalog_number = new_catalog_number_colnum.present? ? Price.connection.quote(CommonModule::normalize_catalog_number(row[new_catalog_number_colnum])) : "NULL"
                     new_catalog_number_orig = new_catalog_number_colnum.present? ? Price.connection.quote(CommonModule::catalog_number_orig(row[new_catalog_number_colnum])) : "NULL"
                     weight_grams = weight_grams_colnum.present? ? Price.connection.quote(row[weight_grams_colnum].to_s.gsub(',','.').gsub(' ', '').to_f * weight_grams_coefficient) : "NULL"
+                    title = title_colnum.present? ? Price.connection.quote(row[title_colnum].to_s.strip) : "NULL"
+                    title_en = title_en_colnum.present? ? Price.connection.quote(row[title_en_colnum].to_s.strip) : "NULL"
                     replacement = Price.connection.quote(CommonModule::normalize_catalog_number(k))
                     replacement_orig = Price.connection.quote(CommonModule::catalog_number_orig(k))
                     replacement_manufacturer = rm
                     replacement_manufacturer_orig = rm_orig
-                    query << insert(catalog_number, catalog_number_orig, new_catalog_number, new_catalog_number_orig, manufacturer, manufacturer_orig, weight_grams, replacement, replacement_orig, replacement_manufacturer, replacement_manufacturer_orig)
+                    query << insert(catalog_number, catalog_number_orig, new_catalog_number, new_catalog_number_orig, title, title_en, manufacturer, manufacturer_orig, weight_grams, replacement, replacement_orig, replacement_manufacturer, replacement_manufacturer_orig)
 
                     ActiveRecord::Base.connection.execute(query)
                   end
@@ -150,6 +162,8 @@ class ReplaceJobable < AbstractJobber
                     manufacturer = rm
                     manufacturer_orig = rm_orig
                     weight_grams = weight_grams_colnum.present? ? Price.connection.quote(row[weight_grams_colnum].to_s.gsub(',','.').gsub(' ', '').to_f * weight_grams_coefficient) : "NULL"
+                    title = "NULL"
+                    title_en = "NULL"
                     replacement = Price.connection.quote(CommonModule::normalize_catalog_number(row[catalog_number_colnum]))
                     replacement_orig = Price.connection.quote(CommonModule::catalog_number_orig(row[catalog_number_colnum]))
 
@@ -169,7 +183,7 @@ class ReplaceJobable < AbstractJobber
                       replacement_manufacturer_orig = "NULL"
                     end
     
-                    query << insert(catalog_number, catalog_number_orig, new_catalog_number, new_catalog_number_orig, manufacturer, manufacturer_orig, weight_grams, replacement, replacement_orig, replacement_manufacturer, replacement_manufacturer_orig)
+                    query << insert(catalog_number, catalog_number_orig, new_catalog_number, new_catalog_number_orig, title, title_en, manufacturer, manufacturer_orig, weight_grams, replacement, replacement_orig, replacement_manufacturer, replacement_manufacturer_orig)
                     ActiveRecord::Base.connection.execute(query)
                   end
                 rescue CatalogNumberException
@@ -204,11 +218,13 @@ class ReplaceJobable < AbstractJobber
             end
 
             weight_grams = weight_grams_colnum.present? ? Price.connection.quote(row[weight_grams_colnum].to_s.gsub(',','.').gsub(' ', '').to_f * weight_coefficient) : "NULL"
+            title = title_colnum.present? ? Price.connection.quote(row[title_colnum].to_s) : "NULL"
+            title_en = title_en_colnum.present? ? Price.connection.quote(row[title_en_colnum].to_s) : "NULL"
             replacement = "NULL"
             replacement_orig = "NULL"
             replacement_manufacturer = "NULL"
             replacement_manufacturer_orig = "NULL"
-            query << insert(catalog_number, catalog_number_orig, new_catalog_number, new_catalog_number_orig, manufacturer, manufacturer_orig, weight_grams, replacement, replacement_orig, replacement_manufacturer, replacement_manufacturer_orig)
+            query << insert(catalog_number, catalog_number_orig, new_catalog_number, new_catalog_number_orig, title, title_en, manufacturer, manufacturer_orig, weight_grams, replacement, replacement_orig, replacement_manufacturer, replacement_manufacturer_orig)
 
             ActiveRecord::Base.connection.execute(query)
           rescue CatalogNumberException

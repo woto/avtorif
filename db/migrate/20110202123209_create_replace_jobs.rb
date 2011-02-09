@@ -17,6 +17,8 @@ class CreateReplaceJobs < ActiveRecord::Migration
       t.integer :weight_grams_colnum
       t.integer :new_catalog_number_colnum
       t.float :weight_coefficient
+      t.integer :title_colnum
+      t.integer :title_en_colnum
 
       t.timestamps
     end
