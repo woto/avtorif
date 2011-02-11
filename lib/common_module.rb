@@ -3,6 +3,34 @@ module CommonModule
     
     CATALOG_NUMBER_LEN = AppConfig.catalog_number_len
 
+    def get_emex(input)
+      # TODO тут нужна оптимизация, например, когда нас спрашивают о заменах, нам неважно какой логин и пароль, или если спрашивают информацию о заменах конкретного производителя и у нас уже есть кеш с каталожным номером, но без производителя, то мы сами можем это все вычленять. Пока что кеш максимально жесткий, чтобы во-первых не допустить ошибки и во-вторых не тратить много время
+
+      hash = Hash.new
+      file_name = 'system/emex/'
+      file_name << input[:login].to_s + "|" + input[:password].to_s + "|" + input[:catalog_number].to_s + "|" + input[:manufacturer].to_s + "|" + input[:replacements].to_i.to_s
+
+      if(File.exist?(file_name) && (File.ctime(file_name) > Time.now - AppConfig.emex_cache.to_i.minutes))
+        response = File.read(file_name)
+      else
+        hash['makeLogo'] = input[:manufacturer] ? input[:manufacturer] : ''
+        hash['detailNum'] = CommonModule::catalog_number_orig(input[:catalog_number])
+        hash['login'] = input[:login]
+        hash['password'] = input[:password]
+        hash['findSubstitutes'] = input[:replacements] == '1' ? 'true' : 'false'
+        response = Net::HTTP.post_form(URI.parse('http://ws.emex.ru/EmExService.asmx/FindDetailAdv'), hash)
+
+        file = File.new(file_name, "w")
+        file.write(response.body)
+        file.close
+        response = response.body
+      end
+
+      response
+
+    end
+
+
     def add_doublet(job_id)
       query = "UPDATE price_import_#{job_id} SET doublet = SUBSTRING(MD5(catalog_number), 1, 2)"
       Price.connection.execute(query)
@@ -57,8 +85,12 @@ module CommonModule
     ms.manufacturer = m
     ms.save
   end
+  
+  def get_manufacturer_by_synonym()
 
-    def find_manufacturer_synonym(manufacturer_orig, job_id)
+  end
+
+    def find_manufacturer_synonym(manufacturer_orig, job_id, allow_to_create = true)
       if (manufacturer_orig = manufacturer_orig.to_s.mb_chars.strip.upcase.to_s).length > 0
 
         # Выполняем единожды для всех обрабтываемых файлов
@@ -83,13 +115,17 @@ module CommonModule
         unless manufacturer = @used_in_this_price[manufacturer_orig]
           # если не нашли в глобальной таблице соответствия синонимов и производителей
           unless manufacturer = @manufacturer_synonyms_hs[manufacturer_orig]
-            # то надо создавать
-            unless create_manufacturer_and_synonym(manufacturer_orig, job_id)
-              debugger
-              # возможна ситуация, в случае Race condition
+            # Если мы имеем право создать, то пробуем
+            if allow_to_create
               unless create_manufacturer_and_synonym(manufacturer_orig, job_id)
-                raise 'Не восстановимая ошибка при создании производителей/синонимов. Задача должна разрешиться при следующем запуске'
+                debugger
+                # возможна ситуация, в случае Race condition
+                unless create_manufacturer_and_synonym(manufacturer_orig, job_id)
+                  raise 'Не восстановимая ошибка при создании производителей/синонимов. Задача должна разрешиться при следующем запуске'
+                end
               end
+            else
+              raise ManufacturerException
             end
 
             manufacturer = manufacturer_orig

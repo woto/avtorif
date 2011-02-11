@@ -1,0 +1,2 @@
+class ManufacturerException < Exception
+end

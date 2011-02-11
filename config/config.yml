@@ -3,11 +3,13 @@ defaults: &defaults
   smb_timeout: 3600
   http_timeout: 3600
   folder_timeout: 3600
-  emex_timeout: 20
   max_emails: 10000
 
   emex_login: 14616
   emex_password: 2b0ffb38
+  # Время кеширования результата запроса с емекса по детали
+  emex_cache: 3
+  emex_timeout: 20
 
   lc_ws_address: http://192.168.1.42/trade_dda/ws
   lc_ws_login: webservice

@@ -1,166 +1,150 @@
 class PricesController < ApplicationController
 
-  def search
-    @prices = []
-    # Локальная работа
-    #@prices = Price.select("prices.*, jobs.*, import_jobs.*, suppliers.*").where('catalog_number = ?', params[:price][:catalog_number]).includes(:job => {:import_job => [:currency_buy, :currency_sell, :currency_weight]}).includes(:supplier)
-    #
-=begin
-    @prices = Price.find_by_sql("
-      SELECT *, 
-             p.price_cost * ij.income_rate AS income_cost, 
-             p.price_cost * ij.income_rate * ij.retail_rate AS retail_cost, 
-             CASE udr.buy_sell 
-               WHEN 0 THEN p.price_cost * ij.income_rate * udr.rate 
-               WHEN 1 THEN p.price_cost * ij.income_rate * ij.retail_rate * udr.rate 
-               ELSE p.price_cost * ij.income_rate * ij.retail_rate
-             END AS result_cost 
-      FROM   prices p 
-             INNER JOIN jobs j 
-               ON p.job_id = j.id 
-             INNER JOIN import_jobs ij 
-               ON j.jobable_id = ij.id 
-             LEFT JOIN (SELECT dg.title, 
-                               dr.buy_sell, 
-                               dr.rate, 
-                               dr.job_id 
-                        FROM   suppliers s 
-                               INNER JOIN discount_groups dg 
-                                 ON dg.id = s.discount_group_id 
-                               INNER JOIN discount_rules dr 
-                                 ON dr.discount_group_id = dg.id 
-                        WHERE  s.id = 222198489) udr 
-               ON p.job_id = udr.job_id 
-      WHERE  p.catalog_number = #{Price.connection.quote(params[:price][:catalog_number])};")
-=end
-    # Работа со сторонними сервисами
-    if(params[:ext_ws].present?)
-      threads = []
+  # Суть этой вакханалии сводится к тому, что из-за того, что в нашей базе много nil производителей, и много пересечений
+  # по заменам, то мы хотим получить из таблицы только записи по каталожному номеру, а потом уже пригодится или не
+  # пригодится производитель будем решать уже в памяти
+  def get_from_catalog(catalog_number, manufacturer, &block)
+    puts "@@@@@@@@@@@@@@@@@ " + catalog_number.to_s + " " + manufacturer.to_s + " @@@@@@@@@@@@@@@@@"
+    key = catalog_number.to_s
+    @private_cache ||= Hash.new
+    if @private_cache.key? key
+      if manufacturer
+        if @private_cache[key][:with].key? manufacturer
+          block.call( @private_cache[key][:with][manufacturer]) if block
+          return
+        end
+      else
+        # Все группы
+        if @private_cache[key][:without].key? :catalog_number
+          block.call(@private_cache[key][:without]) if block
+        end
+        if @private_cache[key][:with].size > 0
+          @private_cache[key][:with].each_pair do |k, v|
+            block.call(v) if block
+          end
+        end
+        return
+      end
+    else
+      md5 = Digest::MD5.hexdigest(catalog_number)[0,2]
+      query = "SELECT * FROM price_catalog_#{md5} WHERE catalog_number = " + Price.connection.quote(catalog_number)
+      puts "###################### #{query}  ######################"
+      client = ActiveRecord::Base.connection.instance_variable_get :@connection
+      result = client.query(query, :as => :hash)
+      @private_cache[key] ||= {:with => {}, :without => {:catalog_number => catalog_number, :replacements => []}}
+      result.each do |row|
+        # Запомнили в кеше
+        # hash = {
+        #   "A" => { 
+        #     :without => {
+        #       :catalog_number, ..., :replacemnts => {
+        #         {:catalog_number => "B", :manufacturer => "M1"},
+        #         {:catalog_number => "B", :manufacturer => nil}
+        #       }
+        #     }
+        #     :with => {
+        #       "M1" => {:catalog_number, ... :replacements => {...}},
+        #       "M2" => {:catalog_number, ... :replacements => {...}}
+        #     }
+        #   }
+        # }
 
-=begin
-      # ALL4CAR
-      threads << Thread.new() do
-        Thread.current["prices"] = []
-        Timeout.timeout(AppConfig.emex_timeout) do
-          begin
-            response = Net::HTTP.post_form(URI.parse('http://62.5.214.110/partnersws/Service.asmx/SearchResultOneCurrencyXml'), {
-              'sPartCode' => params[:price][:catalog_number], 
-              'sAuthCode' => '303190193312', 
-              'iReplaces' => '1', 
-              'sCurrency' => 'RUR'
-            })
+        if row['manufacturer'].blank?
 
-            doc = Nokogiri::XML(response.body)
-            
-            places = doc.xpath('/searchResult')
+          @private_cache[key][:without] = {
+            :catalog_number => row['catalog_number'],
+            :manufacturer => row['manufacturer'],
+            :title => row['title'],
+            :title_en => row['title_en'],
+            :weight_grams => row['weight_grams'],
+            :new_catalog_number => row['new_catalog_number'],
+            :replacements => []
+          }
 
-            places.children.each do |place|
-              unless(place.is_a?(Nokogiri::XML::Element) && ["main", "extWH", "mainWH"].include?(place.name))
-                next
-              end
-              place.children.each do |part|
-                if part.blank?
-                  next
-                end
-                
-                p = Price.new
-
-                p.supplier = Supplier.new(
-                  :title => 'a4c', 
-                  :inn => 7733732181, 
-                  :kpp => 773301001)
-
-                p.job = Job.new(:title => "ws")
-
-                p.job.import_job = ImportJob.new(
-                  :income_rate => 1, 
-                  :retail_rate => 1.55,
-                  :kilo_price => 0,
-                  :presence => false
-                )
-
-                if(["mainWH", "extWH"].include?(place.name))
-                  p.job.import_job[:presence] = true
-                end
-
-                part.children.each do |option|
-                  if option.blank?
-                    next
-                  end
-                  
-                  value = CGI.unescapeHTML(option.children.to_s)
-
-                  if option.keys.size > 0
-                    option.keys.each do |key|
-                      p[(option.name.underscore + "_" + key.underscore + "_a4c").to_sym] = option[key].to_s.strip
-                    end
-                  end
-                  p[(option.name.underscore + "_a4c").to_sym] = value.to_s.strip
-
-                  case option.name
-                    when /^version$/
-                      p[:created_at] = DateTime.parse(value.to_s.strip)
-                      p[:updated_at] = DateTime.now
-                    # TODO сделать список стандартных замен для региона (оаэ, япония, москва и т.д.)
-                    when /^region$/
-                      p.job.import_job[:country_short] = value.to_s.strip
-                    when /^amount$/
-                      p[:count] = value.to_s.strip
-                    #when /^supplier$/
-                    #  p[:manufacturer] = value.strip
-                    when /^descr$/
-                      p[:title] = value.to_s.strip
-                    when /^price$/
-                      p[:price_cost] = value.to_s.strip
-                    when/^from$/
-                      p.job.import_job[:delivery_summary] = (p.job.import_job[:delivery_summary].to_s + " " + value.to_s.strip).to_s.strip
-                    when /^code$/
-                      p[:catalog_number] = value.to_s.strip
-                    # TODO сделать список стандартных замен (NS, Nissan, NISSAN и т.д.)
-                    when /^supplier$/
-                      p.job.import_job[:delivery_summary] = (p.job.import_job[:delivery_summary].to_s + " " + option['Delivery'].to_s.strip + " " + (option['info'].present? ? option['info'].to_s.strip : "")).to_s.strip
-                      p[:manufacturer] = option['make'].to_s.strip
-                      p.job.import_job[:country] = value.to_s.strip
-                      p.job.import_job[:kilo_price] = option['kgPrice'].to_s.strip
-                      p.job.import_job[:delivery_days_average] = option['supplDays100'].to_s.strip.to_i
-                      p.job.import_job[:success_percent] = option['successProc'].to_s.strip
-                    when /^probability$/
-                      p[:success_percent] = value.to_s.strip
-                    when /^srok$/
-                      p.job.import_job[:delivery_days_declared] = value.to_s.strip if value.to_s.strip.present?
-                    when /^days$/
-                      p.job.import_job[:delivery_days_declared] = value.to_s.strip if value.to_s.strip.present?
-                  end
-
-                end
-
-                Thread.current["prices"] << p
-
-              end
+          for i in 0...AppConfig.max_replaces
+            if eval "row['r#{i}'].blank?"
+              break
+            else
+              eval "@private_cache[key][:without][:replacements] << {
+                :catalog_number => row['r#{i}'], 
+                :manufacturer => row['rm#{i}']
+              }"
+              #if recursive
+              #  get_from_catalog(row["r#{i}"], row["rm#{i}"], false, &block)
+              #end
             end
-            rescue Timeout::Error => e
+          end
+        else
+          @private_cache[key][:with][row['manufacturer']] = {
+            :catalog_number => row['catalog_number'],
+            :manufacturer => row['manufacturer'],
+            :title => row['title'],
+            :title_en => row['title_en'],
+            :weight_grams => row['weight_grams'],
+            :new_catalog_number => row['new_catalog_number'],
+            :replacements => []
+          }
+          
+          for i in 0...AppConfig.max_replaces
+            if eval "row['r#{i}'].blank?"
+              break
+            else
+              eval "@private_cache[key][:with][row['manufacturer']][:replacements] << {
+                :catalog_number => row['r#{i}'], 
+                :manufacturer => row['rm#{i}']
+              }"
+              #if recursive
+              #  get_from_catalog(row["r#{i}"], row["rm#{i}"], false, &block)
+              #end
+            end
           end
         end
       end
-=end
-      #EMEX
-      threads << Thread.new() do
+      # Мы запросим еще раз, чтобы на этот раз уже получить из кеша
+      get_from_catalog(catalog_number, manufacturer, &block)
+    end
+  end
 
-        Thread.current["prices"] = []
+  def search
+
+    @prices = []
+
+    our_catalog_number = CommonModule::normalize_catalog_number(params[:catalog_number])
+
+    if params[:manufacturer].present? && params[:manufacturer].size >= 1
+      our_manufacturer = CommonModule::find_manufacturer_synonym(params[:manufacturer], -1, false)[1..-2]
+    end
+
+    replacements = []
+
+      get_from_catalog(our_catalog_number, our_manufacturer) do |r1|
+        replacements << r1
+        if params[:replacements] == '1'
+          r1[:replacements].each do |replacement|
+            get_from_catalog(replacement[:catalog_number], replacement[:manufacturer]) do |r2|
+              replacements << r2
+            end
+          end
+        end
+      end
+    client = ActiveRecord::Base.connection.instance_variable_get :@connection
+    query = "SELECT '1'"
+    result = client.query(query, :as => :array)
+
+    # Работа со сторонними сервисами
+    if(params[:ext_ws] == '1')
+      #EMEX
         Timeout.timeout(AppConfig.emex_timeout) do
           begin
+            response = CommonModule::get_emex(
+              :catalog_number => params[:catalog_number], 
+              :manufacturer => params[:manufacturer],
+              :login => AppConfig.emex_login,
+              :password => AppConfig.emex_password,
+              :replacements => params[:replacements]
+            )
 
-            hash =  {
-              'login'=> AppConfig.emex_login.to_s,
-              'password'=> AppConfig.emex_password,
-              'makeLogo' => params[:make_logo],
-              'detailNum' => params[:price][:catalog_number],
-              'findSubstitutes' => (params[:replacements] == '1') ? 'true' : 'false'
-            }
-
-            response = Net::HTTP.post_form(URI.parse('http://ws.emex.ru/EmExService.asmx/FindDetailAdv'), hash)
-
-            doc = Nokogiri::XML(response.body)
+            doc = Nokogiri::XML(response)
 
             detail_items = doc.children.children
             detail_items.each do |z|
@@ -170,21 +154,15 @@ class PricesController < ApplicationController
               end
 
               p = Price.new
-
-              p.supplier = Supplier.new(
-                :title => 'emex', 
-                :inn => 7716542310, 
-                :kpp => 771601001
-              )
-
-              p.job = Job.new(:title => "ws")
-
-              p.job.import_job = ImportJob.new(
-                :income_rate => 1, 
-                :retail_rate => 1.55,
-                :kilo_price => 0,
-                :presence => false
-              )
+              
+              p[:supplier_title] = 'emex'
+              p[:supplier_title_en] = 'emex'
+              p[:supplier_title_full] = 'emex'
+              p[:supplier_inn] = 7716542310
+              p[:supplier_kpp] = 771601001
+              p[:job_title] ="ws"
+              p[:job_import_job_kilo_price] = 0
+              p[:job_import_job_presence] = false
 
               z.children.children.each do |c|
 
@@ -196,26 +174,26 @@ class PricesController < ApplicationController
 
                 case c.name
                  when /^DestinationLogo$/
-                   p.job.import_job[:delivery_summary] = (p.job.import_job[:delivery_summary].to_s + " " + value.to_s.strip).to_s.strip
+                   p[:job_import_job_delivery_summary] = (p[:job_import_job_delivery_summary].to_s + " " + value.to_s.strip).to_s.strip
                  when /^DestinationDesc$/
-                   p.job.import_job[:delivery_summary] = (p.job.import_job[:delivery_summary].to_s + " " + value.to_s.strip).to_s.strip
+                   p[:job_import_job_delivery_summary] = (p[:job_import_job_delivery_summary].to_s + " " + value.to_s.strip).to_s.strip
                  when /^bitStorehouse$/
                    if(value.to_s.strip == 'true')
-                     p.job.import_job[:presence] = true 
+                     p[:job_import_job_presence] = true 
                     else
-                     p.job.import_job[:presence] = false
+                     p[:job_import_job_presence] = false
                    end
                  when /^PriceCountry$/
-                   p.job.import_job[:country_short] = value.to_s.strip
+                   p[:job_import_job_country_short] = value.to_s.strip
                  when /^PriceDesc$/
-                   p.job.import_job[:country] = value.to_s.strip
+                   p[:job_import_job_country] = value.to_s.strip
                  when /^QuantityText$/
                    p[:count] = value.to_s.strip 
                  when /^DateChange$/
-                   p[:created_at] = DateTime.parse(value.to_s.strip)
-                   p[:updated_at] = DateTime.now
+                     #p[:created_at] = DateTime.parse(value.to_s.strip)
+                     #p[:updated_at] = DateTime.now
                   when /^DetailNum$/
-                    p[:catalog_number] = value.to_s.strip
+                    p[:catalog_number] = CommonModule::normalize_catalog_number(value.to_s.strip)
                     p[:catalog_number_orig] = value.to_s.strip
                   when /^DetailNameRus$/
                     p[:title] = value.to_s.strip
@@ -223,10 +201,11 @@ class PricesController < ApplicationController
                     p[:title_en] = value.to_s.strip
                   when /^ResultPrice$/
                     p[:price_cost] = value.to_s.strip
-                    p[:income_cost] = value.to_s.strip
-                    p[:retail_cost] = value.to_f * p.job.import_job[:retail_rate]
+                    p[:income_cost] = value.to_f * 1
+                    p[:retail_cost] = p[:income_cost] * 1.55
                   when /^MakeName$/
-                    p[:manufacturer] = value.to_s.strip
+                    p[:manufacturer] = CommonModule::find_manufacturer_synonym(value.to_s.strip, -2, true)[1..-2]
+                    p[:manufacturer_orig] = value.to_s.strip
                   when /^MakeLogo$/
                     p[:manufacturer_short] = value.to_s.strip
                   when /^bitOriginal/
@@ -237,11 +216,11 @@ class PricesController < ApplicationController
                     end
                 # TODO LOL
                  when /^ADDays$/
-                    p.job.import_job[:delivery_days_declared] = value.to_s
+                    p[:job_import_job_delivery_days_declared] = value.to_s
                  when /^DeliverTimeGuaranteed$/
-                    p.job.import_job[:delivery_days_average] = value.to_s
+                    p[:job_import_job_delivery_days_average] = value.to_s
                  when /^CalcDeliveryPercent$/
-                    p.job.import_job[:success_percent] = value.to_s
+                    p[:job_import_job_success_percent] = value.to_s
                     p[:success_percent] = value.to_s
                  when /^Country$/
                     p[:country] = value.to_s.strip
@@ -250,38 +229,86 @@ class PricesController < ApplicationController
                 end
 
               end
-              Thread.current['prices'] << p
+              @prices << p
+              found = false
+              replacements.each do |replacement|
+                if replacement[:catalog_number] == p[:catalog_number]
+                  if replacement[:manufacturer] == p[:manufacturer]
+                    found = true
+                  end
+                end
+              end
+
+              unless found
+                replacements <<  { 
+                  :catalog_number => p[:catalog_number],
+                  :manufacturer => p[:manufacturer]
+                }
+              end
+
             end
             rescue Timeout::Error => e
           end
         end
       end
-      threads.each do |t|
-        t.join
-        #debugger
-        @prices = @prices + t["prices"]
+
+    # Локальная работа
+    #@prices = Price.select("prices.*, jobs.*, import_jobs.*, suppliers.*").where('catalog_number = ?', our_catalog_number).includes(:job => {:import_job => [:currency_buy, :currency_sell, :currency_weight]}).includes(:supplier)
+
+    replacements.each do |replacement|
+      md5 = Digest::MD5.hexdigest(replacement[:catalog_number])[0,2]
+      query = "
+        SELECT
+          p.*,
+          s.title as supplier_title,
+          s.title_en as supplier_title_en,
+          s.title_full as supplier_title_full,
+          s.inn as supplier_inn,
+          s.kpp as supplier_kpp,
+          j.title as job_title,
+          ij.success_percent as job_import_job_success_percent,
+          ij.delivery_days_average as job_import_job_delivery_days_average,
+          ij.delivery_days_declared as job_import_job_delivery_days_declared,
+          ij.delivery_summary as job_import_job_delivery_summary,
+          ij.presence as job_import_job_presence,
+          ij.kilo_price as job_import_job_kilo_price,
+          ij.country as job_import_job_country,
+          ij.country_short as job_import_job_country_short,
+               p.price_cost * ij.income_rate AS income_cost, 
+               p.price_cost * ij.income_rate * ij.retail_rate AS retail_cost, 
+               CASE udr.buy_sell 
+                 WHEN 0 THEN p.price_cost * ij.income_rate * udr.rate 
+                 WHEN 1 THEN p.price_cost * ij.income_rate * ij.retail_rate * udr.rate 
+                 ELSE p.price_cost * ij.income_rate * ij.retail_rate
+               END AS result_cost 
+        FROM   price_cost_#{md5} p 
+               INNER JOIN jobs j 
+                 ON p.job_id = j.id 
+               INNER JOIN import_jobs ij 
+                 ON j.jobable_id = ij.id 
+               INNER JOIN suppliers s 
+                ON j.supplier_id = s.id
+               LEFT JOIN (SELECT dg.title, 
+                                 dr.buy_sell, 
+                                 dr.rate, 
+                                 dr.job_id 
+                          FROM   suppliers s 
+                                 INNER JOIN discount_groups dg 
+                                   ON dg.id = s.discount_group_id 
+                                 INNER JOIN discount_rules dr 
+                                   ON dr.discount_group_id = dg.id 
+                          WHERE  s.id = 222198489) udr 
+                 ON p.job_id = udr.job_id 
+        WHERE  p.catalog_number = #{Price.connection.quote(replacement[:catalog_number])}" 
+      if replacement[:manufacturer]
+        query << "AND p.manufacturer = #{Price.connection.quote(replacement[:manufacturer])}"
       end
+      @prices = @prices + Price.find_by_sql(query)
     end
 
     respond_to do |format|
       format.html {render :action => :index }
-      format.xml  { render :xml => @prices.to_xml(
-        :include => {
-        :supplier => {
-          :except => [:fio_head, :email, :correspondent_account, :title_en, :password, :login, :current_account, :phone, :okpo, :position_head, :seller, :created_at, :emaildocs, :delivery_days, :title, :bank_title, :bik_bank, :buyer, :updated_at, :contact_info, :fio_buh, :title_full, :actual_address, :id, :contract, :fax, :legal_address, :okato, :ogrn]
-        }, 
-        :job => {
-          :except => [ :created_at, :jobable_id, :last_start, :updated_at, :next_start, :id, :file_mask, :jobable_type, :seconds_between_jobs, :seconds_working, :supplier_id, :description, :last_finish, :job_id, :started_once, :active, :locked],
-          :include => {
-            :import_job => {
-              :except => [:currency_weight_id, :income_price_colnum, :manufacturer_colnum, :created_at, :catalog_number_colnum, :count_colnum, :currency_buy_id, :external_id_colnum, :title_colnum, :delivery_type_id, :updated_at, :importable_type, :weight_colnum, :id, :currency_sell_id, :multiplicity_colnum, :weight_unavaliable_rate, :importable_id, :import_method],
-              :include => {
-                :currency_buy => {:except => [:foreign_id, :created_at, :updated_at, :id, :value]}
-                #:currency_sell => {:except => [:foreign_id, :created_at, :updated_at, :id, :value]},
-                #:currency_weight => {:except => [:foreign_id, :created_at, :updated_at, :id, :value]},
-              }
-        
-        }}}})}
+      format.xml  { render :xml => @prices.to_xml}
     end
 
   end

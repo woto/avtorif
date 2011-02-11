@@ -9,14 +9,13 @@
     <th>catalog-number</th>
     <th>count</th>
     <th>created-at</th>
-    <th>goods-id</th>
     <th>id</th>
     <th>price-cost</th>
     <th>income-cost</th>
     <th>retail-cost</th>
     <th>job-id</th>
     <th>manufacturer</th>
-    <th>manufacturer-short</th>
+    <th>manufacturer-orig</th>
     <th>title</th>
     <th>title-en</th>
     <th>country</th>
@@ -32,33 +31,32 @@
 <% @prices.each do |price| %>
   <tr>
     <td>
-      <%=h price.supplier.title %> <br />
-      <%=h price.supplier.title_en %> <br />
-      <%=h price.supplier.title_full %> <br />
+      <%=h price.supplier_title %> <br />
+      <%=h price.supplier_title_en %> <br />
+      <%=h price.supplier_title_full %> <br />
     </td>
-    <td><%=h price.job.title %></td>
+    <td><%=h price.job_title %></td>
     <td>
-      (Вероятность наличия (по поставщику)) success_percent:     <%=h price.job.import_job.success_percent %><br /><br />
-      (Дней в среднем по пост) delivery_days_average:      <%=h price.job.import_job.delivery_days_average %><br /><br />
-      (Дней заявлено по пост) delivery_days_declared:      <%=h price.job.import_job.delivery_days_declared %><br /><br />
-      (Иногда важная инф по доставке) delivery_summary      <%=h price.job.import_job.delivery_summary %><br /><br />
-      (Наличие) presence: <%=h price.job.import_job.presence %><br /><br />
-      (Цена килограмма) kilo_price:      <%=h price.job.import_job.kilo_price %><br /><br />
-      (Местонахождение постащика) country:      <%=h price.job.import_job.country%><br /><br />
-      (Короткое местонахождение)) country_short:      <%=h price.job.import_job.country_short %><br /><br />
+      (Вероятность наличия (по поставщику)) success_percent:     <%=h price.job_import_job_success_percent %><br /><br />
+      (Дней в среднем по пост) delivery_days_average:      <%=h price.job_import_job_delivery_days_average %><br /><br />
+      (Дней заявлено по пост) delivery_days_declared:      <%=h price.job_import_job_delivery_days_declared %><br /><br />
+      (Иногда важная инф по доставке) delivery_summary      <%=h price.job_import_job_delivery_summary %><br /><br />
+      (Наличие) presence: <%=h price.job_import_job_presence %><br /><br />
+      (Цена килограмма) kilo_price:      <%=h price.job_import_job_kilo_price %><br /><br />
+      (Местонахождение постащика) country:      <%=h price.job_import_job_country%><br /><br />
+      (Короткое местонахождение)) country_short:      <%=h price.job_import_job_country_short %><br /><br />
     </td>
     <td><%=h price.success_percent %></td>
     <td><%=h price.catalog_number %></td>
     <td><%=h price.count %></td>
     <td><%=h price.created_at %></td>
-    <td><%=h price.goods_id %></td>
     <td><%=h price.id %></td>
     <td><%=h price.price_cost %></td>
     <td><%=h price.income_cost %></td>
     <td><%=h price.retail_cost %></td>
     <td><%=h price.job_id %></td>
     <td><%=h price.manufacturer %></td>
-    <td><%=h price.manufacturer_short %></td>
+    <td><%=h price.manufacturer_orig %></td>
     <td><%=h price.title %></td>
     <td><%=h price.title_en %></td>
     <td><%=h price.country %></td>
