@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110202123209) do
+ActiveRecord::Schema.define(:version => 20110212142021) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
@@ -314,6 +314,7 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "job_id"
+    t.boolean  "original",   :default => false
   end
 
   add_index "manufacturers", ["title"], :name => "index_manufacturers_on_title"
@@ -334,6 +335,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -506,6 +509,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -678,6 +683,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -850,6 +857,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -1022,6 +1031,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -1194,6 +1205,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -1366,6 +1379,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -1538,6 +1553,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -1710,6 +1727,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -1882,6 +1901,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -2054,6 +2075,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -2226,6 +2249,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -2398,6 +2423,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -2570,6 +2597,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -2742,6 +2771,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -2914,6 +2945,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -3086,6 +3119,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -3258,6 +3293,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -3430,6 +3467,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -3602,6 +3641,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -3774,6 +3815,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -3946,6 +3989,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -4118,6 +4163,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -4290,6 +4337,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -4462,6 +4511,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -4634,6 +4685,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -4806,6 +4859,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -4978,6 +5033,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -5150,6 +5207,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -5322,6 +5381,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -5494,6 +5555,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -5666,6 +5729,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -5838,6 +5903,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -6010,6 +6077,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -6182,6 +6251,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -6354,6 +6425,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -6526,6 +6599,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -6698,6 +6773,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -6870,6 +6947,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -7042,6 +7121,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -7214,6 +7295,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -7386,6 +7469,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -7558,6 +7643,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -7730,6 +7817,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -7902,6 +7991,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -8074,6 +8165,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -8246,6 +8339,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -8418,6 +8513,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -8590,6 +8687,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -8762,6 +8861,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -8934,6 +9035,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -9106,6 +9209,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -9278,6 +9383,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -9450,6 +9557,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -9622,6 +9731,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -9794,6 +9905,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -9966,6 +10079,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -10138,6 +10253,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -10310,6 +10427,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -10482,6 +10601,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -10654,6 +10775,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -10826,6 +10949,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -10998,6 +11123,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -11170,6 +11297,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -11342,6 +11471,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -11514,6 +11645,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -11686,6 +11819,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -11858,6 +11993,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -12030,6 +12167,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -12202,6 +12341,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -12374,6 +12515,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -12546,6 +12689,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -12718,6 +12863,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -12890,6 +13037,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -13062,6 +13211,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -13234,6 +13385,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -13406,6 +13559,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -13578,6 +13733,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -13750,6 +13907,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -13922,6 +14081,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -14094,6 +14255,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -14266,6 +14429,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -14438,6 +14603,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -14610,6 +14777,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -14782,6 +14951,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -14954,6 +15125,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -15126,6 +15299,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -15298,6 +15473,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -15470,6 +15647,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -15642,6 +15821,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -15814,6 +15995,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -15986,6 +16169,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -16158,6 +16343,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -16330,6 +16517,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -16502,6 +16691,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -16674,6 +16865,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -16846,6 +17039,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -17018,6 +17213,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -17190,6 +17387,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -17362,6 +17561,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -17534,6 +17735,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -17706,6 +17909,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -17878,6 +18083,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -18050,6 +18257,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -18222,6 +18431,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -18394,6 +18605,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -18566,6 +18779,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -18738,6 +18953,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -18910,6 +19127,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -19082,6 +19301,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -19254,6 +19475,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -19426,6 +19649,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -19598,6 +19823,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -19770,6 +19997,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -19942,6 +20171,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -20114,6 +20345,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -20286,6 +20519,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -20458,6 +20693,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -20630,6 +20867,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -20802,6 +21041,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -20974,6 +21215,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -21146,6 +21389,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -21318,6 +21563,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -21490,6 +21737,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -21662,6 +21911,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -21834,6 +22085,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -22006,6 +22259,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -22178,6 +22433,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -22350,6 +22607,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -22522,6 +22781,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -22694,6 +22955,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -22866,6 +23129,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -23038,6 +23303,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -23210,6 +23477,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -23382,6 +23651,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -23554,6 +23825,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -23726,6 +23999,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -23898,6 +24173,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -24070,6 +24347,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -24242,6 +24521,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -24414,6 +24695,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -24586,6 +24869,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -24758,6 +25043,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -24930,6 +25217,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -25102,6 +25391,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -25274,6 +25565,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -25446,6 +25739,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -25618,6 +25913,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -25790,6 +26087,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -25962,6 +26261,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -26134,6 +26435,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -26306,6 +26609,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -26478,6 +26783,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -26650,6 +26957,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -26822,6 +27131,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -26994,6 +27305,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -27166,6 +27479,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -27338,6 +27653,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -27510,6 +27827,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -27682,6 +28001,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -27854,6 +28175,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -28026,6 +28349,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -28198,6 +28523,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -28370,6 +28697,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -28542,6 +28871,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -28714,6 +29045,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -28886,6 +29219,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -29058,6 +29393,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -29230,6 +29567,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -29402,6 +29741,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -29574,6 +29915,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -29746,6 +30089,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -29918,6 +30263,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -30090,6 +30437,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -30262,6 +30611,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -30434,6 +30785,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -30606,6 +30959,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -30778,6 +31133,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -30950,6 +31307,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -31122,6 +31481,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -31294,6 +31655,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -31466,6 +31829,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -31638,6 +32003,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -31810,6 +32177,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -31982,6 +32351,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -32154,6 +32525,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -32326,6 +32699,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -32498,6 +32873,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -32670,6 +33047,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -32842,6 +33221,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -33014,6 +33395,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -33186,6 +33569,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -33358,6 +33743,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -33530,6 +33917,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -33702,6 +34091,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -33874,6 +34265,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -34046,6 +34439,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -34218,6 +34613,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -34390,6 +34787,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -34562,6 +34961,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -34734,6 +35135,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -34906,6 +35309,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -35078,6 +35483,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -35250,6 +35657,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -35422,6 +35831,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -35594,6 +36005,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -35766,6 +36179,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -35938,6 +36353,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -36110,6 +36527,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -36282,6 +36701,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -36454,6 +36875,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -36626,6 +37049,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -36798,6 +37223,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -36970,6 +37397,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -37142,6 +37571,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -37314,6 +37745,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -37486,6 +37919,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -37658,6 +38093,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -37830,6 +38267,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -38002,6 +38441,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -38174,6 +38615,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -38346,6 +38789,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -38518,6 +38963,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -38690,6 +39137,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -38862,6 +39311,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -39034,6 +39485,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -39206,6 +39659,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -39378,6 +39833,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -39550,6 +40007,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -39722,6 +40181,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -39894,6 +40355,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -40066,6 +40529,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -40238,6 +40703,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -40410,6 +40877,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -40582,6 +41051,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -40754,6 +41225,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -40926,6 +41399,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -41098,6 +41573,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -41270,6 +41747,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -41442,6 +41921,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -41614,6 +42095,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -41786,6 +42269,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -41958,6 +42443,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -42130,6 +42617,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -42302,6 +42791,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -42474,6 +42965,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -42646,6 +43139,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -42818,6 +43313,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -42990,6 +43487,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -43162,6 +43661,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -43334,6 +43835,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -43506,6 +44009,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -43678,6 +44183,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -43850,6 +44357,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -44022,6 +44531,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -44194,6 +44705,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -44366,6 +44879,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "job_id"
     t.string   "manufacturer",       :limit => 20
     t.string   "catalog_number",     :limit => 20
+    t.string   "title"
+    t.string   "title_en"
     t.integer  "weight_grams"
     t.string   "r0",                 :limit => 20
     t.string   "rm0",                :limit => 20
@@ -53020,18 +53535,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -53041,249 +53557,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -53295,18 +53572,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -53316,249 +53594,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -53570,18 +53609,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -53591,249 +53631,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -53845,18 +53646,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -53866,249 +53668,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -54120,18 +53683,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -54141,249 +53705,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -54395,18 +53720,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -54416,272 +53742,32 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "price_import_1066346353", ["doublet"], :name => "doublet_idx"
 
   create_table "price_import_1066346354", :force => true do |t|
     t.integer  "job_id"
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -54691,249 +53777,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -54945,18 +53792,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -54966,249 +53814,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -55495,18 +54104,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -55516,249 +54126,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -55770,18 +54141,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -55791,249 +54163,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -56045,18 +54178,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -56066,249 +54200,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -56320,18 +54215,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -56341,249 +54237,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -56595,18 +54252,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -56616,249 +54274,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -56870,18 +54289,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -56891,249 +54311,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -57145,18 +54326,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -57166,249 +54348,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -57420,18 +54363,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -57441,249 +54385,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -57695,18 +54400,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -57716,249 +54422,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -58245,18 +54712,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -58266,249 +54734,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -58520,18 +54749,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -58541,249 +54771,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -58795,18 +54786,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -58816,249 +54808,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -59070,18 +54823,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -59091,249 +54845,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -59345,18 +54860,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -59366,249 +54882,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -59620,18 +54897,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -59641,249 +54919,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -59895,18 +54934,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -59916,249 +54956,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -60170,18 +54971,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -60191,249 +54993,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -60445,18 +55008,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -60466,249 +55030,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -60720,18 +55045,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -60741,249 +55067,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -60995,18 +55082,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -61016,249 +55104,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -61270,18 +55119,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -61291,249 +55141,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -61545,18 +55156,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -61566,249 +55178,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -61820,18 +55193,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -61841,249 +55215,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -62095,18 +55230,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -62116,249 +55252,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -62370,18 +55267,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -62391,249 +55289,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -62645,18 +55304,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -62666,249 +55326,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -62920,18 +55341,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -62941,249 +55363,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -63195,18 +55378,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -63216,249 +55400,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -63470,18 +55415,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -63491,249 +55437,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -63745,18 +55452,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -63766,249 +55474,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -64020,18 +55489,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -64041,249 +55511,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -64295,18 +55526,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -64316,249 +55548,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -64570,18 +55563,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -64591,249 +55585,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -64845,18 +55600,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -64866,249 +55622,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -65120,18 +55637,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -65141,249 +55659,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -65395,18 +55674,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -65416,249 +55696,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -65670,18 +55711,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -65691,249 +55733,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -65945,18 +55748,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -65966,249 +55770,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -66220,18 +55785,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -66241,249 +55807,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -66495,18 +55822,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -66516,249 +55844,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -66770,18 +55859,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -66791,249 +55881,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -67045,18 +55896,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -67066,249 +55918,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -67320,18 +55933,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -67341,249 +55955,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -67595,18 +55970,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -67616,249 +55992,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -67870,18 +56007,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -67891,249 +56029,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -68145,18 +56044,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -68166,249 +56066,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -68420,18 +56081,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -68441,249 +56103,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -68695,18 +56118,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -68716,249 +56140,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -68970,18 +56155,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -68991,249 +56177,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -69245,18 +56192,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -69266,249 +56214,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -69520,18 +56229,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -69541,249 +56251,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -69795,18 +56266,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -69816,249 +56288,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -70070,18 +56303,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -70091,249 +56325,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -70345,18 +56340,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -70366,249 +56362,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -71160,18 +56917,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -71181,249 +56939,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -71435,18 +56954,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -71456,249 +56976,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -71710,18 +56991,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -71731,249 +57013,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -71985,18 +57028,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -72006,249 +57050,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -72260,18 +57065,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -72281,249 +57087,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -72535,18 +57102,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -72556,249 +57124,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -72810,18 +57139,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -72831,249 +57161,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -73085,18 +57176,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number",      :limit => 20
-    t.string   "catalog_number_orig", :limit => 20
-    t.string   "new_catalog_number",  :limit => 20
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -73106,249 +57198,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
-    t.string   "r80",                 :limit => 20
-    t.string   "rm80",                :limit => 20
-    t.integer  "rdi80"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -73360,16 +57213,19 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "title"
     t.string   "title_en"
     t.integer  "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
     t.string   "manufacturer"
     t.string   "manufacturer_orig"
-    t.string   "catalog_number"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
     t.string   "country"
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
     t.string   "job_code"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
     t.string   "external_id"
@@ -73379,246 +57235,10 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.string   "description"
     t.string   "unit"
     t.string   "applicability"
-    t.string   "r0",                  :limit => 20
-    t.string   "rm0",                 :limit => 20
-    t.integer  "rdi0"
-    t.string   "r1",                  :limit => 20
-    t.string   "rm1",                 :limit => 20
-    t.integer  "rdi1"
-    t.string   "r2",                  :limit => 20
-    t.string   "rm2",                 :limit => 20
-    t.integer  "rdi2"
-    t.string   "r3",                  :limit => 20
-    t.string   "rm3",                 :limit => 20
-    t.integer  "rdi3"
-    t.string   "r4",                  :limit => 20
-    t.string   "rm4",                 :limit => 20
-    t.integer  "rdi4"
-    t.string   "r5",                  :limit => 20
-    t.string   "rm5",                 :limit => 20
-    t.integer  "rdi5"
-    t.string   "r6",                  :limit => 20
-    t.string   "rm6",                 :limit => 20
-    t.integer  "rdi6"
-    t.string   "r7",                  :limit => 20
-    t.string   "rm7",                 :limit => 20
-    t.integer  "rdi7"
-    t.string   "r8",                  :limit => 20
-    t.string   "rm8",                 :limit => 20
-    t.integer  "rdi8"
-    t.string   "r9",                  :limit => 20
-    t.string   "rm9",                 :limit => 20
-    t.integer  "rdi9"
-    t.string   "r10",                 :limit => 20
-    t.string   "rm10",                :limit => 20
-    t.integer  "rdi10"
-    t.string   "r11",                 :limit => 20
-    t.string   "rm11",                :limit => 20
-    t.integer  "rdi11"
-    t.string   "r12",                 :limit => 20
-    t.string   "rm12",                :limit => 20
-    t.integer  "rdi12"
-    t.string   "r13",                 :limit => 20
-    t.string   "rm13",                :limit => 20
-    t.integer  "rdi13"
-    t.string   "r14",                 :limit => 20
-    t.string   "rm14",                :limit => 20
-    t.integer  "rdi14"
-    t.string   "r15",                 :limit => 20
-    t.string   "rm15",                :limit => 20
-    t.integer  "rdi15"
-    t.string   "r16",                 :limit => 20
-    t.string   "rm16",                :limit => 20
-    t.integer  "rdi16"
-    t.string   "r17",                 :limit => 20
-    t.string   "rm17",                :limit => 20
-    t.integer  "rdi17"
-    t.string   "r18",                 :limit => 20
-    t.string   "rm18",                :limit => 20
-    t.integer  "rdi18"
-    t.string   "r19",                 :limit => 20
-    t.string   "rm19",                :limit => 20
-    t.integer  "rdi19"
-    t.string   "r20",                 :limit => 20
-    t.string   "rm20",                :limit => 20
-    t.integer  "rdi20"
-    t.string   "r21",                 :limit => 20
-    t.string   "rm21",                :limit => 20
-    t.integer  "rdi21"
-    t.string   "r22",                 :limit => 20
-    t.string   "rm22",                :limit => 20
-    t.integer  "rdi22"
-    t.string   "r23",                 :limit => 20
-    t.string   "rm23",                :limit => 20
-    t.integer  "rdi23"
-    t.string   "r24",                 :limit => 20
-    t.string   "rm24",                :limit => 20
-    t.integer  "rdi24"
-    t.string   "r25",                 :limit => 20
-    t.string   "rm25",                :limit => 20
-    t.integer  "rdi25"
-    t.string   "r26",                 :limit => 20
-    t.string   "rm26",                :limit => 20
-    t.integer  "rdi26"
-    t.string   "r27",                 :limit => 20
-    t.string   "rm27",                :limit => 20
-    t.integer  "rdi27"
-    t.string   "r28",                 :limit => 20
-    t.string   "rm28",                :limit => 20
-    t.integer  "rdi28"
-    t.string   "r29",                 :limit => 20
-    t.string   "rm29",                :limit => 20
-    t.integer  "rdi29"
-    t.string   "r30",                 :limit => 20
-    t.string   "rm30",                :limit => 20
-    t.integer  "rdi30"
-    t.string   "r31",                 :limit => 20
-    t.string   "rm31",                :limit => 20
-    t.integer  "rdi31"
-    t.string   "r32",                 :limit => 20
-    t.string   "rm32",                :limit => 20
-    t.integer  "rdi32"
-    t.string   "r33",                 :limit => 20
-    t.string   "rm33",                :limit => 20
-    t.integer  "rdi33"
-    t.string   "r34",                 :limit => 20
-    t.string   "rm34",                :limit => 20
-    t.integer  "rdi34"
-    t.string   "r35",                 :limit => 20
-    t.string   "rm35",                :limit => 20
-    t.integer  "rdi35"
-    t.string   "r36",                 :limit => 20
-    t.string   "rm36",                :limit => 20
-    t.integer  "rdi36"
-    t.string   "r37",                 :limit => 20
-    t.string   "rm37",                :limit => 20
-    t.integer  "rdi37"
-    t.string   "r38",                 :limit => 20
-    t.string   "rm38",                :limit => 20
-    t.integer  "rdi38"
-    t.string   "r39",                 :limit => 20
-    t.string   "rm39",                :limit => 20
-    t.integer  "rdi39"
-    t.string   "r40",                 :limit => 20
-    t.string   "rm40",                :limit => 20
-    t.integer  "rdi40"
-    t.string   "r41",                 :limit => 20
-    t.string   "rm41",                :limit => 20
-    t.integer  "rdi41"
-    t.string   "r42",                 :limit => 20
-    t.string   "rm42",                :limit => 20
-    t.integer  "rdi42"
-    t.string   "r43",                 :limit => 20
-    t.string   "rm43",                :limit => 20
-    t.integer  "rdi43"
-    t.string   "r44",                 :limit => 20
-    t.string   "rm44",                :limit => 20
-    t.integer  "rdi44"
-    t.string   "r45",                 :limit => 20
-    t.string   "rm45",                :limit => 20
-    t.integer  "rdi45"
-    t.string   "r46",                 :limit => 20
-    t.string   "rm46",                :limit => 20
-    t.integer  "rdi46"
-    t.string   "r47",                 :limit => 20
-    t.string   "rm47",                :limit => 20
-    t.integer  "rdi47"
-    t.string   "r48",                 :limit => 20
-    t.string   "rm48",                :limit => 20
-    t.integer  "rdi48"
-    t.string   "r49",                 :limit => 20
-    t.string   "rm49",                :limit => 20
-    t.integer  "rdi49"
-    t.string   "r50",                 :limit => 20
-    t.string   "rm50",                :limit => 20
-    t.integer  "rdi50"
-    t.string   "r51",                 :limit => 20
-    t.string   "rm51",                :limit => 20
-    t.integer  "rdi51"
-    t.string   "r52",                 :limit => 20
-    t.string   "rm52",                :limit => 20
-    t.integer  "rdi52"
-    t.string   "r53",                 :limit => 20
-    t.string   "rm53",                :limit => 20
-    t.integer  "rdi53"
-    t.string   "r54",                 :limit => 20
-    t.string   "rm54",                :limit => 20
-    t.integer  "rdi54"
-    t.string   "r55",                 :limit => 20
-    t.string   "rm55",                :limit => 20
-    t.integer  "rdi55"
-    t.string   "r56",                 :limit => 20
-    t.string   "rm56",                :limit => 20
-    t.integer  "rdi56"
-    t.string   "r57",                 :limit => 20
-    t.string   "rm57",                :limit => 20
-    t.integer  "rdi57"
-    t.string   "r58",                 :limit => 20
-    t.string   "rm58",                :limit => 20
-    t.integer  "rdi58"
-    t.string   "r59",                 :limit => 20
-    t.string   "rm59",                :limit => 20
-    t.integer  "rdi59"
-    t.string   "r60",                 :limit => 20
-    t.string   "rm60",                :limit => 20
-    t.integer  "rdi60"
-    t.string   "r61",                 :limit => 20
-    t.string   "rm61",                :limit => 20
-    t.integer  "rdi61"
-    t.string   "r62",                 :limit => 20
-    t.string   "rm62",                :limit => 20
-    t.integer  "rdi62"
-    t.string   "r63",                 :limit => 20
-    t.string   "rm63",                :limit => 20
-    t.integer  "rdi63"
-    t.string   "r64",                 :limit => 20
-    t.string   "rm64",                :limit => 20
-    t.integer  "rdi64"
-    t.string   "r65",                 :limit => 20
-    t.string   "rm65",                :limit => 20
-    t.integer  "rdi65"
-    t.string   "r66",                 :limit => 20
-    t.string   "rm66",                :limit => 20
-    t.integer  "rdi66"
-    t.string   "r67",                 :limit => 20
-    t.string   "rm67",                :limit => 20
-    t.integer  "rdi67"
-    t.string   "r68",                 :limit => 20
-    t.string   "rm68",                :limit => 20
-    t.integer  "rdi68"
-    t.string   "r69",                 :limit => 20
-    t.string   "rm69",                :limit => 20
-    t.integer  "rdi69"
-    t.string   "r70",                 :limit => 20
-    t.string   "rm70",                :limit => 20
-    t.integer  "rdi70"
-    t.string   "r71",                 :limit => 20
-    t.string   "rm71",                :limit => 20
-    t.integer  "rdi71"
-    t.string   "r72",                 :limit => 20
-    t.string   "rm72",                :limit => 20
-    t.integer  "rdi72"
-    t.string   "r73",                 :limit => 20
-    t.string   "rm73",                :limit => 20
-    t.integer  "rdi73"
-    t.string   "r74",                 :limit => 20
-    t.string   "rm74",                :limit => 20
-    t.integer  "rdi74"
-    t.string   "r75",                 :limit => 20
-    t.string   "rm75",                :limit => 20
-    t.integer  "rdi75"
-    t.string   "r76",                 :limit => 20
-    t.string   "rm76",                :limit => 20
-    t.integer  "rdi76"
-    t.string   "r77",                 :limit => 20
-    t.string   "rm77",                :limit => 20
-    t.integer  "rdi77"
-    t.string   "r78",                 :limit => 20
-    t.string   "rm78",                :limit => 20
-    t.integer  "rdi78"
-    t.string   "r79",                 :limit => 20
-    t.string   "rm79",                :limit => 20
-    t.integer  "rdi79"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -73659,6 +57279,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "price_import_1066346551", ["doublet"], :name => "doublet_idx"
 
   create_table "price_import_1066346552", :force => true do |t|
     t.integer  "job_id"
@@ -75045,6 +58667,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.datetime "updated_at"
   end
 
+  add_index "price_import_1066346576", ["doublet"], :name => "doublet_idx"
+
   create_table "price_import_1066346579", :force => true do |t|
     t.integer  "job_id"
     t.string   "title"
@@ -75314,6 +58938,43 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
   end
 
   add_index "price_import_1066346579", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346584", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346584", ["doublet"], :name => "doublet_idx"
 
   create_table "price_import_templates", :force => true do |t|
     t.integer  "job_id"
@@ -75817,6 +59478,8 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "weight_grams_colnum"
     t.integer  "new_catalog_number_colnum"
     t.float    "weight_coefficient"
+    t.integer  "title_colnum"
+    t.integer  "title_en_colnum"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -75883,6 +59546,7 @@ ActiveRecord::Schema.define(:version => 20110202123209) do
     t.integer  "discount_group_id"
     t.integer  "delivery_days_declared"
     t.integer  "delivery_days_average"
+    t.string   "web_site"
   end
 
   create_table "transmissions", :force => true do |t|

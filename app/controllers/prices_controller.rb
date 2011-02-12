@@ -27,11 +27,15 @@ class PricesController < ApplicationController
       end
     else
       md5 = Digest::MD5.hexdigest(catalog_number)[0,2]
-      query = "SELECT * FROM price_catalog_#{md5} WHERE catalog_number = " + Price.connection.quote(catalog_number)
+      query = "SELECT price_catalog_#{md5}.*, manufacturers.original FROM price_catalog_#{md5} JOIN manufacturers ON price_catalog_#{md5}.manufacturer = manufacturers.title WHERE catalog_number = " + Price.connection.quote(catalog_number) 
       puts "###################### #{query}  ######################"
       client = ActiveRecord::Base.connection.instance_variable_get :@connection
       result = client.query(query, :as => :hash)
-      @private_cache[key] ||= {:with => {}, :without => {:catalog_number => catalog_number, :replacements => []}}
+      if manufacturer
+        @private_cache[key] ||= {:with => {manufacturer => {:catalog_number => catalog_number, :manufacturer => manufacturer, :replacements => []}}, :without => []}
+      else
+        @private_cache[key] ||= {:with => {}, :without => {:catalog_number => catalog_number, :replacements => []}}
+      end
       result.each do |row|
         # Запомнили в кеше
         # hash = {
@@ -54,6 +58,7 @@ class PricesController < ApplicationController
           @private_cache[key][:without] = {
             :catalog_number => row['catalog_number'],
             :manufacturer => row['manufacturer'],
+            :original => row['original'],
             :title => row['title'],
             :title_en => row['title_en'],
             :weight_grams => row['weight_grams'],
@@ -78,6 +83,7 @@ class PricesController < ApplicationController
           @private_cache[key][:with][row['manufacturer']] = {
             :catalog_number => row['catalog_number'],
             :manufacturer => row['manufacturer'],
+            :original => row['original'],
             :title => row['title'],
             :title_en => row['title_en'],
             :weight_grams => row['weight_grams'],
@@ -116,7 +122,6 @@ class PricesController < ApplicationController
     end
 
     replacements = []
-
       get_from_catalog(our_catalog_number, our_manufacturer) do |r1|
         replacements << r1
         if params[:replacements] == '1'
@@ -203,6 +208,7 @@ class PricesController < ApplicationController
                     p[:price_cost] = value.to_s.strip
                     p[:income_cost] = value.to_f * 1
                     p[:retail_cost] = p[:income_cost] * 1.55
+                    p[:currency] = 643
                   when /^MakeName$/
                     p[:manufacturer] = CommonModule::find_manufacturer_synonym(value.to_s.strip, -2, true)[1..-2]
                     p[:manufacturer_orig] = value.to_s.strip
@@ -210,9 +216,9 @@ class PricesController < ApplicationController
                     p[:manufacturer_short] = value.to_s.strip
                   when /^bitOriginal/
                     if value.to_s.strip == 'true'
-                      p[:bit_original] = true
+                      p[:bit_original] = 1
                     else
-                      p[:bit_original] = false
+                      p[:bit_original] = 0
                     end
                 # TODO LOL
                  when /^ADDays$/
@@ -254,7 +260,6 @@ class PricesController < ApplicationController
 
     # Локальная работа
     #@prices = Price.select("prices.*, jobs.*, import_jobs.*, suppliers.*").where('catalog_number = ?', our_catalog_number).includes(:job => {:import_job => [:currency_buy, :currency_sell, :currency_weight]}).includes(:supplier)
-
     replacements.each do |replacement|
       md5 = Digest::MD5.hexdigest(replacement[:catalog_number])[0,2]
       query = "
@@ -274,31 +279,21 @@ class PricesController < ApplicationController
           ij.kilo_price as job_import_job_kilo_price,
           ij.country as job_import_job_country,
           ij.country_short as job_import_job_country_short,
-               p.price_cost * ij.income_rate AS income_cost, 
-               p.price_cost * ij.income_rate * ij.retail_rate AS retail_cost, 
-               CASE udr.buy_sell 
-                 WHEN 0 THEN p.price_cost * ij.income_rate * udr.rate 
-                 WHEN 1 THEN p.price_cost * ij.income_rate * ij.retail_rate * udr.rate 
-                 ELSE p.price_cost * ij.income_rate * ij.retail_rate
-               END AS result_cost 
-        FROM   price_cost_#{md5} p 
-               INNER JOIN jobs j 
-                 ON p.job_id = j.id 
-               INNER JOIN import_jobs ij 
-                 ON j.jobable_id = ij.id 
-               INNER JOIN suppliers s 
-                ON j.supplier_id = s.id
-               LEFT JOIN (SELECT dg.title, 
-                                 dr.buy_sell, 
-                                 dr.rate, 
-                                 dr.job_id 
-                          FROM   suppliers s 
-                                 INNER JOIN discount_groups dg 
-                                   ON dg.id = s.discount_group_id 
-                                 INNER JOIN discount_rules dr 
-                                   ON dr.discount_group_id = dg.id 
-                          WHERE  s.id = 222198489) udr 
-                 ON p.job_id = udr.job_id 
+          c.foreign_id as currency,
+          p.price_cost * ij.income_rate * c.value AS income_cost, 
+          p.price_cost * ij.income_rate * ij.retail_rate * c.value AS retail_cost,
+          m.original as bit_original
+        FROM price_cost_#{md5} p
+          LEFT JOIN manufacturers m
+            ON p.manufacturer = m.title
+          INNER JOIN jobs j 
+            ON p.job_id = j.id 
+          INNER JOIN import_jobs ij 
+            ON j.jobable_id = ij.id 
+          INNER JOIN suppliers s 
+            ON j.supplier_id = s.id
+          INNER JOIN currencies c 
+            ON c.id = ij.currency_buy_id
         WHERE  p.catalog_number = #{Price.connection.quote(replacement[:catalog_number])}" 
       if replacement[:manufacturer]
         query << "AND p.manufacturer = #{Price.connection.quote(replacement[:manufacturer])}"
