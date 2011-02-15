@@ -83,8 +83,8 @@ Avtorif::Application.routes.draw do
   resources :goods
   resources :manufacturers do
    collection do
-     post 'edit_individual'
-     put 'update_individual'
+     post 'edit_multiply'
+     put 'update_multiply'
    end
     resources :manufacturer_synonyms
   end

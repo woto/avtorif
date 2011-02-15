@@ -13,7 +13,7 @@
   $(function(){
 
     updateForm = function(){
-      window.deserialized = $.deserialize($.cookie('individual_ids'));
+      window.deserialized = $.deserialize($.cookie('multiply_ids'));
       formHidden = $('form#hidden div#fields');
       formHidden.empty();
       if(window.deserialized.manufacturer_ids){
@@ -23,24 +23,24 @@
           inputHidden.appendTo(formHidden);
           $('form#public input[value=' + value + ']').attr('checked', 'checked');
         });
-        $("#individual_ids").text($.param(window.deserialized)); 
+        $("#multiply_ids").text($.param(window.deserialized)); 
       } else {
         $('form#public input[type=checkbox]').removeAttr('checked');
-        $("#individual_ids").html("&nbsp;"); 
+        $("#multiply_ids").html("&nbsp;"); 
       }
     }
 
     $("form#public input:checkbox").change(function(){
       if($(this).is(":checked")){
-        $.cookie('individual_ids', ($.cookie('individual_ids') ? $.cookie('individual_ids') + "&" : "") + $(this).serialize());
+        $.cookie('multiply_ids', ($.cookie('multiply_ids') ? $.cookie('multiply_ids') + "&" : "") + $(this).serialize());
       }
       else
       {
-        new_deserialized = $.deserialize($.cookie('individual_ids'));
+        new_deserialized = $.deserialize($.cookie('multiply_ids'));
         delete new_deserialized.manufacturer_ids[$(this).val()];
         if($.isEmptyObject(new_deserialized.manufacturer_ids))
           new_deserialized = "";
-        $.cookie('individual_ids', $.param(new_deserialized));
+        $.cookie('multiply_ids', $.param(new_deserialized));
       }
       updateForm();
     })
@@ -48,14 +48,14 @@
     updateForm();
 
     $('#reset_cookie').click(function(){
-      $.cookie('individual_ids', '');
+      $.cookie('multiply_ids', '');
       updateForm();
     })
   })
 </script>
 
 <input type="button" id="reset_cookie" value="Сбросить выделение">
-<div id="individual_ids" ></div>
+<div id="multiply_ids" >&nbsp;</div>
 
 <% form_tag "", :id => "public" do %>
 
@@ -95,9 +95,9 @@
   </table>
 <% end %>
 
-<% form_tag edit_individual_manufacturers_path, :id => "hidden" do %>
+<% form_tag edit_multiply_manufacturers_path, :id => "hidden" do %>
   <p><%= submit_tag "Редактировать" %></p>
-  <div id="fields" />
+  <div id="fields"> </div>
 <% end %>
 
 <%= will_paginate @manufacturers %>

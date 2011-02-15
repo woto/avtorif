@@ -1,0 +1,10 @@
+<%= form_for :manufacturer, :url => update_multiply_manufacturers_path, :method => :put do |f| %>
+  <% for manufacturer in @manufacturers do %>
+    <%= hidden_field_tag "manufacturer_ids[]", manufacturer.id %>
+    <h3> <%= manufacturer.title %> </h3>
+  <% end %>
+  <%= f.collection_select :manufacturer_id, Manufacturer.all, :id, :title, :include_blank => true %>
+  <br /><br />
+  <%= submit_tag "Submit" %>
+<% end %>
+

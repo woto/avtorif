@@ -38,12 +38,19 @@ class ManufacturersController < ApplicationController
     @manufacturer = Manufacturer.find(params[:id])
   end
 
-  def edit_individual
+  def edit_multiply
     @manufacturers = Manufacturer.find(params['manufacturer_ids'])
   end
 
-  def update_individual
+  def update_multiply
+    manufacturer_synonyms = ManufacturerSynonym.where(:manufacturer_id => params[:manufacturer_ids])
+    manufacturer_synonyms.each do |ms|
+      ms.update_attributes!(params[:manufacturer])
+    end
 
+    Manufacturer.delete(params[:manufacturer_ids])
+    cookies.delete :multiply_ids
+    redirect_to(manufacturers_path(:page => params[:page], :letter => params[:letter]))
   end
 
   # POST /manufacturers
