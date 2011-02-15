@@ -29,8 +29,8 @@ class PricesController < ApplicationController
       md5 = Digest::MD5.hexdigest(catalog_number)[0,2]
       query = "SELECT price_catalog_#{md5}.*, manufacturers.original FROM price_catalog_#{md5} JOIN manufacturers ON price_catalog_#{md5}.manufacturer = manufacturers.title WHERE catalog_number = " + Price.connection.quote(catalog_number) 
       puts "###################### #{query}  ######################"
-      client = ActiveRecord::Base.connection.instance_variable_get :@connection
-      result = client.query(query, :as => :hash)
+      @client = ActiveRecord::Base.connection.instance_variable_get :@connection
+      result = @client.query(query, :as => :hash)
       if manufacturer
         @private_cache[key] ||= {:with => {manufacturer => {:catalog_number => catalog_number, :manufacturer => manufacturer, :replacements => []}}, :without => []}
       else
@@ -132,9 +132,6 @@ class PricesController < ApplicationController
           end
         end
       end
-    client = ActiveRecord::Base.connection.instance_variable_get :@connection
-    query = "SELECT '1'"
-    result = client.query(query, :as => :array)
     # Работа со сторонними сервисами
     if(params[:ext_ws] == '1')
       #EMEX
@@ -266,12 +263,19 @@ class PricesController < ApplicationController
             ON j.supplier_id = s.id
           INNER JOIN currencies c 
             ON c.id = ij.currency_buy_id
-        WHERE  p.catalog_number = #{Price.connection.quote(replacement[:catalog_number])}" 
+        WHERE  p.catalog_number = #{ActiveRecord::Base.connection.quote(replacement[:catalog_number])}" 
       if replacement[:manufacturer]
-        query << " AND p.manufacturer = #{Price.connection.quote(replacement[:manufacturer])}"
+        query << " AND p.manufacturer = #{ActiveRecord::Base.connection.quote(replacement[:manufacturer])}"
       end
-      @prices = @prices + Price.find_by_sql(query)
+
+      result = @client.query(query, :as => :hash)
+      result.each do |r|
+        @prices << r
+      end
     end
+
+    query = "SELECT '1'"
+    result = @client.query(query, :as => :array)
 
     respond_to do |format|
       format.html {render :action => :index }
