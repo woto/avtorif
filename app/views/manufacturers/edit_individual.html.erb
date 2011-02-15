@@ -1,0 +1,10 @@
+<%= form_tag update_individual_manufacturers_path, :method => :put do %>
+  <% for manufacturer in @manufacturers do %>
+    <%= fields_for "manfacturers[]", manufacturer do |f| %>
+      <%= f.inputs %>
+      <h3> <%= manufacturer.title %> </h3>
+    <% end %>
+  <% end %>
+  <% submit_tag "Submit" %>
+<% end %>
+

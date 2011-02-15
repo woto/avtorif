@@ -82,6 +82,10 @@ Avtorif::Application.routes.draw do
   resources :analogues
   resources :goods
   resources :manufacturers do
+   collection do
+     post 'edit_individual'
+     put 'update_individual'
+   end
     resources :manufacturer_synonyms
   end
   resources :supplier_prices

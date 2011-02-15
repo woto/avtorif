@@ -38,6 +38,14 @@ class ManufacturersController < ApplicationController
     @manufacturer = Manufacturer.find(params[:id])
   end
 
+  def edit_individual
+    @manufacturers = Manufacturer.find(params['manufacturer_ids'])
+  end
+
+  def update_individual
+
+  end
+
   # POST /manufacturers
   # POST /manufacturers.xml
   def create

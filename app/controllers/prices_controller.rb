@@ -135,31 +135,36 @@ class PricesController < ApplicationController
     client = ActiveRecord::Base.connection.instance_variable_get :@connection
     query = "SELECT '1'"
     result = client.query(query, :as => :array)
-
     # Работа со сторонними сервисами
     if(params[:ext_ws] == '1')
       #EMEX
         Timeout.timeout(AppConfig.emex_timeout) do
           begin
+            puts 'Сейчас будем читать'
             response = CommonModule::get_emex(
-              :catalog_number => params[:catalog_number], 
+              :catalog_number => our_catalog_number, 
               :manufacturer => params[:manufacturer],
               :login => AppConfig.emex_login,
               :password => AppConfig.emex_password,
               :replacements => params[:replacements]
             )
+            puts 'Завершили чтение'
 
             doc = Nokogiri::XML(response)
-
-            detail_items = doc.children.children
+            detail_items = doc.css('DetailItem')
             detail_items.each do |z|
-
               if z.blank?
                 next
               end
 
-              p = Price.new
+              if z.css('CalcDeliveryPercent').text.to_i < 50
+                next
+              end
               
+              #debugger
+
+              p = Hash.new
+              #p = Price.new
               p[:supplier_title] = 'emex'
               p[:supplier_title_en] = 'emex'
               p[:supplier_title_full] = 'emex'
@@ -168,73 +173,87 @@ class PricesController < ApplicationController
               p[:job_title] ="ws"
               p[:job_import_job_kilo_price] = 0
               p[:job_import_job_presence] = false
+          
+              if false
+                p[:job_import_job_destination_logo] = '1'
+                p[:logo] = '1'
+                p[:catalog_number] = '1'
+                p[:catalog_number_orig] = '1'
+                p[:manufacturer] = '1'
+                p[:manufacturer_orig] = '1'
+                p[:job_import_job_success_percent] = '1'
+                p[:success_percent] = '1'
+                p[:job_import_job_delivery_days_declared] = '1'
+                p[:job_import_job_delivery_days_average] = '1'
+                p[:job_import_job_delivery_summary] = '1'
+                p[:job_import_job_country] = '1'
+                p[:job_import_job_country_short] = '1'
+                p[:price_cost] = '1'
+                p[:income_cost] = '1'
+                p[:retail_cost] = '1'
+                p[:currency] = 643
+                p[:bit_original] = 1
+              else
+                p[:job_import_job_destination_logo] = z.css('DestinationLogo').text
+                p[:logo] = z.css('DestinationLogo').text
+                p[:catalog_number] = CommonModule::normalize_catalog_number(z.css('DetailNum').text)
+                p[:catalog_number_orig] = z.css('DetailNum').text.strip
+                p[:manufacturer] = CommonModule::find_manufacturer_synonym(z.css('MakeName').text, -2, true)[1..-2]
+                p[:manufacturer_orig] = z.css('MakeName').text
+                p[:job_import_job_success_percent] = z.css('CalcDeliveryPercent').text
+                p[:success_percent] = z.css('CalcDeliveryPercent').text
+                p[:job_import_job_delivery_days_declared] = z.css('ADDays').text
+                p[:job_import_job_delivery_days_average] = z.css('DeliverTimeGuaranteed').text
+                p[:job_import_job_delivery_summary] = z.css('DestinationLogo').text
+                p[:job_import_job_country] = z.css('PriceDesc').text
+                p[:job_import_job_country_short] = z.css('PriceCountry').text
+                p[:price_cost] = z.css('ResultPrice').text
+                p[:income_cost] = z.css('ResultPrice').text.to_f * 1
+                p[:retail_cost] = p[:income_cost] * 1.55
+                p[:currency] = 643
 
-              z.children.children.each do |c|
-
-                if c.blank?
-                  next
+                if z.css('bitOriginal').text == 'true'
+                  p[:bit_original] = 1
+                else
+                  p[:bit_original] = 0
                 end
-
-                value = CGI.unescapeHTML(c.children.to_s)
-
-                case c.name
-                 when /^DestinationLogo$/
-                   p[:job_import_job_delivery_summary] = (p[:job_import_job_delivery_summary].to_s + " " + value.to_s.strip).to_s.strip
-                 when /^DestinationDesc$/
-                   p[:job_import_job_delivery_summary] = (p[:job_import_job_delivery_summary].to_s + " " + value.to_s.strip).to_s.strip
-                 when /^bitStorehouse$/
-                   if(value.to_s.strip == 'true')
-                     p[:job_import_job_presence] = true 
-                    else
-                     p[:job_import_job_presence] = false
-                   end
-                 when /^PriceCountry$/
-                   p[:job_import_job_country_short] = value.to_s.strip
-                 when /^PriceDesc$/
-                   p[:job_import_job_country] = value.to_s.strip
-                 when /^QuantityText$/
-                   p[:count] = value.to_s.strip 
-                 when /^DateChange$/
-                     #p[:created_at] = DateTime.parse(value.to_s.strip)
-                     #p[:updated_at] = DateTime.now
-                  when /^DetailNum$/
-                    p[:catalog_number] = CommonModule::normalize_catalog_number(value.to_s.strip)
-                    p[:catalog_number_orig] = value.to_s.strip
-                  when /^DetailNameRus$/
-                    p[:title] = value.to_s.strip
-                  when /^DetailNameEng$/
-                    p[:title_en] = value.to_s.strip
-                  when /^ResultPrice$/
-                    p[:price_cost] = value.to_s.strip
-                    p[:income_cost] = value.to_f * 1
-                    p[:retail_cost] = p[:income_cost] * 1.55
-                    p[:currency] = 643
-                  when /^MakeName$/
-                    p[:manufacturer] = CommonModule::find_manufacturer_synonym(value.to_s.strip, -2, true)[1..-2]
-                    p[:manufacturer_orig] = value.to_s.strip
-                  when /^MakeLogo$/
-                    p[:manufacturer_short] = value.to_s.strip
-                  when /^bitOriginal/
-                    if value.to_s.strip == 'true'
-                      p[:bit_original] = 1
-                    else
-                      p[:bit_original] = 0
-                    end
-                # TODO LOL
-                 when /^ADDays$/
-                    p[:job_import_job_delivery_days_declared] = value.to_s
-                 when /^DeliverTimeGuaranteed$/
-                    p[:job_import_job_delivery_days_average] = value.to_s
-                 when /^CalcDeliveryPercent$/
-                    p[:job_import_job_success_percent] = value.to_s
-                    p[:success_percent] = value.to_s
-                 when /^Country$/
-                    p[:country] = value.to_s.strip
-                 else
-                    p[(c.name.underscore + "_emex").to_sym] = value.to_s.strip
-                end
-
               end
+
+              #z.children.children.each do |c|
+              #  if c.blank?
+              #    next
+              #  end
+              #
+              #  value = CGI.unescapeHTML(c.children.to_s)
+
+               #case c.name
+               # when /^DestinationDesc$/
+               #   p[:job_import_job_delivery_summary] = (p[:job_import_job_delivery_summary].to_s + " " + value.to_s.strip).to_s.strip
+               # when /^bitStorehouse$/
+               #   if(value.to_s.strip == 'true')
+               #     p[:job_import_job_presence] = true 
+               #    else
+               #     p[:job_import_job_presence] = false
+               #   end
+               # when /^QuantityText$/
+               #   p[:count] = value.to_s.strip 
+               # when /^DateChange$/
+               #     #p[:created_at] = DateTime.parse(value.to_s.strip)
+               #     #p[:updated_at] = DateTime.now
+               #  when /^DetailNameRus$/
+               #    p[:title] = value.to_s.strip
+               #  when /^DetailNameEng$/
+               #    p[:title_en] = value.to_s.strip
+               #  when /^MakeLogo$/
+               #    p[:manufacturer_short] = value.to_s.strip
+               ## TODO LOL
+               # when /^Country$/
+               #    p[:country] = value.to_s.strip
+               # else
+               #    p[(c.name.underscore + "_emex").to_sym] = value.to_s.strip
+               #end
+
+              #end
               @prices << p
               found = false
               replacements.each do |replacement|
@@ -244,7 +263,7 @@ class PricesController < ApplicationController
                   end
                 end
               end
-
+              
               unless found
                 replacements <<  { 
                   :catalog_number => p[:catalog_number],
@@ -257,9 +276,7 @@ class PricesController < ApplicationController
           end
         end
       end
-
     # Локальная работа
-    #@prices = Price.select("prices.*, jobs.*, import_jobs.*, suppliers.*").where('catalog_number = ?', our_catalog_number).includes(:job => {:import_job => [:currency_buy, :currency_sell, :currency_weight]}).includes(:supplier)
     replacements.each do |replacement|
       md5 = Digest::MD5.hexdigest(replacement[:catalog_number])[0,2]
       query = "

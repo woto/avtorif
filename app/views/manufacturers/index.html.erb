@@ -8,40 +8,97 @@
   <%= link_to l, manufacturers_path(:letter => l) %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <% end %>
 <br /><br />
-<table>
-  <tr>
-    <th style="width: 400px">Title</th>
-    <th>Job</th>
-    <th></th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
-<%= will_paginate @manufacturers %>
-<br />
+<script>
+  $(function(){
 
-<% @manufacturers.each do |manufacturer| %>
-  <tr>
-    <td><%= manufacturer.title %></td>
-    <td>
-      <% if manufacturer.job_id.present? %>
-        <%= 
-          begin 
-            link_to Job.find(manufacturer.job_id), supplier_job_path(Job.find(manufacturer.job_id).supplier_id, manufacturer.job_id) 
-          rescue => e;
-          end %>
-      <% end %>
-    </td>
-    <td><%= link_to 'Show', manufacturer %></td>
-    <td><%= link_to 'Edit', edit_manufacturer_path(manufacturer) %></td>
-    <td><%= link_to 'Destroy', manufacturer_path(manufacturer, {:letter => params[:letter], :page => params[:page]}), :confirm => 'Are you sure?', :method => :delete, :remote => true %></td>
-    <td><%= link_to 'Синонимы', manufacturer_manufacturer_synonyms_path(manufacturer, {:letter => params[:letter], :page => params[:page]}) %></td>
-  </tr>
+    updateForm = function(){
+      window.deserialized = $.deserialize($.cookie('individual_ids'));
+      formHidden = $('form#hidden div#fields');
+      formHidden.empty();
+      if(window.deserialized.manufacturer_ids){
+        manufacturer_ids = window.deserialized.manufacturer_ids
+        $.each(manufacturer_ids, function(index, value){
+          inputHidden = $('<input />', {type: 'hidden', name: "manufacturer_ids[]", value: value});
+          inputHidden.appendTo(formHidden);
+          $('form#public input[value=' + value + ']').attr('checked', 'checked');
+        });
+        $("#individual_ids").text($.param(window.deserialized)); 
+      } else {
+        $('form#public input[type=checkbox]').removeAttr('checked');
+        $("#individual_ids").html("&nbsp;"); 
+      }
+    }
+
+    $("form#public input:checkbox").change(function(){
+      if($(this).is(":checked")){
+        $.cookie('individual_ids', ($.cookie('individual_ids') ? $.cookie('individual_ids') + "&" : "") + $(this).serialize());
+      }
+      else
+      {
+        new_deserialized = $.deserialize($.cookie('individual_ids'));
+        delete new_deserialized.manufacturer_ids[$(this).val()];
+        if($.isEmptyObject(new_deserialized.manufacturer_ids))
+          new_deserialized = "";
+        $.cookie('individual_ids', $.param(new_deserialized));
+      }
+      updateForm();
+    })
+
+    updateForm();
+
+    $('#reset_cookie').click(function(){
+      $.cookie('individual_ids', '');
+      updateForm();
+    })
+  })
+</script>
+
+<input type="button" id="reset_cookie" value="Сбросить выделение">
+<div id="individual_ids" ></div>
+
+<% form_tag "", :id => "public" do %>
+
+  <table>
+    <tr>
+      <th></th>
+      <th style="width: 400px">Title</th>
+      <th>Job</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+
+  <%= will_paginate @manufacturers %>
+  <br />
+
+  <% @manufacturers.each do |manufacturer| %>
+    <tr>
+      <td><%= check_box_tag "manufacturer_ids[#{manufacturer.id}]", manufacturer.id %></td>
+      <td><%= manufacturer.title %></td>
+      <td>
+        <% if manufacturer.job_id.present? %>
+          <%= 
+            begin 
+              link_to Job.find(manufacturer.job_id), supplier_job_path(Job.find(manufacturer.job_id).supplier_id, manufacturer.job_id) 
+            rescue => e;
+            end %>
+        <% end %>
+      </td>
+      <td><%= link_to 'Show', manufacturer %></td>
+      <td><%= link_to 'Edit', edit_manufacturer_path(manufacturer) %></td>
+      <td><%= link_to 'Destroy', manufacturer_path(manufacturer, {:letter => params[:letter], :page => params[:page]}), :confirm => 'Are you sure?', :method => :delete, :remote => true %></td>
+      <td><%= link_to 'Синонимы', manufacturer_manufacturer_synonyms_path(manufacturer, {:letter => params[:letter], :page => params[:page]}) %></td>
+    </tr>
+  <% end %>
+  </table>
 <% end %>
-</table>
 
-<br />
+<% form_tag edit_individual_manufacturers_path, :id => "hidden" do %>
+  <p><%= submit_tag "Редактировать" %></p>
+  <div id="fields" />
+<% end %>
 
 <%= will_paginate @manufacturers %>
 
