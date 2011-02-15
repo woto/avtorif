@@ -10,8 +10,6 @@ module CommonModule
       file_name = 'system/emex/'
       file_name << input[:login].to_s + "|" + input[:password].to_s + "|" + input[:catalog_number].to_s + "|" + input[:manufacturer].to_s + "|" + input[:replacements].to_i.to_s
 
-      puts '1'
-      debugger
       if(File.exist?(file_name) && (File.ctime(file_name) > Time.now - AppConfig.emex_cache.to_i.minutes))
         result = File.read(file_name)
       else
@@ -20,11 +18,7 @@ module CommonModule
         hash['login'] = input[:login]
         hash['password'] = input[:password]
         hash['findSubstitutes'] = input[:replacements] == '1' ? 'true' : 'false'
-        debugger
-        puts '1'
         response = Net::HTTP.post_form(URI.parse('http://ws.emex.ru/EmExService.asmx/FindDetailAdv'), hash)
-        debugger
-        puts '1'
         file = File.new(file_name, "w")
         result = response.body
         file.write(result)

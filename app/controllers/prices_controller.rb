@@ -174,86 +174,41 @@ class PricesController < ApplicationController
               p[:job_import_job_kilo_price] = 0
               p[:job_import_job_presence] = false
           
-              if false
-                p[:job_import_job_destination_logo] = '1'
-                p[:logo] = '1'
-                p[:catalog_number] = '1'
-                p[:catalog_number_orig] = '1'
-                p[:manufacturer] = '1'
-                p[:manufacturer_orig] = '1'
-                p[:job_import_job_success_percent] = '1'
-                p[:success_percent] = '1'
-                p[:job_import_job_delivery_days_declared] = '1'
-                p[:job_import_job_delivery_days_average] = '1'
-                p[:job_import_job_delivery_summary] = '1'
-                p[:job_import_job_country] = '1'
-                p[:job_import_job_country_short] = '1'
-                p[:price_cost] = '1'
-                p[:income_cost] = '1'
-                p[:retail_cost] = '1'
-                p[:currency] = 643
-                p[:bit_original] = 1
-              else
-                p[:job_import_job_destination_logo] = z.css('DestinationLogo').text
-                p[:logo] = z.css('DestinationLogo').text
-                p[:catalog_number] = CommonModule::normalize_catalog_number(z.css('DetailNum').text)
-                p[:catalog_number_orig] = z.css('DetailNum').text.strip
-                p[:manufacturer] = CommonModule::find_manufacturer_synonym(z.css('MakeName').text, -2, true)[1..-2]
-                p[:manufacturer_orig] = z.css('MakeName').text
-                p[:job_import_job_success_percent] = z.css('CalcDeliveryPercent').text
-                p[:success_percent] = z.css('CalcDeliveryPercent').text
-                p[:job_import_job_delivery_days_declared] = z.css('ADDays').text
-                p[:job_import_job_delivery_days_average] = z.css('DeliverTimeGuaranteed').text
-                p[:job_import_job_delivery_summary] = z.css('DestinationLogo').text
-                p[:job_import_job_country] = z.css('PriceDesc').text
-                p[:job_import_job_country_short] = z.css('PriceCountry').text
-                p[:price_cost] = z.css('ResultPrice').text
-                p[:income_cost] = z.css('ResultPrice').text.to_f * 1
-                p[:retail_cost] = p[:income_cost] * 1.55
-                p[:currency] = 643
+              p[:job_import_job_destination_logo] = z.css('DestinationLogo').text
+              p[:job_import_job_destination_summary] = z.css('DestinationDesc').text
+              #p[:logo] = z.css('DestinationLogo').text
+              p[:catalog_number] = CommonModule::normalize_catalog_number(z.css('DetailNum').first.text)
+              p[:catalog_number_orig] = z.css('DetailNum').first.text.strip
+              p[:manufacturer] = CommonModule::find_manufacturer_synonym(z.css('MakeName').text, -2, true)[1..-2]
+              p[:manufacturer_orig] = z.css('MakeName').text
+              p[:manufacturer_short] = z.css('MakeLogo').text
+              p[:job_import_job_success_percent] = z.css('CalcDeliveryPercent').text
+              p[:success_percent] = z.css('CalcDeliveryPercent').text
+              p[:job_import_job_delivery_days_declared] = z.css('ADDays').text
+              p[:job_import_job_delivery_days_average] = z.css('DeliverTimeGuaranteed').text
+              p[:job_import_job_delivery_summary] = z.css('DestinationLogo').text
+              p[:job_import_job_country] = z.css('PriceDesc').text
+              p[:job_import_job_country_short] = z.css('PriceCountry').text
+              p[:price_cost] = z.css('ResultPrice').text
+              p[:income_cost] = z.css('ResultPrice').text.to_f * 1
+              p[:retail_cost] = p[:income_cost] * 1.55
+              p[:currency] = 643
+              p[:count] = CGI.unescapeHTML(z.css('QuantityText').first.text)
+              p[:title] = z.css('DetailNameRus').text
+              p[:title_en] = z.css('DetailNameEng').text
 
-                if z.css('bitOriginal').text == 'true'
-                  p[:bit_original] = 1
-                else
-                  p[:bit_original] = 0
-                end
+              if(z.css('bitStorehouse') == 'true')
+                p[:job_import_job_presence] = true
+              else
+                p[:job_import_job_presence] = false
               end
 
-              #z.children.children.each do |c|
-              #  if c.blank?
-              #    next
-              #  end
-              #
-              #  value = CGI.unescapeHTML(c.children.to_s)
+              if z.css('bitOriginal').text == 'true'
+                p[:bit_original] = 1
+              else
+                p[:bit_original] = 0
+              end
 
-               #case c.name
-               # when /^DestinationDesc$/
-               #   p[:job_import_job_delivery_summary] = (p[:job_import_job_delivery_summary].to_s + " " + value.to_s.strip).to_s.strip
-               # when /^bitStorehouse$/
-               #   if(value.to_s.strip == 'true')
-               #     p[:job_import_job_presence] = true 
-               #    else
-               #     p[:job_import_job_presence] = false
-               #   end
-               # when /^QuantityText$/
-               #   p[:count] = value.to_s.strip 
-               # when /^DateChange$/
-               #     #p[:created_at] = DateTime.parse(value.to_s.strip)
-               #     #p[:updated_at] = DateTime.now
-               #  when /^DetailNameRus$/
-               #    p[:title] = value.to_s.strip
-               #  when /^DetailNameEng$/
-               #    p[:title_en] = value.to_s.strip
-               #  when /^MakeLogo$/
-               #    p[:manufacturer_short] = value.to_s.strip
-               ## TODO LOL
-               # when /^Country$/
-               #    p[:country] = value.to_s.strip
-               # else
-               #    p[(c.name.underscore + "_emex").to_sym] = value.to_s.strip
-               #end
-
-              #end
               @prices << p
               found = false
               replacements.each do |replacement|
@@ -313,7 +268,7 @@ class PricesController < ApplicationController
             ON c.id = ij.currency_buy_id
         WHERE  p.catalog_number = #{Price.connection.quote(replacement[:catalog_number])}" 
       if replacement[:manufacturer]
-        query << "AND p.manufacturer = #{Price.connection.quote(replacement[:manufacturer])}"
+        query << " AND p.manufacturer = #{Price.connection.quote(replacement[:manufacturer])}"
       end
       @prices = @prices + Price.find_by_sql(query)
     end
