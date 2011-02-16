@@ -1,9 +1,9 @@
-<%= form_for :manufacturer, :url => update_multiply_manufacturers_path, :method => :put do |f| %>
+<%= form_for :manufacturer, :url => update_multiply_manufacturers_path({:page => params[:page], :letter => params[:letter]}), :method => :put do |f| %>
   <% for manufacturer in @manufacturers do %>
     <%= hidden_field_tag "manufacturer_ids[]", manufacturer.id %>
     <h3> <%= manufacturer.title %> </h3>
   <% end %>
-  <%= f.collection_select :manufacturer_id, Manufacturer.all, :id, :title, :include_blank => true %>
+  <%= f.collection_select :manufacturer_id, Manufacturer.order(:title).where("id NOT IN(?)", @manufacturers.map(&:id)), :id, :title, :include_blank => true %>
   <br /><br />
   <%= submit_tag "Submit" %>
 <% end %>

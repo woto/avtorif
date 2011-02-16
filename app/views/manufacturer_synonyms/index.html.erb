@@ -16,7 +16,11 @@
     <td><%= manufacturer_synonym.title %></td>
     <td>
       <% if manufacturer_synonym.job_id %>
-        <%= link_to Job.find(manufacturer_synonym.job_id), supplier_job_path(Job.find(manufacturer_synonym.job_id).supplier_id, manufacturer_synonym.job_id) %>
+        <% begin %>
+          <%= link_to Job.find(manufacturer_synonym.job_id), supplier_job_path(Job.find(manufacturer_synonym.job_id).supplier_id, manufacturer_synonym.job_id) %>
+        <% rescue => e %>
+          <%= manufacturer_synonym.job_id %>
+          <% end %>
       <% end %>
     </td>
     <td><%= link_to 'Show', manufacturer_manufacturer_synonym_path(manufacturer_synonym.manufacturer_id, manufacturer_synonym, {:page => params[:page], :letter => params[:letter]}) %></td>

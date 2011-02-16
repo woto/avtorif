@@ -54,9 +54,6 @@
   })
 </script>
 
-<input type="button" id="reset_cookie" value="Сбросить выделение">
-<div id="multiply_ids" >&nbsp;</div>
-
 <% form_tag "", :id => "public" do %>
 
   <table>
@@ -79,11 +76,11 @@
       <td><%= manufacturer.title %></td>
       <td>
         <% if manufacturer.job_id.present? %>
-          <%= 
-            begin 
-              link_to Job.find(manufacturer.job_id), supplier_job_path(Job.find(manufacturer.job_id).supplier_id, manufacturer.job_id) 
-            rescue => e;
-            end %>
+          <%  begin %>
+            <%= link_to Job.find(manufacturer.job_id), supplier_job_path(Job.find(manufacturer.job_id).supplier_id, manufacturer.job_id) %>
+            <% rescue => e %>
+              <%= manufacturer.job_id %>
+            <% end %>
         <% end %>
       </td>
       <td><%= link_to 'Show', manufacturer %></td>
@@ -95,12 +92,20 @@
   </table>
 <% end %>
 
-<% form_tag edit_multiply_manufacturers_path, :id => "hidden" do %>
-  <p><%= submit_tag "Редактировать" %></p>
+<br />
+
+<%= will_paginate @manufacturers %>
+
+<% form_tag edit_multiply_manufacturers_path({:page => params[:page], :letter => params[:letter]}), :id => "hidden" do %>
+  <p>
+    <%= submit_tag "Редактировать" %>
+    <%= submit_tag "Удалить" %>
+  </p>
   <div id="fields"> </div>
 <% end %>
 
-<%= will_paginate @manufacturers %>
+<input type="button" id="reset_cookie" value="Сбросить выделение">
+<div id="multiply_ids" >&nbsp;</div>
 
 <br />
 

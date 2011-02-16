@@ -39,6 +39,12 @@ class ManufacturersController < ApplicationController
   end
 
   def edit_multiply
+    if params["commit"] == "Удалить"
+      Manufacturer.delete(params['manufacturer_ids'])
+      cookies.delete :multiply_ids
+      redirect_to(manufacturers_path(:page => params[:page], :letter => params[:letter])) and return
+    end
+    
     @manufacturers = Manufacturer.find(params['manufacturer_ids'])
   end
 
