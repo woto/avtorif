@@ -37,6 +37,25 @@ class SuppliersController < ApplicationController
     @supplier = Supplier.find(params[:id])
   end
 
+  def send_to_web_service
+    client = Savon::Client.new do |wsdl, http|
+       wsdl.document = "#{AppConfig.lc_ws_address}/trade.1cws?wsdl"
+       http.auth.basic AppConfig.lc_ws_login, AppConfig.lc_ws_password
+    end
+    client.request :wsdl, :add_supplier do |r|
+      r.body = {
+        "ID" => @supplier.id.to_s,
+        "title" => @supplier.title.to_s,
+        "INN" => @supplier.inn.to_s,
+        "KPP" => @supplier.kpp.to_s,
+        "fullTitle" => @supplier.title_full.to_s,
+        "seller" => @supplier.seller.to_s,
+        "buyer" => @supplier.buyer.to_s,
+        :order! => ["ID", "title", "INN", "KPP", "fullTitle", "seller", "buyer"]
+      }
+    end
+  end
+
   # POST /suppliers
   # POST /suppliers.xml
   def create
@@ -44,6 +63,8 @@ class SuppliersController < ApplicationController
 
     respond_to do |format|
       if @supplier.save
+
+        send_to_web_service
         format.html { redirect_to(@supplier, :notice => 'Supplier was successfully created.') }
         format.xml  { render :xml => @supplier, :status => :created, :location => @supplier }
       else
@@ -60,6 +81,7 @@ class SuppliersController < ApplicationController
 
     respond_to do |format|
       if @supplier.update_attributes(params[:supplier])
+        send_to_web_service
         format.html { redirect_to(@supplier, :notice => 'Supplier was successfully updated.') }
         format.xml  { head :ok }
       else

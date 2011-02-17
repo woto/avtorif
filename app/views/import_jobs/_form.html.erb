@@ -24,10 +24,6 @@
     background: #EA9;
   }
 
-  #presence {
-    background : #9A5;
-  }
-
   #price {
     background: #6D9;
   }
@@ -41,56 +37,25 @@
   <%= f.error_messages %>
   <br />
   <p>
+    <%= f.input :price_setting, :collection => PriceSetting.where(:supplier_id => params[:supplier_id]) %>
+    </p>
+  <br />
+  <p>
     <%= f.label :import_method %>
     <%= f.enum_select :import_method %>
   </p>
   <br />
-  <p>
-    <%= f.label :job_code %>
-    <%= f.enum_select :job_code, :include_blank => true %><br />
-  </p>
-  <br />
-
-  <%= f.inputs :currency_buy %>
 
   <div id="presence">
-    <%= f.input :presence %>
-    Прайс наличия
-    <hr />
     <%= f.input :count_colnum %>
     Колонка: количество. Может содержать 3, >10, =15 и т.д.
   </div>
 
 
-  <div id="visibility">
-    <%= f.input :visible_for_site %>
-    Видим на сайте
-    <hr />
-    <%= f.input :visible_for_stock %>
-    Видим для складских заказов
-    <hr />
-    <%= f.input :visible_for_shops %>
-    Видим для магазинов
-  </div>
-
   <div id="delivery_days">
-    <%= f.input :delivery_days_declared %>
-    Заявленное количество дней
-    <hr />
-
     <%= f.input :delivery_days_declared_colnum %>
     Колонка: Заявленное количество дней
   </div>
-
-  <%= f.input :country, :as => :string %>
-    Местонахождение поставщика (город, округ, область)
-  <hr />
-  <%= f.input :country_short %>
-    То же самое, только коротко
-  <hr />
-  <%= f.input :delivery_summary %>
-    Полезная информация для покупателей о заказе (отсутствие возвратов и т.д.)
-  <hr />
 
   <div id="parts_info">
     <%= f.input :catalog_number_colnum %>
@@ -116,12 +81,6 @@
   <div id="price">
     <%= f.input :income_price_colnum %>
     Колонка: Цена детали. В качестве дробного разделителя может использоваться как точка, так и запятая. Пробелы (разделители разрядов), как и нули вначале, игнорируются
-    <hr />
-    <%= f.input :income_rate %>
-    Для всех. Динамический. Коэффициент, на который будет умножаться цена в прайсе (т.е. цена прихода)
-    <hr />
-    <%= f.input :retail_rate %>
-    Для всех. Динамический. Розничный коэффициент
   </div>
 
   <%= f.input :external_id_colnum %>
@@ -167,13 +126,6 @@
     <%= f.input :weight_coefficient %>
     Коэффициент для перевода в граммы
     <hr />
-    <%= f.input :kilo_price %>
-    Стоимость килограмма
-    <hr />
-    <%= f.inputs :currency_weight %>
-    Валюта веса
-    <hr />
-   <%= f.input :weight_unavaliable_rate %>
   </div>
 
 <%= f.submit 'Update' %>

@@ -39,6 +39,7 @@ Avtorif::Application.routes.draw do
     get 'unlock', :on => :member
   end
   resources :suppliers do
+    resources :price_settings
     resources :supplier_prices do
       collection do
         delete :destroy_by_supplier

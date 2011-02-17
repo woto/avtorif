@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110212142021) do
+ActiveRecord::Schema.define(:version => 20110217141259) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
@@ -216,18 +216,8 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.integer  "importable_id"
     t.string   "importable_type"
     t.string   "import_method"
-    t.boolean  "presence"
-    t.integer  "currency_buy_id"
-    t.integer  "currency_weight_id"
     t.integer  "delivery_type_id"
-    t.boolean  "visible_for_site"
-    t.boolean  "visible_for_stock"
-    t.boolean  "visible_for_shops"
     t.integer  "estimate_days"
-    t.float    "retail_rate"
-    t.float    "income_rate"
-    t.float    "kilo_price"
-    t.float    "weight_unavaliable_rate"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "manufacturer_colnum"
@@ -238,10 +228,6 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.integer  "income_price_colnum"
     t.integer  "external_id_colnum"
     t.integer  "weight_grams_colnum"
-    t.string   "country"
-    t.string   "country_short"
-    t.string   "delivery_summary"
-    t.integer  "delivery_days_declared"
     t.integer  "delivery_days_average"
     t.string   "success_percent"
     t.string   "default_manufacturer"
@@ -262,13 +248,13 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.float    "absolute_weight_currency"
     t.float    "relative_weight_currency"
     t.integer  "parts_group_colnum"
-    t.string   "job_code"
     t.string   "delivery_days_declared_colnum"
     t.integer  "array_replacement_colnum"
     t.integer  "array_replacement_manufacturer_colnum"
     t.integer  "array_replacement_default_manufacturer"
     t.string   "array_replacement_delimiter",            :limit => 5
     t.integer  "array_replacement_direction"
+    t.integer  "price_setting_id"
   end
 
   create_table "jobs", :force => true do |t|
@@ -45062,7 +45048,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -45079,8 +45065,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_00", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_00", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_00", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_00", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_01", :force => true do |t|
     t.integer  "job_id"
@@ -45095,7 +45080,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -45112,8 +45097,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_01", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_01", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_01", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_01", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_02", :force => true do |t|
     t.integer  "job_id"
@@ -45128,7 +45112,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -45145,8 +45129,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_02", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_02", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_02", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_02", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_03", :force => true do |t|
     t.integer  "job_id"
@@ -45161,7 +45144,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -45178,8 +45161,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_03", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_03", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_03", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_03", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_04", :force => true do |t|
     t.integer  "job_id"
@@ -45194,7 +45176,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -45211,8 +45193,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_04", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_04", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_04", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_04", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_05", :force => true do |t|
     t.integer  "job_id"
@@ -45227,7 +45208,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -45244,8 +45225,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_05", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_05", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_05", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_05", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_06", :force => true do |t|
     t.integer  "job_id"
@@ -45260,7 +45240,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -45277,8 +45257,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_06", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_06", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_06", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_06", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_07", :force => true do |t|
     t.integer  "job_id"
@@ -45293,7 +45272,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -45310,8 +45289,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_07", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_07", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_07", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_07", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_08", :force => true do |t|
     t.integer  "job_id"
@@ -45326,7 +45304,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -45343,8 +45321,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_08", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_08", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_08", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_08", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_09", :force => true do |t|
     t.integer  "job_id"
@@ -45359,7 +45336,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -45376,8 +45353,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_09", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_09", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_09", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_09", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_0a", :force => true do |t|
     t.integer  "job_id"
@@ -45392,7 +45368,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -45409,8 +45385,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_0a", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_0a", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_0a", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_0a", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_0b", :force => true do |t|
     t.integer  "job_id"
@@ -45425,7 +45400,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -45442,8 +45417,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_0b", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_0b", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_0b", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_0b", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_0c", :force => true do |t|
     t.integer  "job_id"
@@ -45458,7 +45432,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -45475,8 +45449,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_0c", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_0c", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_0c", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_0c", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_0d", :force => true do |t|
     t.integer  "job_id"
@@ -45491,7 +45464,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -45508,8 +45481,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_0d", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_0d", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_0d", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_0d", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_0e", :force => true do |t|
     t.integer  "job_id"
@@ -45524,7 +45496,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -45541,8 +45513,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_0e", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_0e", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_0e", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_0e", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_0f", :force => true do |t|
     t.integer  "job_id"
@@ -45557,7 +45528,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -45574,8 +45545,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_0f", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_0f", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_0f", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_0f", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_10", :force => true do |t|
     t.integer  "job_id"
@@ -45590,7 +45560,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -45607,8 +45577,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_10", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_10", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_10", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_10", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_11", :force => true do |t|
     t.integer  "job_id"
@@ -45623,7 +45592,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -45640,8 +45609,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_11", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_11", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_11", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_11", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_12", :force => true do |t|
     t.integer  "job_id"
@@ -45656,7 +45624,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -45673,8 +45641,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_12", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_12", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_12", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_12", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_13", :force => true do |t|
     t.integer  "job_id"
@@ -45689,7 +45656,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -45706,8 +45673,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_13", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_13", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_13", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_13", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_14", :force => true do |t|
     t.integer  "job_id"
@@ -45722,7 +45688,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -45739,8 +45705,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_14", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_14", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_14", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_14", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_15", :force => true do |t|
     t.integer  "job_id"
@@ -45755,7 +45720,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -45772,8 +45737,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_15", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_15", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_15", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_15", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_16", :force => true do |t|
     t.integer  "job_id"
@@ -45788,7 +45752,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -45805,8 +45769,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_16", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_16", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_16", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_16", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_17", :force => true do |t|
     t.integer  "job_id"
@@ -45821,7 +45784,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -45838,8 +45801,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_17", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_17", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_17", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_17", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_18", :force => true do |t|
     t.integer  "job_id"
@@ -45854,7 +45816,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -45871,8 +45833,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_18", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_18", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_18", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_18", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_19", :force => true do |t|
     t.integer  "job_id"
@@ -45887,7 +45848,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -45904,8 +45865,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_19", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_19", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_19", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_19", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_1a", :force => true do |t|
     t.integer  "job_id"
@@ -45920,7 +45880,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -45937,8 +45897,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_1a", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_1a", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_1a", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_1a", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_1b", :force => true do |t|
     t.integer  "job_id"
@@ -45953,7 +45912,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -45970,8 +45929,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_1b", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_1b", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_1b", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_1b", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_1c", :force => true do |t|
     t.integer  "job_id"
@@ -45986,7 +45944,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -46003,8 +45961,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_1c", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_1c", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_1c", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_1c", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_1d", :force => true do |t|
     t.integer  "job_id"
@@ -46019,7 +45976,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -46036,8 +45993,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_1d", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_1d", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_1d", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_1d", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_1e", :force => true do |t|
     t.integer  "job_id"
@@ -46052,7 +46008,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -46069,8 +46025,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_1e", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_1e", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_1e", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_1e", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_1f", :force => true do |t|
     t.integer  "job_id"
@@ -46085,7 +46040,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -46102,8 +46057,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_1f", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_1f", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_1f", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_1f", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_20", :force => true do |t|
     t.integer  "job_id"
@@ -46118,7 +46072,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -46135,8 +46089,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_20", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_20", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_20", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_20", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_21", :force => true do |t|
     t.integer  "job_id"
@@ -46151,7 +46104,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -46168,8 +46121,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_21", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_21", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_21", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_21", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_22", :force => true do |t|
     t.integer  "job_id"
@@ -46184,7 +46136,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -46201,8 +46153,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_22", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_22", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_22", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_22", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_23", :force => true do |t|
     t.integer  "job_id"
@@ -46217,7 +46168,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -46234,8 +46185,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_23", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_23", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_23", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_23", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_24", :force => true do |t|
     t.integer  "job_id"
@@ -46250,7 +46200,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -46267,8 +46217,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_24", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_24", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_24", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_24", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_25", :force => true do |t|
     t.integer  "job_id"
@@ -46283,7 +46232,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -46300,8 +46249,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_25", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_25", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_25", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_25", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_26", :force => true do |t|
     t.integer  "job_id"
@@ -46316,7 +46264,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -46333,8 +46281,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_26", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_26", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_26", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_26", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_27", :force => true do |t|
     t.integer  "job_id"
@@ -46349,7 +46296,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -46366,8 +46313,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_27", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_27", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_27", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_27", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_28", :force => true do |t|
     t.integer  "job_id"
@@ -46382,7 +46328,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -46399,8 +46345,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_28", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_28", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_28", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_28", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_29", :force => true do |t|
     t.integer  "job_id"
@@ -46415,7 +46360,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -46432,8 +46377,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_29", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_29", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_29", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_29", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_2a", :force => true do |t|
     t.integer  "job_id"
@@ -46448,7 +46392,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -46465,8 +46409,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_2a", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_2a", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_2a", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_2a", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_2b", :force => true do |t|
     t.integer  "job_id"
@@ -46481,7 +46424,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -46498,8 +46441,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_2b", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_2b", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_2b", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_2b", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_2c", :force => true do |t|
     t.integer  "job_id"
@@ -46514,7 +46456,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -46531,8 +46473,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_2c", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_2c", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_2c", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_2c", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_2d", :force => true do |t|
     t.integer  "job_id"
@@ -46547,7 +46488,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -46564,8 +46505,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_2d", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_2d", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_2d", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_2d", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_2e", :force => true do |t|
     t.integer  "job_id"
@@ -46580,7 +46520,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -46597,8 +46537,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_2e", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_2e", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_2e", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_2e", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_2f", :force => true do |t|
     t.integer  "job_id"
@@ -46613,7 +46552,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -46630,8 +46569,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_2f", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_2f", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_2f", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_2f", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_30", :force => true do |t|
     t.integer  "job_id"
@@ -46646,7 +46584,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -46663,8 +46601,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_30", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_30", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_30", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_30", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_31", :force => true do |t|
     t.integer  "job_id"
@@ -46679,7 +46616,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -46696,8 +46633,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_31", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_31", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_31", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_31", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_32", :force => true do |t|
     t.integer  "job_id"
@@ -46712,7 +46648,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -46729,8 +46665,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_32", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_32", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_32", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_32", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_33", :force => true do |t|
     t.integer  "job_id"
@@ -46745,7 +46680,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -46762,8 +46697,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_33", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_33", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_33", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_33", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_34", :force => true do |t|
     t.integer  "job_id"
@@ -46778,7 +46712,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -46795,8 +46729,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_34", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_34", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_34", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_34", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_35", :force => true do |t|
     t.integer  "job_id"
@@ -46811,7 +46744,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -46828,8 +46761,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_35", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_35", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_35", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_35", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_36", :force => true do |t|
     t.integer  "job_id"
@@ -46844,7 +46776,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -46861,8 +46793,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_36", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_36", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_36", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_36", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_37", :force => true do |t|
     t.integer  "job_id"
@@ -46877,7 +46808,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -46894,8 +46825,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_37", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_37", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_37", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_37", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_38", :force => true do |t|
     t.integer  "job_id"
@@ -46910,7 +46840,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -46927,8 +46857,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_38", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_38", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_38", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_38", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_39", :force => true do |t|
     t.integer  "job_id"
@@ -46943,7 +46872,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -46960,8 +46889,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_39", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_39", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_39", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_39", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_3a", :force => true do |t|
     t.integer  "job_id"
@@ -46976,7 +46904,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -46993,8 +46921,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_3a", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_3a", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_3a", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_3a", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_3b", :force => true do |t|
     t.integer  "job_id"
@@ -47009,7 +46936,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -47026,8 +46953,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_3b", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_3b", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_3b", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_3b", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_3c", :force => true do |t|
     t.integer  "job_id"
@@ -47042,7 +46968,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -47059,8 +46985,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_3c", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_3c", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_3c", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_3c", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_3d", :force => true do |t|
     t.integer  "job_id"
@@ -47075,7 +47000,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -47092,8 +47017,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_3d", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_3d", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_3d", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_3d", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_3e", :force => true do |t|
     t.integer  "job_id"
@@ -47108,7 +47032,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -47125,8 +47049,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_3e", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_3e", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_3e", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_3e", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_3f", :force => true do |t|
     t.integer  "job_id"
@@ -47141,7 +47064,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -47158,8 +47081,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_3f", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_3f", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_3f", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_3f", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_40", :force => true do |t|
     t.integer  "job_id"
@@ -47174,7 +47096,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -47191,8 +47113,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_40", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_40", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_40", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_40", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_41", :force => true do |t|
     t.integer  "job_id"
@@ -47207,7 +47128,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -47224,8 +47145,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_41", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_41", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_41", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_41", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_42", :force => true do |t|
     t.integer  "job_id"
@@ -47240,7 +47160,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -47257,8 +47177,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_42", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_42", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_42", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_42", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_43", :force => true do |t|
     t.integer  "job_id"
@@ -47273,7 +47192,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -47290,8 +47209,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_43", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_43", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_43", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_43", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_44", :force => true do |t|
     t.integer  "job_id"
@@ -47306,7 +47224,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -47323,8 +47241,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_44", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_44", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_44", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_44", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_45", :force => true do |t|
     t.integer  "job_id"
@@ -47339,7 +47256,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -47356,8 +47273,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_45", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_45", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_45", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_45", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_46", :force => true do |t|
     t.integer  "job_id"
@@ -47372,7 +47288,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -47389,8 +47305,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_46", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_46", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_46", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_46", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_47", :force => true do |t|
     t.integer  "job_id"
@@ -47405,7 +47320,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -47422,8 +47337,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_47", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_47", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_47", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_47", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_48", :force => true do |t|
     t.integer  "job_id"
@@ -47438,7 +47352,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -47455,8 +47369,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_48", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_48", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_48", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_48", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_49", :force => true do |t|
     t.integer  "job_id"
@@ -47471,7 +47384,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -47488,8 +47401,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_49", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_49", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_49", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_49", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_4a", :force => true do |t|
     t.integer  "job_id"
@@ -47504,7 +47416,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -47521,8 +47433,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_4a", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_4a", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_4a", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_4a", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_4b", :force => true do |t|
     t.integer  "job_id"
@@ -47537,7 +47448,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -47554,8 +47465,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_4b", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_4b", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_4b", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_4b", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_4c", :force => true do |t|
     t.integer  "job_id"
@@ -47570,7 +47480,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -47587,8 +47497,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_4c", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_4c", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_4c", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_4c", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_4d", :force => true do |t|
     t.integer  "job_id"
@@ -47603,7 +47512,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -47620,8 +47529,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_4d", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_4d", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_4d", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_4d", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_4e", :force => true do |t|
     t.integer  "job_id"
@@ -47636,7 +47544,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -47653,8 +47561,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_4e", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_4e", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_4e", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_4e", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_4f", :force => true do |t|
     t.integer  "job_id"
@@ -47669,7 +47576,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -47686,8 +47593,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_4f", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_4f", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_4f", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_4f", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_50", :force => true do |t|
     t.integer  "job_id"
@@ -47702,7 +47608,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -47719,8 +47625,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_50", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_50", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_50", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_50", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_51", :force => true do |t|
     t.integer  "job_id"
@@ -47735,7 +47640,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -47752,8 +47657,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_51", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_51", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_51", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_51", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_52", :force => true do |t|
     t.integer  "job_id"
@@ -47768,7 +47672,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -47785,8 +47689,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_52", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_52", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_52", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_52", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_53", :force => true do |t|
     t.integer  "job_id"
@@ -47801,7 +47704,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -47818,8 +47721,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_53", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_53", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_53", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_53", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_54", :force => true do |t|
     t.integer  "job_id"
@@ -47834,7 +47736,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -47851,8 +47753,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_54", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_54", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_54", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_54", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_55", :force => true do |t|
     t.integer  "job_id"
@@ -47867,7 +47768,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -47884,8 +47785,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_55", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_55", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_55", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_55", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_56", :force => true do |t|
     t.integer  "job_id"
@@ -47900,7 +47800,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -47917,8 +47817,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_56", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_56", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_56", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_56", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_57", :force => true do |t|
     t.integer  "job_id"
@@ -47933,7 +47832,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -47950,8 +47849,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_57", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_57", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_57", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_57", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_58", :force => true do |t|
     t.integer  "job_id"
@@ -47966,7 +47864,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -47983,8 +47881,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_58", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_58", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_58", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_58", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_59", :force => true do |t|
     t.integer  "job_id"
@@ -47999,7 +47896,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -48016,8 +47913,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_59", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_59", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_59", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_59", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_5a", :force => true do |t|
     t.integer  "job_id"
@@ -48032,7 +47928,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -48049,8 +47945,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_5a", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_5a", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_5a", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_5a", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_5b", :force => true do |t|
     t.integer  "job_id"
@@ -48065,7 +47960,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -48082,8 +47977,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_5b", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_5b", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_5b", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_5b", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_5c", :force => true do |t|
     t.integer  "job_id"
@@ -48098,7 +47992,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -48115,8 +48009,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_5c", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_5c", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_5c", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_5c", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_5d", :force => true do |t|
     t.integer  "job_id"
@@ -48131,7 +48024,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -48148,8 +48041,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_5d", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_5d", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_5d", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_5d", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_5e", :force => true do |t|
     t.integer  "job_id"
@@ -48164,7 +48056,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -48181,8 +48073,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_5e", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_5e", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_5e", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_5e", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_5f", :force => true do |t|
     t.integer  "job_id"
@@ -48197,7 +48088,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -48214,8 +48105,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_5f", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_5f", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_5f", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_5f", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_60", :force => true do |t|
     t.integer  "job_id"
@@ -48230,7 +48120,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -48247,8 +48137,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_60", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_60", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_60", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_60", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_61", :force => true do |t|
     t.integer  "job_id"
@@ -48263,7 +48152,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -48280,8 +48169,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_61", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_61", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_61", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_61", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_62", :force => true do |t|
     t.integer  "job_id"
@@ -48296,7 +48184,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -48313,8 +48201,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_62", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_62", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_62", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_62", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_63", :force => true do |t|
     t.integer  "job_id"
@@ -48329,7 +48216,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -48346,8 +48233,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_63", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_63", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_63", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_63", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_64", :force => true do |t|
     t.integer  "job_id"
@@ -48362,7 +48248,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -48379,8 +48265,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_64", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_64", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_64", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_64", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_65", :force => true do |t|
     t.integer  "job_id"
@@ -48395,7 +48280,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -48412,8 +48297,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_65", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_65", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_65", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_65", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_66", :force => true do |t|
     t.integer  "job_id"
@@ -48428,7 +48312,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -48445,8 +48329,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_66", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_66", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_66", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_66", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_67", :force => true do |t|
     t.integer  "job_id"
@@ -48461,7 +48344,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -48478,8 +48361,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_67", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_67", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_67", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_67", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_68", :force => true do |t|
     t.integer  "job_id"
@@ -48494,7 +48376,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -48511,8 +48393,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_68", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_68", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_68", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_68", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_69", :force => true do |t|
     t.integer  "job_id"
@@ -48527,7 +48408,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -48544,8 +48425,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_69", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_69", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_69", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_69", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_6a", :force => true do |t|
     t.integer  "job_id"
@@ -48560,7 +48440,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -48577,8 +48457,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_6a", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_6a", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_6a", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_6a", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_6b", :force => true do |t|
     t.integer  "job_id"
@@ -48593,7 +48472,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -48610,8 +48489,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_6b", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_6b", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_6b", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_6b", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_6c", :force => true do |t|
     t.integer  "job_id"
@@ -48626,7 +48504,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -48643,8 +48521,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_6c", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_6c", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_6c", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_6c", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_6d", :force => true do |t|
     t.integer  "job_id"
@@ -48659,7 +48536,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -48676,8 +48553,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_6d", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_6d", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_6d", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_6d", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_6e", :force => true do |t|
     t.integer  "job_id"
@@ -48692,7 +48568,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -48709,8 +48585,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_6e", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_6e", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_6e", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_6e", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_6f", :force => true do |t|
     t.integer  "job_id"
@@ -48725,7 +48600,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -48742,8 +48617,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_6f", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_6f", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_6f", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_6f", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_70", :force => true do |t|
     t.integer  "job_id"
@@ -48758,7 +48632,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -48775,8 +48649,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_70", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_70", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_70", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_70", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_71", :force => true do |t|
     t.integer  "job_id"
@@ -48791,7 +48664,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -48808,8 +48681,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_71", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_71", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_71", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_71", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_72", :force => true do |t|
     t.integer  "job_id"
@@ -48824,7 +48696,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -48841,8 +48713,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_72", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_72", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_72", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_72", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_73", :force => true do |t|
     t.integer  "job_id"
@@ -48857,7 +48728,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -48874,8 +48745,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_73", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_73", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_73", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_73", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_74", :force => true do |t|
     t.integer  "job_id"
@@ -48890,7 +48760,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -48907,8 +48777,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_74", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_74", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_74", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_74", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_75", :force => true do |t|
     t.integer  "job_id"
@@ -48923,7 +48792,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -48940,8 +48809,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_75", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_75", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_75", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_75", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_76", :force => true do |t|
     t.integer  "job_id"
@@ -48956,7 +48824,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -48973,8 +48841,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_76", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_76", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_76", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_76", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_77", :force => true do |t|
     t.integer  "job_id"
@@ -48989,7 +48856,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -49006,8 +48873,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_77", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_77", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_77", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_77", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_78", :force => true do |t|
     t.integer  "job_id"
@@ -49022,7 +48888,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -49039,8 +48905,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_78", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_78", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_78", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_78", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_79", :force => true do |t|
     t.integer  "job_id"
@@ -49055,7 +48920,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -49072,8 +48937,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_79", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_79", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_79", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_79", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_7a", :force => true do |t|
     t.integer  "job_id"
@@ -49088,7 +48952,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -49105,8 +48969,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_7a", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_7a", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_7a", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_7a", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_7b", :force => true do |t|
     t.integer  "job_id"
@@ -49121,7 +48984,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -49138,8 +49001,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_7b", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_7b", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_7b", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_7b", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_7c", :force => true do |t|
     t.integer  "job_id"
@@ -49154,7 +49016,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -49171,8 +49033,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_7c", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_7c", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_7c", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_7c", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_7d", :force => true do |t|
     t.integer  "job_id"
@@ -49187,7 +49048,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -49204,8 +49065,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_7d", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_7d", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_7d", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_7d", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_7e", :force => true do |t|
     t.integer  "job_id"
@@ -49220,7 +49080,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -49237,8 +49097,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_7e", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_7e", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_7e", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_7e", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_7f", :force => true do |t|
     t.integer  "job_id"
@@ -49253,7 +49112,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -49270,8 +49129,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_7f", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_7f", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_7f", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_7f", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_80", :force => true do |t|
     t.integer  "job_id"
@@ -49286,7 +49144,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -49303,8 +49161,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_80", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_80", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_80", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_80", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_81", :force => true do |t|
     t.integer  "job_id"
@@ -49319,7 +49176,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -49336,8 +49193,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_81", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_81", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_81", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_81", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_82", :force => true do |t|
     t.integer  "job_id"
@@ -49352,7 +49208,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -49369,8 +49225,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_82", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_82", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_82", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_82", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_83", :force => true do |t|
     t.integer  "job_id"
@@ -49385,7 +49240,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -49402,8 +49257,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_83", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_83", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_83", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_83", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_84", :force => true do |t|
     t.integer  "job_id"
@@ -49418,7 +49272,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -49435,8 +49289,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_84", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_84", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_84", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_84", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_85", :force => true do |t|
     t.integer  "job_id"
@@ -49451,7 +49304,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -49468,8 +49321,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_85", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_85", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_85", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_85", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_86", :force => true do |t|
     t.integer  "job_id"
@@ -49484,7 +49336,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -49501,8 +49353,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_86", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_86", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_86", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_86", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_87", :force => true do |t|
     t.integer  "job_id"
@@ -49517,7 +49368,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -49534,8 +49385,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_87", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_87", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_87", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_87", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_88", :force => true do |t|
     t.integer  "job_id"
@@ -49550,7 +49400,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -49567,8 +49417,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_88", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_88", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_88", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_88", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_89", :force => true do |t|
     t.integer  "job_id"
@@ -49583,7 +49432,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -49600,8 +49449,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_89", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_89", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_89", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_89", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_8a", :force => true do |t|
     t.integer  "job_id"
@@ -49616,7 +49464,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -49633,8 +49481,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_8a", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_8a", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_8a", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_8a", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_8b", :force => true do |t|
     t.integer  "job_id"
@@ -49649,7 +49496,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -49666,8 +49513,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_8b", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_8b", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_8b", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_8b", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_8c", :force => true do |t|
     t.integer  "job_id"
@@ -49682,7 +49528,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -49699,8 +49545,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_8c", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_8c", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_8c", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_8c", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_8d", :force => true do |t|
     t.integer  "job_id"
@@ -49715,7 +49560,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -49732,8 +49577,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_8d", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_8d", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_8d", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_8d", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_8e", :force => true do |t|
     t.integer  "job_id"
@@ -49748,7 +49592,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -49765,8 +49609,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_8e", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_8e", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_8e", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_8e", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_8f", :force => true do |t|
     t.integer  "job_id"
@@ -49781,7 +49624,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -49798,8 +49641,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_8f", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_8f", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_8f", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_8f", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_90", :force => true do |t|
     t.integer  "job_id"
@@ -49814,7 +49656,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -49831,8 +49673,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_90", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_90", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_90", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_90", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_91", :force => true do |t|
     t.integer  "job_id"
@@ -49847,7 +49688,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -49864,8 +49705,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_91", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_91", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_91", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_91", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_92", :force => true do |t|
     t.integer  "job_id"
@@ -49880,7 +49720,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -49897,8 +49737,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_92", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_92", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_92", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_92", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_93", :force => true do |t|
     t.integer  "job_id"
@@ -49913,7 +49752,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -49930,8 +49769,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_93", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_93", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_93", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_93", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_94", :force => true do |t|
     t.integer  "job_id"
@@ -49946,7 +49784,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -49963,8 +49801,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_94", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_94", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_94", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_94", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_95", :force => true do |t|
     t.integer  "job_id"
@@ -49979,7 +49816,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -49996,8 +49833,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_95", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_95", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_95", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_95", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_96", :force => true do |t|
     t.integer  "job_id"
@@ -50012,7 +49848,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -50029,8 +49865,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_96", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_96", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_96", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_96", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_97", :force => true do |t|
     t.integer  "job_id"
@@ -50045,7 +49880,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -50062,8 +49897,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_97", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_97", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_97", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_97", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_98", :force => true do |t|
     t.integer  "job_id"
@@ -50078,7 +49912,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -50095,8 +49929,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_98", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_98", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_98", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_98", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_99", :force => true do |t|
     t.integer  "job_id"
@@ -50111,7 +49944,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -50128,8 +49961,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_99", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_99", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_99", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_99", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_9a", :force => true do |t|
     t.integer  "job_id"
@@ -50144,7 +49976,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -50161,8 +49993,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_9a", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_9a", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_9a", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_9a", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_9b", :force => true do |t|
     t.integer  "job_id"
@@ -50177,7 +50008,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -50194,8 +50025,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_9b", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_9b", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_9b", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_9b", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_9c", :force => true do |t|
     t.integer  "job_id"
@@ -50210,7 +50040,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -50227,8 +50057,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_9c", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_9c", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_9c", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_9c", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_9d", :force => true do |t|
     t.integer  "job_id"
@@ -50243,7 +50072,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -50260,8 +50089,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_9d", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_9d", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_9d", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_9d", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_9e", :force => true do |t|
     t.integer  "job_id"
@@ -50276,7 +50104,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -50293,8 +50121,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_9e", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_9e", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_9e", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_9e", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_9f", :force => true do |t|
     t.integer  "job_id"
@@ -50309,7 +50136,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -50326,8 +50153,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_9f", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_9f", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_9f", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_9f", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_a0", :force => true do |t|
     t.integer  "job_id"
@@ -50342,7 +50168,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -50359,8 +50185,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_a0", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_a0", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_a0", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_a0", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_a1", :force => true do |t|
     t.integer  "job_id"
@@ -50375,7 +50200,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -50392,8 +50217,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_a1", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_a1", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_a1", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_a1", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_a2", :force => true do |t|
     t.integer  "job_id"
@@ -50408,7 +50232,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -50425,8 +50249,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_a2", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_a2", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_a2", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_a2", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_a3", :force => true do |t|
     t.integer  "job_id"
@@ -50441,7 +50264,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -50458,8 +50281,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_a3", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_a3", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_a3", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_a3", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_a4", :force => true do |t|
     t.integer  "job_id"
@@ -50474,7 +50296,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -50491,8 +50313,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_a4", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_a4", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_a4", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_a4", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_a5", :force => true do |t|
     t.integer  "job_id"
@@ -50507,7 +50328,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -50524,8 +50345,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_a5", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_a5", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_a5", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_a5", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_a6", :force => true do |t|
     t.integer  "job_id"
@@ -50540,7 +50360,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -50557,8 +50377,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_a6", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_a6", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_a6", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_a6", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_a7", :force => true do |t|
     t.integer  "job_id"
@@ -50573,7 +50392,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -50590,8 +50409,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_a7", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_a7", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_a7", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_a7", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_a8", :force => true do |t|
     t.integer  "job_id"
@@ -50606,7 +50424,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -50623,8 +50441,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_a8", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_a8", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_a8", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_a8", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_a9", :force => true do |t|
     t.integer  "job_id"
@@ -50639,7 +50456,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -50656,8 +50473,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_a9", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_a9", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_a9", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_a9", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_aa", :force => true do |t|
     t.integer  "job_id"
@@ -50672,7 +50488,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -50689,8 +50505,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_aa", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_aa", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_aa", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_aa", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_ab", :force => true do |t|
     t.integer  "job_id"
@@ -50705,7 +50520,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -50722,8 +50537,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_ab", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_ab", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_ab", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_ab", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_ac", :force => true do |t|
     t.integer  "job_id"
@@ -50738,7 +50552,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -50755,8 +50569,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_ac", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_ac", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_ac", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_ac", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_ad", :force => true do |t|
     t.integer  "job_id"
@@ -50771,7 +50584,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -50788,8 +50601,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_ad", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_ad", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_ad", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_ad", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_ae", :force => true do |t|
     t.integer  "job_id"
@@ -50804,7 +50616,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -50821,8 +50633,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_ae", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_ae", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_ae", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_ae", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_af", :force => true do |t|
     t.integer  "job_id"
@@ -50837,7 +50648,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -50854,8 +50665,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_af", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_af", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_af", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_af", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_b0", :force => true do |t|
     t.integer  "job_id"
@@ -50870,7 +50680,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -50887,8 +50697,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_b0", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_b0", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_b0", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_b0", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_b1", :force => true do |t|
     t.integer  "job_id"
@@ -50903,7 +50712,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -50920,8 +50729,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_b1", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_b1", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_b1", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_b1", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_b2", :force => true do |t|
     t.integer  "job_id"
@@ -50936,7 +50744,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -50953,8 +50761,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_b2", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_b2", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_b2", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_b2", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_b3", :force => true do |t|
     t.integer  "job_id"
@@ -50969,7 +50776,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -50986,8 +50793,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_b3", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_b3", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_b3", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_b3", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_b4", :force => true do |t|
     t.integer  "job_id"
@@ -51002,7 +50808,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -51019,8 +50825,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_b4", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_b4", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_b4", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_b4", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_b5", :force => true do |t|
     t.integer  "job_id"
@@ -51035,7 +50840,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -51052,8 +50857,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_b5", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_b5", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_b5", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_b5", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_b6", :force => true do |t|
     t.integer  "job_id"
@@ -51068,7 +50872,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -51085,8 +50889,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_b6", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_b6", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_b6", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_b6", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_b7", :force => true do |t|
     t.integer  "job_id"
@@ -51101,7 +50904,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -51118,8 +50921,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_b7", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_b7", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_b7", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_b7", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_b8", :force => true do |t|
     t.integer  "job_id"
@@ -51134,7 +50936,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -51151,8 +50953,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_b8", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_b8", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_b8", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_b8", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_b9", :force => true do |t|
     t.integer  "job_id"
@@ -51167,7 +50968,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -51184,8 +50985,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_b9", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_b9", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_b9", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_b9", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_ba", :force => true do |t|
     t.integer  "job_id"
@@ -51200,7 +51000,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -51217,8 +51017,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_ba", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_ba", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_ba", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_ba", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_bb", :force => true do |t|
     t.integer  "job_id"
@@ -51233,7 +51032,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -51250,8 +51049,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_bb", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_bb", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_bb", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_bb", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_bc", :force => true do |t|
     t.integer  "job_id"
@@ -51266,7 +51064,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -51283,8 +51081,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_bc", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_bc", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_bc", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_bc", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_bd", :force => true do |t|
     t.integer  "job_id"
@@ -51299,7 +51096,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -51316,8 +51113,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_bd", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_bd", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_bd", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_bd", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_be", :force => true do |t|
     t.integer  "job_id"
@@ -51332,7 +51128,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -51349,8 +51145,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_be", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_be", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_be", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_be", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_bf", :force => true do |t|
     t.integer  "job_id"
@@ -51365,7 +51160,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -51382,8 +51177,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_bf", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_bf", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_bf", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_bf", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_c0", :force => true do |t|
     t.integer  "job_id"
@@ -51398,7 +51192,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -51415,8 +51209,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_c0", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_c0", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_c0", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_c0", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_c1", :force => true do |t|
     t.integer  "job_id"
@@ -51431,7 +51224,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -51448,8 +51241,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_c1", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_c1", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_c1", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_c1", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_c2", :force => true do |t|
     t.integer  "job_id"
@@ -51464,7 +51256,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -51481,8 +51273,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_c2", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_c2", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_c2", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_c2", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_c3", :force => true do |t|
     t.integer  "job_id"
@@ -51497,7 +51288,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -51514,8 +51305,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_c3", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_c3", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_c3", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_c3", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_c4", :force => true do |t|
     t.integer  "job_id"
@@ -51530,7 +51320,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -51547,8 +51337,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_c4", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_c4", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_c4", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_c4", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_c5", :force => true do |t|
     t.integer  "job_id"
@@ -51563,7 +51352,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -51580,8 +51369,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_c5", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_c5", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_c5", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_c5", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_c6", :force => true do |t|
     t.integer  "job_id"
@@ -51596,7 +51384,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -51613,8 +51401,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_c6", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_c6", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_c6", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_c6", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_c7", :force => true do |t|
     t.integer  "job_id"
@@ -51629,7 +51416,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -51646,8 +51433,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_c7", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_c7", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_c7", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_c7", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_c8", :force => true do |t|
     t.integer  "job_id"
@@ -51662,7 +51448,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -51679,8 +51465,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_c8", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_c8", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_c8", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_c8", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_c9", :force => true do |t|
     t.integer  "job_id"
@@ -51695,7 +51480,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -51712,8 +51497,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_c9", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_c9", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_c9", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_c9", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_ca", :force => true do |t|
     t.integer  "job_id"
@@ -51728,7 +51512,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -51745,8 +51529,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_ca", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_ca", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_ca", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_ca", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_cb", :force => true do |t|
     t.integer  "job_id"
@@ -51761,7 +51544,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -51778,8 +51561,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_cb", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_cb", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_cb", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_cb", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_cc", :force => true do |t|
     t.integer  "job_id"
@@ -51794,7 +51576,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -51811,8 +51593,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_cc", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_cc", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_cc", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_cc", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_cd", :force => true do |t|
     t.integer  "job_id"
@@ -51827,7 +51608,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -51844,8 +51625,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_cd", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_cd", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_cd", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_cd", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_ce", :force => true do |t|
     t.integer  "job_id"
@@ -51860,7 +51640,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -51877,8 +51657,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_ce", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_ce", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_ce", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_ce", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_cf", :force => true do |t|
     t.integer  "job_id"
@@ -51893,7 +51672,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -51910,8 +51689,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_cf", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_cf", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_cf", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_cf", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_d0", :force => true do |t|
     t.integer  "job_id"
@@ -51926,7 +51704,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -51943,8 +51721,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_d0", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_d0", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_d0", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_d0", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_d1", :force => true do |t|
     t.integer  "job_id"
@@ -51959,7 +51736,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -51976,8 +51753,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_d1", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_d1", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_d1", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_d1", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_d2", :force => true do |t|
     t.integer  "job_id"
@@ -51992,7 +51768,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -52009,8 +51785,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_d2", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_d2", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_d2", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_d2", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_d3", :force => true do |t|
     t.integer  "job_id"
@@ -52025,7 +51800,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -52042,8 +51817,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_d3", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_d3", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_d3", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_d3", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_d4", :force => true do |t|
     t.integer  "job_id"
@@ -52058,7 +51832,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -52075,8 +51849,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_d4", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_d4", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_d4", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_d4", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_d5", :force => true do |t|
     t.integer  "job_id"
@@ -52091,7 +51864,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -52108,8 +51881,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_d5", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_d5", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_d5", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_d5", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_d6", :force => true do |t|
     t.integer  "job_id"
@@ -52124,7 +51896,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -52141,8 +51913,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_d6", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_d6", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_d6", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_d6", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_d7", :force => true do |t|
     t.integer  "job_id"
@@ -52157,7 +51928,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -52174,8 +51945,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_d7", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_d7", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_d7", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_d7", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_d8", :force => true do |t|
     t.integer  "job_id"
@@ -52190,7 +51960,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -52207,8 +51977,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_d8", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_d8", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_d8", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_d8", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_d9", :force => true do |t|
     t.integer  "job_id"
@@ -52223,7 +51992,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -52240,8 +52009,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_d9", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_d9", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_d9", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_d9", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_da", :force => true do |t|
     t.integer  "job_id"
@@ -52256,7 +52024,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -52273,8 +52041,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_da", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_da", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_da", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_da", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_db", :force => true do |t|
     t.integer  "job_id"
@@ -52289,7 +52056,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -52306,8 +52073,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_db", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_db", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_db", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_db", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_dc", :force => true do |t|
     t.integer  "job_id"
@@ -52322,7 +52088,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -52339,8 +52105,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_dc", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_dc", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_dc", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_dc", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_dd", :force => true do |t|
     t.integer  "job_id"
@@ -52355,7 +52120,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -52372,8 +52137,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_dd", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_dd", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_dd", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_dd", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_de", :force => true do |t|
     t.integer  "job_id"
@@ -52388,7 +52152,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -52405,8 +52169,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_de", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_de", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_de", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_de", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_df", :force => true do |t|
     t.integer  "job_id"
@@ -52421,7 +52184,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -52438,8 +52201,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_df", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_df", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_df", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_df", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_e0", :force => true do |t|
     t.integer  "job_id"
@@ -52454,7 +52216,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -52471,8 +52233,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_e0", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_e0", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_e0", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_e0", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_e1", :force => true do |t|
     t.integer  "job_id"
@@ -52487,7 +52248,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -52504,8 +52265,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_e1", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_e1", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_e1", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_e1", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_e2", :force => true do |t|
     t.integer  "job_id"
@@ -52520,7 +52280,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -52537,8 +52297,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_e2", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_e2", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_e2", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_e2", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_e3", :force => true do |t|
     t.integer  "job_id"
@@ -52553,7 +52312,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -52570,8 +52329,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_e3", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_e3", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_e3", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_e3", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_e4", :force => true do |t|
     t.integer  "job_id"
@@ -52586,7 +52344,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -52603,8 +52361,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_e4", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_e4", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_e4", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_e4", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_e5", :force => true do |t|
     t.integer  "job_id"
@@ -52619,7 +52376,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -52636,8 +52393,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_e5", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_e5", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_e5", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_e5", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_e6", :force => true do |t|
     t.integer  "job_id"
@@ -52652,7 +52408,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -52669,8 +52425,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_e6", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_e6", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_e6", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_e6", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_e7", :force => true do |t|
     t.integer  "job_id"
@@ -52685,7 +52440,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -52702,8 +52457,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_e7", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_e7", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_e7", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_e7", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_e8", :force => true do |t|
     t.integer  "job_id"
@@ -52718,7 +52472,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -52735,8 +52489,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_e8", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_e8", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_e8", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_e8", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_e9", :force => true do |t|
     t.integer  "job_id"
@@ -52751,7 +52504,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -52768,8 +52521,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_e9", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_e9", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_e9", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_e9", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_ea", :force => true do |t|
     t.integer  "job_id"
@@ -52784,7 +52536,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -52801,8 +52553,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_ea", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_ea", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_ea", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_ea", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_eb", :force => true do |t|
     t.integer  "job_id"
@@ -52817,7 +52568,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -52834,8 +52585,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_eb", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_eb", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_eb", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_eb", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_ec", :force => true do |t|
     t.integer  "job_id"
@@ -52850,7 +52600,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -52867,8 +52617,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_ec", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_ec", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_ec", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_ec", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_ed", :force => true do |t|
     t.integer  "job_id"
@@ -52883,7 +52632,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -52900,8 +52649,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_ed", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_ed", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_ed", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_ed", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_ee", :force => true do |t|
     t.integer  "job_id"
@@ -52916,7 +52664,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -52933,8 +52681,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_ee", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_ee", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_ee", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_ee", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_ef", :force => true do |t|
     t.integer  "job_id"
@@ -52949,7 +52696,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -52966,8 +52713,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_ef", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_ef", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_ef", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_ef", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_f0", :force => true do |t|
     t.integer  "job_id"
@@ -52982,7 +52728,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -52999,8 +52745,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_f0", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_f0", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_f0", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_f0", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_f1", :force => true do |t|
     t.integer  "job_id"
@@ -53015,7 +52760,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -53032,8 +52777,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_f1", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_f1", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_f1", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_f1", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_f2", :force => true do |t|
     t.integer  "job_id"
@@ -53048,7 +52792,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -53065,8 +52809,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_f2", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_f2", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_f2", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_f2", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_f3", :force => true do |t|
     t.integer  "job_id"
@@ -53081,7 +52824,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -53098,8 +52841,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_f3", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_f3", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_f3", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_f3", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_f4", :force => true do |t|
     t.integer  "job_id"
@@ -53114,7 +52856,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -53131,8 +52873,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_f4", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_f4", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_f4", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_f4", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_f5", :force => true do |t|
     t.integer  "job_id"
@@ -53147,7 +52888,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -53164,8 +52905,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_f5", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_f5", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_f5", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_f5", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_f6", :force => true do |t|
     t.integer  "job_id"
@@ -53180,7 +52920,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -53197,8 +52937,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_f6", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_f6", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_f6", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_f6", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_f7", :force => true do |t|
     t.integer  "job_id"
@@ -53213,7 +52952,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -53230,8 +52969,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_f7", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_f7", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_f7", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_f7", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_f8", :force => true do |t|
     t.integer  "job_id"
@@ -53246,7 +52984,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -53263,8 +53001,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_f8", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_f8", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_f8", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_f8", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_f9", :force => true do |t|
     t.integer  "job_id"
@@ -53279,7 +53016,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -53296,8 +53033,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_f9", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_f9", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_f9", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_f9", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_fa", :force => true do |t|
     t.integer  "job_id"
@@ -53312,7 +53048,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -53329,8 +53065,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_fa", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_fa", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_fa", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_fa", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_fb", :force => true do |t|
     t.integer  "job_id"
@@ -53345,7 +53080,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -53362,8 +53097,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_fb", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_fb", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_fb", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_fb", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_fc", :force => true do |t|
     t.integer  "job_id"
@@ -53378,7 +53112,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -53395,8 +53129,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_fc", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_fc", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_fc", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_fc", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_fd", :force => true do |t|
     t.integer  "job_id"
@@ -53411,7 +53144,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -53428,8 +53161,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_fd", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_fd", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_fd", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_fd", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_fe", :force => true do |t|
     t.integer  "job_id"
@@ -53444,7 +53176,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -53461,8 +53193,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_fe", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_fe", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_fe", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_fe", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_ff", :force => true do |t|
     t.integer  "job_id"
@@ -53477,7 +53208,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -53494,8 +53225,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_ff", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_ff", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_ff", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_ff", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_cost_templates", :force => true do |t|
     t.integer  "job_id"
@@ -53510,7 +53240,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "country"
     t.string   "parts_group"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.integer  "processed"
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -53527,8 +53257,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
   end
 
   add_index "price_cost_templates", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
-  add_index "price_cost_templates", ["job_id"], :name => "index_price_cost_templates_on_job_id"
-  add_index "price_cost_templates", ["supplier_id", "job_code"], :name => "index_price_cost_templates_on_supplier_id_and_job_code"
+  add_index "price_cost_templates", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
   create_table "price_import_1066346320", :force => true do |t|
     t.integer  "job_id"
@@ -58976,7 +58705,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
 
   add_index "price_import_1066346584", ["doublet"], :name => "doublet_idx"
 
-  create_table "price_import_templates", :force => true do |t|
+  create_table "price_import_1066346586", :force => true do |t|
     t.integer  "job_id"
     t.string   "title"
     t.string   "title_en"
@@ -58992,7 +58721,7 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -59009,6 +58738,144 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "replacement_manufacturer_orig", :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346586", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346588", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.integer  "price_setting_id"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346588", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346590", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.integer  "price_setting_id"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346590", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_templates", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.integer  "price_setting_id"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "price_settings", :force => true do |t|
+    t.string   "title"
+    t.integer  "currency_buy_id"
+    t.float    "absolute_buy_coefficient"
+    t.float    "relative_buy_coefficient"
+    t.boolean  "visible_for_site"
+    t.boolean  "visible_for_stock"
+    t.boolean  "visible_for_shops"
+    t.float    "retail_rate"
+    t.float    "income_rate"
+    t.float    "kilo_price"
+    t.integer  "currency_weight_id"
+    t.float    "relative_weight_coefficient"
+    t.float    "absolute_weight_ccoefficient"
+    t.boolean  "presence"
+    t.string   "delivery_summary"
+    t.string   "country"
+    t.string   "country_short"
+    t.float    "weight_unavaliable_rate"
+    t.integer  "delivery_days_declared"
+    t.integer  "price_setting_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "delivery_days_average"
+    t.integer  "supplier_id"
   end
 
   create_table "prices", :force => true do |t|
@@ -59533,8 +59400,8 @@ ActiveRecord::Schema.define(:version => 20110212142021) do
     t.string   "bank_title"
     t.string   "current_account"
     t.string   "correspondent_account"
-    t.string   "buyer"
-    t.string   "seller"
+    t.boolean  "buyer"
+    t.boolean  "seller"
     t.string   "contract"
     t.string   "fio_head"
     t.string   "position_head"

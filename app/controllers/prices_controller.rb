@@ -239,30 +239,33 @@ class PricesController < ApplicationController
           s.title_full as supplier_title_full,
           s.inn as supplier_inn,
           s.kpp as supplier_kpp,
-          j.title as job_title,
+          ps.title as job_title,
           ij.success_percent as job_import_job_success_percent,
-          ij.delivery_days_average as job_import_job_delivery_days_average,
-          ij.delivery_days_declared as job_import_job_delivery_days_declared,
-          ij.delivery_summary as job_import_job_delivery_summary,
-          ij.presence as job_import_job_presence,
-          ij.kilo_price as job_import_job_kilo_price,
-          ij.country as job_import_job_country,
-          ij.country_short as job_import_job_country_short,
+          ps.delivery_days_average as job_import_job_delivery_days_average,
+          ps.delivery_days_declared as job_import_job_delivery_days_declared,
+          ps.delivery_summary as job_import_job_delivery_summary,
+          ps.presence as job_import_job_presence,
+          ps.kilo_price as job_import_job_kilo_price,
+          ps.country as job_import_job_country,
+          ps.country_short as job_import_job_country_short,
           c.foreign_id as currency,
-          p.price_cost * ij.income_rate * c.value AS income_cost, 
-          p.price_cost * ij.income_rate * ij.retail_rate * c.value AS retail_cost,
-          m.original as bit_original
+          p.price_cost * ps.income_rate * c.value AS income_cost, 
+          p.price_cost * ps.income_rate * ps.retail_rate * c.value AS retail_cost,
+          m.original as bit_original,
+          ps.id as job_id
         FROM price_cost_#{md5} p
           LEFT JOIN manufacturers m
             ON p.manufacturer = m.title
-          INNER JOIN jobs j 
-            ON p.job_id = j.id 
+          INNER JOIN jobs j
+            ON p.job_id = j.id
+          INNER JOIN price_settings ps 
+            ON p.price_setting_id = ps.id 
           INNER JOIN import_jobs ij 
             ON j.jobable_id = ij.id 
           INNER JOIN suppliers s 
             ON j.supplier_id = s.id
           INNER JOIN currencies c 
-            ON c.id = ij.currency_buy_id
+            ON c.id = ps.currency_buy_id
         WHERE  p.catalog_number = #{ActiveRecord::Base.connection.quote(replacement[:catalog_number])}" 
       if replacement[:manufacturer]
         query << " AND p.manufacturer = #{ActiveRecord::Base.connection.quote(replacement[:manufacturer])}"

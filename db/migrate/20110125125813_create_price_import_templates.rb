@@ -16,7 +16,7 @@ class CreatePriceImportTemplates < ActiveRecord::Migration
       t.string :parts_group
       t.string :doublet
       t.references :supplier
-      t.string :job_code
+      t.integer :price_setting_id
       t.boolean :processed, {:default => 0}
       t.string :delivery_days_price
       t.integer :weight_grams

@@ -1,0 +1,114 @@
+<%
+  case params[:action]
+    when 'new', 'create'
+      url = supplier_price_settings_path(params[:supplier_id])
+    when 'edit', 'update'
+      url = supplier_price_setting_path(params[:supplier_id], params[:id])
+  end
+%>
+
+<%= semantic_form_for(@price_setting, :url => url) do |f| %>
+  <% if @price_setting.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@price_setting.errors.count, "error") %> prohibited this price_setting from being saved:</h2>
+
+      <ul>
+      <% @price_setting.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.inputs :title %>
+  </div>
+  <div class="field">
+    <%= f.label :currency_buy %><br />
+    <%= f.inputs :currency_buy %>
+  </div>
+  <div class="field">
+    <%= f.label :absolute_buy_coefficient %><br />
+    <%= f.text_field :absolute_buy_coefficient %>
+  </div>
+  <div class="field">
+    <%= f.label :relative_buy_coefficient %><br />
+    <%= f.text_field :relative_buy_coefficient %>
+  </div>
+  <div class="field">
+    <%= f.label :visible_for_site %><br />
+    <%= f.check_box :visible_for_site %>
+    Видим на сайте
+  </div>
+  <div class="field">
+    <%= f.label :visible_for_stock %><br />
+    <%= f.check_box :visible_for_stock %>
+    Видим для складских заказов
+  </div>
+  <div class="field">
+    <%= f.label :visible_for_shops %><br />
+    <%= f.check_box :visible_for_shops %>
+    Видим для магазинов
+  </div>
+  <div class="field">
+    <%= f.label :retail_rate %><br />
+    <%= f.text_field :retail_rate %>
+    Для всех. Динамический. Розничный коэффициент
+  </div>
+  <div class="field">
+    <%= f.label :income_rate %><br />
+    <%= f.text_field :income_rate %>
+    Для всех. Динамический. Коэффициент, на который будет умножаться цена в прайсе (т.е. цена прихода)
+  </div>
+  <div class="field">
+    <%= f.label :kilo_price %><br />
+    <%= f.text_field :kilo_price %>
+    Стоимость килограмма
+  </div>
+  <div class="field">
+    <%= f.label :currency_weight %><br />
+    Валюта веса
+    <%= f.inputs :currency_weight %>
+  </div>
+  <div class="field">
+    <%= f.label :relative_weight_coefficient %><br />
+    <%= f.text_field :relative_weight_coefficient %>
+  </div>
+  <div class="field">
+    <%= f.label :absolute_weight_ccoefficient %><br />
+    <%= f.text_field :absolute_weight_ccoefficient %>
+  </div>
+  <div class="field">
+    <%= f.label :presence %><br />
+    <%= f.check_box :presence %>
+    Прайс наличия
+  </div>
+  <div class="field">
+    <%= f.label :weight_unavaliable_rate %><br />
+    <%= f.text_field :weight_unavaliable_rate %>
+  </div>
+  <div class="field">
+    <%= f.label :delivery_days_declared %><br />
+    <%= f.text_field :delivery_days_declared %>
+    Заявленное количество дней
+  </div>
+  <div class="field">
+    <%= f.label :country %><br />
+    <%= f.text_field :country %>
+    Местонахождение поставщика (город, округ, область)
+  </div>
+  <div class="field">
+    <%= f.label :country_short %><br />
+    <%= f.text_field :country_short %>
+    То же самое, только коротко
+  </div>
+  <div class="field">
+    <%= f.label :delivery_summary %><br />
+    <%= f.text_field :delivery_summary %>
+    Полезная информация для покупателей о заказе (отсутствие возвратов и т.д.)
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

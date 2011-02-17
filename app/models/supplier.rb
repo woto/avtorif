@@ -13,7 +13,9 @@ class Supplier < ActiveRecord::Base
   has_many :supplier_prices
   has_many :prices
   belongs_to :discount_group
-  
+ 
+  has_many :price_settings
+
   def to_s
     title
   end

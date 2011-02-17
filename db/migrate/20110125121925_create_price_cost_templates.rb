@@ -13,7 +13,7 @@ class CreatePriceCostTemplates < ActiveRecord::Migration
       t.string :country
       t.string :parts_group
       t.references :supplier
-      t.string :job_code
+      t.integer :price_setting_id
       t.integer :processed
       t.string :delivery_days_price
       t.integer :weight_grams
@@ -29,8 +29,7 @@ class CreatePriceCostTemplates < ActiveRecord::Migration
       t.timestamps
     end
 
-      add_index :price_cost_templates, [:supplier_id, :job_code]
-      add_index :price_cost_templates, :job_id
+      add_index :price_cost_templates, :price_setting_id
       add_index :price_cost_templates, [:catalog_number, :manufacturer]
 
   end

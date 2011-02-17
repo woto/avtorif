@@ -95,3 +95,13 @@
 <% if params[:supplier_id] %>
   <%= link_to 'New job', new_supplier_job_path({:job_id => params[:id]}) %>
 <% end %>
+<br /> <br />
+<% if params[:action] == "index" %>
+  <br />
+  <%= link_to "New Price Setting", new_supplier_price_setting_path(params[:supplier_id]) %>
+  <br />
+  <% PriceSetting.where(:supplier_id => params[:supplier_id]).each do |ps| %>
+    <%= link_to ps.title, supplier_price_setting_path(params[:supplier_id], ps.id) %>
+    <br />
+  <% end %>
+<% end %>

@@ -1,0 +1,53 @@
+<h1>Listing price_settings</h1>
+
+<table>
+  <tr>
+    <th>Currency buy</th>
+    <th>Absolute buy coefficient</th>
+    <th>Relative buy coefficient</th>
+    <th>Visible for site</th>
+    <th>Visible for stock</th>
+    <th>Visible for shops</th>
+    <th>Retail rate</th>
+    <th>Income rate</th>
+    <th>Kilo price</th>
+    <th>Currency weight</th>
+    <th>Relative weight coefficient</th>
+    <th>Absolute weight ccoefficient</th>
+    <th>Presence</th>
+    <th>Weight unavaliable rate</th>
+    <th>Delivery days declared</th>
+    <th>Import job</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @price_settings.each do |price_setting| %>
+  <tr>
+    <td><%= price_setting.currency_buy %></td>
+    <td><%= price_setting.absolute_buy_coefficient %></td>
+    <td><%= price_setting.relative_buy_coefficient %></td>
+    <td><%= price_setting.visible_for_site %></td>
+    <td><%= price_setting.visible_for_stock %></td>
+    <td><%= price_setting.visible_for_shops %></td>
+    <td><%= price_setting.retail_rate %></td>
+    <td><%= price_setting.income_rate %></td>
+    <td><%= price_setting.kilo_price %></td>
+    <td><%= price_setting.currency_weight %></td>
+    <td><%= price_setting.relative_weight_coefficient %></td>
+    <td><%= price_setting.absolute_weight_ccoefficient %></td>
+    <td><%= price_setting.presence %></td>
+    <td><%= price_setting.weight_unavaliable_rate %></td>
+    <td><%= price_setting.delivery_days_declared %></td>
+    <td><%= price_setting.import_job %></td>
+    <td><%= link_to 'Show', supplier_price_settings_path(params[:supplier_id]) %></td>
+    <td><%= link_to 'Edit', edit_supplier_price_setting_path(params[:supplier_id], price_setting) %></td>
+    <td><%= link_to 'Destroy', supplier_price_setting_path(params[:supplier_id], price_setting), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Price setting', new_supplier_price_setting_path(params[:supplier_id]) %>

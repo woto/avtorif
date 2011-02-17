@@ -1,0 +1,85 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Currency buy:</b>
+  <%= @price_setting.currency_buy %>
+</p>
+
+<p>
+  <b>Absolute buy coefficient:</b>
+  <%= @price_setting.absolute_buy_coefficient %>
+</p>
+
+<p>
+  <b>Relative buy coefficient:</b>
+  <%= @price_setting.relative_buy_coefficient %>
+</p>
+
+<p>
+  <b>Visible for site:</b>
+  <%= @price_setting.visible_for_site %>
+</p>
+
+<p>
+  <b>Visible for stock:</b>
+  <%= @price_setting.visible_for_stock %>
+</p>
+
+<p>
+  <b>Visible for shops:</b>
+  <%= @price_setting.visible_for_shops %>
+</p>
+
+<p>
+  <b>Retail rate:</b>
+  <%= @price_setting.retail_rate %>
+</p>
+
+<p>
+  <b>Income rate:</b>
+  <%= @price_setting.income_rate %>
+</p>
+
+<p>
+  <b>Kilo price:</b>
+  <%= @price_setting.kilo_price %>
+</p>
+
+<p>
+  <b>Currency weight:</b>
+  <%= @price_setting.currency_weight %>
+</p>
+
+<p>
+  <b>Relative weight coefficient:</b>
+  <%= @price_setting.relative_weight_coefficient %>
+</p>
+
+<p>
+  <b>Absolute weight ccoefficient:</b>
+  <%= @price_setting.absolute_weight_ccoefficient %>
+</p>
+
+<p>
+  <b>Presence:</b>
+  <%= @price_setting.presence %>
+</p>
+
+<p>
+  <b>Weight unavaliable rate:</b>
+  <%= @price_setting.weight_unavaliable_rate %>
+</p>
+
+<p>
+  <b>Delivery days declared:</b>
+  <%= @price_setting.delivery_days_declared %>
+</p>
+
+<p>
+  <b>Import job:</b>
+  <%= @price_setting.import_job %>
+</p>
+
+
+<%= link_to 'Edit', edit_supplier_price_setting_path(@price_setting.supplier.id, @price_setting) %> |
+<%= link_to 'Back', supplier_price_settings_path %>
