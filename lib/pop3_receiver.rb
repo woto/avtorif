@@ -1,6 +1,6 @@
   class Pop3Receiver < AbstractReceiver
 
-  def self.receive(receiver)
+  def receive
     @receiver = receiver
 
     if @receiver.ssl?
@@ -16,6 +16,7 @@
       pop.mails.reverse.each_with_index do |email, index|
         unless index > AppConfig.max_emails
 
+          debugger
           net_popmail = email.pop
 
           email_id = @receiver.login + " - " + @receiver.server + ":" + @receiver.port + " " + Time.zone.now.to_s + " " + rand.to_s
@@ -30,25 +31,27 @@
 
           mail = Notifier.receive(net_popmail)
 
-          !mail.attachments.nil? && mail.attachments.each do |attachment|
+          unless mail.attachments.nil? 
+            mail.attachments.each do |attachment|
+              md5 =  Digest::MD5.hexdigest(attachment.raw_source.to_s)
+              wc_stat = `echo "#{attachment.raw_source.to_s}" | wc`
 
-            md5 =  Digest::MD5.hexdigest(attachment.string)
+              # attachment.original_filename
+              debugger              
+              if (@optional.present? && @optional[:force]) || SupplierPrice.find(:first, :conditions => ['md5 = ? AND supplier_id = ?',  md5, @receiver.receive_job.job.supplier.id]).nil?
 
-            # attachment.original_filename
-            
-            if (@optional.present? && @optional[:force]) || SupplierPrice.find(:first, :conditions => ['md5 = ? AND supplier_id = ?',  md5, @receiver.receive_job.job.supplier.id]).nil?
+                attachment = SupplierPrice.new(:group_code => group_code, :attachment => attachment, :md5 => md5, :email_id => email_id, :ws_stat => wc_stat)
+                attachment.supplier = @receiver.receive_job.job.supplier
+                attachment.job_code = @receiver.receive_job.job.title
+                attachment.job_id = @receiver.receive_job.job.id
+                attachment.save
 
-              attachment = SupplierPrice.new(:group_code => group_code, :attachment => attachment, :md5 => md5, :email_id => email_id)
-              attachment.supplier = @receiver.receive_job.job.supplier
-              attachment.job_code = @receiver.receive_job.job.title
-              attachment.job_id = @receiver.receive_job.job.id
-              attachment.save
+                @receiver.receive_job.job.childs.each do |child|
+                  # а что если тут смотреть дочерние правила с фильтрами мыла?
+                  JobWalker.new.start_job(child, @priority, attachment.id)
+                end
 
-              @receiver.receive_job.job.childs.each do |child|
-                # а что если тут смотреть дочерние правила с фильтрами мыла?
-                JobWalker.new.start_job(child, @priority, attachment.id)
               end
-
             end
           end
         end

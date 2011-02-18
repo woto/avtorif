@@ -13,11 +13,11 @@ class EmailReceivesController < ApplicationController
   # GET /email_receives/1
   # GET /email_receives/1.xml
   def show
-    @receive_email = EmailReceive.find(params[:id])
+    @email_receive = EmailReceive.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @receive_email }
+      format.xml  { render :xml => @email_receive }
     end
   end
 
@@ -34,23 +34,23 @@ class EmailReceivesController < ApplicationController
 
   # GET /email_receives/1/edit
   def edit
-    @receive_email = EmailReceive.find(params[:id])
+    @email_receive = EmailReceive.find(params[:id])
   end
 
   # POST /email_receives
   # POST /email_receives.xml
   def create
-    @receive_email = EmailReceive.new(params[:email_receives])
-    receive_job = ReceiveJob.create(:receiveable => @receive_email)
+    @email_receive = EmailReceive.new(params[:email_receives])
+    receive_job = ReceiveJob.create(:receiveable => @email_receive)
     Job.update(params[:job_id], :jobable => receive_job)
 
     respond_to do |format|
-      if @receive_email.save
+      if @email_receive.save
         format.html { redirect_to(supplier_jobs_path(params[:supplier_id]), :notice => 'EmailReceive was successfully created.') }
-        format.xml  { render :xml => @receive_email, :status => :created, :location => @receive_email }
+        format.xml  { render :xml => @email_receive, :status => :created, :location => @email_receive }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @receive_email.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @email_receive.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -58,15 +58,15 @@ class EmailReceivesController < ApplicationController
   # PUT /email_receives/1
   # PUT /email_receives/1.xml
   def update
-    @receive_email = EmailReceive.find(params[:id])
+    @email_receive = EmailReceive.find(params[:id])
 
     respond_to do |format|
-      if @receive_email.update_attributes(params[:receive_email])
+      if @email_receive.update_attributes(params[:email_receive])
         format.html { redirect_to(supplier_jobs_path(params[:supplier_id]), :notice => 'EmailReceive was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
-        format.xml  { render :xml => @receive_email.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @email_receive.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -74,11 +74,11 @@ class EmailReceivesController < ApplicationController
   # DELETE /email_receives/1
   # DELETE /email_receives/1.xml
   def destroy
-    @receive_email = EmailReceive.find(params[:id])
-    @receive_email.destroy
+    @email_receive = EmailReceive.find(params[:id])
+    @email_receive.destroy
 
     respond_to do |format|
-      format.html { redirect_to(receive_emails_url) }
+      format.html { redirect_to(email_receives_url) }
       format.xml  { head :ok }
     end
   end

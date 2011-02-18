@@ -42,8 +42,9 @@ gem 'mongrel'
 #gem 'rack'
 gem 'paperclip'
 gem 'will_paginate', :git => 'git://github.com/mislav/will_paginate.git', :branch => 'rails3'
-#gem 'mail'
-#gem 'tlsmail'
+gem 'mail'
+gem 'tmail'
+gem 'tlsmail'
 
 # To use debugger
 # gem 'ruby-debug'

@@ -1,0 +1,37 @@
+<%
+   case params[:action]
+       when 'new'
+        url = supplier_job_email_receives_path(params[:supplier_id], params[:job_id])
+       when 'edit'
+        url = supplier_job_email_receive_path(params[:supplier_id], params[:job_id], params[:id])
+   end
+%>
+
+<% semantic_form_for(@email_receive, :url => url) do |f| %>
+  <%= f.error_messages %>
+    <p>
+      <%= f.label :port %><br />
+      <%= f.text_field :port %>
+    </p>
+  
+    <p>
+      <%= f.label :ssl %><br />
+      <%= f.text_field :ssl %>
+    </p>
+  
+    <p>
+      <%= f.label :login %><br />
+      <%= f.text_field :login %>
+    </p>
+    <p>
+      <%= f.label :password %><br />
+      <%= f.text_field :password %>
+    </p>
+  
+    <p>
+      <%= f.label :protocol %><br />
+      <%= f.text_field :protocol %>
+    </p>
+  
+    <%= f.buttons %>
+<% end %>

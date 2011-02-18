@@ -1,36 +1,6 @@
-<h1>Editing receive_email</h1>
+<h1>New receive_email</h1>
 
-<% form_for(@receive_email) do |f| %>
-  <%= f.error_messages %>
+<%= render 'form' %>
 
-  <p>
-    <%= f.label :server %><br />
-    <%= f.text_field :server %>
-  </p>
-  <p>
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
-  </p>
-  <p>
-    <%= f.label :login %><br />
-    <%= f.text_field :login %>
-  </p>
-  <p>
-    <%= f.label :password %><br />
-    <%= f.text_field :password %>
-  </p>
-  <p>
-    <%= f.label :topic %><br />
-    <%= f.text_field :topic %>
-  </p>
-  <p>
-    <%= f.label :sender %><br />
-    <%= f.text_field :sender %>
-  </p>
-  <p>
-    <%= f.submit 'Update' %>
-  </p>
-<% end %>
+<%= link_to 'Back', supplier_jobs_path(Job.find(params[:job_id]).supplier) %>
 
-<%= link_to 'Show', @receive_email %> |
-<%= link_to 'Back', receive_emails_path %>
