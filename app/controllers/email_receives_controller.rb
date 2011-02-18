@@ -40,7 +40,7 @@ class EmailReceivesController < ApplicationController
   # POST /email_receives
   # POST /email_receives.xml
   def create
-    @email_receive = EmailReceive.new(params[:email_receives])
+    @email_receive = EmailReceive.new(params[:email_receive])
     receive_job = ReceiveJob.create(:receiveable => @email_receive)
     Job.update(params[:job_id], :jobable => receive_job)
 

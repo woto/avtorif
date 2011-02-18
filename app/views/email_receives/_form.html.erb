@@ -10,6 +10,11 @@
 <% semantic_form_for(@email_receive, :url => url) do |f| %>
   <%= f.error_messages %>
     <p>
+      <%= f.label :server %><br />
+      <%= f.text_field :server %>
+    </p>
+
+    <p>
       <%= f.label :port %><br />
       <%= f.text_field :port %>
     </p>
