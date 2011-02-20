@@ -120,7 +120,7 @@ class FilterJobable < AbstractJobber
       md5 = Digest::MD5.file(remote_file.path).hexdigest
       wc_stat = `wc #{remote_file.path.to_s.shellescape}`
 
-      attachment = SupplierPrice.new(:group_code => group_code, :attachment => remote_file, :wc_stat => wc_stat)
+      attachment = SupplierPrice.new(:group_code => group_code, :attachment => remote_file, :wc_stat => wc_stat, :md5 => md5)
       attachment.supplier = @job.supplier
       attachment.job_code = @job.title
       attachment.job_id = @job.id
