@@ -78,13 +78,15 @@ if(size):
 
     csvfile.seek(0)
     reader = csv.reader(csvfile, dialect)
-    for row in reader:
-        #if counter == 0:
-            #print row
-
-        counter += 1
-        if len(str(row)) > 3500:
-            print str(row) + "------- \r\n"
-        writer.writerow(row)
-    #pdb.set_trace()
-    #raise Exception("" + str(sys.exc_info()[1]) + " in parsing file on line: " + str(counter))
+    try:
+        for row in reader:
+            #if counter == 0:
+                #print row
+    
+            counter += 1
+            if len(str(row)) > 3500:
+                print str(row) + "------- \r\n"
+            writer.writerow(row)
+        #pdb.set_trace()
+    except:
+        raise Exception("" + str(sys.exc_info()[1]) + " in parsing file on line: " + str(counter))
