@@ -84,13 +84,16 @@ if(size):
         for row in reader:
             counter += 1
             #pdb.set_trace()
-            if(eval(eval_filter)):
-                #if counter == 0:
-                    #print row
+            try:
+                if(eval(eval_filter)):
+                    #if counter == 0:
+                        #print row
             
-                if len(str(row)) > 3500:
-                    print str(row) + "------- \r\n"
-                writer.writerow(row)
-            #pdb.set_trace()
+                    if len(str(row)) > 3500:
+                        print str(row) + "------- \r\n"
+                    writer.writerow(row)
+                #pdb.set_trace()
+            except Exception:
+                pass
     except:
         raise Exception("" + str(sys.exc_info()[1]) + " in parsing file on line: " + str(counter))

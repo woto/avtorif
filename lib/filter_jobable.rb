@@ -1,4 +1,5 @@
 require 'open3'
+require 'escape'
 
 class FilterJobable < AbstractJobber
   def perform
@@ -8,7 +9,7 @@ class FilterJobable < AbstractJobber
       supplier_price = SupplierPrice.find(opt).attachment
       remote_file = RemoteFile.new(File.basename(supplier_price.original_filename) + ".csv")
       if @jobable.first.present?
-        filter_string = "-e \"#{@jobable.first.shellescape}\""
+        filter_string = "-e #{Escape.shell_command(@jobable.first)}"
       else
         filter_string = "-e \"True\""
       end
