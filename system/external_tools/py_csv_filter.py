@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: windows-1251 -*-
-
 import sys
 import csv
 from StringIO import StringIO
@@ -9,6 +8,7 @@ import pprint
 from optparse import OptionParser
 import os
 import pdb
+import re
 
 #pdb.set_trace()
 
@@ -18,6 +18,7 @@ parser.add_option("-q", "--quote-char", dest="quote_char", help="quote_char", me
 parser.add_option("-a", "--autodetect", action="store_true", dest="autodetect", help="autodetecting format", metavar="AUTODETECT")
 parser.add_option("-i", "--input-file", dest="input_file", help="input file name to parse", metavar="INPUT")
 parser.add_option("-o", "--output-file", dest="output_file", help="output file where to save results", metavar="OUTPUT")
+parser.add_option("-e", "--eval-filter", dest="eval_filter", help="expression filter to eval", metavar="EVALFILTER")
 
 (options, args) = parser.parse_args()
 
@@ -26,6 +27,7 @@ column_separator = options.column_separator
 autodetect = options.autodetect
 in_file = options.input_file
 out_file = options.output_file
+eval_filter = options.eval_filter
 
 #pdb.set_trace()
 
@@ -80,13 +82,15 @@ if(size):
     reader = csv.reader(csvfile, dialect)
     try:
         for row in reader:
-            #if counter == 0:
-                #print row
-    
             counter += 1
-            if len(str(row)) > 3500:
-                print str(row) + "------- \r\n"
-            writer.writerow(row)
-        #pdb.set_trace()
+            #pdb.set_trace()
+            if(eval(eval_filter)):
+                #if counter == 0:
+                    #print row
+            
+                if len(str(row)) > 3500:
+                    print str(row) + "------- \r\n"
+                writer.writerow(row)
+            #pdb.set_trace()
     except:
         raise Exception("" + str(sys.exc_info()[1]) + " in parsing file on line: " + str(counter))

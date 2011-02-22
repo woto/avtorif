@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110217141259) do
+ActiveRecord::Schema.define(:version => 20110220145712) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
@@ -53865,6 +53865,43 @@ ActiveRecord::Schema.define(:version => 20110217141259) do
 
   add_index "price_import_1066346357", ["doublet"], :name => "doublet_idx"
 
+  create_table "price_import_1066346359", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.integer  "price_setting_id"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346359", ["doublet"], :name => "doublet_idx"
+
   create_table "price_import_1066346360", :force => true do |t|
     t.integer  "job_id"
     t.string   "title"
@@ -54785,7 +54822,7 @@ ActiveRecord::Schema.define(:version => 20110217141259) do
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -55303,7 +55340,7 @@ ActiveRecord::Schema.define(:version => 20110217141259) do
     t.string   "parts_group"
     t.string   "doublet"
     t.integer  "supplier_id"
-    t.string   "job_code"
+    t.integer  "price_setting_id"
     t.boolean  "processed",                                                                  :default => false
     t.string   "delivery_days_price"
     t.integer  "weight_grams"
@@ -58816,6 +58853,43 @@ ActiveRecord::Schema.define(:version => 20110217141259) do
 
   add_index "price_import_1066346590", ["doublet"], :name => "doublet_idx"
 
+  create_table "price_import_1066346598", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.integer  "price_setting_id"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346598", ["doublet"], :name => "doublet_idx"
+
   create_table "price_import_templates", :force => true do |t|
     t.integer  "job_id"
     t.string   "title"
@@ -58854,22 +58928,21 @@ ActiveRecord::Schema.define(:version => 20110217141259) do
   create_table "price_settings", :force => true do |t|
     t.string   "title"
     t.integer  "currency_buy_id"
-    t.float    "absolute_buy_coefficient"
-    t.float    "relative_buy_coefficient"
+    t.float    "absolute_buy_rate"
+    t.float    "relative_buy_rate"
     t.boolean  "visible_for_site"
     t.boolean  "visible_for_stock"
     t.boolean  "visible_for_shops"
     t.float    "retail_rate"
-    t.float    "income_rate"
     t.float    "kilo_price"
     t.integer  "currency_weight_id"
-    t.float    "relative_weight_coefficient"
-    t.float    "absolute_weight_ccoefficient"
+    t.float    "relative_weight_rate"
+    t.float    "absolute_weight_rate"
     t.boolean  "presence"
     t.string   "delivery_summary"
     t.string   "country"
     t.string   "country_short"
-    t.float    "weight_unavaliable_rate"
+    t.float    "weight_unavailable_rate"
     t.integer  "delivery_days_declared"
     t.integer  "price_setting_id"
     t.datetime "created_at"

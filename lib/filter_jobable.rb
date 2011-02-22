@@ -7,10 +7,16 @@ class FilterJobable < AbstractJobber
     @optional.each do |opt|
       supplier_price = SupplierPrice.find(opt).attachment
       remote_file = RemoteFile.new(File.basename(supplier_price.original_filename) + ".csv")
-      if @jobable.col_sep.present? && @jobable.quote_char.present?
-        exec = "#{Rails.root}/system/external_tools/py_csv_filter.py -i #{supplier_price.path.shellescape} -o #{remote_file.path.shellescape} -c #{@jobable.col_sep} -q #{@jobable.quote_char}"
+      if @jobable.first.present?
+        filter_string = "-e \"#{@jobable.first.shellescape}\""
       else
-        exec = "#{Rails.root}/system/external_tools/py_csv_filter.py -i #{supplier_price.path.shellescape} -o #{remote_file.path.shellescape} -a"
+        filter_string = "-e \"True\""
+      end
+
+      if @jobable.col_sep.present? && @jobable.quote_char.present?
+        exec = "#{Rails.root}/system/external_tools/py_csv_filter.py -i #{supplier_price.path.shellescape} -o #{remote_file.path.shellescape} -c #{@jobable.col_sep} -q #{@jobable.quote_char} " + filter_string
+      else
+        exec = "#{Rails.root}/system/external_tools/py_csv_filter.py -i #{supplier_price.path.shellescape} -o #{remote_file.path.shellescape} -a " + filter_string
       end
       stdin, stdout, stderr = Open3.popen3(exec)
       if (error_string = stderr.read).present?

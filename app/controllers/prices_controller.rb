@@ -178,7 +178,7 @@ class PricesController < ApplicationController
               p[:catalog_number_orig] = z.css('DetailNum').first.text.strip
               p[:manufacturer] = CommonModule::find_manufacturer_synonym(z.css('MakeName').text, -2, true)[1..-2]
               p[:manufacturer_orig] = z.css('MakeName').text
-              p[:manufacturer_short] = z.css('MakeLogo').text
+              p[:manufacturer_short] = z.css('MakeLogo').first.text
               p[:job_import_job_success_percent] = z.css('CalcDeliveryPercent').text
               p[:success_percent] = z.css('CalcDeliveryPercent').text
               p[:job_import_job_delivery_days_declared] = z.css('ADDays').text
@@ -193,6 +193,7 @@ class PricesController < ApplicationController
               p[:count] = CGI.unescapeHTML(z.css('QuantityText').first.text)
               p[:title] = z.css('DetailNameRus').text
               p[:title_en] = z.css('DetailNameEng').text
+              p[:weight_grams] = z.css('DetailWeight').text
 
               if(z.css('bitStorehouse') == 'true')
                 p[:job_import_job_presence] = true
@@ -231,6 +232,8 @@ class PricesController < ApplicationController
     # Локальная работа
     replacements.each do |replacement|
       md5 = Digest::MD5.hexdigest(replacement[:catalog_number])[0,2]
+      weight_grams = replacement[:weight_grams] ? replacement[:weight_grams] : "0"
+      #string_for_income_cost =  "p.price_cost * (c.value/100 * ps.relative_buy_coefficient + ps.absolute_buy_coefficient)  income_rate * c.value AS income_cost, 
       query = "
         SELECT
           p.*,
@@ -248,9 +251,17 @@ class PricesController < ApplicationController
           ps.kilo_price as job_import_job_kilo_price,
           ps.country as job_import_job_country,
           ps.country_short as job_import_job_country_short,
-          c.foreign_id as currency,
-          p.price_cost * ps.income_rate * c.value AS income_cost, 
-          p.price_cost * ps.income_rate * ps.retail_rate * c.value AS retail_cost,
+          c_buy.foreign_id as currency,
+          CASE 
+            WHEN p.weight_grams > 0 THEN p.price_cost * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) + p.weight_grams * ps.kilo_price / 1000 * (c_weight.value * ps.relative_weight_rate + ps.absolute_weight_rate)
+            WHEN #{weight_grams} > 0 THEN p.price_cost * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) + #{weight_grams} * ps.kilo_price / 1000 * (c_weight.value * ps.relative_weight_rate + ps.absolute_weight_rate)
+            ELSE p.price_cost * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) * ps.weight_unavailable_rate 
+          END AS income_cost,
+          CASE 
+            WHEN p.weight_grams > 0 THEN ps.retail_rate * (p.price_cost * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) + p.weight_grams * ps.kilo_price / 1000 * (c_weight.value * ps.relative_weight_rate + ps.absolute_weight_rate))
+            WHEN #{weight_grams} > 0 THEN ps.retail_rate * (p.price_cost * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) + #{weight_grams} * ps.kilo_price / 1000 * (c_weight.value * ps.relative_weight_rate + ps.absolute_weight_rate))
+            ELSE ps.retail_rate * (p.price_cost * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) * ps.weight_unavailable_rate)
+          END AS retail_cost,
           m.original as bit_original,
           ps.id as job_id
         FROM price_cost_#{md5} p
@@ -264,8 +275,10 @@ class PricesController < ApplicationController
             ON j.jobable_id = ij.id 
           INNER JOIN suppliers s 
             ON j.supplier_id = s.id
-          INNER JOIN currencies c 
-            ON c.id = ps.currency_buy_id
+          INNER JOIN currencies c_buy
+            ON c_buy.id = ps.currency_buy_id
+          INNER JOIN currencies c_weight 
+            ON c_weight.id = ps.currency_weight_id
         WHERE  p.catalog_number = #{ActiveRecord::Base.connection.quote(replacement[:catalog_number])}" 
       if replacement[:manufacturer]
         query << " AND p.manufacturer = #{ActiveRecord::Base.connection.quote(replacement[:manufacturer])}"

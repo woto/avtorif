@@ -119,8 +119,10 @@ namespace :avtorif do
             retry
           end
         end
-        query = "UPDATE price_import_#{job_id} SET processed = 1 WHERE doublet = '#{d}' AND processed = 0 limit 10"
-        Price.connection.execute(query)
+        if price_import_result.any?
+          query = "UPDATE price_import_#{job_id} SET processed = 1 WHERE id IN(#{price_import_result.map{|pir| pir['id']}.join(', ')})"
+          Price.connection.execute(query)
+        end
       end while price_import_result.any?
     end
 

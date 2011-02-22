@@ -43,7 +43,10 @@ iconv -f CP1251 -t UTF-8//IGNORE [in_file] > [out_file]
 -f и -t могут быть опущены
 ---
 tr -d '\0' < [in_file] > [out_file]
-
+---
+sed 's/NULL//g' [in_file] > [out_file]
+---
+cat [in_file] > [out_file]
 </pre>
 
 <%= f.buttons %>

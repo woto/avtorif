@@ -29,12 +29,14 @@
     <%= f.inputs :currency_buy %>
   </div>
   <div class="field">
-    <%= f.label :absolute_buy_coefficient %><br />
-    <%= f.text_field :absolute_buy_coefficient %>
+    <%= f.label :absolute_buy_rate %><br />
+    <%= f.text_field :absolute_buy_rate %>
+    Для всех. Динамический. Абсолютный коэффициент наценки.
   </div>
   <div class="field">
-    <%= f.label :relative_buy_coefficient %><br />
-    <%= f.text_field :relative_buy_coefficient %>
+    <%= f.label :relative_buy_rate %><br />
+    <%= f.text_field :relative_buy_rate %>
+    Для всех. Динамический. Относительный коэффициент наценки.
   </div>
   <div class="field">
     <%= f.label :visible_for_site %><br />
@@ -57,11 +59,6 @@
     Для всех. Динамический. Розничный коэффициент
   </div>
   <div class="field">
-    <%= f.label :income_rate %><br />
-    <%= f.text_field :income_rate %>
-    Для всех. Динамический. Коэффициент, на который будет умножаться цена в прайсе (т.е. цена прихода)
-  </div>
-  <div class="field">
     <%= f.label :kilo_price %><br />
     <%= f.text_field :kilo_price %>
     Стоимость килограмма
@@ -72,12 +69,14 @@
     <%= f.inputs :currency_weight %>
   </div>
   <div class="field">
-    <%= f.label :relative_weight_coefficient %><br />
-    <%= f.text_field :relative_weight_coefficient %>
+    <%= f.label :relative_weight_rate %><br />
+    <%= f.text_field :relative_weight_rate %>
+    Для всех. Динамический. Относительный коэффициент веса.
   </div>
   <div class="field">
-    <%= f.label :absolute_weight_ccoefficient %><br />
-    <%= f.text_field :absolute_weight_ccoefficient %>
+    <%= f.label :absolute_weight_rate %><br />
+    <%= f.text_field :absolute_weight_rate %>
+    Для всех. Динамический. Абсолютный коэффициент веса.
   </div>
   <div class="field">
     <%= f.label :presence %><br />
@@ -85,8 +84,9 @@
     Прайс наличия
   </div>
   <div class="field">
-    <%= f.label :weight_unavaliable_rate %><br />
-    <%= f.text_field :weight_unavaliable_rate %>
+    <%= f.label :weight_unavailable_rate %><br />
+    <%= f.text_field :weight_unavailable_rate %>
+    Для всех. Динамический. В случае отсутствия веса в (1. Прайсе поставщика; 2. В общем каталоге) цена будет умножена на этот коэффициент
   </div>
   <div class="field">
     <%= f.label :delivery_days_declared %><br />

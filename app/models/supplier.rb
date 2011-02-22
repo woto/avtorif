@@ -10,6 +10,8 @@ class Supplier < ActiveRecord::Base
   has_many :jobs, :dependent => :destroy
   validates_length_of :inn, :maximum=>12
   validates_length_of :kpp, :maximum=>9
+  validates_presence_of :inn
+  validates_presence_of :kpp
   has_many :supplier_prices
   has_many :prices
   belongs_to :discount_group
