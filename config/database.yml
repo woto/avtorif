@@ -9,7 +9,7 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: avtorif_development
+  database: avtorif_development_85
   pool: 5
   username: root
   password:
@@ -22,7 +22,7 @@ test:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: avtorif_test
+  database: avtorif_test_85
   pool: 5
   username: root
   password:
@@ -32,7 +32,7 @@ production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: avtorif_development
+  database: avtorif_development_85
   pool: 5
   username: root
   password:
