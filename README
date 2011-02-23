@@ -5,6 +5,10 @@
 	2. sudo dpkg -i unzip...
 		Баг связан с неверной кодировкой в архивах DOS
 		Дистрибутивы в system/packages/patched/unzip_6.0-1build1_*.deb
+        3. sudo easy_install pyescelerator
+        4. Установить https://github.com/akr/escape
+
+sudo easy_install chardet
 
 Вспомогательные
 

@@ -9,7 +9,8 @@ class SmbReceiver < AbstractReceiver
       str_share = @receiver.share.to_s[/^\/*(.*?)\/*$/, 1]
       str_path = @receiver.path.to_s[/^\/*(.*?)\/*$/, 1]
       result = `smbclient \/\/#{str_server}\/#{str_share}\/ #{str_password} -U #{str_login} -p #{str_port} -c \"cd \\\"#{str_path}\\\"\; dir\;\"`
-      raise result if result =~ /NT_STATUS_BAD_NETWORK_NAME|NT_STATUS_LOGON_FAILURE|NT_STATUS_OBJECT_NAME_NOT_FOUND/
+      debugger
+      raise result if result =~ /NT_STATUS_BAD_NETWORK_NAME|NT_STATUS_LOGON_FAILURE|NT_STATUS_OBJECT_NAME_NOT_FOUND|NT_STATUS_UNSUCCESSFUL/
       files = result.split("\n")
       puts files
       files.collect! do |line|
