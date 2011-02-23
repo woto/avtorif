@@ -43,13 +43,17 @@ class CurrenciesController < ApplicationController
        http.auth.basic AppConfig.lc_ws_login, AppConfig.lc_ws_password
     end
 
-    client.request :wsdl, :add_currency_rate do |r|
+    result = client.request :wsdl, :add_currency_rate do |r|
       r.body = {
         "currency_code" => params['currency']['foreign_id'], 
         "currencyName" => params['currency']['title'], 
         "rate" => params['currency']['value'],
         :order! => ["currency_code", "currencyName", "rate"]
       }
+    end
+
+    if result.to_hash[:add_currency_rate_response][:return] != "Good"
+      raise result.to_hash[:add_currency_rate_response][:return]
     end
   end
 
