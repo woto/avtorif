@@ -14,6 +14,8 @@ class PriceSetting < ActiveRecord::Base
   validates_numericality_of :relative_weight_rate, :greater_than_or_equal_to => 0, :less_than => 1000
   validates_numericality_of :kilo_price, :greater_than_or_equal_to => 0, :less_than => 1000, :allow_nil => true
   validates_numericality_of :weight_unavailable_rate, :greater_than_or_equal_to => 0, :less_than => 1000, :allow_nil => true
+  validates_numericality_of :kilo_price, :greater_than_or_equal_to => 0, :less_than => 1000  
+  validates_numericality_of :weight_unavailable_rate, :greater_than_or_equal_to => 0, :less_than => 1000
 
   belongs_to :supplier
 
