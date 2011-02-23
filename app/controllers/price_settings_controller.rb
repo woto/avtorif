@@ -44,7 +44,7 @@ class PriceSettingsController < ApplicationController
        http.auth.basic AppConfig.lc_ws_login, AppConfig.lc_ws_password
     end
     
-    client.request :wsdl, :add_modify_price do |r|
+    result = client.request :wsdl, :add_modify_price do |r|
       r.body = {
         "ID" => @price_setting.id.to_s,
         "SuplierID" => @price_setting.supplier_id.to_s,
@@ -55,6 +55,10 @@ class PriceSettingsController < ApplicationController
         :order! => ["ID", "SuplierID", "CurrencyCode", "Presents", "Delivery", "description"]
       }
     end
+    if result.to_hash[:add_modify_price_response][:return] != "Good"
+      raise result.to_hash[:add_modify_price_response][:return]
+    end
+
   end
   # POST /price_settings
   # POST /price_settings.xml

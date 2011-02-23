@@ -11,44 +11,8 @@
 <% end %>
 
   <p>
-    <%= f.label :first %><br />
-    <%= f.text_field :first %>
-  </p>
-  <p>
-    <%= f.label :second %><br />
-    <%= f.text_field :second %>
-  </p>
-  <p>
-    <%= f.label :third %><br />
-    <%= f.text_field :third %>
-  </p>
-  <p>
-    <%= f.label :fourth %><br />
-    <%= f.text_field :fourth %>
-  </p>
-  <p>
-    <%= f.label :fifth %><br />
-    <%= f.text_field :fifth %>
-  </p>
-  <p>
-    <%= f.label :sixth %><br />
-    <%= f.text_field :sixth %>
-  </p>
-  <p>
-    <%= f.label :seventh %><br />
-    <%= f.text_field :seventh %>
-  </p>
-  <p>
-    <%= f.label :eighth %><br />
-    <%= f.text_field :eighth %>
-  </p>
-  <p>
-    <%= f.label :ninth %><br />
-    <%= f.text_field :ninth %>
-  </p>
-  <p>
-    <%= f.label :tenth %><br />
-    <%= f.text_field :tenth %>
+    <%= f.label "Фильтр" %><br />
+    <%= f.text_field :first, :style => "width: 1000px" %>
   </p>
   <p>
     <%= f.label :col_sep %><br />
@@ -94,46 +58,6 @@ if @jobable.quote_char.present?
   end
 end
 </pre>
-  <p>
-    <%= f.label :converters %><br />
-    <%= f.text_field :converters %>
-  </p>
-  <p>
-    <%= f.label :encoding %><br />
-    <%= f.text_field :encoding %>
-  </p>
-  <p>
-    <%= f.label :field_size_limit %><br />
-    <%= f.text_field :field_size_limit %>
-  </p>
-  <p>
-    <%= f.label :unconverted_fields %><br />
-    <%= f.text_field :unconverted_fields %>
-  </p>
-  <p>
-    <%= f.label :headers %><br />
-    <%= f.text_field :headers %>
-  </p>
-  <p>
-    <%= f.label :return_headers %><br />
-    <%= f.text_field :return_headers %>
-  </p>
-  <p>
-    <%= f.label :write_headers %><br />
-    <%= f.text_field :write_headers %>
-  </p>
-  <p>
-    <%= f.label :header_converters %><br />
-    <%= f.text_field :header_converters %>
-  </p>
-  <p>
-    <%= f.label :skip_blanks %><br />
-    <%= f.text_field :skip_blanks %>
-  </p>
-  <p>
-    <%= f.label :force_quotes %><br />
-    <%= f.text_field :force_quotes %>
-  </p>
   <p>
     <%= f.buttons %>
   </p>

@@ -42,7 +42,8 @@ class SuppliersController < ApplicationController
        wsdl.document = "#{AppConfig.lc_ws_address}/trade.1cws?wsdl"
        http.auth.basic AppConfig.lc_ws_login, AppConfig.lc_ws_password
     end
-    client.request :wsdl, :add_supplier do |r|
+
+    result = client.request :wsdl, :add_supplier do |r|
       r.body = {
         "ID" => @supplier.id.to_s,
         "title" => @supplier.title.to_s,
@@ -53,6 +54,10 @@ class SuppliersController < ApplicationController
         "buyer" => @supplier.buyer.to_s,
         :order! => ["ID", "title", "INN", "KPP", "fullTitle", "seller", "buyer"]
       }
+    end 
+
+    if result.to_hash[:add_supplier_response][:return] != "Good"
+      raise result.to_hash[:add_supplier_response][:return]
     end
   end
 
