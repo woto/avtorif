@@ -85,5 +85,6 @@
 </p>
 
 
+<%= link_to 'Destroy', supplier_price_setting_path(@price_setting.supplier.id, @price_setting), :confirm => "Are you sure?", :method => :delete %> |
 <%= link_to 'Edit', edit_supplier_price_setting_path(@price_setting.supplier.id, @price_setting) %> |
 <%= link_to 'Back', supplier_price_settings_path %>

@@ -103,7 +103,7 @@ class PriceSettingsController < ApplicationController
     @price_setting.destroy
 
     respond_to do |format|
-      format.html { redirect_to(price_settings_url) }
+      format.html { redirect_to(supplier_jobs_path(params[:supplier_id])) }
       format.xml  { head :ok }
     end
   end
