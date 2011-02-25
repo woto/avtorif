@@ -14,9 +14,29 @@ class ImportJobable < AbstractJobber
           SET 
             pi.processed = 1, 
             pc.price_cost = pi.price_cost,
-            pc.count = pi.count
+            pc.count = pi.count,
+            pc.title = pi.title,
+            pc.title_en = pi.title_en,
+            pc.manufacturer = pi.manufacturer,
+            pc.manufacturer_orig = pi.manufacturer_orig,
+            pc.catalog_number = pi.catalog_number,
+            pc.catalog_number_orig = pi.catalog_number_orig,
+            pc.country = pi.country,
+            pc.parts_group = pi.parts_group,
+            pc.supplier_id = pi.supplier_id,
+            pc.delivery_days_price = pi.delivery_days_price,
+            pc.weight_grams = pi.weight_grams,
+            pc.external_id = pi.external_id,
+            pc.unit_package = pi.unit_package,
+            pc.multiply_factor = pi.multiply_factor,
+            pc.min_order = pi.min_order,
+            pc.description = pi.description,
+            pc.unit = pi.unit,
+            pc.applicability = pi.applicability,
+            pc.job_id = #{@job_id}
         WHERE pi.doublet = '#{l}'"
       Price.connection.execute(query)
+      # pc.success_percent = pi.success_percent,
     end
   end
 
