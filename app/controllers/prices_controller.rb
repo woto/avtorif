@@ -244,23 +244,23 @@ class PricesController < ApplicationController
           s.kpp as supplier_kpp,
           ps.title as job_title,
           ij.success_percent as job_import_job_success_percent,
-          ij.delivery_days_average as job_import_job_delivery_days_average,
-          ij.delivery_days_declared as job_import_job_delivery_days_declared,
-          ij.delivery_summary as job_import_job_delivery_summary,
-          ij.presence as job_import_job_presence,
-          ij.kilo_price as job_import_job_kilo_price,
-          ij.country as job_import_job_country,
-          ij.country_short as job_import_job_country_short,
+          ps.delivery_days_average as job_import_job_delivery_days_average,
+          ps.delivery_days_declared as job_import_job_delivery_days_declared,
+          ps.delivery_summary as job_import_job_delivery_summary,
+          ps.presence as job_import_job_presence,
+          ps.kilo_price as job_import_job_kilo_price,
+          ps.country as job_import_job_country,
+          ps.country_short as job_import_job_country_short,
           c_buy.foreign_id as currency,
           CASE 
-            WHEN p.weight_grams > 0 THEN p.price_cost * (c_buy.value * ij.relative_buy_rate + ij.absolute_buy_rate) + p.weight_grams * ij.kilo_price / 1000 * (c_weight.value * ij.relative_weight_rate + ij.absolute_weight_rate)
-            WHEN #{weight_grams} > 0 THEN p.price_cost * (c_buy.value * ij.relative_buy_rate + ij.absolute_buy_rate) + #{weight_grams} * ij.kilo_price / 1000 * (c_weight.value * ij.relative_weight_rate + ij.absolute_weight_rate)
-            ELSE p.price_cost * (c_buy.value * ij.relative_buy_rate + ij.absolute_buy_rate) * ij.weight_unavailable_rate 
+            WHEN p.weight_grams > 0 THEN p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) + p.weight_grams * ps.kilo_price / 1000 * (c_weight.value * ps.relative_weight_rate + ps.absolute_weight_rate)
+            WHEN #{weight_grams} > 0 THEN p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) + #{weight_grams} * ps.kilo_price / 1000 * (c_weight.value * ps.relative_weight_rate + ps.absolute_weight_rate)
+            ELSE p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) * ps.weight_unavailable_rate 
           END AS income_cost,
           CASE 
-            WHEN p.weight_grams > 0 THEN ij.retail_rate * (p.price_cost * (c_buy.value * ij.relative_buy_rate + ij.absolute_buy_rate) + p.weight_grams * ij.kilo_price / 1000 * (c_weight.value * ij.relative_weight_rate + ij.absolute_weight_rate))
-            WHEN #{weight_grams} > 0 THEN ij.retail_rate * (p.price_cost * (c_buy.value * ij.relative_buy_rate + ij.absolute_buy_rate) + #{weight_grams} * ij.kilo_price / 1000 * (c_weight.value * ij.relative_weight_rate + ij.absolute_weight_rate))
-            ELSE ij.retail_rate * (p.price_cost * (c_buy.value * ij.relative_buy_rate + ij.absolute_buy_rate) * ij.weight_unavailable_rate)
+            WHEN p.weight_grams > 0 THEN ps.retail_rate * (p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) + p.weight_grams * ps.kilo_price / 1000 * (c_weight.value * ps.relative_weight_rate + ps.absolute_weight_rate))
+            WHEN #{weight_grams} > 0 THEN ps.retail_rate * (p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) + #{weight_grams} * ps.kilo_price / 1000 * (c_weight.value * ps.relative_weight_rate + ps.absolute_weight_rate))
+            ELSE ps.retail_rate * (p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) * ps.weight_unavailable_rate)
           END AS retail_cost,
           m.original as bit_original,
           ps.id as job_id
@@ -276,9 +276,9 @@ class PricesController < ApplicationController
           INNER JOIN suppliers s 
             ON j.supplier_id = s.id
           INNER JOIN currencies c_buy
-            ON c_buy.id = ij.currency_buy_id
+            ON c_buy.id = ps.currency_buy_id
           INNER JOIN currencies c_weight 
-            ON c_weight.id = ij.currency_weight_id
+            ON c_weight.id = ps.currency_weight_id
         WHERE  p.catalog_number = #{ActiveRecord::Base.connection.quote(replacement[:catalog_number])}" 
       if replacement[:manufacturer]
         query << " AND p.manufacturer = #{ActiveRecord::Base.connection.quote(replacement[:manufacturer])}"

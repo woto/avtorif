@@ -111,6 +111,10 @@ class ImportJobable < AbstractJobber
       if @jobable.manufacturer_colnum.present?              
         manufacturer_colnum = @jobable.manufacturer_colnum - 1
         query_template = query_template + "manufacturer, manufacturer_orig, "
+      elsif @jobable.default_manufacturer.present?
+        query_template = query_template + "manufacturer, manufacturer_orig, "
+        default_manufacturer = CommonModule::find_manufacturer_synonym(@jobable.default_manufacturer, @job_id) + ", "
+        default_manufacturer_orig = CommonModule::manufacturer_orig(@jobable.default_manufacturer) + ", "
       end
 
       if @jobable.applicability_colnum.present?              
@@ -167,6 +171,9 @@ class ImportJobable < AbstractJobber
           if manufacturer_colnum
             query = query + manufacturer = CommonModule::find_manufacturer_synonym(row[manufacturer_colnum], @job_id) + ", "
             query = query + manufacturer_orig = CommonModule::manufacturer_orig(row[manufacturer_colnum]) + ", "
+          elsif default_manufacturer
+            query << default_manufacturer
+            query << default_manufacturer_orig
           end
           
           query = query + applicability = applicability_colnum ? Price.connection.quote(row[applicability_colnum].to_s.strip) + ", " : ""
