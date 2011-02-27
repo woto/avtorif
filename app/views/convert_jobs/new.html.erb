@@ -1,5 +1,7 @@
 <h1>New convert_job</h1>
 
+<%= job_path %>
+
 <% semantic_form_for(@convert_job, :url => supplier_job_convert_jobs_path(params[:supplier_id], params[:job_id])) do |f| %> 
   <%= render :partial => 'form', :locals => {:f => f} %>
 <% end %>

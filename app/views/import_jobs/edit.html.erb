@@ -1,5 +1,7 @@
 <h1>Editing import_job</h1>
 
+<%= job_path %>
+
 <% semantic_form_for(@import_job, :url => supplier_job_import_job_path(params[:supplier_id], params[:job_id], params[:id])) do |f| %>
   <%= render :partial => 'form', :locals => {:f => f} %>
 <% end %>

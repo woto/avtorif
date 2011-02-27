@@ -1,7 +1,4 @@
-<% if params[:supplier_id] %>
-  <% supplier = Supplier.find(params[:supplier_id]) %>
-  <h1>Listing jobs for <em><%= link_to(supplier.title, supplier_jobs_path) %></em></h1>
-<% end %>
+<%= job_path %>
 
 <% if params[:action] == 'display_jobs' %>
   <p>

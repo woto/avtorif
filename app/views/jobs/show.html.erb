@@ -1,3 +1,5 @@
+<h1> <%= job_path %> </h1>
+
 <%
 scope = Job
 scope = scope.scoped :conditions => {:job_id => params['id']} if params['id']
@@ -12,31 +14,6 @@ scope = scope.scoped :conditions => {:supplier_id => params['supplier_id']} if p
 </div>
 
 <p>
-  <b>Next start:</b>
-  <%=h @job.next_start %>
-</p>
-
-<p>
-  <b>Last start:</b>
-  <%=h @job.last_start %>
-</p>
-
-<p>
-  <b>Last finish:</b>
-  <%=h @job.last_finish %>
-</p>
-
-<p>
-  <b>Seconds between jobs:</b>
-  <%=h @job.seconds_between_jobs %>
-</p>
-
-<p>
-  <b>Seconds working:</b>
-  <%=h @job.seconds_working %>
-</p>
-
-<p>
   <b>Title:</b>
   <%=h @job.title %>
 </p>
@@ -46,20 +23,6 @@ scope = scope.scoped :conditions => {:supplier_id => params['supplier_id']} if p
   <%= h @job.description %>
 </p>
 
-<p>
-  <b>Repeats:</b>
-  <%=h @job.repeats.collect(&:title).join(",") %>
-</p>
-
-<p>
-  <b>Parent:</b>
-  <% if @job.parent.present? %>
-    <%=h link_to @job.parent.try(:title), supplier_job_path(@job.supplier, @job.parent) %>
-  <% else %>
-    <%=h link_to "Список задач приема", supplier_jobs_path(@job.supplier) %>
-
-  <% end %>
-</p>
 <p>
   <b>Job</b>
   <%=h link_to @job.try(:title), supplier_job_path(@job.supplier, @job) %>
