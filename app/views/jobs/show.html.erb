@@ -1,5 +1,3 @@
-<h1> <%= job_path %> </h1>
-
 <%
 scope = Job
 scope = scope.scoped :conditions => {:job_id => params['id']} if params['id']
@@ -14,8 +12,8 @@ scope = scope.scoped :conditions => {:supplier_id => params['supplier_id']} if p
 </div>
 
 <p>
-  <b>Title:</b>
-  <%=h @job.title %>
+  <b>Job</b>
+  <%=h link_to @job.try(:title), supplier_job_path(@job.supplier, @job) %>
 </p>
 
 <p>
@@ -23,10 +21,6 @@ scope = scope.scoped :conditions => {:supplier_id => params['supplier_id']} if p
   <%= h @job.description %>
 </p>
 
-<p>
-  <b>Job</b>
-  <%=h link_to @job.try(:title), supplier_job_path(@job.supplier, @job) %>
-</p>
 <p>
   <b>Jobable:</b>
   <%= link_to("Настройки #{@job.jobable.class.to_s}", edit_polymorphic_path([@job.supplier, @job, @job.jobable])) %>  

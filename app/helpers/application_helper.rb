@@ -27,12 +27,12 @@ module ApplicationHelper
     supplier_id = params[:supplier_id]
     job_id = params[:job_id] || params[:id]
     supplier = Supplier.find(supplier_id)
-    @content = raw("<br /><br /><div>")
+    @content = raw("<br /><br /><h1>")
     @content = content_tag(:span, link_to(supplier.title, supplier_jobs_path(supplier)) + " ")
     if job_id
       recursive_build_job_path(job_id)
     end
-    @content << raw("</div><br /><br />")
+    @content << raw("</h1><br /><br />")
   end
 
   private
