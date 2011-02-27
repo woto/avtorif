@@ -110,6 +110,16 @@ class JobsController < ApplicationController
     end
   end
 
+  def copy
+    @job = Job.find(params[:id])
+    @jobable = @job.jobable
+    new_job = @job.clone
+    new_jobable = @jobable.clone
+    new_job.jobable = new_jobable
+    new_job.title = "Копия " + new_job.title
+    new_job.save
+  end
+
   def start_all
     jobs = Job.all(:conditions => "jobable_type = 'ReceiveJob' AND active = 1 AND next_start IS NOT NULL AND active = 1")
     jobs.each do |job|

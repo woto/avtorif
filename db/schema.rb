@@ -248,6 +248,11 @@ ActiveRecord::Schema.define(:version => 20110225151639) do
     t.float    "relative_weight_currency"
     t.integer  "parts_group_colnum"
     t.string   "delivery_days_declared_colnum"
+    t.integer  "array_replacement_colnum"
+    t.integer  "array_replacement_manufacturer_colnum"
+    t.integer  "array_replacement_default_manufacturer"
+    t.string   "array_replacement_delimiter",            :limit => 5
+    t.integer  "array_replacement_direction"
     t.integer  "price_setting_id"
     t.float    "income_rate"
   end
@@ -53254,7 +53259,613 @@ ActiveRecord::Schema.define(:version => 20110225151639) do
   add_index "price_cost_templates", ["catalog_number", "manufacturer"], :name => "index_price_cost_templates_on_catalog_number_and_manufacturer"
   add_index "price_cost_templates", ["price_setting_id"], :name => "index_price_cost_templates_on_price_setting_id"
 
-  create_table "price_import_100", :force => true do |t|
+  create_table "price_import_1066346320", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346320", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346346", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346346", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346347", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346347", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346351", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346351", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346352", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346352", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346353", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "price_import_1066346354", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346354", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346355", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346355", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346356", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",      :limit => 20
+    t.string   "catalog_number_orig", :limit => 20
+    t.string   "new_catalog_number",  :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                        :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "r0",                  :limit => 20
+    t.string   "rm0",                 :limit => 20
+    t.integer  "rdi0"
+    t.string   "r1",                  :limit => 20
+    t.string   "rm1",                 :limit => 20
+    t.integer  "rdi1"
+    t.string   "r2",                  :limit => 20
+    t.string   "rm2",                 :limit => 20
+    t.integer  "rdi2"
+    t.string   "r3",                  :limit => 20
+    t.string   "rm3",                 :limit => 20
+    t.integer  "rdi3"
+    t.string   "r4",                  :limit => 20
+    t.string   "rm4",                 :limit => 20
+    t.integer  "rdi4"
+    t.string   "r5",                  :limit => 20
+    t.string   "rm5",                 :limit => 20
+    t.integer  "rdi5"
+    t.string   "r6",                  :limit => 20
+    t.string   "rm6",                 :limit => 20
+    t.integer  "rdi6"
+    t.string   "r7",                  :limit => 20
+    t.string   "rm7",                 :limit => 20
+    t.integer  "rdi7"
+    t.string   "r8",                  :limit => 20
+    t.string   "rm8",                 :limit => 20
+    t.integer  "rdi8"
+    t.string   "r9",                  :limit => 20
+    t.string   "rm9",                 :limit => 20
+    t.integer  "rdi9"
+    t.string   "r10",                 :limit => 20
+    t.string   "rm10",                :limit => 20
+    t.integer  "rdi10"
+    t.string   "r11",                 :limit => 20
+    t.string   "rm11",                :limit => 20
+    t.integer  "rdi11"
+    t.string   "r12",                 :limit => 20
+    t.string   "rm12",                :limit => 20
+    t.integer  "rdi12"
+    t.string   "r13",                 :limit => 20
+    t.string   "rm13",                :limit => 20
+    t.integer  "rdi13"
+    t.string   "r14",                 :limit => 20
+    t.string   "rm14",                :limit => 20
+    t.integer  "rdi14"
+    t.string   "r15",                 :limit => 20
+    t.string   "rm15",                :limit => 20
+    t.integer  "rdi15"
+    t.string   "r16",                 :limit => 20
+    t.string   "rm16",                :limit => 20
+    t.integer  "rdi16"
+    t.string   "r17",                 :limit => 20
+    t.string   "rm17",                :limit => 20
+    t.integer  "rdi17"
+    t.string   "r18",                 :limit => 20
+    t.string   "rm18",                :limit => 20
+    t.integer  "rdi18"
+    t.string   "r19",                 :limit => 20
+    t.string   "rm19",                :limit => 20
+    t.integer  "rdi19"
+    t.string   "r20",                 :limit => 20
+    t.string   "rm20",                :limit => 20
+    t.integer  "rdi20"
+    t.string   "r21",                 :limit => 20
+    t.string   "rm21",                :limit => 20
+    t.integer  "rdi21"
+    t.string   "r22",                 :limit => 20
+    t.string   "rm22",                :limit => 20
+    t.integer  "rdi22"
+    t.string   "r23",                 :limit => 20
+    t.string   "rm23",                :limit => 20
+    t.integer  "rdi23"
+    t.string   "r24",                 :limit => 20
+    t.string   "rm24",                :limit => 20
+    t.integer  "rdi24"
+    t.string   "r25",                 :limit => 20
+    t.string   "rm25",                :limit => 20
+    t.integer  "rdi25"
+    t.string   "r26",                 :limit => 20
+    t.string   "rm26",                :limit => 20
+    t.integer  "rdi26"
+    t.string   "r27",                 :limit => 20
+    t.string   "rm27",                :limit => 20
+    t.integer  "rdi27"
+    t.string   "r28",                 :limit => 20
+    t.string   "rm28",                :limit => 20
+    t.integer  "rdi28"
+    t.string   "r29",                 :limit => 20
+    t.string   "rm29",                :limit => 20
+    t.integer  "rdi29"
+    t.string   "r30",                 :limit => 20
+    t.string   "rm30",                :limit => 20
+    t.integer  "rdi30"
+    t.string   "r31",                 :limit => 20
+    t.string   "rm31",                :limit => 20
+    t.integer  "rdi31"
+    t.string   "r32",                 :limit => 20
+    t.string   "rm32",                :limit => 20
+    t.integer  "rdi32"
+    t.string   "r33",                 :limit => 20
+    t.string   "rm33",                :limit => 20
+    t.integer  "rdi33"
+    t.string   "r34",                 :limit => 20
+    t.string   "rm34",                :limit => 20
+    t.integer  "rdi34"
+    t.string   "r35",                 :limit => 20
+    t.string   "rm35",                :limit => 20
+    t.integer  "rdi35"
+    t.string   "r36",                 :limit => 20
+    t.string   "rm36",                :limit => 20
+    t.integer  "rdi36"
+    t.string   "r37",                 :limit => 20
+    t.string   "rm37",                :limit => 20
+    t.integer  "rdi37"
+    t.string   "r38",                 :limit => 20
+    t.string   "rm38",                :limit => 20
+    t.integer  "rdi38"
+    t.string   "r39",                 :limit => 20
+    t.string   "rm39",                :limit => 20
+    t.integer  "rdi39"
+    t.string   "r40",                 :limit => 20
+    t.string   "rm40",                :limit => 20
+    t.integer  "rdi40"
+    t.string   "r41",                 :limit => 20
+    t.string   "rm41",                :limit => 20
+    t.integer  "rdi41"
+    t.string   "r42",                 :limit => 20
+    t.string   "rm42",                :limit => 20
+    t.integer  "rdi42"
+    t.string   "r43",                 :limit => 20
+    t.string   "rm43",                :limit => 20
+    t.integer  "rdi43"
+    t.string   "r44",                 :limit => 20
+    t.string   "rm44",                :limit => 20
+    t.integer  "rdi44"
+    t.string   "r45",                 :limit => 20
+    t.string   "rm45",                :limit => 20
+    t.integer  "rdi45"
+    t.string   "r46",                 :limit => 20
+    t.string   "rm46",                :limit => 20
+    t.integer  "rdi46"
+    t.string   "r47",                 :limit => 20
+    t.string   "rm47",                :limit => 20
+    t.integer  "rdi47"
+    t.string   "r48",                 :limit => 20
+    t.string   "rm48",                :limit => 20
+    t.integer  "rdi48"
+    t.string   "r49",                 :limit => 20
+    t.string   "rm49",                :limit => 20
+    t.integer  "rdi49"
+    t.string   "r50",                 :limit => 20
+    t.string   "rm50",                :limit => 20
+    t.integer  "rdi50"
+    t.string   "r51",                 :limit => 20
+    t.string   "rm51",                :limit => 20
+    t.integer  "rdi51"
+    t.string   "r52",                 :limit => 20
+    t.string   "rm52",                :limit => 20
+    t.integer  "rdi52"
+    t.string   "r53",                 :limit => 20
+    t.string   "rm53",                :limit => 20
+    t.integer  "rdi53"
+    t.string   "r54",                 :limit => 20
+    t.string   "rm54",                :limit => 20
+    t.integer  "rdi54"
+    t.string   "r55",                 :limit => 20
+    t.string   "rm55",                :limit => 20
+    t.integer  "rdi55"
+    t.string   "r56",                 :limit => 20
+    t.string   "rm56",                :limit => 20
+    t.integer  "rdi56"
+    t.string   "r57",                 :limit => 20
+    t.string   "rm57",                :limit => 20
+    t.integer  "rdi57"
+    t.string   "r58",                 :limit => 20
+    t.string   "rm58",                :limit => 20
+    t.integer  "rdi58"
+    t.string   "r59",                 :limit => 20
+    t.string   "rm59",                :limit => 20
+    t.integer  "rdi59"
+    t.string   "r60",                 :limit => 20
+    t.string   "rm60",                :limit => 20
+    t.integer  "rdi60"
+    t.string   "r61",                 :limit => 20
+    t.string   "rm61",                :limit => 20
+    t.integer  "rdi61"
+    t.string   "r62",                 :limit => 20
+    t.string   "rm62",                :limit => 20
+    t.integer  "rdi62"
+    t.string   "r63",                 :limit => 20
+    t.string   "rm63",                :limit => 20
+    t.integer  "rdi63"
+    t.string   "r64",                 :limit => 20
+    t.string   "rm64",                :limit => 20
+    t.integer  "rdi64"
+    t.string   "r65",                 :limit => 20
+    t.string   "rm65",                :limit => 20
+    t.integer  "rdi65"
+    t.string   "r66",                 :limit => 20
+    t.string   "rm66",                :limit => 20
+    t.integer  "rdi66"
+    t.string   "r67",                 :limit => 20
+    t.string   "rm67",                :limit => 20
+    t.integer  "rdi67"
+    t.string   "r68",                 :limit => 20
+    t.string   "rm68",                :limit => 20
+    t.integer  "rdi68"
+    t.string   "r69",                 :limit => 20
+    t.string   "rm69",                :limit => 20
+    t.integer  "rdi69"
+    t.string   "r70",                 :limit => 20
+    t.string   "rm70",                :limit => 20
+    t.integer  "rdi70"
+    t.string   "r71",                 :limit => 20
+    t.string   "rm71",                :limit => 20
+    t.integer  "rdi71"
+    t.string   "r72",                 :limit => 20
+    t.string   "rm72",                :limit => 20
+    t.integer  "rdi72"
+    t.string   "r73",                 :limit => 20
+    t.string   "rm73",                :limit => 20
+    t.integer  "rdi73"
+    t.string   "r74",                 :limit => 20
+    t.string   "rm74",                :limit => 20
+    t.integer  "rdi74"
+    t.string   "r75",                 :limit => 20
+    t.string   "rm75",                :limit => 20
+    t.integer  "rdi75"
+    t.string   "r76",                 :limit => 20
+    t.string   "rm76",                :limit => 20
+    t.integer  "rdi76"
+    t.string   "r77",                 :limit => 20
+    t.string   "rm77",                :limit => 20
+    t.integer  "rdi77"
+    t.string   "r78",                 :limit => 20
+    t.string   "rm78",                :limit => 20
+    t.integer  "rdi78"
+    t.string   "r79",                 :limit => 20
+    t.string   "rm79",                :limit => 20
+    t.integer  "rdi79"
+    t.string   "r80",                 :limit => 20
+    t.string   "rm80",                :limit => 20
+    t.integer  "rdi80"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346356", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346357", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346357", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346359", :force => true do |t|
     t.integer  "job_id"
     t.string   "title"
     t.string   "title_en"
@@ -53289,9 +53900,913 @@ ActiveRecord::Schema.define(:version => 20110225151639) do
     t.datetime "updated_at"
   end
 
-  add_index "price_import_100", ["doublet"], :name => "doublet_idx"
+  add_index "price_import_1066346359", ["doublet"], :name => "doublet_idx"
 
-  create_table "price_import_101", :force => true do |t|
+  create_table "price_import_1066346360", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346360", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346361", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346361", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346362", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346362", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346364", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346364", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346369", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346369", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346371", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346371", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346372", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346372", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346374", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346374", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346375", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",      :limit => 20
+    t.string   "catalog_number_orig", :limit => 20
+    t.string   "new_catalog_number",  :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                        :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "r0",                  :limit => 20
+    t.string   "rm0",                 :limit => 20
+    t.integer  "rdi0"
+    t.string   "r1",                  :limit => 20
+    t.string   "rm1",                 :limit => 20
+    t.integer  "rdi1"
+    t.string   "r2",                  :limit => 20
+    t.string   "rm2",                 :limit => 20
+    t.integer  "rdi2"
+    t.string   "r3",                  :limit => 20
+    t.string   "rm3",                 :limit => 20
+    t.integer  "rdi3"
+    t.string   "r4",                  :limit => 20
+    t.string   "rm4",                 :limit => 20
+    t.integer  "rdi4"
+    t.string   "r5",                  :limit => 20
+    t.string   "rm5",                 :limit => 20
+    t.integer  "rdi5"
+    t.string   "r6",                  :limit => 20
+    t.string   "rm6",                 :limit => 20
+    t.integer  "rdi6"
+    t.string   "r7",                  :limit => 20
+    t.string   "rm7",                 :limit => 20
+    t.integer  "rdi7"
+    t.string   "r8",                  :limit => 20
+    t.string   "rm8",                 :limit => 20
+    t.integer  "rdi8"
+    t.string   "r9",                  :limit => 20
+    t.string   "rm9",                 :limit => 20
+    t.integer  "rdi9"
+    t.string   "r10",                 :limit => 20
+    t.string   "rm10",                :limit => 20
+    t.integer  "rdi10"
+    t.string   "r11",                 :limit => 20
+    t.string   "rm11",                :limit => 20
+    t.integer  "rdi11"
+    t.string   "r12",                 :limit => 20
+    t.string   "rm12",                :limit => 20
+    t.integer  "rdi12"
+    t.string   "r13",                 :limit => 20
+    t.string   "rm13",                :limit => 20
+    t.integer  "rdi13"
+    t.string   "r14",                 :limit => 20
+    t.string   "rm14",                :limit => 20
+    t.integer  "rdi14"
+    t.string   "r15",                 :limit => 20
+    t.string   "rm15",                :limit => 20
+    t.integer  "rdi15"
+    t.string   "r16",                 :limit => 20
+    t.string   "rm16",                :limit => 20
+    t.integer  "rdi16"
+    t.string   "r17",                 :limit => 20
+    t.string   "rm17",                :limit => 20
+    t.integer  "rdi17"
+    t.string   "r18",                 :limit => 20
+    t.string   "rm18",                :limit => 20
+    t.integer  "rdi18"
+    t.string   "r19",                 :limit => 20
+    t.string   "rm19",                :limit => 20
+    t.integer  "rdi19"
+    t.string   "r20",                 :limit => 20
+    t.string   "rm20",                :limit => 20
+    t.integer  "rdi20"
+    t.string   "r21",                 :limit => 20
+    t.string   "rm21",                :limit => 20
+    t.integer  "rdi21"
+    t.string   "r22",                 :limit => 20
+    t.string   "rm22",                :limit => 20
+    t.integer  "rdi22"
+    t.string   "r23",                 :limit => 20
+    t.string   "rm23",                :limit => 20
+    t.integer  "rdi23"
+    t.string   "r24",                 :limit => 20
+    t.string   "rm24",                :limit => 20
+    t.integer  "rdi24"
+    t.string   "r25",                 :limit => 20
+    t.string   "rm25",                :limit => 20
+    t.integer  "rdi25"
+    t.string   "r26",                 :limit => 20
+    t.string   "rm26",                :limit => 20
+    t.integer  "rdi26"
+    t.string   "r27",                 :limit => 20
+    t.string   "rm27",                :limit => 20
+    t.integer  "rdi27"
+    t.string   "r28",                 :limit => 20
+    t.string   "rm28",                :limit => 20
+    t.integer  "rdi28"
+    t.string   "r29",                 :limit => 20
+    t.string   "rm29",                :limit => 20
+    t.integer  "rdi29"
+    t.string   "r30",                 :limit => 20
+    t.string   "rm30",                :limit => 20
+    t.integer  "rdi30"
+    t.string   "r31",                 :limit => 20
+    t.string   "rm31",                :limit => 20
+    t.integer  "rdi31"
+    t.string   "r32",                 :limit => 20
+    t.string   "rm32",                :limit => 20
+    t.integer  "rdi32"
+    t.string   "r33",                 :limit => 20
+    t.string   "rm33",                :limit => 20
+    t.integer  "rdi33"
+    t.string   "r34",                 :limit => 20
+    t.string   "rm34",                :limit => 20
+    t.integer  "rdi34"
+    t.string   "r35",                 :limit => 20
+    t.string   "rm35",                :limit => 20
+    t.integer  "rdi35"
+    t.string   "r36",                 :limit => 20
+    t.string   "rm36",                :limit => 20
+    t.integer  "rdi36"
+    t.string   "r37",                 :limit => 20
+    t.string   "rm37",                :limit => 20
+    t.integer  "rdi37"
+    t.string   "r38",                 :limit => 20
+    t.string   "rm38",                :limit => 20
+    t.integer  "rdi38"
+    t.string   "r39",                 :limit => 20
+    t.string   "rm39",                :limit => 20
+    t.integer  "rdi39"
+    t.string   "r40",                 :limit => 20
+    t.string   "rm40",                :limit => 20
+    t.integer  "rdi40"
+    t.string   "r41",                 :limit => 20
+    t.string   "rm41",                :limit => 20
+    t.integer  "rdi41"
+    t.string   "r42",                 :limit => 20
+    t.string   "rm42",                :limit => 20
+    t.integer  "rdi42"
+    t.string   "r43",                 :limit => 20
+    t.string   "rm43",                :limit => 20
+    t.integer  "rdi43"
+    t.string   "r44",                 :limit => 20
+    t.string   "rm44",                :limit => 20
+    t.integer  "rdi44"
+    t.string   "r45",                 :limit => 20
+    t.string   "rm45",                :limit => 20
+    t.integer  "rdi45"
+    t.string   "r46",                 :limit => 20
+    t.string   "rm46",                :limit => 20
+    t.integer  "rdi46"
+    t.string   "r47",                 :limit => 20
+    t.string   "rm47",                :limit => 20
+    t.integer  "rdi47"
+    t.string   "r48",                 :limit => 20
+    t.string   "rm48",                :limit => 20
+    t.integer  "rdi48"
+    t.string   "r49",                 :limit => 20
+    t.string   "rm49",                :limit => 20
+    t.integer  "rdi49"
+    t.string   "r50",                 :limit => 20
+    t.string   "rm50",                :limit => 20
+    t.integer  "rdi50"
+    t.string   "r51",                 :limit => 20
+    t.string   "rm51",                :limit => 20
+    t.integer  "rdi51"
+    t.string   "r52",                 :limit => 20
+    t.string   "rm52",                :limit => 20
+    t.integer  "rdi52"
+    t.string   "r53",                 :limit => 20
+    t.string   "rm53",                :limit => 20
+    t.integer  "rdi53"
+    t.string   "r54",                 :limit => 20
+    t.string   "rm54",                :limit => 20
+    t.integer  "rdi54"
+    t.string   "r55",                 :limit => 20
+    t.string   "rm55",                :limit => 20
+    t.integer  "rdi55"
+    t.string   "r56",                 :limit => 20
+    t.string   "rm56",                :limit => 20
+    t.integer  "rdi56"
+    t.string   "r57",                 :limit => 20
+    t.string   "rm57",                :limit => 20
+    t.integer  "rdi57"
+    t.string   "r58",                 :limit => 20
+    t.string   "rm58",                :limit => 20
+    t.integer  "rdi58"
+    t.string   "r59",                 :limit => 20
+    t.string   "rm59",                :limit => 20
+    t.integer  "rdi59"
+    t.string   "r60",                 :limit => 20
+    t.string   "rm60",                :limit => 20
+    t.integer  "rdi60"
+    t.string   "r61",                 :limit => 20
+    t.string   "rm61",                :limit => 20
+    t.integer  "rdi61"
+    t.string   "r62",                 :limit => 20
+    t.string   "rm62",                :limit => 20
+    t.integer  "rdi62"
+    t.string   "r63",                 :limit => 20
+    t.string   "rm63",                :limit => 20
+    t.integer  "rdi63"
+    t.string   "r64",                 :limit => 20
+    t.string   "rm64",                :limit => 20
+    t.integer  "rdi64"
+    t.string   "r65",                 :limit => 20
+    t.string   "rm65",                :limit => 20
+    t.integer  "rdi65"
+    t.string   "r66",                 :limit => 20
+    t.string   "rm66",                :limit => 20
+    t.integer  "rdi66"
+    t.string   "r67",                 :limit => 20
+    t.string   "rm67",                :limit => 20
+    t.integer  "rdi67"
+    t.string   "r68",                 :limit => 20
+    t.string   "rm68",                :limit => 20
+    t.integer  "rdi68"
+    t.string   "r69",                 :limit => 20
+    t.string   "rm69",                :limit => 20
+    t.integer  "rdi69"
+    t.string   "r70",                 :limit => 20
+    t.string   "rm70",                :limit => 20
+    t.integer  "rdi70"
+    t.string   "r71",                 :limit => 20
+    t.string   "rm71",                :limit => 20
+    t.integer  "rdi71"
+    t.string   "r72",                 :limit => 20
+    t.string   "rm72",                :limit => 20
+    t.integer  "rdi72"
+    t.string   "r73",                 :limit => 20
+    t.string   "rm73",                :limit => 20
+    t.integer  "rdi73"
+    t.string   "r74",                 :limit => 20
+    t.string   "rm74",                :limit => 20
+    t.integer  "rdi74"
+    t.string   "r75",                 :limit => 20
+    t.string   "rm75",                :limit => 20
+    t.integer  "rdi75"
+    t.string   "r76",                 :limit => 20
+    t.string   "rm76",                :limit => 20
+    t.integer  "rdi76"
+    t.string   "r77",                 :limit => 20
+    t.string   "rm77",                :limit => 20
+    t.integer  "rdi77"
+    t.string   "r78",                 :limit => 20
+    t.string   "rm78",                :limit => 20
+    t.integer  "rdi78"
+    t.string   "r79",                 :limit => 20
+    t.string   "rm79",                :limit => 20
+    t.integer  "rdi79"
+    t.string   "r80",                 :limit => 20
+    t.string   "rm80",                :limit => 20
+    t.integer  "rdi80"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346375", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346376", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346376", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346377", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346377", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346378", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346378", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346379", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346379", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346380", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346380", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346381", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346381", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346382", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346382", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346383", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346383", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346384", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346384", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346390", :force => true do |t|
     t.integer  "job_id"
     t.string   "title"
     t.string   "title_en"
@@ -53326,9 +54841,490 @@ ActiveRecord::Schema.define(:version => 20110225151639) do
     t.datetime "updated_at"
   end
 
-  add_index "price_import_101", ["doublet"], :name => "doublet_idx"
+  add_index "price_import_1066346390", ["doublet"], :name => "doublet_idx"
 
-  create_table "price_import_102", :force => true do |t|
+  create_table "price_import_1066346391", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346391", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346392", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346392", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346393", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346393", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346394", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346394", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346396", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346396", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346398", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346398", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346399", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346399", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346400", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346400", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346401", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346401", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346402", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346402", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346403", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346403", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346404", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346404", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346405", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346405", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346406", :force => true do |t|
     t.integer  "job_id"
     t.string   "title"
     t.string   "title_en"
@@ -53363,9 +55359,3390 @@ ActiveRecord::Schema.define(:version => 20110225151639) do
     t.datetime "updated_at"
   end
 
-  add_index "price_import_102", ["doublet"], :name => "doublet_idx"
+  add_index "price_import_1066346406", ["doublet"], :name => "doublet_idx"
 
-  create_table "price_import_103", :force => true do |t|
+  create_table "price_import_1066346421", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346421", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346422", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346422", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346423", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346423", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346424", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346424", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346425", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346425", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346426", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346426", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346427", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346427", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346428", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346428", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346429", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346429", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346430", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346430", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346431", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346431", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346432", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346432", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346433", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346433", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346434", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346434", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346435", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346435", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346436", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346436", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346447", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346447", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346449", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346449", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346462", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346462", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346463", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346463", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346472", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346472", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346476", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                        :precision => 10, :scale => 0
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number"
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                        :default => false
+    t.string   "delivery_days_price"
+    t.decimal  "weight_grams",                      :precision => 10, :scale => 0
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "r0",                  :limit => 20
+    t.string   "rm0",                 :limit => 20
+    t.integer  "rdi0"
+    t.string   "r1",                  :limit => 20
+    t.string   "rm1",                 :limit => 20
+    t.integer  "rdi1"
+    t.string   "r2",                  :limit => 20
+    t.string   "rm2",                 :limit => 20
+    t.integer  "rdi2"
+    t.string   "r3",                  :limit => 20
+    t.string   "rm3",                 :limit => 20
+    t.integer  "rdi3"
+    t.string   "r4",                  :limit => 20
+    t.string   "rm4",                 :limit => 20
+    t.integer  "rdi4"
+    t.string   "r5",                  :limit => 20
+    t.string   "rm5",                 :limit => 20
+    t.integer  "rdi5"
+    t.string   "r6",                  :limit => 20
+    t.string   "rm6",                 :limit => 20
+    t.integer  "rdi6"
+    t.string   "r7",                  :limit => 20
+    t.string   "rm7",                 :limit => 20
+    t.integer  "rdi7"
+    t.string   "r8",                  :limit => 20
+    t.string   "rm8",                 :limit => 20
+    t.integer  "rdi8"
+    t.string   "r9",                  :limit => 20
+    t.string   "rm9",                 :limit => 20
+    t.integer  "rdi9"
+    t.string   "r10",                 :limit => 20
+    t.string   "rm10",                :limit => 20
+    t.integer  "rdi10"
+    t.string   "r11",                 :limit => 20
+    t.string   "rm11",                :limit => 20
+    t.integer  "rdi11"
+    t.string   "r12",                 :limit => 20
+    t.string   "rm12",                :limit => 20
+    t.integer  "rdi12"
+    t.string   "r13",                 :limit => 20
+    t.string   "rm13",                :limit => 20
+    t.integer  "rdi13"
+    t.string   "r14",                 :limit => 20
+    t.string   "rm14",                :limit => 20
+    t.integer  "rdi14"
+    t.string   "r15",                 :limit => 20
+    t.string   "rm15",                :limit => 20
+    t.integer  "rdi15"
+    t.string   "r16",                 :limit => 20
+    t.string   "rm16",                :limit => 20
+    t.integer  "rdi16"
+    t.string   "r17",                 :limit => 20
+    t.string   "rm17",                :limit => 20
+    t.integer  "rdi17"
+    t.string   "r18",                 :limit => 20
+    t.string   "rm18",                :limit => 20
+    t.integer  "rdi18"
+    t.string   "r19",                 :limit => 20
+    t.string   "rm19",                :limit => 20
+    t.integer  "rdi19"
+    t.string   "r20",                 :limit => 20
+    t.string   "rm20",                :limit => 20
+    t.integer  "rdi20"
+    t.string   "r21",                 :limit => 20
+    t.string   "rm21",                :limit => 20
+    t.integer  "rdi21"
+    t.string   "r22",                 :limit => 20
+    t.string   "rm22",                :limit => 20
+    t.integer  "rdi22"
+    t.string   "r23",                 :limit => 20
+    t.string   "rm23",                :limit => 20
+    t.integer  "rdi23"
+    t.string   "r24",                 :limit => 20
+    t.string   "rm24",                :limit => 20
+    t.integer  "rdi24"
+    t.string   "r25",                 :limit => 20
+    t.string   "rm25",                :limit => 20
+    t.integer  "rdi25"
+    t.string   "r26",                 :limit => 20
+    t.string   "rm26",                :limit => 20
+    t.integer  "rdi26"
+    t.string   "r27",                 :limit => 20
+    t.string   "rm27",                :limit => 20
+    t.integer  "rdi27"
+    t.string   "r28",                 :limit => 20
+    t.string   "rm28",                :limit => 20
+    t.integer  "rdi28"
+    t.string   "r29",                 :limit => 20
+    t.string   "rm29",                :limit => 20
+    t.integer  "rdi29"
+    t.string   "r30",                 :limit => 20
+    t.string   "rm30",                :limit => 20
+    t.integer  "rdi30"
+    t.string   "r31",                 :limit => 20
+    t.string   "rm31",                :limit => 20
+    t.integer  "rdi31"
+    t.string   "r32",                 :limit => 20
+    t.string   "rm32",                :limit => 20
+    t.integer  "rdi32"
+    t.string   "r33",                 :limit => 20
+    t.string   "rm33",                :limit => 20
+    t.integer  "rdi33"
+    t.string   "r34",                 :limit => 20
+    t.string   "rm34",                :limit => 20
+    t.integer  "rdi34"
+    t.string   "r35",                 :limit => 20
+    t.string   "rm35",                :limit => 20
+    t.integer  "rdi35"
+    t.string   "r36",                 :limit => 20
+    t.string   "rm36",                :limit => 20
+    t.integer  "rdi36"
+    t.string   "r37",                 :limit => 20
+    t.string   "rm37",                :limit => 20
+    t.integer  "rdi37"
+    t.string   "r38",                 :limit => 20
+    t.string   "rm38",                :limit => 20
+    t.integer  "rdi38"
+    t.string   "r39",                 :limit => 20
+    t.string   "rm39",                :limit => 20
+    t.integer  "rdi39"
+    t.string   "r40",                 :limit => 20
+    t.string   "rm40",                :limit => 20
+    t.integer  "rdi40"
+    t.string   "r41",                 :limit => 20
+    t.string   "rm41",                :limit => 20
+    t.integer  "rdi41"
+    t.string   "r42",                 :limit => 20
+    t.string   "rm42",                :limit => 20
+    t.integer  "rdi42"
+    t.string   "r43",                 :limit => 20
+    t.string   "rm43",                :limit => 20
+    t.integer  "rdi43"
+    t.string   "r44",                 :limit => 20
+    t.string   "rm44",                :limit => 20
+    t.integer  "rdi44"
+    t.string   "r45",                 :limit => 20
+    t.string   "rm45",                :limit => 20
+    t.integer  "rdi45"
+    t.string   "r46",                 :limit => 20
+    t.string   "rm46",                :limit => 20
+    t.integer  "rdi46"
+    t.string   "r47",                 :limit => 20
+    t.string   "rm47",                :limit => 20
+    t.integer  "rdi47"
+    t.string   "r48",                 :limit => 20
+    t.string   "rm48",                :limit => 20
+    t.integer  "rdi48"
+    t.string   "r49",                 :limit => 20
+    t.string   "rm49",                :limit => 20
+    t.integer  "rdi49"
+    t.string   "r50",                 :limit => 20
+    t.string   "rm50",                :limit => 20
+    t.integer  "rdi50"
+    t.string   "r51",                 :limit => 20
+    t.string   "rm51",                :limit => 20
+    t.integer  "rdi51"
+    t.string   "r52",                 :limit => 20
+    t.string   "rm52",                :limit => 20
+    t.integer  "rdi52"
+    t.string   "r53",                 :limit => 20
+    t.string   "rm53",                :limit => 20
+    t.integer  "rdi53"
+    t.string   "r54",                 :limit => 20
+    t.string   "rm54",                :limit => 20
+    t.integer  "rdi54"
+    t.string   "r55",                 :limit => 20
+    t.string   "rm55",                :limit => 20
+    t.integer  "rdi55"
+    t.string   "r56",                 :limit => 20
+    t.string   "rm56",                :limit => 20
+    t.integer  "rdi56"
+    t.string   "r57",                 :limit => 20
+    t.string   "rm57",                :limit => 20
+    t.integer  "rdi57"
+    t.string   "r58",                 :limit => 20
+    t.string   "rm58",                :limit => 20
+    t.integer  "rdi58"
+    t.string   "r59",                 :limit => 20
+    t.string   "rm59",                :limit => 20
+    t.integer  "rdi59"
+    t.string   "r60",                 :limit => 20
+    t.string   "rm60",                :limit => 20
+    t.integer  "rdi60"
+    t.string   "r61",                 :limit => 20
+    t.string   "rm61",                :limit => 20
+    t.integer  "rdi61"
+    t.string   "r62",                 :limit => 20
+    t.string   "rm62",                :limit => 20
+    t.integer  "rdi62"
+    t.string   "r63",                 :limit => 20
+    t.string   "rm63",                :limit => 20
+    t.integer  "rdi63"
+    t.string   "r64",                 :limit => 20
+    t.string   "rm64",                :limit => 20
+    t.integer  "rdi64"
+    t.string   "r65",                 :limit => 20
+    t.string   "rm65",                :limit => 20
+    t.integer  "rdi65"
+    t.string   "r66",                 :limit => 20
+    t.string   "rm66",                :limit => 20
+    t.integer  "rdi66"
+    t.string   "r67",                 :limit => 20
+    t.string   "rm67",                :limit => 20
+    t.integer  "rdi67"
+    t.string   "r68",                 :limit => 20
+    t.string   "rm68",                :limit => 20
+    t.integer  "rdi68"
+    t.string   "r69",                 :limit => 20
+    t.string   "rm69",                :limit => 20
+    t.integer  "rdi69"
+    t.string   "r70",                 :limit => 20
+    t.string   "rm70",                :limit => 20
+    t.integer  "rdi70"
+    t.string   "r71",                 :limit => 20
+    t.string   "rm71",                :limit => 20
+    t.integer  "rdi71"
+    t.string   "r72",                 :limit => 20
+    t.string   "rm72",                :limit => 20
+    t.integer  "rdi72"
+    t.string   "r73",                 :limit => 20
+    t.string   "rm73",                :limit => 20
+    t.integer  "rdi73"
+    t.string   "r74",                 :limit => 20
+    t.string   "rm74",                :limit => 20
+    t.integer  "rdi74"
+    t.string   "r75",                 :limit => 20
+    t.string   "rm75",                :limit => 20
+    t.integer  "rdi75"
+    t.string   "r76",                 :limit => 20
+    t.string   "rm76",                :limit => 20
+    t.integer  "rdi76"
+    t.string   "r77",                 :limit => 20
+    t.string   "rm77",                :limit => 20
+    t.integer  "rdi77"
+    t.string   "r78",                 :limit => 20
+    t.string   "rm78",                :limit => 20
+    t.integer  "rdi78"
+    t.string   "r79",                 :limit => 20
+    t.string   "rm79",                :limit => 20
+    t.integer  "rdi79"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346476", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346477", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                        :precision => 10, :scale => 0
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number"
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                        :default => false
+    t.string   "delivery_days_price"
+    t.decimal  "weight_grams",                      :precision => 10, :scale => 0
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "r0",                  :limit => 20
+    t.string   "rm0",                 :limit => 20
+    t.integer  "rdi0"
+    t.string   "r1",                  :limit => 20
+    t.string   "rm1",                 :limit => 20
+    t.integer  "rdi1"
+    t.string   "r2",                  :limit => 20
+    t.string   "rm2",                 :limit => 20
+    t.integer  "rdi2"
+    t.string   "r3",                  :limit => 20
+    t.string   "rm3",                 :limit => 20
+    t.integer  "rdi3"
+    t.string   "r4",                  :limit => 20
+    t.string   "rm4",                 :limit => 20
+    t.integer  "rdi4"
+    t.string   "r5",                  :limit => 20
+    t.string   "rm5",                 :limit => 20
+    t.integer  "rdi5"
+    t.string   "r6",                  :limit => 20
+    t.string   "rm6",                 :limit => 20
+    t.integer  "rdi6"
+    t.string   "r7",                  :limit => 20
+    t.string   "rm7",                 :limit => 20
+    t.integer  "rdi7"
+    t.string   "r8",                  :limit => 20
+    t.string   "rm8",                 :limit => 20
+    t.integer  "rdi8"
+    t.string   "r9",                  :limit => 20
+    t.string   "rm9",                 :limit => 20
+    t.integer  "rdi9"
+    t.string   "r10",                 :limit => 20
+    t.string   "rm10",                :limit => 20
+    t.integer  "rdi10"
+    t.string   "r11",                 :limit => 20
+    t.string   "rm11",                :limit => 20
+    t.integer  "rdi11"
+    t.string   "r12",                 :limit => 20
+    t.string   "rm12",                :limit => 20
+    t.integer  "rdi12"
+    t.string   "r13",                 :limit => 20
+    t.string   "rm13",                :limit => 20
+    t.integer  "rdi13"
+    t.string   "r14",                 :limit => 20
+    t.string   "rm14",                :limit => 20
+    t.integer  "rdi14"
+    t.string   "r15",                 :limit => 20
+    t.string   "rm15",                :limit => 20
+    t.integer  "rdi15"
+    t.string   "r16",                 :limit => 20
+    t.string   "rm16",                :limit => 20
+    t.integer  "rdi16"
+    t.string   "r17",                 :limit => 20
+    t.string   "rm17",                :limit => 20
+    t.integer  "rdi17"
+    t.string   "r18",                 :limit => 20
+    t.string   "rm18",                :limit => 20
+    t.integer  "rdi18"
+    t.string   "r19",                 :limit => 20
+    t.string   "rm19",                :limit => 20
+    t.integer  "rdi19"
+    t.string   "r20",                 :limit => 20
+    t.string   "rm20",                :limit => 20
+    t.integer  "rdi20"
+    t.string   "r21",                 :limit => 20
+    t.string   "rm21",                :limit => 20
+    t.integer  "rdi21"
+    t.string   "r22",                 :limit => 20
+    t.string   "rm22",                :limit => 20
+    t.integer  "rdi22"
+    t.string   "r23",                 :limit => 20
+    t.string   "rm23",                :limit => 20
+    t.integer  "rdi23"
+    t.string   "r24",                 :limit => 20
+    t.string   "rm24",                :limit => 20
+    t.integer  "rdi24"
+    t.string   "r25",                 :limit => 20
+    t.string   "rm25",                :limit => 20
+    t.integer  "rdi25"
+    t.string   "r26",                 :limit => 20
+    t.string   "rm26",                :limit => 20
+    t.integer  "rdi26"
+    t.string   "r27",                 :limit => 20
+    t.string   "rm27",                :limit => 20
+    t.integer  "rdi27"
+    t.string   "r28",                 :limit => 20
+    t.string   "rm28",                :limit => 20
+    t.integer  "rdi28"
+    t.string   "r29",                 :limit => 20
+    t.string   "rm29",                :limit => 20
+    t.integer  "rdi29"
+    t.string   "r30",                 :limit => 20
+    t.string   "rm30",                :limit => 20
+    t.integer  "rdi30"
+    t.string   "r31",                 :limit => 20
+    t.string   "rm31",                :limit => 20
+    t.integer  "rdi31"
+    t.string   "r32",                 :limit => 20
+    t.string   "rm32",                :limit => 20
+    t.integer  "rdi32"
+    t.string   "r33",                 :limit => 20
+    t.string   "rm33",                :limit => 20
+    t.integer  "rdi33"
+    t.string   "r34",                 :limit => 20
+    t.string   "rm34",                :limit => 20
+    t.integer  "rdi34"
+    t.string   "r35",                 :limit => 20
+    t.string   "rm35",                :limit => 20
+    t.integer  "rdi35"
+    t.string   "r36",                 :limit => 20
+    t.string   "rm36",                :limit => 20
+    t.integer  "rdi36"
+    t.string   "r37",                 :limit => 20
+    t.string   "rm37",                :limit => 20
+    t.integer  "rdi37"
+    t.string   "r38",                 :limit => 20
+    t.string   "rm38",                :limit => 20
+    t.integer  "rdi38"
+    t.string   "r39",                 :limit => 20
+    t.string   "rm39",                :limit => 20
+    t.integer  "rdi39"
+    t.string   "r40",                 :limit => 20
+    t.string   "rm40",                :limit => 20
+    t.integer  "rdi40"
+    t.string   "r41",                 :limit => 20
+    t.string   "rm41",                :limit => 20
+    t.integer  "rdi41"
+    t.string   "r42",                 :limit => 20
+    t.string   "rm42",                :limit => 20
+    t.integer  "rdi42"
+    t.string   "r43",                 :limit => 20
+    t.string   "rm43",                :limit => 20
+    t.integer  "rdi43"
+    t.string   "r44",                 :limit => 20
+    t.string   "rm44",                :limit => 20
+    t.integer  "rdi44"
+    t.string   "r45",                 :limit => 20
+    t.string   "rm45",                :limit => 20
+    t.integer  "rdi45"
+    t.string   "r46",                 :limit => 20
+    t.string   "rm46",                :limit => 20
+    t.integer  "rdi46"
+    t.string   "r47",                 :limit => 20
+    t.string   "rm47",                :limit => 20
+    t.integer  "rdi47"
+    t.string   "r48",                 :limit => 20
+    t.string   "rm48",                :limit => 20
+    t.integer  "rdi48"
+    t.string   "r49",                 :limit => 20
+    t.string   "rm49",                :limit => 20
+    t.integer  "rdi49"
+    t.string   "r50",                 :limit => 20
+    t.string   "rm50",                :limit => 20
+    t.integer  "rdi50"
+    t.string   "r51",                 :limit => 20
+    t.string   "rm51",                :limit => 20
+    t.integer  "rdi51"
+    t.string   "r52",                 :limit => 20
+    t.string   "rm52",                :limit => 20
+    t.integer  "rdi52"
+    t.string   "r53",                 :limit => 20
+    t.string   "rm53",                :limit => 20
+    t.integer  "rdi53"
+    t.string   "r54",                 :limit => 20
+    t.string   "rm54",                :limit => 20
+    t.integer  "rdi54"
+    t.string   "r55",                 :limit => 20
+    t.string   "rm55",                :limit => 20
+    t.integer  "rdi55"
+    t.string   "r56",                 :limit => 20
+    t.string   "rm56",                :limit => 20
+    t.integer  "rdi56"
+    t.string   "r57",                 :limit => 20
+    t.string   "rm57",                :limit => 20
+    t.integer  "rdi57"
+    t.string   "r58",                 :limit => 20
+    t.string   "rm58",                :limit => 20
+    t.integer  "rdi58"
+    t.string   "r59",                 :limit => 20
+    t.string   "rm59",                :limit => 20
+    t.integer  "rdi59"
+    t.string   "r60",                 :limit => 20
+    t.string   "rm60",                :limit => 20
+    t.integer  "rdi60"
+    t.string   "r61",                 :limit => 20
+    t.string   "rm61",                :limit => 20
+    t.integer  "rdi61"
+    t.string   "r62",                 :limit => 20
+    t.string   "rm62",                :limit => 20
+    t.integer  "rdi62"
+    t.string   "r63",                 :limit => 20
+    t.string   "rm63",                :limit => 20
+    t.integer  "rdi63"
+    t.string   "r64",                 :limit => 20
+    t.string   "rm64",                :limit => 20
+    t.integer  "rdi64"
+    t.string   "r65",                 :limit => 20
+    t.string   "rm65",                :limit => 20
+    t.integer  "rdi65"
+    t.string   "r66",                 :limit => 20
+    t.string   "rm66",                :limit => 20
+    t.integer  "rdi66"
+    t.string   "r67",                 :limit => 20
+    t.string   "rm67",                :limit => 20
+    t.integer  "rdi67"
+    t.string   "r68",                 :limit => 20
+    t.string   "rm68",                :limit => 20
+    t.integer  "rdi68"
+    t.string   "r69",                 :limit => 20
+    t.string   "rm69",                :limit => 20
+    t.integer  "rdi69"
+    t.string   "r70",                 :limit => 20
+    t.string   "rm70",                :limit => 20
+    t.integer  "rdi70"
+    t.string   "r71",                 :limit => 20
+    t.string   "rm71",                :limit => 20
+    t.integer  "rdi71"
+    t.string   "r72",                 :limit => 20
+    t.string   "rm72",                :limit => 20
+    t.integer  "rdi72"
+    t.string   "r73",                 :limit => 20
+    t.string   "rm73",                :limit => 20
+    t.integer  "rdi73"
+    t.string   "r74",                 :limit => 20
+    t.string   "rm74",                :limit => 20
+    t.integer  "rdi74"
+    t.string   "r75",                 :limit => 20
+    t.string   "rm75",                :limit => 20
+    t.integer  "rdi75"
+    t.string   "r76",                 :limit => 20
+    t.string   "rm76",                :limit => 20
+    t.integer  "rdi76"
+    t.string   "r77",                 :limit => 20
+    t.string   "rm77",                :limit => 20
+    t.integer  "rdi77"
+    t.string   "r78",                 :limit => 20
+    t.string   "rm78",                :limit => 20
+    t.integer  "rdi78"
+    t.string   "r79",                 :limit => 20
+    t.string   "rm79",                :limit => 20
+    t.integer  "rdi79"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346477", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346480", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346480", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346487", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346487", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346496", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346496", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346500", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346500", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346507", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346507", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346512", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346512", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346513", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346513", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346519", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346519", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346548", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346548", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346551", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346551", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346552", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                        :precision => 10, :scale => 0
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number"
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                        :default => false
+    t.string   "delivery_days_price"
+    t.decimal  "weight_grams",                      :precision => 10, :scale => 0
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "r0",                  :limit => 20
+    t.string   "rm0",                 :limit => 20
+    t.integer  "rdi0"
+    t.string   "r1",                  :limit => 20
+    t.string   "rm1",                 :limit => 20
+    t.integer  "rdi1"
+    t.string   "r2",                  :limit => 20
+    t.string   "rm2",                 :limit => 20
+    t.integer  "rdi2"
+    t.string   "r3",                  :limit => 20
+    t.string   "rm3",                 :limit => 20
+    t.integer  "rdi3"
+    t.string   "r4",                  :limit => 20
+    t.string   "rm4",                 :limit => 20
+    t.integer  "rdi4"
+    t.string   "r5",                  :limit => 20
+    t.string   "rm5",                 :limit => 20
+    t.integer  "rdi5"
+    t.string   "r6",                  :limit => 20
+    t.string   "rm6",                 :limit => 20
+    t.integer  "rdi6"
+    t.string   "r7",                  :limit => 20
+    t.string   "rm7",                 :limit => 20
+    t.integer  "rdi7"
+    t.string   "r8",                  :limit => 20
+    t.string   "rm8",                 :limit => 20
+    t.integer  "rdi8"
+    t.string   "r9",                  :limit => 20
+    t.string   "rm9",                 :limit => 20
+    t.integer  "rdi9"
+    t.string   "r10",                 :limit => 20
+    t.string   "rm10",                :limit => 20
+    t.integer  "rdi10"
+    t.string   "r11",                 :limit => 20
+    t.string   "rm11",                :limit => 20
+    t.integer  "rdi11"
+    t.string   "r12",                 :limit => 20
+    t.string   "rm12",                :limit => 20
+    t.integer  "rdi12"
+    t.string   "r13",                 :limit => 20
+    t.string   "rm13",                :limit => 20
+    t.integer  "rdi13"
+    t.string   "r14",                 :limit => 20
+    t.string   "rm14",                :limit => 20
+    t.integer  "rdi14"
+    t.string   "r15",                 :limit => 20
+    t.string   "rm15",                :limit => 20
+    t.integer  "rdi15"
+    t.string   "r16",                 :limit => 20
+    t.string   "rm16",                :limit => 20
+    t.integer  "rdi16"
+    t.string   "r17",                 :limit => 20
+    t.string   "rm17",                :limit => 20
+    t.integer  "rdi17"
+    t.string   "r18",                 :limit => 20
+    t.string   "rm18",                :limit => 20
+    t.integer  "rdi18"
+    t.string   "r19",                 :limit => 20
+    t.string   "rm19",                :limit => 20
+    t.integer  "rdi19"
+    t.string   "r20",                 :limit => 20
+    t.string   "rm20",                :limit => 20
+    t.integer  "rdi20"
+    t.string   "r21",                 :limit => 20
+    t.string   "rm21",                :limit => 20
+    t.integer  "rdi21"
+    t.string   "r22",                 :limit => 20
+    t.string   "rm22",                :limit => 20
+    t.integer  "rdi22"
+    t.string   "r23",                 :limit => 20
+    t.string   "rm23",                :limit => 20
+    t.integer  "rdi23"
+    t.string   "r24",                 :limit => 20
+    t.string   "rm24",                :limit => 20
+    t.integer  "rdi24"
+    t.string   "r25",                 :limit => 20
+    t.string   "rm25",                :limit => 20
+    t.integer  "rdi25"
+    t.string   "r26",                 :limit => 20
+    t.string   "rm26",                :limit => 20
+    t.integer  "rdi26"
+    t.string   "r27",                 :limit => 20
+    t.string   "rm27",                :limit => 20
+    t.integer  "rdi27"
+    t.string   "r28",                 :limit => 20
+    t.string   "rm28",                :limit => 20
+    t.integer  "rdi28"
+    t.string   "r29",                 :limit => 20
+    t.string   "rm29",                :limit => 20
+    t.integer  "rdi29"
+    t.string   "r30",                 :limit => 20
+    t.string   "rm30",                :limit => 20
+    t.integer  "rdi30"
+    t.string   "r31",                 :limit => 20
+    t.string   "rm31",                :limit => 20
+    t.integer  "rdi31"
+    t.string   "r32",                 :limit => 20
+    t.string   "rm32",                :limit => 20
+    t.integer  "rdi32"
+    t.string   "r33",                 :limit => 20
+    t.string   "rm33",                :limit => 20
+    t.integer  "rdi33"
+    t.string   "r34",                 :limit => 20
+    t.string   "rm34",                :limit => 20
+    t.integer  "rdi34"
+    t.string   "r35",                 :limit => 20
+    t.string   "rm35",                :limit => 20
+    t.integer  "rdi35"
+    t.string   "r36",                 :limit => 20
+    t.string   "rm36",                :limit => 20
+    t.integer  "rdi36"
+    t.string   "r37",                 :limit => 20
+    t.string   "rm37",                :limit => 20
+    t.integer  "rdi37"
+    t.string   "r38",                 :limit => 20
+    t.string   "rm38",                :limit => 20
+    t.integer  "rdi38"
+    t.string   "r39",                 :limit => 20
+    t.string   "rm39",                :limit => 20
+    t.integer  "rdi39"
+    t.string   "r40",                 :limit => 20
+    t.string   "rm40",                :limit => 20
+    t.integer  "rdi40"
+    t.string   "r41",                 :limit => 20
+    t.string   "rm41",                :limit => 20
+    t.integer  "rdi41"
+    t.string   "r42",                 :limit => 20
+    t.string   "rm42",                :limit => 20
+    t.integer  "rdi42"
+    t.string   "r43",                 :limit => 20
+    t.string   "rm43",                :limit => 20
+    t.integer  "rdi43"
+    t.string   "r44",                 :limit => 20
+    t.string   "rm44",                :limit => 20
+    t.integer  "rdi44"
+    t.string   "r45",                 :limit => 20
+    t.string   "rm45",                :limit => 20
+    t.integer  "rdi45"
+    t.string   "r46",                 :limit => 20
+    t.string   "rm46",                :limit => 20
+    t.integer  "rdi46"
+    t.string   "r47",                 :limit => 20
+    t.string   "rm47",                :limit => 20
+    t.integer  "rdi47"
+    t.string   "r48",                 :limit => 20
+    t.string   "rm48",                :limit => 20
+    t.integer  "rdi48"
+    t.string   "r49",                 :limit => 20
+    t.string   "rm49",                :limit => 20
+    t.integer  "rdi49"
+    t.string   "r50",                 :limit => 20
+    t.string   "rm50",                :limit => 20
+    t.integer  "rdi50"
+    t.string   "r51",                 :limit => 20
+    t.string   "rm51",                :limit => 20
+    t.integer  "rdi51"
+    t.string   "r52",                 :limit => 20
+    t.string   "rm52",                :limit => 20
+    t.integer  "rdi52"
+    t.string   "r53",                 :limit => 20
+    t.string   "rm53",                :limit => 20
+    t.integer  "rdi53"
+    t.string   "r54",                 :limit => 20
+    t.string   "rm54",                :limit => 20
+    t.integer  "rdi54"
+    t.string   "r55",                 :limit => 20
+    t.string   "rm55",                :limit => 20
+    t.integer  "rdi55"
+    t.string   "r56",                 :limit => 20
+    t.string   "rm56",                :limit => 20
+    t.integer  "rdi56"
+    t.string   "r57",                 :limit => 20
+    t.string   "rm57",                :limit => 20
+    t.integer  "rdi57"
+    t.string   "r58",                 :limit => 20
+    t.string   "rm58",                :limit => 20
+    t.integer  "rdi58"
+    t.string   "r59",                 :limit => 20
+    t.string   "rm59",                :limit => 20
+    t.integer  "rdi59"
+    t.string   "r60",                 :limit => 20
+    t.string   "rm60",                :limit => 20
+    t.integer  "rdi60"
+    t.string   "r61",                 :limit => 20
+    t.string   "rm61",                :limit => 20
+    t.integer  "rdi61"
+    t.string   "r62",                 :limit => 20
+    t.string   "rm62",                :limit => 20
+    t.integer  "rdi62"
+    t.string   "r63",                 :limit => 20
+    t.string   "rm63",                :limit => 20
+    t.integer  "rdi63"
+    t.string   "r64",                 :limit => 20
+    t.string   "rm64",                :limit => 20
+    t.integer  "rdi64"
+    t.string   "r65",                 :limit => 20
+    t.string   "rm65",                :limit => 20
+    t.integer  "rdi65"
+    t.string   "r66",                 :limit => 20
+    t.string   "rm66",                :limit => 20
+    t.integer  "rdi66"
+    t.string   "r67",                 :limit => 20
+    t.string   "rm67",                :limit => 20
+    t.integer  "rdi67"
+    t.string   "r68",                 :limit => 20
+    t.string   "rm68",                :limit => 20
+    t.integer  "rdi68"
+    t.string   "r69",                 :limit => 20
+    t.string   "rm69",                :limit => 20
+    t.integer  "rdi69"
+    t.string   "r70",                 :limit => 20
+    t.string   "rm70",                :limit => 20
+    t.integer  "rdi70"
+    t.string   "r71",                 :limit => 20
+    t.string   "rm71",                :limit => 20
+    t.integer  "rdi71"
+    t.string   "r72",                 :limit => 20
+    t.string   "rm72",                :limit => 20
+    t.integer  "rdi72"
+    t.string   "r73",                 :limit => 20
+    t.string   "rm73",                :limit => 20
+    t.integer  "rdi73"
+    t.string   "r74",                 :limit => 20
+    t.string   "rm74",                :limit => 20
+    t.integer  "rdi74"
+    t.string   "r75",                 :limit => 20
+    t.string   "rm75",                :limit => 20
+    t.integer  "rdi75"
+    t.string   "r76",                 :limit => 20
+    t.string   "rm76",                :limit => 20
+    t.integer  "rdi76"
+    t.string   "r77",                 :limit => 20
+    t.string   "rm77",                :limit => 20
+    t.integer  "rdi77"
+    t.string   "r78",                 :limit => 20
+    t.string   "rm78",                :limit => 20
+    t.integer  "rdi78"
+    t.string   "r79",                 :limit => 20
+    t.string   "rm79",                :limit => 20
+    t.integer  "rdi79"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346552", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346553", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                        :precision => 10, :scale => 0
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number"
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                        :default => false
+    t.string   "delivery_days_price"
+    t.decimal  "weight_grams",                      :precision => 10, :scale => 0
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "r0",                  :limit => 20
+    t.string   "rm0",                 :limit => 20
+    t.integer  "rdi0"
+    t.string   "r1",                  :limit => 20
+    t.string   "rm1",                 :limit => 20
+    t.integer  "rdi1"
+    t.string   "r2",                  :limit => 20
+    t.string   "rm2",                 :limit => 20
+    t.integer  "rdi2"
+    t.string   "r3",                  :limit => 20
+    t.string   "rm3",                 :limit => 20
+    t.integer  "rdi3"
+    t.string   "r4",                  :limit => 20
+    t.string   "rm4",                 :limit => 20
+    t.integer  "rdi4"
+    t.string   "r5",                  :limit => 20
+    t.string   "rm5",                 :limit => 20
+    t.integer  "rdi5"
+    t.string   "r6",                  :limit => 20
+    t.string   "rm6",                 :limit => 20
+    t.integer  "rdi6"
+    t.string   "r7",                  :limit => 20
+    t.string   "rm7",                 :limit => 20
+    t.integer  "rdi7"
+    t.string   "r8",                  :limit => 20
+    t.string   "rm8",                 :limit => 20
+    t.integer  "rdi8"
+    t.string   "r9",                  :limit => 20
+    t.string   "rm9",                 :limit => 20
+    t.integer  "rdi9"
+    t.string   "r10",                 :limit => 20
+    t.string   "rm10",                :limit => 20
+    t.integer  "rdi10"
+    t.string   "r11",                 :limit => 20
+    t.string   "rm11",                :limit => 20
+    t.integer  "rdi11"
+    t.string   "r12",                 :limit => 20
+    t.string   "rm12",                :limit => 20
+    t.integer  "rdi12"
+    t.string   "r13",                 :limit => 20
+    t.string   "rm13",                :limit => 20
+    t.integer  "rdi13"
+    t.string   "r14",                 :limit => 20
+    t.string   "rm14",                :limit => 20
+    t.integer  "rdi14"
+    t.string   "r15",                 :limit => 20
+    t.string   "rm15",                :limit => 20
+    t.integer  "rdi15"
+    t.string   "r16",                 :limit => 20
+    t.string   "rm16",                :limit => 20
+    t.integer  "rdi16"
+    t.string   "r17",                 :limit => 20
+    t.string   "rm17",                :limit => 20
+    t.integer  "rdi17"
+    t.string   "r18",                 :limit => 20
+    t.string   "rm18",                :limit => 20
+    t.integer  "rdi18"
+    t.string   "r19",                 :limit => 20
+    t.string   "rm19",                :limit => 20
+    t.integer  "rdi19"
+    t.string   "r20",                 :limit => 20
+    t.string   "rm20",                :limit => 20
+    t.integer  "rdi20"
+    t.string   "r21",                 :limit => 20
+    t.string   "rm21",                :limit => 20
+    t.integer  "rdi21"
+    t.string   "r22",                 :limit => 20
+    t.string   "rm22",                :limit => 20
+    t.integer  "rdi22"
+    t.string   "r23",                 :limit => 20
+    t.string   "rm23",                :limit => 20
+    t.integer  "rdi23"
+    t.string   "r24",                 :limit => 20
+    t.string   "rm24",                :limit => 20
+    t.integer  "rdi24"
+    t.string   "r25",                 :limit => 20
+    t.string   "rm25",                :limit => 20
+    t.integer  "rdi25"
+    t.string   "r26",                 :limit => 20
+    t.string   "rm26",                :limit => 20
+    t.integer  "rdi26"
+    t.string   "r27",                 :limit => 20
+    t.string   "rm27",                :limit => 20
+    t.integer  "rdi27"
+    t.string   "r28",                 :limit => 20
+    t.string   "rm28",                :limit => 20
+    t.integer  "rdi28"
+    t.string   "r29",                 :limit => 20
+    t.string   "rm29",                :limit => 20
+    t.integer  "rdi29"
+    t.string   "r30",                 :limit => 20
+    t.string   "rm30",                :limit => 20
+    t.integer  "rdi30"
+    t.string   "r31",                 :limit => 20
+    t.string   "rm31",                :limit => 20
+    t.integer  "rdi31"
+    t.string   "r32",                 :limit => 20
+    t.string   "rm32",                :limit => 20
+    t.integer  "rdi32"
+    t.string   "r33",                 :limit => 20
+    t.string   "rm33",                :limit => 20
+    t.integer  "rdi33"
+    t.string   "r34",                 :limit => 20
+    t.string   "rm34",                :limit => 20
+    t.integer  "rdi34"
+    t.string   "r35",                 :limit => 20
+    t.string   "rm35",                :limit => 20
+    t.integer  "rdi35"
+    t.string   "r36",                 :limit => 20
+    t.string   "rm36",                :limit => 20
+    t.integer  "rdi36"
+    t.string   "r37",                 :limit => 20
+    t.string   "rm37",                :limit => 20
+    t.integer  "rdi37"
+    t.string   "r38",                 :limit => 20
+    t.string   "rm38",                :limit => 20
+    t.integer  "rdi38"
+    t.string   "r39",                 :limit => 20
+    t.string   "rm39",                :limit => 20
+    t.integer  "rdi39"
+    t.string   "r40",                 :limit => 20
+    t.string   "rm40",                :limit => 20
+    t.integer  "rdi40"
+    t.string   "r41",                 :limit => 20
+    t.string   "rm41",                :limit => 20
+    t.integer  "rdi41"
+    t.string   "r42",                 :limit => 20
+    t.string   "rm42",                :limit => 20
+    t.integer  "rdi42"
+    t.string   "r43",                 :limit => 20
+    t.string   "rm43",                :limit => 20
+    t.integer  "rdi43"
+    t.string   "r44",                 :limit => 20
+    t.string   "rm44",                :limit => 20
+    t.integer  "rdi44"
+    t.string   "r45",                 :limit => 20
+    t.string   "rm45",                :limit => 20
+    t.integer  "rdi45"
+    t.string   "r46",                 :limit => 20
+    t.string   "rm46",                :limit => 20
+    t.integer  "rdi46"
+    t.string   "r47",                 :limit => 20
+    t.string   "rm47",                :limit => 20
+    t.integer  "rdi47"
+    t.string   "r48",                 :limit => 20
+    t.string   "rm48",                :limit => 20
+    t.integer  "rdi48"
+    t.string   "r49",                 :limit => 20
+    t.string   "rm49",                :limit => 20
+    t.integer  "rdi49"
+    t.string   "r50",                 :limit => 20
+    t.string   "rm50",                :limit => 20
+    t.integer  "rdi50"
+    t.string   "r51",                 :limit => 20
+    t.string   "rm51",                :limit => 20
+    t.integer  "rdi51"
+    t.string   "r52",                 :limit => 20
+    t.string   "rm52",                :limit => 20
+    t.integer  "rdi52"
+    t.string   "r53",                 :limit => 20
+    t.string   "rm53",                :limit => 20
+    t.integer  "rdi53"
+    t.string   "r54",                 :limit => 20
+    t.string   "rm54",                :limit => 20
+    t.integer  "rdi54"
+    t.string   "r55",                 :limit => 20
+    t.string   "rm55",                :limit => 20
+    t.integer  "rdi55"
+    t.string   "r56",                 :limit => 20
+    t.string   "rm56",                :limit => 20
+    t.integer  "rdi56"
+    t.string   "r57",                 :limit => 20
+    t.string   "rm57",                :limit => 20
+    t.integer  "rdi57"
+    t.string   "r58",                 :limit => 20
+    t.string   "rm58",                :limit => 20
+    t.integer  "rdi58"
+    t.string   "r59",                 :limit => 20
+    t.string   "rm59",                :limit => 20
+    t.integer  "rdi59"
+    t.string   "r60",                 :limit => 20
+    t.string   "rm60",                :limit => 20
+    t.integer  "rdi60"
+    t.string   "r61",                 :limit => 20
+    t.string   "rm61",                :limit => 20
+    t.integer  "rdi61"
+    t.string   "r62",                 :limit => 20
+    t.string   "rm62",                :limit => 20
+    t.integer  "rdi62"
+    t.string   "r63",                 :limit => 20
+    t.string   "rm63",                :limit => 20
+    t.integer  "rdi63"
+    t.string   "r64",                 :limit => 20
+    t.string   "rm64",                :limit => 20
+    t.integer  "rdi64"
+    t.string   "r65",                 :limit => 20
+    t.string   "rm65",                :limit => 20
+    t.integer  "rdi65"
+    t.string   "r66",                 :limit => 20
+    t.string   "rm66",                :limit => 20
+    t.integer  "rdi66"
+    t.string   "r67",                 :limit => 20
+    t.string   "rm67",                :limit => 20
+    t.integer  "rdi67"
+    t.string   "r68",                 :limit => 20
+    t.string   "rm68",                :limit => 20
+    t.integer  "rdi68"
+    t.string   "r69",                 :limit => 20
+    t.string   "rm69",                :limit => 20
+    t.integer  "rdi69"
+    t.string   "r70",                 :limit => 20
+    t.string   "rm70",                :limit => 20
+    t.integer  "rdi70"
+    t.string   "r71",                 :limit => 20
+    t.string   "rm71",                :limit => 20
+    t.integer  "rdi71"
+    t.string   "r72",                 :limit => 20
+    t.string   "rm72",                :limit => 20
+    t.integer  "rdi72"
+    t.string   "r73",                 :limit => 20
+    t.string   "rm73",                :limit => 20
+    t.integer  "rdi73"
+    t.string   "r74",                 :limit => 20
+    t.string   "rm74",                :limit => 20
+    t.integer  "rdi74"
+    t.string   "r75",                 :limit => 20
+    t.string   "rm75",                :limit => 20
+    t.integer  "rdi75"
+    t.string   "r76",                 :limit => 20
+    t.string   "rm76",                :limit => 20
+    t.integer  "rdi76"
+    t.string   "r77",                 :limit => 20
+    t.string   "rm77",                :limit => 20
+    t.integer  "rdi77"
+    t.string   "r78",                 :limit => 20
+    t.string   "rm78",                :limit => 20
+    t.integer  "rdi78"
+    t.string   "r79",                 :limit => 20
+    t.string   "rm79",                :limit => 20
+    t.integer  "rdi79"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346553", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346555", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                        :precision => 10, :scale => 0
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number"
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                        :default => false
+    t.string   "delivery_days_price"
+    t.decimal  "weight_grams",                      :precision => 10, :scale => 0
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "r0",                  :limit => 20
+    t.string   "rm0",                 :limit => 20
+    t.integer  "rdi0"
+    t.string   "r1",                  :limit => 20
+    t.string   "rm1",                 :limit => 20
+    t.integer  "rdi1"
+    t.string   "r2",                  :limit => 20
+    t.string   "rm2",                 :limit => 20
+    t.integer  "rdi2"
+    t.string   "r3",                  :limit => 20
+    t.string   "rm3",                 :limit => 20
+    t.integer  "rdi3"
+    t.string   "r4",                  :limit => 20
+    t.string   "rm4",                 :limit => 20
+    t.integer  "rdi4"
+    t.string   "r5",                  :limit => 20
+    t.string   "rm5",                 :limit => 20
+    t.integer  "rdi5"
+    t.string   "r6",                  :limit => 20
+    t.string   "rm6",                 :limit => 20
+    t.integer  "rdi6"
+    t.string   "r7",                  :limit => 20
+    t.string   "rm7",                 :limit => 20
+    t.integer  "rdi7"
+    t.string   "r8",                  :limit => 20
+    t.string   "rm8",                 :limit => 20
+    t.integer  "rdi8"
+    t.string   "r9",                  :limit => 20
+    t.string   "rm9",                 :limit => 20
+    t.integer  "rdi9"
+    t.string   "r10",                 :limit => 20
+    t.string   "rm10",                :limit => 20
+    t.integer  "rdi10"
+    t.string   "r11",                 :limit => 20
+    t.string   "rm11",                :limit => 20
+    t.integer  "rdi11"
+    t.string   "r12",                 :limit => 20
+    t.string   "rm12",                :limit => 20
+    t.integer  "rdi12"
+    t.string   "r13",                 :limit => 20
+    t.string   "rm13",                :limit => 20
+    t.integer  "rdi13"
+    t.string   "r14",                 :limit => 20
+    t.string   "rm14",                :limit => 20
+    t.integer  "rdi14"
+    t.string   "r15",                 :limit => 20
+    t.string   "rm15",                :limit => 20
+    t.integer  "rdi15"
+    t.string   "r16",                 :limit => 20
+    t.string   "rm16",                :limit => 20
+    t.integer  "rdi16"
+    t.string   "r17",                 :limit => 20
+    t.string   "rm17",                :limit => 20
+    t.integer  "rdi17"
+    t.string   "r18",                 :limit => 20
+    t.string   "rm18",                :limit => 20
+    t.integer  "rdi18"
+    t.string   "r19",                 :limit => 20
+    t.string   "rm19",                :limit => 20
+    t.integer  "rdi19"
+    t.string   "r20",                 :limit => 20
+    t.string   "rm20",                :limit => 20
+    t.integer  "rdi20"
+    t.string   "r21",                 :limit => 20
+    t.string   "rm21",                :limit => 20
+    t.integer  "rdi21"
+    t.string   "r22",                 :limit => 20
+    t.string   "rm22",                :limit => 20
+    t.integer  "rdi22"
+    t.string   "r23",                 :limit => 20
+    t.string   "rm23",                :limit => 20
+    t.integer  "rdi23"
+    t.string   "r24",                 :limit => 20
+    t.string   "rm24",                :limit => 20
+    t.integer  "rdi24"
+    t.string   "r25",                 :limit => 20
+    t.string   "rm25",                :limit => 20
+    t.integer  "rdi25"
+    t.string   "r26",                 :limit => 20
+    t.string   "rm26",                :limit => 20
+    t.integer  "rdi26"
+    t.string   "r27",                 :limit => 20
+    t.string   "rm27",                :limit => 20
+    t.integer  "rdi27"
+    t.string   "r28",                 :limit => 20
+    t.string   "rm28",                :limit => 20
+    t.integer  "rdi28"
+    t.string   "r29",                 :limit => 20
+    t.string   "rm29",                :limit => 20
+    t.integer  "rdi29"
+    t.string   "r30",                 :limit => 20
+    t.string   "rm30",                :limit => 20
+    t.integer  "rdi30"
+    t.string   "r31",                 :limit => 20
+    t.string   "rm31",                :limit => 20
+    t.integer  "rdi31"
+    t.string   "r32",                 :limit => 20
+    t.string   "rm32",                :limit => 20
+    t.integer  "rdi32"
+    t.string   "r33",                 :limit => 20
+    t.string   "rm33",                :limit => 20
+    t.integer  "rdi33"
+    t.string   "r34",                 :limit => 20
+    t.string   "rm34",                :limit => 20
+    t.integer  "rdi34"
+    t.string   "r35",                 :limit => 20
+    t.string   "rm35",                :limit => 20
+    t.integer  "rdi35"
+    t.string   "r36",                 :limit => 20
+    t.string   "rm36",                :limit => 20
+    t.integer  "rdi36"
+    t.string   "r37",                 :limit => 20
+    t.string   "rm37",                :limit => 20
+    t.integer  "rdi37"
+    t.string   "r38",                 :limit => 20
+    t.string   "rm38",                :limit => 20
+    t.integer  "rdi38"
+    t.string   "r39",                 :limit => 20
+    t.string   "rm39",                :limit => 20
+    t.integer  "rdi39"
+    t.string   "r40",                 :limit => 20
+    t.string   "rm40",                :limit => 20
+    t.integer  "rdi40"
+    t.string   "r41",                 :limit => 20
+    t.string   "rm41",                :limit => 20
+    t.integer  "rdi41"
+    t.string   "r42",                 :limit => 20
+    t.string   "rm42",                :limit => 20
+    t.integer  "rdi42"
+    t.string   "r43",                 :limit => 20
+    t.string   "rm43",                :limit => 20
+    t.integer  "rdi43"
+    t.string   "r44",                 :limit => 20
+    t.string   "rm44",                :limit => 20
+    t.integer  "rdi44"
+    t.string   "r45",                 :limit => 20
+    t.string   "rm45",                :limit => 20
+    t.integer  "rdi45"
+    t.string   "r46",                 :limit => 20
+    t.string   "rm46",                :limit => 20
+    t.integer  "rdi46"
+    t.string   "r47",                 :limit => 20
+    t.string   "rm47",                :limit => 20
+    t.integer  "rdi47"
+    t.string   "r48",                 :limit => 20
+    t.string   "rm48",                :limit => 20
+    t.integer  "rdi48"
+    t.string   "r49",                 :limit => 20
+    t.string   "rm49",                :limit => 20
+    t.integer  "rdi49"
+    t.string   "r50",                 :limit => 20
+    t.string   "rm50",                :limit => 20
+    t.integer  "rdi50"
+    t.string   "r51",                 :limit => 20
+    t.string   "rm51",                :limit => 20
+    t.integer  "rdi51"
+    t.string   "r52",                 :limit => 20
+    t.string   "rm52",                :limit => 20
+    t.integer  "rdi52"
+    t.string   "r53",                 :limit => 20
+    t.string   "rm53",                :limit => 20
+    t.integer  "rdi53"
+    t.string   "r54",                 :limit => 20
+    t.string   "rm54",                :limit => 20
+    t.integer  "rdi54"
+    t.string   "r55",                 :limit => 20
+    t.string   "rm55",                :limit => 20
+    t.integer  "rdi55"
+    t.string   "r56",                 :limit => 20
+    t.string   "rm56",                :limit => 20
+    t.integer  "rdi56"
+    t.string   "r57",                 :limit => 20
+    t.string   "rm57",                :limit => 20
+    t.integer  "rdi57"
+    t.string   "r58",                 :limit => 20
+    t.string   "rm58",                :limit => 20
+    t.integer  "rdi58"
+    t.string   "r59",                 :limit => 20
+    t.string   "rm59",                :limit => 20
+    t.integer  "rdi59"
+    t.string   "r60",                 :limit => 20
+    t.string   "rm60",                :limit => 20
+    t.integer  "rdi60"
+    t.string   "r61",                 :limit => 20
+    t.string   "rm61",                :limit => 20
+    t.integer  "rdi61"
+    t.string   "r62",                 :limit => 20
+    t.string   "rm62",                :limit => 20
+    t.integer  "rdi62"
+    t.string   "r63",                 :limit => 20
+    t.string   "rm63",                :limit => 20
+    t.integer  "rdi63"
+    t.string   "r64",                 :limit => 20
+    t.string   "rm64",                :limit => 20
+    t.integer  "rdi64"
+    t.string   "r65",                 :limit => 20
+    t.string   "rm65",                :limit => 20
+    t.integer  "rdi65"
+    t.string   "r66",                 :limit => 20
+    t.string   "rm66",                :limit => 20
+    t.integer  "rdi66"
+    t.string   "r67",                 :limit => 20
+    t.string   "rm67",                :limit => 20
+    t.integer  "rdi67"
+    t.string   "r68",                 :limit => 20
+    t.string   "rm68",                :limit => 20
+    t.integer  "rdi68"
+    t.string   "r69",                 :limit => 20
+    t.string   "rm69",                :limit => 20
+    t.integer  "rdi69"
+    t.string   "r70",                 :limit => 20
+    t.string   "rm70",                :limit => 20
+    t.integer  "rdi70"
+    t.string   "r71",                 :limit => 20
+    t.string   "rm71",                :limit => 20
+    t.integer  "rdi71"
+    t.string   "r72",                 :limit => 20
+    t.string   "rm72",                :limit => 20
+    t.integer  "rdi72"
+    t.string   "r73",                 :limit => 20
+    t.string   "rm73",                :limit => 20
+    t.integer  "rdi73"
+    t.string   "r74",                 :limit => 20
+    t.string   "rm74",                :limit => 20
+    t.integer  "rdi74"
+    t.string   "r75",                 :limit => 20
+    t.string   "rm75",                :limit => 20
+    t.integer  "rdi75"
+    t.string   "r76",                 :limit => 20
+    t.string   "rm76",                :limit => 20
+    t.integer  "rdi76"
+    t.string   "r77",                 :limit => 20
+    t.string   "rm77",                :limit => 20
+    t.integer  "rdi77"
+    t.string   "r78",                 :limit => 20
+    t.string   "rm78",                :limit => 20
+    t.integer  "rdi78"
+    t.string   "r79",                 :limit => 20
+    t.string   "rm79",                :limit => 20
+    t.integer  "rdi79"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346555", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346573", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number"
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                        :default => false
+    t.string   "delivery_days_price"
+    t.decimal  "weight_grams",                      :precision => 10, :scale => 0
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "r0",                  :limit => 20
+    t.string   "rm0",                 :limit => 20
+    t.integer  "rdi0"
+    t.string   "r1",                  :limit => 20
+    t.string   "rm1",                 :limit => 20
+    t.integer  "rdi1"
+    t.string   "r2",                  :limit => 20
+    t.string   "rm2",                 :limit => 20
+    t.integer  "rdi2"
+    t.string   "r3",                  :limit => 20
+    t.string   "rm3",                 :limit => 20
+    t.integer  "rdi3"
+    t.string   "r4",                  :limit => 20
+    t.string   "rm4",                 :limit => 20
+    t.integer  "rdi4"
+    t.string   "r5",                  :limit => 20
+    t.string   "rm5",                 :limit => 20
+    t.integer  "rdi5"
+    t.string   "r6",                  :limit => 20
+    t.string   "rm6",                 :limit => 20
+    t.integer  "rdi6"
+    t.string   "r7",                  :limit => 20
+    t.string   "rm7",                 :limit => 20
+    t.integer  "rdi7"
+    t.string   "r8",                  :limit => 20
+    t.string   "rm8",                 :limit => 20
+    t.integer  "rdi8"
+    t.string   "r9",                  :limit => 20
+    t.string   "rm9",                 :limit => 20
+    t.integer  "rdi9"
+    t.string   "r10",                 :limit => 20
+    t.string   "rm10",                :limit => 20
+    t.integer  "rdi10"
+    t.string   "r11",                 :limit => 20
+    t.string   "rm11",                :limit => 20
+    t.integer  "rdi11"
+    t.string   "r12",                 :limit => 20
+    t.string   "rm12",                :limit => 20
+    t.integer  "rdi12"
+    t.string   "r13",                 :limit => 20
+    t.string   "rm13",                :limit => 20
+    t.integer  "rdi13"
+    t.string   "r14",                 :limit => 20
+    t.string   "rm14",                :limit => 20
+    t.integer  "rdi14"
+    t.string   "r15",                 :limit => 20
+    t.string   "rm15",                :limit => 20
+    t.integer  "rdi15"
+    t.string   "r16",                 :limit => 20
+    t.string   "rm16",                :limit => 20
+    t.integer  "rdi16"
+    t.string   "r17",                 :limit => 20
+    t.string   "rm17",                :limit => 20
+    t.integer  "rdi17"
+    t.string   "r18",                 :limit => 20
+    t.string   "rm18",                :limit => 20
+    t.integer  "rdi18"
+    t.string   "r19",                 :limit => 20
+    t.string   "rm19",                :limit => 20
+    t.integer  "rdi19"
+    t.string   "r20",                 :limit => 20
+    t.string   "rm20",                :limit => 20
+    t.integer  "rdi20"
+    t.string   "r21",                 :limit => 20
+    t.string   "rm21",                :limit => 20
+    t.integer  "rdi21"
+    t.string   "r22",                 :limit => 20
+    t.string   "rm22",                :limit => 20
+    t.integer  "rdi22"
+    t.string   "r23",                 :limit => 20
+    t.string   "rm23",                :limit => 20
+    t.integer  "rdi23"
+    t.string   "r24",                 :limit => 20
+    t.string   "rm24",                :limit => 20
+    t.integer  "rdi24"
+    t.string   "r25",                 :limit => 20
+    t.string   "rm25",                :limit => 20
+    t.integer  "rdi25"
+    t.string   "r26",                 :limit => 20
+    t.string   "rm26",                :limit => 20
+    t.integer  "rdi26"
+    t.string   "r27",                 :limit => 20
+    t.string   "rm27",                :limit => 20
+    t.integer  "rdi27"
+    t.string   "r28",                 :limit => 20
+    t.string   "rm28",                :limit => 20
+    t.integer  "rdi28"
+    t.string   "r29",                 :limit => 20
+    t.string   "rm29",                :limit => 20
+    t.integer  "rdi29"
+    t.string   "r30",                 :limit => 20
+    t.string   "rm30",                :limit => 20
+    t.integer  "rdi30"
+    t.string   "r31",                 :limit => 20
+    t.string   "rm31",                :limit => 20
+    t.integer  "rdi31"
+    t.string   "r32",                 :limit => 20
+    t.string   "rm32",                :limit => 20
+    t.integer  "rdi32"
+    t.string   "r33",                 :limit => 20
+    t.string   "rm33",                :limit => 20
+    t.integer  "rdi33"
+    t.string   "r34",                 :limit => 20
+    t.string   "rm34",                :limit => 20
+    t.integer  "rdi34"
+    t.string   "r35",                 :limit => 20
+    t.string   "rm35",                :limit => 20
+    t.integer  "rdi35"
+    t.string   "r36",                 :limit => 20
+    t.string   "rm36",                :limit => 20
+    t.integer  "rdi36"
+    t.string   "r37",                 :limit => 20
+    t.string   "rm37",                :limit => 20
+    t.integer  "rdi37"
+    t.string   "r38",                 :limit => 20
+    t.string   "rm38",                :limit => 20
+    t.integer  "rdi38"
+    t.string   "r39",                 :limit => 20
+    t.string   "rm39",                :limit => 20
+    t.integer  "rdi39"
+    t.string   "r40",                 :limit => 20
+    t.string   "rm40",                :limit => 20
+    t.integer  "rdi40"
+    t.string   "r41",                 :limit => 20
+    t.string   "rm41",                :limit => 20
+    t.integer  "rdi41"
+    t.string   "r42",                 :limit => 20
+    t.string   "rm42",                :limit => 20
+    t.integer  "rdi42"
+    t.string   "r43",                 :limit => 20
+    t.string   "rm43",                :limit => 20
+    t.integer  "rdi43"
+    t.string   "r44",                 :limit => 20
+    t.string   "rm44",                :limit => 20
+    t.integer  "rdi44"
+    t.string   "r45",                 :limit => 20
+    t.string   "rm45",                :limit => 20
+    t.integer  "rdi45"
+    t.string   "r46",                 :limit => 20
+    t.string   "rm46",                :limit => 20
+    t.integer  "rdi46"
+    t.string   "r47",                 :limit => 20
+    t.string   "rm47",                :limit => 20
+    t.integer  "rdi47"
+    t.string   "r48",                 :limit => 20
+    t.string   "rm48",                :limit => 20
+    t.integer  "rdi48"
+    t.string   "r49",                 :limit => 20
+    t.string   "rm49",                :limit => 20
+    t.integer  "rdi49"
+    t.string   "r50",                 :limit => 20
+    t.string   "rm50",                :limit => 20
+    t.integer  "rdi50"
+    t.string   "r51",                 :limit => 20
+    t.string   "rm51",                :limit => 20
+    t.integer  "rdi51"
+    t.string   "r52",                 :limit => 20
+    t.string   "rm52",                :limit => 20
+    t.integer  "rdi52"
+    t.string   "r53",                 :limit => 20
+    t.string   "rm53",                :limit => 20
+    t.integer  "rdi53"
+    t.string   "r54",                 :limit => 20
+    t.string   "rm54",                :limit => 20
+    t.integer  "rdi54"
+    t.string   "r55",                 :limit => 20
+    t.string   "rm55",                :limit => 20
+    t.integer  "rdi55"
+    t.string   "r56",                 :limit => 20
+    t.string   "rm56",                :limit => 20
+    t.integer  "rdi56"
+    t.string   "r57",                 :limit => 20
+    t.string   "rm57",                :limit => 20
+    t.integer  "rdi57"
+    t.string   "r58",                 :limit => 20
+    t.string   "rm58",                :limit => 20
+    t.integer  "rdi58"
+    t.string   "r59",                 :limit => 20
+    t.string   "rm59",                :limit => 20
+    t.integer  "rdi59"
+    t.string   "r60",                 :limit => 20
+    t.string   "rm60",                :limit => 20
+    t.integer  "rdi60"
+    t.string   "r61",                 :limit => 20
+    t.string   "rm61",                :limit => 20
+    t.integer  "rdi61"
+    t.string   "r62",                 :limit => 20
+    t.string   "rm62",                :limit => 20
+    t.integer  "rdi62"
+    t.string   "r63",                 :limit => 20
+    t.string   "rm63",                :limit => 20
+    t.integer  "rdi63"
+    t.string   "r64",                 :limit => 20
+    t.string   "rm64",                :limit => 20
+    t.integer  "rdi64"
+    t.string   "r65",                 :limit => 20
+    t.string   "rm65",                :limit => 20
+    t.integer  "rdi65"
+    t.string   "r66",                 :limit => 20
+    t.string   "rm66",                :limit => 20
+    t.integer  "rdi66"
+    t.string   "r67",                 :limit => 20
+    t.string   "rm67",                :limit => 20
+    t.integer  "rdi67"
+    t.string   "r68",                 :limit => 20
+    t.string   "rm68",                :limit => 20
+    t.integer  "rdi68"
+    t.string   "r69",                 :limit => 20
+    t.string   "rm69",                :limit => 20
+    t.integer  "rdi69"
+    t.string   "r70",                 :limit => 20
+    t.string   "rm70",                :limit => 20
+    t.integer  "rdi70"
+    t.string   "r71",                 :limit => 20
+    t.string   "rm71",                :limit => 20
+    t.integer  "rdi71"
+    t.string   "r72",                 :limit => 20
+    t.string   "rm72",                :limit => 20
+    t.integer  "rdi72"
+    t.string   "r73",                 :limit => 20
+    t.string   "rm73",                :limit => 20
+    t.integer  "rdi73"
+    t.string   "r74",                 :limit => 20
+    t.string   "rm74",                :limit => 20
+    t.integer  "rdi74"
+    t.string   "r75",                 :limit => 20
+    t.string   "rm75",                :limit => 20
+    t.integer  "rdi75"
+    t.string   "r76",                 :limit => 20
+    t.string   "rm76",                :limit => 20
+    t.integer  "rdi76"
+    t.string   "r77",                 :limit => 20
+    t.string   "rm77",                :limit => 20
+    t.integer  "rdi77"
+    t.string   "r78",                 :limit => 20
+    t.string   "rm78",                :limit => 20
+    t.integer  "rdi78"
+    t.string   "r79",                 :limit => 20
+    t.string   "rm79",                :limit => 20
+    t.integer  "rdi79"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346573", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346575", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number"
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                        :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "r0",                  :limit => 20
+    t.string   "rm0",                 :limit => 20
+    t.integer  "rdi0"
+    t.string   "r1",                  :limit => 20
+    t.string   "rm1",                 :limit => 20
+    t.integer  "rdi1"
+    t.string   "r2",                  :limit => 20
+    t.string   "rm2",                 :limit => 20
+    t.integer  "rdi2"
+    t.string   "r3",                  :limit => 20
+    t.string   "rm3",                 :limit => 20
+    t.integer  "rdi3"
+    t.string   "r4",                  :limit => 20
+    t.string   "rm4",                 :limit => 20
+    t.integer  "rdi4"
+    t.string   "r5",                  :limit => 20
+    t.string   "rm5",                 :limit => 20
+    t.integer  "rdi5"
+    t.string   "r6",                  :limit => 20
+    t.string   "rm6",                 :limit => 20
+    t.integer  "rdi6"
+    t.string   "r7",                  :limit => 20
+    t.string   "rm7",                 :limit => 20
+    t.integer  "rdi7"
+    t.string   "r8",                  :limit => 20
+    t.string   "rm8",                 :limit => 20
+    t.integer  "rdi8"
+    t.string   "r9",                  :limit => 20
+    t.string   "rm9",                 :limit => 20
+    t.integer  "rdi9"
+    t.string   "r10",                 :limit => 20
+    t.string   "rm10",                :limit => 20
+    t.integer  "rdi10"
+    t.string   "r11",                 :limit => 20
+    t.string   "rm11",                :limit => 20
+    t.integer  "rdi11"
+    t.string   "r12",                 :limit => 20
+    t.string   "rm12",                :limit => 20
+    t.integer  "rdi12"
+    t.string   "r13",                 :limit => 20
+    t.string   "rm13",                :limit => 20
+    t.integer  "rdi13"
+    t.string   "r14",                 :limit => 20
+    t.string   "rm14",                :limit => 20
+    t.integer  "rdi14"
+    t.string   "r15",                 :limit => 20
+    t.string   "rm15",                :limit => 20
+    t.integer  "rdi15"
+    t.string   "r16",                 :limit => 20
+    t.string   "rm16",                :limit => 20
+    t.integer  "rdi16"
+    t.string   "r17",                 :limit => 20
+    t.string   "rm17",                :limit => 20
+    t.integer  "rdi17"
+    t.string   "r18",                 :limit => 20
+    t.string   "rm18",                :limit => 20
+    t.integer  "rdi18"
+    t.string   "r19",                 :limit => 20
+    t.string   "rm19",                :limit => 20
+    t.integer  "rdi19"
+    t.string   "r20",                 :limit => 20
+    t.string   "rm20",                :limit => 20
+    t.integer  "rdi20"
+    t.string   "r21",                 :limit => 20
+    t.string   "rm21",                :limit => 20
+    t.integer  "rdi21"
+    t.string   "r22",                 :limit => 20
+    t.string   "rm22",                :limit => 20
+    t.integer  "rdi22"
+    t.string   "r23",                 :limit => 20
+    t.string   "rm23",                :limit => 20
+    t.integer  "rdi23"
+    t.string   "r24",                 :limit => 20
+    t.string   "rm24",                :limit => 20
+    t.integer  "rdi24"
+    t.string   "r25",                 :limit => 20
+    t.string   "rm25",                :limit => 20
+    t.integer  "rdi25"
+    t.string   "r26",                 :limit => 20
+    t.string   "rm26",                :limit => 20
+    t.integer  "rdi26"
+    t.string   "r27",                 :limit => 20
+    t.string   "rm27",                :limit => 20
+    t.integer  "rdi27"
+    t.string   "r28",                 :limit => 20
+    t.string   "rm28",                :limit => 20
+    t.integer  "rdi28"
+    t.string   "r29",                 :limit => 20
+    t.string   "rm29",                :limit => 20
+    t.integer  "rdi29"
+    t.string   "r30",                 :limit => 20
+    t.string   "rm30",                :limit => 20
+    t.integer  "rdi30"
+    t.string   "r31",                 :limit => 20
+    t.string   "rm31",                :limit => 20
+    t.integer  "rdi31"
+    t.string   "r32",                 :limit => 20
+    t.string   "rm32",                :limit => 20
+    t.integer  "rdi32"
+    t.string   "r33",                 :limit => 20
+    t.string   "rm33",                :limit => 20
+    t.integer  "rdi33"
+    t.string   "r34",                 :limit => 20
+    t.string   "rm34",                :limit => 20
+    t.integer  "rdi34"
+    t.string   "r35",                 :limit => 20
+    t.string   "rm35",                :limit => 20
+    t.integer  "rdi35"
+    t.string   "r36",                 :limit => 20
+    t.string   "rm36",                :limit => 20
+    t.integer  "rdi36"
+    t.string   "r37",                 :limit => 20
+    t.string   "rm37",                :limit => 20
+    t.integer  "rdi37"
+    t.string   "r38",                 :limit => 20
+    t.string   "rm38",                :limit => 20
+    t.integer  "rdi38"
+    t.string   "r39",                 :limit => 20
+    t.string   "rm39",                :limit => 20
+    t.integer  "rdi39"
+    t.string   "r40",                 :limit => 20
+    t.string   "rm40",                :limit => 20
+    t.integer  "rdi40"
+    t.string   "r41",                 :limit => 20
+    t.string   "rm41",                :limit => 20
+    t.integer  "rdi41"
+    t.string   "r42",                 :limit => 20
+    t.string   "rm42",                :limit => 20
+    t.integer  "rdi42"
+    t.string   "r43",                 :limit => 20
+    t.string   "rm43",                :limit => 20
+    t.integer  "rdi43"
+    t.string   "r44",                 :limit => 20
+    t.string   "rm44",                :limit => 20
+    t.integer  "rdi44"
+    t.string   "r45",                 :limit => 20
+    t.string   "rm45",                :limit => 20
+    t.integer  "rdi45"
+    t.string   "r46",                 :limit => 20
+    t.string   "rm46",                :limit => 20
+    t.integer  "rdi46"
+    t.string   "r47",                 :limit => 20
+    t.string   "rm47",                :limit => 20
+    t.integer  "rdi47"
+    t.string   "r48",                 :limit => 20
+    t.string   "rm48",                :limit => 20
+    t.integer  "rdi48"
+    t.string   "r49",                 :limit => 20
+    t.string   "rm49",                :limit => 20
+    t.integer  "rdi49"
+    t.string   "r50",                 :limit => 20
+    t.string   "rm50",                :limit => 20
+    t.integer  "rdi50"
+    t.string   "r51",                 :limit => 20
+    t.string   "rm51",                :limit => 20
+    t.integer  "rdi51"
+    t.string   "r52",                 :limit => 20
+    t.string   "rm52",                :limit => 20
+    t.integer  "rdi52"
+    t.string   "r53",                 :limit => 20
+    t.string   "rm53",                :limit => 20
+    t.integer  "rdi53"
+    t.string   "r54",                 :limit => 20
+    t.string   "rm54",                :limit => 20
+    t.integer  "rdi54"
+    t.string   "r55",                 :limit => 20
+    t.string   "rm55",                :limit => 20
+    t.integer  "rdi55"
+    t.string   "r56",                 :limit => 20
+    t.string   "rm56",                :limit => 20
+    t.integer  "rdi56"
+    t.string   "r57",                 :limit => 20
+    t.string   "rm57",                :limit => 20
+    t.integer  "rdi57"
+    t.string   "r58",                 :limit => 20
+    t.string   "rm58",                :limit => 20
+    t.integer  "rdi58"
+    t.string   "r59",                 :limit => 20
+    t.string   "rm59",                :limit => 20
+    t.integer  "rdi59"
+    t.string   "r60",                 :limit => 20
+    t.string   "rm60",                :limit => 20
+    t.integer  "rdi60"
+    t.string   "r61",                 :limit => 20
+    t.string   "rm61",                :limit => 20
+    t.integer  "rdi61"
+    t.string   "r62",                 :limit => 20
+    t.string   "rm62",                :limit => 20
+    t.integer  "rdi62"
+    t.string   "r63",                 :limit => 20
+    t.string   "rm63",                :limit => 20
+    t.integer  "rdi63"
+    t.string   "r64",                 :limit => 20
+    t.string   "rm64",                :limit => 20
+    t.integer  "rdi64"
+    t.string   "r65",                 :limit => 20
+    t.string   "rm65",                :limit => 20
+    t.integer  "rdi65"
+    t.string   "r66",                 :limit => 20
+    t.string   "rm66",                :limit => 20
+    t.integer  "rdi66"
+    t.string   "r67",                 :limit => 20
+    t.string   "rm67",                :limit => 20
+    t.integer  "rdi67"
+    t.string   "r68",                 :limit => 20
+    t.string   "rm68",                :limit => 20
+    t.integer  "rdi68"
+    t.string   "r69",                 :limit => 20
+    t.string   "rm69",                :limit => 20
+    t.integer  "rdi69"
+    t.string   "r70",                 :limit => 20
+    t.string   "rm70",                :limit => 20
+    t.integer  "rdi70"
+    t.string   "r71",                 :limit => 20
+    t.string   "rm71",                :limit => 20
+    t.integer  "rdi71"
+    t.string   "r72",                 :limit => 20
+    t.string   "rm72",                :limit => 20
+    t.integer  "rdi72"
+    t.string   "r73",                 :limit => 20
+    t.string   "rm73",                :limit => 20
+    t.integer  "rdi73"
+    t.string   "r74",                 :limit => 20
+    t.string   "rm74",                :limit => 20
+    t.integer  "rdi74"
+    t.string   "r75",                 :limit => 20
+    t.string   "rm75",                :limit => 20
+    t.integer  "rdi75"
+    t.string   "r76",                 :limit => 20
+    t.string   "rm76",                :limit => 20
+    t.integer  "rdi76"
+    t.string   "r77",                 :limit => 20
+    t.string   "rm77",                :limit => 20
+    t.integer  "rdi77"
+    t.string   "r78",                 :limit => 20
+    t.string   "rm78",                :limit => 20
+    t.integer  "rdi78"
+    t.string   "r79",                 :limit => 20
+    t.string   "rm79",                :limit => 20
+    t.integer  "rdi79"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346575", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346576", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346576", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346579", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                        :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number"
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                        :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "r0",                  :limit => 20
+    t.string   "rm0",                 :limit => 20
+    t.integer  "rdi0"
+    t.string   "r1",                  :limit => 20
+    t.string   "rm1",                 :limit => 20
+    t.integer  "rdi1"
+    t.string   "r2",                  :limit => 20
+    t.string   "rm2",                 :limit => 20
+    t.integer  "rdi2"
+    t.string   "r3",                  :limit => 20
+    t.string   "rm3",                 :limit => 20
+    t.integer  "rdi3"
+    t.string   "r4",                  :limit => 20
+    t.string   "rm4",                 :limit => 20
+    t.integer  "rdi4"
+    t.string   "r5",                  :limit => 20
+    t.string   "rm5",                 :limit => 20
+    t.integer  "rdi5"
+    t.string   "r6",                  :limit => 20
+    t.string   "rm6",                 :limit => 20
+    t.integer  "rdi6"
+    t.string   "r7",                  :limit => 20
+    t.string   "rm7",                 :limit => 20
+    t.integer  "rdi7"
+    t.string   "r8",                  :limit => 20
+    t.string   "rm8",                 :limit => 20
+    t.integer  "rdi8"
+    t.string   "r9",                  :limit => 20
+    t.string   "rm9",                 :limit => 20
+    t.integer  "rdi9"
+    t.string   "r10",                 :limit => 20
+    t.string   "rm10",                :limit => 20
+    t.integer  "rdi10"
+    t.string   "r11",                 :limit => 20
+    t.string   "rm11",                :limit => 20
+    t.integer  "rdi11"
+    t.string   "r12",                 :limit => 20
+    t.string   "rm12",                :limit => 20
+    t.integer  "rdi12"
+    t.string   "r13",                 :limit => 20
+    t.string   "rm13",                :limit => 20
+    t.integer  "rdi13"
+    t.string   "r14",                 :limit => 20
+    t.string   "rm14",                :limit => 20
+    t.integer  "rdi14"
+    t.string   "r15",                 :limit => 20
+    t.string   "rm15",                :limit => 20
+    t.integer  "rdi15"
+    t.string   "r16",                 :limit => 20
+    t.string   "rm16",                :limit => 20
+    t.integer  "rdi16"
+    t.string   "r17",                 :limit => 20
+    t.string   "rm17",                :limit => 20
+    t.integer  "rdi17"
+    t.string   "r18",                 :limit => 20
+    t.string   "rm18",                :limit => 20
+    t.integer  "rdi18"
+    t.string   "r19",                 :limit => 20
+    t.string   "rm19",                :limit => 20
+    t.integer  "rdi19"
+    t.string   "r20",                 :limit => 20
+    t.string   "rm20",                :limit => 20
+    t.integer  "rdi20"
+    t.string   "r21",                 :limit => 20
+    t.string   "rm21",                :limit => 20
+    t.integer  "rdi21"
+    t.string   "r22",                 :limit => 20
+    t.string   "rm22",                :limit => 20
+    t.integer  "rdi22"
+    t.string   "r23",                 :limit => 20
+    t.string   "rm23",                :limit => 20
+    t.integer  "rdi23"
+    t.string   "r24",                 :limit => 20
+    t.string   "rm24",                :limit => 20
+    t.integer  "rdi24"
+    t.string   "r25",                 :limit => 20
+    t.string   "rm25",                :limit => 20
+    t.integer  "rdi25"
+    t.string   "r26",                 :limit => 20
+    t.string   "rm26",                :limit => 20
+    t.integer  "rdi26"
+    t.string   "r27",                 :limit => 20
+    t.string   "rm27",                :limit => 20
+    t.integer  "rdi27"
+    t.string   "r28",                 :limit => 20
+    t.string   "rm28",                :limit => 20
+    t.integer  "rdi28"
+    t.string   "r29",                 :limit => 20
+    t.string   "rm29",                :limit => 20
+    t.integer  "rdi29"
+    t.string   "r30",                 :limit => 20
+    t.string   "rm30",                :limit => 20
+    t.integer  "rdi30"
+    t.string   "r31",                 :limit => 20
+    t.string   "rm31",                :limit => 20
+    t.integer  "rdi31"
+    t.string   "r32",                 :limit => 20
+    t.string   "rm32",                :limit => 20
+    t.integer  "rdi32"
+    t.string   "r33",                 :limit => 20
+    t.string   "rm33",                :limit => 20
+    t.integer  "rdi33"
+    t.string   "r34",                 :limit => 20
+    t.string   "rm34",                :limit => 20
+    t.integer  "rdi34"
+    t.string   "r35",                 :limit => 20
+    t.string   "rm35",                :limit => 20
+    t.integer  "rdi35"
+    t.string   "r36",                 :limit => 20
+    t.string   "rm36",                :limit => 20
+    t.integer  "rdi36"
+    t.string   "r37",                 :limit => 20
+    t.string   "rm37",                :limit => 20
+    t.integer  "rdi37"
+    t.string   "r38",                 :limit => 20
+    t.string   "rm38",                :limit => 20
+    t.integer  "rdi38"
+    t.string   "r39",                 :limit => 20
+    t.string   "rm39",                :limit => 20
+    t.integer  "rdi39"
+    t.string   "r40",                 :limit => 20
+    t.string   "rm40",                :limit => 20
+    t.integer  "rdi40"
+    t.string   "r41",                 :limit => 20
+    t.string   "rm41",                :limit => 20
+    t.integer  "rdi41"
+    t.string   "r42",                 :limit => 20
+    t.string   "rm42",                :limit => 20
+    t.integer  "rdi42"
+    t.string   "r43",                 :limit => 20
+    t.string   "rm43",                :limit => 20
+    t.integer  "rdi43"
+    t.string   "r44",                 :limit => 20
+    t.string   "rm44",                :limit => 20
+    t.integer  "rdi44"
+    t.string   "r45",                 :limit => 20
+    t.string   "rm45",                :limit => 20
+    t.integer  "rdi45"
+    t.string   "r46",                 :limit => 20
+    t.string   "rm46",                :limit => 20
+    t.integer  "rdi46"
+    t.string   "r47",                 :limit => 20
+    t.string   "rm47",                :limit => 20
+    t.integer  "rdi47"
+    t.string   "r48",                 :limit => 20
+    t.string   "rm48",                :limit => 20
+    t.integer  "rdi48"
+    t.string   "r49",                 :limit => 20
+    t.string   "rm49",                :limit => 20
+    t.integer  "rdi49"
+    t.string   "r50",                 :limit => 20
+    t.string   "rm50",                :limit => 20
+    t.integer  "rdi50"
+    t.string   "r51",                 :limit => 20
+    t.string   "rm51",                :limit => 20
+    t.integer  "rdi51"
+    t.string   "r52",                 :limit => 20
+    t.string   "rm52",                :limit => 20
+    t.integer  "rdi52"
+    t.string   "r53",                 :limit => 20
+    t.string   "rm53",                :limit => 20
+    t.integer  "rdi53"
+    t.string   "r54",                 :limit => 20
+    t.string   "rm54",                :limit => 20
+    t.integer  "rdi54"
+    t.string   "r55",                 :limit => 20
+    t.string   "rm55",                :limit => 20
+    t.integer  "rdi55"
+    t.string   "r56",                 :limit => 20
+    t.string   "rm56",                :limit => 20
+    t.integer  "rdi56"
+    t.string   "r57",                 :limit => 20
+    t.string   "rm57",                :limit => 20
+    t.integer  "rdi57"
+    t.string   "r58",                 :limit => 20
+    t.string   "rm58",                :limit => 20
+    t.integer  "rdi58"
+    t.string   "r59",                 :limit => 20
+    t.string   "rm59",                :limit => 20
+    t.integer  "rdi59"
+    t.string   "r60",                 :limit => 20
+    t.string   "rm60",                :limit => 20
+    t.integer  "rdi60"
+    t.string   "r61",                 :limit => 20
+    t.string   "rm61",                :limit => 20
+    t.integer  "rdi61"
+    t.string   "r62",                 :limit => 20
+    t.string   "rm62",                :limit => 20
+    t.integer  "rdi62"
+    t.string   "r63",                 :limit => 20
+    t.string   "rm63",                :limit => 20
+    t.integer  "rdi63"
+    t.string   "r64",                 :limit => 20
+    t.string   "rm64",                :limit => 20
+    t.integer  "rdi64"
+    t.string   "r65",                 :limit => 20
+    t.string   "rm65",                :limit => 20
+    t.integer  "rdi65"
+    t.string   "r66",                 :limit => 20
+    t.string   "rm66",                :limit => 20
+    t.integer  "rdi66"
+    t.string   "r67",                 :limit => 20
+    t.string   "rm67",                :limit => 20
+    t.integer  "rdi67"
+    t.string   "r68",                 :limit => 20
+    t.string   "rm68",                :limit => 20
+    t.integer  "rdi68"
+    t.string   "r69",                 :limit => 20
+    t.string   "rm69",                :limit => 20
+    t.integer  "rdi69"
+    t.string   "r70",                 :limit => 20
+    t.string   "rm70",                :limit => 20
+    t.integer  "rdi70"
+    t.string   "r71",                 :limit => 20
+    t.string   "rm71",                :limit => 20
+    t.integer  "rdi71"
+    t.string   "r72",                 :limit => 20
+    t.string   "rm72",                :limit => 20
+    t.integer  "rdi72"
+    t.string   "r73",                 :limit => 20
+    t.string   "rm73",                :limit => 20
+    t.integer  "rdi73"
+    t.string   "r74",                 :limit => 20
+    t.string   "rm74",                :limit => 20
+    t.integer  "rdi74"
+    t.string   "r75",                 :limit => 20
+    t.string   "rm75",                :limit => 20
+    t.integer  "rdi75"
+    t.string   "r76",                 :limit => 20
+    t.string   "rm76",                :limit => 20
+    t.integer  "rdi76"
+    t.string   "r77",                 :limit => 20
+    t.string   "rm77",                :limit => 20
+    t.integer  "rdi77"
+    t.string   "r78",                 :limit => 20
+    t.string   "rm78",                :limit => 20
+    t.integer  "rdi78"
+    t.string   "r79",                 :limit => 20
+    t.string   "rm79",                :limit => 20
+    t.integer  "rdi79"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346579", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346584", :force => true do |t|
+    t.integer  "job_id"
+    t.string   "title"
+    t.string   "title_en"
+    t.integer  "count"
+    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
+    t.string   "manufacturer"
+    t.string   "manufacturer_orig"
+    t.string   "catalog_number",                :limit => 20
+    t.string   "catalog_number_orig",           :limit => 20
+    t.string   "new_catalog_number",            :limit => 20
+    t.string   "new_catalog_number_orig",       :limit => 20
+    t.string   "country"
+    t.string   "parts_group"
+    t.string   "doublet"
+    t.integer  "supplier_id"
+    t.string   "job_code"
+    t.boolean  "processed",                                                                  :default => false
+    t.string   "delivery_days_price"
+    t.integer  "weight_grams"
+    t.string   "external_id"
+    t.string   "unit_package"
+    t.string   "multiply_factor"
+    t.string   "min_order"
+    t.string   "description"
+    t.string   "unit"
+    t.string   "applicability"
+    t.string   "replacement",                   :limit => 20
+    t.string   "replacement_orig",              :limit => 20
+    t.string   "replacement_manufacturer",      :limit => 20
+    t.string   "replacement_manufacturer_orig", :limit => 20
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "price_import_1066346584", ["doublet"], :name => "doublet_idx"
+
+  create_table "price_import_1066346586", :force => true do |t|
     t.integer  "job_id"
     t.string   "title"
     t.string   "title_en"
@@ -53400,9 +58777,9 @@ ActiveRecord::Schema.define(:version => 20110225151639) do
     t.datetime "updated_at"
   end
 
-  add_index "price_import_103", ["doublet"], :name => "doublet_idx"
+  add_index "price_import_1066346586", ["doublet"], :name => "doublet_idx"
 
-  create_table "price_import_104", :force => true do |t|
+  create_table "price_import_1066346588", :force => true do |t|
     t.integer  "job_id"
     t.string   "title"
     t.string   "title_en"
@@ -53437,9 +58814,9 @@ ActiveRecord::Schema.define(:version => 20110225151639) do
     t.datetime "updated_at"
   end
 
-  add_index "price_import_104", ["doublet"], :name => "doublet_idx"
+  add_index "price_import_1066346588", ["doublet"], :name => "doublet_idx"
 
-  create_table "price_import_105", :force => true do |t|
+  create_table "price_import_1066346590", :force => true do |t|
     t.integer  "job_id"
     t.string   "title"
     t.string   "title_en"
@@ -53474,9 +58851,9 @@ ActiveRecord::Schema.define(:version => 20110225151639) do
     t.datetime "updated_at"
   end
 
-  add_index "price_import_105", ["doublet"], :name => "doublet_idx"
+  add_index "price_import_1066346590", ["doublet"], :name => "doublet_idx"
 
-  create_table "price_import_106", :force => true do |t|
+  create_table "price_import_1066346598", :force => true do |t|
     t.integer  "job_id"
     t.string   "title"
     t.string   "title_en"
@@ -53511,9 +58888,9 @@ ActiveRecord::Schema.define(:version => 20110225151639) do
     t.datetime "updated_at"
   end
 
-  add_index "price_import_106", ["doublet"], :name => "doublet_idx"
+  add_index "price_import_1066346598", ["doublet"], :name => "doublet_idx"
 
-  create_table "price_import_107", :force => true do |t|
+  create_table "price_import_1066346599", :force => true do |t|
     t.integer  "job_id"
     t.string   "title"
     t.string   "title_en"
@@ -53548,9 +58925,9 @@ ActiveRecord::Schema.define(:version => 20110225151639) do
     t.datetime "updated_at"
   end
 
-  add_index "price_import_107", ["doublet"], :name => "doublet_idx"
+  add_index "price_import_1066346599", ["doublet"], :name => "doublet_idx"
 
-  create_table "price_import_108", :force => true do |t|
+  create_table "price_import_1066346605", :force => true do |t|
     t.integer  "job_id"
     t.string   "title"
     t.string   "title_en"
@@ -53585,1302 +58962,7 @@ ActiveRecord::Schema.define(:version => 20110225151639) do
     t.datetime "updated_at"
   end
 
-  add_index "price_import_108", ["doublet"], :name => "doublet_idx"
-
-  create_table "price_import_109", :force => true do |t|
-    t.integer  "job_id"
-    t.string   "title"
-    t.string   "title_en"
-    t.integer  "count"
-    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "manufacturer_orig"
-    t.string   "catalog_number",                :limit => 20
-    t.string   "catalog_number_orig",           :limit => 20
-    t.string   "new_catalog_number",            :limit => 20
-    t.string   "new_catalog_number_orig",       :limit => 20
-    t.string   "country"
-    t.string   "parts_group"
-    t.string   "doublet"
-    t.integer  "supplier_id"
-    t.integer  "price_setting_id"
-    t.boolean  "processed",                                                                  :default => false
-    t.string   "delivery_days_price"
-    t.integer  "weight_grams"
-    t.string   "external_id"
-    t.string   "unit_package"
-    t.string   "multiply_factor"
-    t.string   "min_order"
-    t.string   "description"
-    t.string   "unit"
-    t.string   "applicability"
-    t.string   "replacement",                   :limit => 20
-    t.string   "replacement_orig",              :limit => 20
-    t.string   "replacement_manufacturer",      :limit => 20
-    t.string   "replacement_manufacturer_orig", :limit => 20
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "price_import_109", ["doublet"], :name => "doublet_idx"
-
-  create_table "price_import_11", :force => true do |t|
-    t.integer  "job_id"
-    t.string   "title"
-    t.string   "title_en"
-    t.integer  "count"
-    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "manufacturer_orig"
-    t.string   "catalog_number",                :limit => 20
-    t.string   "catalog_number_orig",           :limit => 20
-    t.string   "new_catalog_number",            :limit => 20
-    t.string   "new_catalog_number_orig",       :limit => 20
-    t.string   "country"
-    t.string   "parts_group"
-    t.string   "doublet"
-    t.integer  "supplier_id"
-    t.integer  "price_setting_id"
-    t.boolean  "processed",                                                                  :default => false
-    t.string   "delivery_days_price"
-    t.integer  "weight_grams"
-    t.string   "external_id"
-    t.string   "unit_package"
-    t.string   "multiply_factor"
-    t.string   "min_order"
-    t.string   "description"
-    t.string   "unit"
-    t.string   "applicability"
-    t.string   "replacement",                   :limit => 20
-    t.string   "replacement_orig",              :limit => 20
-    t.string   "replacement_manufacturer",      :limit => 20
-    t.string   "replacement_manufacturer_orig", :limit => 20
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "price_import_11", ["doublet"], :name => "doublet_idx"
-
-  create_table "price_import_110", :force => true do |t|
-    t.integer  "job_id"
-    t.string   "title"
-    t.string   "title_en"
-    t.integer  "count"
-    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "manufacturer_orig"
-    t.string   "catalog_number",                :limit => 20
-    t.string   "catalog_number_orig",           :limit => 20
-    t.string   "new_catalog_number",            :limit => 20
-    t.string   "new_catalog_number_orig",       :limit => 20
-    t.string   "country"
-    t.string   "parts_group"
-    t.string   "doublet"
-    t.integer  "supplier_id"
-    t.integer  "price_setting_id"
-    t.boolean  "processed",                                                                  :default => false
-    t.string   "delivery_days_price"
-    t.integer  "weight_grams"
-    t.string   "external_id"
-    t.string   "unit_package"
-    t.string   "multiply_factor"
-    t.string   "min_order"
-    t.string   "description"
-    t.string   "unit"
-    t.string   "applicability"
-    t.string   "replacement",                   :limit => 20
-    t.string   "replacement_orig",              :limit => 20
-    t.string   "replacement_manufacturer",      :limit => 20
-    t.string   "replacement_manufacturer_orig", :limit => 20
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "price_import_110", ["doublet"], :name => "doublet_idx"
-
-  create_table "price_import_111", :force => true do |t|
-    t.integer  "job_id"
-    t.string   "title"
-    t.string   "title_en"
-    t.integer  "count"
-    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "manufacturer_orig"
-    t.string   "catalog_number",                :limit => 20
-    t.string   "catalog_number_orig",           :limit => 20
-    t.string   "new_catalog_number",            :limit => 20
-    t.string   "new_catalog_number_orig",       :limit => 20
-    t.string   "country"
-    t.string   "parts_group"
-    t.string   "doublet"
-    t.integer  "supplier_id"
-    t.integer  "price_setting_id"
-    t.boolean  "processed",                                                                  :default => false
-    t.string   "delivery_days_price"
-    t.integer  "weight_grams"
-    t.string   "external_id"
-    t.string   "unit_package"
-    t.string   "multiply_factor"
-    t.string   "min_order"
-    t.string   "description"
-    t.string   "unit"
-    t.string   "applicability"
-    t.string   "replacement",                   :limit => 20
-    t.string   "replacement_orig",              :limit => 20
-    t.string   "replacement_manufacturer",      :limit => 20
-    t.string   "replacement_manufacturer_orig", :limit => 20
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "price_import_111", ["doublet"], :name => "doublet_idx"
-
-  create_table "price_import_112", :force => true do |t|
-    t.integer  "job_id"
-    t.string   "title"
-    t.string   "title_en"
-    t.integer  "count"
-    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "manufacturer_orig"
-    t.string   "catalog_number",                :limit => 20
-    t.string   "catalog_number_orig",           :limit => 20
-    t.string   "new_catalog_number",            :limit => 20
-    t.string   "new_catalog_number_orig",       :limit => 20
-    t.string   "country"
-    t.string   "parts_group"
-    t.string   "doublet"
-    t.integer  "supplier_id"
-    t.integer  "price_setting_id"
-    t.boolean  "processed",                                                                  :default => false
-    t.string   "delivery_days_price"
-    t.integer  "weight_grams"
-    t.string   "external_id"
-    t.string   "unit_package"
-    t.string   "multiply_factor"
-    t.string   "min_order"
-    t.string   "description"
-    t.string   "unit"
-    t.string   "applicability"
-    t.string   "replacement",                   :limit => 20
-    t.string   "replacement_orig",              :limit => 20
-    t.string   "replacement_manufacturer",      :limit => 20
-    t.string   "replacement_manufacturer_orig", :limit => 20
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "price_import_112", ["doublet"], :name => "doublet_idx"
-
-  create_table "price_import_113", :force => true do |t|
-    t.integer  "job_id"
-    t.string   "title"
-    t.string   "title_en"
-    t.integer  "count"
-    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "manufacturer_orig"
-    t.string   "catalog_number",                :limit => 20
-    t.string   "catalog_number_orig",           :limit => 20
-    t.string   "new_catalog_number",            :limit => 20
-    t.string   "new_catalog_number_orig",       :limit => 20
-    t.string   "country"
-    t.string   "parts_group"
-    t.string   "doublet"
-    t.integer  "supplier_id"
-    t.integer  "price_setting_id"
-    t.boolean  "processed",                                                                  :default => false
-    t.string   "delivery_days_price"
-    t.integer  "weight_grams"
-    t.string   "external_id"
-    t.string   "unit_package"
-    t.string   "multiply_factor"
-    t.string   "min_order"
-    t.string   "description"
-    t.string   "unit"
-    t.string   "applicability"
-    t.string   "replacement",                   :limit => 20
-    t.string   "replacement_orig",              :limit => 20
-    t.string   "replacement_manufacturer",      :limit => 20
-    t.string   "replacement_manufacturer_orig", :limit => 20
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "price_import_113", ["doublet"], :name => "doublet_idx"
-
-  create_table "price_import_114", :force => true do |t|
-    t.integer  "job_id"
-    t.string   "title"
-    t.string   "title_en"
-    t.integer  "count"
-    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "manufacturer_orig"
-    t.string   "catalog_number",                :limit => 20
-    t.string   "catalog_number_orig",           :limit => 20
-    t.string   "new_catalog_number",            :limit => 20
-    t.string   "new_catalog_number_orig",       :limit => 20
-    t.string   "country"
-    t.string   "parts_group"
-    t.string   "doublet"
-    t.integer  "supplier_id"
-    t.integer  "price_setting_id"
-    t.boolean  "processed",                                                                  :default => false
-    t.string   "delivery_days_price"
-    t.integer  "weight_grams"
-    t.string   "external_id"
-    t.string   "unit_package"
-    t.string   "multiply_factor"
-    t.string   "min_order"
-    t.string   "description"
-    t.string   "unit"
-    t.string   "applicability"
-    t.string   "replacement",                   :limit => 20
-    t.string   "replacement_orig",              :limit => 20
-    t.string   "replacement_manufacturer",      :limit => 20
-    t.string   "replacement_manufacturer_orig", :limit => 20
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "price_import_114", ["doublet"], :name => "doublet_idx"
-
-  create_table "price_import_115", :force => true do |t|
-    t.integer  "job_id"
-    t.string   "title"
-    t.string   "title_en"
-    t.integer  "count"
-    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "manufacturer_orig"
-    t.string   "catalog_number",                :limit => 20
-    t.string   "catalog_number_orig",           :limit => 20
-    t.string   "new_catalog_number",            :limit => 20
-    t.string   "new_catalog_number_orig",       :limit => 20
-    t.string   "country"
-    t.string   "parts_group"
-    t.string   "doublet"
-    t.integer  "supplier_id"
-    t.integer  "price_setting_id"
-    t.boolean  "processed",                                                                  :default => false
-    t.string   "delivery_days_price"
-    t.integer  "weight_grams"
-    t.string   "external_id"
-    t.string   "unit_package"
-    t.string   "multiply_factor"
-    t.string   "min_order"
-    t.string   "description"
-    t.string   "unit"
-    t.string   "applicability"
-    t.string   "replacement",                   :limit => 20
-    t.string   "replacement_orig",              :limit => 20
-    t.string   "replacement_manufacturer",      :limit => 20
-    t.string   "replacement_manufacturer_orig", :limit => 20
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "price_import_115", ["doublet"], :name => "doublet_idx"
-
-  create_table "price_import_116", :force => true do |t|
-    t.integer  "job_id"
-    t.string   "title"
-    t.string   "title_en"
-    t.integer  "count"
-    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "manufacturer_orig"
-    t.string   "catalog_number",                :limit => 20
-    t.string   "catalog_number_orig",           :limit => 20
-    t.string   "new_catalog_number",            :limit => 20
-    t.string   "new_catalog_number_orig",       :limit => 20
-    t.string   "country"
-    t.string   "parts_group"
-    t.string   "doublet"
-    t.integer  "supplier_id"
-    t.integer  "price_setting_id"
-    t.boolean  "processed",                                                                  :default => false
-    t.string   "delivery_days_price"
-    t.integer  "weight_grams"
-    t.string   "external_id"
-    t.string   "unit_package"
-    t.string   "multiply_factor"
-    t.string   "min_order"
-    t.string   "description"
-    t.string   "unit"
-    t.string   "applicability"
-    t.string   "replacement",                   :limit => 20
-    t.string   "replacement_orig",              :limit => 20
-    t.string   "replacement_manufacturer",      :limit => 20
-    t.string   "replacement_manufacturer_orig", :limit => 20
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "price_import_116", ["doublet"], :name => "doublet_idx"
-
-  create_table "price_import_12", :force => true do |t|
-    t.integer  "job_id"
-    t.string   "title"
-    t.string   "title_en"
-    t.integer  "count"
-    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "manufacturer_orig"
-    t.string   "catalog_number",                :limit => 20
-    t.string   "catalog_number_orig",           :limit => 20
-    t.string   "new_catalog_number",            :limit => 20
-    t.string   "new_catalog_number_orig",       :limit => 20
-    t.string   "country"
-    t.string   "parts_group"
-    t.string   "doublet"
-    t.integer  "supplier_id"
-    t.integer  "price_setting_id"
-    t.boolean  "processed",                                                                  :default => false
-    t.string   "delivery_days_price"
-    t.integer  "weight_grams"
-    t.string   "external_id"
-    t.string   "unit_package"
-    t.string   "multiply_factor"
-    t.string   "min_order"
-    t.string   "description"
-    t.string   "unit"
-    t.string   "applicability"
-    t.string   "replacement",                   :limit => 20
-    t.string   "replacement_orig",              :limit => 20
-    t.string   "replacement_manufacturer",      :limit => 20
-    t.string   "replacement_manufacturer_orig", :limit => 20
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "price_import_12", ["doublet"], :name => "doublet_idx"
-
-  create_table "price_import_121", :force => true do |t|
-    t.integer  "job_id"
-    t.string   "title"
-    t.string   "title_en"
-    t.integer  "count"
-    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "manufacturer_orig"
-    t.string   "catalog_number",                :limit => 20
-    t.string   "catalog_number_orig",           :limit => 20
-    t.string   "new_catalog_number",            :limit => 20
-    t.string   "new_catalog_number_orig",       :limit => 20
-    t.string   "country"
-    t.string   "parts_group"
-    t.string   "doublet"
-    t.integer  "supplier_id"
-    t.integer  "price_setting_id"
-    t.boolean  "processed",                                                                  :default => false
-    t.string   "delivery_days_price"
-    t.integer  "weight_grams"
-    t.string   "external_id"
-    t.string   "unit_package"
-    t.string   "multiply_factor"
-    t.string   "min_order"
-    t.string   "description"
-    t.string   "unit"
-    t.string   "applicability"
-    t.string   "replacement",                   :limit => 20
-    t.string   "replacement_orig",              :limit => 20
-    t.string   "replacement_manufacturer",      :limit => 20
-    t.string   "replacement_manufacturer_orig", :limit => 20
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "price_import_121", ["doublet"], :name => "doublet_idx"
-
-  create_table "price_import_125", :force => true do |t|
-    t.integer  "job_id"
-    t.string   "title"
-    t.string   "title_en"
-    t.integer  "count"
-    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "manufacturer_orig"
-    t.string   "catalog_number",                :limit => 20
-    t.string   "catalog_number_orig",           :limit => 20
-    t.string   "new_catalog_number",            :limit => 20
-    t.string   "new_catalog_number_orig",       :limit => 20
-    t.string   "country"
-    t.string   "parts_group"
-    t.string   "doublet"
-    t.integer  "supplier_id"
-    t.integer  "price_setting_id"
-    t.boolean  "processed",                                                                  :default => false
-    t.string   "delivery_days_price"
-    t.integer  "weight_grams"
-    t.string   "external_id"
-    t.string   "unit_package"
-    t.string   "multiply_factor"
-    t.string   "min_order"
-    t.string   "description"
-    t.string   "unit"
-    t.string   "applicability"
-    t.string   "replacement",                   :limit => 20
-    t.string   "replacement_orig",              :limit => 20
-    t.string   "replacement_manufacturer",      :limit => 20
-    t.string   "replacement_manufacturer_orig", :limit => 20
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "price_import_125", ["doublet"], :name => "doublet_idx"
-
-  create_table "price_import_20", :force => true do |t|
-    t.integer  "job_id"
-    t.string   "title"
-    t.string   "title_en"
-    t.integer  "count"
-    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "manufacturer_orig"
-    t.string   "catalog_number",                :limit => 20
-    t.string   "catalog_number_orig",           :limit => 20
-    t.string   "new_catalog_number",            :limit => 20
-    t.string   "new_catalog_number_orig",       :limit => 20
-    t.string   "country"
-    t.string   "parts_group"
-    t.string   "doublet"
-    t.integer  "supplier_id"
-    t.integer  "price_setting_id"
-    t.boolean  "processed",                                                                  :default => false
-    t.string   "delivery_days_price"
-    t.integer  "weight_grams"
-    t.string   "external_id"
-    t.string   "unit_package"
-    t.string   "multiply_factor"
-    t.string   "min_order"
-    t.string   "description"
-    t.string   "unit"
-    t.string   "applicability"
-    t.string   "replacement",                   :limit => 20
-    t.string   "replacement_orig",              :limit => 20
-    t.string   "replacement_manufacturer",      :limit => 20
-    t.string   "replacement_manufacturer_orig", :limit => 20
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "price_import_20", ["doublet"], :name => "doublet_idx"
-
-  create_table "price_import_25", :force => true do |t|
-    t.integer  "job_id"
-    t.string   "title"
-    t.string   "title_en"
-    t.integer  "count"
-    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "manufacturer_orig"
-    t.string   "catalog_number",                :limit => 20
-    t.string   "catalog_number_orig",           :limit => 20
-    t.string   "new_catalog_number",            :limit => 20
-    t.string   "new_catalog_number_orig",       :limit => 20
-    t.string   "country"
-    t.string   "parts_group"
-    t.string   "doublet"
-    t.integer  "supplier_id"
-    t.integer  "price_setting_id"
-    t.boolean  "processed",                                                                  :default => false
-    t.string   "delivery_days_price"
-    t.integer  "weight_grams"
-    t.string   "external_id"
-    t.string   "unit_package"
-    t.string   "multiply_factor"
-    t.string   "min_order"
-    t.string   "description"
-    t.string   "unit"
-    t.string   "applicability"
-    t.string   "replacement",                   :limit => 20
-    t.string   "replacement_orig",              :limit => 20
-    t.string   "replacement_manufacturer",      :limit => 20
-    t.string   "replacement_manufacturer_orig", :limit => 20
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "price_import_25", ["doublet"], :name => "doublet_idx"
-
-  create_table "price_import_28", :force => true do |t|
-    t.integer  "job_id"
-    t.string   "title"
-    t.string   "title_en"
-    t.integer  "count"
-    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "manufacturer_orig"
-    t.string   "catalog_number",                :limit => 20
-    t.string   "catalog_number_orig",           :limit => 20
-    t.string   "new_catalog_number",            :limit => 20
-    t.string   "new_catalog_number_orig",       :limit => 20
-    t.string   "country"
-    t.string   "parts_group"
-    t.string   "doublet"
-    t.integer  "supplier_id"
-    t.integer  "price_setting_id"
-    t.boolean  "processed",                                                                  :default => false
-    t.string   "delivery_days_price"
-    t.integer  "weight_grams"
-    t.string   "external_id"
-    t.string   "unit_package"
-    t.string   "multiply_factor"
-    t.string   "min_order"
-    t.string   "description"
-    t.string   "unit"
-    t.string   "applicability"
-    t.string   "replacement",                   :limit => 20
-    t.string   "replacement_orig",              :limit => 20
-    t.string   "replacement_manufacturer",      :limit => 20
-    t.string   "replacement_manufacturer_orig", :limit => 20
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "price_import_28", ["doublet"], :name => "doublet_idx"
-
-  create_table "price_import_29", :force => true do |t|
-    t.integer  "job_id"
-    t.string   "title"
-    t.string   "title_en"
-    t.integer  "count"
-    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "manufacturer_orig"
-    t.string   "catalog_number",                :limit => 20
-    t.string   "catalog_number_orig",           :limit => 20
-    t.string   "new_catalog_number",            :limit => 20
-    t.string   "new_catalog_number_orig",       :limit => 20
-    t.string   "country"
-    t.string   "parts_group"
-    t.string   "doublet"
-    t.integer  "supplier_id"
-    t.integer  "price_setting_id"
-    t.boolean  "processed",                                                                  :default => false
-    t.string   "delivery_days_price"
-    t.integer  "weight_grams"
-    t.string   "external_id"
-    t.string   "unit_package"
-    t.string   "multiply_factor"
-    t.string   "min_order"
-    t.string   "description"
-    t.string   "unit"
-    t.string   "applicability"
-    t.string   "replacement",                   :limit => 20
-    t.string   "replacement_orig",              :limit => 20
-    t.string   "replacement_manufacturer",      :limit => 20
-    t.string   "replacement_manufacturer_orig", :limit => 20
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "price_import_29", ["doublet"], :name => "doublet_idx"
-
-  create_table "price_import_36", :force => true do |t|
-    t.integer  "job_id"
-    t.string   "title"
-    t.string   "title_en"
-    t.integer  "count"
-    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "manufacturer_orig"
-    t.string   "catalog_number",                :limit => 20
-    t.string   "catalog_number_orig",           :limit => 20
-    t.string   "new_catalog_number",            :limit => 20
-    t.string   "new_catalog_number_orig",       :limit => 20
-    t.string   "country"
-    t.string   "parts_group"
-    t.string   "doublet"
-    t.integer  "supplier_id"
-    t.integer  "price_setting_id"
-    t.boolean  "processed",                                                                  :default => false
-    t.string   "delivery_days_price"
-    t.integer  "weight_grams"
-    t.string   "external_id"
-    t.string   "unit_package"
-    t.string   "multiply_factor"
-    t.string   "min_order"
-    t.string   "description"
-    t.string   "unit"
-    t.string   "applicability"
-    t.string   "replacement",                   :limit => 20
-    t.string   "replacement_orig",              :limit => 20
-    t.string   "replacement_manufacturer",      :limit => 20
-    t.string   "replacement_manufacturer_orig", :limit => 20
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "price_import_36", ["doublet"], :name => "doublet_idx"
-
-  create_table "price_import_42", :force => true do |t|
-    t.integer  "job_id"
-    t.string   "title"
-    t.string   "title_en"
-    t.integer  "count"
-    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "manufacturer_orig"
-    t.string   "catalog_number",                :limit => 20
-    t.string   "catalog_number_orig",           :limit => 20
-    t.string   "new_catalog_number",            :limit => 20
-    t.string   "new_catalog_number_orig",       :limit => 20
-    t.string   "country"
-    t.string   "parts_group"
-    t.string   "doublet"
-    t.integer  "supplier_id"
-    t.integer  "price_setting_id"
-    t.boolean  "processed",                                                                  :default => false
-    t.string   "delivery_days_price"
-    t.integer  "weight_grams"
-    t.string   "external_id"
-    t.string   "unit_package"
-    t.string   "multiply_factor"
-    t.string   "min_order"
-    t.string   "description"
-    t.string   "unit"
-    t.string   "applicability"
-    t.string   "replacement",                   :limit => 20
-    t.string   "replacement_orig",              :limit => 20
-    t.string   "replacement_manufacturer",      :limit => 20
-    t.string   "replacement_manufacturer_orig", :limit => 20
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "price_import_42", ["doublet"], :name => "doublet_idx"
-
-  create_table "price_import_44", :force => true do |t|
-    t.integer  "job_id"
-    t.string   "title"
-    t.string   "title_en"
-    t.integer  "count"
-    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "manufacturer_orig"
-    t.string   "catalog_number",                :limit => 20
-    t.string   "catalog_number_orig",           :limit => 20
-    t.string   "new_catalog_number",            :limit => 20
-    t.string   "new_catalog_number_orig",       :limit => 20
-    t.string   "country"
-    t.string   "parts_group"
-    t.string   "doublet"
-    t.integer  "supplier_id"
-    t.integer  "price_setting_id"
-    t.boolean  "processed",                                                                  :default => false
-    t.string   "delivery_days_price"
-    t.integer  "weight_grams"
-    t.string   "external_id"
-    t.string   "unit_package"
-    t.string   "multiply_factor"
-    t.string   "min_order"
-    t.string   "description"
-    t.string   "unit"
-    t.string   "applicability"
-    t.string   "replacement",                   :limit => 20
-    t.string   "replacement_orig",              :limit => 20
-    t.string   "replacement_manufacturer",      :limit => 20
-    t.string   "replacement_manufacturer_orig", :limit => 20
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "price_import_44", ["doublet"], :name => "doublet_idx"
-
-  create_table "price_import_47", :force => true do |t|
-    t.integer  "job_id"
-    t.string   "title"
-    t.string   "title_en"
-    t.integer  "count"
-    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "manufacturer_orig"
-    t.string   "catalog_number",                :limit => 20
-    t.string   "catalog_number_orig",           :limit => 20
-    t.string   "new_catalog_number",            :limit => 20
-    t.string   "new_catalog_number_orig",       :limit => 20
-    t.string   "country"
-    t.string   "parts_group"
-    t.string   "doublet"
-    t.integer  "supplier_id"
-    t.integer  "price_setting_id"
-    t.boolean  "processed",                                                                  :default => false
-    t.string   "delivery_days_price"
-    t.integer  "weight_grams"
-    t.string   "external_id"
-    t.string   "unit_package"
-    t.string   "multiply_factor"
-    t.string   "min_order"
-    t.string   "description"
-    t.string   "unit"
-    t.string   "applicability"
-    t.string   "replacement",                   :limit => 20
-    t.string   "replacement_orig",              :limit => 20
-    t.string   "replacement_manufacturer",      :limit => 20
-    t.string   "replacement_manufacturer_orig", :limit => 20
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "price_import_47", ["doublet"], :name => "doublet_idx"
-
-  create_table "price_import_52", :force => true do |t|
-    t.integer  "job_id"
-    t.string   "title"
-    t.string   "title_en"
-    t.integer  "count"
-    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "manufacturer_orig"
-    t.string   "catalog_number",                :limit => 20
-    t.string   "catalog_number_orig",           :limit => 20
-    t.string   "new_catalog_number",            :limit => 20
-    t.string   "new_catalog_number_orig",       :limit => 20
-    t.string   "country"
-    t.string   "parts_group"
-    t.string   "doublet"
-    t.integer  "supplier_id"
-    t.integer  "price_setting_id"
-    t.boolean  "processed",                                                                  :default => false
-    t.string   "delivery_days_price"
-    t.integer  "weight_grams"
-    t.string   "external_id"
-    t.string   "unit_package"
-    t.string   "multiply_factor"
-    t.string   "min_order"
-    t.string   "description"
-    t.string   "unit"
-    t.string   "applicability"
-    t.string   "replacement",                   :limit => 20
-    t.string   "replacement_orig",              :limit => 20
-    t.string   "replacement_manufacturer",      :limit => 20
-    t.string   "replacement_manufacturer_orig", :limit => 20
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "price_import_52", ["doublet"], :name => "doublet_idx"
-
-  create_table "price_import_55", :force => true do |t|
-    t.integer  "job_id"
-    t.string   "title"
-    t.string   "title_en"
-    t.integer  "count"
-    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "manufacturer_orig"
-    t.string   "catalog_number",                :limit => 20
-    t.string   "catalog_number_orig",           :limit => 20
-    t.string   "new_catalog_number",            :limit => 20
-    t.string   "new_catalog_number_orig",       :limit => 20
-    t.string   "country"
-    t.string   "parts_group"
-    t.string   "doublet"
-    t.integer  "supplier_id"
-    t.integer  "price_setting_id"
-    t.boolean  "processed",                                                                  :default => false
-    t.string   "delivery_days_price"
-    t.integer  "weight_grams"
-    t.string   "external_id"
-    t.string   "unit_package"
-    t.string   "multiply_factor"
-    t.string   "min_order"
-    t.string   "description"
-    t.string   "unit"
-    t.string   "applicability"
-    t.string   "replacement",                   :limit => 20
-    t.string   "replacement_orig",              :limit => 20
-    t.string   "replacement_manufacturer",      :limit => 20
-    t.string   "replacement_manufacturer_orig", :limit => 20
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "price_import_55", ["doublet"], :name => "doublet_idx"
-
-  create_table "price_import_56", :force => true do |t|
-    t.integer  "job_id"
-    t.string   "title"
-    t.string   "title_en"
-    t.integer  "count"
-    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "manufacturer_orig"
-    t.string   "catalog_number",                :limit => 20
-    t.string   "catalog_number_orig",           :limit => 20
-    t.string   "new_catalog_number",            :limit => 20
-    t.string   "new_catalog_number_orig",       :limit => 20
-    t.string   "country"
-    t.string   "parts_group"
-    t.string   "doublet"
-    t.integer  "supplier_id"
-    t.integer  "price_setting_id"
-    t.boolean  "processed",                                                                  :default => false
-    t.string   "delivery_days_price"
-    t.integer  "weight_grams"
-    t.string   "external_id"
-    t.string   "unit_package"
-    t.string   "multiply_factor"
-    t.string   "min_order"
-    t.string   "description"
-    t.string   "unit"
-    t.string   "applicability"
-    t.string   "replacement",                   :limit => 20
-    t.string   "replacement_orig",              :limit => 20
-    t.string   "replacement_manufacturer",      :limit => 20
-    t.string   "replacement_manufacturer_orig", :limit => 20
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "price_import_56", ["doublet"], :name => "doublet_idx"
-
-  create_table "price_import_60", :force => true do |t|
-    t.integer  "job_id"
-    t.string   "title"
-    t.string   "title_en"
-    t.integer  "count"
-    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "manufacturer_orig"
-    t.string   "catalog_number",                :limit => 20
-    t.string   "catalog_number_orig",           :limit => 20
-    t.string   "new_catalog_number",            :limit => 20
-    t.string   "new_catalog_number_orig",       :limit => 20
-    t.string   "country"
-    t.string   "parts_group"
-    t.string   "doublet"
-    t.integer  "supplier_id"
-    t.integer  "price_setting_id"
-    t.boolean  "processed",                                                                  :default => false
-    t.string   "delivery_days_price"
-    t.integer  "weight_grams"
-    t.string   "external_id"
-    t.string   "unit_package"
-    t.string   "multiply_factor"
-    t.string   "min_order"
-    t.string   "description"
-    t.string   "unit"
-    t.string   "applicability"
-    t.string   "replacement",                   :limit => 20
-    t.string   "replacement_orig",              :limit => 20
-    t.string   "replacement_manufacturer",      :limit => 20
-    t.string   "replacement_manufacturer_orig", :limit => 20
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "price_import_60", ["doublet"], :name => "doublet_idx"
-
-  create_table "price_import_63", :force => true do |t|
-    t.integer  "job_id"
-    t.string   "title"
-    t.string   "title_en"
-    t.integer  "count"
-    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "manufacturer_orig"
-    t.string   "catalog_number",                :limit => 20
-    t.string   "catalog_number_orig",           :limit => 20
-    t.string   "new_catalog_number",            :limit => 20
-    t.string   "new_catalog_number_orig",       :limit => 20
-    t.string   "country"
-    t.string   "parts_group"
-    t.string   "doublet"
-    t.integer  "supplier_id"
-    t.integer  "price_setting_id"
-    t.boolean  "processed",                                                                  :default => false
-    t.string   "delivery_days_price"
-    t.integer  "weight_grams"
-    t.string   "external_id"
-    t.string   "unit_package"
-    t.string   "multiply_factor"
-    t.string   "min_order"
-    t.string   "description"
-    t.string   "unit"
-    t.string   "applicability"
-    t.string   "replacement",                   :limit => 20
-    t.string   "replacement_orig",              :limit => 20
-    t.string   "replacement_manufacturer",      :limit => 20
-    t.string   "replacement_manufacturer_orig", :limit => 20
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "price_import_63", ["doublet"], :name => "doublet_idx"
-
-  create_table "price_import_68", :force => true do |t|
-    t.integer  "job_id"
-    t.string   "title"
-    t.string   "title_en"
-    t.integer  "count"
-    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "manufacturer_orig"
-    t.string   "catalog_number",                :limit => 20
-    t.string   "catalog_number_orig",           :limit => 20
-    t.string   "new_catalog_number",            :limit => 20
-    t.string   "new_catalog_number_orig",       :limit => 20
-    t.string   "country"
-    t.string   "parts_group"
-    t.string   "doublet"
-    t.integer  "supplier_id"
-    t.integer  "price_setting_id"
-    t.boolean  "processed",                                                                  :default => false
-    t.string   "delivery_days_price"
-    t.integer  "weight_grams"
-    t.string   "external_id"
-    t.string   "unit_package"
-    t.string   "multiply_factor"
-    t.string   "min_order"
-    t.string   "description"
-    t.string   "unit"
-    t.string   "applicability"
-    t.string   "replacement",                   :limit => 20
-    t.string   "replacement_orig",              :limit => 20
-    t.string   "replacement_manufacturer",      :limit => 20
-    t.string   "replacement_manufacturer_orig", :limit => 20
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "price_import_68", ["doublet"], :name => "doublet_idx"
-
-  create_table "price_import_69", :force => true do |t|
-    t.integer  "job_id"
-    t.string   "title"
-    t.string   "title_en"
-    t.integer  "count"
-    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "manufacturer_orig"
-    t.string   "catalog_number",                :limit => 20
-    t.string   "catalog_number_orig",           :limit => 20
-    t.string   "new_catalog_number",            :limit => 20
-    t.string   "new_catalog_number_orig",       :limit => 20
-    t.string   "country"
-    t.string   "parts_group"
-    t.string   "doublet"
-    t.integer  "supplier_id"
-    t.integer  "price_setting_id"
-    t.boolean  "processed",                                                                  :default => false
-    t.string   "delivery_days_price"
-    t.integer  "weight_grams"
-    t.string   "external_id"
-    t.string   "unit_package"
-    t.string   "multiply_factor"
-    t.string   "min_order"
-    t.string   "description"
-    t.string   "unit"
-    t.string   "applicability"
-    t.string   "replacement",                   :limit => 20
-    t.string   "replacement_orig",              :limit => 20
-    t.string   "replacement_manufacturer",      :limit => 20
-    t.string   "replacement_manufacturer_orig", :limit => 20
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "price_import_69", ["doublet"], :name => "doublet_idx"
-
-  create_table "price_import_7", :force => true do |t|
-    t.integer  "job_id"
-    t.string   "title"
-    t.string   "title_en"
-    t.integer  "count"
-    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "manufacturer_orig"
-    t.string   "catalog_number",                :limit => 20
-    t.string   "catalog_number_orig",           :limit => 20
-    t.string   "new_catalog_number",            :limit => 20
-    t.string   "new_catalog_number_orig",       :limit => 20
-    t.string   "country"
-    t.string   "parts_group"
-    t.string   "doublet"
-    t.integer  "supplier_id"
-    t.integer  "price_setting_id"
-    t.boolean  "processed",                                                                  :default => false
-    t.string   "delivery_days_price"
-    t.integer  "weight_grams"
-    t.string   "external_id"
-    t.string   "unit_package"
-    t.string   "multiply_factor"
-    t.string   "min_order"
-    t.string   "description"
-    t.string   "unit"
-    t.string   "applicability"
-    t.string   "replacement",                   :limit => 20
-    t.string   "replacement_orig",              :limit => 20
-    t.string   "replacement_manufacturer",      :limit => 20
-    t.string   "replacement_manufacturer_orig", :limit => 20
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "price_import_7", ["doublet"], :name => "doublet_idx"
-
-  create_table "price_import_93", :force => true do |t|
-    t.integer  "job_id"
-    t.string   "title"
-    t.string   "title_en"
-    t.integer  "count"
-    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "manufacturer_orig"
-    t.string   "catalog_number",                :limit => 20
-    t.string   "catalog_number_orig",           :limit => 20
-    t.string   "new_catalog_number",            :limit => 20
-    t.string   "new_catalog_number_orig",       :limit => 20
-    t.string   "country"
-    t.string   "parts_group"
-    t.string   "doublet"
-    t.integer  "supplier_id"
-    t.integer  "price_setting_id"
-    t.boolean  "processed",                                                                  :default => false
-    t.string   "delivery_days_price"
-    t.integer  "weight_grams"
-    t.string   "external_id"
-    t.string   "unit_package"
-    t.string   "multiply_factor"
-    t.string   "min_order"
-    t.string   "description"
-    t.string   "unit"
-    t.string   "applicability"
-    t.string   "replacement",                   :limit => 20
-    t.string   "replacement_orig",              :limit => 20
-    t.string   "replacement_manufacturer",      :limit => 20
-    t.string   "replacement_manufacturer_orig", :limit => 20
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "price_import_93", ["doublet"], :name => "doublet_idx"
-
-  create_table "price_import_94", :force => true do |t|
-    t.integer  "job_id"
-    t.string   "title"
-    t.string   "title_en"
-    t.integer  "count"
-    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "manufacturer_orig"
-    t.string   "catalog_number",                :limit => 20
-    t.string   "catalog_number_orig",           :limit => 20
-    t.string   "new_catalog_number",            :limit => 20
-    t.string   "new_catalog_number_orig",       :limit => 20
-    t.string   "country"
-    t.string   "parts_group"
-    t.string   "doublet"
-    t.integer  "supplier_id"
-    t.integer  "price_setting_id"
-    t.boolean  "processed",                                                                  :default => false
-    t.string   "delivery_days_price"
-    t.integer  "weight_grams"
-    t.string   "external_id"
-    t.string   "unit_package"
-    t.string   "multiply_factor"
-    t.string   "min_order"
-    t.string   "description"
-    t.string   "unit"
-    t.string   "applicability"
-    t.string   "replacement",                   :limit => 20
-    t.string   "replacement_orig",              :limit => 20
-    t.string   "replacement_manufacturer",      :limit => 20
-    t.string   "replacement_manufacturer_orig", :limit => 20
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "price_import_94", ["doublet"], :name => "doublet_idx"
-
-  create_table "price_import_95", :force => true do |t|
-    t.integer  "job_id"
-    t.string   "title"
-    t.string   "title_en"
-    t.integer  "count"
-    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "manufacturer_orig"
-    t.string   "catalog_number",                :limit => 20
-    t.string   "catalog_number_orig",           :limit => 20
-    t.string   "new_catalog_number",            :limit => 20
-    t.string   "new_catalog_number_orig",       :limit => 20
-    t.string   "country"
-    t.string   "parts_group"
-    t.string   "doublet"
-    t.integer  "supplier_id"
-    t.integer  "price_setting_id"
-    t.boolean  "processed",                                                                  :default => false
-    t.string   "delivery_days_price"
-    t.integer  "weight_grams"
-    t.string   "external_id"
-    t.string   "unit_package"
-    t.string   "multiply_factor"
-    t.string   "min_order"
-    t.string   "description"
-    t.string   "unit"
-    t.string   "applicability"
-    t.string   "replacement",                   :limit => 20
-    t.string   "replacement_orig",              :limit => 20
-    t.string   "replacement_manufacturer",      :limit => 20
-    t.string   "replacement_manufacturer_orig", :limit => 20
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "price_import_95", ["doublet"], :name => "doublet_idx"
-
-  create_table "price_import_96", :force => true do |t|
-    t.integer  "job_id"
-    t.string   "title"
-    t.string   "title_en"
-    t.integer  "count"
-    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "manufacturer_orig"
-    t.string   "catalog_number",                :limit => 20
-    t.string   "catalog_number_orig",           :limit => 20
-    t.string   "new_catalog_number",            :limit => 20
-    t.string   "new_catalog_number_orig",       :limit => 20
-    t.string   "country"
-    t.string   "parts_group"
-    t.string   "doublet"
-    t.integer  "supplier_id"
-    t.integer  "price_setting_id"
-    t.boolean  "processed",                                                                  :default => false
-    t.string   "delivery_days_price"
-    t.integer  "weight_grams"
-    t.string   "external_id"
-    t.string   "unit_package"
-    t.string   "multiply_factor"
-    t.string   "min_order"
-    t.string   "description"
-    t.string   "unit"
-    t.string   "applicability"
-    t.string   "replacement",                   :limit => 20
-    t.string   "replacement_orig",              :limit => 20
-    t.string   "replacement_manufacturer",      :limit => 20
-    t.string   "replacement_manufacturer_orig", :limit => 20
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "price_import_96", ["doublet"], :name => "doublet_idx"
-
-  create_table "price_import_97", :force => true do |t|
-    t.integer  "job_id"
-    t.string   "title"
-    t.string   "title_en"
-    t.integer  "count"
-    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "manufacturer_orig"
-    t.string   "catalog_number",                :limit => 20
-    t.string   "catalog_number_orig",           :limit => 20
-    t.string   "new_catalog_number",            :limit => 20
-    t.string   "new_catalog_number_orig",       :limit => 20
-    t.string   "country"
-    t.string   "parts_group"
-    t.string   "doublet"
-    t.integer  "supplier_id"
-    t.integer  "price_setting_id"
-    t.boolean  "processed",                                                                  :default => false
-    t.string   "delivery_days_price"
-    t.integer  "weight_grams"
-    t.string   "external_id"
-    t.string   "unit_package"
-    t.string   "multiply_factor"
-    t.string   "min_order"
-    t.string   "description"
-    t.string   "unit"
-    t.string   "applicability"
-    t.string   "replacement",                   :limit => 20
-    t.string   "replacement_orig",              :limit => 20
-    t.string   "replacement_manufacturer",      :limit => 20
-    t.string   "replacement_manufacturer_orig", :limit => 20
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "price_import_97", ["doublet"], :name => "doublet_idx"
-
-  create_table "price_import_98", :force => true do |t|
-    t.integer  "job_id"
-    t.string   "title"
-    t.string   "title_en"
-    t.integer  "count"
-    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "manufacturer_orig"
-    t.string   "catalog_number",                :limit => 20
-    t.string   "catalog_number_orig",           :limit => 20
-    t.string   "new_catalog_number",            :limit => 20
-    t.string   "new_catalog_number_orig",       :limit => 20
-    t.string   "country"
-    t.string   "parts_group"
-    t.string   "doublet"
-    t.integer  "supplier_id"
-    t.integer  "price_setting_id"
-    t.boolean  "processed",                                                                  :default => false
-    t.string   "delivery_days_price"
-    t.integer  "weight_grams"
-    t.string   "external_id"
-    t.string   "unit_package"
-    t.string   "multiply_factor"
-    t.string   "min_order"
-    t.string   "description"
-    t.string   "unit"
-    t.string   "applicability"
-    t.string   "replacement",                   :limit => 20
-    t.string   "replacement_orig",              :limit => 20
-    t.string   "replacement_manufacturer",      :limit => 20
-    t.string   "replacement_manufacturer_orig", :limit => 20
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "price_import_98", ["doublet"], :name => "doublet_idx"
-
-  create_table "price_import_99", :force => true do |t|
-    t.integer  "job_id"
-    t.string   "title"
-    t.string   "title_en"
-    t.integer  "count"
-    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "manufacturer_orig"
-    t.string   "catalog_number",                :limit => 20
-    t.string   "catalog_number_orig",           :limit => 20
-    t.string   "new_catalog_number",            :limit => 20
-    t.string   "new_catalog_number_orig",       :limit => 20
-    t.string   "country"
-    t.string   "parts_group"
-    t.string   "doublet"
-    t.integer  "supplier_id"
-    t.integer  "price_setting_id"
-    t.boolean  "processed",                                                                  :default => false
-    t.string   "delivery_days_price"
-    t.integer  "weight_grams"
-    t.string   "external_id"
-    t.string   "unit_package"
-    t.string   "multiply_factor"
-    t.string   "min_order"
-    t.string   "description"
-    t.string   "unit"
-    t.string   "applicability"
-    t.string   "replacement",                   :limit => 20
-    t.string   "replacement_orig",              :limit => 20
-    t.string   "replacement_manufacturer",      :limit => 20
-    t.string   "replacement_manufacturer_orig", :limit => 20
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "price_import_99", ["doublet"], :name => "doublet_idx"
+  add_index "price_import_1066346605", ["doublet"], :name => "doublet_idx"
 
   create_table "price_import_templates", :force => true do |t|
     t.integer  "job_id"
@@ -54948,9 +59030,9 @@ ActiveRecord::Schema.define(:version => 20110225151639) do
     t.integer  "goods_id"
     t.string   "title"
     t.string   "count"
-    t.decimal  "price_cost",                        :precision => 10, :scale => 3
-    t.string   "manufacturer",       :limit => 100
-    t.string   "catalog_number",     :limit => 100
+    t.decimal  "price_cost",                         :precision => 10, :scale => 3
+    t.string   "manufacturer",        :limit => 100
+    t.string   "catalog_number",      :limit => 100
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "country"
@@ -54978,10 +59060,11 @@ ActiveRecord::Schema.define(:version => 20110225151639) do
     t.string   "r9"
     t.string   "parts_group"
     t.string   "manufacturer_orig"
-    t.string   "job_code",           :limit => 20
     t.integer  "supplier_id"
+    t.string   "job_code",            :limit => 20
     t.string   "doublet"
-    t.boolean  "processed",                                                        :default => false
+    t.boolean  "processed",                                                         :default => false
+    t.integer  "delivery_days_price"
   end
 
   add_index "prices", ["catalog_number", "manufacturer"], :name => "index_prices_on_catalog_number_and_manufacturer"

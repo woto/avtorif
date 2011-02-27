@@ -49,6 +49,8 @@ Avtorif::Application.routes.draw do
     resources :jobs do
       member do
         get 'start'
+        get 'copy'
+        post 'copy'
         get 'clean'
       end
       collection do
