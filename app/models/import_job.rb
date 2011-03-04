@@ -7,7 +7,7 @@ class ImportJob < ActiveRecord::Base
   ], :nil => true
 
   belongs_to :importable, :polymorphic => true
-  has_many :job, :as => :jobable
+  has_many :jobs, :as => :jobable
   belongs_to :delivery_type
 
   belongs_to :price_setting

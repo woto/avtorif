@@ -21,11 +21,18 @@
     
     <table>
         <% once = false %>
-        <% ReceiveJob.all(:include => :job, :conditions => {:jobs => {:supplier_id => params[:supplier_id]}}).each do |rj| %>
+<% 
+           ReceiveJob.joins(:job).where(:jobs => {:supplier_id => params[:supplier_id]}).group(:receiveable_id, :receiveable_type).each do |rj| 
+           debugger
+%>
+        <% 
+           #ReceiveJob.all(:joins => :job, :conditions => {:jobs => {:supplier_id => params[:supplier_id]}}).each do |rj| 
+        %>
             <% once = true %>
             <tr>
             <td>
-                <%= radio_button_tag('receive_job[receiveable_id]',  rj.receiveable_id, params[:id] == rj.id.to_s) + rj.identify_string  %>
+                <%= radio_button_tag("receive_job_id[]",  rj.receiveable_id, params[:id] == rj.id.to_s) + rj.identify_string  %>
+                <%= hidden_field_tag("receive_job_type[#{rj.receiveable_id}]", rj.receiveable_type) %>
             </td>
             <td>
             <%= link_to "Редактировать", edit_polymorphic_path([Supplier.find(params[:supplier_id]), Job.find(params[:job_id]), rj.receiveable]) %>

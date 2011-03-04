@@ -45,9 +45,11 @@ class ConvertJobsController < ApplicationController
     job.jobable = @convert_job
     job.save
 
+    parent = job.parent
+
     respond_to do |format|
       if @convert_job.save
-        format.html { redirect_to(supplier_jobs_path(params[:supplier_id]), :notice => 'ConvertJob was successfully created.') }
+        format.html { redirect_to(parent.present? ? supplier_job_path(params[:supplier_id], parent.id) : supplier_jobs_path(params[:supplier_id]), :notice => 'Задача конвертирования успешно создана') }
         format.xml  { render :xml => @convert_job, :status => :created, :location => @convert_job }
       else
         format.html { render :action => "new" }
@@ -60,10 +62,12 @@ class ConvertJobsController < ApplicationController
   # PUT /convert_jobs/1.xml
   def update
     @convert_job = ConvertJob.find(params[:id])
+    job = @convert_job.jobs.first
+    parent = job.parent
 
     respond_to do |format|
       if @convert_job.update_attributes(params[:convert_job])
-        format.html { redirect_to(supplier_jobs_path(params[:supplier_id]), :notice => 'ConvertJob was successfully updated.') }
+        format.html { redirect_to(parent.present? ? supplier_job_path(params[:supplier_id], parent.id) : supplier_jobs_path(params[:supplier_id]), :notice => 'Задача конвертирования успешно обновлена') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

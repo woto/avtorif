@@ -27,7 +27,8 @@ class PricesController < ApplicationController
       end
     else
       md5 = Digest::MD5.hexdigest(catalog_number)[0,2]
-      query = "SELECT price_catalog_#{md5}.*, manufacturers.original FROM price_catalog_#{md5} JOIN manufacturers ON price_catalog_#{md5}.manufacturer = manufacturers.title WHERE catalog_number = " + Price.connection.quote(catalog_number) 
+      query = "SELECT price_catalog_#{md5}.*, manufacturers.original FROM price_catalog_#{md5} 
+        LEFT JOIN manufacturers ON price_catalog_#{md5}.manufacturer = manufacturers.title WHERE catalog_number = " + Price.connection.quote(catalog_number)
       puts "###################### #{query}  ######################"
       @client = ActiveRecord::Base.connection.instance_variable_get :@connection
       result = @client.query(query, :as => :hash)
@@ -188,7 +189,7 @@ class PricesController < ApplicationController
               p[:job_import_job_country_short] = z.css('PriceCountry').text
               p[:price_cost] = z.css('ResultPrice').text
               p[:income_cost] = z.css('ResultPrice').text.to_f * 1
-              p[:retail_cost] = p[:income_cost] * 1.55
+              p[:retail_cost] = p[:income_cost] * 1.35
               p[:currency] = 643
               p[:count] = CGI.unescapeHTML(z.css('QuantityText').first.text)
               p[:title] = z.css('DetailNameRus').text
@@ -211,7 +212,7 @@ class PricesController < ApplicationController
               found = false
               replacements.each do |replacement|
                 if replacement[:catalog_number] == p[:catalog_number]
-                  if replacement[:manufacturer] == p[:manufacturer]
+                  if replacement[:manufacturer] == p[:manufacturer] || replacement[:manufacturer] == nil
                     found = true
                   end
                 end
@@ -220,7 +221,8 @@ class PricesController < ApplicationController
               unless found
                 replacements <<  { 
                   :catalog_number => p[:catalog_number],
-                  :manufacturer => p[:manufacturer]
+                  :manufacturer => p[:manufacturer],
+                  :original => p[:bit_original]
                 }
               end
 
@@ -230,6 +232,7 @@ class PricesController < ApplicationController
         end
       end
     # Локальная работа
+    debugger
     replacements.each do |replacement|
       md5 = Digest::MD5.hexdigest(replacement[:catalog_number])[0,2]
       weight_grams = replacement[:weight_grams] ? replacement[:weight_grams] : "0"
@@ -244,6 +247,11 @@ class PricesController < ApplicationController
           s.kpp as supplier_kpp,
           ps.title as job_title,
           ij.success_percent as job_import_job_success_percent,
+          '55' as success_percent,
+          CASE
+            WHEN p.count = 0 AND ps.presence = 1 THEN 99
+            ELSE p.count
+          END as count,
           ps.delivery_days_average as job_import_job_delivery_days_average,
           ps.delivery_days_declared as job_import_job_delivery_days_declared,
           ps.delivery_summary as job_import_job_delivery_summary,
@@ -284,7 +292,7 @@ class PricesController < ApplicationController
         query << " AND p.manufacturer = #{ActiveRecord::Base.connection.quote(replacement[:manufacturer])}"
       end
 
-      debugger
+      #debugger
       result = @client.query(query, :as => :hash)
       result.each do |r|
         @prices << r

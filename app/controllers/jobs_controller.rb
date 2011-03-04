@@ -70,7 +70,7 @@ class JobsController < ApplicationController
     @job.started_once = false
     respond_to do |format|
       if @job.update_attributes(params[:job])
-        format.html { redirect_to(@job.parent.present? ? supplier_job_path(params[:supplier_id], @job.parent.id) : supplier_jobs_path(params[:supplier_id]), :notice => 'Job was successfully updated.') }
+        format.html { redirect_to(@job.parent.present? ? supplier_job_path(params[:supplier_id], @job.parent.id) : supplier_jobs_path(params[:supplier_id]), :notice => 'Задача успешно обновлена') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -118,6 +118,8 @@ class JobsController < ApplicationController
     new_job.jobable = new_jobable
     new_job.title = "Копия " + new_job.title
     new_job.save
+    parent = @job.parent
+    redirect_to(parent.present? ? supplier_job_path(params[:supplier_id], parent.id) : supplier_jobs_path(params[:supplier_id]), :notice => "Копия задачи успешно создана")
   end
 
   def start_all

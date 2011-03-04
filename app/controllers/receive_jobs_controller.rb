@@ -2,6 +2,7 @@ class ReceiveJobsController < ApplicationController
   # GET /receive_jobs
   # GET /receive_jobs.xml
   def index
+    debugger
     @receive_jobs = ReceiveJob.all
 
     respond_to do |format|
@@ -13,6 +14,7 @@ class ReceiveJobsController < ApplicationController
   # GET /receive_jobs/1
   # GET /receive_jobs/1.xml
   def show
+    debugger
     @receive_job = ReceiveJob.find(params[:id])
 
     respond_to do |format|
@@ -34,13 +36,19 @@ class ReceiveJobsController < ApplicationController
 
   # GET /receive_jobs/1/edit
   def edit
+    #debugger
     @receive_job = ReceiveJob.find(params[:id])
   end
 
   # POST /receive_jobs
   # POST /receive_jobs.xml
   def create
-    @receive_job = ReceiveJob.find(:first, :conditions => ["receiveable_id = ?", params[:receive_job][:receiveable_id]])
+    @receive_job = ReceiveJob.includes(:job).where({ 
+	:receiveable_id => params[:receive_job_id], 
+	:receiveable_type => params[:receive_job_type]["#{params[:receive_job_id]}"], 
+	:jobs => {:supplier_id => params[:supplier_id]}}).first
+    #debugger
+    #break
 
     job = Job.find(params[:job_id])
     job.jobable = @receive_job
@@ -60,15 +68,19 @@ class ReceiveJobsController < ApplicationController
   # PUT /receive_jobs/1
   # PUT /receive_jobs/1.xml
   def update
-    @receive_job = ReceiveJob.find(:first, :conditions => ["receiveable_id = ?", params[:receive_job][:receiveable_id]])
-
+    #@receive_job = ReceiveJob.find(:first, :conditions => ["receiveable_id = ?", params[:receive_job][:receiveable_id]])
+    debugger
+    @receive_job = ReceiveJob.includes(:job).where({ 
+	:receiveable_id => params[:receive_job_id], 
+	:receiveable_type => params[:receive_job_type]["#{params[:receive_job_id]}"], 
+	:jobs => {:supplier_id => params[:supplier_id]}}).first
     job = Job.find(params[:job_id])
     job.jobable = @receive_job
     job.save
 
-
+    #debugger
     respond_to do |format|
-      if @receive_job.update_attributes(params[:receive_job])
+      if @receive_job.receiveable_id = params[:receive_job_id] && @receive_job.receiveable_type = params[:receive_job_type]["#{params[:receive_job_id]}"]
         format.html { redirect_to(supplier_jobs_path(params[:supplier_id]), :notice => 'ReceiveJob was successfully updated.') }
         format.xml  { head :ok }
       else
@@ -76,6 +88,7 @@ class ReceiveJobsController < ApplicationController
         format.xml  { render :xml => @receive_job.errors, :status => :unprocessable_entity }
       end
     end
+
   end
 
   # DELETE /receive_jobs/1

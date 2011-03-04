@@ -40,6 +40,21 @@ scope = scope.scoped :conditions => {:supplier_id => params['supplier_id']} if p
   <b>Active:</b>
   <%=h @job.active %>
 </p>
+<p>
+  <b>Next start:</b>
+  <%=h @job.next_start %>
+</p>
+
+<p>
+  <b>Last start:</b>
+  <%=h @job.last_start %>
+</p>
+
+<p>
+  <b>Last finish:</b>
+  <%=h @job.last_finish %>
+</p>
+
 
 <div style="background: #FFD">
 <b>Ручная загрузка прайса:</b>

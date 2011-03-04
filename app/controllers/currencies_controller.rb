@@ -37,7 +37,7 @@ class CurrenciesController < ApplicationController
     @currency = Currency.find(params[:id])
   end
 
-  def add_currency_rate
+  def send_to_web_service(format)
     client = Savon::Client.new do |wsdl, http|
        wsdl.document = "#{AppConfig.lc_ws_address}/currencies.1cws?wsdl"
        http.auth.basic AppConfig.lc_ws_login, AppConfig.lc_ws_password
@@ -53,8 +53,11 @@ class CurrenciesController < ApplicationController
     end
 
     if result.to_hash[:add_currency_rate_response][:return] != "Good"
-      raise result.to_hash[:add_currency_rate_response][:return]
+      render :text => result.to_hash[:add_currency_rate_response][:return]
+      return false
     end
+
+    return true
   end
 
   # POST /currencies
@@ -64,11 +67,10 @@ class CurrenciesController < ApplicationController
 
     respond_to do |format|
       if @currency.save
-
-        add_currency_rate
-
-        format.html { redirect_to(@currency, :notice => 'Currency was successfully created.') }
-        format.xml  { render :xml => @currency, :status => :created, :location => @currency }
+        if send_to_web_service(format)
+          format.html { redirect_to(@currency, :notice => 'Currency was successfully created.') }
+          format.xml  { render :xml => @currency, :status => :created, :location => @currency }
+        end
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @currency.errors, :status => :unprocessable_entity }

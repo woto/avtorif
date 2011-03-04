@@ -38,39 +38,42 @@ class PriceSettingsController < ApplicationController
     @price_setting = PriceSetting.find(params[:id])
   end
 
-  def send_to_web_service
+  def send_to_web_service(format)
     client = Savon::Client.new do |wsdl, http|
        wsdl.document = "#{AppConfig.lc_ws_address}/trade.1cws?wsdl"
        http.auth.basic AppConfig.lc_ws_login, AppConfig.lc_ws_password
     end
-    
     result = client.request :wsdl, :add_modify_price do |r|
       r.body = {
-        "ID" => @price_setting.id.to_s,
-        "SuplierID" => @price_setting.supplier_id.to_s,
-        "CurrencyCode" => @price_setting.currency_buy.foreign_id.to_s, 
-        "Presents" => @price_setting.presence.to_s, 
-        "Delivery" => @price_setting.delivery_summary.to_s,
-        "description" => @price_setting.title.to_s,
-        :order! => ["ID", "SuplierID", "CurrencyCode", "Presents", "Delivery", "description"]
+         "ID" => @price_setting.id.to_s,
+         "SuplierID" => @price_setting.supplier_id.to_s,
+         "CurrencyCode" => @price_setting.currency_buy.foreign_id.to_s, 
+         "Presents" => @price_setting.presence.to_s, 
+         "Delivery" => @price_setting.delivery_summary.to_s,
+         "description" => @price_setting.title.to_s,
+         :order! => ["ID", "SuplierID", "CurrencyCode", "Presents", "Delivery", "description"]
       }
     end
     if result.to_hash[:add_modify_price_response][:return] != "Good"
-      raise result.to_hash[:add_modify_price_response][:return]
+      format.html { render :text => result.to_hash[:add_modify_price_response][:return] }
+      return false
     end
 
+    return true
   end
+
   # POST /price_settings
   # POST /price_settings.xml
   def create
     @price_setting = PriceSetting.new(params[:price_setting])
     @price_setting.supplier_id = params[:supplier_id]
-
     respond_to do |format|
       if @price_setting.save
-        send_to_web_service
-        format.html { redirect_to(supplier_jobs_path(params[:supplier_id]), :notice => 'Price setting was successfully created.') }
-        format.xml  { render :xml => @price_setting, :status => :created, :location => @price_setting }
+        debugger
+        if send_to_web_service(format)
+	  format.html { redirect_to(supplier_jobs_path(params[:supplier_id]), :notice => 'Price setting was successfully created.') }
+          format.xml  { render :xml => @price_setting, :status => :created, :location => @price_setting }
+        end
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @price_setting.errors, :status => :unprocessable_entity }
@@ -86,9 +89,10 @@ class PriceSettingsController < ApplicationController
 
     respond_to do |format|
       if @price_setting.update_attributes(params[:price_setting])
-        send_to_web_service
-        format.html { redirect_to(supplier_jobs_path(params[:supplier_id]), :notice => 'Price setting was successfully updated.') }
-        format.xml  { head :ok }
+        if send_to_web_service(format)
+          format.html { redirect_to(supplier_jobs_path(params[:supplier_id]), :notice => 'Price setting was successfully updated.') }
+          format.xml  { head :ok }
+        end
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @price_setting.errors, :status => :unprocessable_entity }
@@ -107,4 +111,52 @@ class PriceSettingsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def clean
+    price_setting = params[:id]
+    CommonModule::all_doublets do |l|
+      query = "DELETE FROM price_cost_#{l} WHERE price_setting_id = #{price_setting}"
+      ActiveRecord::Base.connection.execute(query)
+    end
+    redirect_to(supplier_jobs_path(params[:supplier_id]), :notice => 'Содержимое прайса успешно очищено')
+  end
+ 
+  def download
+#    self.response_body =  proc{ |response, output|
+#      10_000_000.times do |i|
+#        output.write "Hello world"
+#        debugger
+#      end
+#    }
+#  end
+
+   filename = "price.csv"
+
+   headers['Pragma'] = 'public'
+   headers["Content-type"] = "text/plain" 
+   headers['Cache-Control'] = 'no-cache, must-revalidate, post-check=0, pre-check=0'
+   headers['Content-Disposition'] = "attachment; filename=\"#{filename}\"" 
+   headers['Expires'] = "0" 
+
+   price_setting = params[:id]
+
+   self.response_body = proc { |response, output|
+     CommonModule::all_doublets do |l|
+       query = "
+         SELECT pc.catalog_number, pc.title, pc.manufacturer_orig, pc.price_cost, pc.price_cost * ij.income_rate, ij.income_rate, pc.count, pc.job_id  FROM price_cost_#{l} pc
+         JOIN jobs j ON j.id = pc.job_id
+         JOIN import_jobs ij ON j.jobable_id = ij.id
+         WHERE pc.price_setting_id = #{price_setting}"
+       result = ActiveRecord::Base.connection.execute(query)
+       csv = nil
+       result.each do |r| 
+         FasterCSV.generate(:col_sep => "\t", :quote_char => "\x0", :row_sep => "\r\n") do |csv|
+           csv << r
+         end
+         output.write Iconv.iconv("WINDOWS-1251", "UTF-8", csv.string)
+       end
+     end
+   }
+ end
+
 end

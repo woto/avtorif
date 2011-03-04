@@ -91,6 +91,7 @@ if(size):
             
                     if len(str(row)) > 3500:
                         print str(row) + "------- \r\n"
+			raise Exception(row)
                     writer.writerow(row)
                 #pdb.set_trace()
             except Exception:

@@ -39,7 +39,10 @@ Avtorif::Application.routes.draw do
     get 'unlock', :on => :member
   end
   resources :suppliers do
-    resources :price_settings
+    resources :price_settings do
+      post 'clean', :on => :member
+      get 'download', :on => :member
+    end
     resources :supplier_prices do
       collection do
         delete :destroy_by_supplier
@@ -49,7 +52,6 @@ Avtorif::Application.routes.draw do
     resources :jobs do
       member do
         get 'start'
-        get 'copy'
         post 'copy'
         get 'clean'
       end

@@ -11,6 +11,7 @@
     <th>Password</th>
     <th>Job</th>
     <th>Status</th>
+    <th>Description</th>
     <th></th>
     <th></th>
     <th></th>
@@ -29,6 +30,7 @@
     <td><%=h supplier.password %></td>
     <td><%= link_to 'Jobs', supplier_jobs_path(supplier) %></td>
     <td><%=h supplier.jobs.select{|job| job.last_error.present?}.map{|job| job.last_error + " "} %></td>
+    <td><%= supplier.description %>
     <td><%= link_to 'Show', supplier %></td>
     <td><%= link_to 'Edit', edit_supplier_path(supplier) %></td>
     <td><%= link_to 'Destroy', supplier, :confirm => 'Are you sure?', :method => :delete %></td>

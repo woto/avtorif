@@ -1,3 +1,4 @@
+# TODO Надо проверять замену (конкретный пример, когда HAB-110 является заменой HAB-110)
 require 'fcntl'
 
 namespace :avtorif do
@@ -13,7 +14,7 @@ namespace :avtorif do
       # Получаем записи из таблицы импорта по обрабатываемому дуплету
 
       begin
-        price_import_result = client.query("SELECT * from price_import_#{job_id} WHERE doublet = '#{d}' AND processed = 0 LIMIT 10", as_hash)
+        price_import_result = client.query("SELECT * from price_import_#{job_id} WHERE doublet = '#{d}' AND processed = 0 LIMIT 100", as_hash)
 
         price_import_result.each do |price_import_row|
 

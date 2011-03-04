@@ -11,9 +11,10 @@ class ConvertJobable < AbstractJobber
       files = Dir.entries(tempdir) - ['.', '..']
       files.each do |file|
         remote_file = File.new(tempdir + "/" + file)
+	# Тут еще потом повырезать символы, которые не могут содержаться в имени файла
         remote_file.instance_eval("
           def original_filename()
-              \"#{File.basename(@supplier_price.original_filename) + " - " + File.basename(remote_file.path)}.csv\"
+              \"#{File.basename(@supplier_price.original_filename).gsub('"', '') + " - " + File.basename(remote_file.path).gsub('"', '')}.csv\"
           end
 
           def content_type()

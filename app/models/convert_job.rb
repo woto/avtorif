@@ -1,5 +1,5 @@
 class ConvertJob < ActiveRecord::Base
-  has_many :job, :as => :jobable  
+  has_many :jobs, :as => :jobable  
   enum_attr :convert_method, [
     "xls _pyExcelerator_",
     "xls _xlrd_",

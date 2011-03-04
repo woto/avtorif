@@ -37,7 +37,7 @@ class SuppliersController < ApplicationController
     @supplier = Supplier.find(params[:id])
   end
 
-  def send_to_web_service
+  def send_to_web_service(format)
     client = Savon::Client.new do |wsdl, http|
        wsdl.document = "#{AppConfig.lc_ws_address}/trade.1cws?wsdl"
        http.auth.basic AppConfig.lc_ws_login, AppConfig.lc_ws_password
@@ -57,8 +57,11 @@ class SuppliersController < ApplicationController
     end 
 
     if result.to_hash[:add_supplier_response][:return] != "Good"
-      raise result.to_hash[:add_supplier_response][:return]
+      format.html { render :text => result.to_hash[:add_supplier_response][:return] }
+      return false
     end
+
+    return true
   end
 
   # POST /suppliers
@@ -69,9 +72,10 @@ class SuppliersController < ApplicationController
     respond_to do |format|
       if @supplier.save
 
-        send_to_web_service
-        format.html { redirect_to(@supplier, :notice => 'Supplier was successfully created.') }
-        format.xml  { render :xml => @supplier, :status => :created, :location => @supplier }
+        if send_to_web_service format
+          format.html { redirect_to(@supplier, :notice => 'Supplier was successfully created.') }
+          format.xml  { render :xml => @supplier, :status => :created, :location => @supplier }
+        end
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @supplier.errors, :status => :unprocessable_entity }
@@ -86,9 +90,10 @@ class SuppliersController < ApplicationController
 
     respond_to do |format|
       if @supplier.update_attributes(params[:supplier])
-        send_to_web_service
-        format.html { redirect_to(@supplier, :notice => 'Supplier was successfully updated.') }
-        format.xml  { head :ok }
+        if send_to_web_service(format)
+	  format.html { redirect_to(@supplier, :notice => 'Supplier was successfully updated.') }
+          format.xml  { head :ok }
+        end
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @supplier.errors, :status => :unprocessable_entity }

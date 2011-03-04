@@ -46,10 +46,11 @@ class ImportJobsController < ApplicationController
     job.jobable = @import_job
     job.save
 
+    parent = job.parent
 
     respond_to do |format|
       if @import_job.save
-        format.html { redirect_to(supplier_jobs_path(params[:supplier_id]), :notice => 'ImportJob was successfully created.') }
+        format.html { redirect_to(parent.present? ? supplier_job_path(params[:supplier_id], parent.id) : supplier_jobs_path(params[:supplier_id]), :notice => "Задача импортирования успешно создана") }
         format.xml  { render :xml => @import_job, :status => :created, :location => @import_job }
       else
         format.html { render :action => "new" }
@@ -62,10 +63,12 @@ class ImportJobsController < ApplicationController
   # PUT /import_jobs/1.xml
   def update
     @import_job = ImportJob.find(params[:id])
-    
+    job = @import_job.jobs.first
+    parent = job.parent
+
     respond_to do |format|
       if @import_job.update_attributes(params[:import_job])
-        format.html { redirect_to(supplier_jobs_path(params[:supplier_id]), :notice => 'ImportJob was successfully updated.') }
+        format.html { redirect_to(parent.present? ? supplier_job_path(params[:supplier_id], parent.id) : supplier_jobs_path(params[:supplier_id]), :notice => "Задача импортирования успешно обновлена") }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
