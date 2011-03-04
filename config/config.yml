@@ -11,7 +11,7 @@ defaults: &defaults
   emex_cache: 3
   emex_timeout: 200
 
-  lc_ws_address: http://192.168.1.246:8080/trade/ws
+  lc_ws_address: http://192.168.1.42/trade_dda/ws
   lc_ws_login: webservice
   lc_ws_password: webservice
 
