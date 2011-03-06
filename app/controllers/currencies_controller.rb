@@ -86,10 +86,10 @@ class CurrenciesController < ApplicationController
     respond_to do |format|
       if @currency.update_attributes(params[:currency])
 
-        add_currency_rate
-
-        format.html { redirect_to(@currency, :notice => 'Currency was successfully updated.') }
-        format.xml  { head :ok }
+        if send_to_web_service(format)
+          format.html { redirect_to(@currency, :notice => 'Currency was successfully updated.') }
+          format.xml  { head :ok }
+        end
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @currency.errors, :status => :unprocessable_entity }

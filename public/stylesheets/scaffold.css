@@ -6,7 +6,8 @@
 td {
   padding: 3px;
 }
-
-a:hover {
-  color: green;
-}
+A:link { color: navy }
+A:visited { color: purple }
+A:hover { color: red;}
+A:active { color: green;}
+A:focus { color: teal }
