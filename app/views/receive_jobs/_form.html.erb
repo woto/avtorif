@@ -23,7 +23,6 @@
         <% once = false %>
 <% 
            ReceiveJob.joins(:job).where(:jobs => {:supplier_id => params[:supplier_id]}).group(:receiveable_id, :receiveable_type).each do |rj| 
-           debugger
 %>
         <% 
            #ReceiveJob.all(:joins => :job, :conditions => {:jobs => {:supplier_id => params[:supplier_id]}}).each do |rj| 
