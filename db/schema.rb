@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110227131515) do
+ActiveRecord::Schema.define(:version => 20110307155009) do
 
   create_table "analogues", :force => true do |t|
     t.integer  "original_id"
@@ -110,12 +110,12 @@ ActiveRecord::Schema.define(:version => 20110227131515) do
   end
 
   create_table "email_receives", :force => true do |t|
-    t.string   "server"
-    t.string   "port"
+    t.string   "server",     :default => "mail.avtorif.ru"
+    t.string   "port",       :default => "110"
     t.boolean  "ssl"
     t.string   "login"
     t.string   "password"
-    t.string   "protocol"
+    t.string   "protocol",   :default => "pop3"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
