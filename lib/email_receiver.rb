@@ -37,27 +37,32 @@ class EmailReceiver < AbstractReceiver
               #mail = Notifier.receive(net_popmail)
               mail = TMail::Mail.parse(net_popmail)
 
-
               unless mail.attachments.nil? 
                 mail.attachments.each do |attachment|
-                  md5 =  Digest::MD5.hexdigest(attachment.string)
-                  #wc_stat = `echo "#{attachment.string}" | wc`
+                  if attachment.original_filename =~ Regexp.new(eval(@job.file_mask))
+                    remote_file = RemoteFile.new(attachment.original_filename)
+                    remote_file.write(attachment.string)
+                    remote_file.flush
+                    md5 = Digest::MD5.file(remote_file.path).hexdigest
+                    wc_stat = `wc #{remote_file.path.to_s.shellescape}`
+                    # с большими аттачментами не работает и не удивительно
+                    #wc_stat = `echo "#{Base64.encode64(attachment.string)}" | base64 -d | wc`
 
-                  # attachment.original_filename
-                  if (@optional.present? && @optional[:force]) || SupplierPrice.find(:first, :conditions => ['md5 = ? AND supplier_id = ?',  md5, @job.supplier.id]).nil?
+                    if (@optional.present? && @optional[:force]) || SupplierPrice.find(:first, :conditions => ['md5 = ? AND supplier_id = ?',  md5, @job.supplier.id]).nil?
 
-                    attachment = SupplierPrice.new(:group_code => group_code, :attachment => attachment, :email_id => email_id, :md5 => md5, :wc_stat => email_id)
-                    attachment.supplier = @job.supplier
-                    attachment.job_code = @job.title
-                    attachment.job_id = @job.id
-                    attachment.save
+                      attachment = SupplierPrice.new(:group_code => group_code, :attachment => remote_file, :email_id => email_id, :md5 => md5, :wc_stat => wc_stat)
+                      attachment.supplier = @job.supplier
+                      attachment.job_code = @job.title
+                      attachment.job_id = @job.id
+                      attachment.save
 
-                    retval << attachment.id
-                    #@receiver.receive_job.job.childs.each do |child|
-                    #  # а что если тут смотреть дочерние правила с фильтрами мыла?
-                    #  JobWalker.new.start_job(child, @priority, attachment.id)
-                    #end
+                      retval << attachment.id
+                      #@receiver.receive_job.job.childs.each do |child|
+                      #  # а что если тут смотреть дочерние правила с фильтрами мыла?
+                      #  JobWalker.new.start_job(child, @priority, attachment.id)
+                      #end
 
+                    end
                   end
                 end
               end
