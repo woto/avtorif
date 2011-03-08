@@ -7,7 +7,7 @@ class JobsController < ApplicationController
     scope = scope.scoped :conditions => {:supplier_id => params['supplier_id']} if params['supplier_id']
     @jobs = scope.paginate :include => :supplier,
                          :page => params[:page],
-                         :order => 'created_at DESC'
+                         :order => 'title'
 
     respond_to do |format|
       format.html # index.html.erb
@@ -119,11 +119,13 @@ class JobsController < ApplicationController
     new_job = @job.clone
     new_jobable = @jobable.clone
     new_job.jobable = new_jobable
+    debugger
     if @jobable.class == ReceiveJob
       new_receiveable = @receiveable.clone
       new_jobable.receiveable = new_receiveable
     end
-    new_job.title = "Копия " + new_job.title
+    new_job.title = new_job.title + " КОПИЯ"
+    new_job.repeats << @job.repeats
     new_job.save
     parent = @job.parent
     redirect_to(parent.present? ? supplier_job_path(params[:supplier_id], parent.id) : supplier_jobs_path(params[:supplier_id]), :notice => "Копия задачи успешно создана")
