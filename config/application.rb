@@ -53,5 +53,18 @@ module Avtorif
       :exception_recipients => %w{webmaster@avtorif.ru}
     )
 
+    config.action_mailer.raise_delivery_errors  = true
+    config.action_mailer.perform_deliveries     = true
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+      :address => "mail.avtorif.ru",
+      :port => 25,
+      :domain => "avtorif.ru",
+      :authentication => :login,
+      :user_name => "robot",
+      :password => "ss21503"
+    }
+
+
   end
 end
