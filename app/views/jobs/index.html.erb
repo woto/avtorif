@@ -102,6 +102,7 @@
     <%= link_to ps.title, supplier_price_setting_path(params[:supplier_id], ps.id) %>
     <%= link_to("Очистить прайс", clean_supplier_price_setting_path(params[:supplier_id], ps.id), :method => :clean, :confirm => "Вы уверены, что хотите очистить прайс?")  %>
     <%= link_to("Скачать прайс", download_supplier_price_setting_path(params[:supplier_id], ps.id))  %>
+    <%= link_to("Сделать копию настроек прайса", copy_supplier_price_setting_path(params[:supplier_id], ps.id))  %>
     <br />
   <% end %>
 <% end %>

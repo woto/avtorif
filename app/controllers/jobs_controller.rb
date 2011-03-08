@@ -113,9 +113,16 @@ class JobsController < ApplicationController
   def copy
     @job = Job.find(params[:id])
     @jobable = @job.jobable
+    if @jobable.class == ReceiveJob
+      @receiveable = @jobable.receiveable
+    end
     new_job = @job.clone
     new_jobable = @jobable.clone
     new_job.jobable = new_jobable
+    if @jobable.class == ReceiveJob
+      new_receiveable = @receiveable.clone
+      new_jobable.receiveable = new_receiveable
+    end
     new_job.title = "Копия " + new_job.title
     new_job.save
     parent = @job.parent

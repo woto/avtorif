@@ -189,7 +189,7 @@ class PricesController < ApplicationController
               p[:job_import_job_country_short] = z.css('PriceCountry').text
               p[:price_cost] = z.css('ResultPrice').text
               p[:income_cost] = z.css('ResultPrice').text.to_f * 1
-              p[:retail_cost] = p[:income_cost] * 1.35
+              p[:retail_cost] = p[:income_cost] * 1.55
               p[:currency] = 643
               p[:count] = CGI.unescapeHTML(z.css('QuantityText').first.text)
               p[:title] = z.css('DetailNameRus').text
@@ -301,6 +301,18 @@ class PricesController < ApplicationController
 
     query = "SELECT '1'"
     result = @client.query(query, :as => :array)
+
+    # Пока мы до конца не избавимся от каталожного номера без производителя эта мера является необходимой
+    # TODO попробуйте поищите каталожный номер с заменами 90430-12031 без этого блока.
+    @reduced_prices = []
+    seen = []
+    @prices.map do |detail|
+      unless seen.include? detail["id"] || detail["id"] == nil
+        seen << detail["id"]
+        @reduced_prices << detail
+      end
+    end
+    @prices = @reduced_prices
 
     respond_to do |format|
       format.html {render :action => :index }

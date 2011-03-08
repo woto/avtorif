@@ -42,6 +42,7 @@ Avtorif::Application.routes.draw do
     resources :price_settings do
       post 'clean', :on => :member
       get 'download', :on => :member
+      post 'copy', :on => :member
     end
     resources :supplier_prices do
       collection do

@@ -1,3 +1,5 @@
+Есть такой момент, что если на почту сбросят несколько писем с именами аттачментов, подходящих под маску, то они попадают в один group_code. Крайне важно не допускать накопление очереди если настройки прайса сложны и используют различные методы обновления.
+
 Развертывание:
 	1. sudo dpkg-reconfigure dash
 		Баг связан с http://stackoverflow.com/questions/4546285/problem-with-cyrillic-symbols-in-console
@@ -46,7 +48,6 @@ au-auto.ru
 		Вид сборки (вездеход закрытый)
 
 Профессиональный софт
-	TEC-DOC
 	http://auto.linemedia.ru/
 	http://acrtr.ru/
 	http://avtoshop.acrtr.ru/ (http://avtoshop.acrtr.ru/Default.aspx) 
@@ -59,7 +60,11 @@ au-auto.ru
 	http://epcdata.ru/
 	http://catcar.info/ (вот эти продажные и много кто использует)
         http://laximo.ru
+        http://www.emex.ru/pub/AutoCatalogs.aspx
+        http://online.emex.ru/Pub_Opt/Common.aspx
 
+Каталоги
+	Zenith, Прайс-Софт, ilcats, TEC-DOC
 	
 Рейтинги
 	http://top.mail.ru/Rating/Cars-Spare/Today/Visitors/1.html#1

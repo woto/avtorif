@@ -121,6 +121,15 @@ class PriceSettingsController < ApplicationController
     redirect_to(supplier_jobs_path(params[:supplier_id]), :notice => 'Содержимое прайса успешно очищено')
   end
  
+  def copy
+    @price_setting = PriceSetting.find(params[:id])
+    #@jobable = @price_setting.currency_buy
+    new_price_setting = @price_setting.clone
+    new_price_setting.title = "Копия " + new_price_setting.title
+    new_price_setting.save
+    redirect_to(supplier_jobs_path(params[:supplier_id]), :notice => 'Копия прайса успешно создана')
+  end
+
   def download
 #    self.response_body =  proc{ |response, output|
 #      10_000_000.times do |i|
