@@ -41,7 +41,8 @@
   </p>
   <p>
     <%= f.label :parent %><br />
-    <%= f.input :parent, :collection => Job.find(:all, :conditions => {:supplier_id => params[:supplier_id]}) %>
+    <% debugger %>
+    <%= f.input :parent, :collection => Job.find(:all, :conditions => {:supplier_id => params[:supplier_id]}).map{|job| [job.id.to_s + " " + job.title.to_s, job.id.to_s]} %>
   </p>
 
     <!--
