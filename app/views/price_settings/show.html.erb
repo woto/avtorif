@@ -1,8 +1,12 @@
 <p id="notice"><%= notice %></p>
 
 <p>
+  <b>Title:</b>
+  <%= @price_setting.title %>
+</p>
+<p>
   <b>Currency buy:</b>
-  <%= @price_setting.currency_buy %>
+  <%= @price_setting.currency_buy.title %>
 </p>
 
 <p>
@@ -51,7 +55,7 @@
 
 <p>
   <b>Currency weight:</b>
-  <%= @price_setting.currency_weight %>
+  <%= @price_setting.currency_weight.title %>
 </p>
 
 <p>
@@ -78,12 +82,15 @@
   <b>Delivery days declared:</b>
   <%= @price_setting.delivery_days_declared %>
 </p>
-
-<p>
-  <b>Import job:</b>
-  <%= @price_setting.import_job %>
+<p> <b>Задачи импортирования задействованные в формировании прайса: </b>
+<% debugger %>
+  <% @price_setting.import_jobs.each do |import_job| %>
+    <br />
+    <% if import_job.jobs.present? %>
+      <%= link_to import_job.jobs.first.id.to_s + " " + import_job.jobs.first.title, supplier_job_path(import_job.jobs.first.supplier, import_job.jobs.first)   %>
+    <% end %>
+  <% end %>
 </p>
-
 
 <%= link_to 'Destroy', supplier_price_setting_path(@price_setting.supplier.id, @price_setting), :confirm => "Are you sure?", :method => :delete %> |
 <%= link_to 'Edit', edit_supplier_price_setting_path(@price_setting.supplier.id, @price_setting) %> |
