@@ -9,17 +9,17 @@ class PricesController < ApplicationController
     @private_cache ||= Hash.new
     if @private_cache.key? key
       if manufacturer
-        if @private_cache[key][:with].key? manufacturer
-          block.call( @private_cache[key][:with][manufacturer]) if block
+        if @private_cache[key]["with"].key? manufacturer
+          block.call( @private_cache[key]["with"][manufacturer]) if block
           return
         end
       else
         # Все группы
-        if @private_cache[key][:without].key? :catalog_number
-          block.call(@private_cache[key][:without]) if block
+        if @private_cache[key]["without"].key? "catalog_number"
+          block.call(@private_cache[key]["without"]) if block
         end
-        if @private_cache[key][:with].size > 0
-          @private_cache[key][:with].each_pair do |k, v|
+        if @private_cache[key]["with"].size > 0
+          @private_cache[key]["with"].each_pair do |k, v|
             block.call(v) if block
           end
         end
@@ -30,50 +30,52 @@ class PricesController < ApplicationController
       query = "SELECT price_catalog_#{md5}.*, manufacturers.original FROM price_catalog_#{md5} 
         LEFT JOIN manufacturers ON price_catalog_#{md5}.manufacturer = manufacturers.title WHERE catalog_number = " + Price.connection.quote(catalog_number)
       puts "###################### #{query}  ######################"
-      @client = ActiveRecord::Base.connection.instance_variable_get :@connection
-      result = @client.query(query, :as => :hash)
+      #@client = ActiveRecord::Base.connection.instance_variable_get :@connection
+      #result = @client.query(query, :as => :hash)
+      #debugger
+      result = ActiveRecord::Base.connection.select_all(query)
       if manufacturer
-        @private_cache[key] ||= {:with => {manufacturer => {:catalog_number => catalog_number, :manufacturer => manufacturer, :replacements => []}}, :without => []}
+        @private_cache[key] ||= {"with" => {manufacturer => {"catalog_number" => catalog_number, "manufacturer" => manufacturer, "replacements" => []}}, "without" => []}
       else
-        @private_cache[key] ||= {:with => {}, :without => {:catalog_number => catalog_number, :replacements => []}}
+        @private_cache[key] ||= {"with" => {}, "without" => {"catalog_number" => catalog_number, "replacements" => []}}
       end
       result.each do |row|
         # Запомнили в кеше
         # hash = {
         #   "A" => { 
-        #     :without => {
-        #       :catalog_number, ..., :replacemnts => {
-        #         {:catalog_number => "B", :manufacturer => "M1"},
-        #         {:catalog_number => "B", :manufacturer => nil}
+        #     "without" => {
+        #       "catalog_number", ..., "replacemnts" => {
+        #         {"catalog_number" => "B", "manufacturer" => "M1"},
+        #         {"catalog_number" => "B", "manufacturer" => nil}
         #       }
         #     }
-        #     :with => {
-        #       "M1" => {:catalog_number, ... :replacements => {...}},
-        #       "M2" => {:catalog_number, ... :replacements => {...}}
+        #     "with" => {
+        #       "M1" => {"catalog_number", ... "replacements" => {...}},
+        #       "M2" => {"catalog_number", ... "replacements" => {...}}
         #     }
         #   }
         # }
 
         if row['manufacturer'].blank?
 
-          @private_cache[key][:without] = {
-            :catalog_number => row['catalog_number'],
-            :manufacturer => row['manufacturer'],
-            :original => row['original'],
-            :title => row['title'],
-            :title_en => row['title_en'],
-            :weight_grams => row['weight_grams'],
-            :new_catalog_number => row['new_catalog_number'],
-            :replacements => []
+          @private_cache[key]["without"] = {
+            "catalog_number" => row['catalog_number'],
+            "manufacturer" => row['manufacturer'],
+            "original" => row['original'],
+            "title" => row['title'],
+            "title_en" => row['title_en'],
+            "weight_grams" => row['weight_grams'],
+            "new_catalog_number" => row['new_catalog_number'],
+            "replacements" => []
           }
 
           for i in 0...AppConfig.max_replaces
             if eval "row['r#{i}'].blank?"
               break
             else
-              eval "@private_cache[key][:without][:replacements] << {
-                :catalog_number => row['r#{i}'], 
-                :manufacturer => row['rm#{i}']
+              eval "@private_cache[key]['without']['replacements'] << {
+                'catalog_number' => row['r#{i}'], 
+                'manufacturer' => row['rm#{i}']
               }"
               #if recursive
               #  get_from_catalog(row["r#{i}"], row["rm#{i}"], false, &block)
@@ -81,24 +83,24 @@ class PricesController < ApplicationController
             end
           end
         else
-          @private_cache[key][:with][row['manufacturer']] = {
-            :catalog_number => row['catalog_number'],
-            :manufacturer => row['manufacturer'],
-            :original => row['original'],
-            :title => row['title'],
-            :title_en => row['title_en'],
-            :weight_grams => row['weight_grams'],
-            :new_catalog_number => row['new_catalog_number'],
-            :replacements => []
+          @private_cache[key]['with'][row['manufacturer']] = {
+            'catalog_number' => row['catalog_number'],
+            'manufacturer' => row['manufacturer'],
+            'original' => row['original'],
+            'title' => row['title'],
+            'title_en' => row['title_en'],
+            'weight_grams' => row['weight_grams'],
+            'new_catalog_number' => row['new_catalog_number'],
+            'replacements' => []
           }
           
           for i in 0...AppConfig.max_replaces
             if eval "row['r#{i}'].blank?"
               break
             else
-              eval "@private_cache[key][:with][row['manufacturer']][:replacements] << {
-                :catalog_number => row['r#{i}'], 
-                :manufacturer => row['rm#{i}']
+              eval "@private_cache[key]['with'][row['manufacturer']]['replacements'] << {
+                'catalog_number' => row['r#{i}'], 
+                'manufacturer' => row['rm#{i}']
               }"
               #if recursive
               #  get_from_catalog(row["r#{i}"], row["rm#{i}"], false, &block)
@@ -126,8 +128,8 @@ class PricesController < ApplicationController
       get_from_catalog(our_catalog_number, our_manufacturer) do |r1|
         replacements << r1
         if params[:replacements] == '1'
-          r1[:replacements].each do |replacement|
-            get_from_catalog(replacement[:catalog_number], replacement[:manufacturer]) do |r2|
+          r1['replacements'].each do |replacement|
+            get_from_catalog(replacement['catalog_number'], replacement['manufacturer']) do |r2|
               replacements << r2
             end
           end
@@ -147,7 +149,7 @@ class PricesController < ApplicationController
               :replacements => params[:replacements]
             )
             puts 'Завершили чтение'
-
+            #debugger
             doc = Nokogiri::XML(response)
             detail_items = doc.css('DetailItem')
             detail_items.each do |z|
@@ -163,56 +165,56 @@ class PricesController < ApplicationController
 
               p = Hash.new
               #p = Price.new
-              p[:supplier_title] = 'emex'
-              p[:supplier_title_en] = 'emex'
-              p[:supplier_title_full] = 'emex'
-              p[:supplier_inn] = 7716542310
-              p[:supplier_kpp] = 771601001
-              p[:job_title] ="ws"
-              p[:job_import_job_kilo_price] = 0
-              p[:job_import_job_presence] = false
+              p["supplier_title"] = 'emex'
+              p["supplier_title_en"] = 'emex'
+              p["supplier_title_full"] = 'emex'
+              p["supplier_inn"] = 7716542310
+              p["supplier_kpp"] = 771601001
+              p["job_title"] ="ws"
+              p["job_import_job_kilo_price"] = 0
+              p["job_import_job_presence"] = false
           
-              p[:job_import_job_destination_logo] = z.css('DestinationLogo').text
-              p[:job_import_job_destination_summary] = z.css('DestinationDesc').text
-              #p[:logo] = z.css('DestinationLogo').text
-              p[:catalog_number] = CommonModule::normalize_catalog_number(z.css('DetailNum').first.text)
-              p[:catalog_number_orig] = z.css('DetailNum').first.text.strip
-              p[:manufacturer] = CommonModule::find_manufacturer_synonym(z.css('MakeName').text, -2, true)[1..-2]
-              p[:manufacturer_orig] = z.css('MakeName').text
-              p[:manufacturer_short] = z.css('MakeLogo').first.text
-              p[:job_import_job_success_percent] = z.css('CalcDeliveryPercent').text
-              p[:success_percent] = z.css('CalcDeliveryPercent').text
-              p[:job_import_job_delivery_days_declared] = z.css('ADDays').text
-              p[:job_import_job_delivery_days_average] = z.css('DeliverTimeGuaranteed').text
-              p[:job_import_job_delivery_summary] = z.css('DestinationLogo').text
-              p[:job_import_job_country] = z.css('PriceDesc').text
-              p[:job_import_job_country_short] = z.css('PriceCountry').text
-              p[:price_cost] = z.css('ResultPrice').text
-              p[:income_cost] = z.css('ResultPrice').text.to_f * 1
-              p[:retail_cost] = p[:income_cost] * 1.55
-              p[:currency] = 643
-              p[:count] = CGI.unescapeHTML(z.css('QuantityText').first.text)
-              p[:title] = z.css('DetailNameRus').text
-              p[:title_en] = z.css('DetailNameEng').text
-              p[:weight_grams] = z.css('DetailWeight').text
+              p["job_import_job_destination_logo"] = z.css('DestinationLogo').text
+              p["job_import_job_destination_summary"] = z.css('DestinationDesc').text
+              #p["logo"] = z.css('DestinationLogo').text
+              p["catalog_number"] = CommonModule::normalize_catalog_number(z.css('DetailNum').first.text)
+              p["catalog_number_orig"] = z.css('DetailNum').first.text.strip
+              p["manufacturer"] = CommonModule::find_manufacturer_synonym(z.css('MakeName').text, -2, true)[1..-2]
+              p["manufacturer_orig"] = z.css('MakeName').text
+              p["manufacturer_short"] = z.css('MakeLogo').first.text
+              p["job_import_job_success_percent"] = z.css('CalcDeliveryPercent').text
+              p["success_percent"] = z.css('CalcDeliveryPercent').text
+              p["job_import_job_delivery_days_declared"] = z.css('ADDays').text
+              p["job_import_job_delivery_days_average"] = z.css('DeliverTimeGuaranteed').text
+              p["job_import_job_delivery_summary"] = z.css('DestinationLogo').text
+              p["job_import_job_country"] = z.css('PriceDesc').text
+              p["job_import_job_country_short"] = z.css('PriceCountry').text
+              p["price_cost"] = z.css('ResultPrice').text
+              p["income_cost"] = z.css('ResultPrice').text.to_f * 1
+              p["retail_cost"] = p['income_cost'] * 1.55
+              p["currency"] = 643
+              p["count"] = CGI.unescapeHTML(z.css('QuantityText').first.text)
+              p["title"] = z.css('DetailNameRus').text
+              p["title_en"] = z.css('DetailNameEng').text
+              p["weight_grams"] = z.css('DetailWeight').text
 
               if(z.css('bitStorehouse') == 'true')
-                p[:job_import_job_presence] = true
+                p["job_import_job_presence"] = true
               else
-                p[:job_import_job_presence] = false
+                p["job_import_job_presence"] = false
               end
 
               if z.css('bitOriginal').text == 'true'
-                p[:bit_original] = 1
+                p["bit_original"] = 1
               else
-                p[:bit_original] = 0
+                p["bit_original"] = 0
               end
 
               @prices << p
               found = false
               replacements.each do |replacement|
-                if replacement[:catalog_number] == p[:catalog_number]
-                  if replacement[:manufacturer] == p[:manufacturer] || replacement[:manufacturer] == nil
+                if replacement["catalog_number"] == p["catalog_number"]
+                  if replacement["manufacturer"] == p["manufacturer"] || replacement["manufacturer"] == nil
                     found = true
                   end
                 end
@@ -220,9 +222,9 @@ class PricesController < ApplicationController
               
               unless found
                 replacements <<  { 
-                  :catalog_number => p[:catalog_number],
-                  :manufacturer => p[:manufacturer],
-                  :original => p[:bit_original]
+                  "catalog_number" => p["catalog_number"],
+                  "manufacturer" => p["manufacturer"],
+                  "original" => p["bit_original"]
                 }
               end
 
@@ -232,10 +234,10 @@ class PricesController < ApplicationController
         end
       end
     # Локальная работа
-    debugger
+    #debugger
     replacements.each do |replacement|
-      md5 = Digest::MD5.hexdigest(replacement[:catalog_number])[0,2]
-      weight_grams = replacement[:weight_grams] ? replacement[:weight_grams] : "0"
+      md5 = Digest::MD5.hexdigest(replacement["catalog_number"])[0,2]
+      weight_grams = replacement["weight_grams"] ? replacement["weight_grams"] : "0"
       #string_for_income_cost =  "p.price_cost * (c.value/100 * ps.relative_buy_coefficient + ps.absolute_buy_coefficient)  income_rate * c.value AS income_cost, 
       query = "
         SELECT
@@ -287,20 +289,21 @@ class PricesController < ApplicationController
             ON c_buy.id = ps.currency_buy_id
           INNER JOIN currencies c_weight 
             ON c_weight.id = ps.currency_weight_id
-        WHERE  p.catalog_number = #{ActiveRecord::Base.connection.quote(replacement[:catalog_number])}" 
-      if replacement[:manufacturer]
-        query << " AND p.manufacturer = #{ActiveRecord::Base.connection.quote(replacement[:manufacturer])}"
+        WHERE  p.catalog_number = #{ActiveRecord::Base.connection.quote(replacement["catalog_number"])}" 
+      if replacement["manufacturer"]
+        query << " AND p.manufacturer = #{ActiveRecord::Base.connection.quote(replacement["manufacturer"])}"
       end
 
       #debugger
-      result = @client.query(query, :as => :hash)
+      #result = @client.query(query, {:as => :hash, :symbolize_keys => true})
+      result = ActiveRecord::Base.connection.select_all(query)
       result.each do |r|
         @prices << r
       end
     end
 
-    query = "SELECT '1'"
-    result = @client.query(query, :as => :array)
+    #query = "SELECT '1'"
+    #result = @client.query(query, :as => :array)
 
     # Пока мы до конца не избавимся от каталожного номера без производителя эта мера является необходимой
     # TODO попробуйте поищите каталожный номер с заменами 90430-12031 без этого блока.
