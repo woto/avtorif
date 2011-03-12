@@ -118,10 +118,19 @@ class PricesController < ApplicationController
 
     @prices = []
 
-    our_catalog_number = CommonModule::normalize_catalog_number(params[:catalog_number])
+    begin
+      our_catalog_number = CommonModule::normalize_catalog_number(params[:catalog_number])
+    rescue CatalogNumberException
+      render :text => "Каталожный номер искомой детали введен не корректно" and return
+    end
 
     if params[:manufacturer].present? && params[:manufacturer].size >= 1
-      our_manufacturer = CommonModule::find_manufacturer_synonym(params[:manufacturer], -1, false)[1..-2]
+      begin
+        our_manufacturer = CommonModule::find_manufacturer_synonym(params[:manufacturer], -1, false)[1..-2]
+      rescue ManufacturerException
+        render :text => "Искомый производитель деталей не существует" and return
+      end
+      
     end
 
     replacements = []
@@ -161,8 +170,8 @@ class PricesController < ApplicationController
                 next
               end
               
-              #debugger
-
+              debugger
+              puts "Создали хеш"
               p = Hash.new
               #p = Price.new
               p["supplier_title"] = 'emex'
