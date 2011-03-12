@@ -115,20 +115,22 @@ class PricesController < ApplicationController
   end
 
   def search
-
+    @header = []
     @prices = []
 
     begin
       our_catalog_number = CommonModule::normalize_catalog_number(params[:catalog_number])
     rescue CatalogNumberException
-      render :text => "Каталожный номер искомой детали введен не корректно" and return
+      flash.now[:notice] = 'Каталожный номер искомой детали введен не корректно'
+      render '/prices/search_form' and return
     end
 
     if params[:manufacturer].present? && params[:manufacturer].size >= 1
       begin
         our_manufacturer = CommonModule::find_manufacturer_synonym(params[:manufacturer], -1, false)[1..-2]
       rescue ManufacturerException
-        render :text => "Искомый производитель деталей не существует" and return
+        flash.now[:notice] = "Искомый производитель деталей не существует"
+        render '/prices/search_form' and return
       end
       
     end
@@ -145,6 +147,8 @@ class PricesController < ApplicationController
         end
       end
     # Работа со сторонними сервисами
+
+    once = true
     if(params[:ext_ws] == '1')
       #EMEX
         Timeout.timeout(AppConfig.emex_timeout) do
@@ -170,8 +174,7 @@ class PricesController < ApplicationController
                 next
               end
               
-              debugger
-              puts "Создали хеш"
+              #debugger
               p = Hash.new
               #p = Price.new
               p["supplier_title"] = 'emex'
@@ -200,7 +203,8 @@ class PricesController < ApplicationController
               p["job_import_job_country_short"] = z.css('PriceCountry').text
               p["price_cost"] = z.css('ResultPrice').text
               p["income_cost"] = z.css('ResultPrice').text.to_f * 1
-              p["retail_cost"] = p['income_cost'] * 1.55
+              p["ps_retail_rate"] = 1.55
+              p["retail_cost"] = p['income_cost'] * p["ps_retail_rate"]
               p["currency"] = 643
               p["count"] = CGI.unescapeHTML(z.css('QuantityText').first.text)
               p["title"] = z.css('DetailNameRus').text
@@ -237,11 +241,17 @@ class PricesController < ApplicationController
                 }
               end
 
+              if once
+                once = false
+                @header = @header | p.keys 
+              end
+
             end
             rescue Timeout::Error => e
           end
         end
       end
+    once = nil
     # Локальная работа
     #debugger
     replacements.each do |replacement|
@@ -281,8 +291,20 @@ class PricesController < ApplicationController
             WHEN #{weight_grams} > 0 THEN ps.retail_rate * (p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) + #{weight_grams} * ps.kilo_price / 1000 * (c_weight.value * ps.relative_weight_rate + ps.absolute_weight_rate))
             ELSE ps.retail_rate * (p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) * ps.weight_unavailable_rate)
           END AS retail_cost,
+          ij.income_rate as ij_income_rate,
+          c_buy.value as c_buy_value,
+          ps.retail_rate as ps_retail_rate,
+          ps.relative_buy_rate as ps_relative_buy_rate,
+          ps.absolute_buy_rate as ps_absolute_buy_rate,
+          #{weight_grams} as weight_grams,
+          ps.kilo_price as ps_kilo_price,
+          c_weight.value as c_weight_value,
+          ps.relative_weight_rate as ps_relative_weight_rate,
+          ps.absolute_weight_rate as ps_absolute_weight_rate,
+          ps.weight_unavailable_rate as ps_weight_unavailable_rate,
           m.original as bit_original,
-          ps.id as job_id
+          ps.id as job_id,
+          j.id as real_job_id
         FROM price_cost_#{md5} p
           LEFT JOIN manufacturers m
             ON p.manufacturer = m.title
@@ -306,8 +328,11 @@ class PricesController < ApplicationController
       #debugger
       #result = @client.query(query, {:as => :hash, :symbolize_keys => true})
       result = ActiveRecord::Base.connection.select_all(query)
-      result.each do |r|
-        @prices << r
+      if result.size > 0
+        @header = @header | result[0].keys 
+        result.each do |r|
+          @prices << r
+        end
       end
     end
 
@@ -325,6 +350,11 @@ class PricesController < ApplicationController
       end
     end
     @prices = @reduced_prices
+    
+    @header.uniq!
+    ["catalog_number", "catalog_number_orig", "manufacturer", "manufacturer_orig", "bit_original", "title", "title_en", "income_cost", "ps_retail_rate", "retail_cost", "job_title", "supplier_title", "supplier_title_full", "supplier_title_en", "price_cost", "ij_income_rate", "c_buy_value", "ps_relative_buy_rate", "ps_absolute_buy_rate", "weight_grams", "ps_kilo_price", "c_weight_value", "ps_relative_weight_rate", "ps_absolute_weight_rate", "ps_weight_unavailable_rate", "supplier_title", "supplier_title_full", "supplier_title_en"].reverse.each do |key|
+      @header.unshift(@header.delete_at(@header.index(key)))
+    end
 
     respond_to do |format|
       format.html {render :action => :index }
