@@ -170,9 +170,9 @@ class PricesController < ApplicationController
                 next
               end
 
-              if z.css('CalcDeliveryPercent').text.to_i < 50
-                next
-              end
+              #if z.css('CalcDeliveryPercent').text.to_i < 50
+              #  next
+              #end
               
               #debugger
               p = Hash.new
@@ -209,7 +209,17 @@ class PricesController < ApplicationController
               p["count"] = CGI.unescapeHTML(z.css('QuantityText').first.text)
               p["title"] = z.css('DetailNameRus').text
               p["title_en"] = z.css('DetailNameEng').text
-              p["weight_grams"] = z.css('DetailWeight').text
+              #p["weight_grams"] = z.css('DetailWeight').text
+              p["weight_grams"] = 0
+              p["ps_weight_unavailable_rate"] = 1
+              p["ps_absolute_weight_rate"] = 0
+              p["ps_relative_weight_rate"] = 0
+              p["c_weight_value"] = 1
+              p["ps_kilo_price"] = 0
+              p["ps_absolute_buy_rate"] = 0
+              p["ps_relative_buy_rate"] = 1
+              p["c_buy_value"] = 1
+              p["ij_income_rate"] = 1
 
               if(z.css('bitStorehouse') == 'true')
                 p["job_import_job_presence"] = true
@@ -350,10 +360,16 @@ class PricesController < ApplicationController
       end
     end
     @prices = @reduced_prices
-    
-    @header.uniq!
-    ["catalog_number", "catalog_number_orig", "manufacturer", "manufacturer_orig", "bit_original", "title", "title_en", "income_cost", "ps_retail_rate", "retail_cost", "job_title", "supplier_title", "supplier_title_full", "supplier_title_en", "price_cost", "ij_income_rate", "c_buy_value", "ps_relative_buy_rate", "ps_absolute_buy_rate", "weight_grams", "ps_kilo_price", "c_weight_value", "ps_relative_weight_rate", "ps_absolute_weight_rate", "ps_weight_unavailable_rate", "supplier_title", "supplier_title_full", "supplier_title_en"].reverse.each do |key|
-      @header.unshift(@header.delete_at(@header.index(key)))
+
+    if @prices.size > 0
+      @header.uniq!
+      ["catalog_number", "catalog_number_orig", "manufacturer", "manufacturer_orig", "bit_original", "title", "title_en", "income_cost", "ps_retail_rate", "retail_cost", "job_title", "supplier_title", "supplier_title_full", "supplier_title_en", "price_cost", "ij_income_rate", "c_buy_value", "ps_relative_buy_rate", "ps_absolute_buy_rate", "weight_grams", "ps_kilo_price", "c_weight_value", "ps_relative_weight_rate", "ps_absolute_weight_rate", "ps_weight_unavailable_rate"].reverse.each do |key|
+        begin
+          @header.unshift(@header.delete_at(@header.index(key)))
+        rescue => e
+          raise e.to_s + " В процессе обработки #{key}"
+        end
+      end
     end
 
     respond_to do |format|
