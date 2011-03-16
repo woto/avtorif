@@ -280,7 +280,7 @@ class PricesController < ApplicationController
           ij.success_percent as job_import_job_success_percent,
           '55' as success_percent,
           CASE
-            WHEN p.count = 0 AND ps.presence = 1 THEN 99
+            WHEN (p.count = 0 AND ps.presence = 1) OR (p.count = '' AND ps.presence = 1) OR (p.count IS NULL AND ps.presence = 1) THEN 99
             ELSE p.count
           END as count,
           ps.delivery_days_average as job_import_job_delivery_days_average,
@@ -335,7 +335,7 @@ class PricesController < ApplicationController
         query << " AND p.manufacturer = #{ActiveRecord::Base.connection.quote(replacement["manufacturer"])}"
       end
 
-      #debugger
+      debugger
       #result = @client.query(query, {:as => :hash, :symbolize_keys => true})
       result = ActiveRecord::Base.connection.select_all(query)
       if result.size > 0
