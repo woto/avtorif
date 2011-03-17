@@ -4,6 +4,10 @@
   Производитель: <%= text_field_tag :manufacturer, params[:manufacturer] %><br />
   Искать замены и аналоги: <%= check_box_tag :replacements, "1", params[:replacements] %> <br />
   Искать на сайте партнеров: <%= check_box_tag :ext_ws, "1", params[:ext_ws] %><br />
+  С флагом показывать для магазинов: <%= check_box_tag :for_shop, "1", params[:for_shop] %><br />
+  С флагом показывать для сайта: <%= check_box_tag :for_site, "1", params[:for_site] %><br />
+  С флагом показывать для склада: <%= check_box_tag :for_stock, "1", params[:for_stock] %><br />
+
   <%= submit_tag "Искать", :name => nil, :onclick => "this.disabled = true; document.forms['search_form'].submit();" %>
 <% end %>
 </div>

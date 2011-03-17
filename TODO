@@ -1,3 +1,8 @@
-
+1. Заюзать древовидную структуру для задач
 2. Привести базу к одной кодировке.
 Mysql2::Error (Illegal mix of collations (utf8_general_ci,IMPLICIT) and (utf8_unicode_ci,IMPLICIT) for operation '='):
+3. Кол-во деталей бывает +
+                         ++
+                         >10
+                         =10
+                         <10
