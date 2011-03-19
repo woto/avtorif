@@ -83,7 +83,6 @@
   <%= @price_setting.delivery_days_declared %>
 </p>
 <p> <b>Задачи импортирования задействованные в формировании прайса: </b>
-<% debugger %>
   <% @price_setting.import_jobs.each do |import_job| %>
     <br />
     <% if import_job.jobs.present? %>

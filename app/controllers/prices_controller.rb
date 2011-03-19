@@ -342,8 +342,20 @@ class PricesController < ApplicationController
       if replacement["manufacturer"]
         query << " AND p.manufacturer = #{ActiveRecord::Base.connection.quote(replacement["manufacturer"])}"
       end
+      
+      if params['for_site']
+        query << " AND ps.visible_for_site = 1"
+      end
 
-      debugger
+      if params['for_stock']
+        query << " AND ps.visible_for_stock = 1"
+      end
+
+      if params['for_shop']
+        query << " AND visible_for_shops = 1"
+      end
+
+      #debugger
       #result = @client.query(query, {:as => :hash, :symbolize_keys => true})
       result = ActiveRecord::Base.connection.select_all(query)
       if result.size > 0
