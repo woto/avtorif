@@ -188,7 +188,7 @@ class PricesController < ApplicationController
           
               p["job_import_job_destination_logo"] = z.css('DestinationLogo').text
               p["job_import_job_destination_summary"] = z.css('DestinationDesc').text
-              #p["logo"] = z.css('DestinationLogo').text
+              p["price_logo_emex"] = z.css('PriceLogo').first.text
               p["catalog_number"] = CommonModule::normalize_catalog_number(z.css('DetailNum').first.text)
               p["catalog_number_orig"] = z.css('DetailNum').first.text.strip
               p["manufacturer"] = CommonModule::find_manufacturer_synonym(z.css('MakeName').text, -2, true)[1..-2]
