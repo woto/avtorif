@@ -11,6 +11,8 @@
         4. Установить https://github.com/akr/escape
         5. sudo apt-get install unrar
 
+sudo apt-get install python-setuptools
+sudo asy_install PyExcelerator
 sudo easy_install chardet
 
 Вспомогательные

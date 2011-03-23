@@ -6,7 +6,6 @@ class UnpackJobable < AbstractJobber
     retval = Array.new()
     group_code = 'u' + @optional.to_s + Time.now.to_s
     @optional.each do |opt|
-      debugger
       supplier_price = SupplierPrice.find(opt).attachment
       
       Dir.mktmpdir do |tempdir|
