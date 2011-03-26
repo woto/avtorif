@@ -39,6 +39,7 @@ class PriceSettingsController < ApplicationController
   end
 
   def send_to_web_service(format)
+  debugger
     client = Savon::Client.new do |wsdl, http|
        wsdl.document = "#{AppConfig.lc_ws_address}/trade.1cws?wsdl"
        http.auth.basic AppConfig.lc_ws_login, AppConfig.lc_ws_password
@@ -48,7 +49,7 @@ class PriceSettingsController < ApplicationController
          "ID" => @price_setting.id.to_s,
          "SuplierID" => @price_setting.supplier_id.to_s,
          "CurrencyCode" => @price_setting.currency_buy.foreign_id.to_s, 
-         "Presents" => @price_setting.presence.to_s, 
+         "Presents" => @price_setting.presence == true ? '1' : '0', 
          "Delivery" => @price_setting.delivery_summary.to_s,
          "description" => @price_setting.title.to_s,
          :order! => ["ID", "SuplierID", "CurrencyCode", "Presents", "Delivery", "description"]
@@ -86,7 +87,7 @@ class PriceSettingsController < ApplicationController
   def update
     @price_setting = PriceSetting.find(params[:id])
     @price_setting.supplier_id = params[:supplier_id]
-
+debugger
     respond_to do |format|
       if @price_setting.update_attributes(params[:price_setting])
         if send_to_web_service(format)

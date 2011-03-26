@@ -194,7 +194,8 @@ class PricesController < ApplicationController
               p["manufacturer"] = CommonModule::find_manufacturer_synonym(z.css('MakeName').text, -2, true)[1..-2]
               p["manufacturer_orig"] = z.css('MakeName').text
               p["manufacturer_short"] = z.css('MakeLogo').first.text
-              p["job_import_job_success_percent"] = z.css('CalcDeliveryPercent').text
+              # Не требуется т.к. у нас success_percent на данный момент вынесен в price_settings
+              #p["job_import_job_success_percent"] = z.css('CalcDeliveryPercent').text
               p["success_percent"] = z.css('CalcDeliveryPercent').text
               p["job_import_job_delivery_days_declared"] = z.css('ADDays').text
               p["job_import_job_delivery_days_average"] = z.css('DeliverTimeGuaranteed').text
@@ -277,8 +278,8 @@ class PricesController < ApplicationController
           s.inn as supplier_inn,
           s.kpp as supplier_kpp,
           ps.title as job_title,
-          ij.success_percent as job_import_job_success_percent,
-          '55' as success_percent,
+          /* ij.success_percent as job_import_job_success_percent, */
+          ps.success_percent,
           CASE
             WHEN (p.count = 0 AND ps.presence = 1) OR (p.count = '' AND ps.presence = 1) OR (p.count IS NULL AND ps.presence = 1) THEN 99
             ELSE p.count

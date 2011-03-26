@@ -112,6 +112,12 @@
     <%= f.text_field :delivery_summary %>
     Полезная информация для покупателей о заказе (отсутствие возвратов и т.д.)
   </div>
+  <div class="field">
+    <%= f.label :success_percent %><br />
+    <%= f.text_field :success_percent %>
+    Вероятность наличия деталей у поставщика (планировалось, что это значение будет храниться у детали)
+  </div>
+  <br />
   <div class="actions">
     <%= f.submit %>
   </div>
