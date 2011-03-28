@@ -62245,43 +62245,6 @@ ActiveRecord::Schema.define(:version => 20110325103643) do
 
   add_index "price_import_630", ["doublet"], :name => "doublet_idx"
 
-  create_table "price_import_633", :force => true do |t|
-    t.integer  "job_id"
-    t.string   "title"
-    t.string   "title_en"
-    t.integer  "count"
-    t.decimal  "price_cost",                                  :precision => 10, :scale => 3
-    t.string   "manufacturer"
-    t.string   "manufacturer_orig"
-    t.string   "catalog_number",                :limit => 20
-    t.string   "catalog_number_orig",           :limit => 20
-    t.string   "new_catalog_number",            :limit => 20
-    t.string   "new_catalog_number_orig",       :limit => 20
-    t.string   "country"
-    t.string   "parts_group"
-    t.string   "doublet"
-    t.integer  "supplier_id"
-    t.integer  "price_setting_id"
-    t.boolean  "processed",                                                                  :default => false
-    t.string   "delivery_days_price"
-    t.integer  "weight_grams"
-    t.string   "external_id"
-    t.string   "unit_package"
-    t.string   "multiply_factor"
-    t.string   "min_order"
-    t.string   "description"
-    t.string   "unit"
-    t.string   "applicability"
-    t.string   "replacement",                   :limit => 20
-    t.string   "replacement_orig",              :limit => 20
-    t.string   "replacement_manufacturer",      :limit => 20
-    t.string   "replacement_manufacturer_orig", :limit => 20
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "price_import_633", ["doublet"], :name => "doublet_idx"
-
   create_table "price_import_68", :force => true do |t|
     t.integer  "job_id"
     t.string   "title"

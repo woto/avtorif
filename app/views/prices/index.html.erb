@@ -1,45 +1,49 @@
 <%= render :template => '/prices/search_form.html.erb' %>
 
 <%
-xm = Builder::XmlMarkup.new
-uniq_manufacturers = []
-uniq_catalog_numbers = []
-uniq_titles = []
-xm.table {
-  #xm.tr {@header.each {|value| xm.th(value)}}
-  @prices.each_with_index do |line, index|
-    if line['catalog_number'] == CommonModule::normalize_catalog_number(params['catalog_number'])
-     uniq_manufacturers << [line['manufacturer'], line['bit_original']]
-     uniq_catalog_numbers << line['catalog_number']
-     uniq_titles << line['title']
+if @prices.present?
+  xm = Builder::XmlMarkup.new
+  uniq_manufacturers = []
+  uniq_catalog_numbers = []
+  uniq_titles = []
+  xm.table {
+    #xm.tr {@header.each {|value| xm.th(value)}}
+    @prices.each_with_index do |line, index|
+      if line['catalog_number'] == CommonModule::normalize_catalog_number(params['catalog_number'])
+        uniq_manufacturers << [line['manufacturer'], line['bit_original']]
+        uniq_catalog_numbers << line['catalog_number']
+        uniq_titles << line['title']
+      end
+      if index % 3 == 0
+        xm.tr {@header.each {|value| xm.th(value)}}
+      end
+      xm.tr do
+        @header.each{|key| xm.td(line[key])}
+        #line.each {|key, value| xm.td(value)}
+      end
     end
-    if index % 3 == 0
-      xm.tr {@header.each {|value| xm.th(value)}}
-    end
-    xm.tr do
-      @header.each{|key| xm.td(line[key])}
-      #line.each {|key, value| xm.td(value)}
-    end
-  end
-}
-
-
+  }
 %>
 
-<table>
-<tr><td valign="top">
-<% uniq_manufacturers = uniq_manufacturers.uniq.compact %>
-<p>Все найденные названия:<br /><ul><li><%= raw uniq_titles.uniq.compact.join("</li><li>") %></li></ul></p>
-<p>Все найденные каталожные номера:<br /><ul><li><%= raw uniq_catalog_numbers.uniq.compact.join('</li><li>') %></li></ul></p>
-<p>Все найденные производители:
-  <ul>
-    <li>Оригинальные:<ul><li><%= raw uniq_manufacturers.map{|manufacturer| manufacturer[0] if manufacturer[1] == 1}.compact.join('</li><li>') %></li></ul></li>
-    <li>Не оригинальные:<ul><li><%= raw uniq_manufacturers.map{|manufacturer| manufacturer[0] if manufacturer[1] == 0}.compact.join('</li><li>') %></li></ul></li>
-  </ul>
-</p>
-</td>
-<td>
-<%= raw xm.target %>
-</td>
-</tr>
-</table>
+  <table>
+    <tr>
+      <td valign="top">
+        <% uniq_manufacturers = uniq_manufacturers.uniq.compact %>
+        <p>Все найденные названия:<br /><ul><li><%= raw uniq_titles.uniq.compact.join("</li><li>") %></li></ul></p>
+        <p>Все найденные каталожные номера:<br /><ul><li><%= raw uniq_catalog_numbers.uniq.compact.join('</li><li>') %></li></ul></p>
+        <p>
+          Все найденные производители:
+          <ul>
+            <li>Оригинальные:<ul><li><%= raw uniq_manufacturers.map{|manufacturer| manufacturer[0] if manufacturer[1] == 1}.compact.join('</li><li>') %></li></ul></li>
+            <li>Не оригинальные:<ul><li><%= raw uniq_manufacturers.map{|manufacturer| manufacturer[0] if manufacturer[1] == 0}.compact.join('</li><li>') %></li></ul></li>
+          </ul>
+        </p>
+      </td>
+      <td>
+        <%= raw xm.target %>
+      </td>
+    </tr>
+  </table>
+<% 
+  end
+%>
