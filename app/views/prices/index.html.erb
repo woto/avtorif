@@ -9,7 +9,7 @@ if @prices.present?
   xm.table {
     #xm.tr {@header.each {|value| xm.th(value)}}
     @prices.each_with_index do |line, index|
-      if line['catalog_number'] == CommonModule::normalize_catalog_number(params['catalog_number'])
+      if line['catalog_number'] == CommonModule::normalize_catalog_number(CommonModule::convert_all_cyr_to_lat(params['catalog_number']))
         uniq_manufacturers << [line['manufacturer'], line['bit_original']]
         uniq_catalog_numbers << line['catalog_number']
         uniq_titles << line['title']
