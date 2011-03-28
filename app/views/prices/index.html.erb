@@ -33,7 +33,6 @@ xm.table {
 <p>Все найденные каталожные номера:<br /><ul><li><%= raw uniq_catalog_numbers.uniq.compact.join('</li><li>') %></li></ul></p>
 <p>Все найденные производители:
   <ul>
-    <% debugger %>
     <li>Оригинальные:<ul><li><%= raw uniq_manufacturers.map{|manufacturer| manufacturer[0] if manufacturer[1] == 1}.compact.join('</li><li>') %></li></ul></li>
     <li>Не оригинальные:<ul><li><%= raw uniq_manufacturers.map{|manufacturer| manufacturer[0] if manufacturer[1] == 0}.compact.join('</li><li>') %></li></ul></li>
   </ul>

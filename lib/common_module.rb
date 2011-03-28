@@ -45,6 +45,42 @@ module CommonModule
       end 
     end
 
+    CYR_LAT_LOWER = {'й' => 'q', 'ц' => 'w', 'у' => 'e', 'к' => 'r', 'е' => 't', 'н' => 'y', 'г' => 'u', 'ш' => 'i', 'щ' => 'o', 'з' => 'p', 'ф' => 'a', 'ы' => 's', 'в' => 'd', 'а' => 'f', 'п' => 'g', 'р' => 'h', 'о' => 'j', 'л' => 'k', 'д' => 'l', 'я' => 'z', 'ч' => 'x', 'с' => 'c', 'м' => 'v', 'и' => 'b', 'т' => 'n', 'ь' => 'm'}.sort{|one, two| two[1].size <=> one[1].size}
+
+    CYR_LAT_UPPER = {'Й' => 'Q', 'Ц' => 'W', 'У' => 'E', 'К' => 'R', 'Е' => 'T', 'Н' => 'Y', 'Г' => 'U', 'Ш' => 'I', 'Щ' => 'O', 'З' => 'P', 'Ф' => 'A', 'Ы' => 'S', 'В' => 'D', 'А' => 'F', 'П' => 'G', 'Р' => 'H', 'О' => 'J', 'Л' => 'K', 'Д' => 'L', 'Я' => 'Z', 'Ч' => 'X', 'С' => 'C', 'М' => 'V', 'И' => 'B', 'Т' => 'N', 'Ь' => 'M'}.sort{|one, two| two[1].size <=> one[1].size}
+
+    TABLE = CYR_LAT_LOWER + CYR_LAT_UPPER
+
+    def convert_all_cyr_to_lat(str)
+      chars = str.split(//)
+
+      lowers = CYR_LAT_LOWER.map{|e| e[0] }
+      uppers = CYR_LAT_UPPER.map{|e| e[0] }
+
+      hashtable = {}
+      TABLE.each do |item|
+        next unless item[0] && item[1]
+        hashtable[item[0]] = item[1]
+      end
+
+      result = ''
+      chars.each_with_index do | char, index |
+        if uppers.include?(char) && lowers.include?(chars[index+1])
+          # Combined case. Here we deal with Latin letters so there is no problem to use
+          # Ruby's builtin upcase_downcase
+          ch = hashtable[char].downcase.capitalize
+          result << ch
+        elsif uppers.include?(char)
+          result << hashtable[char]
+        elsif lowers.include?(char)
+          result << hashtable[char]
+        else
+          result << char
+        end
+      end
+      return result
+    end
+
     def catalog_number_orig catalog_number
       @catalog_number_len ||= AppConfig.catalog_number_len
       catalog_number.to_s.mb_chars[0, @catalog_number_len].strip.to_s
