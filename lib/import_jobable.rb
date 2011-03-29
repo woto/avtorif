@@ -166,7 +166,18 @@ class ImportJobable < AbstractJobber
           query = query + unit_package = unit_package_colnum ? Price.connection.quote(row[unit_package_colnum].to_s.strip) + ", " : ""
           query = query + description = description_colnum ? Price.connection.quote(row[description_colnum].to_s.strip) + ", " : ""
           query = query + min_order = min_order_colnum ? Price.connection.quote(row[min_order_colnum].to_s.strip) + ", " : ""
-          query = query + count = count_colnum ? Price.connection.quote(row[count_colnum].to_s.strip) + ", " : ""
+          if count_colnum
+            begin
+              count = Price.connection.quote(Float(row[count_colnum].to_s.gsub(',', '.').gsub(' ', '').match(/([0-9]+([\.,][0-9])?)/)[0]).ceil)
+              #count = Price.connection.quote(Integer(row[count_colnum].to_s.match('\d+')[0]))
+              #count = Float(row[count_colnum].to_s.gsub(',','.').gsub(/[^0-9\.]/, '')).round 
+            rescue
+              count = "NULL"
+            ensure
+              query = query + count + ", "
+            end
+            #query = query + count = count_colnum ? Price.connection.quote(row[count_colnum].to_s.strip) + ", " : ""
+          end
 
           if manufacturer_colnum
             query = query + manufacturer = CommonModule::find_manufacturer_synonym(row[manufacturer_colnum], @job_id) + ", "

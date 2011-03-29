@@ -280,7 +280,7 @@ class PricesController < ApplicationController
               /* ij.success_percent as job_import_job_success_percent, */
               ps.success_percent,
               CASE
-                WHEN (p.count = 0 AND ps.presence = 1) OR (p.count = '' AND ps.presence = 1) OR (p.count IS NULL AND ps.presence = 1) THEN 99
+                WHEN (p.count IS NULL AND ps.presence = 1) THEN 99
                 ELSE p.count
               END as count,
               ps.delivery_days_average as job_import_job_delivery_days_average,
