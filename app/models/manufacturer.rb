@@ -4,6 +4,7 @@ class Manufacturer < ActiveRecord::Base
   #accepts_nested_attributes_for :manufacturer_synonyms
   validates :title, :uniqueness => {:case_sensitive => false}
 
+  belongs_to :job
   before_save :upcase
 
   def upcase

@@ -55,6 +55,7 @@ Avtorif::Application.routes.draw do
         get 'start'
         post 'copy'
         get 'clean'
+        post 'destroy_manufacturers_by_job'
       end
       collection do
         get 'start_all'

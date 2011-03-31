@@ -180,4 +180,9 @@ class JobsController < ApplicationController
      redirect_to(supplier_job_path(params[:supplier_id], params[:id]))
   end
 
+  def destroy_manufacturers_by_job
+    Job.find(params[:id]).manufacturers.destroy_all
+    redirect_to(manufacturers_path(:page => params[:page], :letter => params[:letter])) and return
+  end
+
 end
