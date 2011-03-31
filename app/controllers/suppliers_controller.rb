@@ -2,7 +2,7 @@ class SuppliersController < ApplicationController
   # GET /suppliers
   # GET /suppliers.xml
   def index
-    @suppliers = Supplier.order('title').includes(:jobs)
+    @suppliers = Supplier.order('suppliers.title').includes(:jobs).where(:jobs => {:active => 1})
 
     respond_to do |format|
       format.html # index.html.erb
