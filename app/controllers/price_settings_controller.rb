@@ -163,7 +163,7 @@ debugger
          FasterCSV.generate(:col_sep => "\t", :quote_char => "\x0", :row_sep => "\r\n") do |csv|
            csv << r
          end
-         output.write Iconv.iconv("WINDOWS-1251", "UTF-8", csv.string)
+         output.write Iconv.iconv("WINDOWS-1251//IGNORE", "UTF-8", csv.string)
        end
      end
    }
