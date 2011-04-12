@@ -65,6 +65,7 @@
       <th></th>
       <th></th>
       <th></th>
+      <th></th>
     </tr>
 
   <%= will_paginate @manufacturers %>
@@ -77,7 +78,7 @@
       <td>
         <% if manufacturer.job_id.present? %>
           <%  begin %>
-            <%= link_to Job.find(manufacturer.job_id), supplier_job_path(Job.find(manufacturer.job_id).supplier_id, manufacturer.job_id) %>
+            <%= link_to "#{manufacturer.job_id} #{Job.find(manufacturer.job_id)}", supplier_job_path(Job.find(manufacturer.job_id).supplier_id, manufacturer.job_id) %>
             <% rescue => e %>
               <%= manufacturer.job_id %>
             <% end %>
@@ -86,7 +87,12 @@
       <td><%= link_to 'Show', manufacturer %></td>
       <td><%= link_to 'Edit', edit_manufacturer_path(manufacturer) %></td>
       <td><%= link_to 'Destroy', manufacturer_path(manufacturer, {:letter => params[:letter], :page => params[:page]}), :confirm => 'Are you sure?', :method => :delete, :remote => true %></td>
-      <td><%= link_to 'Синонимы', manufacturer_manufacturer_synonyms_path(manufacturer, {:letter => params[:letter], :page => params[:page]}) %></td>
+      <td><%= link_to 'Синонимы этого производителя', manufacturer_manufacturer_synonyms_path(manufacturer, {:letter => params[:letter], :page => params[:page]}) %></td>
+      <% if manufacturer.job_id > 0 %>
+        <td><%= link_to 'Удалить производителей созданных этой задачей', destroy_manufacturers_by_job_supplier_job_path(Job.find(manufacturer.job_id).supplier_id, manufacturer.job_id, {:letter => params[:letter], :page => params[:page]}), :method => :post, :confirm => "Вы уверены, что хотите удалить производетелей, которые были созданы данной задачей?" %></td>
+      <% else %>
+        <td></td>
+      <% end %>
     </tr>
   <% end %>
   </table>

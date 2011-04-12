@@ -46,9 +46,13 @@ class UnpackJobsController < ApplicationController
     job.jobable = @unpack_job
     job.save
 
+    parent = job.parent
+
     respond_to do |format|
       if @unpack_job.save
-        format.html { redirect_to(supplier_jobs_path(job.supplier), :notice => 'UnpackJob was successfully created.') }
+        format.html { redirect_to(parent.present? ? supplier_job_path(params[:supplier_id], parent.id) : supplier_jobs_path(params[:supplier_id]), :notice => 'Задача распаковки успешно создана') }
+
+        #format.html { redirect_to(supplier_jobs_path(job.supplier), :notice => 'UnpackJob was successfully created.') }
         format.xml  { render :xml => @unpack_job, :status => :created, :location => @unpack_job }
       else
         format.html { render :action => "new" }
@@ -61,10 +65,12 @@ class UnpackJobsController < ApplicationController
   # PUT /unpack_jobs/1.xml
   def update
     @unpack_job = UnpackJob.find(params[:id])
+    job = @unpack_job.jobs.first 
+    parent = job.parent 
 
     respond_to do |format|
       if @unpack_job.update_attributes(params[:unpack_job])
-        format.html { redirect_to(supplier_jobs_path(params[:supplier]), :notice => 'UnpackJob was successfully updated.') }
+        format.html { redirect_to(parent.present? ? supplier_job_path(params[:supplier_id], parent.id) : supplier_jobs_path(params[:supplier_id]), :notice => 'Задача конвертирования успешно обновлена') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
