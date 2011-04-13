@@ -1,9 +1,0 @@
-1. Есть такая проблема, что Exception Notification не работает в процессе выдачи таким способом
-#    self.response_body =  proc{ |response, output|
-#      10_000_000.times do |i|
-#        output.write "Hello world"
-#        debugger
-#      end
-#    }
-#  end
-

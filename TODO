@@ -59,4 +59,15 @@ Mysql2::Error (Illegal mix of collations (utf8_general_ci,IMPLICIT) and (utf8_un
   cat ./ORIGINAL_MANUFACTURERS | while read a; do mysql5 -u root -pvjqgfhjk avtorif_development -e "SELECT * FROM manufacturers WHERE title=\"$a\""; done
   cat ./ORIGINAL_MANUFACTURERS | while read a; do mysql5 -u root -pvjqgfhjk avtorif_development -e "UPDATE manufacturers SET original = 1 WHERE title=\"$a\""; done
 31. Сделать возможность обновления только цены или обновления только количества
-
+32. Сделать в настройках прайса чтобы рандомное значение вероятности доставки по прайсу было при создании.
+33. 
+Есть такая проблема, что Exception Notification не работает в процессе выдачи таким способом
+#    self.response_body =  proc{ |response, output|
+#      10_000_000.times do |i|
+#        output.write "Hello world"
+#        debugger
+#      end
+#    }
+#  end
+34. В списке принятых файлов показывать только файлы принятые активными задачами.
+35. В списке задач показывать описание (вступлением)
