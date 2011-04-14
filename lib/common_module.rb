@@ -13,7 +13,7 @@ module CommonModule
       if(File.exist?(file_name) && (File.ctime(file_name) > Time.now - AppConfig.emex_cache.to_i.minutes))
         result = File.read(file_name)
       else
-        hash['makeLogo'] = input[:manufacturer] ? input[:manufacturer] : ''
+        hash['makeLogo'] = input[:manufacturer].present? ? CommonModule::manufacturer_orig(input[:manufacturer])[1..-2] : ''
         hash['detailNum'] = CommonModule::catalog_number_orig(input[:catalog_number])
         hash['login'] = input[:login]
         hash['password'] = input[:password]
