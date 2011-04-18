@@ -36,5 +36,5 @@ production:
   database: avtorif_development
   pool: 5
   username: root
-  password:
-  socket: /var/run/mysqld/mysqld.sock
+  password: vjqgfhjk
+  socket: /opt/local/var/run/mysql5/mysqld.sock
