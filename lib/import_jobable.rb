@@ -155,7 +155,10 @@ class ImportJobable < AbstractJobber
 #        if i == 0
           query = query_template
 #        end
-        
+         
+         if i > 500
+           break
+         end
 #        if i < @max_inserts
 
           query = query + "(#{@job_id},"
@@ -202,7 +205,7 @@ class ImportJobable < AbstractJobber
 #          query = query + "),"
           query = query + ")"
 
-#          i = i + 1
+          i = i + 1
 #        end
 
 #        if i == @max_inserts
