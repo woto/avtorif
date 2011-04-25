@@ -20,6 +20,8 @@ defaults: &defaults
   max_replaces: 80
   max_replacements: 80
   max_inserts: 10
+  
+  prices_discount: 0.87
 
 development:
   <<: *defaults

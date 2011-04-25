@@ -8,6 +8,7 @@ module CommonModule
 
       hash = Hash.new
       file_name = 'system/emex/'
+      # TODO Здесь сделать замену символов, из которых не может состоять путь на например нижнее подчеркивание
       file_name << input[:login].to_s + "|" + input[:password].to_s + "|" + input[:catalog_number].to_s + "|" + input[:manufacturer].to_s + "|" + input[:replacements].to_i.to_s
 
       if(File.exist?(file_name) && (File.ctime(file_name) > Time.now - AppConfig.emex_cache.to_i.minutes))

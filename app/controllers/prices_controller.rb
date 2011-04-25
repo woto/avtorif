@@ -382,7 +382,7 @@ class PricesController < ApplicationController
 
         if @prices.size > 0
           @header.uniq!
-          ["catalog_number", "catalog_number_orig", "manufacturer", "manufacturer_orig", "bit_original", "title", "title_en", "income_cost", "ps_retail_rate", "retail_cost", "job_title", "supplier_title", "supplier_title_full", "supplier_title_en", "price_cost", "ij_income_rate", "c_buy_value", "ps_relative_buy_rate", "ps_absolute_buy_rate", "weight_grams", "ps_kilo_price", "c_weight_value", "ps_relative_weight_rate", "ps_absolute_weight_rate", "ps_weight_unavailable_rate"].reverse.each do |key|
+          ["catalog_number_orig", "manufacturer_orig", "bit_original", "title", "retail_cost",	"job_import_job_delivery_days_declared",	"success_percent", "title_en", "income_cost", "ps_retail_rate", "job_title", "supplier_title", "supplier_title_full", "supplier_title_en", "price_cost", "ij_income_rate", "c_buy_value", "ps_relative_buy_rate", "ps_absolute_buy_rate", "weight_grams", "ps_kilo_price", "c_weight_value", "ps_relative_weight_rate", "ps_absolute_weight_rate", "ps_weight_unavailable_rate", "catalog_number",  "manufacturer"].reverse.each do |key|
             begin
               @header.unshift(@header.delete_at(@header.index(key)))
             rescue => e
@@ -390,6 +390,9 @@ class PricesController < ApplicationController
             end
           end
         end
+        
+        # Выкидываем не нужные столбцы (возможно я это планировал делать где-то в другом месте, но где уже не вспомню)
+        # @header = @header - ["manufacturer", "catalog_number", "income_cost", "ps_retail_rate", "real_job_id", "job_import_job_presence", "job_id", "job_import_job_country", "job_import_job_delivery_days_average", "supplier_id", "supplier_kpp", "job_import_job_country_short", "supplier_title_en", "price_cost",	"ij_income_rate",	"c_buy_value", "ps_relative_buy_rate", "ps_absolute_buy_rate", "weight_grams", "ps_kilo_price", "c_weight_value", "ps_relative_weight_rate", "ps_absolute_weight_rate", "ps_weight_unavailable_rate", "created_at", "job_import_job_delivery_summary", "price_setting_id", "min_order", "updated_at", "external_id", "unit_package", "supplier_inn", "id", "processed", "delivery_days_price", "job_import_job_kilo_price", "count", "unit", "description", "currency", "job_title",	"supplier_title",	"supplier_title_full",	"job_import_job_destination_logo",	"manufacturer_short", "price_logo_emex",	"job_import_job_destination_summary"]
 
       rescue CatalogNumberException
         flash.now[:notice] = 'Каталожный номер искомой детали введен не корректно'
