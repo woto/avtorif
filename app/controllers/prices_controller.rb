@@ -189,7 +189,8 @@ class PricesController < ApplicationController
               p_destination_logo = z.xpath('./xmlns:DetailInfo/xmlns:DestinationLogo').text
               p["job_import_job_destination_logo"] = p_destination_logo
               p["job_import_job_destination_summary"] = z.xpath('./xmlns:DetailInfo/xmlns:DestinationDesc').text
-              #p["logo"] = p_destination_logo
+              p["logo"] = p_destination_logo
+              p["price_logo_emex"] = z.xpath('./xmlns:DetailInfo/xmlns:PriceLogo').text              
               p_catalog_number = z.xpath('./xmlns:DetailInfo/xmlns:DetailNum').text
               p["catalog_number"] = CommonModule::normalize_catalog_number(p_catalog_number)
               p["catalog_number_orig"] = p_catalog_number
@@ -202,7 +203,7 @@ class PricesController < ApplicationController
               p["success_percent"] = p_calc_delivery_percent
               p["job_import_job_delivery_days_declared"] = z.xpath('./xmlns:DetailInfo/xmlns:ADDays').text
               p["job_import_job_delivery_days_average"] = z.xpath('./xmlns:DetailInfo/xmlns:DeliverTimeGuaranteed').text
-              p["job_import_job_delivery_summary"] = z.xpath('./xmlns:DetailInfo/xmlns:DestinationLogo').text
+              p["job_import_job_delivery_summary"] = p_destination_logo
               p["job_import_job_country"] = z.xpath('./xmlns:DetailInfo/xmlns:PriceDesc').text
               p["job_import_job_country_short"] = z.xpath('./xmlns:DetailInfo/xmlns:PriceCountry').text
               p_result_price = z.xpath('./xmlns:Prices/xmlns:ResultPrice').text
