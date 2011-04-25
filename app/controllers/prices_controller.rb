@@ -173,65 +173,72 @@ class PricesController < ApplicationController
                   #  next
                   #end
                   
-                  #debugger
-                  p = Hash.new
-                  #p = Price.new
-                  p["supplier_title"] = 'emex'
-                  p["supplier_title_en"] = 'emex'
-                  p["supplier_title_full"] = 'emex'
-                  p["supplier_inn"] = 7716542310
-                  p["supplier_kpp"] = 771601001
-                  p["job_title"] ="ws"
-                  p["job_import_job_kilo_price"] = 0
-                  p["job_import_job_presence"] = false
-              
-                  p["job_import_job_destination_logo"] = z.css('DestinationLogo').text
-                  p["job_import_job_destination_summary"] = z.css('DestinationDesc').text
-                  p["price_logo_emex"] = z.css('PriceLogo').first.text
-                  p["catalog_number"] = CommonModule::normalize_catalog_number(z.css('DetailNum').first.text)
-                  p["catalog_number_orig"] = z.css('DetailNum').first.text.strip
-                  p["manufacturer"] = CommonModule::find_manufacturer_synonym(z.css('MakeName').text, -2, true)[1..-2]
-                  p["manufacturer_orig"] = z.css('MakeName').text
-                  p["manufacturer_short"] = z.css('MakeLogo').first.text
-                  # Не требуется т.к. у нас success_percent на данный момент вынесен в price_settings
-                  #p["job_import_job_success_percent"] = z.css('CalcDeliveryPercent').text
-                  p["success_percent"] = z.css('CalcDeliveryPercent').text
-                  p["job_import_job_delivery_days_declared"] = z.css('ADDays').text
-                  p["job_import_job_delivery_days_average"] = z.css('DeliverTimeGuaranteed').text
-                  p["job_import_job_delivery_summary"] = z.css('DestinationLogo').text
-                  p["job_import_job_country"] = z.css('PriceDesc').text
-                  p["job_import_job_country_short"] = z.css('PriceCountry').text
-                  p["price_cost"] = z.css('ResultPrice').text
-                  p["income_cost"] = z.css('ResultPrice').text.to_f * 1
-                  p["ps_retail_rate"] = 1.55
-                  p["retail_cost"] = p['income_cost'] * p["ps_retail_rate"]
-                  p["currency"] = 643
-                  p["count"] = CGI.unescapeHTML(z.css('QuantityText').first.text)
-                  p["title"] = z.css('DetailNameRus').text
-                  p["title_en"] = z.css('DetailNameEng').text
-                  #p["weight_grams"] = z.css('DetailWeight').text
-                  p["weight_grams"] = 0
-                  p["ps_weight_unavailable_rate"] = 1
-                  p["ps_absolute_weight_rate"] = 0
-                  p["ps_relative_weight_rate"] = 0
-                  p["c_weight_value"] = 1
-                  p["ps_kilo_price"] = 0
-                  p["ps_absolute_buy_rate"] = 0
-                  p["ps_relative_buy_rate"] = 1
-                  p["c_buy_value"] = 1
-                  p["ij_income_rate"] = 1
+              #z = Nokogiri::XML(z.to_s)
+              #debugger
+              p = Hash.new
+              #p = Price.new
+              p["supplier_title"] = 'emex'
+              p["supplier_title_en"] = 'emex'
+              p["supplier_title_full"] = 'emex'
+              p["supplier_inn"] = 7716542310
+              p["supplier_kpp"] = 771601001
+              p["job_title"] ="ws"
+              p["job_import_job_kilo_price"] = 0
+              p["job_import_job_presence"] = false
+              #debugger
+              p_destination_logo = z.xpath('./xmlns:DetailInfo/xmlns:DestinationLogo').text
+              p["job_import_job_destination_logo"] = p_destination_logo
+              p["job_import_job_destination_summary"] = z.xpath('./xmlns:DetailInfo/xmlns:DestinationDesc').text
+              #p["logo"] = p_destination_logo
+              p_catalog_number = z.xpath('./xmlns:DetailInfo/xmlns:DetailNum').text
+              p["catalog_number"] = CommonModule::normalize_catalog_number(p_catalog_number)
+              p["catalog_number_orig"] = p_catalog_number
+              p_make_name = z.xpath('./xmlns:DetailInfo/xmlns:MakeName').text
+              p["manufacturer"] = CommonModule::find_manufacturer_synonym(p_make_name, -2, true)[1..-2]
+              p["manufacturer_orig"] = p_make_name
+              p["manufacturer_short"] = z.xpath('./xmlns:DetailInfo/xmlns:MakeLogo').text
+              p_calc_delivery_percent = z.xpath('./xmlns:DetailInfo/xmlns:CalcDeliveryPercent').text
+              p["job_import_job_success_percent"] = p_calc_delivery_percent
+              p["success_percent"] = p_calc_delivery_percent
+              p["job_import_job_delivery_days_declared"] = z.xpath('./xmlns:DetailInfo/xmlns:ADDays').text
+              p["job_import_job_delivery_days_average"] = z.xpath('./xmlns:DetailInfo/xmlns:DeliverTimeGuaranteed').text
+              p["job_import_job_delivery_summary"] = z.xpath('./xmlns:DetailInfo/xmlns:DestinationLogo').text
+              p["job_import_job_country"] = z.xpath('./xmlns:DetailInfo/xmlns:PriceDesc').text
+              p["job_import_job_country_short"] = z.xpath('./xmlns:DetailInfo/xmlns:PriceCountry').text
+              p_result_price = z.xpath('./xmlns:Prices/xmlns:ResultPrice').text
+              p["price_cost"] = p_result_price
+              p_income_cost = p_result_price.to_f * 1
+              p["income_cost"] = p_income_cost
+              p_ps_retail_rate = 1.55
+              p["ps_retail_rate"] = p_ps_retail_rate
+              p["retail_cost"] = p_income_cost * p_ps_retail_rate
+              p["currency"] = 643
+              p["count"] = CGI.unescapeHTML(z.xpath('./xmlns:DetailInfo/xmlns:QuantityText').text)
+              p["title"] = z.xpath('./xmlns:DetailInfo/xmlns:DetailNameRus').text
+              p["title_en"] = z.xpath('./xmlns:DetailInfo/xmlns:DetailNameEng').text
+              ##p["weight_grams"] = z.css('DetailWeight').text
+              p["weight_grams"] = 0
+              p["ps_weight_unavailable_rate"] = 1
+              p["ps_absolute_weight_rate"] = 0
+              p["ps_relative_weight_rate"] = 0
+              p["c_weight_value"] = 1
+              p["ps_kilo_price"] = 0
+              p["ps_absolute_buy_rate"] = 0
+              p["ps_relative_buy_rate"] = 1
+              p["c_buy_value"] = 1
+              p["ij_income_rate"] = 1
 
-                  if(z.css('bitStorehouse') == 'true')
-                    p["job_import_job_presence"] = true
-                  else
-                    p["job_import_job_presence"] = false
-                  end
+              if(z.xpath('./xmlns:DetailInfo/xmlns:bitStorehouse') == 'true')
+                p["job_import_job_presence"] = true
+              else
+                p["job_import_job_presence"] = false
+              end
 
-                  if z.css('bitOriginal').text == 'true'
-                    p["bit_original"] = 1
-                  else
-                    p["bit_original"] = 0
-                  end
+              if z.xpath('./xmlns:DetailInfo/xmlns:bitOriginal').text == 'true'
+                p["bit_original"] = 1
+              else
+                p["bit_original"] = 0
+              end
 
                   @prices << p
                   found = false
