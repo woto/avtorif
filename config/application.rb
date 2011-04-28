@@ -53,6 +53,10 @@ module Avtorif
       :exception_recipients => %w{webmaster@avtorif.ru}
     )
 
+    require 'openssl'
+    OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
+
+
     config.action_mailer.raise_delivery_errors  = true
     config.action_mailer.perform_deliveries     = true
     config.action_mailer.delivery_method = :smtp
