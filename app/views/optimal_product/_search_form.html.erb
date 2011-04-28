@@ -1,0 +1,45 @@
+<style>
+  input[type=text] {
+	width: 250px;
+  }
+</style>
+
+<div style="float: left">
+<% form_tag(choose_optimal_products_path) do %>
+  <table>
+	<tr><td>	
+	   Средняя цена предполагаемой детали (медиана)</td><td><%= text_field_tag(:average_cost, params[:average_cost] ? params[:average_cost] : @default_average_cost) %> руб.
+	</td></tr>	
+	<tr><td>	
+	  Обычное отклонение цены в процентах</td><td><%= text_field_tag(:deviation_cost, params[:deviation_cost] ? params[:deviation_cost] : @default_deviation_cost) %> %
+	</td></tr>
+	<tr><td>
+	  Доставка</td><td><%= text_field_tag(:date_array, params[:date_array] ? params[:date_array] : @default_date_array) %> дн.
+	</td></tr>
+	<tr><td>
+	  Вероятность наличия</td><td><%= text_field_tag(:probability_range, params[:probability_range] ? params[:probability_range] : @default_probability_range) %> %
+	</td></tr>
+	<tr><td>
+		Предложений по одной детали</td><td><%= text_field_tag(:offers, params[:offers] ? params[:offers] : @default_offers)%>
+	</td></tr>
+	<tr><td>	
+	   Средняя дата доставки</td><td><%= text_field_tag(:average_delivery_days, params[:average_delivery_days] ? params[:average_delivery_days] : @default_average_delivery_days) %> дн.
+	</td></tr>	
+	<tr><td>	
+	   Средняя вероятность наличия</td><td><%= text_field_tag(:average_probability, params[:average_probability] ? params[:average_probability] : @default_average_probability) %> %
+	</td></tr>	
+	<tr><td>
+  		Коэф. Скорость</td><td><%= text_field_tag(:a, params[:a] ? params[:a] : 0.2) %>
+	</td></tr>
+	<tr><td>
+  		Коэф. Цена</td><td><%= text_field_tag(:b, params[:b] ? params[:b] : 0.15) %>
+	</td></tr>
+	<tr><td>	
+  		Коэф. Вероятность наличия</td><td><%= text_field_tag(:c, params[:c] ? params[:c] : 0.5) %>
+	</td></tr>
+	<tr><td colspan="2">
+  <%= submit_tag("ok") %>
+	</td></tr>
+	</table>
+<% end %>
+</div>

@@ -32,7 +32,7 @@ module CommonModule
 
 
     def add_doublet(job_id)
-      query = "UPDATE price_import_#{job_id} SET doublet = SUBSTRING(MD5(catalog_number), 1, 2)"
+      query = "UPDATE price_import_#{job_id} SET doublet = SUBSTRING(MD5(catalog_number), 1, 3)"
       Price.connection.execute(query)
 
       query = "ALTER TABLE price_import_#{job_id} ADD INDEX doublet_idx (doublet)"
@@ -41,7 +41,7 @@ module CommonModule
 
     def all_doublets
       alpha_numerics = ('0'..'9').to_a + ('a'..'f').to_a
-      alpha_numerics.product(alpha_numerics).map{ |doublet| doublet.join ''}.shuffle.each do |l| 
+      alpha_numerics.product(alpha_numerics, alpha_numerics).map{ |doublet| doublet.join ''}.shuffle.each do |l| 
         yield l
       end 
     end

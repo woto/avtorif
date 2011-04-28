@@ -90,3 +90,4 @@ gem 'savon', :git => 'https://github.com/rubiii/savon.git'
 gem 'httpi'
 #gem 'escape', :git => "https://github.com/akr/escape.git"
 #gem 'escape_utils'
+gem 'libxml-ruby'

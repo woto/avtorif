@@ -1,0 +1,21 @@
+<%= render 'search_form' %>
+
+<%
+xm = Builder::XmlMarkup.new
+xm.table {
+	
+	xm.tr do
+		xm.th("Срок")
+		xm.th("Цена")
+		xm.th("Вероятность наличия")
+		xm.th("Суммарные баллы")
+	end
+	
+	@product_array.each_with_index do |line, index|
+		xm.tr do
+			line.each {|value| xm.td(value, :style => (index >= 5) ? 'color: #999' : '')}
+		end
+	end
+}
+%>
+<%= raw xm.target %>
