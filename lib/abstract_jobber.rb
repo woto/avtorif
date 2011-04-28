@@ -55,7 +55,7 @@ class AbstractJobber
   def perform
     @job.childs.active.each do |job|
       if @optional.size > 0
-        JobWalker.new.start_job(job, @priority, @optional)
+        JobWalker.new.start_job(job, @priority - 1, @optional)
       end
     end
   end

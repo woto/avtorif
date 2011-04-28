@@ -1,6 +1,6 @@
 class HttpReceive < ActiveRecord::Base
   has_many :receive_job, :as => :receiveable
-  enum_attr :encoding, ['^utf8' ,'cp1251', 'koi8-r', 'cp866'], :nil => true
+  enum_attr :encoding, ['^utf-8' ,'cp1251', 'koi8-r', 'cp866'], :nil => true
   validates :path, :presence => true
   validates :port, :numericality => {:only_integer => true}
   validates :server, :presence => true
