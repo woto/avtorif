@@ -46,9 +46,9 @@ class OptimalProductController < ApplicationController
     @product_array = @date_array.product(@cost_array, @probability_array)
     @product_array.each do |element|
       element[element.size] = 
-        params[:a].to_f * (element[0].to_f / @average_delivery_days * 100) + 
-        params[:b].to_f * (element[1].to_f / @average_cost * 100) + 
-        params[:c].to_f * (@probability_array.max - element[2].to_f) / @average_probability * 100
+        params[:delivery_days].to_f * (element[0].to_f / @average_delivery_days * 100) + 
+        params[:cost].to_f * (element[1].to_f / @average_cost * 100) + 
+        params[:probability].to_f * (@probability_array.max - element[2].to_f) / @average_probability * 100
     end
 
     @product_array.shuffle!
