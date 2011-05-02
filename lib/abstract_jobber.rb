@@ -1,5 +1,5 @@
-logger = Rails::logger
-logger.level = Logger::ERROR
+#logger = Rails::logger
+#logger.level = Logger::ERROR
 
 class AbstractJobber
 
@@ -26,7 +26,7 @@ class AbstractJobber
   end
 
   def success(j)
-    sleep(5)
+    #sleep(5)
     job.locked = false
     job.last_finish = Time.zone.now.to_s
     job.last_error = ''
