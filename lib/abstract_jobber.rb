@@ -8,19 +8,20 @@ class AbstractJobber
     j.save
     job.locked = true
     job.save
-    Rails.logger.info(Time.zone.now.to_s + " Безусловный enqueue: '#{job.title}' от '#{job.supplier.title}'.")    
+    DELAYED_JOB_LOGGER.info(Time.zone.now.to_s + " Безусловный enqueue: '#{job.title}' от '#{job.supplier.title}'.")    
   end
 
   def before(j)
+    debugger
     job.last_start = Time.zone.now.to_s
     job.started_once = true
     job.save
-    Rails.logger.info(Time.zone.now.to_s + " Безусловный before: '#{job.title}' от  '#{job.supplier.title}'.")    
+    DELAYED_JOB_LOGGER.info(Time.zone.now.to_s + " Безусловный before: '#{job.title}' от  '#{job.supplier.title}'.")    
   end
 
   def after(j)
     job.last_error = ''
-    Rails.logger.info(Time.zone.now.to_s + " Безусловный after: '#{job.title}' от '#{job.supplier.title}'.")    
+    DELAYED_JOB_LOGGER.info(Time.zone.now.to_s + " Безусловный after: '#{job.title}' от '#{job.supplier.title}'.")    
   end
 
   def success(j)
@@ -28,18 +29,18 @@ class AbstractJobber
     job.last_finish = Time.zone.now.to_s
     job.last_error = ''
     job.save
-    Rails.logger.info(Time.zone.now.to_s + " Условный success: '#{job.title}' от '#{job.supplier.title}'.")
+    DELAYED_JOB_LOGGER.info(Time.zone.now.to_s + " Условный success: '#{job.title}' от '#{job.supplier.title}'.")
   end
 
   def error(j, e)
     job.last_error = e.message
     job.save
-    Rails.logger.info(Time.zone.now.to_s + " Условный error: '#{job.title}' от '#{job.supplier.title}'.")
-    Rails.logger.info(e.message)
+    DELAYED_JOB_LOGGER.info(Time.zone.now.to_s + " Условный error: '#{job.title}' от '#{job.supplier.title}'.")
+    DELAYED_JOB_LOGGER.info(e.message)
   end
 
   def failure
-    Rails.logger.info(Time.zone.now.to_s + " Условный failure: '#{job.title}' от '#{job.supplier.title}'.")
+    DELAYED_JOB_LOGGER.info(Time.zone.now.to_s + " Условный failure: '#{job.title}' от '#{job.supplier.title}'.")
   end
 
   def initialize(job, jobable, priority, optional = nil)
