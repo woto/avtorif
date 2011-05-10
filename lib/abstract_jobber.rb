@@ -12,35 +12,44 @@ class AbstractJobber
   end
 
   def before(j)
-    debugger
+    sleep(3)
     job.last_start = Time.zone.now.to_s
     job.started_once = true
     job.save
     DELAYED_JOB_LOGGER.info(Time.zone.now.to_s + " Безусловный before: '#{job.title}' от  '#{job.supplier.title}'.")    
+    sleep(3)
   end
 
   def after(j)
+    sleep(3)
     job.last_error = ''
     DELAYED_JOB_LOGGER.info(Time.zone.now.to_s + " Безусловный after: '#{job.title}' от '#{job.supplier.title}'.")    
+    sleep(3)
   end
 
   def success(j)
+    sleep(3)
     job.locked = false
     job.last_finish = Time.zone.now.to_s
     job.last_error = ''
     job.save
     DELAYED_JOB_LOGGER.info(Time.zone.now.to_s + " Условный success: '#{job.title}' от '#{job.supplier.title}'.")
+    sleep(3)
   end
 
   def error(j, e)
+    sleep(3)
     job.last_error = e.message
     job.save
     DELAYED_JOB_LOGGER.info(Time.zone.now.to_s + " Условный error: '#{job.title}' от '#{job.supplier.title}'.")
     DELAYED_JOB_LOGGER.info(e.message)
+    sleep(3)
   end
 
   def failure
+    sleep(3)
     DELAYED_JOB_LOGGER.info(Time.zone.now.to_s + " Условный failure: '#{job.title}' от '#{job.supplier.title}'.")
+    sleep(3)
   end
 
   def initialize(job, jobable, priority, optional = nil)
