@@ -1,0 +1,116 @@
+<style>
+  input[type=text] {
+	width: 250px;
+  }
+</style>
+
+<div style="float: left">
+<% form_tag(choose_optimal_products_path) do %>
+  <table>
+	<tr><td colspan="2">
+		<strong>Генерация набора предложений</strong>
+	</td></tr>	
+	<tr><td>	
+	   Средняя цена предполагаемой детали (медиана)</td><td><%= text_field_tag(:average_cost, params[:average_cost] ? params[:average_cost] : @default_average_cost) %> руб.
+	</td></tr>	
+	<tr><td>	
+	  Обычное отклонение цены в процентах</td><td><%= text_field_tag(:deviation_cost, params[:deviation_cost] ? params[:deviation_cost] : @default_deviation_cost) %> %
+	</td></tr>
+	<tr><td>
+	  Доставка</td><td><%= text_field_tag(:date_array, params[:date_array] ? params[:date_array] : @default_date_array) %> дн.
+	</td></tr>
+	<tr><td>
+	  Вероятность наличия</td><td><%= text_field_tag(:probability_range, params[:probability_range] ? params[:probability_range] : @default_probability_range) %> %
+	</td></tr>
+	<tr><td>
+		Предложений по одной детали</td><td><%= text_field_tag(:offers, params[:offers] ? params[:offers] : @default_offers)%>
+	</td></tr>
+	<tr><td colspan="2">
+		<strong>Нормализация</strong>
+	</td></tr>	
+	<tr><td>	
+	   Средняя дата доставки</td><td><%= text_field_tag(:average_delivery_days, params[:average_delivery_days] ? params[:average_delivery_days] : @default_average_delivery_days) %> дн.
+	</td></tr>	
+	<tr><td>	
+	   Средняя вероятность наличия</td><td><%= text_field_tag(:average_probability, params[:average_probability] ? params[:average_probability] : @default_average_probability) %> %
+	</td></tr>	
+	<tr><td colspan="2">
+		<strong>Критерии оптимального подбора</strong>
+	</td></tr>	
+	<tr><td>
+  		Коэф. Скорость</td><td><%= text_field_tag(:delivery_days) %>
+	    <div class="outer">
+			<div class="slider" id="delivery_days_slider"></div>
+		</div>
+	</td></tr>
+	<tr><td>
+  		Коэф. Цена</td><td><%= text_field_tag(:cost) %>
+		<div class="outer">
+			<div class="slider" id="cost_slider"></div>
+		</div>
+	</td></tr>
+	<tr><td>	
+  		Коэф. Вероятность наличия</td><td><%= text_field_tag(:probability) %>
+	    <div class="outer">
+			<div class="slider" id="probability_slider"></div>
+		</div>	
+	</td></tr>
+	<tr><td colspan="2">
+  <%= submit_tag("ok") %>
+	</td></tr>
+	</table>
+<% end %>
+</div>
+
+<style>
+	.ui-slider-handle {
+	   outline: none;
+	}
+
+	.outer
+	{
+		padding: 5px 0 !important;
+	}
+
+	.slider {
+		width: 255px;
+	}
+</style>
+
+<script>
+	$(function() {
+		
+			$( "#delivery_days_slider" ).slider({
+				value: <%= params[:delivery_days] ? params[:delivery_days] : 0.2 %>,
+				min: 0,
+				max: 1000,
+				step: 0.2,
+				slide: function( event, ui ) {
+					$( "#delivery_days" ).val(ui.value );
+				}
+			});
+			$( "#delivery_days" ).val($( "#delivery_days_slider" ).slider( "value" ) );
+		
+			$( "#cost_slider" ).slider({
+				value: <%= params[:cost] ? params[:cost] : 0.15 %>,
+				min: 0,
+				max: 1000,
+				step: 0.15,
+				slide: function( event, ui ) {
+					$( "#cost" ).val(ui.value );
+				}
+			});
+			$( "#cost" ).val($( "#cost_slider" ).slider( "value" ) );		
+
+			$( "#probability_slider" ).slider({
+				value: <%= params[:probability] ? params[:probability] : 0.5 %>,
+				min: 0,
+				max: 1000,
+				step: 0.5,
+				slide: function( event, ui ) {
+					$( "#probability" ).val(ui.value );
+				}
+			});
+			$( "#probability" ).val($( "#probability_slider" ).slider( "value" ) );			
+	});
+</script>

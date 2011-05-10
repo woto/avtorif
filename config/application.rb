@@ -10,7 +10,7 @@ module Avtorif
   class Application < Rails::Application
     # Added by the Rails 3 jQuery Template
 	  # http://github.com/lleger/Rails-3-jQuery, written by Logan Leger
-	  config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
+	  config.action_view.javascript_expansions[:defaults] = %w(jquery jquery-ui rails)
 	  #config.action_view.javascript_expansions[:cdn] = %w(https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js rails)
 
     # Settings in config/environments/* take precedence over those specified here.
@@ -65,6 +65,9 @@ module Avtorif
       :password => "ss21503"
     }
 
+    # Jquery-ujs workaround
+    require 'openssl'
+    OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE    
 
   end
 end
