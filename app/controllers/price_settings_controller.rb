@@ -161,7 +161,8 @@ debugger
        csv = nil
        result.each do |r| 
          FasterCSV.generate(:col_sep => "\t", :quote_char => "\x0", :row_sep => "\r\n") do |csv|
-           csv << r
+           tmpstr = r.map{|x| x.present? ? x : "_"}
+           csv << tmpstr
          end
          output.write Iconv.iconv("WINDOWS-1251//IGNORE", "UTF-8", csv.string)
        end
