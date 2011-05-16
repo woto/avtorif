@@ -12,9 +12,8 @@ development:
   database: avtorif_development
   pool: 5
   username: root
-  password: vjqgfhjk
-  socket: /opt/local/var/run/mysql5/mysqld.sock
-  #socket: /var/run/mysqld/mysqld.sock
+  password:
+  socket: /var/run/mysqld/mysqld.sock
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -36,5 +35,5 @@ production:
   database: avtorif_development
   pool: 5
   username: root
-  password: vjqgfhjk
-  socket: /opt/local/var/run/mysql5/mysqld.sock
+  password:
+  socket: /var/run/mysqld/mysqld.sock
