@@ -31,7 +31,7 @@ class PricesController < ApplicationController
         return
       end
     else
-      md5 = Digest::MD5.hexdigest(catalog_number)[0,3]
+      md5 = Digest::MD5.hexdigest(catalog_number)[0,2]
       query = "SELECT price_catalog_#{md5}.*, manufacturers.original FROM price_catalog_#{md5} 
       LEFT JOIN manufacturers ON price_catalog_#{md5}.manufacturer = manufacturers.title WHERE catalog_number = " + Price.connection.quote(catalog_number)
       puts "###################### #{query}  ######################"

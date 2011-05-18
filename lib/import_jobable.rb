@@ -145,14 +145,14 @@ class ImportJobable < AbstractJobber
       #BUG Проверить, на работоспособность (Потребовалось после конвертирования из Excel в csv, где были переносы \r)
       FasterCSV.foreach(SupplierPrice.find(opt).attachment.path) do |row|
         begin
-#        if i == 0
+        if i == 0
           query = query_template
-#        end
+        end
          
-         if i > 500
-           break
-         end
-#        if i < @max_inserts
+#         if i > 500
+#           break
+#         end
+        if i < @max_inserts
 
           query = query + "(#{@job_id},"
 
@@ -195,34 +195,38 @@ class ImportJobable < AbstractJobber
           query = query + @supplier_id + ", "
           query = query + @price_setting_id
 
-#          query = query + "),"
-          query = query + ")"
+          query = query + "),"
+#          query = query + ")"
 
+          #debugger
           i = i + 1
-#        end
+        end
 
-#        if i == @max_inserts
-          #query.chop!
+        if i == @max_inserts
+          #debugger
+          query.chop!
           begin
             Price.connection.execute(query)
           rescue => e
             #puts query
-            debugger
+            #debugger
             raise e
           end
-#          query = ""
-#          i = 0
-#        end
+          query = ""
+          i = 0
+        end
 
-      #TODO Объединить с верхним (это на случай если записей меньше n)
-#      if query.present?
-#        query.chop!
-#        Price.connection.execute(query)
-#      end
         rescue CatalogNumberException
           next
         end
       end
+
+      #TODO Объединить с верхним (это на случай если записей меньше n)
+      if query.present?
+        query.chop!
+        Price.connection.execute(query)
+      end
+
     end
     CommonModule::add_doublet(@job_id)
   end
