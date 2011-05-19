@@ -143,7 +143,7 @@ class ImportJobable < AbstractJobber
 
       #BUG Проверить, на работоспособность (Потребовалось после конвертирования из Excel в csv, где были переносы \r)
       FasterCSV.foreach(SupplierPrice.find(opt).attachment.path) do |row|
-        #begin
+        begin
           query = query_template
          
           query = query + "(#{@job_id},"
