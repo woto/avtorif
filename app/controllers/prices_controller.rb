@@ -403,7 +403,7 @@ class PricesController < ApplicationController
         # Локальная работа
         #debugger
         replacements.each do |replacement|
-          md5 = Digest::MD5.hexdigest(replacement["catalog_number"])[0,3]
+          md5 = Digest::MD5.hexdigest(replacement["catalog_number"])[0,2]
           weight_grams = replacement["weight_grams"] ? replacement["weight_grams"] : "0"
           #string_for_income_cost =  "p.price_cost * (c.value/100 * ps.relative_buy_coefficient + ps.absolute_buy_coefficient)  income_rate * c.value AS income_cost, 
           query = "

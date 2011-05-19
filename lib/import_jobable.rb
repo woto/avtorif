@@ -60,7 +60,6 @@ class ImportJobable < AbstractJobber
     catalog_number_colnum = @jobable.catalog_number_colnum - 1
 
     @optional.each do |opt|
-      i = 0
       query = ""
       manufacturer, manufacturer_orig, manufacturer_synonyms_hs, unit_colnum, multiply_factor_colnum, external_id_colnum, country_colnum, applicability_colnum ,  min_order_colnum , description_colnum , unit_package_colnum , title_en_colnum , weight_grams_colnum, title_colnum , count_colnum , manufacturer_colnum , parts_group_colnum = false
 
@@ -144,16 +143,9 @@ class ImportJobable < AbstractJobber
 
       #BUG Проверить, на работоспособность (Потребовалось после конвертирования из Excel в csv, где были переносы \r)
       FasterCSV.foreach(SupplierPrice.find(opt).attachment.path) do |row|
-        begin
-        if i == 0
+        #begin
           query = query_template
-        end
          
-#         if i > 500
-#           break
-#         end
-        if i < @max_inserts
-
           query = query + "(#{@job_id},"
 
           query = query + title = title_colnum ? Price.connection.quote(row[title_colnum].to_s.strip) + ", " : ""
@@ -195,36 +187,17 @@ class ImportJobable < AbstractJobber
           query = query + @supplier_id + ", "
           query = query + @price_setting_id
 
-          query = query + "),"
-#          query = query + ")"
+          query = query + ")"
 
-          #debugger
-          i = i + 1
-        end
-
-        if i == @max_inserts
-          #debugger
-          query.chop!
           begin
             Price.connection.execute(query)
           rescue => e
-            #puts query
-            #debugger
-            raise e
+            raise query + e
           end
-          query = ""
-          i = 0
-        end
 
         rescue CatalogNumberException
           next
         end
-      end
-
-      #TODO Объединить с верхним (это на случай если записей меньше n)
-      if query.present?
-        query.chop!
-        Price.connection.execute(query)
       end
 
     end

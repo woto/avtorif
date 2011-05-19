@@ -27,12 +27,14 @@ module ApplicationHelper
     supplier_id = params[:supplier_id]
     job_id = params[:job_id] || params[:id]
     supplier = Supplier.find(supplier_id)
-    @content = raw("<br /><br /><h1>")
-    @content = content_tag(:span, link_to(supplier.title, supplier_jobs_path(supplier)) + " ")
+    @content = raw("<h1>")
+    @content << content_tag(:span, link_to(supplier.title, supplier_jobs_path(supplier)) + " ")
     if job_id
       recursive_build_job_path(job_id)
     end
-    @content << raw("</h1><br /><br />")
+    @content << raw("<br />")
+    @content << link_to("Свойства поставщика", supplier)
+    @content << raw("</h1>")
   end
 
   private
@@ -41,7 +43,7 @@ module ApplicationHelper
       if job.job_id.present?
         recursive_build_job_path(job.job_id)
       end
-      @content << content_tag(:span, link_to(job.title, supplier_job_path(job.supplier, job))  + " ")
+      @content << content_tag(:span, link_to(job.id.to_s + ' - ' + job.title, supplier_job_path(job.supplier, job))  + " ")
     end
   
 end

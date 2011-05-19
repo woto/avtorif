@@ -101,7 +101,7 @@ module CommonModule
       if cn.length > 0
         return cn
       else
-        raise CatalogNumberException
+        raise CatalogNumberException, catalog_number
       end
     end
 

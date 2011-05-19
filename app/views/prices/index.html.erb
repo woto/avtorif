@@ -8,6 +8,9 @@ if @prices.present?
 	uniq_manufacturers = []
 	uniq_catalog_numbers = []
 	uniq_titles = []
+	not_uniq_manufacturers = []
+	not_uniq_catalog_numbers = []
+	not_uniq_titles = []
 	xm.table {
 		# Пишем заголовок
 		# xm.tr {@header.each {|value| xm.th(value)}}
@@ -21,7 +24,11 @@ if @prices.present?
 				uniq_manufacturers << [line['manufacturer'], line['bit_original']]
 				uniq_catalog_numbers << line['catalog_number']
 				uniq_titles << line['title']
-			end
+                        end
+
+				not_uniq_manufacturers << [line['manufacturer'], line['bit_original']]
+				not_uniq_catalog_numbers << line['catalog_number']
+				not_uniq_titles << line['title']
 			
 			if index % 10 == 0
 				xm.tr {@header.each {|value| xm.th(value)}}
@@ -45,25 +52,29 @@ if @prices.present?
 	}
 	%>
 
-	<table>
-		<tr>
-			<td valign="top">
+	<%= raw xm.target %>
+
 				<% uniq_manufacturers = uniq_manufacturers.uniq.compact %>
-				<p>Все найденные названия:<br /><ul><li><%= raw uniq_titles.uniq.compact.join("</li><li>") %></li></ul></p>
-				<p>Все найденные каталожные номера:<br /><ul><li><%= raw uniq_catalog_numbers.uniq.compact.join('</li><li>') %></li></ul></p>
+				<p>Названия:<br /><ul><li><%= raw uniq_titles.uniq.compact.join("</li><li>") %></li></ul></p>
+				<p>Каталожные номера:<br /><ul><li><%= raw uniq_catalog_numbers.uniq.compact.join('</li><li>') %></li></ul></p>
 				<p>
-					Все найденные производители:
+					Производители:
 					<ul>
 						<li>Оригинальные:<ul><li><%= raw uniq_manufacturers.map{|manufacturer| manufacturer[0] if manufacturer[1] == 1}.compact.join('</li><li>') %></li></ul></li>
 						<li>Не оригинальные:<ul><li><%= raw uniq_manufacturers.map{|manufacturer| manufacturer[0] if manufacturer[1] == 0}.compact.join('</li><li>') %></li></ul></li>
 					</ul>
 				</p>
-			</td>
-			<td>
-				<%= raw xm.target %>
-			</td>
-		</tr>
-	</table>
-	<%
+                                <hr />
+				<% not_uniq_manufacturers = not_uniq_manufacturers.uniq.compact %>
+				<p>Названия:<br /><ul><li><%= raw not_uniq_titles.uniq.compact.join("</li><li>") %></li></ul></p>
+				<p>Каталожные номера:<br /><ul><li><%= raw not_uniq_catalog_numbers.uniq.compact.join('</li><li>') %></li></ul></p>
+				<p>
+					Производители:
+					<ul>
+						<li>Оригинальные:<ul><li><%= raw not_uniq_manufacturers.map{|manufacturer| manufacturer[0] if manufacturer[1] == 1}.compact.join('</li><li>') %></li></ul></li>
+						<li>Не оригинальные:<ul><li><%= raw not_uniq_manufacturers.map{|manufacturer| manufacturer[0] if manufacturer[1] == 0}.compact.join('</li><li>') %></li></ul></li>
+					</ul>
+				</p>
+<%
 end
 %>

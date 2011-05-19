@@ -42,7 +42,7 @@
         <td><%=h job.last_finish %></td>
         <td><%=h job.seconds_between_jobs %></td>
         <td><%=h job.seconds_working %></td>
-        <td><%=h link_to job.id.to_s + " " + job.title, supplier_job_path(job.supplier, job) %></td>
+        <td><%=h link_to job.id.to_s + " - " + job.title, supplier_job_path(job.supplier, job) %></td>
         <td><%=h job.repeats.collect(&:title).join(",") %></td>
         <td>
             <%= link_to("Получение", new_supplier_job_receive_job_path(job.supplier, job)) %> <br />

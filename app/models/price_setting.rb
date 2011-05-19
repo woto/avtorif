@@ -5,6 +5,7 @@ class PriceSetting < ActiveRecord::Base
 
   belongs_to :currency_buy, :class_name => 'Currency'
   validates_presence_of :currency_buy
+  validates_presence_of :delivery_summary
 
   belongs_to :currency_weight, :class_name => 'Currency'
   validates_presence_of :currency_weight
