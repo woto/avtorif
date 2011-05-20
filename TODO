@@ -54,9 +54,6 @@ Mysql2::Error (Illegal mix of collations (utf8_general_ci,IMPLICIT) and (utf8_un
 27. Нужно найти код (замена, состоит из..., содержит...) и оставить только замену с emex'а
 28. Разобраться с дубликатоми (кто-то там то ли Москворечье, то ли Радиатор сервис)
 29. Возможно нужно сделать дату последнего влияния на прайс какой-нибудь задачи импорта
-30. Поставить флаг оригинальности производителя, взятый от emex - 
-  cat ./ORIGINAL_MANUFACTURERS | while read a; do mysql5 -u root -pvjqgfhjk avtorif_development -e "SELECT * FROM manufacturers WHERE title=\"$a\""; done
-  cat ./ORIGINAL_MANUFACTURERS | while read a; do mysql5 -u root -pvjqgfhjk avtorif_development -e "UPDATE manufacturers SET original = 1 WHERE title=\"$a\""; done
 31. Сделать возможность обновления только цены или обновления только количества
 32. Сделать в настройках прайса чтобы рандомное значение вероятности доставки по прайсу было при создании.
 33. 
