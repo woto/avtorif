@@ -20,6 +20,10 @@
     background: #89A; 
   }
 
+  #image {
+    background: #4AD;
+  }
+
 </style>
 
 <%= f.error_messages %>
@@ -51,6 +55,16 @@
   <%= f.input :new_catalog_number_colnum %>
   Колонка: Новый каталожный номер
 </div>
+
+<div id="image">
+  <%= f.input :image_url_colnum %>
+  Колонка: Адрес картинки (в случае если не абсолютный, то необходимо добавить префикс)
+  <hr />
+
+  <%= f.input :image_url_prefix %>
+  Префикс для приведения адреса картинки к абсолютному
+</div>
+
 
 <div id="weight"> 
   <%= f.input :weight_grams_colnum %> 

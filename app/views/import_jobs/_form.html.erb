@@ -31,6 +31,18 @@
   #delivery_days {
     background: #8CA;
   }
+  
+  #image {
+    background: #4AD;
+  }
+
+  #external {
+    background: #CFA;
+  }
+
+  #pack {
+    background: #DDA;
+  }
 
 </style>
 
@@ -83,9 +95,14 @@
     Колонка: Цена детали. В качестве дробного разделителя может использоваться как точка, так и запятая. Пробелы (разделители разрядов), как и нули вначале, игнорируются
   </div>
 
-  <%= f.input :external_id_colnum %>
-  Внешний номер
-  <hr />
+  <div id="external">
+    <%= f.input :external_id_colnum %>
+    Внешний номер детали
+    <hr />
+    
+    <%= f.input :external_supplier_id_colnum %>
+    Внешний ID поставщика
+  </div>
   
   <%= f.input :parts_group_colnum %>
   Группа автозапчастей (Не формализованный список. Используется колонка прайса, где часто повторяется одно и то же)
@@ -95,29 +112,39 @@
   Применимость (куда, для какой машины, двигателя, и т.д. где можно использовать)
   <hr />
 
-  <%= f.input :unit_colnum %>
-  Единица измерения
-  <hr />
-
   <%= f.input :description_colnum %>
   Описание наименования
   <hr />
 
-  <%= f.input :min_order_colnum %>
-  Минимальное кол-во для заказа
-  <hr />
+  <div id="pack">
+    <%= f.input :min_order_colnum %>
+    Минимальное кол-во для заказа
+    <hr />
 
-  <%= f.input :multiply_factor_colnum %>
-  Кратность для заказа
-  <hr />
+    <%= f.input :multiply_factor_colnum %>
+    Кратность для заказа
+    <hr />
 
-  <%= f.input :unit_package_colnum %>
-  Штук в упаковке
-  <hr />
+    <%= f.input :unit_package_colnum %>
+    Штук в упаковке
+    <hr />
+
+    <%= f.input :unit_colnum %>
+    Единица измерения
+  </div>
 
   <%= f.input :country_colnum %>
   Страна изготовитель запчасти
   <hr />
+
+  <div id="image">
+    <%= f.input :image_url_colnum %>
+    Колонка: Адрес картинки (в случае если не абсолютный, то необходимо добавить префикс)
+    <hr />
+
+    <%= f.input :image_url_prefix %>
+    Префикс для приведения адреса картинки к абсолютному
+  </div>
 
   <div id="weight">
     <%= f.input :weight_grams_colnum %>
@@ -125,7 +152,6 @@
     <hr />
     <%= f.input :weight_coefficient %>
     Коэффициент для перевода в граммы
-    <hr />
   </div>
 
   <div class="field">

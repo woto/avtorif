@@ -22,11 +22,13 @@ class ImportJobable < AbstractJobber
             pc.catalog_number = pi.catalog_number,
             pc.catalog_number_orig = pi.catalog_number_orig,
             pc.country = pi.country,
-            pc.parts_group = pi.parts_group,
             pc.supplier_id = pi.supplier_id,
             pc.delivery_days_price = pi.delivery_days_price,
             pc.weight_grams = pi.weight_grams,
             pc.external_id = pi.external_id,
+            pc.external_supplier_id = pi.external_supplier_id,
+            pc.parts_group = pi.parts_group,
+            pc.image_url = pi.image_url
             pc.unit_package = pi.unit_package,
             pc.multiply_factor = pi.multiply_factor,
             pc.min_order = pi.min_order,
@@ -47,7 +49,7 @@ class ImportJobable < AbstractJobber
     end
 
     CommonModule::all_doublets do |l|
-      query = "INSERT INTO price_cost_#{l} (job_id, title, count, price_cost, manufacturer, manufacturer_orig, catalog_number, catalog_number_orig, title_en, weight_grams, unit_package, description, min_order, applicability, country, external_id, unit, multiply_factor, parts_group, price_setting_id, supplier_id) SELECT job_id, title, count, price_cost, manufacturer, manufacturer_orig, catalog_number, catalog_number_orig, title_en, weight_grams, unit_package, description, min_order, applicability, country, external_id, unit, multiply_factor, parts_group, price_setting_id, supplier_id FROM price_import_#{@job_id} WHERE doublet = '#{l}' #{additional}"
+      query = "INSERT INTO price_cost_#{l} (job_id, title, count, price_cost, manufacturer, manufacturer_orig, catalog_number, catalog_number_orig, title_en, weight_grams, unit_package, description, min_order, applicability, country, external_id, external_supplier_id, parts_group, image_url, unit, multiply_factor, price_setting_id, supplier_id) SELECT job_id, title, count, price_cost, manufacturer, manufacturer_orig, catalog_number, catalog_number_orig, title_en, weight_grams, unit_package, description, min_order, applicability, country, external_id, external_supplier_id, parts_group, image_url, unit, multiply_factor, price_setting_id, supplier_id FROM price_import_#{@job_id} WHERE doublet = '#{l}' #{additional}"
       Price.connection.execute(query)
 
       query = "UPDATE price_import_#{@job_id} SET processed = 1 WHERE doublet = '#{l}'"
@@ -61,7 +63,7 @@ class ImportJobable < AbstractJobber
 
     @optional.each do |opt|
       query = ""
-      manufacturer, manufacturer_orig, manufacturer_synonyms_hs, unit_colnum, multiply_factor_colnum, external_id_colnum, country_colnum, applicability_colnum ,  min_order_colnum , description_colnum , unit_package_colnum , title_en_colnum , weight_grams_colnum, title_colnum , count_colnum , manufacturer_colnum , parts_group_colnum = false
+      manufacturer, manufacturer_orig, manufacturer_synonyms_hs, unit_colnum, multiply_factor_colnum, external_id_colnum, external_supplier_id, parts_group_colnum, image_url, country_colnum, applicability_colnum,  min_order_colnum, description_colnum, unit_package_colnum, title_en_colnum, weight_grams_colnum, title_colnum, count_colnum, manufacturer_colnum = false
 
       query_template = "INSERT INTO price_import_#{@job_id} (job_id, "
       
@@ -134,9 +136,20 @@ class ImportJobable < AbstractJobber
         query_template = query_template + "external_id, "
       end
 
+      if @jobable.external_supplier_id_colnum.present?              
+        external_supplier_id_colnum = @jobable.external_supplier_id_colnum - 1
+        query_template = query_template + "external_supplier_id, "
+      end
+
       if @jobable.parts_group_colnum.present?              
         parts_group_colnum = @jobable.parts_group_colnum - 1
         query_template = query_template + "parts_group, "
+      end
+
+      if @jobable.image_url_colnum.present?              
+        image_url_colnum = @jobable.image_url_colnum - 1
+        query_template = query_template + "image_url, "
+        image_url_prefix = @jobable.image_url_prefix
       end
 
       query_template = query_template + "price_cost, catalog_number, catalog_number_orig, supplier_id, price_setting_id) VALUES "
@@ -180,7 +193,9 @@ class ImportJobable < AbstractJobber
           query = query + unit = unit_colnum ? Price.connection.quote(row[unit_colnum].to_s.strip) + ", " : ""
           query = query + country = country_colnum ? Price.connection.quote(row[country_colnum].to_s.strip) + ", " : ""
           query = query + external_id = external_id_colnum ? Price.connection.quote(row[external_id_colnum].to_s.strip) + ", " : ""
+          query = query + external_supplier_id = external_supplier_id_colnum ? Price.connection.quote(row[external_supplier_id_colnum].to_s.strip) + ", " : ""
           query = query + parts_group = parts_group_colnum ? Price.connection.quote(row[parts_group_colnum].to_s.strip) + ", " : ""
+          query = query + image_url = image_url_colnum ? Price.connection.quote((image_url_prefix ? image_url_prefix : "") + row[image_url_colnum].to_s.strip) + ", " : ""
           query = query + price = Price.connection.quote(row[@price_colnum].to_s.gsub(',','.').gsub(' ','')) + ", "
           query = query + catalog_number = Price.connection.quote(CommonModule::normalize_catalog_number(row[catalog_number_colnum])) + ", "
           query = query + catalog_number_orig = Price.connection.quote(CommonModule::catalog_number_orig(row[catalog_number_colnum])) + ", "

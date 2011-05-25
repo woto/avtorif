@@ -38,6 +38,8 @@ if @prices.present?
 				@header.each do |key|
 					if key == 'line_number'
 						xm.td(index + 1)
+                                        elsif key == "image_url"
+                                          xm.td{|str| str << ((line[key]).present? ? "<img src='#{line[key]}'>" : "")}
 					elsif key == "retail_cost"
 						xm.td(line[key] * AppConfig.prices_discount.to_f)
 					elsif key == "catalog_number_orig"
