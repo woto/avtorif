@@ -45,7 +45,7 @@ class ReplacementsController < ApplicationController
               xml.title_en row["title_en"]
               xml.weight_grams row["weight_grams"]
               xml.manufacturer row["manufacturer"]
-              for i in 0...AppConfig.max_replacements do
+              for i in 0...AppConfig.max_replaces do
                 if row["r#{i}"].present?
                   md5 = Digest::MD5.hexdigest(row["r#{i}"])[0, 2]
                   manufacturer = row["rm#{i}"]
