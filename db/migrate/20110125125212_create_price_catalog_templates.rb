@@ -7,9 +7,10 @@ class CreatePriceCatalogTemplates < ActiveRecord::Migration
       t.string :title
       t.string :title_en
       t.integer :weight_grams
-      0.upto(79) do |i|
+      0.upto(AppConfig.max_replaces - 1) do |i|
         eval("t.string :r#{i}, :limit => #{AppConfig.catalog_number_len}")
         eval("t.string :rm#{i}, :limit => #{AppConfig.manufacturer_len}")
+        eval("t.integer :ra#{i}")
       end
       t.string :new_catalog_number
       t.timestamps

@@ -8,6 +8,6 @@ class ReplaceJob < ActiveRecord::Base
   for j in 0...AppConfig.max_replaces do
     eval "validates :r#{j}_colnum, :numericality => {:only_integer => true}, :allow_nil => true"
     eval "validates :rdi#{j}, :inclusion => {:in => [1,2,3]}, :if => Proc.new{|replacement_job| replacement_job.r#{j}_colnum.present?}"
-    eval "validates :rde#{j}, :length => {:minimum => 0, :maximum => 1}"
+    eval "validates :rde#{j}, :length => {:minimum => 0, :maximum => 10}"
   end
 end

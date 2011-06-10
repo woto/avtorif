@@ -28,7 +28,7 @@ class ImportJobable < AbstractJobber
             pc.external_id = pi.external_id,
             pc.external_supplier_id = pi.external_supplier_id,
             pc.parts_group = pi.parts_group,
-            pc.image_url = pi.image_url
+            pc.image_url = pi.image_url,
             pc.unit_package = pi.unit_package,
             pc.multiply_factor = pi.multiply_factor,
             pc.min_order = pi.min_order,
@@ -220,7 +220,6 @@ class ImportJobable < AbstractJobber
   end
 
   def perform
-    @max_inserts = AppConfig.max_inserts
     @manufacturer_len = AppConfig.manufacturer_len
     @catalog_number_len = AppConfig.catalog_number_len
     @weight_coefficient = @jobable.weight_coefficient

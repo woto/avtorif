@@ -43,7 +43,7 @@ if @prices.present?
 					elsif key == "retail_cost"
 						xm.td(line[key] * AppConfig.prices_discount.to_f)
 					elsif key == "catalog_number_orig"
-						xm.td{|s| s << link_to(line[key], search_prices_path(:manufacturer => line['manufacturer'], :catalog_number => line['catalog_number'], :replacements => '1', :ext_ws => '1'))}
+						xm.td{|s| s << link_to(line[key], search_prices_path(:manufacturer => line['manufacturer_orig'], :catalog_number => line['catalog_number'], :replacements => '1', :ext_ws => '1'))}
 					else
 						xm.td(line[key])
 					end

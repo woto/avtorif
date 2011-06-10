@@ -39,7 +39,6 @@ class PriceSettingsController < ApplicationController
   end
 
   def send_to_web_service(format)
-  debugger
     client = Savon::Client.new do |wsdl, http|
        wsdl.document = "#{AppConfig.lc_ws_address}/trade.1cws?wsdl"
        http.auth.basic AppConfig.lc_ws_login, AppConfig.lc_ws_password
@@ -70,7 +69,6 @@ class PriceSettingsController < ApplicationController
     @price_setting.supplier_id = params[:supplier_id]
     respond_to do |format|
       if @price_setting.save
-        debugger
         if send_to_web_service(format)
 	  format.html { redirect_to(supplier_jobs_path(params[:supplier_id]), :notice => 'Price setting was successfully created.') }
           format.xml  { render :xml => @price_setting, :status => :created, :location => @price_setting }
@@ -87,7 +85,6 @@ class PriceSettingsController < ApplicationController
   def update
     @price_setting = PriceSetting.find(params[:id])
     @price_setting.supplier_id = params[:supplier_id]
-debugger
     respond_to do |format|
       if @price_setting.update_attributes(params[:price_setting])
         if send_to_web_service(format)

@@ -71,6 +71,7 @@ class PricesController < ApplicationController
             "title_en" => row['title_en'],
             "weight_grams" => row['weight_grams'],
             "new_catalog_number" => row['new_catalog_number'],
+            "image_url" => row['image_url'],
             "replacements" => []
           }
 
@@ -96,6 +97,7 @@ class PricesController < ApplicationController
             'title_en' => row['title_en'],
             'weight_grams' => row['weight_grams'],
             'new_catalog_number' => row['new_catalog_number'],
+            "image_url" => row['image_url'],
             'replacements' => []
           }
 
@@ -342,7 +344,13 @@ class PricesController < ApplicationController
           if params[:replacements] == '1'
             r1['replacements'].each do |replacement|
               get_from_catalog(replacement['catalog_number'], replacement['manufacturer']) do |r2|
-                replacements << r2
+                # Это изменение связано с тем, что более частные значения мы хотим чтобы были раньше в массиве, а более общие (без производителя) в конце
+                # чтобы на (на данный момент) этапе урезки вылетели наиболее общие повторяющиеся значения
+                if replacement['manufacturer']
+                  replacements.unshift(r2)
+                else
+                  replacements.push(r2)
+                end
               end
             end
           end
@@ -384,7 +392,9 @@ class PricesController < ApplicationController
                   replacements <<  {
                     "catalog_number" => p["catalog_number"],
                     "manufacturer" => p["manufacturer"],
-                    "original" => p["bit_original"]
+                    "title" => p["title"],
+                    "title_en" => p["title_en"],
+                    "original" => p["bit_original"],
                   }
                 end
 
@@ -401,8 +411,11 @@ class PricesController < ApplicationController
         once = nil
 
         # Локальная работа
-        #debugger
-        replacements.each do |replacement|
+        debugger
+        
+
+        replacements.reverse.each do |replacement|
+          debugger
           md5 = Digest::MD5.hexdigest(replacement["catalog_number"])[0,2]
           weight_grams = replacement["weight_grams"] ? replacement["weight_grams"] : "0"
           #string_for_income_cost =  "p.price_cost * (c.value/100 * ps.relative_buy_coefficient + ps.absolute_buy_coefficient)  income_rate * c.value AS income_cost, 
@@ -443,7 +456,10 @@ class PricesController < ApplicationController
           ps.retail_rate as ps_retail_rate,
           ps.relative_buy_rate as ps_relative_buy_rate,
           ps.absolute_buy_rate as ps_absolute_buy_rate,
-          #{weight_grams} as weight_grams,
+          CASE
+            WHEN p.weight_grams > 0 THEN p.weight_grams
+            ELSE #{weight_grams}
+          END as weight_grams,
           ps.kilo_price as ps_kilo_price,
           c_weight.value as c_weight_value,
           ps.relative_weight_rate as ps_relative_weight_rate,
@@ -484,8 +500,6 @@ class PricesController < ApplicationController
             query << " AND visible_for_shops = 1"
           end
 
-          #debugger
-          #result = @client.query(query, {:as => :hash, :symbolize_keys => true})
           result = ActiveRecord::Base.connection.select_all(query)
           if result.size > 0
             @header = @header | result[0].keys 
@@ -494,9 +508,6 @@ class PricesController < ApplicationController
             end
           end
         end
-
-        #query = "SELECT '1'"
-        #result = @client.query(query, :as => :array)
 
         # Пока мы до конца не избавимся от каталожного номера без производителя эта мера является необходимой
         # TODO попробуйте поищите каталожный номер с заменами 90430-12031 без этого блока.
@@ -522,7 +533,7 @@ class PricesController < ApplicationController
         end
 
         # Выкидываем не нужные столбцы (возможно я это планировал делать где-то в другом месте, но где уже не вспомню)
-        @header = @header - ["manufacturer", "catalog_number", "income_cost", "ps_retail_rate", "real_job_id", "job_import_job_presence", "job_id", "job_import_job_country", "job_import_job_delivery_days_average", "supplier_id", "supplier_kpp", "job_import_job_country_short", "supplier_title_en", "price_cost",	"ij_income_rate",	"c_buy_value", "ps_relative_buy_rate", "ps_absolute_buy_rate", "weight_grams", "ps_kilo_price", "c_weight_value", "ps_relative_weight_rate", "ps_absolute_weight_rate", "ps_weight_unavailable_rate", "created_at", "job_import_job_delivery_summary", "price_setting_id", "min_order", "updated_at", "external_id", "unit_package", "supplier_inn", "id", "processed", "delivery_days_price", "job_import_job_kilo_price", "count", "unit", "description", "currency", "job_title",	"supplier_title",	"supplier_title_full",	"job_import_job_destination_logo",	"manufacturer_short", "price_logo_emex",	"job_import_job_destination_summary", "multiply_factor", "country", "parts_group", "applicability", "job_import_job_success_percent", "logo"]
+        #@header = @header - ["manufacturer", "catalog_number", "income_cost", "ps_retail_rate", "real_job_id", "job_import_job_presence", "job_id", "job_import_job_country", "job_import_job_delivery_days_average", "supplier_id", "supplier_kpp", "job_import_job_country_short", "supplier_title_en", "price_cost",	"ij_income_rate",	"c_buy_value", "ps_relative_buy_rate", "ps_absolute_buy_rate", "weight_grams", "ps_kilo_price", "c_weight_value", "ps_relative_weight_rate", "ps_absolute_weight_rate", "ps_weight_unavailable_rate", "created_at", "job_import_job_delivery_summary", "price_setting_id", "min_order", "updated_at", "external_id", "unit_package", "supplier_inn", "id", "processed", "delivery_days_price", "job_import_job_kilo_price", "count", "unit", "description", "currency", "job_title",	"supplier_title",	"supplier_title_full",	"job_import_job_destination_logo",	"manufacturer_short", "price_logo_emex",	"job_import_job_destination_summary", "multiply_factor", "country", "parts_group", "applicability", "job_import_job_success_percent", "logo"]
 
       rescue CatalogNumberException
         flash.now[:notice] = 'Каталожный номер искомой детали введен не корректно'

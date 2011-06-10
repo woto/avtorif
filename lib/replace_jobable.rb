@@ -105,7 +105,7 @@ class ReplaceJobable < AbstractJobber
             if r_colnum[j].present?
 
               if rde[j].to_s.size > 0
-                r = row[r_colnum[j]].to_s.split(rde[j].to_s)
+                r = row[r_colnum[j]].to_s.split(Regexp.new("[#{rde[j].to_s}]"))
               else
                 r = [row[r_colnum[j]].to_s]
               end
@@ -141,7 +141,7 @@ class ReplaceJobable < AbstractJobber
                     replacement_orig = Price.connection.quote(CommonModule::catalog_number_orig(k))
                     replacement_manufacturer = rm
                     replacement_manufacturer_orig = rm_orig
-                    image_url = image_url_colnum.present? ? ((image_url_prefix.present? ? image_url_prefix : "") + row[image_url_colnum]) : "NULL"
+                    image_url = image_url_colnum.present? ? Price.connection.quote((image_url_prefix.present? ? image_url_prefix : "") + row[image_url_colnum].to_s) : "NULL"
 
                     if manufacturer_colnum.present?
                       manufacturer_orig = CommonModule::manufacturer_orig(row[manufacturer_colnum])
@@ -237,7 +237,7 @@ class ReplaceJobable < AbstractJobber
             replacement_orig = "NULL"
             replacement_manufacturer = "NULL"
             replacement_manufacturer_orig = "NULL"
-            image_url = image_url_colnum.present? ? ((image_url_prefix.present? ? image_url_prefix : "") + row[image_url_colnum]) : "NULL"
+            image_url = image_url_colnum.present? ? Price.connection.quote((image_url_prefix.present? ? image_url_prefix : "") + row[image_url_colnum].to_s) : "NULL"
 
             query << insert(catalog_number, catalog_number_orig, new_catalog_number, new_catalog_number_orig, title, title_en, manufacturer, manufacturer_orig, weight_grams, image_url, replacement, replacement_orig, replacement_manufacturer, replacement_manufacturer_orig)
             ActiveRecord::Base.connection.execute(query)
