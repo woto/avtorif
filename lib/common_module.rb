@@ -2,6 +2,7 @@ module CommonModule
   class << self
     
     CATALOG_NUMBER_LEN = AppConfig.catalog_number_len
+    MANUFACTURER_LEN = AppConfig.manufacturer_len
 
     def get_emex(input)
       # TODO тут нужна оптимизация, например, когда нас спрашивают о заменах, нам неважно какой логин и пароль, или если спрашивают информацию о заменах конкретного производителя и у нас уже есть кеш с каталожным номером, но без производителя, то мы сами можем это все вычленять. Пока что кеш максимально жесткий, чтобы во-первых не допустить ошибки и во-вторых не тратить много время
@@ -83,14 +84,12 @@ module CommonModule
     end
 
     def catalog_number_orig catalog_number
-      @catalog_number_len ||= AppConfig.catalog_number_len
-      catalog_number.to_s.mb_chars[0, @catalog_number_len].strip.to_s
+      catalog_number.to_s.mb_chars.strip.to_s[0, CATALOG_NUMBER_LEN]
     end
 
     def manufacturer_orig manufacturer
       if(manufacturer = manufacturer.to_s.mb_chars.strip.to_s).length > 0
-        @manufacturer_len ||= AppConfig.manufacturer_len
-        return ActiveRecord::Base.connection.quote(manufacturer[0, @manufacturer_len].to_s)
+        return ActiveRecord::Base.connection.quote(manufacturer.to_s[0, MANUFACTURER_LEN])
       else
         return "NULL"
       end
@@ -107,6 +106,8 @@ module CommonModule
 
   def create_manufacturer_and_synonym(manufacturer_orig, job_id)
     
+    manufacturer_orig = manufacturer_orig[0, MANUFACTURER_LEN]
+
     m = Manufacturer.where(:title => manufacturer_orig).first
     ms = ManufacturerSynonym.where(:title => manufacturer_orig).first
 
@@ -128,6 +129,7 @@ module CommonModule
 
     def find_manufacturer_synonym(manufacturer_orig, job_id, allow_to_create = true)
       if (manufacturer_orig = manufacturer_orig.to_s.mb_chars.strip.upcase.to_s).length > 0
+        manufacturer_orig = manufacturer_orig[0, MANUFACTURER_LEN]
 
         # Выполняем единожды для всех обрабтываемых файлов
         unless defined? @manufacturer_synonyms_hs
