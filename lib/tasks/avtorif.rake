@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 # TODO Надо проверять замену (конкретный пример, когда HAB-110 является заменой HAB-110)
 require 'fcntl'
 
@@ -124,11 +126,14 @@ namespace :avtorif do
 
   desc "Очистка"
   task :reclean do
-    puts 'Рестартуем Cron'
-    sh 'sudo /etc/init.d/cron restart'
-
-    puts 'Останавливаем God'
     begin
+     puts 'Рестартуем Cron'
+     sh 'sudo /etc/init.d/cron restart'
+    rescue
+    end
+
+    begin
+      puts 'Останавливаем God'
       sh "sudo /usr/bin/god terminate"
     rescue StandardError => e
     end
@@ -150,8 +155,11 @@ namespace :avtorif do
     sh "rm -rf #{Rails.root}/system/emex/*"
     sh "rm -rf #{Rails.root}/log/*"
 
-    puts "Запускаем God"
-    sh "sudo /etc/init.d/god start"
+    begin
+      puts "Запускаем God"
+      sh "sudo /etc/init.d/god start"
+    rescue
+    end      
   end 
   
   desc "Создать хранилища на основе шаблонов"
