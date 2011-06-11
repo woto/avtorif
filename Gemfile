@@ -21,7 +21,7 @@ gem 'yaml_db'
 
 gem 'enumerated_attribute'
 
-gem 'mysql2'
+gem 'mysql2', '0.2.7'
 #gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'delayed_job'
 

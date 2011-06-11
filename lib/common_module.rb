@@ -84,19 +84,19 @@ module CommonModule
     end
 
     def catalog_number_orig catalog_number
-      catalog_number.to_s.mb_chars.strip.to_s[0, CATALOG_NUMBER_LEN]
+      catalog_number.to_s.mb_chars.strip[0, CATALOG_NUMBER_LEN].to_s
     end
 
     def manufacturer_orig manufacturer
-      if(manufacturer = manufacturer.to_s.mb_chars.strip.to_s).length > 0
-        return ActiveRecord::Base.connection.quote(manufacturer.to_s[0, MANUFACTURER_LEN])
+      if(manufacturer = manufacturer.to_s.mb_chars.strip[0, MANUFACTURER_LEN].to_s).length > 0
+        return ActiveRecord::Base.connection.quote(manufacturer)
       else
         return "NULL"
       end
     end
 
     def normalize_catalog_number catalog_number
-      cn = catalog_number.to_s.mb_chars.upcase.strip[0, CATALOG_NUMBER_LEN].gsub(/[^a-z0-9]/i, '').to_s
+      cn = catalog_number.to_s.mb_chars.upcase.strip.gsub(/[^a-z0-9]/i, '')[0, CATALOG_NUMBER_LEN].to_s
       if cn.length > 0
         return cn
       else
@@ -106,8 +106,6 @@ module CommonModule
 
   def create_manufacturer_and_synonym(manufacturer_orig, job_id)
     
-    manufacturer_orig = manufacturer_orig[0, MANUFACTURER_LEN]
-
     m = Manufacturer.where(:title => manufacturer_orig).first
     ms = ManufacturerSynonym.where(:title => manufacturer_orig).first
 

@@ -108,7 +108,7 @@ namespace :avtorif do
             query = "INSERT INTO price_catalog_#{d} (catalog_number, manufacturer) VALUES ('#{price_import_row['catalog_number']}', #{price_import_manufacturer})"
             Price.connection.execute(query)
             # Сделали начальную вставку, а дальше обновлением пройдет (Потом нужно оптимизировать и сразу вставлять подходящие поля)
-            retry
+            redo
           end
         end
 
