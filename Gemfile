@@ -1,4 +1,4 @@
-#source :gemcutter
+source :gemcutter
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.3'
@@ -21,7 +21,7 @@ gem 'yaml_db'
 
 gem 'enumerated_attribute'
 
-gem 'mysql2', '0.2.7'
+gem 'mysql2', '0.2.5'
 #gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'delayed_job'
 

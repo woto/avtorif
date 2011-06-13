@@ -15,17 +15,26 @@ class PricesController < ApplicationController
     if @private_cache.key? key
       if manufacturer
         if @private_cache[key]["with"].key? manufacturer
-          block.call( @private_cache[key]["with"][manufacturer]) if block
+          if block && !@private_cache[key]["with"][manufacturer]['yield']
+            @private_cache[key]["with"][manufacturer]['yield'] = true
+            block.call( @private_cache[key]["with"][manufacturer]) 
+          end
           return
         end
       else
+        if @private_cache[key]["with"].size > 0
+          @private_cache[key]["with"].each_pair do |manufacturer, value|
+            if block && !@private_cache[key]["with"][manufacturer]['yield']
+              @private_cache[key]["with"][manufacturer]['yield'] = true
+              block.call(value)
+            end
+          end
+        end
         # Все группы
         if @private_cache[key]["without"].key? "catalog_number"
-          block.call(@private_cache[key]["without"]) if block
-        end
-        if @private_cache[key]["with"].size > 0
-          @private_cache[key]["with"].each_pair do |k, v|
-            block.call(v) if block
+          if block && !@private_cache[key]["without"]["yield"]
+            @private_cache[key]["without"]["yield"] = true
+            block.call(@private_cache[key]["without"]) 
           end
         end
         return
@@ -39,11 +48,17 @@ class PricesController < ApplicationController
       #result = @client.query(query, :as => :hash)
       #debugger
       result = ActiveRecord::Base.connection.select_all(query)
+
+      # Независимо от того что запросят мы запомниаем искомый номер с или без производителя
+      # а потом уже в повторном вызове в нужном порядке отдается сначала с производителем, а потом, в случае нужды
+      # без (изменение внесено так же в этом коммите)
+
       if manufacturer
         @private_cache[key] ||= {"with" => {manufacturer => {"catalog_number" => catalog_number, "manufacturer" => manufacturer, "replacements" => []}}, "without" => []}
       else
         @private_cache[key] ||= {"with" => {}, "without" => {"catalog_number" => catalog_number, "replacements" => []}}
       end
+
       result.each do |row|
         # Запомнили в кеше
         # hash = {
@@ -322,7 +337,14 @@ class PricesController < ApplicationController
 
   def search
     @header = []
-    @prices = []
+    @result_message = "Ок"
+    @result_prices = []
+    @result_replacements = []
+
+    result_message = lambda{@result_message}
+    result_replacements = lambda{@result_replacements}
+    result_prices = lambda{@result_prices}
+    @result = lambda{{:result_message => result_message.call, :result_replacements => result_replacements.call, :result_prices => result_prices.call}}
 
     if params[:catalog_number]
       begin
@@ -330,27 +352,15 @@ class PricesController < ApplicationController
         our_catalog_number = CommonModule::normalize_catalog_number(latinized_catalog_number)
 
         if params[:manufacturer].present? && params[:manufacturer].size >= 1
-          begin
-            our_manufacturer = CommonModule::find_manufacturer_synonym(params[:manufacturer], -1, false)[1..-2]
-          rescue ManufacturerException
-            flash.now[:notice] = "Искомый производитель деталей не существует"
-            render '/prices/search_form' and return
-          end  
+          our_manufacturer = CommonModule::find_manufacturer_synonym(params[:manufacturer], -1, false)[1..-2]
         end
 
-        replacements = []
         get_from_catalog(our_catalog_number, our_manufacturer) do |r1|
-          replacements << r1
+          @result_replacements << r1
           if params[:replacements] == '1'
             r1['replacements'].each do |replacement|
               get_from_catalog(replacement['catalog_number'], replacement['manufacturer']) do |r2|
-                # Это изменение связано с тем, что более частные значения мы хотим чтобы были раньше в массиве, а более общие (без производителя) в конце
-                # чтобы на (на данный момент) этапе урезки вылетели наиболее общие повторяющиеся значения
-                if replacement['manufacturer']
-                  replacements.unshift(r2)
-                else
-                  replacements.push(r2)
-                end
+                @result_replacements << r2
               end
             end
           end
@@ -377,7 +387,7 @@ class PricesController < ApplicationController
 
               doc.each do |p|
 
-                @prices << p
+                @result_prices << p
 
                 found = false
                 replacements.each do |replacement|
@@ -410,12 +420,8 @@ class PricesController < ApplicationController
         end
         once = nil
 
-        # Локальная работа
-        debugger
-        
-
-        replacements.reverse.each do |replacement|
-          debugger
+        puts "Локальная работа"
+        @result_replacements.each do |replacement|
           md5 = Digest::MD5.hexdigest(replacement["catalog_number"])[0,2]
           weight_grams = replacement["weight_grams"] ? replacement["weight_grams"] : "0"
           #string_for_income_cost =  "p.price_cost * (c.value/100 * ps.relative_buy_coefficient + ps.absolute_buy_coefficient)  income_rate * c.value AS income_cost, 
@@ -500,11 +506,11 @@ class PricesController < ApplicationController
             query << " AND visible_for_shops = 1"
           end
 
-          result = ActiveRecord::Base.connection.select_all(query)
-          if result.size > 0
-            @header = @header | result[0].keys 
-            result.each do |r|
-              @prices << r
+          res = ActiveRecord::Base.connection.select_all(query)
+          if res.size > 0
+            @header = @header | res[0].keys 
+            res.each do |r|
+              @result_prices << r
             end
           end
         end
@@ -513,15 +519,15 @@ class PricesController < ApplicationController
         # TODO попробуйте поищите каталожный номер с заменами 90430-12031 без этого блока.
         @reduced_prices = []
         seen = []
-        @prices.map do |detail|
+        @result_prices.map do |detail|
           unless seen.include? detail["id"] || detail["id"] == nil
             seen << detail["id"]
             @reduced_prices << detail
           end
         end
-        @prices = @reduced_prices
+        @result_prices = @reduced_prices
 
-        if @prices.size > 0
+        if @result_prices.size > 0
           @header.uniq!
           ["catalog_number_orig", "manufacturer_orig", "bit_original", "title", "retail_cost",	"job_import_job_delivery_days_declared",	"success_percent", "title_en", "income_cost", "ps_retail_rate", "job_title", "supplier_title", "supplier_title_full", "supplier_title_en", "price_cost", "ij_income_rate", "c_buy_value", "ps_relative_buy_rate", "ps_absolute_buy_rate", "weight_grams", "ps_kilo_price", "c_weight_value", "ps_relative_weight_rate", "ps_absolute_weight_rate", "ps_weight_unavailable_rate", "catalog_number",  "manufacturer"].reverse.each do |key|
             begin
@@ -535,14 +541,29 @@ class PricesController < ApplicationController
         # Выкидываем не нужные столбцы (возможно я это планировал делать где-то в другом месте, но где уже не вспомню)
         #@header = @header - ["manufacturer", "catalog_number", "income_cost", "ps_retail_rate", "real_job_id", "job_import_job_presence", "job_id", "job_import_job_country", "job_import_job_delivery_days_average", "supplier_id", "supplier_kpp", "job_import_job_country_short", "supplier_title_en", "price_cost",	"ij_income_rate",	"c_buy_value", "ps_relative_buy_rate", "ps_absolute_buy_rate", "weight_grams", "ps_kilo_price", "c_weight_value", "ps_relative_weight_rate", "ps_absolute_weight_rate", "ps_weight_unavailable_rate", "created_at", "job_import_job_delivery_summary", "price_setting_id", "min_order", "updated_at", "external_id", "unit_package", "supplier_inn", "id", "processed", "delivery_days_price", "job_import_job_kilo_price", "count", "unit", "description", "currency", "job_title",	"supplier_title",	"supplier_title_full",	"job_import_job_destination_logo",	"manufacturer_short", "price_logo_emex",	"job_import_job_destination_summary", "multiply_factor", "country", "parts_group", "applicability", "job_import_job_success_percent", "logo"]
 
-      rescue CatalogNumberException
-        flash.now[:notice] = 'Каталожный номер искомой детали введен не корректно'
-        render '/prices/search_form' and return
+      rescue CatalogNumberException => e
+        @result_message = 'Каталожный номер искомой детали введен не корректно'
+
+      rescue ManufacturerException
+        @result_message = "Искомый производитель деталей не существует"
+
+      ensure
+        unless e.nil?
+          flash.now[:notice] = result_message.call 
+
+          respond_to do |format|
+            format.html {render 'prices/search_form'}
+            format.xml  {render :xml => @result.call.to_xml}
+          end
+
+          return
+        end
       end
     end
+
     respond_to do |format|
       format.html {render :action => :index }
-      format.xml  { render :xml => @prices.to_xml}
+      format.xml  { render :xml => @result.call.to_xml}
     end
 
   end
