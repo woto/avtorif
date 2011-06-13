@@ -390,22 +390,23 @@ class PricesController < ApplicationController
                 @result_prices << p
 
                 found = false
-                replacements.each do |replacement|
+                @result_replacements.each do |replacement|
                   if replacement["catalog_number"] == p["catalog_number"]
-                    if replacement["manufacturer"] == p["manufacturer"] || replacement["manufacturer"] == nil
+                    if replacement["manufacturer"] == p["manufacturer"]
                       found = true
                     end
                   end
                 end
 
                 unless found
-                  replacements <<  {
+                  # Вставляем вначало
+                  @result_replacements.unshift({
                     "catalog_number" => p["catalog_number"],
                     "manufacturer" => p["manufacturer"],
                     "title" => p["title"],
                     "title_en" => p["title_en"],
                     "original" => p["bit_original"],
-                  }
+                  })
                 end
 
                 if once
