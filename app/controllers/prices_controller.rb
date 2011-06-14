@@ -561,6 +561,8 @@ class PricesController < ApplicationController
         end
       end
     end
+    
+    puts "В контроллере перед рендерингом"
 
     respond_to do |format|
       format.html {render :action => :index }
