@@ -357,7 +357,10 @@ class PricesController < ApplicationController
 
         get_from_catalog(our_catalog_number, our_manufacturer) do |r1|
           @result_replacements << r1
-          if params[:replacements] == '1'
+	end
+        
+        if params[:replacements] == '1'
+          @result_replacements.map.each do |r1|
             r1['replacements'].each do |replacement|
               get_from_catalog(replacement['catalog_number'], replacement['manufacturer']) do |r2|
                 @result_replacements << r2
