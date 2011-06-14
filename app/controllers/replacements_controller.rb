@@ -44,8 +44,9 @@ class ReplacementsController < ApplicationController
               xml.title row["title"]
               xml.title_en row["title_en"]
               xml.weight_grams row["weight_grams"]
+              xml.image_url row["image_url"]
               xml.manufacturer row["manufacturer"]
-              for i in 0...AppConfig.max_replacements do
+              for i in 0...AppConfig.max_replaces do
                 if row["r#{i}"].present?
                   md5 = Digest::MD5.hexdigest(row["r#{i}"])[0, 2]
                   manufacturer = row["rm#{i}"]
@@ -57,12 +58,15 @@ class ReplacementsController < ApplicationController
                   end
                   query << manufacturer_condition
                   replacement_result = @client.query(query)
+
+                  # TODO Если замена прямая, то деталь, на которую заменяется отсутствует в каталоге
                   make_block(xml, i, replacement_result.first) do |z1, z2, z3|
                     z1.catalog_number z3['catalog_number']
                     z1.manufacturer z3['manufacturer']
                     z1.title z3['title']
                     z1.title_en z3['title_en']
                     z1.weight_grams z3['weight_grams']
+                    z1.image_url z3['image_url']
                     z1.new_catalog_number z3['new_catalog_number']
                   end
                 end

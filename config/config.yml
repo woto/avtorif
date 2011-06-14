@@ -8,18 +8,16 @@ defaults: &defaults
   emex_login: 14616
   emex_password: 2b0ffb38
   # Время кеширования результата запроса с емекса по детали
-  emex_cache: 3
+  emex_cache: 10
   emex_timeout: 200
 
   lc_ws_address: http://192.168.1.42/trade_dda/ws
-  lc_ws_login: webservice
-  lc_ws_password: webservice
+  lc_ws_login: webservice_test
+  lc_ws_password: webservice_test
 
   catalog_number_len: 20
   manufacturer_len: 20
-  max_replaces: 80
-  max_replacements: 80
-  max_inserts: 10
+  max_replaces: 120
   
   prices_discount: 0.87
 

@@ -8,7 +8,7 @@ class CreateReplaceJobs < ActiveRecord::Migration
         t.integer "rm#{i}_colnum".to_sym, :limit => AppConfig.manufacturer_len
         t.string  "rdm#{i}".to_sym, :limit => AppConfig.manufacturer_len
         t.integer "rdi#{i}".to_sym 
-        t.string  "rde#{i}".to_sym, :limit => 1
+        t.string  "rde#{i}".to_sym, :limit => 10
       end
       
       t.integer :catalog_number_colnum
