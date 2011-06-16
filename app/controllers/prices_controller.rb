@@ -2,6 +2,8 @@ require 'rubygems'
 require 'libxml'
 require 'ruby-debug'
 require 'yaml'
+require 'xmlsimple'
+require 'benchmark'
 
 class PricesController < ApplicationController
 
@@ -363,7 +365,11 @@ class PricesController < ApplicationController
           @result_replacements.map.each do |r1|
             r1['replacements'].each do |replacement|
               get_from_catalog(replacement['catalog_number'], replacement['manufacturer']) do |r2|
-                @result_replacements << r2
+                if replacement['manufacturer']
+                  @result_replacements.unshift(r2)
+                else
+                  @result_replacements.push(r2)
+                end
               end
             end
           end
@@ -564,7 +570,7 @@ class PricesController < ApplicationController
         end
       end
     end
-    
+
     puts "В контроллере перед рендерингом"
 
     respond_to do |format|
