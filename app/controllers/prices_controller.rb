@@ -415,6 +415,7 @@ class PricesController < ApplicationController
                     "title" => p["title"],
                     "title_en" => p["title_en"],
                     "original" => p["bit_original"],
+                    "yield" => true
                   })
                 end
 
