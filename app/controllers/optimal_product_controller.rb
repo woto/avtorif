@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class OptimalProductController < ApplicationController
   
   before_filter :set_initial_variables

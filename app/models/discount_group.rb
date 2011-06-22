@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class DiscountGroup < ActiveRecord::Base
   has_many :suppliers
   has_many :discount_rules

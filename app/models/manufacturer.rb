@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class Manufacturer < ActiveRecord::Base
 
   MANUFACTURER_LEN = AppConfig.manufacturer_len 

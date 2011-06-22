@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class GoodsAutoOptionsController < ApplicationController
   # GET /goods_auto_options
   # GET /goods_auto_options.xml

@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class ColumnRelationsController < ApplicationController
   # GET /column_relations
   # GET /column_relations.xml

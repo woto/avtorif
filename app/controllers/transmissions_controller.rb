@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class TransmissionsController < ApplicationController
   # GET /transmissions
   # GET /transmissions.xml

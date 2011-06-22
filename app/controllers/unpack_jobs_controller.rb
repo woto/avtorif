@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class UnpackJobsController < ApplicationController
   # GET /unpack_jobs
   # GET /unpack_jobs.xml

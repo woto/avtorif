@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class SmbReceivesController < ApplicationController
   # GET /smb_receives
   # GET /smb_receives.xml

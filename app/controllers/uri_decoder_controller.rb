@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class UriDecoderController < ApplicationController
   def index
     if params[:uri_decoder]

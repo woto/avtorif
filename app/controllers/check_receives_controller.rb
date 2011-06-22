@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class CheckReceivesController < ApplicationController
   def index
     @result = ActiveRecord::Base.connection.execute("SELECT s.id sid, j.id jid, j.title FROM `receive_jobs` rj

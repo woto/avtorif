@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class HttpReceivesController < ApplicationController
   # GET /http_receives
   # GET /http_receives.xml

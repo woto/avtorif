@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class AutosController < ApplicationController
   # GET /autos
   # GET /autos.xml

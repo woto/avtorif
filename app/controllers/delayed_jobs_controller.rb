@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class DelayedJobsController < ApplicationController
   def index
     @delayed_jobs = DelayedJob.joins({:job => :supplier}).order(["locked_by DESC", :priority, :run_at]).paginate(:page => params[:page])

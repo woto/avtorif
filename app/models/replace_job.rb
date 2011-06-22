@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class ReplaceJob < ActiveRecord::Base
   validates_presence_of :catalog_number_colnum
   has_many :job, :as => :jobable

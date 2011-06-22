@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class CurrenciesController < ApplicationController
   # GET /currencies
   # GET /currencies.xml

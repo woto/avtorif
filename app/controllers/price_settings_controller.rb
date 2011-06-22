@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class PriceSettingsController < ApplicationController
   # GET /price_settings
   # GET /price_settings.xml

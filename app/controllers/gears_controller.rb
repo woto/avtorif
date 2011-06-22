@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class GearsController < ApplicationController
   # GET /gears
   # GET /gears.xml

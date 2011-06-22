@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class Auto < ActiveRecord::Base
   belongs_to :manufacturer
   has_many :auto_options, :dependent => :destroy

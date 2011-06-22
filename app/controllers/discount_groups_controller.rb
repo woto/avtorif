@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class DiscountGroupsController < ApplicationController
   # GET /discount_groups
   # GET /discount_groups.xml

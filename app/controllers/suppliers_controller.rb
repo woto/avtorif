@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class SuppliersController < ApplicationController
   # GET /suppliers
   # GET /suppliers.xml

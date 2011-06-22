@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class ConvertJob < ActiveRecord::Base
   has_many :jobs, :as => :jobable  
   enum_attr :convert_method, [

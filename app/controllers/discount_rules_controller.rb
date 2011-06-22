@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class DiscountRulesController < ApplicationController
   # GET /discount_rules
   # GET /discount_rules.xml

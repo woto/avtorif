@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class ReplaceJobsController < ApplicationController
   # GET /replace_jobs
   # GET /replace_jobs.xml

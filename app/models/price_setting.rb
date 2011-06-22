@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class PriceSetting < ActiveRecord::Base
   has_many :import_jobs
   belongs_to :import_job

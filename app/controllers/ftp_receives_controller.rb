@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class FtpReceivesController < ApplicationController
   # GET /ftp_receives
   # GET /ftp_receives.xml

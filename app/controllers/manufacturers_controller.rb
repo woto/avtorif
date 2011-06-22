@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class ManufacturersController < ApplicationController
   # GET /manufacturers
   # GET /manufacturers.xml

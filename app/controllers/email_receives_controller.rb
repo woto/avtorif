@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class EmailReceivesController < ApplicationController
   # GET /email_receives
   # GET /email_receives.xml

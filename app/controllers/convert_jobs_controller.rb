@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class ConvertJobsController < ApplicationController
   # GET /convert_jobs
   # GET /convert_jobs.xml

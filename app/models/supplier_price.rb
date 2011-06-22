@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class SupplierPrice < ActiveRecord::Base
   has_attached_file :attachment
   #  :path => "#{Rails.root}/public/system/:id/:normalized_basename_:style"

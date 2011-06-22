@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class RepeatsController < ApplicationController
   # GET /repeats
   # GET /repeats.xml

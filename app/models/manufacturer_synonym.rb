@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class ManufacturerSynonym < ActiveRecord::Base
   MANUFACTURER_LEN = AppConfig.manufacturer_len
 

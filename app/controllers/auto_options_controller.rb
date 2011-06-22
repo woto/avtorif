@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class AutoOptionsController < ApplicationController
   # GET /auto_options
   # GET /auto_options.xml

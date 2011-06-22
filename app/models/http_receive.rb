@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class HttpReceive < ActiveRecord::Base
   has_many :receive_job, :as => :receiveable
   enum_attr :encoding, ['^utf-8' ,'cp1251', 'koi8-r', 'cp866'], :nil => true

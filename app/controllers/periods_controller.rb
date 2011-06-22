@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class PeriodsController < ApplicationController
   # GET /periods
   # GET /periods.xml

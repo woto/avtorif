@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class FilterJobsController < ApplicationController
   # GET /filter_jobs
   # GET /filter_jobs.xml

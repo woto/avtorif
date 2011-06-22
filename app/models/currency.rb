@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class Currency < ActiveRecord::Base
   has_many :import_jobs
   validates :title, :presence => true

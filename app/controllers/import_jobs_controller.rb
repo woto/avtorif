@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class ImportJobsController < ApplicationController
   # GET /import_jobs
   # GET /import_jobs.xml

@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class FolderReceivesController < ApplicationController
   # GET /folder_receives
   # GET /folder_receives.xml

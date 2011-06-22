@@ -1,3 +1,5 @@
+# ecoding: utf-8
+
 module CommonModule
   class << self
     

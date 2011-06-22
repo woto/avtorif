@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class AutoOption < ActiveRecord::Base
   belongs_to :auto
   belongs_to :period

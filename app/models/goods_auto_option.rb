@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class GoodsAutoOption < ActiveRecord::Base
   belongs_to :goods
   belongs_to :auto_option

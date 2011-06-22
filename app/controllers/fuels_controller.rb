@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class FuelsController < ApplicationController
   # GET /fuels
   # GET /fuels.xml

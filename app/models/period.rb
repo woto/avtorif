@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class Period < ActiveRecord::Base
   has_many :auto_options, :dependent => :destroy
   has_many :autos, :through => :auto_options

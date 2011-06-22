@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class Job < ActiveRecord::Base
 
   has_many :supplier_prices, :dependent => :destroy

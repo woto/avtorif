@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class DeliveryTypesController < ApplicationController
   # GET /delivery_types
   # GET /delivery_types.xml

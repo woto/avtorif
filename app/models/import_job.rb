@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class ImportJob < ActiveRecord::Base
   enum_attr :encoding, %w(utf8 cp1251 koi8-r cp866), :nil => true
   enum_attr :import_method, ["Очищаем и вставляем - _B_",

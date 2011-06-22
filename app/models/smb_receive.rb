@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class SmbReceive < ActiveRecord::Base
   has_many :receive_job, :as => :receiveable
 

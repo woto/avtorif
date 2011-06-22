@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 require 'digest/md5'
 class ReplacementsController < ApplicationController
   def search

@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class ManufacturerSynonymsController < ApplicationController
   # GET /manufacturer_synonyms
   # GET /manufacturer_synonyms.xml

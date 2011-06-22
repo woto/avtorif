@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 class Goods < ActiveRecord::Base
   has_many :prices
   belongs_to :manufacturer
