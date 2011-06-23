@@ -21,7 +21,7 @@ gem 'yaml_db'
 
 gem 'enumerated_attribute'
 
-gem 'mysql2', '0.2.5'
+gem 'mysql2', '0.2.7'
 #gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'delayed_job'
 
@@ -37,7 +37,7 @@ gem 'delayed_job'
 
 # Deploy with Capistrano
 gem 'capistrano'
-gem 'mongrel'
+#gem 'mongrel'
 #gem 'rake'
 #gem 'rack'
 gem 'paperclip'
@@ -64,7 +64,7 @@ gem 'exception_notification', :git => 'git://github.com/rails/exception_notifica
 #end
 
 #group :development do
-  gem 'ruby-debug'
+  gem 'ruby-debug19'
 #  gem 'ruby-debug-base'
   #gem 'rack-bug', :git => 'git://github.com/brynary/rack-bug.git', :branch => 'rails3'
 #  gem 'ruby-debug-ide'
@@ -91,3 +91,4 @@ gem 'httpi'
 #gem 'escape', :git => "https://github.com/akr/escape.git"
 #gem 'escape_utils'
 gem 'libxml-ruby'
+#gem 'magic_encoding'

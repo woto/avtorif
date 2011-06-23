@@ -13,7 +13,9 @@ module CommonModule
       file_name << input[:login].to_s + "|" + input[:password].to_s + "|" + input[:catalog_number].to_s + "|" + input[:manufacturer].to_s + "|" + input[:replacements].to_i.to_s
 
       if(File.exist?(file_name) && (File.ctime(file_name) > Time.now - AppConfig.emex_cache.to_i.minutes))
-        result = File.read(file_name)
+        #result = File.read(file_name)
+        file = File.open(file_name, "r:utf-8")
+        result = file.read
       else
         hash['makeLogo'] = input[:manufacturer].present? ? CommonModule::manufacturer_orig(input[:manufacturer])[1..-2] : ''
         hash['detailNum'] = CommonModule::catalog_number_orig(input[:catalog_number])
@@ -21,8 +23,8 @@ module CommonModule
         hash['password'] = input[:password]
         hash['findSubstitutes'] = input[:replacements] == '1' ? 'true' : 'false'
         response = Net::HTTP.post_form(URI.parse('http://ws.emex.ru/EmExService.asmx/FindDetailAdv'), hash)
-        file = File.new(file_name, "w")
-        result = response.body
+        file = File.new(file_name, "w:utf-8")
+        result = response.body.force_encoding("utf-8")
         file.write(result)
         file.close
       end
@@ -54,6 +56,8 @@ module CommonModule
     TABLE = CYR_LAT_LOWER + CYR_LAT_UPPER
 
     def convert_all_cyr_to_lat(str)
+      raise CatalogNumberException, "Вы не указали каталожный номер детали" if str.blank?
+
       chars = str.split(//)
 
       lowers = CYR_LAT_LOWER.map{|e| e[0] }
@@ -100,7 +104,7 @@ module CommonModule
       if cn.length > 0
         return cn
       else
-        raise CatalogNumberException, catalog_number
+        raise CatalogNumberException, "Введен ошибочный каталожный номер детали, номер может содержать только буквы латинского алфавита и цифры, вы ввели '#{catalog_number}'"
       end
     end
 
@@ -154,14 +158,13 @@ module CommonModule
             # Если мы имеем право создать, то пробуем
             if allow_to_create
               unless create_manufacturer_and_synonym(manufacturer_orig, job_id)
-                debugger
                 # возможна ситуация, в случае Race condition
                 unless create_manufacturer_and_synonym(manufacturer_orig, job_id)
                   raise 'Не восстановимая ошибка при создании производителей/синонимов. Задача должна разрешиться при следующем запуске'
                 end
               end
             else
-              raise ManufacturerException
+              raise ManufacturerException, "Введен не существующий производитель деталей '#{manufacturer_orig}'"
             end
 
             manufacturer = manufacturer_orig
