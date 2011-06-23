@@ -4,7 +4,9 @@ require 'rubygems'
 require 'libxml'
 require 'ruby-debug'
 require 'yaml'
-require 'xmlsimple'
+# то ли вывалился в ruby 1.9, то ли я его плагином ставил
+# в любом случае пока не нужен
+#require 'xmlsimple'
 require 'benchmark'
 
 class PricesController < ApplicationController
@@ -155,6 +157,7 @@ class PricesController < ApplicationController
     end
 
     def on_characters text
+      text = text.force_encoding('utf-8')
 
       if @inside_detail_item
         if @once_for_detail_item
@@ -350,176 +353,219 @@ class PricesController < ApplicationController
     result_prices = lambda{@result_prices}
     @result = lambda{{:result_message => result_message.call, :result_replacements => result_replacements.call, :result_prices => result_prices.call}}
 
-    if params[:catalog_number]
+    catch :halt do
+
+      if params[:catalog_number].nil?
+        throw :halt
+      end
+
       begin
         latinized_catalog_number = CommonModule::convert_all_cyr_to_lat(params[:catalog_number])
         our_catalog_number = CommonModule::normalize_catalog_number(latinized_catalog_number)
-
-        if params[:manufacturer].present? && params[:manufacturer].size >= 1
+        # По идее от этой строчки надо избавиться, но когда убрал всплыло то, что возвращается NULL и тут обрезается
+        # до UL, я не совсем правильно написал метод и использую его в различных целях в разных местах, 
+        # поэтому чтобы сохранить работоспособность пришлось вернуть как было. Еще в момент написания уже подумывал разбить
+        # на два метода, экранирующий и не экранирующий
+        if params[:manufacturer].present? && params[:manufacturer].size > 0
           our_manufacturer = CommonModule::find_manufacturer_synonym(params[:manufacturer], -1, false)[1..-2]
         end
+      rescue ManufacturerException, CatalogNumberException => e
+        @result_message = e.message
+        throw :halt
+      end
 
-        get_from_catalog(our_catalog_number, our_manufacturer) do |r1|
-          @result_replacements << r1
-	end
-        
-        if params[:replacements] == '1'
-          @result_replacements.map.each do |r1|
-            r1['replacements'].each do |replacement|
-              get_from_catalog(replacement['catalog_number'], replacement['manufacturer']) do |r2|
-                if replacement['manufacturer']
-                  @result_replacements.unshift(r2)
-                else
-                  @result_replacements.push(r2)
-                end
+      get_from_catalog(our_catalog_number, our_manufacturer) do |r1|
+        @result_replacements << r1
+      end
+      
+      if params[:replacements] == '1'
+        @result_replacements.map.each do |r1|
+          r1['replacements'].each do |replacement|
+            get_from_catalog(replacement['catalog_number'], replacement['manufacturer']) do |r2|
+              if replacement['manufacturer']
+                @result_replacements.unshift(r2)
+              else
+                @result_replacements.push(r2)
               end
             end
           end
         end
+      end
 
 
-        # Работа со сторонними сервисами
+      # Работа со сторонними сервисами
 
-        once = true
-        if(params[:ext_ws] == '1')
-          #EMEX
+      once = true
+      if(params[:ext_ws] == '1')
+        #EMEX
+        begin
           Timeout.timeout(AppConfig.emex_timeout) do
-            begin
-              puts 'Сейчас будем читать'
-              response = CommonModule::get_emex(
-              :catalog_number => our_catalog_number,
-              :manufacturer => params[:manufacturer],
-              :login => AppConfig.emex_login,
-              :password => AppConfig.emex_password,
-              :replacements => params[:replacements]
+
+            emex_response = ''
+            measurement = Benchmark.measure do
+              emex_response = CommonModule::get_emex(
+                :catalog_number => our_catalog_number,
+                :manufacturer => params[:manufacturer],
+                :login => AppConfig.emex_login,
+                :password => AppConfig.emex_password,
+                :replacements => params[:replacements]
               )
-              puts 'Завершили чтение'
-              doc = SaxReader.new(response)
+            end
 
-              doc.each do |p|
+            puts 'Потрачено на получение xml\'я с емекс\'a'
+            puts measurement
 
-                @result_prices << p
+            measurement = Benchmark.measure do
+              doc = SaxReader.new(emex_response)
 
-                found = false
-                @result_replacements.each do |replacement|
-                  if replacement["catalog_number"] == p["catalog_number"]
-                    if replacement["manufacturer"] == p["manufacturer"]
-                      found = true
+                doc.each do |p|
+
+                  @result_prices << p
+
+                  found = false
+                  @result_replacements.each do |replacement|
+                    if replacement["catalog_number"] == p["catalog_number"]
+                      if replacement["manufacturer"] == p["manufacturer"]
+                        found = true
+                      end
                     end
                   end
-                end
 
-                unless found
-                  # Вставляем вначало
-                  @result_replacements.unshift({
-                    "catalog_number" => p["catalog_number"],
-                    "manufacturer" => p["manufacturer"],
-                    "title" => p["title"],
-                    "title_en" => p["title_en"],
-                    "original" => p["bit_original"],
-                    "yield" => true
-                  })
-                end
+                  unless found
+                    # Вставляем вначало
+                    @result_replacements.unshift({
+                      "catalog_number" => p["catalog_number"],
+                      "manufacturer" => p["manufacturer"],
+                      "title" => p["title"],
+                      "title_en" => p["title_en"],
+                      "original" => p["bit_original"],
+                      "yield" => true
+                    })
+                  end
 
-                if once
-                  once = false
-                  @header = @header | p.keys
-                end
+                  if once
+                    once = false
+                    @header = @header | p.keys
+                  end
 
+                end
+            end
+
+            puts "Потрачено на распарсивание и добавление отсутствующих замен."
+            puts measurement
+          end
+        rescue Timeout::Error => e
+          @result_message << " Превышено время ожидания ответа сайта Emex, скорее всего сервер не доступен " + e.message
+        rescue SocketError => e
+          @result_message << " Отсутствует соединение с сайтом Emex " + e.message
+        rescue Exception => e
+          @result_message << " Emex вернул не валидный xml, скорее всего доступ к сайту отсутствует " + e.message
+        end
+      end
+      
+      once = nil
+      threads = []
+      measurement = Benchmark.measure do
+        @result_replacements.each do |replacement|
+          threads << Thread.new do
+            Thread.current["measurement"] = Benchmark.measure do 
+              md5 = Digest::MD5.hexdigest(replacement["catalog_number"])[0,2]
+              weight_grams = replacement["weight_grams"] ? replacement["weight_grams"] : "0"
+              client = Mysql2::Client.new(Rails.configuration.database_configuration[Rails.env].to_options.merge({:pool => 150}))
+              #string_for_income_cost =  "p.price_cost * (c.value/100 * ps.relative_buy_coefficient + ps.absolute_buy_coefficient)  income_rate * c.value AS income_cost, 
+              query = "
+              SELECT
+              p.*,
+              s.title as supplier_title,
+              s.title_en as supplier_title_en,
+              s.title_full as supplier_title_full,
+              s.inn as supplier_inn,
+              s.kpp as supplier_kpp,
+              ps.title as job_title,
+              ps.success_percent,
+              CASE
+              WHEN (p.count IS NULL AND ps.presence = 1) THEN 99
+              ELSE p.count
+              END as count,
+              ps.delivery_days_average as job_import_job_delivery_days_average,
+              ps.delivery_days_declared as job_import_job_delivery_days_declared,
+              ps.delivery_summary as job_import_job_delivery_summary,
+              ps.presence as job_import_job_presence,
+              ps.kilo_price as job_import_job_kilo_price,
+              ps.country as job_import_job_country,
+              ps.country_short as job_import_job_country_short,
+              c_buy.foreign_id as currency,
+              CASE 
+              WHEN p.weight_grams > 0 THEN p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) + p.weight_grams * ps.kilo_price / 1000 * (c_weight.value * ps.relative_weight_rate + ps.absolute_weight_rate)
+              WHEN #{weight_grams} > 0 THEN p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) + #{weight_grams} * ps.kilo_price / 1000 * (c_weight.value * ps.relative_weight_rate + ps.absolute_weight_rate)
+              ELSE p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) * ps.weight_unavailable_rate 
+              END AS income_cost,
+              CASE 
+              WHEN p.weight_grams > 0 THEN ps.retail_rate * (p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) + p.weight_grams * ps.kilo_price / 1000 * (c_weight.value * ps.relative_weight_rate + ps.absolute_weight_rate))
+              WHEN #{weight_grams} > 0 THEN ps.retail_rate * (p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) + #{weight_grams} * ps.kilo_price / 1000 * (c_weight.value * ps.relative_weight_rate + ps.absolute_weight_rate))
+              ELSE ps.retail_rate * (p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) * ps.weight_unavailable_rate)
+              END AS retail_cost,
+              ij.income_rate as ij_income_rate,
+              c_buy.value as c_buy_value,
+              ps.retail_rate as ps_retail_rate,
+              ps.relative_buy_rate as ps_relative_buy_rate,
+              ps.absolute_buy_rate as ps_absolute_buy_rate,
+              CASE
+                WHEN p.weight_grams > 0 THEN p.weight_grams
+                ELSE #{weight_grams}
+              END as weight_grams,
+              ps.kilo_price as ps_kilo_price,
+              c_weight.value as c_weight_value,
+              ps.relative_weight_rate as ps_relative_weight_rate,
+              ps.absolute_weight_rate as ps_absolute_weight_rate,
+              ps.weight_unavailable_rate as ps_weight_unavailable_rate,
+              m.original as bit_original,
+              ps.id as job_id,
+              j.id as real_job_id
+              FROM price_cost_#{md5} p
+              LEFT JOIN manufacturers m
+              ON p.manufacturer = m.title
+              INNER JOIN jobs j
+              ON p.job_id = j.id
+              INNER JOIN price_settings ps 
+              ON p.price_setting_id = ps.id 
+              INNER JOIN import_jobs ij 
+              ON j.jobable_id = ij.id 
+              INNER JOIN suppliers s 
+              ON j.supplier_id = s.id
+              INNER JOIN currencies c_buy
+              ON c_buy.id = ps.currency_buy_id
+              INNER JOIN currencies c_weight 
+              ON c_weight.id = ps.currency_weight_id
+              WHERE  p.catalog_number = '#{client.escape(replacement["catalog_number"])}'" 
+              if replacement["manufacturer"]
+                query << " AND p.manufacturer = '#{client.escape(replacement["manufacturer"])}'"
               end
-            rescue Timeout::Error => e
+
+              if params['for_site']
+                query << " AND ps.visible_for_site = 1"
+              end
+
+              if params['for_stock']
+                query << " AND ps.visible_for_stock = 1"
+              end
+
+              if params['for_shop']
+                query << " AND visible_for_shops = 1"
+              end
+
+              res = client.query(query)
+              client.close
+              Thread.current["res"] = res.collect{|z| z}
             end
           end
         end
-        once = nil
 
-        puts "Локальная работа"
-        @result_replacements.each do |replacement|
-          md5 = Digest::MD5.hexdigest(replacement["catalog_number"])[0,2]
-          weight_grams = replacement["weight_grams"] ? replacement["weight_grams"] : "0"
-          #string_for_income_cost =  "p.price_cost * (c.value/100 * ps.relative_buy_coefficient + ps.absolute_buy_coefficient)  income_rate * c.value AS income_cost, 
-          query = "
-          SELECT
-          p.*,
-          s.title as supplier_title,
-          s.title_en as supplier_title_en,
-          s.title_full as supplier_title_full,
-          s.inn as supplier_inn,
-          s.kpp as supplier_kpp,
-          ps.title as job_title,
-          ps.success_percent,
-          CASE
-          WHEN (p.count IS NULL AND ps.presence = 1) THEN 99
-          ELSE p.count
-          END as count,
-          ps.delivery_days_average as job_import_job_delivery_days_average,
-          ps.delivery_days_declared as job_import_job_delivery_days_declared,
-          ps.delivery_summary as job_import_job_delivery_summary,
-          ps.presence as job_import_job_presence,
-          ps.kilo_price as job_import_job_kilo_price,
-          ps.country as job_import_job_country,
-          ps.country_short as job_import_job_country_short,
-          c_buy.foreign_id as currency,
-          CASE 
-          WHEN p.weight_grams > 0 THEN p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) + p.weight_grams * ps.kilo_price / 1000 * (c_weight.value * ps.relative_weight_rate + ps.absolute_weight_rate)
-          WHEN #{weight_grams} > 0 THEN p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) + #{weight_grams} * ps.kilo_price / 1000 * (c_weight.value * ps.relative_weight_rate + ps.absolute_weight_rate)
-          ELSE p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) * ps.weight_unavailable_rate 
-          END AS income_cost,
-          CASE 
-          WHEN p.weight_grams > 0 THEN ps.retail_rate * (p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) + p.weight_grams * ps.kilo_price / 1000 * (c_weight.value * ps.relative_weight_rate + ps.absolute_weight_rate))
-          WHEN #{weight_grams} > 0 THEN ps.retail_rate * (p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) + #{weight_grams} * ps.kilo_price / 1000 * (c_weight.value * ps.relative_weight_rate + ps.absolute_weight_rate))
-          ELSE ps.retail_rate * (p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) * ps.weight_unavailable_rate)
-          END AS retail_cost,
-          ij.income_rate as ij_income_rate,
-          c_buy.value as c_buy_value,
-          ps.retail_rate as ps_retail_rate,
-          ps.relative_buy_rate as ps_relative_buy_rate,
-          ps.absolute_buy_rate as ps_absolute_buy_rate,
-          CASE
-            WHEN p.weight_grams > 0 THEN p.weight_grams
-            ELSE #{weight_grams}
-          END as weight_grams,
-          ps.kilo_price as ps_kilo_price,
-          c_weight.value as c_weight_value,
-          ps.relative_weight_rate as ps_relative_weight_rate,
-          ps.absolute_weight_rate as ps_absolute_weight_rate,
-          ps.weight_unavailable_rate as ps_weight_unavailable_rate,
-          m.original as bit_original,
-          ps.id as job_id,
-          j.id as real_job_id
-          FROM price_cost_#{md5} p
-          LEFT JOIN manufacturers m
-          ON p.manufacturer = m.title
-          INNER JOIN jobs j
-          ON p.job_id = j.id
-          INNER JOIN price_settings ps 
-          ON p.price_setting_id = ps.id 
-          INNER JOIN import_jobs ij 
-          ON j.jobable_id = ij.id 
-          INNER JOIN suppliers s 
-          ON j.supplier_id = s.id
-          INNER JOIN currencies c_buy
-          ON c_buy.id = ps.currency_buy_id
-          INNER JOIN currencies c_weight 
-          ON c_weight.id = ps.currency_weight_id
-          WHERE  p.catalog_number = #{ActiveRecord::Base.connection.quote(replacement["catalog_number"])}" 
-          if replacement["manufacturer"]
-            query << " AND p.manufacturer = #{ActiveRecord::Base.connection.quote(replacement["manufacturer"])}"
-          end
-
-          if params['for_site']
-            query << " AND ps.visible_for_site = 1"
-          end
-
-          if params['for_stock']
-            query << " AND ps.visible_for_stock = 1"
-          end
-
-          if params['for_shop']
-            query << " AND visible_for_shops = 1"
-          end
-
-          res = ActiveRecord::Base.connection.select_all(query)
+        threads.each do |t| 
+          t.join
+          res = t["res"]
+          measurement = t["measurement"]
+          puts measurement
           if res.size > 0
             @header = @header | res[0].keys 
             res.each do |r|
@@ -528,6 +574,12 @@ class PricesController < ApplicationController
           end
         end
 
+      end
+
+      puts "Потрачено на выборку из локальной базы"
+      puts measurement
+
+      measurement = Benchmark.measure do
         # Пока мы до конца не избавимся от каталожного номера без производителя эта мера является необходимой
         # TODO попробуйте поищите каталожный номер с заменами 90430-12031 без этого блока.
         @reduced_prices = []
@@ -552,33 +604,22 @@ class PricesController < ApplicationController
         end
 
         # Выкидываем не нужные столбцы (возможно я это планировал делать где-то в другом месте, но где уже не вспомню)
-        #@header = @header - ["manufacturer", "catalog_number", "income_cost", "ps_retail_rate", "real_job_id", "job_import_job_presence", "job_id", "job_import_job_country", "job_import_job_delivery_days_average", "supplier_id", "supplier_kpp", "job_import_job_country_short", "supplier_title_en", "price_cost",	"ij_income_rate",	"c_buy_value", "ps_relative_buy_rate", "ps_absolute_buy_rate", "weight_grams", "ps_kilo_price", "c_weight_value", "ps_relative_weight_rate", "ps_absolute_weight_rate", "ps_weight_unavailable_rate", "created_at", "job_import_job_delivery_summary", "price_setting_id", "min_order", "updated_at", "external_id", "unit_package", "supplier_inn", "id", "processed", "delivery_days_price", "job_import_job_kilo_price", "count", "unit", "description", "currency", "job_title",	"supplier_title",	"supplier_title_full",	"job_import_job_destination_logo",	"manufacturer_short", "price_logo_emex",	"job_import_job_destination_summary", "multiply_factor", "country", "parts_group", "applicability", "job_import_job_success_percent", "logo"]
-
-      rescue CatalogNumberException => e
-        @result_message = 'Каталожный номер искомой детали введен не корректно'
-
-      rescue ManufacturerException
-        @result_message = "Искомый производитель деталей не существует"
-
-      ensure
-        unless e.nil?
-          flash.now[:notice] = result_message.call 
-
-          respond_to do |format|
-            format.html {render 'prices/search_form'}
-            format.xml  {render :xml => @result.call.to_xml}
-          end
-
-          return
-        end
+        @header = @header - ["manufacturer", "catalog_number", "income_cost", "ps_retail_rate", "real_job_id", "job_import_job_presence", "job_id", "job_import_job_country", "job_import_job_delivery_days_average", "supplier_id", "supplier_kpp", "job_import_job_country_short", "supplier_title_en", "price_cost",	"ij_income_rate",	"c_buy_value", "ps_relative_buy_rate", "ps_absolute_buy_rate", "weight_grams", "ps_kilo_price", "c_weight_value", "ps_relative_weight_rate", "ps_absolute_weight_rate", "ps_weight_unavailable_rate", "created_at", "job_import_job_delivery_summary", "price_setting_id", "min_order", "updated_at", "external_id", "unit_package", "supplier_inn", "id", "processed", "delivery_days_price", "job_import_job_kilo_price", "count", "unit", "description", "currency", "job_title",	"supplier_title",	"supplier_title_full",	"job_import_job_destination_logo",	"manufacturer_short", "price_logo_emex",	"job_import_job_destination_summary", "multiply_factor", "country", "parts_group", "applicability", "job_import_job_success_percent", "logo"]
+      
       end
+
+      puts "Потрачено на устраниение дублей, выкидывание из хедера ненужных столбцов"
+      puts measurement
     end
 
+
+    flash.now[:notice] = result_message.call 
     puts "В контроллере перед рендерингом"
 
     respond_to do |format|
       format.html {render :action => :index }
-      format.xml  { render :xml => @result.call.to_xml}
+      #format.xml  { render :xml => @result.call.to_xml}
+      format.xml  { render :text => @result.call}
     end
 
   end
