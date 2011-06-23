@@ -5,11 +5,11 @@ defaults: &defaults
   folder_timeout: 3600
   max_emails: 10000
 
-  emex_login: 14616
-  emex_password: 2b0ffb38
+  emex_login: 56281
+  emex_password: IYQe4Bac
   # Время кеширования результата запроса с емекса по детали
-  emex_cache: 10
-  emex_timeout: 200
+  emex_cache: 100000000
+  emex_timeout: 10000000
 
   lc_ws_address: http://192.168.1.42/trade_dda/ws
   lc_ws_login: webservice_test
