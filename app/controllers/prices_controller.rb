@@ -374,24 +374,28 @@ class PricesController < ApplicationController
         throw :halt
       end
 
-      get_from_catalog(our_catalog_number, our_manufacturer) do |r1|
-        @result_replacements << r1
-      end
-      
-      if params[:replacements] == '1'
-        @result_replacements.map.each do |r1|
-          r1['replacements'].each do |replacement|
-            get_from_catalog(replacement['catalog_number'], replacement['manufacturer']) do |r2|
-              if replacement['manufacturer']
-                @result_replacements.unshift(r2)
-              else
-                @result_replacements.push(r2)
+      measurement = Benchmark.measure do
+        get_from_catalog(our_catalog_number, our_manufacturer) do |r1|
+          @result_replacements << r1
+        end
+        
+        if params[:replacements] == '1'
+          @result_replacements.map.each do |r1|
+            r1['replacements'].each do |replacement|
+              get_from_catalog(replacement['catalog_number'], replacement['manufacturer']) do |r2|
+                if replacement['manufacturer']
+                  @result_replacements.unshift(r2)
+                else
+                  @result_replacements.push(r2)
+                end
               end
             end
           end
         end
       end
 
+      puts "Потрачено на поиск замен"
+      puts measurement
 
       # Работа со сторонними сервисами
 
