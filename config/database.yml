@@ -10,7 +10,7 @@ development:
   encoding: utf8
   reconnect: false
   database: avtorif_development_x
-  pool: 5
+  pool: 300
   username: root
   password:
   socket: /tmp/mysql.sock
@@ -23,7 +23,7 @@ test:
   encoding: utf8
   reconnect: false
   database: avtorif_test
-  pool: 5
+  pool: 300
   username: root
   password:
   socket: /tmp/mysql.sock
@@ -33,7 +33,7 @@ production:
   encoding: utf8
   reconnect: false
   database: avtorif_development_x
-  pool: 5
+  pool: 300
   username: root
   password:
   socket: /tmp/mysql.sock
