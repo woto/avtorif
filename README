@@ -29,6 +29,8 @@ $MYSQL -BNe "show tables like 'prices_1%'" | awk '{print "select \"`"$1"`\"; sel
 $MYSQL -BNe "show tables like 'prices_1%'" | awk '{print "drop table \""$1"\";"}' | $MYSQL
 $MYSQL -BNe "show tables like 'prices_1%'" | awk '{print "drop table `"$1"`;"}' | $MYSQL
 
+MYSQL="mysql -u root -D avtorif_development_85 -A" && $MYSQL -BNe "show tables like 'price_cost_%'" | awk '{print "select \"" $1 "\"; ALTER TABLE " $1 " ADD `external_supplier_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL, ADD `image_url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL;"}' | $MYSQL
+
 #{connection} -BNe \"show tables like 'prices_%'\" | awk '{print \"drop table `\" $1 \"`;\"}' | #{connection}
 
 
