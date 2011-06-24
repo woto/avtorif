@@ -15,7 +15,7 @@ class ReplacementsController < ApplicationController
       end
     end
 
-    md5 = Digest::MD5.hexdigest(catalog_number)[0,2]
+    md5 = Digest::MD5.hexdigest(catalog_number)[0, 3]
     @query = "SELECT * FROM price_catalog_#{md5} WHERE catalog_number = " + Price.connection.quote(catalog_number)
     if manufacturer.present?
       @query << " AND manufacturer = " + Price.connection.quote(manufacturer)
@@ -50,7 +50,7 @@ class ReplacementsController < ApplicationController
               xml.manufacturer row["manufacturer"]
               for i in 0...AppConfig.max_replaces do
                 if row["r#{i}"].present?
-                  md5 = Digest::MD5.hexdigest(row["r#{i}"])[0, 2]
+                  md5 = Digest::MD5.hexdigest(row["r#{i}"])[0, 3]
                   manufacturer = row["rm#{i}"]
                   query = "SELECT * from price_catalog_#{md5} where catalog_number = '" + row["r#{i}"] + "'"
                   if manufacturer.present?

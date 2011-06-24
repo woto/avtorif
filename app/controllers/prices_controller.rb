@@ -46,7 +46,7 @@ class PricesController < ApplicationController
         return
       end
     else
-      md5 = Digest::MD5.hexdigest(catalog_number)[0,2]
+      md5 = Digest::MD5.hexdigest(catalog_number)[0, 3]
       query = "SELECT price_catalog_#{md5}.*, manufacturers.original FROM price_catalog_#{md5} 
       LEFT JOIN manufacturers ON price_catalog_#{md5}.manufacturer = manufacturers.title WHERE catalog_number = " + Price.connection.quote(catalog_number)
       puts "###################### #{query}  ######################"
@@ -473,7 +473,7 @@ class PricesController < ApplicationController
         @result_replacements.each do |replacement|
           threads << Thread.new do
             Thread.current["measurement"] = Benchmark.measure do 
-              md5 = Digest::MD5.hexdigest(replacement["catalog_number"])[0,2]
+              md5 = Digest::MD5.hexdigest(replacement["catalog_number"])[0, 3]
               weight_grams = replacement["weight_grams"] ? replacement["weight_grams"] : "0"
               client = Mysql2::Client.new(Rails.configuration.database_configuration[Rails.env].to_options)
               #string_for_income_cost =  "p.price_cost * (c.value/100 * ps.relative_buy_coefficient + ps.absolute_buy_coefficient)  income_rate * c.value AS income_cost, 
@@ -561,7 +561,10 @@ class PricesController < ApplicationController
               res = client.query(query)
               client.close
               Thread.current["res"] = res.collect{|z| z}
+
             end
+            puts query
+            puts Thread.current["measurement"]
           end
         end
 
