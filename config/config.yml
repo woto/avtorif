@@ -17,7 +17,7 @@ defaults: &defaults
 
   catalog_number_len: 20
   manufacturer_len: 20
-  max_replaces: 120
+  max_replaces: 80
   
   prices_discount: 0.87
 

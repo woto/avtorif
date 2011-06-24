@@ -5,6 +5,18 @@ require 'fcntl'
 
 namespace :avtorif do
 
+  desc "Перенос БД дублетов в триплеты"
+  task :doublets_to_triplets => :environment do
+    debugger
+    CommonModule::all_doublets do |d|
+      query = "INSERT INTO price_cost_#{d} SELECT * FROM price_cost_#{d[0,2]} where md5(catalog_number) like '#{d}%'"
+      ActiveRecord::Base.connection.execute(query)
+      query = "INSERT INTO price_catalog_#{d} SELECT * FROM price_catalog_#{d[0,2]} where md5(catalog_number) like '#{d}%'"
+      ActiveRecord::Base.connection.execute(query)
+      puts d
+    end
+  end
+
   desc "Если вес present?, то обновляем, вставляем, аналогично с заменами и новым кат. номером"
   task "replaces" => :environment do
     job_id = ENV["ID"]

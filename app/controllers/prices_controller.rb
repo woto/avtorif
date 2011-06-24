@@ -469,7 +469,7 @@ class PricesController < ApplicationController
             Thread.current["measurement"] = Benchmark.measure do 
               md5 = Digest::MD5.hexdigest(replacement["catalog_number"])[0,2]
               weight_grams = replacement["weight_grams"] ? replacement["weight_grams"] : "0"
-              client = Mysql2::Client.new(Rails.configuration.database_configuration[Rails.env].to_options.merge({:pool => 150}))
+              client = Mysql2::Client.new(Rails.configuration.database_configuration[Rails.env].to_options)
               #string_for_income_cost =  "p.price_cost * (c.value/100 * ps.relative_buy_coefficient + ps.absolute_buy_coefficient)  income_rate * c.value AS income_cost, 
               query = "
               SELECT
