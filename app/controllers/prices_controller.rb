@@ -380,7 +380,7 @@ class PricesController < ApplicationController
         end
         
         if params[:replacements] == '1'
-          @result_replacements.map.each do |r1|
+          @result_replacements.clone.each do |r1|
             r1['replacements'].each do |replacement|
               get_from_catalog(replacement['catalog_number'], replacement['manufacturer']) do |r2|
                 if replacement['manufacturer']
@@ -472,6 +472,7 @@ class PricesController < ApplicationController
       measurement = Benchmark.measure do
         @result_replacements.each do |replacement|
           threads << Thread.new do
+            query = ''
             Thread.current["measurement"] = Benchmark.measure do 
               md5 = Digest::MD5.hexdigest(replacement["catalog_number"])[0,2]
               weight_grams = replacement["weight_grams"] ? replacement["weight_grams"] : "0"
