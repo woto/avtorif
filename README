@@ -31,6 +31,12 @@ $MYSQL -BNe "show tables like 'prices_1%'" | awk '{print "drop table `"$1"`;"}' 
 
 MYSQL="mysql -u root -D avtorif_development_85 -A" && $MYSQL -BNe "show tables like 'price_cost_%'" | awk '{print "select \"" $1 "\"; ALTER TABLE " $1 " ADD `external_supplier_id` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL, ADD `image_url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL;"}' | $MYSQL
 
+MYSQL="mysql -u root -D avtorif_development_85 -A" && $MYSQL -BNe "show tables like 'price_catalog_%'" | awk '{print "select \"" $1 "\"; ALTER TABLE " $1 " 
+ADD `image_url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL;"}' | $MYSQL
+
+# Добавить только в те таблицы, которые не содержать такого столбца
+MYSQL="mysql -u root -D avtorif_development_85 -A" && $MYSQL -BNe "show tables like 'price_catalog_%'" | awk '{print "show create table       " $1 ";"}' | $MYSQL | grep -v image_url | awk '{print "select \"" $1 "\"; ALTER TABLE " $1 " ADD `image_url` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL;"}' | grep 'price' | $MYSQL
+
 #{connection} -BNe \"show tables like 'prices_%'\" | awk '{print \"drop table `\" $1 \"`;\"}' | #{connection}
 
 
