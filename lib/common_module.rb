@@ -13,9 +13,7 @@ module CommonModule
       file_name << input[:login].to_s + "|" + input[:password].to_s + "|" + input[:catalog_number].to_s + "|" + input[:manufacturer].to_s + "|" + input[:replacements].to_i.to_s
 
       if(File.exist?(file_name) && (File.ctime(file_name) > Time.now - AppConfig.emex_cache.to_i.minutes))
-        #result = File.read(file_name)
-        file = File.open(file_name, "r:utf-8")
-        result = file.read
+        result = File.read(file_name)
       else
         hash['makeLogo'] = input[:manufacturer].present? ? CommonModule::manufacturer_orig(input[:manufacturer])[1..-2] : ''
         hash['detailNum'] = CommonModule::catalog_number_orig(input[:catalog_number])
@@ -23,8 +21,8 @@ module CommonModule
         hash['password'] = input[:password]
         hash['findSubstitutes'] = input[:replacements] == '1' ? 'true' : 'false'
         response = Net::HTTP.post_form(URI.parse('http://ws.emex.ru/EmExService.asmx/FindDetailAdv'), hash)
-        file = File.new(file_name, "w:utf-8")
-        result = response.body.force_encoding("utf-8")
+        file = File.new(file_name, "w")
+        result = response.body
         file.write(result)
         file.close
       end

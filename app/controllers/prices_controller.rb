@@ -2,9 +2,6 @@ require 'rubygems'
 require 'libxml'
 require 'ruby-debug'
 require 'yaml'
-# то ли вывалился в ruby 1.9, то ли я его плагином ставил
-# в любом случае пока не нужен
-#require 'xmlsimple'
 require 'benchmark'
 
 class PricesController < ApplicationController
@@ -155,7 +152,6 @@ class PricesController < ApplicationController
     end
 
     def on_characters text
-      text = text.force_encoding('utf-8')
 
       if @inside_detail_item
         if @once_for_detail_item
