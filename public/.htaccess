@@ -1,0 +1,4 @@
+Deny from all
+Allow from 95.84.232.146
+Allow from 192.168.1
+Allow from 85.21.150.51
