@@ -14,6 +14,7 @@ class ImportJobable < AbstractJobber
           SET 
             pi.processed = 1, 
             pc.price_cost = pi.price_cost,
+            pc.minimal_income_cost = pi.minimal_income_cost,
             pc.count = pi.count,
             pc.title = pi.title,
             pc.title_en = pi.title_en,
@@ -49,7 +50,7 @@ class ImportJobable < AbstractJobber
     end
 
     CommonModule::all_doublets do |l|
-      query = "INSERT INTO price_cost_#{l} (job_id, title, count, price_cost, manufacturer, manufacturer_orig, catalog_number, catalog_number_orig, title_en, weight_grams, unit_package, description, min_order, applicability, country, external_id, external_supplier_id, parts_group, image_url, unit, multiply_factor, price_setting_id, supplier_id) SELECT job_id, title, count, price_cost, manufacturer, manufacturer_orig, catalog_number, catalog_number_orig, title_en, weight_grams, unit_package, description, min_order, applicability, country, external_id, external_supplier_id, parts_group, image_url, unit, multiply_factor, price_setting_id, supplier_id FROM price_import_#{@job_id} WHERE doublet = '#{l}' #{additional}"
+      query = "INSERT INTO price_cost_#{l} (job_id, title, count, price_cost, minimal_income_cost, manufacturer, manufacturer_orig, catalog_number, catalog_number_orig, title_en, weight_grams, unit_package, description, min_order, applicability, country, external_id, external_supplier_id, parts_group, image_url, unit, multiply_factor, price_setting_id, supplier_id) SELECT job_id, title, count, price_cost, minimal_income_cost, manufacturer, manufacturer_orig, catalog_number, catalog_number_orig, title_en, weight_grams, unit_package, description, min_order, applicability, country, external_id, external_supplier_id, parts_group, image_url, unit, multiply_factor, price_setting_id, supplier_id FROM price_import_#{@job_id} WHERE doublet = '#{l}' #{additional}"
       Price.connection.execute(query)
 
       query = "UPDATE price_import_#{@job_id} SET processed = 1 WHERE doublet = '#{l}'"
@@ -63,7 +64,7 @@ class ImportJobable < AbstractJobber
 
     @optional.each do |opt|
       query = ""
-      manufacturer, manufacturer_orig, manufacturer_synonyms_hs, unit_colnum, multiply_factor_colnum, external_id_colnum, external_supplier_id, parts_group_colnum, image_url, country_colnum, applicability_colnum,  min_order_colnum, description_colnum, unit_package_colnum, title_en_colnum, weight_grams_colnum, title_colnum, count_colnum, manufacturer_colnum = false
+      manufacturer, manufacturer_orig, manufacturer_synonyms_hs, unit_colnum, multiply_factor_colnum, external_id_colnum, external_supplier_id, parts_group_colnum, image_url, country_colnum, applicability_colnum,  min_order_colnum, description_colnum, unit_package_colnum, title_en_colnum, weight_grams_colnum, title_colnum, count_colnum, manufacturer_colnum, minimal_income_cost = false
 
       query_template = "INSERT INTO price_import_#{@job_id} (job_id, "
       
@@ -146,6 +147,11 @@ class ImportJobable < AbstractJobber
         query_template = query_template + "parts_group, "
       end
 
+      if @jobable.minimal_income_cost_colnum.present?              
+        minimal_income_cost_colnum = @jobable.minimal_income_cost_colnum - 1
+        query_template = query_template + "minimal_income_cost, "
+      end
+
       if @jobable.image_url_colnum.present?              
         image_url_colnum = @jobable.image_url_colnum - 1
         query_template = query_template + "image_url, "
@@ -195,6 +201,7 @@ class ImportJobable < AbstractJobber
           query = query + external_id = external_id_colnum ? Price.connection.quote(row[external_id_colnum].to_s.strip) + ", " : ""
           query = query + external_supplier_id = external_supplier_id_colnum ? Price.connection.quote(row[external_supplier_id_colnum].to_s.strip) + ", " : ""
           query = query + parts_group = parts_group_colnum ? Price.connection.quote(row[parts_group_colnum].to_s.strip) + ", " : ""
+          query = query + minimal_income_cost = minimal_income_cost_colnum ? Price.connection.quote(row[minimal_income_cost_colnum].to_s.gsub(',','.').gsub(' ','')) + ", " : ""
           query = query + image_url = image_url_colnum ? Price.connection.quote((image_url_prefix ? image_url_prefix : "") + row[image_url_colnum].to_s.strip) + ", " : ""
           query = query + price = Price.connection.quote(row[@price_colnum].to_s.gsub(',','.').gsub(' ','')) + ", "
           query = query + catalog_number = Price.connection.quote(CommonModule::normalize_catalog_number(row[catalog_number_colnum])) + ", "
@@ -220,8 +227,6 @@ class ImportJobable < AbstractJobber
   end
 
   def perform
-    @manufacturer_len = AppConfig.manufacturer_len
-    @catalog_number_len = AppConfig.catalog_number_len
     @weight_coefficient = @jobable.weight_coefficient
     @price_colnum = @jobable.income_price_colnum - 1
     @supplier_id = Price.connection.quote(@job.supplier_id)

@@ -39,6 +39,7 @@ MYSQL="mysql -u root -D avtorif_development_85 -A" && $MYSQL -BNe "show tables l
 
 #{connection} -BNe \"show tables like 'prices_%'\" | awk '{print \"drop table `\" $1 \"`;\"}' | #{connection}
 
+MYSQL="mysql -u root -D avtorif_development_x -A" && $MYSQL -BNe "show tables like 'price_cost_%'" | awk '{print "select \"" $1 "\"; ALTER TABLE " $1 " ADD `minimal_income_cost` float DEFAULT NULL;"}' | $MYSQL
 
 -------------
 
