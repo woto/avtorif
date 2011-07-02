@@ -6,6 +6,11 @@ require 'benchmark'
 
 class PricesController < ApplicationController
 
+  @emex_income_rate = AppConfig.emex_income_rate
+  @emex_retal_rate = AppConfig.emex_retail_rate
+  @emex_discount_rate_for_price = AppConfig.emex_discount_rate_for_price
+  @emex_minimal_retail_rate_for_price = AppConfig.emex_minimal_retail_rate_for_price
+
   # Суть этой вакханалии сводится к тому, что из-за того, что в нашей базе много nil производителей, и много пересечений
   # по заменам, то мы хотим получить из таблицы только записи по каталожному номеру, а потом уже пригодится или не
   # пригодится производитель будем решать уже в памяти
@@ -234,11 +239,14 @@ class PricesController < ApplicationController
         elsif @inside_prices
           if @inside_result_price
             @p["price_cost"] = text
-            income_cost = text.to_f * 1
-            @p["income_cost"] = income_cost
-            retail_rate = 1.55
-            @p["ps_retail_rate"] = retail_rate
-            @p["retail_cost"] = income_cost * retail_rate
+            @p["income_cost"] = income_cost = text.to_f * @emex_income_rate
+            @p["ps_retail_rate"] = @emex_retail_rate
+            @p["retail_cost"] = retail_cost = income_cost * @emex_retail_rate
+            if((a = retail_cost * @emex_discount_rate_for_price) < (b = income_cost * @emex_minimal_retail_rate_for_price))
+              @p["retail_cost_with_discounts"] = b
+            else
+              @p["retail_cost_with_discounts"] = a
+            end
           end
         end
       end
@@ -504,6 +512,53 @@ class PricesController < ApplicationController
               WHEN #{weight_grams} > 0 THEN ps.retail_rate * (p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) + #{weight_grams} * ps.kilo_price / 1000 * (c_weight.value * ps.relative_weight_rate + ps.absolute_weight_rate))
               ELSE ps.retail_rate * (p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) * ps.weight_unavailable_rate)
               END AS retail_cost,
+              CASE 
+                WHEN p.minimal_income_cost is NULL 
+                  THEN 
+                    IF (
+                      CASE 
+                        WHEN p.weight_grams > 0 THEN ps.retail_rate * (p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) + p.weight_grams * ps.kilo_price / 1000 * (c_weight.value * ps.relative_weight_rate + ps.absolute_weight_rate))
+                        WHEN #{weight_grams} > 0 THEN ps.retail_rate * (p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) + #{weight_grams} * ps.kilo_price / 1000 * (c_weight.value * ps.relative_weight_rate + ps.absolute_weight_rate))
+                        ELSE ps.retail_rate * (p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) * ps.weight_unavailable_rate)
+                      END * ps.discount_rate_for_price
+                      <=
+                      CASE 
+                        WHEN p.weight_grams > 0 THEN p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) + p.weight_grams * ps.kilo_price / 1000 * (c_weight.value * ps.relative_weight_rate + ps.absolute_weight_rate)
+                        WHEN #{weight_grams} > 0 THEN p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) + #{weight_grams} * ps.kilo_price / 1000 * (c_weight.value * ps.relative_weight_rate + ps.absolute_weight_rate)
+                        ELSE p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) * ps.weight_unavailable_rate 
+                      END * ps.minimal_retail_rate_for_price
+                    , 
+                      CASE 
+                        WHEN p.weight_grams > 0 THEN p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) + p.weight_grams * ps.kilo_price / 1000 * (c_weight.value * ps.relative_weight_rate + ps.absolute_weight_rate)
+                        WHEN #{weight_grams} > 0 THEN p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) + #{weight_grams} * ps.kilo_price / 1000 * (c_weight.value * ps.relative_weight_rate + ps.absolute_weight_rate)
+                        ELSE p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) * ps.weight_unavailable_rate 
+                      END * ps.minimal_retail_rate_for_price
+                    ,
+                      CASE 
+                        WHEN p.weight_grams > 0 THEN ps.retail_rate * (p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) + p.weight_grams * ps.kilo_price / 1000 * (c_weight.value * ps.relative_weight_rate + ps.absolute_weight_rate))
+                        WHEN #{weight_grams} > 0 THEN ps.retail_rate * (p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) + #{weight_grams} * ps.kilo_price / 1000 * (c_weight.value * ps.relative_weight_rate + ps.absolute_weight_rate))
+                        ELSE ps.retail_rate * (p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) * ps.weight_unavailable_rate)
+                      END * ps.discount_rate_for_price
+                    )
+                  ELSE
+                    IF (
+                      CASE 
+                        WHEN p.weight_grams > 0 THEN ps.retail_rate * (p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) + p.weight_grams * ps.kilo_price / 1000 * (c_weight.value * ps.relative_weight_rate + ps.absolute_weight_rate))
+                        WHEN #{weight_grams} > 0 THEN ps.retail_rate * (p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) + #{weight_grams} * ps.kilo_price / 1000 * (c_weight.value * ps.relative_weight_rate + ps.absolute_weight_rate))
+                        ELSE ps.retail_rate * (p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) * ps.weight_unavailable_rate)
+                      END * ps.discount_rate_for_price
+                      <=
+                      p.minimal_income_cost
+                    ,
+                      p.minimal_income_cost
+                    ,
+                      CASE 
+                        WHEN p.weight_grams > 0 THEN ps.retail_rate * (p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) + p.weight_grams * ps.kilo_price / 1000 * (c_weight.value * ps.relative_weight_rate + ps.absolute_weight_rate))
+                        WHEN #{weight_grams} > 0 THEN ps.retail_rate * (p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) + #{weight_grams} * ps.kilo_price / 1000 * (c_weight.value * ps.relative_weight_rate + ps.absolute_weight_rate))
+                        ELSE ps.retail_rate * (p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) * ps.weight_unavailable_rate)
+                      END * ps.discount_rate_for_price
+                    )
+              END as retail_cost_with_discounts,
               ij.income_rate as ij_income_rate,
               c_buy.value as c_buy_value,
               ps.retail_rate as ps_retail_rate,

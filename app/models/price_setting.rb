@@ -10,6 +10,8 @@ class PriceSetting < ActiveRecord::Base
   belongs_to :currency_weight, :class_name => 'Currency'
   validates_presence_of :currency_weight
   validates :success_percent, :numericality => {:greater_than_or_equal_to => 0, :less_than_or_equal_to => 100, :allow_nil => false, :only_integer => true}
+  validates :minimal_retail_rate_for_price, :numericality => {:greater_than => 1}
+  validates :discount_rate_for_price, :numericality => {:less_than_or_equal_to => 1}
   validates_numericality_of :retail_rate, :greater_than => 0, :less_than => 1000
   validates_numericality_of :absolute_buy_rate, :greater_than_or_equal_to => 0, :less_than => 1000
   validates_numericality_of :relative_buy_rate, :greater_than => 0, :less_than => 1000
