@@ -6,10 +6,8 @@ require 'benchmark'
 
 class PricesController < ApplicationController
 
-  @emex_income_rate = AppConfig.emex_income_rate
-  @emex_retal_rate = AppConfig.emex_retail_rate
-  @emex_discount_rate_for_price = AppConfig.emex_discount_rate_for_price
-  @emex_minimal_retail_rate_for_price = AppConfig.emex_minimal_retail_rate_for_price
+  layout 'avtorif'
+
 
   # Суть этой вакханалии сводится к тому, что из-за того, что в нашей базе много nil производителей, и много пересечений
   # по заменам, то мы хотим получить из таблицы только записи по каталожному номеру, а потом уже пригодится или не
@@ -239,10 +237,10 @@ class PricesController < ApplicationController
         elsif @inside_prices
           if @inside_result_price
             @p["price_cost"] = text
-            @p["income_cost"] = income_cost = text.to_f * @emex_income_rate
-            @p["ps_retail_rate"] = @emex_retail_rate
-            @p["retail_cost"] = retail_cost = income_cost * @emex_retail_rate
-            if((a = retail_cost * @emex_discount_rate_for_price) < (b = income_cost * @emex_minimal_retail_rate_for_price))
+            @p["income_cost"] = income_cost = text.to_f * AppConfig.emex_income_rate
+            @p["ps_retail_rate"] = AppConfig.emex_retail_rate
+            @p["retail_cost"] = retail_cost = income_cost * AppConfig.emex_retail_rate
+            if((a = retail_cost * AppConfig.emex_discount_rate_for_price) < (b = income_cost * AppConfig.emex_minimal_retail_rate_for_price))
               @p["retail_cost_with_discounts"] = b
             else
               @p["retail_cost_with_discounts"] = a
@@ -508,6 +506,12 @@ class PricesController < ApplicationController
               ELSE p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) * ps.weight_unavailable_rate 
               END AS income_cost,
               CASE 
+              WHEN p.weight_grams > 0 THEN p.price_cost * ij.income_rate * (ps.relative_buy_rate + ps.absolute_buy_rate) + p.weight_grams * ps.kilo_price / 1000 * (ps.relative_weight_rate + ps.absolute_weight_rate)
+              WHEN #{weight_grams} > 0 THEN p.price_cost * ij.income_rate * (ps.relative_buy_rate + ps.absolute_buy_rate) + #{weight_grams} * ps.kilo_price / 1000 * (ps.relative_weight_rate + ps.absolute_weight_rate)
+              ELSE p.price_cost * ij.income_rate * (ps.relative_buy_rate + ps.absolute_buy_rate) * ps.weight_unavailable_rate 
+              END AS income_cost_in_currency_with_weight,
+              p.price_cost * ij.income_rate * (ps.relative_buy_rate + ps.absolute_buy_rate) AS income_cost_in_currency_without_weight,
+              CASE 
               WHEN p.weight_grams > 0 THEN ps.retail_rate * (p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) + p.weight_grams * ps.kilo_price / 1000 * (c_weight.value * ps.relative_weight_rate + ps.absolute_weight_rate))
               WHEN #{weight_grams} > 0 THEN ps.retail_rate * (p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) + #{weight_grams} * ps.kilo_price / 1000 * (c_weight.value * ps.relative_weight_rate + ps.absolute_weight_rate))
               ELSE ps.retail_rate * (p.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) * ps.weight_unavailable_rate)
@@ -648,7 +652,7 @@ class PricesController < ApplicationController
 
         if @result_prices.size > 0
           @header.uniq!
-          ["catalog_number_orig", "manufacturer_orig", "bit_original", "title", "retail_cost",	"job_import_job_delivery_days_declared",	"success_percent", "title_en", "income_cost", "ps_retail_rate", "job_title", "supplier_title", "supplier_title_full", "supplier_title_en", "price_cost", "ij_income_rate", "c_buy_value", "ps_relative_buy_rate", "ps_absolute_buy_rate", "weight_grams", "ps_kilo_price", "c_weight_value", "ps_relative_weight_rate", "ps_absolute_weight_rate", "ps_weight_unavailable_rate", "catalog_number",  "manufacturer"].reverse.each do |key|
+          ["catalog_number_orig", "manufacturer_orig", "bit_original", "title", "retail_cost", "job_import_job_delivery_days_declared",	"success_percent", "title_en", "income_cost", "ps_retail_rate", "job_title", "supplier_title", "supplier_title_full", "supplier_title_en", "price_cost", "ij_income_rate", "c_buy_value", "ps_relative_buy_rate", "ps_absolute_buy_rate", "weight_grams", "ps_kilo_price", "c_weight_value", "ps_relative_weight_rate", "ps_absolute_weight_rate", "ps_weight_unavailable_rate", "catalog_number",  "manufacturer"].reverse.each do |key|
             begin
               @header.unshift(@header.delete_at(@header.index(key)))
             rescue => e
@@ -658,7 +662,7 @@ class PricesController < ApplicationController
         end
 
         # Выкидываем не нужные столбцы (возможно я это планировал делать где-то в другом месте, но где уже не вспомню)
-        #@header = @header - ["manufacturer", "catalog_number", "income_cost", "ps_retail_rate", "real_job_id", "job_import_job_presence", "job_id", "job_import_job_country", "job_import_job_delivery_days_average", "supplier_id", "supplier_kpp", "job_import_job_country_short", "supplier_title_en", "price_cost",	"ij_income_rate",	"c_buy_value", "ps_relative_buy_rate", "ps_absolute_buy_rate", "weight_grams", "ps_kilo_price", "c_weight_value", "ps_relative_weight_rate", "ps_absolute_weight_rate", "ps_weight_unavailable_rate", "created_at", "job_import_job_delivery_summary", "price_setting_id", "min_order", "updated_at", "external_id", "unit_package", "supplier_inn", "id", "processed", "delivery_days_price", "job_import_job_kilo_price", "count", "unit", "description", "currency", "job_title",	"supplier_title",	"supplier_title_full",	"job_import_job_destination_logo",	"manufacturer_short", "price_logo_emex",	"job_import_job_destination_summary", "multiply_factor", "country", "parts_group", "applicability", "job_import_job_success_percent", "logo", "external_supplier_id", "image_url"]
+        @header = @header - ["manufacturer", "catalog_number", "income_cost", "ps_retail_rate", "real_job_id", "job_import_job_presence", "job_id", "job_import_job_country", "job_import_job_delivery_days_average", "supplier_id", "supplier_kpp", "supplier_title_en", "price_cost",	"ij_income_rate",	"c_buy_value", "ps_relative_buy_rate", "ps_absolute_buy_rate", "weight_grams", "ps_kilo_price", "c_weight_value", "ps_relative_weight_rate", "ps_absolute_weight_rate", "ps_weight_unavailable_rate", "created_at", "job_import_job_delivery_summary", "price_setting_id", "min_order", "updated_at", "external_id", "unit_package", "supplier_inn", "id", "processed", "delivery_days_price", "job_import_job_kilo_price", "unit", "description", "currency", "job_title",	"supplier_title",	"supplier_title_full",	"job_import_job_destination_logo",	"manufacturer_short", "price_logo_emex",	"job_import_job_destination_summary", "multiply_factor", "country", "parts_group", "applicability", "job_import_job_success_percent", "logo", "external_supplier_id", "image_url", "bit_original", "success_percent", "title_en", "retail_cost", "minimal_income_cost", "income_cost_in_currency_without_weight", "income_cost_in_currency_with_weight"]
 
       end
 

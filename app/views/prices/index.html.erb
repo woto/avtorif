@@ -1,8 +1,12 @@
 <%= render :template => '/prices/search_form.html.erb' %>
 <style>
 th {padding: 10px;}
+body {
+       font: 12px verdana,tahoma,arial,helvetica,sans-serif;
+}
 </style>
 <%
+
 puts "Рендеринг вида"
 @prices = @result.call[:result_prices]
 if @prices.present?
@@ -13,7 +17,7 @@ if @prices.present?
 	not_uniq_manufacturers = []
 	not_uniq_catalog_numbers = []
 	not_uniq_titles = []
-	xm.table {
+        xm.table(:style => 'width: 100%') {
 		# Пишем заголовок
 		# xm.tr {@header.each {|value| xm.th(value)}}
 
@@ -22,18 +26,31 @@ if @prices.present?
 			
 		@prices.each_with_index do |line, index|
 			
-			if line['catalog_number'] == CommonModule::normalize_catalog_number(CommonModule::convert_all_cyr_to_lat(params['catalog_number']))
-				uniq_manufacturers << [line['manufacturer'], line['bit_original']]
-				uniq_catalog_numbers << line['catalog_number']
-				uniq_titles << line['title']
-                        end
-
-				not_uniq_manufacturers << [line['manufacturer'], line['bit_original']]
-				not_uniq_catalog_numbers << line['catalog_number']
-				not_uniq_titles << line['title']
-			
 			if index % 10 == 0
-				xm.tr {@header.each {|value| xm.th(value)}}
+                                xm.tr {@header.each {|value| 
+                                text = ''
+                                        case value
+                                                when 'catalog_number_orig'
+                                                        text = 'Артикул'
+                                                when 'manufacturer_orig'
+                                                        text = 'Произв.'
+                                                when 'title'
+                                                        text = 'Название'
+                                                when 'retail_cost_with_discounts'
+                                                        text = 'Цена (руб)'
+                                                when 'job_import_job_delivery_days_declared'
+                                                        text = 'Дней'
+                                                when 'count'
+                                                        text = 'Кол-во'
+						when 'line_number'
+							text = '№'
+						when 'job_import_job_country_short'
+							text = 'Расположение'
+						else
+							text = value
+                                        end
+                                xm.th(text)}}
+
 			end
 			
 			xm.tr do
@@ -42,8 +59,12 @@ if @prices.present?
 						xm.td(index + 1)
                                         elsif key == "image_url"
                                           xm.td{|str| str << ((line[key]).present? ? "<img src='#{line[key]}'>" : "")}
+                                        elsif key == "retail_cost_with_discounts"
+                                                xm.td(line[key].round(2))
 					elsif key == "catalog_number_orig"
-						xm.td{|s| s << link_to(line[key], search_prices_path(:manufacturer => line['manufacturer_orig'], :catalog_number => line['catalog_number'], :replacements => '1', :ext_ws => '1'))}
+						xm.td{|s| s << link_to(line[key], search_prices_path(:manufacturer => line['manufacturer_orig'], :catalog_number => line['catalog_number'], :replacements => params[:replacements], :ext_ws => params[:ext_ws]))}
+					elsif key == "job_import_job_country_short"
+						xm.td{|str| str << raw(line[key])}
 					else
 						xm.td(line[key])
 					end
@@ -56,27 +77,6 @@ if @prices.present?
 
 	<%= raw xm.target %>
 
-				<% uniq_manufacturers = uniq_manufacturers.uniq.compact %>
-				<p>Названия:<br /><ul><li><%= raw uniq_titles.uniq.compact.join("</li><li>") %></li></ul></p>
-				<p>Каталожные номера:<br /><ul><li><%= raw uniq_catalog_numbers.uniq.compact.join('</li><li>') %></li></ul></p>
-				<p>
-					Производители:
-					<ul>
-						<li>Оригинальные:<ul><li><%= raw uniq_manufacturers.map{|manufacturer| manufacturer[0] if manufacturer[1] == 1}.compact.join('</li><li>') %></li></ul></li>
-						<li>Не оригинальные:<ul><li><%= raw uniq_manufacturers.map{|manufacturer| manufacturer[0] if manufacturer[1] == 0}.compact.join('</li><li>') %></li></ul></li>
-					</ul>
-				</p>
-                                <hr />
-				<% not_uniq_manufacturers = not_uniq_manufacturers.uniq.compact %>
-				<p>Названия:<br /><ul><li><%= raw not_uniq_titles.uniq.compact.join("</li><li>") %></li></ul></p>
-				<p>Каталожные номера:<br /><ul><li><%= raw not_uniq_catalog_numbers.uniq.compact.join('</li><li>') %></li></ul></p>
-				<p>
-					Производители:
-					<ul>
-						<li>Оригинальные:<ul><li><%= raw not_uniq_manufacturers.map{|manufacturer| manufacturer[0] if manufacturer[1] == 1}.compact.join('</li><li>') %></li></ul></li>
-						<li>Не оригинальные:<ul><li><%= raw not_uniq_manufacturers.map{|manufacturer| manufacturer[0] if manufacturer[1] == 0}.compact.join('</li><li>') %></li></ul></li>
-					</ul>
-				</p>
 <%
 end
 %>

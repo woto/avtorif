@@ -1,11 +1,23 @@
-<div style="font-size: 30px; margin-bottom: 20px" %>
+<div style="font-size: 111%; margin-bottom: 20px;" %>
 <%= form_tag search_prices_path, :method => 'get', :id => 'search_form' do %>
-  Каталожный номер: <%= text_field_tag :catalog_number, params[:catalog_number] %><br />
-  Производитель: <%= params[:manufacturer] %><br />
-  Искать замены и аналоги: <%= params[:replacements] %> <br />
-  Искать на сайте партнеров: <%= params[:ext_ws] %><br />
 
-  <%= hidden_field_tag :ext_ws, "1" %>
+<div style="margin-bottom: 10px;">
+Каталожный номер: <%= text_field_tag :catalog_number, params[:catalog_number], :style => 'width: 150px' %>
+</div>
+
+<div style="margin-bottom: 10px;">
+Производитель: <%= text_field_tag :manufacturer, params[:manufacturer], :style => 'width: 178px' %>
+</div>
+
+<div style="margin-bottom: 10px;">
+Искать замены и аналоги: <%= check_box_tag :replacements, "1", params[:replacements] %>
+</div>
+
+<div style="margin-bottom: 10px;">
+Искать на сайте партнеров: <%= check_box_tag :ext_ws, "1", params[:ext_ws] %>
+</div>
+
   <%= submit_tag "Искать", :name => nil, :onclick => "this.disabled = true; document.forms['search_form'].submit();" %>
+
 <% end %>
 </div>
