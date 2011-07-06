@@ -8,7 +8,6 @@ class PricesController < ApplicationController
 
   layout 'avtorif'
 
-
   # Суть этой вакханалии сводится к тому, что из-за того, что в нашей базе много nil производителей, и много пересечений
   # по заменам, то мы хотим получить из таблицы только записи по каталожному номеру, а потом уже пригодится или не
   # пригодится производитель будем решать уже в памяти
@@ -245,6 +244,8 @@ class PricesController < ApplicationController
             else
               @p["retail_cost_with_discounts"] = a
             end
+            @p["income_cost_in_currency_with_weight"] = income_cost
+            @p["income_cost_in_currency_without_weight"] = income_cost
           end
         end
       end
