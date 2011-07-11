@@ -43,6 +43,27 @@ class ImportJobable < AbstractJobber
     end
   end
 
+  def delete_prices_costs
+    CommonModule::all_doublets do |l|
+      query = "
+        DELETE pc.* FROM price_cost_#{l} pc
+          JOIN price_import_#{@job_id} pi
+            ON pc.price_setting_id = #{@price_setting_id}
+              AND pi.catalog_number = pc.catalog_number 
+              AND ( (pi.manufacturer_orig = pc.manufacturer_orig)
+                OR ( pi.manufacturer_orig IS NULL 
+                  AND pc.manufacturer_orig IS NULL ) )
+        WHERE pi.doublet = '#{l}'"
+      Price.connection.execute(query)
+
+      query = "
+        UPDATE price_import_#{@job_id} pi 
+        SET pi.processed = 1
+        WHERE pi.doublet = '#{l}'"
+      Price.connection.execute(query)
+    end
+  end
+
   def move_to_prices_costs processed_condition = false
     additional = ""
     if processed_condition
@@ -267,6 +288,10 @@ class ImportJobable < AbstractJobber
         when /_U0_/
           make_insertion
           update_prices_costs
+
+        when /_D_/
+          make_insertion
+          delete_prices_costs
 
       end
 
