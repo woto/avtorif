@@ -580,7 +580,8 @@ class PricesController < ApplicationController
               ps.weight_unavailable_rate as ps_weight_unavailable_rate,
               m.original as bit_original,
               ps.id as job_id,
-              j.id as real_job_id
+              j.id as real_job_id,
+              '#{md5}' as md5
               FROM price_cost_#{md5} p
               LEFT JOIN manufacturers m
               ON p.manufacturer = m.title
@@ -644,8 +645,8 @@ class PricesController < ApplicationController
         @reduced_prices = []
         seen = []
         @result_prices.map do |detail|
-          unless seen.include? detail["id"] || detail["id"] == nil
-            seen << detail["id"]
+          unless seen.include?  "#{detail['id']} - #{detail['md5']}" || "#{detail['id']} - #{detail['md5']}" == nil
+            seen << "#{detail['id']} - #{detail['md5']}"
             @reduced_prices << detail
           end
         end
