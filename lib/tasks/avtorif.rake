@@ -17,8 +17,81 @@ namespace :avtorif do
     end
   end
 
+  desc "Удаление неверных замен по образу и подобию их загрузки"
+  task "delete_replaces" => :environment do
+    job_id = ENV["ID"]
+    as_hash = {:as => :hash}
+    client = ActiveRecord::Base.connection.instance_variable_get :@connection
+
+    CommonModule::all_doublets do |d|
+      puts d
+      # Получаем записи из таблицы импорта по обрабатываемому дуплету
+      begin
+        price_import_result = client.query("SELECT * from price_import_#{job_id} WHERE doublet = '#{d}' AND processed = 0 LIMIT 100", as_hash)
+
+        price_import_result.each do |price_import_row|
+
+          # Запоминаем производителя
+          if price_import_row['manufacturer'].present?
+            price_import_manufacturer = ActiveRecord::Base.connection.quote(price_import_row['manufacturer'])
+            price_import_manufacturer_condition = " = "
+          else
+            price_import_manufacturer = 'NULL'
+            price_import_manufacturer_condition = " IS "
+          end
+
+          # Ищем в таблице каталога по кат. номеру и производителю
+          query = "SELECT * FROM price_catalog_#{d} WHERE catalog_number = '#{price_import_row['catalog_number']}' AND manufacturer #{price_import_manufacturer_condition} #{price_import_manufacturer}"
+          price_catalog_result = client.query(query, as_hash) 
+
+          if (price_catalog_row = price_catalog_result.first).present?
+            price_catalog_id = price_catalog_row['id']
+
+            # Обновляем замены
+            if(price_import_row['replacement'].present? &&
+              !(price_catalog_row['catalog_number'] == price_import_row['replacement'] &&
+                price_catalog_row['manufacturer'] == price_import_row['replacement_manufacturer']))
+
+              for column in 0...AppConfig.max_replaces
+                if (price_catalog_row["r#{column}"].nil?)
+                  # Если отсутствует или не нашли в процессе обхода всех столбцов каталога
+                  break
+                end
+
+                if((price_catalog_row["r#{column}"] == price_import_row["replacement"]) &&
+                   (price_catalog_row["rm#{column}"] == price_import_row["replacement_manufacturer"]))
+                  # Если нашли, то делаем смещение
+                  debugger
+                  query = "UPDATE price_catalog_#{d} SET"
+
+                  for k in column...(AppConfig.max_replaces - 1)
+                    query << " r#{k} = r#{k+1}, rm#{k} = rm#{k+1},"
+                  end
+
+                  # Последний столбец всегда будет высвобождаться
+                  query << " r#{AppConfig.max_replaces - 1} = NULL, rm#{AppConfig.max_replaces - 1} = NULL"
+                  Price.connection.execute(query)
+
+                  break
+                end
+              end
+            end
+
+          end
+        end
+
+        if price_import_result.any?
+          query = "UPDATE price_import_#{job_id} SET processed = 1 WHERE id IN(#{price_import_result.map{|pir| pir['id']}.join(', ')})"
+          Price.connection.execute(query)
+        end
+
+      end while price_import_result.any?
+    end
+
+  end
+
   desc "Если вес present?, то обновляем, вставляем, аналогично с заменами и новым кат. номером"
-  task "replaces" => :environment do
+  task "load_replaces" => :environment do
     job_id = ENV["ID"]
     as_hash = {:as => :hash}
     client = ActiveRecord::Base.connection.instance_variable_get :@connection
