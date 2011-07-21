@@ -45,10 +45,11 @@ class ReplaceJobsController < ApplicationController
     job.jobable = @replace_job
     job.save
 
+    parent = job.parent
 
     respond_to do |format|
       if @replace_job.save
-        format.html { redirect_to(supplier_jobs_path(params[:supplier_id]), :notice => 'Replace job was successfully created.') }
+        format.html { redirect_to(parent.present? ? supplier_job_path(params[:supplier_id], parent.id) : supplier_jobs_path(params[:supplier_id]), :notice => 'Задача загрузки замен успешно создана') }
         format.xml  { render :xml => @replace_job, :status => :created, :location => @replace_job }
       else
         format.html { render :action => "new" }
@@ -61,10 +62,12 @@ class ReplaceJobsController < ApplicationController
   # PUT /replace_jobs/1.xml
   def update
     @replace_job = ReplaceJob.find(params[:id])
+    job = @replace_job.jobs.first
+    parent = job.parent
 
     respond_to do |format|
       if @replace_job.update_attributes(params[:replace_job])
-        format.html { redirect_to(supplier_jobs_path(params[:supplier_id]), :notice => 'Replace job was successfully updated.') }
+        format.html { redirect_to(parent.present? ? supplier_job_path(params[:supplier_id], parent.id) : supplier_jobs_path(params[:supplier_id]), :notice => 'Задача загрузки замен обновлена') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
