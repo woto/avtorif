@@ -7,7 +7,6 @@ namespace :avtorif do
 
   desc "Перенос БД дублетов в триплеты"
   task :doublets_to_triplets => :environment do
-    debugger
     CommonModule::all_doublets do |d|
       query = "INSERT INTO price_cost_#{d} SELECT * FROM price_cost_#{d[0,2]} where md5(catalog_number) like '#{d}%'"
       ActiveRecord::Base.connection.execute(query)
@@ -61,7 +60,6 @@ namespace :avtorif do
                 if((price_catalog_row["r#{column}"] == price_import_row["replacement"]) &&
                    (price_catalog_row["rm#{column}"] == price_import_row["replacement_manufacturer"]))
                   # Если нашли, то делаем смещение
-                  debugger
                   query = "UPDATE price_catalog_#{d} SET"
 
                   for k in column...(AppConfig.max_replaces - 1)
@@ -69,7 +67,7 @@ namespace :avtorif do
                   end
 
                   # Последний столбец всегда будет высвобождаться
-                  query << " r#{AppConfig.max_replaces - 1} = NULL, rm#{AppConfig.max_replaces - 1} = NULL"
+                  query << " r#{AppConfig.max_replaces - 1} = NULL, rm#{AppConfig.max_replaces - 1} = NULL WHERE id = #{price_catalog_id}"
                   Price.connection.execute(query)
 
                   break
@@ -104,7 +102,6 @@ namespace :avtorif do
 
         price_import_result.each do |price_import_row|
 
-    #debugger
           # Запоминаем производителя
           if price_import_row['manufacturer'].present?
             price_import_manufacturer = ActiveRecord::Base.connection.quote(price_import_row['manufacturer'])
