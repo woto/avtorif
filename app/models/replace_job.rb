@@ -1,6 +1,6 @@
 class ReplaceJob < ActiveRecord::Base
   validates_presence_of :catalog_number_colnum
-  has_many :job, :as => :jobable
+  has_many :jobs, :as => :jobable  
   validates :weight_coefficient, :numericality => true, :presence => true, :if => Proc.new{|replacement_job| replacement_job.weight_grams_colnum.present?}
   validates :weight_grams_colnum, :numericality => {:only_integer => true}, :allow_nil => true
 
