@@ -79,6 +79,18 @@ class JobsController < ApplicationController
     end
   end
 
+  def flush_last_error
+    @job = Job.find(params[:id])
+    @job.last_error = ''
+    if @job.save
+      format.html { redirect_to(@job.parent.present? ? supplier_job_path(params[:supplier_id], @job.parent.id) : supplier_jobs_path(params[:supplier_id]), :notice => 'Статус задачи успешносброшен.') }
+      format.xml  { head :ok }
+    else
+      format.html { render :action => "edit" }
+      format.xml  { render :xml => @job.errors, :status => :unprocessable_entity }
+    end
+  end
+
   # DELETE /jobs/1
   # DELETE /jobs/1.xml
   def destroy
