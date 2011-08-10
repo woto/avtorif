@@ -53,6 +53,7 @@ Avtorif::Application.routes.draw do
     resources :jobs do
       member do
         get 'start'
+        get 'flush_last_error'
         post 'copy'
         get 'clean'
         post 'destroy_manufacturers_by_job'
