@@ -82,12 +82,14 @@ class JobsController < ApplicationController
   def flush_last_error
     @job = Job.find(params[:id])
     @job.last_error = ''
-    if @job.save
-      format.html { redirect_to(@job.parent.present? ? supplier_job_path(params[:supplier_id], @job.parent.id) : supplier_jobs_path(params[:supplier_id]), :notice => 'Статус задачи успешносброшен.') }
-      format.xml  { head :ok }
-    else
-      format.html { render :action => "edit" }
-      format.xml  { render :xml => @job.errors, :status => :unprocessable_entity }
+    respond_to do |format|
+      if @job.save
+        format.html { redirect_to(@job.parent.present? ? supplier_job_path(params[:supplier_id], @job.parent.id) : supplier_jobs_path(params[:supplier_id]), :notice => 'Статус задачи успешно сброшен.') }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @job.errors, :status => :unprocessable_entity }
+      end
     end
   end
 

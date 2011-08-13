@@ -109,7 +109,7 @@ class ConvertJobable < AbstractJobber
           raise 'Unknown convert method: ' + @jobable.convert_method.to_s
       end
     end
-    self.optional = retval
+    @optional = retval
     super
 
   end

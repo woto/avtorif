@@ -9,10 +9,10 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: avtorif_development
+  database: avtorif_development_z
   pool: 5
   username: root
-  password: vjqgfhjkm
+  password: 
   socket: /var/run/mysqld/mysqld.sock
 
 # Warning: The database defined as "test" will be erased and
@@ -22,18 +22,18 @@ test:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: avtorif_test
+  database: avtorif_test_z
   pool: 5
   username: root
-  password: vjqgfhjkm
+  password: 
   socket: /var/run/mysqld/mysqld.sock
 
 production:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: avtorif_development
+  database: avtorif_development_z
   pool: 5
   username: root
-  password: vjqgfhjkm
+  password: 
   socket: /var/run/mysqld/mysqld.sock

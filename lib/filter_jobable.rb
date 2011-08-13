@@ -137,7 +137,7 @@ class FilterJobable < AbstractJobber
       retval << attachment.id
     end
 
-    self.optional = retval
+    @optional = retval
     super
   
   end

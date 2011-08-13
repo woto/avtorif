@@ -181,5 +181,20 @@ module CommonModule
       Price.connection.execute("CREATE TABLE price_import_#{job_id} like price_import_templates")
     end
 
-  end
+    def deep_symbolize_keys arg
+      case arg
+        when Array
+          arg.map { |elem| deep_symbolize_keys elem }
+        when Hash
+          Hash[
+            arg.map { |key, value|  
+              k = key.is_a?(String) ? key.to_sym : key
+              v = deep_symbolize_keys value
+              [k,v]
+          }]
+        else
+          symbolize_keys arg
+        end
+      end
+    end
 end

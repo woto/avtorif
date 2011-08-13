@@ -60,7 +60,7 @@ class UnpackJobable < AbstractJobber
 
     end
 
-    self.optional = retval
+    @optional = retval
     super    
   
   end

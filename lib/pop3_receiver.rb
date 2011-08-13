@@ -16,7 +16,7 @@
       pop.mails.reverse.each_with_index do |email, index|
         unless index > AppConfig.max_emails
 
-          debugger
+          #debugger
           net_popmail = email.pop
 
           email_id = @receiver.login + " - " + @receiver.server + ":" + @receiver.port + " " + Time.zone.now.to_s + " " + rand.to_s
@@ -37,7 +37,7 @@
               wc_stat = `echo "#{attachment.raw_source.to_s}" | wc`
 
               # attachment.original_filename
-              debugger              
+              #debugger              
               if (@optional.present? && @optional[:force]) || SupplierPrice.find(:first, :conditions => ['md5 = ? AND supplier_id = ?',  md5, @receiver.receive_job.job.supplier.id]).nil?
 
                 attachment = SupplierPrice.new(:group_code => group_code, :attachment => attachment, :md5 => md5, :email_id => email_id, :ws_stat => wc_stat)

@@ -1,19 +1,9 @@
-require 'rubygems'
 require 'net/ldap'
-require 'ruby-debug'
-require 'active_support/builder' unless defined?(Builder)
-
 
 class LdapController < ApplicationController
 
   def index
-    ldap = Net::LDAP.new :host => "192.168.1.1",
-      :port => 389,
-      :auth => {
-      :method => :simple,
-      :username => "cn=inetuser,cn=Users,dc=avtorif,dc=local",
-      :password => "Hrf5k4adk5+"
-    }
+    ldap = Net::LDAP.new AppConfig.ldap.deep_symbolize_keys
 
     filter = Net::LDAP::Filter.eq("cn", "*")
     treebase = "ou=Avtorif,dc=avtorif,dc=local"
@@ -48,7 +38,8 @@ class LdapController < ApplicationController
     #  :instancetype, :distinguishedname, :samaccounttype, :cn, :sn, :dn, :usncreated, :useraccountcontrol, :primarygroupid, :userprincipalname, 
     #  :objectclass, :samaccountname, :displayname, :postofficebox]
 
-    headers = [:name, :title, :mail, :telephonenumber, :mobile, :othermobile, :initials]
+    headers = [:name, :title]
+
     xm = Builder::XmlMarkup.new
 
     entries_block.each do |key, entries|
@@ -67,24 +58,26 @@ class LdapController < ApplicationController
       end
     end
 
-    xm.table {
-      xm.tr do
-        headers.each do |header|
-          xm.td(header.to_s)
-        end
-      end
-
-
+    xm.table(:style => "width: 100%") {
       sorted_entries_block.each do |key, entries|
+        #xm.tr do
+        #  headers.each do |header|
+        #    xm.td(header.to_s)
+        #  end
+        #end
+
+
         entries.each do |entry|
           if((entry[:useraccountcontrol].any? {|item| item != "66050" } || entry[:useraccountcontrol].blank?) && !entry[:objectclass].any? {|item| item == "group"})
             #puts "DN: #{entry.dn}"
             
             xm.tr do
               if entry[:useraccountcontrol].empty?
-                color = "yellow"
+                style = "background: white; text-align: left"
+              ActionController::Base.helpers.reset_cycle
+
               else
-                color = ActionController::Base.helpers.cycle("#dde", "#eed")
+                style = ActionController::Base.helpers.cycle("background: #FED", "background: #FDD")
               end
 
               headers.each do |header|
@@ -94,9 +87,15 @@ class LdapController < ApplicationController
                   entry[header.to_sym].each do |value|
                     result << "#{value} "
                   end 
-                  xm.td(result, :style=> "background: #{color}")
+                  if entry[:useraccountcontrol].empty?
+                    xm.th(result, :style=> "#{style}")
+                  else
+                    xm.td(result, :style=> "#{style}")
+                  end
                 #end 
               end
+              xm.td(:style => "#{style}"){|value| value << "<a href='mailto:#{entry[:mail]}'>#{entry[:mail]}</a>"}
+              xm.td(:style => "#{style}"){|value| value << [entry[:telephonenumber], entry[:mobile], entry[:othermobile]].join('<br>')}
             end
           end
         end
@@ -104,7 +103,7 @@ class LdapController < ApplicationController
     }
 
     #p ldap.get_operation_result
-    render :text => xm, :layout => true
+    render :text => xm, :layout => 'avtorif'
   end
 
 end

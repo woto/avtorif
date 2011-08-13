@@ -91,3 +91,4 @@ gem 'httpi'
 #gem 'escape', :git => "https://github.com/akr/escape.git"
 #gem 'escape_utils'
 gem 'libxml-ruby'
+gem 'net-ldap'
