@@ -84,7 +84,9 @@ class ReplaceJobable < AbstractJobber
         rdi[j] = eval "@jobable.rdi#{j}"
       end
 
-      if eval("@jobable.rde#{j}.present?")
+      # FIXED в предыдущей версии содержалась ошибка, т.к. код был написан по принципу предыдущих блоков
+      # а в действительности " ".present? == false
+      unless eval("@jobable.rde#{j}.to_s.empty?")
         rde[j] = eval "@jobable.rde#{j}"
       end
       

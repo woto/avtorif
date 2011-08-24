@@ -8,8 +8,8 @@ defaults: &defaults
   # Настройки прайса emex
   emex_income_rate: 1
   emex_retail_rate: 1.55
-  emex_discount_rate_for_price: 0.93
-  emex_minimal_retail_rate_for_price: 1.07
+  emex_discount_rate_for_price: 0.86
+  emex_minimal_retail_rate_for_price: 1.1
 
   # Настройки для работы с веб сервисом emex
   emex_login: 56281

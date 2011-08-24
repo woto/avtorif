@@ -52,7 +52,8 @@ class SuppliersController < ApplicationController
         "fullTitle" => @supplier.title_full.to_s,
         "seller" => @supplier.seller.to_s,
         "buyer" => @supplier.buyer.to_s,
-        :order! => ["ID", "title", "INN", "KPP", "fullTitle", "seller", "buyer"]
+	"phone" => @supplier.phone.to_s,
+        :order! => ["ID", "title", "INN", "KPP", "fullTitle", "seller", "buyer", "phone"]
       }
     end 
 

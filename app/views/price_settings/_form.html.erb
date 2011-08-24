@@ -98,6 +98,11 @@
     Прайс наличия
   </div>
   <div class="field">
+    <%= f.label :output_order %><br />
+    <%= f.text_field :output_order %>
+    Порядок сортировки при отображении списка товаров
+  </div>
+  <div class="field">
     <%= f.label :weight_unavailable_rate %><br />
     <%= f.text_field :weight_unavailable_rate %>
     Для всех. Динамический. В случае отсутствия веса в (1. Прайсе поставщика; 2. В общем каталоге) цена будет умножена на этот коэффициент

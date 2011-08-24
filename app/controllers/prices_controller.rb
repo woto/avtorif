@@ -44,8 +44,15 @@ class PricesController < ApplicationController
       end
     else
       md5 = Digest::MD5.hexdigest(catalog_number)[0,2]
+      
+      # Сортировкой мы добиваемся того, что если информация в каталоге по одному кат. номеру встречается более одного раза (напр.
+      # без производителя, с производителем и с другим производителем) то мы сортируем таким образом, что без производителя идет первым.
+      # И когда итерация подходит к данным с производителем, то в случае если вес отсутствует у данной позиции, то используем вес детали без
+      # производителя
+
       query = "SELECT price_catalog_#{md5}.*, manufacturers.original FROM price_catalog_#{md5} 
-      LEFT JOIN manufacturers ON price_catalog_#{md5}.manufacturer = manufacturers.title WHERE catalog_number = " + Price.connection.quote(catalog_number)
+      LEFT JOIN manufacturers ON price_catalog_#{md5}.manufacturer = manufacturers.title WHERE catalog_number = #{Price.connection.quote(catalog_number)}      ORDER BY ISNULL(manufacturer) DESC"
+
       puts "###################### #{query}  ######################"
       #@client = ActiveRecord::Base.connection.instance_variable_get :@connection
       #result = @client.query(query, :as => :hash)
@@ -107,13 +114,20 @@ class PricesController < ApplicationController
             end
           end
         else
+          common_weight = 0
+
+          begin
+            common_weight = @private_cache[key]["without"]["weight_grams"]
+          rescue
+          end
+
           @private_cache[key]['with'][row['manufacturer']] = {
             'catalog_number' => row['catalog_number'],
             'manufacturer' => row['manufacturer'],
             'original' => row['original'],
             'title' => row['title'],
             'title_en' => row['title_en'],
-            'weight_grams' => row['weight_grams'],
+            'weight_grams' => row['weight_grams'] || common_weight,
             'new_catalog_number' => row['new_catalog_number'],
             "image_url" => row['image_url'],
             'replacements' => []
@@ -133,7 +147,9 @@ class PricesController < ApplicationController
             end
           end
         end
+        puts "Искали для кат. номера '#{key} он же #{row['catalog_number']}' и производителя '#{row['manufacturer']}'. Нашли '#{row['weight_grams']}', а у без производителя '#{common_weight}', в итоге использовали '#{row['weight_grams'] || common_weight}'"
       end
+
       # Мы запросим еще раз, чтобы на этот раз уже получить из кеша
       get_from_catalog(catalog_number, manufacturer, &block)
     end
@@ -211,9 +227,9 @@ class PricesController < ApplicationController
             @p["job_import_job_success_percent"] = text
             @p["success_percent"] = text
           elsif @inside_ad_days
-            @p["job_import_job_delivery_days_declared"] = text
+            @p["job_import_job_delivery_days_declared"] = text.to_i + 1
           elsif @inside_deliver_time_guaranteed
-            @p["job_import_job_delivery_days_average"] = text
+            @p["job_import_job_delivery_days_average"] = text.to_i + 1
           elsif @inside_bit_original
             if text == 'true'
               @p["bit_original"] = 1
@@ -223,8 +239,10 @@ class PricesController < ApplicationController
           elsif @inside_bit_storehouse
             if text == 'true'
               @p["job_import_job_presence"] = 1
+              @p["job_import_job_output_order"] = 50000
             else
               @p["job_import_job_presence"] = 0
+              @p["job_import_job_output_order"] = 100000
             end
           elsif @inside_quantity_text
             @p["count"] = CGI.unescapeHTML(text)
@@ -232,6 +250,8 @@ class PricesController < ApplicationController
             @p["job_import_job_country"] = text
           elsif @inside_price_country
             @p["job_import_job_country_short"] = text
+          elsif @inside_group_id
+            @p["group_id"] = text
           end
         elsif @inside_prices
           if @inside_result_price
@@ -294,6 +314,8 @@ class PricesController < ApplicationController
         @inside_price_desc = true
       elsif element == 'PriceCountry'
         @inside_price_country = true        
+      elsif element == 'GroupId'
+        @inside_group_id = true
       end
     end
 
@@ -339,6 +361,8 @@ class PricesController < ApplicationController
         @inside_price_desc = false
       elsif element == 'PriceCountry'
         @inside_price_country = false        
+      elsif element == 'GroupId'
+        @inside_group_id = false             
       end
     end
   end
@@ -425,6 +449,11 @@ class PricesController < ApplicationController
 
                 doc.each do |p|
 
+                  # Пропускаем детали, которые содержат искомую или которые содержатся в искомой
+                  unless ['1', '2', '3', '4'].include? p['group_id'] 
+                    next
+                  end
+
                   @result_prices << p
 
                   found = false
@@ -468,6 +497,7 @@ class PricesController < ApplicationController
         end
       end
       
+      debugger
       once = nil
       threads = []
       measurement = Benchmark.measure do
@@ -497,6 +527,7 @@ class PricesController < ApplicationController
               ps.delivery_days_declared as job_import_job_delivery_days_declared,
               ps.delivery_summary as job_import_job_delivery_summary,
               ps.presence as job_import_job_presence,
+              ps.output_order as job_import_job_output_order,
               ps.kilo_price as job_import_job_kilo_price,
               ps.country as job_import_job_country,
               ps.country_short as job_import_job_country_short,
@@ -654,7 +685,7 @@ class PricesController < ApplicationController
 
         if @result_prices.size > 0
           @header.uniq!
-          ["catalog_number_orig", "manufacturer_orig", "bit_original", "title", "retail_cost", "job_import_job_delivery_days_declared",	"success_percent", "title_en", "income_cost", "ps_retail_rate", "job_title", "supplier_title", "supplier_title_full", "supplier_title_en", "price_cost", "ij_income_rate", "c_buy_value", "ps_relative_buy_rate", "ps_absolute_buy_rate", "weight_grams", "ps_kilo_price", "c_weight_value", "ps_relative_weight_rate", "ps_absolute_weight_rate", "ps_weight_unavailable_rate", "catalog_number",  "manufacturer"].reverse.each do |key|
+          ["catalog_number_orig", "manufacturer",  "manufacturer_orig", "bit_original", "title", "retail_cost", "job_import_job_delivery_days_declared",	"success_percent", "title_en", "income_cost", "ps_retail_rate", "job_title", "supplier_title", "supplier_title_full", "supplier_title_en", "price_cost", "ij_income_rate", "c_buy_value", "ps_relative_buy_rate", "ps_absolute_buy_rate", "weight_grams", "ps_kilo_price", "c_weight_value", "ps_relative_weight_rate", "ps_absolute_weight_rate", "ps_weight_unavailable_rate", "catalog_number"].reverse.each do |key|
             begin
               @header.unshift(@header.delete_at(@header.index(key)))
             rescue => e
@@ -664,7 +695,10 @@ class PricesController < ApplicationController
         end
 
         # Выкидываем не нужные столбцы (возможно я это планировал делать где-то в другом месте, но где уже не вспомню)
-        @header = @header - ["manufacturer", "catalog_number", "income_cost", "ps_retail_rate", "real_job_id", "job_import_job_presence", "job_id", "job_import_job_country", "job_import_job_delivery_days_average", "supplier_id", "supplier_kpp", "supplier_title_en", "price_cost",	"ij_income_rate",	"c_buy_value", "ps_relative_buy_rate", "ps_absolute_buy_rate", "weight_grams", "ps_kilo_price", "c_weight_value", "ps_relative_weight_rate", "ps_absolute_weight_rate", "ps_weight_unavailable_rate", "created_at", "job_import_job_delivery_summary", "price_setting_id", "min_order", "updated_at", "external_id", "unit_package", "supplier_inn", "id", "processed", "delivery_days_price", "job_import_job_kilo_price", "unit", "description", "currency", "job_title",	"supplier_title",	"supplier_title_full",	"job_import_job_destination_logo",	"manufacturer_short", "price_logo_emex",	"job_import_job_destination_summary", "multiply_factor", "country", "parts_group", "applicability", "job_import_job_success_percent", "logo", "external_supplier_id", "image_url", "bit_original", "success_percent", "title_en", "retail_cost", "minimal_income_cost", "income_cost_in_currency_without_weight", "income_cost_in_currency_with_weight", "md5"]
+        # добавлен group_id для классификации замены, полученной от emex. У нас этого поля нет.
+        unless params.key? "dev"
+          @header = @header - ["manufacturer_orig", "catalog_number", "income_cost", "ps_retail_rate", "real_job_id", "job_import_job_presence", "job_id", "job_import_job_country", "job_import_job_delivery_days_average", "supplier_id", "supplier_kpp", "supplier_title_en", "price_cost",	"ij_income_rate",	"c_buy_value", "ps_relative_buy_rate", "ps_absolute_buy_rate", "weight_grams", "ps_kilo_price", "c_weight_value", "ps_relative_weight_rate", "ps_absolute_weight_rate", "ps_weight_unavailable_rate", "created_at", "job_import_job_delivery_summary", "price_setting_id", "min_order", "updated_at", "external_id", "unit_package", "supplier_inn", "id", "processed", "delivery_days_price", "job_import_job_kilo_price", "unit", "description", "currency", "job_title",	"supplier_title",	"supplier_title_full",	"job_import_job_destination_logo",	"manufacturer_short", "price_logo_emex",	"job_import_job_destination_summary", "multiply_factor", "country", "parts_group", "applicability", "job_import_job_success_percent", "logo", "external_supplier_id", "image_url", "bit_original", "success_percent", "title_en", "retail_cost", "minimal_income_cost", "income_cost_in_currency_without_weight", "income_cost_in_currency_with_weight", "md5", "job_import_job_output_order", "group_id"]
+        end
       end
 
       puts "Потрачено на устраниение дублей, выкидывание из хедера ненужных столбцов"
@@ -674,6 +708,28 @@ class PricesController < ApplicationController
 
     flash.now[:notice] = result_message.call 
     puts "В контроллере перед рендерингом"
+
+    measurement = Benchmark.measure do
+      rp ||= {}
+
+      # Сначала получаем все группы putput order, рассовываем в них позиции
+      @result_prices.each do |item|
+        rp[item["job_import_job_output_order"].to_i] ||= []
+        rp[item["job_import_job_output_order"].to_i] << item
+      end
+  
+      # Потом внутри группы сортируем по цене
+      @result_prices = []
+  
+      rp.keys.sort.each do |k|
+        rp[k].sort_by {|item| item["retail_cost"]}.each do |v|
+          @result_prices << v
+        end
+      end
+
+    end
+    puts "Потрачено на сортировку по output order и сортировке по цене внутри этой группы"
+    puts measurement
 
     respond_to do |format|
       format.html {render :action => :index }
