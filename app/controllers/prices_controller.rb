@@ -628,7 +628,8 @@ class PricesController < ApplicationController
               ON c_buy.id = ps.currency_buy_id
               INNER JOIN currencies c_weight 
               ON c_weight.id = ps.currency_weight_id
-              WHERE  p.catalog_number = '#{client.escape(replacement["catalog_number"])}'" 
+              WHERE  p.catalog_number = '#{client.escape(replacement["catalog_number"])}'
+              AND p.price_cost > 0" 
               if replacement["manufacturer"]
                 query << " AND p.manufacturer = '#{client.escape(replacement["manufacturer"])}'"
               end
