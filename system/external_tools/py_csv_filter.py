@@ -89,7 +89,7 @@ if(size):
                     #if counter == 0:
                         #print row
             
-                    if len(str(row)) > 3500:
+                    if len(str(row)) > 5500:
                         print str(row) + "------- \r\n"
 			raise Exception(row)
                     writer.writerow(row)

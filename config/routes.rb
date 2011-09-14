@@ -58,6 +58,8 @@ Avtorif::Application.routes.draw do
         post 'copy'
         get 'clean'
         post 'destroy_manufacturers_by_job'
+        get 'rake_load_replaces'
+        get 'rake_delete_replaces'
       end
       collection do
         get 'start_all'

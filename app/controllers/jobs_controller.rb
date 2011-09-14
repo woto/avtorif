@@ -1,3 +1,5 @@
+require 'rake'
+
 class JobsController < ApplicationController
   # GET /jobs
   # GET /jobs.xml
@@ -180,6 +182,24 @@ class JobsController < ApplicationController
       format.html { redirect_to(suppliers_path) }
       format.js { render :text => "Заглушка" }
     end
+  end
+
+  def rake_load_replaces
+    notice = ''
+    Open3.popen3("cd #{Rails.root} && export ID=#{params[:id]} && rake avtorif:load_replaces &") do |a,b,c,d|
+      notice << b.read()
+      notice << c.read()
+    end 
+    redirect_to (supplier_job_path(params[:supplier_id], params[:id]), :notice => "Процесс изменения данных в справочном каталоге завершен. " + notice)
+  end
+
+  def rake_delete_replaces
+    notice = ''
+    Open3.popen3("cd #{Rails.root} && export ID=#{params[:id]} && rake avtorif:delete_replaces &") do |a,b,c,d|
+      notice << b.read()
+      notice << c.read()
+    end
+    redirect_to (supplier_job_path(params[:supplier_id], params[:id]), :notice => 'Процесс изменения данных в справочном каталоге завершен. ' + notice)
   end
 
   def clean

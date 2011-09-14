@@ -23,7 +23,7 @@ every 5.minute do
   runner "JobWalker.new.call"
 end
 
-every 1.hours do
+every 10.hours do
   rake "avtorif:destroy_old_supplier_prices"
 end
 

@@ -83,6 +83,11 @@ scope = scope.scoped :conditions => {:supplier_id => params['supplier_id']} if p
     
     <%= link_to 'Очистить прайсы-цены и временную', clean_supplier_job_path(params[:supplier_id], @job) %>
     <br /><br />
+    <% if ReplaceJob == @job.jobable.class %>
+      <%= link_to 'Поместить замены в хранилище', rake_load_replaces_supplier_job_path(params[:supplier_id], @job) %> |
+      <%= link_to 'Удалить замены из хранилища', rake_delete_replaces_supplier_job_path(params[:supplier_id], @job) %>
+    <% end %>
+    <br /><br />
     <% 
       query = "SELECT processed, COUNT(*) as count FROM price_import_#{params[:id]} GROUP BY processed"
       ActiveRecord::Base.connection.execute(query).each do |row|
@@ -97,6 +102,7 @@ scope = scope.scoped :conditions => {:supplier_id => params['supplier_id']} if p
         end
       end
     %>
+    
 
     <br /><br />
 
