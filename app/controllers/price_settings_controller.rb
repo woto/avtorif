@@ -150,18 +150,21 @@ class PriceSettingsController < ApplicationController
    self.response_body = proc { |response, output|
      CommonModule::all_doublets do |l|
        query = "
-         SELECT pc.catalog_number_orig, pc.title, pc.manufacturer_orig, pc.price_cost, pc.price_cost * ij.income_rate, ij.income_rate, pc.count, pc.job_id  FROM price_cost_#{l} pc
+         SELECT pc.catalog_number_orig, pc.catalog_number, pc.manufacturer_orig, pc.manufacturer, pc.title, pc.count, pc.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) * ps.weight_unavailable_rate AS income_cost FROM price_cost_#{l} pc
          JOIN jobs j ON j.id = pc.job_id
          JOIN import_jobs ij ON j.jobable_id = ij.id
+         JOIN price_settings ps ON pc.price_setting_id = ps.id 
+         JOIN currencies c_buy ON c_buy.id = ps.currency_buy_id
          WHERE pc.price_setting_id = #{price_setting}"
        result = ActiveRecord::Base.connection.execute(query)
        csv = nil
        result.each do |r| 
          FasterCSV.generate(:col_sep => "\t", :quote_char => "\x0", :row_sep => "\r\n") do |csv|
-           tmpstr = r.map{|x| x.present? ? x : "_"}
+           #tmpstr = r.map{|x| x.present? ? x : "_"}
            csv << tmpstr
          end
-         output.write Iconv.iconv("WINDOWS-1251//IGNORE", "UTF-8", csv.string)
+         #output.write Iconv.iconv("WINDOWS-1251//IGNORE", "UTF-8", csv.string)
+         output.write csv.string
        end
      end
    }
