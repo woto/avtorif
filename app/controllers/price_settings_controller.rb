@@ -161,7 +161,8 @@ class PriceSettingsController < ApplicationController
        result.each do |r| 
          FasterCSV.generate(:col_sep => "\t", :quote_char => "\x0", :row_sep => "\r\n") do |csv|
            #tmpstr = r.map{|x| x.present? ? x : "_"}
-           csv << tmpstr
+           #csv << tmpstr
+           csv << r
          end
          #output.write Iconv.iconv("WINDOWS-1251//IGNORE", "UTF-8", csv.string)
          output.write csv.string
