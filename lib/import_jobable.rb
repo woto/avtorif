@@ -85,7 +85,7 @@ class ImportJobable < AbstractJobber
 
     @optional.each do |opt|
       query = ""
-      manufacturer, manufacturer_orig, manufacturer_synonyms_hs, unit_colnum, multiply_factor_colnum, external_id_colnum, external_supplier_id, parts_group_colnum, image_url, country_colnum, applicability_colnum,  min_order_colnum, description_colnum, unit_package_colnum, title_en_colnum, weight_grams_colnum, title_colnum, count_colnum, manufacturer_colnum, minimal_income_cost = false
+      manufacturer, manufacturer_orig, manufacturer_synonyms_hs, unit_colnum, multiply_factor_colnum, external_id_colnum, external_supplier_id, default_external_supplier_id, parts_group_colnum, image_url, country_colnum, applicability_colnum,  min_order_colnum, description_colnum, unit_package_colnum, title_en_colnum, weight_grams_colnum, title_colnum, count_colnum, manufacturer_colnum, minimal_income_cost = false
 
       query_template = "INSERT INTO price_import_#{@job_id} (job_id, "
       
@@ -161,6 +161,9 @@ class ImportJobable < AbstractJobber
       if @jobable.external_supplier_id_colnum.present?              
         external_supplier_id_colnum = @jobable.external_supplier_id_colnum - 1
         query_template = query_template + "external_supplier_id, "
+      elsif @jobable.default_external_supplier_id.present?
+        query_template = query_template + "external_supplier_id, "
+        default_external_supplier_id = @jobable.default_external_supplier_id.to_s.strip
       end
 
       if @jobable.parts_group_colnum.present?              
@@ -220,7 +223,14 @@ class ImportJobable < AbstractJobber
           query = query + unit = unit_colnum ? Price.connection.quote(row[unit_colnum].to_s.strip) + ", " : ""
           query = query + country = country_colnum ? Price.connection.quote(row[country_colnum].to_s.strip) + ", " : ""
           query = query + external_id = external_id_colnum ? Price.connection.quote(row[external_id_colnum].to_s.strip) + ", " : ""
-          query = query + external_supplier_id = external_supplier_id_colnum ? Price.connection.quote(row[external_supplier_id_colnum].to_s.strip) + ", " : ""
+          
+          debugger
+          if external_supplier_id_colnum
+            query = query + external_supplier_id = Price.connection.quote(row[external_supplier_id_colnum].to_s.strip) + ", "
+          elsif default_external_supplier_id
+            query << default_external_supplier_id
+          end
+
           query = query + parts_group = parts_group_colnum ? Price.connection.quote(row[parts_group_colnum].to_s.strip) + ", " : ""
           query = query + minimal_income_cost = minimal_income_cost_colnum ? Price.connection.quote(row[minimal_income_cost_colnum].to_s.gsub(',','.').gsub(' ','')) + ", " : ""
           query = query + image_url = image_url_colnum ? Price.connection.quote((image_url_prefix ? image_url_prefix : "") + row[image_url_colnum].to_s.strip) + ", " : ""
