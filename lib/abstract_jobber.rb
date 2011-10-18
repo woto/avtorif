@@ -63,7 +63,7 @@ class AbstractJobber
 
   def perform
     @job.childs.active.each do |job|
-      if @optional.size > 0
+      if @optional.size > 0 && job.jobable.class != ReceiveJob
         JobWalker.new.start_job(job, @priority - 1, @optional)
       # Необходимо на случай если после импорта надо вызвать задачу приема
       elsif job.jobable.class == ReceiveJob

