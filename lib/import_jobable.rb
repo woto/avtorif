@@ -163,7 +163,7 @@ class ImportJobable < AbstractJobber
         query_template = query_template + "external_supplier_id, "
       elsif @jobable.default_external_supplier_id.present?
         query_template = query_template + "external_supplier_id, "
-        default_external_supplier_id = @jobable.default_external_supplier_id.to_s.strip
+        default_external_supplier_id = Price.connection.quote(@jobable.default_external_supplier_id.to_s.strip) + ", "
       end
 
       if @jobable.parts_group_colnum.present?              
@@ -224,7 +224,6 @@ class ImportJobable < AbstractJobber
           query = query + country = country_colnum ? Price.connection.quote(row[country_colnum].to_s.strip) + ", " : ""
           query = query + external_id = external_id_colnum ? Price.connection.quote(row[external_id_colnum].to_s.strip) + ", " : ""
           
-          debugger
           if external_supplier_id_colnum
             query = query + external_supplier_id = Price.connection.quote(row[external_supplier_id_colnum].to_s.strip) + ", "
           elsif default_external_supplier_id
