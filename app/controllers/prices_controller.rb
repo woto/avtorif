@@ -11,7 +11,7 @@ class PricesController < ApplicationController
   # Суть этой вакханалии сводится к тому, что из-за того, что в нашей базе много nil производителей, и много пересечений
   # по заменам, то мы хотим получить из таблицы только записи по каталожному номеру, а потом уже пригодится или не
   # пригодится производитель будем решать уже в памяти
-  def get_from_catalog(catalog_number, manufacturer, &block)
+  def get_from_catalog(catalog_number, manufacturer, recursive = true, &block)
     puts "@@@@@@@@@@@@@@@@@ " + catalog_number.to_s + " " + manufacturer.to_s + " @@@@@@@@@@@@@@@@@"
     key = catalog_number.to_s
     @private_cache ||= Hash.new
@@ -107,9 +107,9 @@ class PricesController < ApplicationController
               'catalog_number' => row['r#{i}'], 
               'manufacturer' => row['rm#{i}']
               }"
-              #if recursive
-              #  get_from_catalog(row["r#{i}"], row["rm#{i}"], false, &block)
-              #end
+              if recursive
+                get_from_catalog(row["r#{i}"], row["rm#{i}"], false, &block)
+              end
             end
           end
         else
@@ -140,9 +140,9 @@ class PricesController < ApplicationController
               'catalog_number' => row['r#{i}'], 
               'manufacturer' => row['rm#{i}']
               }"
-              #if recursive
-              #  get_from_catalog(row["r#{i}"], row["rm#{i}"], false, &block)
-              #end
+              if recursive
+                get_from_catalog(row["r#{i}"], row["rm#{i}"], false, &block)
+              end
             end
           end
         end
