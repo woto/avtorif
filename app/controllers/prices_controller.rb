@@ -218,6 +218,7 @@ class PricesController < ApplicationController
             @p["job_import_job_destination_summary"] = text
           elsif @inside_price_logo
             @p["price_logo_emex"] = text
+            @p["external_supplier_id"] = text
           elsif @inside_detail_name_rus
             @p["title"] = text
           elsif @inside_detail_name_eng
@@ -430,79 +431,221 @@ class PricesController < ApplicationController
 
       # Работа со сторонними сервисами
 
-      once = true
       if(params[:ext_ws] == '1')
-        #EMEX
-        begin
-          Timeout.timeout(AppConfig.emex_timeout) do
+        threads = []
+        #ALL4CAR
+        
+        threads << Thread.new() do
+          once = true
+          Thread.current["prices"] = []
 
-            emex_response = ''
-            measurement = Benchmark.measure do
-              emex_response = CommonModule::get_emex(
-                :catalog_number => our_catalog_number,
-                :manufacturer => params[:manufacturer],
-                :login => AppConfig.emex_login,
-                :password => AppConfig.emex_password,
-                :replacements => params[:replacements]
-              )
-            end
+          begin
+            Timeout.timeout(AppConfig.emex_timeout) do
+              response = Net::HTTP.post_form(URI.parse('http://62.5.214.110/partnersws/Service.asmx/SearchResultOneCurrencyXml'), {
+                'sPartCode' => our_catalog_number, 
+                'sAuthCode' => '6030922400k', 
+                'iReplaces' => params[:replacements].presence || "0" , 
+                'sCurrency' => 'RUR'
+              })
 
-            puts 'Потрачено на получение xml\'я с емекс\'a'
-            puts measurement
+              doc = Nokogiri::XML(response.body)
+              
+              places = doc.xpath('/searchResult')
 
-            measurement = Benchmark.measure do
-              doc = SaxReader.new(emex_response)
-
-                doc.each do |p|
-
-                  # Пропускаем детали, которые содержат искомую или которые содержатся в искомой
-                  unless ['1', '2', '3', '4'].include? p['group_id'] 
+              places.children.each do |place|
+                unless(place.is_a?(Nokogiri::XML::Element) && ["main", "extWH", "mainWH"].include?(place.name))
+                  next
+                end
+                place.children.each do |part|
+                  if part.blank?
                     next
                   end
+                  
+                  p = Hash.new
+                  #p = Price.new
 
-                  @result_prices << p
+                  p["title"] = ''          
+                  p["title_en"] = ''
+                  
+                  p["supplier_title"] = 'a4c'
+                  p["supplier_title_en"] = 'a4c'
+                  p["supplier_title_full"] = 'a4c'
+                  p["supplier_inn"] = 7733732181
+                  p["supplier_kpp"]  =773301001
+                  p["job_title"] ="ws"
+                  p["job_import_job_kilo_price"] = 0
+                  p["weight_grams"] = 0
+                  p["ps_weight_unavailable_rate"] = 1
+                  p["ps_absolute_weight_rate"] = 0
+                  p["ps_relative_weight_rate"] = 0
+                  p["c_weight_value"] = 1
+                  p["ps_kilo_price"] = 0
+                  p["ps_absolute_buy_rate"] = 0
+                  p["ps_relative_buy_rate"] = 1
+                  p["c_buy_value"] = 1
+                  p["ij_income_rate"] = 1
+                  p["currency"] = 643
+                  #p["job_import_job_output_order"] = 50000
 
-                  found = false
-                  @result_replacements.each do |replacement|
-                    if replacement["catalog_number"] == p["catalog_number"]
-                      if replacement["manufacturer"] == p["manufacturer"]
-                        found = true
-                      end
+                  if(["mainWH", "extWH"].include?(place.name))
+                    p["job_import_job_presence"] = 1
+                  else
+                    p["job_import_job_presence"] = 0
+                  end
+
+                  part.children.each do |option|
+                    if option.blank?
+                      next
                     end
+                    
+                    value = CGI.unescapeHTML(option.children.to_s)
+
+                    #if option.keys.size > 0
+                    #  option.keys.each do |key|
+                    #    p[(option.name.underscore + "_" + key.underscore + "_a4c").to_sym] = option[key].to_s.strip
+                    #  end
+                    #end
+                    #p[(option.name.underscore + "_a4c").to_sym] = value.to_s.strip
+
+                    case option.name
+                      when /^region$/
+                        p["job_import_job_country_short"] = value.to_s.strip
+                        p["job_import_job_country"] = value.to_s.strip
+                      when /^amount$/
+                        p["count"] = value.to_s.strip
+                      when /^descr$/
+                        p["title"] = value.to_s.strip
+                      when /^price$/
+                        p["price_cost"] = value.to_f
+                        p["income_cost"] = income_cost = value.to_f 
+                        p["ps_retail_rate"] = 1.4
+                        p["retail_cost"] = retail_cost = income_cost * 1.4
+                        p["retail_cost_with_discounts"] = retail_cost
+                        p["income_cost_in_currency_with_weight"] = income_cost
+                        p["income_cost_in_currency_without_weight"] = income_cost
+                      when /^code$/
+                        p["catalog_number"] = CommonModule::normalize_catalog_number(value.to_s.strip)
+                        p["catalog_number_orig"] = value.to_s.strip
+                      # TODO сделать список стандартных замен (NS, Nissan, NISSAN и т.д.)
+                      when /^supplier$/
+                        p["job_import_job_delivery_summary"] = option['Delivery'].to_s.strip
+                        p["bit_original"] = "0"
+                        p["manufacturer"] = CommonModule::find_manufacturer_synonym( option['make'].to_s.strip , -3, true)[1..-2]
+                        p["manufacturer_orig"] = option['make'].to_s.strip
+                        p["manufacturer_short"] = option['make'].to_s.strip
+                        p["job_import_job_delivery_days_average"] = option['supplDays100'].to_s.strip.to_i
+                        p["job_import_job_success_percent"] = option['successProc'].to_s.strip
+                        p["success_percent"] = option['successProc'].to_s.strip
+                        p["external_supplier_id"] = value.to_s.strip
+                        p["price_logo_emex"] = value.to_s.strip
+                        p["job_import_job_destination_logo"] = option['dlogo'].to_s.strip
+                        p["logo"] = option['dlogo'].to_s.strip
+                      when /^probability$/
+                        #p["job_import_job_success_percent"] = value.to_s.strip
+                      when /^srok$/
+                        p["job_import_job_delivery_days_declared"] = value.to_s.strip
+                      #when /^days$/
+                      #  p.job.import_job[:delivery_days_declared] = value.to_s.strip if value.to_s.strip.present?
+                    end
+
                   end
 
-                  unless found
-                    # Вставляем вначало
-                    @result_replacements.unshift({
-                      "catalog_number" => p["catalog_number"],
-                      "manufacturer" => p["manufacturer"],
-                      "title" => p["title"],
-                      "title_en" => p["title_en"],
-                      "original" => p["bit_original"],
-                      "yield" => true
-                    })
-                  end
+                  Thread.current["prices"] << p
 
                   if once
                     once = false
                     @header = @header | p.keys
                   end
-
                 end
+              end
             end
-
-            puts "Потрачено на распарсивание и добавление отсутствующих замен."
-            puts measurement
+            rescue Timeout::Error => e
           end
-        rescue Timeout::Error => e
-          @result_message << " Превышено время ожидания ответа сайта Emex, скорее всего сервер не доступен " + e.message
-        rescue SocketError => e
-          @result_message << " Отсутствует соединение с сайтом Emex " + e.message
-        rescue Exception => e
-          @result_message << " Emex вернул не валидный xml, скорее всего доступ к сайту отсутствует " + e.message
         end
+
+        #EMEX
+        threads << Thread.new() do
+          once = true
+          Thread.current["prices"] = []
+
+          begin
+            Timeout.timeout(AppConfig.emex_timeout) do
+
+              emex_response = ''
+              measurement = Benchmark.measure do
+                emex_response = CommonModule::get_emex(
+                  :catalog_number => our_catalog_number,
+                  :manufacturer => params[:manufacturer],
+                  :login => AppConfig.emex_login,
+                  :password => AppConfig.emex_password,
+                  :replacements => params[:replacements]
+                )
+              end
+
+              puts 'Потрачено на получение xml\'я с емекс\'a'
+              puts measurement
+
+              measurement = Benchmark.measure do
+                doc = SaxReader.new(emex_response)
+
+                  doc.each do |p|
+
+                    # Пропускаем детали, которые содержат искомую или которые содержатся в искомой
+                    unless ['1', '2', '3', '4'].include? p['group_id'] 
+                      next
+                    end
+
+                    Thread.current["prices"] << p
+                    #@result_prices << p
+
+                    found = false
+                    @result_replacements.each do |replacement|
+                      if replacement["catalog_number"] == p["catalog_number"]
+                        if replacement["manufacturer"] == p["manufacturer"]
+                          found = true
+                        end
+                      end
+                    end
+
+                    unless found
+                      # Вставляем вначало
+                      @result_replacements.unshift({
+                        "catalog_number" => p["catalog_number"],
+                        "manufacturer" => p["manufacturer"],
+                        "title" => p["title"],
+                        "title_en" => p["title_en"],
+                        "original" => p["bit_original"],
+                        "yield" => true
+                      })
+                    end
+
+                    if once
+                      once = false
+                      @header = @header | p.keys
+                    end
+
+                  end
+              end
+
+              puts "Потрачено на распарсивание и добавление отсутствующих замен."
+              puts measurement
+            end
+          rescue Timeout::Error => e
+            @result_message << " Превышено время ожидания ответа сайта Emex, скорее всего сервер не доступен " + e.message
+          rescue SocketError => e
+            @result_message << " Отсутствует соединение с сайтом Emex " + e.message
+          rescue Exception => e
+            @result_message << " Emex вернул не валидный xml, скорее всего доступ к сайту отсутствует " + e.message
+          end
+        end
+
+        threads.each do |t| 
+          t.join
+          @result_prices = @result_prices + t["prices"]
+        end 
+
       end
-      
+                      
       once = nil
       threads = []
       measurement = Benchmark.measure do
