@@ -42,6 +42,8 @@ iconv -f CP1251 -t UTF-8//IGNORE [in_file] > [out_file]
 //TRANSLIT
 -f и -t могут быть опущены
 ---
+iconv -f UTF-16LE -t UTF-8 [in_file] > [out_file]
+---
 tr -d '\0' < [in_file] > [out_file]
 ---
 sed 's/NULL//g' [in_file] > [out_file]
