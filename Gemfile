@@ -41,7 +41,7 @@ gem 'mongrel'
 #gem 'rake'
 #gem 'rack'
 gem 'paperclip'
-gem 'will_paginate', :git => 'git://github.com/mislav/will_paginate.git', :branch => 'rails3'
+gem 'will_paginate', '~> 3.0.2'
 gem 'mail'
 gem 'tmail'
 gem 'tlsmail'
@@ -70,7 +70,7 @@ gem 'exception_notification', :git => 'git://github.com/rails/exception_notifica
 #  gem 'ruby-debug-ide'
 #end
                      
-gem 'formtastic'
+gem 'formtastic', '~> 1.2.3'
 gem 'simple_form'
 gem 'whenever'
 gem 'rufus-scheduler'
