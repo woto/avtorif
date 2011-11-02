@@ -471,7 +471,7 @@ class PricesController < ApplicationController
                   p["supplier_title_en"] = 'a4c'
                   p["supplier_title_full"] = 'a4c'
                   p["supplier_inn"] = 7733732181
-                  p["supplier_kpp"]  =773301001
+                  p["supplier_kpp"]  = 773301001
                   p["job_title"] ="ws"
                   p["job_import_job_kilo_price"] = 0
                   p["weight_grams"] = 0
@@ -485,7 +485,7 @@ class PricesController < ApplicationController
                   p["c_buy_value"] = 1
                   p["ij_income_rate"] = 1
                   p["currency"] = 643
-                  #p["job_import_job_output_order"] = 50000
+                  p["job_import_job_output_order"] = 50000
 
                   if(["mainWH", "extWH"].include?(place.name))
                     p["job_import_job_presence"] = 1
@@ -493,11 +493,11 @@ class PricesController < ApplicationController
                     p["job_import_job_presence"] = 0
                   end
 
+                  skip = false
                   part.children.each do |option|
                     if option.blank?
                       next
                     end
-                    
                     value = CGI.unescapeHTML(option.children.to_s)
 
                     #if option.keys.size > 0
@@ -528,6 +528,9 @@ class PricesController < ApplicationController
                         p["catalog_number_orig"] = value.to_s.strip
                       # TODO сделать список стандартных замен (NS, Nissan, NISSAN и т.д.)
                       when /^supplier$/
+                        if value.to_s.strip == '3390'
+                          skip = true
+                        end
                         p["job_import_job_delivery_summary"] = option['Delivery'].to_s.strip
                         p["bit_original"] = "0"
                         p["manufacturer"] = CommonModule::find_manufacturer_synonym( option['make'].to_s.strip , -3, true)[1..-2]
@@ -550,7 +553,9 @@ class PricesController < ApplicationController
 
                   end
 
-                  Thread.current["prices"] << p
+                  unless skip
+                    Thread.current["prices"] << p
+                  end
 
                   if once
                     once = false
