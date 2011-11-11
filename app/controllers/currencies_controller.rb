@@ -48,7 +48,7 @@ class CurrenciesController < ApplicationController
         "currency_code" => params['currency']['foreign_id'], 
         "currencyName" => params['currency']['title'], 
         "rate" => params['currency']['value'],
-        :order! => ["currency_code", "currencyName", "rate"]
+        :order! => ["ins0:currency_code", "ins0:currencyName", "ins0:rate"]
       }
     end
 

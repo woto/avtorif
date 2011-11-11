@@ -51,7 +51,7 @@ class PriceSettingsController < ApplicationController
          "Presents" => @price_setting.presence == true ? '1' : '0', 
          "Delivery" => @price_setting.delivery_summary.to_s,
          "description" => @price_setting.title.to_s,
-         :order! => ["ID", "SuplierID", "CurrencyCode", "Presents", "Delivery", "description"]
+         :order! => ["ins0:ID", "ins0:SuplierID", "ins0:CurrencyCode", "ins0:Presents", "ins0:Delivery", "ins0:description"]
       }
     end
     if result.to_hash[:add_modify_price_response][:return] != "Good"

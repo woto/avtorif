@@ -9,7 +9,7 @@
 
 <%= semantic_form_for(@price_setting, :url => url) do |f| %>
   <% if @price_setting.errors.any? %>
-    <div id="error_explanation">
+    <div style="background: red" id="error_explanation">
       <h2><%= pluralize(@price_setting.errors.count, "error") %> prohibited this price_setting from being saved:</h2>
 
       <ul>

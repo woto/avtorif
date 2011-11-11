@@ -127,7 +127,7 @@ scope = scope.scoped :conditions => {:supplier_id => params['supplier_id']} if p
         <tr style="background: #<%= Digest::MD5.hexdigest(sp.group_code.to_s)[0...6] if sp.group_code.present? %>"><td>
         <%= link_to(sp.attachment_file_name, supplier_price_path(sp.id)) %> |
         <%= link_to "Download", sp.attachment.url(:original, false) %> |
-        <%= link_to 'Destroy', supplier_job_supplier_price_path(params[:supplier_id], params[:id], sp), :confirm => 'Are you sure?', :method => :delete %> |
+        <%= link_to 'Destroy', supplier_job_supplier_price_path(params[:supplier_id], params[:id], sp), :confirm => 'Are you sure?', :method => :delete, :remote => true %> |
         <%= sp.attachment_updated_at.to_s %> |
         <%= sp.attachment_file_size.to_s %><br />
         <%= sp.attachment.path %><br />

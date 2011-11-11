@@ -53,7 +53,7 @@ class SuppliersController < ApplicationController
         "seller" => @supplier.seller.to_s,
         "buyer" => @supplier.buyer.to_s,
 	"phone" => @supplier.phone.to_s,
-        :order! => ["ID", "title", "INN", "KPP", "fullTitle", "seller", "buyer", "phone"]
+        :order! => ["ins0:ID", "ins0:title", "ins0:INN", "ins0:KPP", "ins0:fullTitle", "ins0:seller", "ins0:buyer", "ins0:phone"]
       }
     end 
 
