@@ -28,4 +28,5 @@ class ImportJob < ActiveRecord::Base
   validates_numericality_of :income_price_colnum, :greater_than_or_equal_to => 1, :less_than_or_equal_to => 100
   validates_numericality_of :external_id_colnum, :greater_than_or_equal_to => 1, :less_than_or_equal_to => 100, :allow_nil => true
   validates_numericality_of :weight_grams_colnum, :greater_than_or_equal_to => 1, :less_than_or_equal_to => 100, :allow_nil => true
+  validates_numericality_of :delivery_days_declared_colnum, :greater_than_or_equal_to => 1, :less_than_or_equal_to => 100, :allow_nil => true
 end
