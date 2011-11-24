@@ -12,7 +12,7 @@
 
   <p>
     <%= f.label :supplier %><br />
-    <%= f.inputs :supplier %>
+    <%= select("job", "supplier_id", Supplier.order(:title).all.collect {|s| [ s.title + " - " + s.title_full, s.id ] }, :selected => params["supplier_id"]) %>
   </p>
   <p>
     <%= f.label :next_start %><br />
