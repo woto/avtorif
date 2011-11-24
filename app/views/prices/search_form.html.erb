@@ -14,7 +14,11 @@
 </div>
 
 <div style="margin-bottom: 10px;">
-Искать на сайте партнеров: <%= check_box_tag :ext_ws, "1", params[:ext_ws] %>
+Искать на сайте партнера 1: <%= check_box_tag :ext_ws, "1", params[:ext_ws] %>
+</div>
+
+<div style="margin-bottom: 10px;">
+Искать на сайте партнера 2: <%= check_box_tag :ext_ws2, "1", params[:ext_ws2] %>
 </div>
 
   <%= submit_tag "Искать", :name => nil, :onclick => "this.disabled = true; document.forms['search_form'].submit();" %>

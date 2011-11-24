@@ -431,10 +431,10 @@ class PricesController < ApplicationController
 
       # Работа со сторонними сервисами
 
-      if(params[:ext_ws] == '1')
-        threads = []
-        #ALL4CAR
-        
+      threads = []
+
+      #ALL4CAR
+      if(params[:ext_ws2] == '1')
         threads << Thread.new() do
           once = true
           Thread.current["prices"] = []
@@ -567,8 +567,10 @@ class PricesController < ApplicationController
             rescue Timeout::Error => e
           end
         end
+      end
 
-        #EMEX
+      #EMEX
+      if params[:ext_ws] == '1'
         threads << Thread.new() do
           once = true
           Thread.current["prices"] = []
@@ -643,13 +645,13 @@ class PricesController < ApplicationController
             @result_message << " Emex вернул не валидный xml, скорее всего доступ к сайту отсутствует " + e.message
           end
         end
-
-        threads.each do |t| 
-          t.join
-          @result_prices = @result_prices + t["prices"]
-        end 
-
       end
+
+      threads.each do |t| 
+        t.join
+        @result_prices = @result_prices + t["prices"]
+      end 
+
                       
       once = nil
       threads = []
