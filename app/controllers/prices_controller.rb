@@ -889,6 +889,7 @@ class PricesController < ApplicationController
 
     respond_to do |format|
       format.html {render :action => :index }
+      format.json  { render :json => @result.call.to_json}
       format.xml  { render :xml => @result.call.to_xml}
       #format.xml  { render :text => @result.call}
     end
