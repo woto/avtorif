@@ -58,7 +58,7 @@ class SuppliersController < ApplicationController
     end 
 
     if result.to_hash[:add_supplier_response][:return] != "Good"
-      format.html { render :text => result.to_hash[:add_supplier_response][:return] }
+      format.html { render :text => "Ошибка 1С: " + result.to_hash[:add_supplier_response][:return] }
       return false
     end
 
