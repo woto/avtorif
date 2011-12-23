@@ -533,7 +533,7 @@ class PricesController < ApplicationController
                         end
                         p["job_import_job_delivery_summary"] = option['Delivery'].to_s.strip
                         p["bit_original"] = "0"
-                        p["manufacturer"] = CommonModule::find_manufacturer_synonym( option['make'].to_s.strip , -3, true)[1..-2]
+                        p["manufacturer"] = CommonModule::find_manufacturer_synonym( option['make'].to_s.strip , -3, false)[1..-2]
                         p["manufacturer_orig"] = option['make'].to_s.strip
                         p["manufacturer_short"] = option['make'].to_s.strip
                         p["job_import_job_delivery_days_average"] = option['supplDays100'].to_s.strip.to_i
