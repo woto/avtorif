@@ -700,15 +700,19 @@ class PricesController < ApplicationController
           end
         end
 
+        # Для реализации старой задумки про оптимальную цену
+        @header = @header | ["price_goodness"]
+
         # Выкидываем не нужные столбцы (возможно я это планировал делать где-то в другом месте, но где уже не вспомню)
         # добавлен group_id для классификации замены, полученной от emex. У нас этого поля нет.
         unless params.key? "dev"
-          @header = @header - ["manufacturer_orig", "catalog_number", "income_cost", "ps_retail_rate", "real_job_id", "job_import_job_presence", "job_id", "job_import_job_country", "job_import_job_delivery_days_average", "supplier_id", "supplier_kpp", "supplier_title_en", "price_cost",	"ij_income_rate",	"c_buy_value", "ps_relative_buy_rate", "ps_absolute_buy_rate", "weight_grams", "ps_kilo_price", "c_weight_value", "ps_relative_weight_rate", "ps_absolute_weight_rate", "ps_weight_unavailable_rate", "created_at", "job_import_job_delivery_summary", "price_setting_id", "min_order", "updated_at", "external_id", "unit_package", "supplier_inn", "id", "processed", "delivery_days_price", "job_import_job_kilo_price", "unit", "description", "currency", "job_title",	"supplier_title",	"supplier_title_full",	"job_import_job_destination_logo",	"manufacturer_short", "price_logo_emex",	"job_import_job_destination_summary", "multiply_factor", "country", "parts_group", "applicability", "job_import_job_success_percent", "logo", "external_supplier_id", "image_url", "bit_original", "success_percent", "title_en", "retail_cost", "minimal_income_cost", "income_cost_in_currency_without_weight", "income_cost_in_currency_with_weight", "md5", "job_import_job_output_order", "group_id", "delivery_days_declared"]
+          @header = @header - ["manufacturer_orig", "catalog_number", "income_cost", "ps_retail_rate", "real_job_id", "job_import_job_presence", "job_id", "job_import_job_country", "job_import_job_delivery_days_average", "supplier_id", "supplier_kpp", "supplier_title_en", "price_cost",	"ij_income_rate",	"c_buy_value", "ps_relative_buy_rate", "ps_absolute_buy_rate", "weight_grams", "ps_kilo_price", "c_weight_value", "ps_relative_weight_rate", "ps_absolute_weight_rate", "ps_weight_unavailable_rate", "created_at", "job_import_job_delivery_summary", "price_setting_id", "min_order", "updated_at", "external_id", "unit_package", "supplier_inn", "id", "processed", "delivery_days_price", "job_import_job_kilo_price", "unit", "description", "currency", "job_title",	"supplier_title",	"supplier_title_full",	"job_import_job_destination_logo",	"manufacturer_short", "price_logo_emex",	"job_import_job_destination_summary", "multiply_factor", "country", "parts_group", "applicability", "job_import_job_success_percent", "logo", "external_supplier_id", "image_url", "bit_original", "success_percent", "title_en", "retail_cost", "minimal_income_cost", "income_cost_in_currency_without_weight", "income_cost_in_currency_with_weight", "md5", "job_import_job_output_order", "group_id", "delivery_days_declared", "price_goodness"]
         end
       end
 
       puts "Потрачено на устраниение дублей, выкидывание из хедера ненужных столбцов"
       puts measurement
+
     end
 
 
@@ -718,8 +722,19 @@ class PricesController < ApplicationController
     measurement = Benchmark.measure do
       rp ||= {}
 
+      # Запоминаем цену первого и относительно него пляшем в процентах
+      occurence = {}
+
       # Сначала получаем все группы putput order, рассовываем в них позиции
       @result_prices.each do |item|
+
+        unless occurence.key?(item["catalog_number"].to_s + "-" + item["manufacturer"].to_s)
+	  occurence[item["catalog_number"].to_s + "-" + item["manufacturer"].to_s] = item["income_cost"].to_f
+          item["price_goodness"] = item["income_cost"].to_f / occurence[item["catalog_number"].to_s + "-" + item["manufacturer"].to_s].to_f 
+        else
+          item["price_goodness"] = item["income_cost"].to_f / occurence[item["catalog_number"].to_s + "-" + item["manufacturer"].to_s].to_f
+        end
+
         rp[item["job_import_job_output_order"].to_i] ||= []
         rp[item["job_import_job_output_order"].to_i] << item
       end
