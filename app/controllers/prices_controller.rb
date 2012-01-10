@@ -209,7 +209,7 @@ class PricesController < ApplicationController
             @p["manufacturer"] = CommonModule::find_manufacturer_synonym(text, -2, true)[1..-2]
             @p["manufacturer_orig"] = text
           elsif @inside_make_logo
-            @p["manufacturer_short"] = text
+            @p["manufacturer_short"] = (@p["manufacturer_short"].present? ? @p["manufacturer_short"] : "") + text
           elsif @inside_destination_logo
             @p["logo"] = text
             @p["job_import_job_destination_logo"] = text
