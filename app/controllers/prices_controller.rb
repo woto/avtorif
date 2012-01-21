@@ -728,12 +728,19 @@ class PricesController < ApplicationController
       # Сначала получаем все группы putput order, рассовываем в них позиции
       @result_prices.each do |item|
 
-        unless occurence.key?(item["catalog_number"].to_s + "-" + item["manufacturer"].to_s)
-	  occurence[item["catalog_number"].to_s + "-" + item["manufacturer"].to_s] = item["income_cost"].to_f
-          item["price_goodness"] = item["income_cost"].to_f / occurence[item["catalog_number"].to_s + "-" + item["manufacturer"].to_s].to_f 
+	coef = 1
+
+        if item['supplier_title'] == 'emex'
+          coef = 1.07
         else
-          item["price_goodness"] = item["income_cost"].to_f / occurence[item["catalog_number"].to_s + "-" + item["manufacturer"].to_s].to_f
+          coef = 1.15
         end
+
+        unless occurence.key?(item["catalog_number"].to_s + "-" + item["manufacturer"].to_s)
+	  occurence[item["catalog_number"].to_s + "-" + item["manufacturer"].to_s] = item["income_cost"].to_f * coef
+        end
+
+	item["price_goodness"] = item["income_cost"].to_f * coef / occurence[item["catalog_number"].to_s + "-" + item["manufacturer"].to_s].to_f
 
         rp[item["job_import_job_output_order"].to_i] ||= []
         rp[item["job_import_job_output_order"].to_i] << item
