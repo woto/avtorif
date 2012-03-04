@@ -229,12 +229,12 @@ class PricesController < ApplicationController
             @p["job_import_job_delivery_days_declared"] = text.to_i + 1
           elsif @inside_deliver_time_guaranteed
             @p["job_import_job_delivery_days_average"] = text.to_i + 1
-          elsif @inside_bit_original
-            if text == 'true'
-              @p["bit_original"] = 1
-            else
-              @p["bit_original"] = 0
-            end
+          elsif @inside_price_group
+            @p['bit_original'] = ''
+            @p['price_group'] = text
+            #if ['Original'].include? text
+            #  @p['bit_original'] = 1
+            #end
           elsif @inside_bit_storehouse
             if text == 'true'
               @p["job_import_job_presence"] = 1
@@ -249,8 +249,6 @@ class PricesController < ApplicationController
             @p["job_import_job_country"] = text
           elsif @inside_price_country
             @p["job_import_job_country_short"] = text
-          elsif @inside_group_id
-            @p["group_id"] = text
           end
         elsif @inside_prices
           if @inside_result_price
@@ -303,8 +301,8 @@ class PricesController < ApplicationController
         @inside_ad_days = true 
       elsif element == 'DeliverTimeGuaranteed'
         @inside_deliver_time_guaranteed = true
-      elsif element == "bitOriginal"
-        @inside_bit_original = true
+      elsif element == 'PriceGroup'
+        @inside_price_group = true
       elsif element == 'bitStorehouse'
         @inside_bit_storehouse = true
       elsif element == 'QuantityText'
@@ -313,8 +311,6 @@ class PricesController < ApplicationController
         @inside_price_desc = true
       elsif element == 'PriceCountry'
         @inside_price_country = true        
-      elsif element == 'GroupId'
-        @inside_group_id = true
       end
     end
 
@@ -350,8 +346,8 @@ class PricesController < ApplicationController
         @inside_ad_days = false
       elsif element == 'DeliverTimeGuaranteed'
         @inside_deliver_time_guaranteed = false
-      elsif element == "bitOriginal"
-        @inside_bit_original = false
+      elsif element == 'PriceGroup'
+        @inside_price_group = false
       elsif element == 'bitStorehouse'
         @inside_bit_storehouse = false
       elsif element == 'QuantityText'
@@ -360,8 +356,6 @@ class PricesController < ApplicationController
         @inside_price_desc = false
       elsif element == 'PriceCountry'
         @inside_price_country = false        
-      elsif element == 'GroupId'
-        @inside_group_id = false             
       end
     end
   end
@@ -455,8 +449,13 @@ class PricesController < ApplicationController
 
                 doc.each do |p|
 
+                  # Пропускаем детали, у которых вероятность доставки менее 20% или вовсе не заполнена
+                  if p['success_percent'].blank? || p['success_percent'].to_i < 20
+                    next
+                  end
+
                   # Пропускаем детали, которые содержат искомую или которые содержатся в искомой
-                  unless ['1', '2', '3', '4'].include? p['group_id'] 
+                  unless ['Original', 'NewNumber', 'ReplacementOriginal', 'ReplacementNonOriginal'].include? p['price_group'] 
                     next
                   end
 
@@ -704,9 +703,8 @@ class PricesController < ApplicationController
         @header = @header | ["price_goodness"]
 
         # Выкидываем не нужные столбцы (возможно я это планировал делать где-то в другом месте, но где уже не вспомню)
-        # добавлен group_id для классификации замены, полученной от emex. У нас этого поля нет.
         unless params.key? "dev"
-          @header = @header - ["manufacturer_orig", "catalog_number", "income_cost", "ps_retail_rate", "real_job_id", "job_import_job_presence", "job_id", "job_import_job_country", "job_import_job_delivery_days_average", "supplier_id", "supplier_kpp", "supplier_title_en", "price_cost",	"ij_income_rate",	"c_buy_value", "ps_relative_buy_rate", "ps_absolute_buy_rate", "weight_grams", "ps_kilo_price", "c_weight_value", "ps_relative_weight_rate", "ps_absolute_weight_rate", "ps_weight_unavailable_rate", "created_at", "job_import_job_delivery_summary", "price_setting_id", "min_order", "updated_at", "external_id", "unit_package", "supplier_inn", "id", "processed", "delivery_days_price", "job_import_job_kilo_price", "unit", "description", "currency", "job_title",	"supplier_title",	"supplier_title_full",	"job_import_job_destination_logo",	"manufacturer_short", "price_logo_emex",	"job_import_job_destination_summary", "multiply_factor", "country", "parts_group", "applicability", "job_import_job_success_percent", "logo", "external_supplier_id", "image_url", "bit_original", "success_percent", "title_en", "retail_cost", "minimal_income_cost", "income_cost_in_currency_without_weight", "income_cost_in_currency_with_weight", "md5", "job_import_job_output_order", "group_id", "delivery_days_declared", "price_goodness"]
+          @header = @header - ["manufacturer_orig", "catalog_number", "income_cost", "ps_retail_rate", "real_job_id", "job_import_job_presence", "job_id", "job_import_job_country", "job_import_job_delivery_days_average", "supplier_id", "supplier_kpp", "supplier_title_en", "price_cost",	"ij_income_rate",	"c_buy_value", "ps_relative_buy_rate", "ps_absolute_buy_rate", "weight_grams", "ps_kilo_price", "c_weight_value", "ps_relative_weight_rate", "ps_absolute_weight_rate", "ps_weight_unavailable_rate", "created_at", "job_import_job_delivery_summary", "price_setting_id", "min_order", "updated_at", "external_id", "unit_package", "supplier_inn", "id", "processed", "delivery_days_price", "job_import_job_kilo_price", "unit", "description", "currency", "job_title",	"supplier_title",	"supplier_title_full",	"job_import_job_destination_logo",	"manufacturer_short", "price_logo_emex",	"job_import_job_destination_summary", "multiply_factor", "country", "parts_group", "applicability", "job_import_job_success_percent", "logo", "external_supplier_id", "image_url", "bit_original", "success_percent", "title_en", "retail_cost", "minimal_income_cost", "income_cost_in_currency_without_weight", "income_cost_in_currency_with_weight", "md5", "job_import_job_output_order", "price_group", "delivery_days_declared", "price_goodness"]
         end
       end
 
@@ -732,8 +730,10 @@ class PricesController < ApplicationController
 
         if item['supplier_title'] == 'emex'
           coef = 1.07
-        else
-          coef = 1.15
+        elsif item['supplier_title'] == 'АВТОРИФ'
+          coef = 1
+	else
+	  coef = 1.05
         end
 
         unless occurence.key?(item["catalog_number"].to_s + "-" + item["manufacturer"].to_s)
