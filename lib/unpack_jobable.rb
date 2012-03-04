@@ -13,6 +13,8 @@ class UnpackJobable < AbstractJobber
         case `file --mime #{supplier_price.path.shellescape}`
           when /zip/
             `unzip "#{supplier_price.path}" -d #{tempdir}`
+          when /7z/
+            `7zr e "#{supplier_price.path}" -o#{tempdir}`
           when /rar/
             `unrar e "#{supplier_price.path}" #{tempdir}`
         end
