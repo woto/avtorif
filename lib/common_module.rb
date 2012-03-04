@@ -20,7 +20,7 @@ module CommonModule
         hash['login'] = input[:login]
         hash['password'] = input[:password]
         hash['findSubstitutes'] = input[:replacements] == '1' ? 'true' : 'false'
-        response = Net::HTTP.post_form(URI.parse('http://ws.emex.ru/EmExService.asmx/FindDetailAdv'), hash)
+        response = Net::HTTP.post_form(URI.parse('http://ws.emex.ru/EmExService.asmx/FindDetailAdv2'), hash)
         file = File.new(file_name, "w")
         result = response.body
         file.write(result)
