@@ -50,6 +50,8 @@ sed 's/NULL//g' [in_file] > [out_file]
 ---
 cat [in_file] > [out_file]
 ---
+iconv -f UTF-8 -t KOI8-R [in_file] | iconv -f CP1251 -t UTF-8 > [out_file]
+---
 Мне стыдно, но я не знаю как по-другому: tr "\r\n" "\r" < [in_file] | sed "s/\r\r/\n/g" | sed "s/\r/\//g" > [out_file]
 </pre>
 
