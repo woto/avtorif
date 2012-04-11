@@ -27,4 +27,8 @@ every 10.hours do
   rake "avtorif:destroy_old_supplier_prices"
 end
 
+every 1.hours do
+  rake "avtorif:update_currencies"
+end
+
 # Learn more: http://github.com/javan/whenever

@@ -1,20 +1,30 @@
 <p>
-  <b>Title:</b>
+  <b>Название валюты:</b>
   <%=h @currency.title %>
 </p>
 
 <p>
-  <b>Foreign:</b>
+  <b>Ключ 1C:</b>
   <%=h @currency.foreign_id %>
 </p>
 
 <p>
-  <b>Value:</b>
+  <b>Родительская валюта:</b>
+  <%=h @currency.parent.title if @currency.parent %>
+</p>
+
+<p>
+  <b>Дельта в %:</b>
+  <%=h @currency.percent %>
+</p>
+
+<p>
+  <b>Руб за 1 уе:</b>
   <%=h @currency.value %>
 </p>
 
 <p>
-  <b>Price Setting:</b>
+  <b>Прайсы, где эта валюта используется:</b>
   <% t = PriceSetting.arel_table %>
   <% PriceSetting.joins(:supplier).where(t[:currency_buy_id].eq(params[:id]).or(t[:currency_weight_id].eq(params[:id]))).each do |price_setting| %>
     <br />

@@ -4,6 +4,38 @@
 require 'fcntl'
 
 namespace :avtorif do
+  
+  desc "Обновление валют с cbr.ru"
+  task :update_currencies => :environment do
+    require 'rubygems' 
+    require 'savon' 
+  
+    api_url = "http://www.cbr.ru/DailyInfoWebServ/DailyInfo.asmx?WSDL" 
+    client = Savon::Client.new(api_url) 
+     
+    client.wsdl.soap_actions 
+    response = client.request :get_curs_on_date_xml, :body => { "On_date" => DateTime.now} 
+     
+    response.body[:get_curs_on_date_xml_response][:get_curs_on_date_xml_result][:valute_data][:valute_curs_on_date].each do |val| 
+
+      case val[:vcode]
+        when '978'
+          euro = Currency.find_by_foreign_id('978')
+          euro.value = val[:vcurs]
+          euro.save
+        when '840'
+          euro = Currency.find_by_foreign_id('840')
+          euro.value = val[:vcurs]
+          euro.save
+      end
+
+      Currency.where("currency_id IS NOT NULL").each do |currency|
+        currency.value = currency.parent.value.to_f * currency.percent
+        currency.save
+      end
+
+    end  
+  end
 
   desc "Перенос БД дублетов в триплеты"
   task :doublets_to_triplets => :environment do

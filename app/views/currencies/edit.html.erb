@@ -1,21 +1,31 @@
 <h1>Editing currency</h1>
 
-<% form_for(@currency) do |f| %>
+<% semantic_form_for(@currency) do |f| %>
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :title %><br />
+    Название валюты<br />
     <%= f.text_field :title %>
   </p>
   <p>
-    <%= f.label :foreign_id %><br />
+    Ключ 1С<br />
     <%= f.text_field :foreign_id %>
     Этот параметр менять нельзя
   </p>
   <p>
-    <%= f.label :value %><br />
+    Руб за 1 уе<br />
     <%= f.text_field :value %>
   </p>
+  <p>
+    Дельта в %<br />
+    <%= f.text_field :percent %>
+  </p>
+
+  <p>
+    Родительская валюта<br />
+    <%= f.input :parent %>
+  </p>
+
   <p>
     <%= f.submit 'Update' %>
   </p>

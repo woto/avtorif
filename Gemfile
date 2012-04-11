@@ -23,7 +23,7 @@ gem 'enumerated_attribute'
 
 gem 'mysql2', '0.2.5'
 #gem 'sqlite3-ruby', :require => 'sqlite3'
-gem 'delayed_job'
+gem 'delayed_job', '2.1.4'
 
 # Use unicorn as the web server
 # gem 'unicorn'
@@ -38,9 +38,9 @@ gem 'delayed_job'
 # Deploy with Capistrano
 gem 'capistrano'
 gem 'mongrel'
-#gem 'rake'
+gem 'rake', '0.8.7'
 #gem 'rack'
-gem 'paperclip'
+gem 'paperclip', '2.4.5'
 gem 'will_paginate', '~> 3.0.2'
 gem 'mail'
 gem 'tmail'

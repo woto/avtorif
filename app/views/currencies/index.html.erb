@@ -2,15 +2,19 @@
 
 <table>
   <tr>
-    <th>Title</th>
-    <th>Foreign</th>
-    <th>Value</th>
+    <th>Название валюты</th>
+    <th>Ключ 1С</th>
+    <th>Родительская валюта</th>
+    <th>Дельта в %</th>
+    <th>Руб за 1 уе</th>
   </tr>
 
 <% @currencies.each do |currency| %>
   <tr>
     <td><%=h currency.title %></td>
     <td><%=h currency.foreign_id %></td>
+    <td><%=h currency.parent.title if currency.parent  %></td>
+    <td><%=h currency.percent %></td>
     <td><%=h currency.value %></td>
     <td><%= link_to 'Show', currency %></td>
     <td><%= link_to 'Edit', edit_currency_path(currency) %></td>
@@ -20,5 +24,7 @@
 </table>
 
 <br />
+
+Используйте механизм привязки только для валют, получаемых с cbr.ru, иначе поведение может показаться странным; <br /><br />
 
 <%= link_to 'New currency', new_currency_path %>
