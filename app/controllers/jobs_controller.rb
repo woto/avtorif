@@ -72,12 +72,23 @@ class JobsController < ApplicationController
     @job.started_once = false
     respond_to do |format|
       if @job.update_attributes(params[:job])
+        if @job.childs
+          recursive_change_supplier(@job, @job.supplier)
+        end
         format.html { redirect_to(@job.parent.present? ? supplier_job_path(params[:supplier_id], @job.parent.id) : supplier_jobs_path(params[:supplier_id]), :notice => 'Задача успешно обновлена') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
         format.xml  { render :xml => @job.errors, :status => :unprocessable_entity }
       end
+    end
+  end
+
+  def recursive_change_supplier(job, supplier)
+    job.childs.each do |child|
+      recursive_change_supplier(child, supplier)
+      child.supplier = supplier
+      child.save
     end
   end
 
@@ -126,6 +137,47 @@ class JobsController < ApplicationController
     end
   end
 
+  def brand_new_copy
+    copy_method(Job.find(params[:id]), true)
+    job = Job.find(params[:id])
+    parent = job.parent
+    redirect_to(parent.present? ? supplier_job_path(params[:supplier_id], parent.id) : supplier_jobs_path(params[:supplier_id]), :notice => "Копия задачи успешно создана")
+  end
+
+  def copy_method(job, with_subtree, parent_job = false)
+    jobable = job.jobable
+    if jobable.class == ReceiveJob
+      receiveable = jobable.receiveable
+    end
+
+    new_job = job.clone
+    if jobable
+      new_jobable = jobable.clone
+    end
+    new_job.jobable = new_jobable
+
+    if jobable.class == ReceiveJob
+      new_receiveable = receiveable.clone
+      new_jobable.receiveable = new_receiveable
+    end
+
+    new_job.title = new_job.title + " КОПИЯ"
+    new_job.repeats << job.repeats
+
+    if parent_job
+      new_job.parent = parent_job
+    end 
+
+    new_job.save
+
+    if with_subtree && job.childs
+      job.childs.each do |child|
+        copy_method(child, true, new_job)
+      end
+    end
+
+  end
+
   def copy
     @job = Job.find(params[:id])
     @jobable = @job.jobable
@@ -135,7 +187,6 @@ class JobsController < ApplicationController
     new_job = @job.clone
     new_jobable = @jobable.clone
     new_job.jobable = new_jobable
-    debugger
     if @jobable.class == ReceiveJob
       new_receiveable = @receiveable.clone
       new_jobable.receiveable = new_receiveable

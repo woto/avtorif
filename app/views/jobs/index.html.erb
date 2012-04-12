@@ -81,6 +81,7 @@
           <%= link_to 'Edit', edit_supplier_job_path(job.supplier, job) %> <br />
           <%= link_to 'Destroy', supplier_job_path(job.supplier, job), :confirm => 'Are you sure?', :method => :delete, :remote => true %> <br />
           <%= link_to 'Copy', copy_supplier_job_path(job.supplier, job), :confirm => 'Are you sure?', :method => :copy %> <br /><br />
+          <%= link_to 'Brand New Copy', brand_new_copy_supplier_job_path(job.supplier, job), :confirm => 'Are you sure?', :method => :brand_new_copy %> <br /><br />
           <%= link_to 'Start', start_supplier_job_path(job.supplier, job), :remote => true %><br />
           <%= link_to(raw('Force&nbsp;Start'), start_supplier_job_path(job.supplier, job, :force => true), :remote => true) %>
           <%= link_to(raw('Flush&nbsp;Last&nbsp;Error'), flush_last_error_supplier_job_path(job.supplier, job), :remote => true) %><br />
