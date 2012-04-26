@@ -112,7 +112,9 @@ scope = scope.scoped :conditions => {:supplier_id => params['supplier_id']} if p
       query = "DESCRIBE price_import_#{@job.id}"
       header = ActiveRecord::Base.connection.execute(query, {:as => :hash}).map{|line| line[0]}
       xm.tr {header.each {|value| xm.th(value)}}
-      query = "SELECT * FROM price_import_#{@job.id} LIMIT 20"
+      from = params[:from] || 0
+      count = params[:count] || 10
+      query = "SELECT * FROM price_import_#{@job.id} LIMIT #{from}, #{count}"
       ActiveRecord::Base.connection.execute(query).each_with_index do |line, index|
         xm.tr {line.each {|value| xm.td(value)} }
       end
@@ -138,5 +140,11 @@ scope = scope.scoped :conditions => {:supplier_id => params['supplier_id']} if p
 
   <% end %>
 </div>
+
+<%= form_tag({}, :method => 'get') do %>
+  С: <%= text_field_tag :from %>
+  Количество: <%= text_field_tag :count %>
+  <%= submit_tag :submit %>
+<% end %>
 
 <br/>
