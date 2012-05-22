@@ -56,6 +56,7 @@ Avtorif::Application.routes.draw do
         get 'start'
         get 'flush_last_error'
         post 'copy'
+        post 'brand_new_copy'
         get 'clean'
         post 'destroy_manufacturers_by_job'
         get 'rake_load_replaces'
