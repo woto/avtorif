@@ -9,8 +9,7 @@ module CommonModule
 
       hash = Hash.new
       file_name = 'system/emex/'
-      # TODO Здесь сделать замену символов, из которых не может состоять путь на например нижнее подчеркивание
-      file_name << input[:login].to_s + "|" + input[:password].to_s + "|" + input[:catalog_number].to_s + "|" + input[:manufacturer].to_s + "|" + input[:replacements].to_i.to_s
+      file_name << safe_name(input[:login].to_s) + "|" + safe_name(input[:password].to_s) + "|" + safe_name(input[:catalog_number].to_s) + "|" + safe_name(input[:manufacturer].to_s) + "|" + safe_name(input[:replacements].to_i.to_s)
 
       if(File.exist?(file_name) && (File.ctime(file_name) > Time.now - AppConfig.emex_cache.to_i.minutes))
         result = File.read(file_name)
@@ -196,5 +195,12 @@ module CommonModule
           symbolize_keys arg
         end
       end
+
+
+      private 
+      def safe_name unsafe_name
+        unsafe_name.gsub(/[^0-9A-Za-zА-Яа-я.\-]/, '_').to_s
+      end
+
     end
 end
