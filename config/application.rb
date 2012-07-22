@@ -50,7 +50,7 @@ module Avtorif
       ::ExceptionNotifier,
       :email_prefix => "Server-Price Error: ",
       :sender_address => %w{robot@avtorif.ru},
-      :exception_recipients => %w{webmaster@avtorif.ru}
+      :exception_recipients => %w{oganer@gmail.com}
     )
 
     config.action_mailer.raise_delivery_errors  = true
