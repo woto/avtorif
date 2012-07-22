@@ -20,7 +20,6 @@ vendor/gems/gems
 vendor/gems/specifications
 vendor/gems/doc
 vendor/gems/environment.rb
-Gemfile.lock
 public/system
 system/prices_archive
 system/emex
