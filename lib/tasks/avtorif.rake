@@ -7,8 +7,16 @@ namespace :avtorif do
   
   desc "Обновление валют с cbr.ru"
   task :update_currencies => :environment do
+
     require 'rubygems' 
     require 'savon' 
+
+    Savon.configure do |config| 
+      config.log = false
+      config.log_level = :info 
+    end 
+
+    HTTPI.log=false
   
     api_url = "http://www.cbr.ru/DailyInfoWebServ/DailyInfo.asmx?WSDL" 
     client = Savon::Client.new(api_url) 
