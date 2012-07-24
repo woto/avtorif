@@ -7,6 +7,7 @@ module CommonModule
     def get_emex(input)
       # TODO тут нужна оптимизация, например, когда нас спрашивают о заменах, нам неважно какой логин и пароль, или если спрашивают информацию о заменах конкретного производителя и у нас уже есть кеш с каталожным номером, но без производителя, то мы сами можем это все вычленять. Пока что кеш максимально жесткий, чтобы во-первых не допустить ошибки и во-вторых не тратить много время
 
+      result = ''
       hash = Hash.new
       file_name = 'system/emex/'
       file_name << safe_name(input[:login].to_s) + "|" + safe_name(input[:password].to_s) + "|" + safe_name(input[:catalog_number].to_s) + "|" + safe_name(input[:manufacturer].to_s) + "|" + safe_name(input[:replacements].to_i.to_s)
@@ -20,10 +21,12 @@ module CommonModule
         hash['password'] = input[:password]
         hash['findSubstitutes'] = input[:replacements] == '1' ? 'true' : 'false'
         response = Net::HTTP.post_form(URI.parse('http://ws.emex.ru/EmExService.asmx/FindDetailAdv2'), hash)
-        file = File.new(file_name, "w")
-        result = response.body
-        file.write(result)
-        file.close
+        if response.code == '200'
+          file = File.new(file_name, "w")
+          result = response.body
+          file.write(result)
+          file.close
+        end
       end
 
       result
