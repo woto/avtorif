@@ -437,7 +437,8 @@ class PricesController < ApplicationController
                 :manufacturer => params[:manufacturer],
                 :login => AppConfig.emex_login,
                 :password => AppConfig.emex_password,
-                :replacements => params[:replacements]
+                :replacements => params[:replacements],
+                :cached => params[:cached]
               )
             end
 
