@@ -1,0 +1,48 @@
+defaults: &defaults
+  ftp_timeout: 3600
+  smb_timeout: 3600
+  http_timeout: 3600
+  folder_timeout: 3600
+  max_emails: 10000
+
+  # Настройки прайса emex
+  emex_income_rate: 1
+  emex_retail_rate: 1.4
+  emex_discount_rate_for_price: 1
+  emex_minimal_retail_rate_for_price: 1.1
+
+  # Настройки для работы с веб сервисом emex
+  emex_login: 56281
+  emex_password: 85eea256
+
+  # Время кеширования результата запроса с emex по детали
+  emex_cache: 10
+  emex_timeout: 200
+
+  catalog_number_len: 20
+  manufacturer_len: 20
+  max_replaces: 80
+  max_discount_rate: 0.74
+
+  ldap:
+    host: 192.168.1.1
+    port: 389
+    auth:  { 
+      method: !ruby/symbol simple,
+      username: cn=inetuser,cn=Users,dc=avtorif,dc=local,
+      password: Hrf5k4adk5+
+    }
+
+development:
+  <<: *defaults
+  lc_ws_address: http://192.168.1.42/trade_dda/ws
+  lc_ws_login: webservice_test
+  lc_ws_password: webservice_test
+
+
+production:
+  <<: *defaults
+  lc_ws_address: http://192.168.1.9/trade/ws
+  lc_ws_login: webservice
+  lc_ws_password: webservice
+
