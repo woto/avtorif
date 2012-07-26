@@ -10,9 +10,9 @@ module CommonModule
       result = ''
       hash = Hash.new
       file_name = 'system/emex/'
-      file_name << safe_name(input[:login].to_s) + "|" + safe_name(input[:password].to_s) + "|" + safe_name(input[:catalog_number].to_s) + "|" + safe_name(input[:manufacturer].to_s) + "|" + safe_name(input[:replacements].to_i.to_s)
+      file_name << safe_name(input[:catalog_number].to_s) + "|" + safe_name(input[:manufacturer].to_s) + "|" + safe_name(input[:replacements].to_i.to_s)
 
-      if(input[:cached] || ( File.exist?(file_name) && (File.ctime(file_name) > Time.now - AppConfig.emex_cache.to_i.minutes)))
+      if (input[:cached] && File.exist?(file_name)) || ( File.exist?(file_name) && (File.ctime(file_name) > Time.now - AppConfig.emex_cache.to_i.minutes))
         result = File.read(file_name)
       else
         hash['makeLogo'] = input[:manufacturer].present? ? CommonModule::manufacturer_orig(input[:manufacturer])[1..-2] : ''
