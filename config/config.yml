@@ -13,7 +13,7 @@ defaults: &defaults
 
   # Настройки для работы с веб сервисом emex
   emex_login: 56281
-  emex_password: 4BacIYQe
+  emex_password: 85eea256
 
   # Время кеширования результата запроса с emex по детали
   emex_cache: 10
