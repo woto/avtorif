@@ -17,6 +17,8 @@
 Искать на сайте партнеров: <%= check_box_tag :ext_ws, "1", params[:ext_ws] %>
 </div>
 
+<%= hidden_field_tag :for_site, "1" %>
+
   <%= submit_tag "Искать", :name => nil, :onclick => "this.disabled = true; document.forms['search_form'].submit();" %>
 
 <% end %>
