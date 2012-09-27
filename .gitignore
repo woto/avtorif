@@ -22,5 +22,8 @@ vendor/gems/doc
 vendor/gems/environment.rb
 public/system
 system/prices_archive
-system/emex
 db/schema.rb
+
+
+system/emex/*
+!system/emex/.gitkeep
