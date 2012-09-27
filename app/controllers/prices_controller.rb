@@ -732,9 +732,9 @@ class PricesController < ApplicationController
         if item['supplier_title'] == 'emex'
           coef = 1.07
         elsif item['supplier_title'] == 'АВТОРИФ'
-          coef = 1
+          coef = 10
 	else
-	  coef = 1.05
+	  coef = 10
         end
 
         unless occurence.key?(item["catalog_number"].to_s + "-" + item["manufacturer"].to_s)
