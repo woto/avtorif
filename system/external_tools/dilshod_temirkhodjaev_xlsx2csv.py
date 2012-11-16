@@ -1,13 +1,32 @@
-#!/usr/bin/python
+#!/usr/bin/env python
+#
+#   Copyright information
+#
+#	Copyright (C) 2010-2012 Dilshod Temirkhodjaev <tdilshod@gmail.com>
+#
+#   License
+#
+#	This program is free software; you can redistribute it and/or modify
+#	it under the terms of the GNU General Public License as published by
+#	the Free Software Foundation; either version 2 of the License, or
+#	(at your option) any later version.
+#
+#	This program is distributed in the hope that it will be useful,
+#	but WITHOUT ANY WARRANTY; without even the implied warranty of
+#	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+#	GNU General Public License for more details.
+#
+#	You should have received a copy of the GNU General Public License
+#	along with this program. If not, see <http://www.gnu.org/licenses/>.
 
 __author__ = "Dilshod Temirkhodjaev <tdilshod@gmail.com>"
+__license__ = "GPL-2+"
 
-import csv, datetime, zipfile, sys
+import csv, datetime, zipfile, sys, os
 import xml.parsers.expat
 from xml.dom import minidom
 from optparse import OptionParser
 import pdb
-
 
 # see also ruby-roo lib at: http://github.com/hmcgowan/roo
 FORMATS = {
@@ -41,13 +60,16 @@ FORMATS = {
   'dd/mm/yy' : 'date',
   'hh:mm:ss' : 'time',
   "dd/mm/yy\\ hh:mm" : 'date',
+  'dd/mm/yyyy hh:mm:ss' : 'date',
   'yy-mm-dd' : 'date',
   'd-mmm-yyyy' : 'date',
   'm/d/yy' : 'date',
   'm/d/yyyy' : 'date',
   'dd-mmm-yyyy' : 'date',
+  'dd/mm/yyyy' : 'date',
   'mm/dd/yy hh:mm am/pm' : 'date',
   'mm/dd/yyyy hh:mm:ss' : 'date',
+  'yyyy-mm-dd hh:mm:ss' : 'date',
 }
 STANDARD_FORMATS = { 
   0 : 'general',
@@ -87,8 +109,10 @@ STANDARD_FORMATS = {
 #   dateformat - override date/time format
 #   delimiter - csv columns delimiter symbol
 #   sheet_delimiter - sheets delimiter used when processing all sheets
+#   skip_empty_lines - skip empty lines
 #
-def xlsx2csv(infilepath, outfile, sheetid, temp_path, dateformat=None, delimiter=",", sheetdelimiter="--------"):
+def xlsx2csv(infilepath, outfile, temp_path, sheetid=1, dateformat=None, delimiter=",", sheetdelimiter="--------", skip_empty_lines=False):
+    # writer = csv.writer(outfile, quoting=csv.QUOTE_MINIMAL, delimiter=delimiter)
     ziphandle = zipfile.ZipFile(infilepath)
     try:
         shared_strings = parse(ziphandle, SharedStrings, "xl/sharedStrings.xml")
@@ -96,18 +120,14 @@ def xlsx2csv(infilepath, outfile, sheetid, temp_path, dateformat=None, delimiter
         workbook = parse(ziphandle, Workbook, "xl/workbook.xml")
 	
 	#pdb.set_trace()
-        if sheetid > 0:
-	    raise Exception('not implemented')
-        else:
-	    counter = 0
-            for s in workbook.sheets:
-	    	counter = counter + 1
-                #if sheetdelimiter != "":
-                #    outfile.write(sheetdelimiter + " " + str(s['id']) + " - " + s['name'] + "\r\n")
-		writer = csv.writer(open(temp_path + "/" + s['name'], 'wb'), delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-                sheet = Sheet(shared_strings, styles, ziphandle.read("xl/worksheets/sheet%i.xml" %counter))
-                sheet.set_dateformat(dateformat)
-                sheet.to_csv(writer)
+        for s in workbook.sheets:
+            #if sheetdelimiter != "":
+            #    outfile.write(sheetdelimiter + " " + str(s['id']) + " - " + s['name'].encode('utf-8') + "\r\n")
+            writer = csv.writer(open(temp_path + "/" + s['name'], 'wb'), delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+            sheet = Sheet(workbook, shared_strings, styles, ziphandle.read("xl/worksheets/sheet%i.xml" %s['id']))
+            sheet.set_dateformat(dateformat)
+            sheet.set_skip_empty_lines(skip_empty_lines)                
+            sheet.to_csv(writer)
     finally:
         ziphandle.close()
 
@@ -118,23 +138,37 @@ def parse(ziphandle, klass, filename):
     return instance
 
 class Workbook:
-    sheets = []
+    def __init__(self):
+        self.sheets = []
+        self.date1904 = False
 
     def parse(self, data):
         workbookDoc = minidom.parseString(data)
+        if len(workbookDoc.firstChild.getElementsByTagName("fileVersion")) == 0:
+            self.appName = 'unknown'
+        else:
+            self.appName = workbookDoc.firstChild.getElementsByTagName("fileVersion")[0]._attrs['appName'].value
+        try:
+            self.date1904 = workbookDoc.firstChild.getElementsByTagName("workbookPr")[0]._attrs['date1904'].value.lower().strip() != "false"
+        except:
+            pass        
+
         sheets = workbookDoc.firstChild.getElementsByTagName("sheets")[0]
-        for sheetNode in sheets.childNodes:
+        for sheetNode in sheets.getElementsByTagName("sheet"):
             attrs = sheetNode._attrs
             name = attrs["name"].value
-            if attrs.has_key('sheetId'):
-                id = int(attrs['sheetId'].value)
-            else:
-                id = int(attrs["r:id"].value[3:])
+            if self.appName == 'xl':       
+                if attrs.has_key('r:id'): id = int(attrs["r:id"].value[3:])                 
+                else: id = int(attrs['sheetId'].value)           
+            else:     
+                if attrs.has_key('sheetId'): id = int(attrs["sheetId"].value)
+                else: id = int(attrs['r:id'].value[3:])
             self.sheets.append({'name': name, 'id': id})
 
 class Styles:
-    numFmts = {}
-    cellXfs = []
+    def __init__(self):
+        self.numFmts = {}
+        self.cellXfs = []
 
     def parse(self, data):
         styles = minidom.parseString(data).firstChild
@@ -149,15 +183,19 @@ class Styles:
         cellXfsElement = styles.getElementsByTagName("cellXfs")
         if len(cellXfsElement) == 1:
             for cellXfs in cellXfsElement[0].childNodes:
+                if (cellXfs.nodeName != "xf"):
+                    continue            
                 numFmtId = int(cellXfs._attrs['numFmtId'].value)
                 self.cellXfs.append(numFmtId)
 
 class SharedStrings:
-    parser = None
-    strings = []
-    si = False
-    t = False
-    value = ""
+    def __init__(self):
+        self.parser = None
+        self.strings = []
+        self.si = False
+        self.t = False
+        self.rPh = False
+        self.value = ""
 
     def parse(self, data):
         self.parser = xml.parsers.expat.ParserCreate()
@@ -173,9 +211,13 @@ class SharedStrings:
     def handleStartElement(self, name, attrs):
         if name == 'si':
             self.si = True
+            self.value = ""
+        elif name == 't' and self.rPh:
+            self.t = False
         elif name == 't' and self.si:
             self.t = True
-            self.value = ""
+        elif name == 'rPh':
+            self.rPh = True
 
     def handleEndElement(self, name):
         if name == 'si':
@@ -183,34 +225,41 @@ class SharedStrings:
             self.strings.append(self.value)
         elif name == 't':
             self.t = False
+        elif name == 'rPh':
+            self.rPh = False
 
 class Sheet:
-    parser = None
-    writer = None
-    sharedString = None
-    styles = None
+    def __init__(self, workbook, sharedString, styles, data):
+        self.parser = None
+        self.writer = None
+        self.sharedString = None
+        self.styles = None
 
-    in_sheet = False
-    in_row = False
-    in_cell = False
-    in_cell_value = False
-    in_cell_formula = False
+        self.in_sheet = False
+        self.in_row = False
+        self.in_cell = False
+        self.in_cell_value = False
+        self.in_cell_formula = False
 
-    columns = {}
-    rowNum = None
-    colType = None
-    s_attr = None
-    data = None
+        self.columns = {}
+        self.rowNum = None
+        self.colType = None
+        self.s_attr = None
+        self.data = None
 
-    dateformat = None
+        self.dateformat = None
+        self.skip_empty_lines = False
 
-    def __init__(self, sharedString, styles, data):
         self.data = data
+        self.workbook = workbook
         self.sharedStrings = sharedString.strings
         self.styles = styles
 
     def set_dateformat(self, dateformat):
         self.dateformat = dateformat
+
+    def set_skip_empty_lines(self, skip):
+        self.skip_empty_lines = skip
 
     def to_csv(self, writer):
         self.writer = writer
@@ -243,15 +292,18 @@ class Sheet:
 
                     if format_type == 'date': # date/time
                         try:
-                            date = datetime.date(1899, 12, 30) + datetime.timedelta(float(data))
+                            if self.workbook.date1904:
+                                date = datetime.datetime(1904, 01, 01) + datetime.timedelta(float(data))
+                            else:
+                                date = datetime.datetime(1899, 12, 30) + datetime.timedelta(float(data))
                             if self.dateformat:
                                 # str(dateformat) - python2.5 bug, see: http://bugs.python.org/issue2782
                                 self.data = date.strftime(str(self.dateformat))
                             else:
                                 dateformat = format.replace("yyyy", "%Y").replace("yy", "%y"). \
-                                  replace("hh:mm", "%h:%M").replace("hh", "%h").replace("ss", "%S"). \
+                                  replace("hh:mm", "%H:%M").replace("h", "%H").replace("%H%H", "%H").replace("ss", "%S"). \
                                   replace("d", "%e").replace("%e%e", "%d"). \
-                                  replace("mmmm", "%B").replace("mmm", "%b").replace("mm", "%m"). \
+                                  replace("mmmm", "%B").replace("mmm", "%b").replace(":mm", ":%M").replace("m", "%m").replace("%m%m", "%m"). \
                                   replace("am/pm", "%p")
                                 self.data = date.strftime(str(dateformat)).strip()
                         except (ValueError, OverflowError):
@@ -268,7 +320,11 @@ class Sheet:
             self.colType = attrs.get("t")
             self.s_attr = attrs.get("s")
             cellId = attrs.get("r")
-            self.colNum = cellId[:len(cellId)-len(self.rowNum)]
+            if cellId:            
+                self.colNum = cellId[:len(cellId)-len(self.rowNum)]
+                self.colIndex = 0
+            else:
+                self.colIndex+= 1              
             #self.formula = None
             self.data = ""
             self.in_cell = True
@@ -294,7 +350,7 @@ class Sheet:
         elif self.in_cell and name == 'c':
             t = 0
             for i in self.colNum: t = t*26 + ord(i) - 64
-            self.columns[t - 1] = self.data
+            self.columns[t - 1 + self.colIndex] = self.data
             self.in_cell = False
         if self.in_row and name == 'row':
             if len(self.columns.keys()) > 0:
@@ -305,21 +361,43 @@ class Sheet:
                     l = self.spans[0] + self.spans[1] - 1
                     if len(d) < l:
                         d+= (l - len(d)) * ['']
-                self.writer.writerow(d)
+                # write line to csv
+                if not self.skip_empty_lines or d.count('') != len(d):                        
+                    self.writer.writerow(d)
             self.in_row = False
         elif self.in_sheet and name == 'sheetData':
             self.in_sheet = False
 
+def convert_recursive(path, kwargs):
+    for name in os.listdir(path):
+        fullpath = os.path.join(path, name)
+        if os.path.isdir(fullpath):
+            convert_recursive(fullpath, kwargs)
+        else:
+            if fullpath.lower().endswith(".xlsx"):
+                outfilepath = fullpath[:-4] + 'csv'
+                print("Converting %s to %s" %(fullpath, outfilepath))
+                f = open(outfilepath, 'w+b')
+                try:
+                    xlsx2csv(fullpath, f, **kwargs)
+                except zipfile.BadZipfile:
+                    print("File is not a zip file")
+                f.close()
+
 if __name__ == "__main__":
     parser = OptionParser(usage = "%prog [options] infile [outfile]", version="0.11")
-    parser.add_option("-s", "--sheet", dest="sheetid", type="int",
+    parser.add_option("-s", "--sheet", dest="sheetid", default=1, type="int",
       help="sheet no to convert (0 for all sheets)")
     parser.add_option("-d", "--delimiter", dest="delimiter", default=",",
       help="delimiter - csv columns delimiter, 'tab' or 'x09' for tab (comma is default)")
-    parser.add_option("-p", "--sheetdelimiter", dest="sheetdelimiter", default="--------",
-      help="sheets delimiter used to separate sheets, pass '' if you don't want delimiters (default '--------')")
     parser.add_option("-f", "--dateformat", dest="dateformat",
       help="override date/time format (ex. %Y/%m/%d)")
+    parser.add_option("-i", "--ignoreempty", dest="skip_empty_lines", default=False, action="store_true",
+      help="skip empty lines")
+    parser.add_option("-p", "--sheetdelimiter", dest="sheetdelimiter", default="--------",
+      help="sheets delimiter used to separate sheets, pass '' if you don't want delimiters (default '--------')")     
+    parser.add_option("-r", "--recursive", dest="recursive", default=False, action="store_true",
+      help="convert recursively")      
     parser.add_option("-t", "--temp-path", dest="temp_path", help="temp path", metavar="TEMP_PATH") 
 
 
@@ -341,6 +419,7 @@ if __name__ == "__main__":
       'delimiter' : delimiter,
       'sheetdelimiter' : options.sheetdelimiter,
       'dateformat' : options.dateformat,
+      'skip_empty_lines' : options.skip_empty_lines,
       'temp_path' : options.temp_path
     }
 
