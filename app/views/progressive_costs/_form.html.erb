@@ -1,0 +1,29 @@
+<%= form_for(@progressive_cost) do |f| %>
+  <% if @progressive_cost.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@progressive_cost.errors.count, "error") %> prohibited this progressive_cost from being saved:</h2>
+
+      <ul>
+      <% @progressive_cost.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :min %><br />
+    <%= f.text_field :min %>
+  </div>
+  <div class="field">
+    <%= f.label :max %><br />
+    <%= f.text_field :max %>
+  </div>
+  <div class="field">
+    <%= f.label :percent %><br />
+    <%= f.text_field :percent %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

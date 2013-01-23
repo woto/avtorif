@@ -1,5 +1,7 @@
 Avtorif::Application.routes.draw do
   
+  resources :progressive_costs
+
   match 'uri_decoder' => "uri_decoder#index" 
   match 'ldap' => "ldap#index"
 

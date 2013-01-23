@@ -1,0 +1,27 @@
+<h1>Listing progressive_costs</h1>
+
+<table>
+  <tr>
+    <th>Min</th>
+    <th>Max</th>
+    <th>Percent</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @progressive_costs.each do |progressive_cost| %>
+  <tr>
+    <td><%= progressive_cost.min %></td>
+    <td><%= progressive_cost.max %></td>
+    <td><%= progressive_cost.percent %></td>
+    <td><%= link_to 'Show', progressive_cost %></td>
+    <td><%= link_to 'Edit', edit_progressive_cost_path(progressive_cost) %></td>
+    <td><%= link_to 'Destroy', progressive_cost, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Progressive cost', new_progressive_cost_path %>

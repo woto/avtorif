@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Min:</b>
+  <%= @progressive_cost.min %>
+</p>
+
+<p>
+  <b>Max:</b>
+  <%= @progressive_cost.max %>
+</p>
+
+<p>
+  <b>Percent:</b>
+  <%= @progressive_cost.percent %>
+</p>
+
+
+<%= link_to 'Edit', edit_progressive_cost_path(@progressive_cost) %> |
+<%= link_to 'Back', progressive_costs_path %>

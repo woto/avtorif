@@ -725,26 +725,47 @@ class PricesController < ApplicationController
       occurence = {}
 
       # Сначала получаем все группы putput order, рассовываем в них позиции
+
+      progressive_costs = []
+      ProgressiveCost.all.map{ |pc| 
+        progressive_costs << {
+          :min => pc.min, 
+          :max => pc.max, 
+          :percent => pc.percent
+        }
+      }
+
       @result_prices.each do |item|
 
-	coef = 1
+	      coef = 1
 
         if item['supplier_title'] == 'emex'
           coef = 1.07
         elsif item['supplier_title'] == 'АВТОРИФ'
           coef = 10
-	else
-	  coef = 10
+	      else
+	        coef = 10
         end
+
+        progressive_costs.each do |pc|
+          if (pc[:min]..pc[:max]).include? item["income_cost"]
+            item["retail_cost"] = item["retail_cost"] * pc[:percent]
+            item["retail_cost_with_discounts"] = item["retail_cost_with_discounts"] * pc[:percent]
+          end
+        end
+
 
         unless occurence.key?(item["catalog_number"].to_s + "-" + item["manufacturer"].to_s)
-	  occurence[item["catalog_number"].to_s + "-" + item["manufacturer"].to_s] = item["income_cost"].to_f * coef
+	        occurence[item["catalog_number"].to_s + "-" + item["manufacturer"].to_s] = item["income_cost"].to_f * coef
         end
 
-	item["price_goodness"] = item["income_cost"].to_f * coef / occurence[item["catalog_number"].to_s + "-" + item["manufacturer"].to_s].to_f
+	      item["price_goodness"] = item["income_cost"].to_f * coef / occurence[item["catalog_number"].to_s + "-" + item["manufacturer"].to_s].to_f
 
         rp[item["job_import_job_output_order"].to_i] ||= []
         rp[item["job_import_job_output_order"].to_i] << item
+
+
+
       end
   
       # Потом внутри группы сортируем по цене
