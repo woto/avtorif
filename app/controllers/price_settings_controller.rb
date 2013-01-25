@@ -177,6 +177,7 @@ class PriceSettingsController < ApplicationController
            progressive_costs.each do |pc|
              if (pc[:min]..pc[:max]).include? r[6]
                r[6] = r[6] * pc[:percent]
+               break
              end
            end
 

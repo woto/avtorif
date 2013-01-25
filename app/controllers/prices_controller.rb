@@ -737,20 +737,21 @@ class PricesController < ApplicationController
 
       @result_prices.each do |item|
 
-	      coef = 1
+	coef = 1
 
         if item['supplier_title'] == 'emex'
           coef = 1.07
         elsif item['supplier_title'] == 'АВТОРИФ'
           coef = 10
-	      else
-	        coef = 10
+	else
+	  coef = 10
         end
 
         progressive_costs.each do |pc|
           if (pc[:min]..pc[:max]).include? item["income_cost"]
             item["retail_cost"] = item["retail_cost"] * pc[:percent]
             item["retail_cost_with_discounts"] = item["retail_cost_with_discounts"] * pc[:percent]
+            break
           end
         end
 
