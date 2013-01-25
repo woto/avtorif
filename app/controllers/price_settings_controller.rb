@@ -160,7 +160,7 @@ class PriceSettingsController < ApplicationController
    self.response_body = proc { |response, output|
      CommonModule::all_doublets do |l|
        query = "
-         SELECT pc.catalog_number_orig, pc.catalog_number, pc.manufacturer_orig, pc.manufacturer, pc.title, pc.count, ps.retail_rate * (pc.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) * ps.weight_unavailable_rate) AS retail_cost FROM price_cost_#{l} pc
+         SELECT pc.catalog_number_orig, pc.catalog_number, pc.manufacturer_orig, pc.manufacturer, pc.title, pc.count, (pc.price_cost * ij.income_rate * (c_buy.value * ps.relative_buy_rate + ps.absolute_buy_rate) * ps.weight_unavailable_rate) AS retail_cost FROM price_cost_#{l} pc
          JOIN jobs j ON j.id = pc.job_id
          JOIN import_jobs ij ON j.jobable_id = ij.id
          JOIN price_settings ps ON pc.price_setting_id = ps.id 
