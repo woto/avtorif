@@ -5,7 +5,7 @@ class ConvertJobable < AbstractJobber
     Dir.mktmpdir do |tempdir|
       stdin, stdout, stderr = Open3.popen3(exec + " -t #{tempdir}")
       if (error_string = stderr.read).present?
-        raise "'#{error_string}' в результате запуска '#{exec}'"
+        raise "'#{error_string}' в результате запуска '#{exec}' -t #{tempdir}"
       end
 
       files = Dir.entries(tempdir) - ['.', '..']

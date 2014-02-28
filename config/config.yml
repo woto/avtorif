@@ -6,8 +6,8 @@ defaults: &defaults
   max_emails: 10000
 
   # Настройки прайса emex
-  emex_income_rate: 1
-  emex_retail_rate: 1.36
+  emex_income_rate: 1.00
+  emex_retail_rate: 1.00
   emex_discount_rate_for_price: 1
   emex_minimal_retail_rate_for_price: 1.1
 
@@ -42,7 +42,7 @@ development:
 
 production:
   <<: *defaults
-  lc_ws_address: http://192.168.1.9/trade/ws
+  lc_ws_address: http://192.168.101.12/trade/ws
   lc_ws_login: webservice
   lc_ws_password: webservice
 

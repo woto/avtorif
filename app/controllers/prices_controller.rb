@@ -737,16 +737,6 @@ class PricesController < ApplicationController
 
       @result_prices.each do |item|
 
-	coef = 1
-
-        if item['supplier_title'] == 'emex'
-          coef = 1.07
-        elsif item['supplier_title'] == 'АВТОРИФ'
-          coef = 10
-	else
-	  coef = 10
-        end
-
         progressive_costs.each do |pc|
           if (pc[:min]..pc[:max]).include? item["income_cost"]
             item["retail_cost"] = item["retail_cost"] * pc[:percent]
@@ -757,10 +747,10 @@ class PricesController < ApplicationController
 
 
         unless occurence.key?(item["catalog_number"].to_s + "-" + item["manufacturer"].to_s)
-	        occurence[item["catalog_number"].to_s + "-" + item["manufacturer"].to_s] = item["income_cost"].to_f * coef
+	        occurence[item["catalog_number"].to_s + "-" + item["manufacturer"].to_s] = item["income_cost"].to_f
         end
 
-	      item["price_goodness"] = item["income_cost"].to_f * coef / occurence[item["catalog_number"].to_s + "-" + item["manufacturer"].to_s].to_f
+	      item["price_goodness"] = item["income_cost"].to_f / occurence[item["catalog_number"].to_s + "-" + item["manufacturer"].to_s].to_f
 
         rp[item["job_import_job_output_order"].to_i] ||= []
         rp[item["job_import_job_output_order"].to_i] << item
@@ -769,18 +759,44 @@ class PricesController < ApplicationController
 
       end
   
-      # Потом внутри группы сортируем по цене
-      @result_prices = []
-  
-      rp.keys.sort.each do |k|
-        rp[k].sort_by {|item| item["retail_cost"]}.each do |v|
-          @result_prices << v
-        end
-      end
-
     end
     puts "Потрачено на сортировку по output order и сортировке по цене внутри этой группы"
     puts measurement
+
+    if params.key?(:filter)
+      @result_prices = @result_prices.sort_by { |a|  
+      ( 
+        ( 
+
+          ( a["job_import_job_delivery_days_average"].present? ? 
+              a["job_import_job_delivery_days_average"] : 
+              a["job_import_job_delivery_days_declared"]
+          ).to_f + 
+
+          (a["job_import_job_delivery_days_declared"].present? ?
+              a["job_import_job_delivery_days_declared"] :
+              a["job_import_job_delivery_days_average"]
+          ).to_f
+
+        )/2/( (fast = params[:fast]).present? ? fast.to_f : 100) ) +  a["price_goodness"].to_f }
+
+      new_result_price = []
+
+      counter = Hash.new{|h, k| h[k] = 0}
+
+      @result_prices.each do |item|
+        h = item["catalog_number"].to_s + " - " + item["manufacturer"].to_s
+        counter[h] += 1
+
+        if counter[h] <= 2
+          new_result_price << item
+        end
+      end
+
+      @result_prices = new_result_price
+    end
+
+    @result_prices = @result_prices.sort_by{|a| a["retail_cost_with_discounts"]}
 
     respond_to do |format|
       format.html {render :action => :index }

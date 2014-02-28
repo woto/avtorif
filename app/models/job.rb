@@ -1,6 +1,6 @@
 class Job < ActiveRecord::Base
 
-  has_many :supplier_prices, :dependent => :destroy
+  has_many :supplier_prices
   has_many :delayed_jobs
   validates_numericality_of :seconds_between_jobs, :only_integer => true, :if => "!seconds_between_jobs.blank?" 
   validates_numericality_of :seconds_working, :only_integer => true, :if => "!seconds_working.blank?"
@@ -28,7 +28,7 @@ class Job < ActiveRecord::Base
 
   cattr_reader :per_page
   @@per_page = 10
-  has_many :prices, :dependent => :destroy
+  has_many :prices
   has_many :manufacturers
 
   has_and_belongs_to_many :repeats

@@ -13,3 +13,13 @@ Allow from 188.64.170.136
 Allow from 95.220.71.126
 Allow from 37.110.44.140
 Allow from 78.46.233.188
+Allow from 89.251.101.234
+Allow from 185.19.21.50
+Allow from 5.228.251.26
+Allow from 5.228.251.86
+Allow from 5.228.251.194
+Allow from 89.109.251.161
+Allow from 192.168.1.240
+<Files "google3283d1117f2a7183.html">
+Allow from all
+</Files>

@@ -4,6 +4,25 @@
 require 'fcntl'
 
 namespace :avtorif do
+
+  desc "Выгрузка замен для колодникова"
+  task :replacemets_download => :environment do
+    FasterCSV.open 'result.txt', 'w+' do |csv|
+      client = ActiveRecord::Base.connection.instance_variable_get :@connection
+      CommonModule::all_doublets do |d|
+        query = "SELECT * FROM price_catalog_#{d}"
+        puts d
+        result = client.query(query)
+        result.each do |row|
+          (0+7..79+7).step(2) do |c|
+            if row[c].present?
+              csv << [row[3].to_s, row[2].to_s, row[c].to_s, row[c+1].to_s]
+            end
+          end
+        end
+      end
+    end
+  end
   
   desc "Обновление валют с cbr.ru"
   task :update_currencies => :environment do
