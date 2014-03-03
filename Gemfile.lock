@@ -5,7 +5,7 @@ GIT
     exception_notification (1.0.0)
 
 GIT
-  remote: git@github.com:woto/mechanize.git
+  remote: https://github.com/woto/mechanize
   revision: e5b3dd59471096dca3354183fed5a18bae88c6b0
   specs:
     mechanize (1.0.1.beta.20110107104205)

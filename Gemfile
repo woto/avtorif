@@ -82,7 +82,7 @@ gem 'devise', '1.4.9'
 
 #gem 'newrelic_rpm'
 #gem 'rails-footnotes', :git => 'git://github.com/indirect/rails-footnotes.git'
-gem 'mechanize', :git => 'git@github.com:woto/mechanize.git'
+gem 'mechanize', :git => 'https://github.com/woto/mechanize'
 gem 'jquery-rails', '1.0.16'
 gem 'builder'
 
