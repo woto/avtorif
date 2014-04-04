@@ -38,6 +38,7 @@ class CurrenciesController < ApplicationController
   end
 
   def send_to_web_service(format)
+    return true
     client = Savon::Client.new do |wsdl, http|
        wsdl.document = "#{AppConfig.lc_ws_address}/currencies.1cws?wsdl"
        http.auth.basic AppConfig.lc_ws_login, AppConfig.lc_ws_password
