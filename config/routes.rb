@@ -1,5 +1,6 @@
 Avtorif::Application.routes.draw do
   
+  resources :spare_catalogs
   resources :progressive_costs
 
   match 'uri_decoder' => "uri_decoder#index" 
