@@ -114,6 +114,7 @@ class JobsController < ApplicationController
     @job.destroy
 
     respond_to do |format|
+      format.js {render :js => 'done'}
       format.html { redirect_to(parent.present? ? supplier_job_path(params[:supplier_id], parent.id) : supplier_jobs_path(params[:supplier_id])) }
       format.xml  { head :ok }
     end

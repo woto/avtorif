@@ -90,7 +90,7 @@ gem 'savon', '0.9.7'
 gem 'httpi', '0.9.5'
 #gem 'escape', :git => "https://github.com/akr/escape.git"
 #gem 'escape_utils'
-gem 'libxml-ruby', '2.2.2'
+gem 'libxml-ruby'#, '2.2.2'
 gem 'net-ldap', '0.2.2'
 gem 'akami', '1.0.0'
 gem 'chronic', '0.6.4'
