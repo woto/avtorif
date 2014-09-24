@@ -242,7 +242,7 @@ class JobsController < ApplicationController
       notice << b.read()
       notice << c.read()
     end 
-    redirect_to (supplier_job_path(params[:supplier_id], params[:id]), :notice => "Процесс изменения данных в справочном каталоге завершен. " + notice)
+    redirect_to(supplier_job_path(params[:supplier_id], params[:id]), :notice => "Процесс изменения данных в справочном каталоге завершен. " + notice)
   end
 
   def rake_delete_replaces
@@ -251,7 +251,7 @@ class JobsController < ApplicationController
       notice << b.read()
       notice << c.read()
     end
-    redirect_to (supplier_job_path(params[:supplier_id], params[:id]), :notice => 'Процесс изменения данных в справочном каталоге завершен. ' + notice)
+    redirect_to(supplier_job_path(params[:supplier_id], params[:id]), :notice => 'Процесс изменения данных в справочном каталоге завершен. ' + notice)
   end
 
   def clean
