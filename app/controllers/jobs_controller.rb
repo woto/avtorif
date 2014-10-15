@@ -114,6 +114,7 @@ class JobsController < ApplicationController
     @job.destroy
 
     respond_to do |format|
+      format.js {render :js => 'done'}
       format.html { redirect_to(parent.present? ? supplier_job_path(params[:supplier_id], parent.id) : supplier_jobs_path(params[:supplier_id])) }
       format.xml  { head :ok }
     end
@@ -241,7 +242,7 @@ class JobsController < ApplicationController
       notice << b.read()
       notice << c.read()
     end 
-    redirect_to (supplier_job_path(params[:supplier_id], params[:id]), :notice => "Процесс изменения данных в справочном каталоге завершен. " + notice)
+    redirect_to(supplier_job_path(params[:supplier_id], params[:id]), :notice => "Процесс изменения данных в справочном каталоге завершен. " + notice)
   end
 
   def rake_delete_replaces
@@ -250,7 +251,7 @@ class JobsController < ApplicationController
       notice << b.read()
       notice << c.read()
     end
-    redirect_to (supplier_job_path(params[:supplier_id], params[:id]), :notice => 'Процесс изменения данных в справочном каталоге завершен. ' + notice)
+    redirect_to(supplier_job_path(params[:supplier_id], params[:id]), :notice => 'Процесс изменения данных в справочном каталоге завершен. ' + notice)
   end
 
   def clean
