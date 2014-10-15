@@ -20,8 +20,8 @@ class SpareCatalogsController < ApplicationController
 
     Price.connection.execute(query)
 
-
-    render :nothing => true
+    render :text => 'ok'
+    #render :nothing => true
   end
 
 end
