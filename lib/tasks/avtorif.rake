@@ -5,8 +5,29 @@ require 'fcntl'
 
 namespace :avtorif do
 
+  desc "Убираем производителей из замен - price_catalog"
+  task :clean_price_catalog_manufacturers => :environment do
+    client = ActiveRecord::Base.connection.instance_variable_get :@connection
+    CommonModule::all_doublets do |d|
+      query = "UPDATE price_catalog_#{d} SET manufacturer=null"
+      (0..79).each do |i|
+        query += ", rm#{i}=NULL"
+      end
+      result = client.query(query)
+    end
+  end
+
+  desc "Опустошение замен - price_catalog"
+  task :truncate_price_catalog => :environment do
+    client = ActiveRecord::Base.connection.instance_variable_get :@connection
+    CommonModule::all_doublets do |d|
+      query = "TRUNCATE price_catalog_#{d}"
+      result = client.query(query)
+    end
+  end
+
   desc "Выгрузка замен для колодникова"
-  task :replacemets_download => :environment do
+  task :replacements_download => :environment do
     FasterCSV.open 'result.txt', 'w+' do |csv|
       client = ActiveRecord::Base.connection.instance_variable_get :@connection
       CommonModule::all_doublets do |d|
