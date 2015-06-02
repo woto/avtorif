@@ -369,6 +369,14 @@ namespace :avtorif do
     end
   end
 
+  desc "Загрузка производителей и синонимов с yaponama.ru"
+  task "load_conglomerates" => :environment do
+    FasterCSV.foreach './system/manufacturers_synonyms.csv' do |row|
+      parent = Manufacturer.find_or_create_by_title(row[0])
+      parent.manufacturer_synonyms.find_or_create_by_title(row[1])
+    end
+  end
+
   #desc 'Выгрузить прайсы (файлы) в samba'
   #task :prices_archive => :environment do
 
