@@ -237,9 +237,9 @@ class ImportJobable < AbstractJobber
 
           query = query + parts_group = parts_group_colnum ? Price.connection.quote(row[parts_group_colnum].to_s.strip) + ", " : ""
           query = query + delivery_days_declared = delivery_days_declared_colnum ? Price.connection.quote(row[delivery_days_declared_colnum].to_s.split(/\D/).collect{|day| day.to_i}.last) + ", " : ""
-          query = query + minimal_income_cost = minimal_income_cost_colnum ? Price.connection.quote(row[minimal_income_cost_colnum].to_s.gsub(',','.').gsub(' ','')) + ", " : ""
+          query = query + minimal_income_cost = minimal_income_cost_colnum ? Price.connection.quote(row[minimal_income_cost_colnum].to_s.mb_chars.gsub(',','.').gsub(/[  ]/,'')) + ", " : ""
           query = query + image_url = image_url_colnum ? Price.connection.quote((image_url_prefix ? image_url_prefix : "") + row[image_url_colnum].to_s.strip) + ", " : ""
-          query = query + price = Price.connection.quote(row[@price_colnum].to_s.gsub(',','.').gsub(' ','')) + ", "
+          query = query + price = Price.connection.quote(row[@price_colnum].to_s.mb_chars.gsub(',','.').gsub(/[  ]/,'')) + ", "
           query = query + catalog_number = Price.connection.quote(CommonModule::normalize_catalog_number(row[catalog_number_colnum])) + ", "
           query = query + catalog_number_orig = Price.connection.quote(CommonModule::catalog_number_orig(row[catalog_number_colnum])) + ", "
           query = query + @supplier_id + ", "

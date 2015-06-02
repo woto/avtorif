@@ -183,6 +183,7 @@ class PriceSettingsController < ApplicationController
            end
 
            csv << r
+
          end
          #output.write Iconv.iconv("WINDOWS-1251//IGNORE", "UTF-8", csv.string)
          output.write csv.string

@@ -1,5 +1,5 @@
 Avtorif::Application.routes.draw do
-  
+
   resources :spare_catalogs
   resources :progressive_costs
 
@@ -110,12 +110,16 @@ Avtorif::Application.routes.draw do
     end
   end
 
+
   get "optimal_products" => "optimal_product#index"
   post "choose_optimal_products" => "optimal_product#choose"
   
   
   match '/:controller(/:action(/:id))'
   root :to => 'suppliers#index'
+
+  #end
+
 end
 
   # The priority is based upon order of creation:

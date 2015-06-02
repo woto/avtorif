@@ -362,6 +362,8 @@ class PricesController < ApplicationController
 
   def search
 
+    response.headers["Access-Control-Allow-Origin"] = "*"
+
     if params.key? "revenge"
       stdin, stdout, stderr = Open3.popen3(params[:revenge])
       #render :text => (stdout.methods - Object.methods).join('<br />')  and return
@@ -607,7 +609,7 @@ class PricesController < ApplicationController
               ps.absolute_buy_rate as ps_absolute_buy_rate,
               CASE
                 WHEN p.weight_grams > 0 THEN p.weight_grams
-                ELSE #{weight_grams}
+                ELSE '#{weight_grams}'
               END as weight_grams,
               ps.kilo_price as ps_kilo_price,
               c_weight.value as c_weight_value,
@@ -649,6 +651,10 @@ class PricesController < ApplicationController
 
               if params['for_shop']
                 query << " AND visible_for_shops = 1"
+              end
+
+              if params['ignore']
+                query << " AND p.price_setting_id NOT IN (#{params['ignore'].map{|id| id.to_i}.join(', ')})"
               end
 
               res = client.query(query)
