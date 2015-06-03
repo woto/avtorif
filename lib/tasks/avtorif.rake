@@ -394,7 +394,14 @@ namespace :avtorif do
   task "load_conglomerates" => :environment do
     FasterCSV.foreach './system/manufacturers_synonyms.csv' do |row|
       parent = Manufacturer.find_or_create_by_title(row[0])
-      parent.manufacturer_synonyms.find_or_create_by_title(row[1])
+
+      child = Manufacturer.where(:title => row[1]).first
+      child.destroy if child.present?
+
+      synonym = ManufacturerSynonym.where(:title => row[1]).first
+      synonym.destroy if synonym.present?
+
+      parent.manufacturer_synonyms.create(:title => row[1])
     end
   end
 
