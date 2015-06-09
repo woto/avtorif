@@ -5,7 +5,7 @@ class SpareCatalogsController < ApplicationController
   def create
     raise 'На сколько я понимаю, это уже не используется?!'
 
-    catalog_number = CommonModule::normalize_catalog_number(CommonModule::convert_all_cyr_to_lat(params[:catalog_number]))
+    catalog_number = CommonModule::normalize_catalog_number(params[:catalog_number])
     manufacturer = CommonModule::find_manufacturer_synonym(params[:manufacturer], -1, false)[1..-2]
     md5 = Digest::MD5.hexdigest(catalog_number)[0,2]
     name = params[:name]

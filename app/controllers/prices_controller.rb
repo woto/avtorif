@@ -387,8 +387,7 @@ class PricesController < ApplicationController
       end
 
       begin
-        latinized_catalog_number = CommonModule::convert_all_cyr_to_lat(params[:catalog_number])
-        our_catalog_number = CommonModule::normalize_catalog_number(latinized_catalog_number)
+        our_catalog_number = CommonModule::normalize_catalog_number(params[:catalog_number])
         # По идее от этой строчки надо избавиться, но когда убрал всплыло то, что возвращается NULL и тут обрезается
         # до UL, я не совсем правильно написал метод и использую его в различных целях в разных местах, 
         # поэтому чтобы сохранить работоспособность пришлось вернуть как было. Еще в момент написания уже подумывал разбить
