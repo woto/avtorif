@@ -1,0 +1,17 @@
+Number formatting a la Excel
+
+The number (and dates) in Excel are float numbers. How these numbers are displyed to an user -- as an integer, or with two digits after a point, etc -- are defined by the cell format. It is your task to interpret the format and display the number as expected.
+
+The code in "numfmt.py" partially solves the problem. The idea is that to find a substring, which consists of a mix of zeros, hashes, dots and commas, and then to use only this substring for further formatting.
+
+The idea works at least for integer numbers and numbers with two digits after a comma. For my needs, it is 100% of all the use cases.
+
+Your needs may vary. You are welcome to extend the code in "numfmt.py". Don't forget to add tests into "numfmt_test.py".
+
+An example of usage is the file "dump-sheet.py". It prints the content of "invoice.xls".
+
+
+-- 
+21 October 2013
+(c) Oleg Parashchenko, olpa@ http://uucode.com/
+License: Public domain

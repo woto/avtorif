@@ -1,6 +1,29 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*- 
 
+import xlrd
+import numfmt
+import locale
+
+def format_number(f, cell, wb):
+  xf = wb.xf_list[cell.xf_index]
+  fmt_key = xf.format_key
+  fmt = wb.format_map[fmt_key]
+  s_fmt = fmt.format_str
+  a_fmt = numfmt.extract_number_format(s_fmt)
+  if a_fmt:
+    s_f = numfmt.format_number(f, a_fmt, div1000, div1)
+  else:
+    s_f = str(f)
+  return s_f
+
+
+locale.setlocale(locale.LC_ALL, '')
+l = locale.localeconv()
+div1    = l['decimal_point'] or '.'
+div1000 = l['thousands_sep'] or ','
+
+
 class readexcel(object):
     """ Simple OS-independent class for extracting data from an Excel File.
     
@@ -25,11 +48,12 @@ class readexcel(object):
             for row in xls.iter_dict(sname):
                 print row
     """ 
+
     def __init__(self, filename, enc):
         """ Wraps an XLRD book """
         if not os.path.isfile(filename):
             raise ValueError, "%s is not a valid filename" % filename
-        self.book = xlrd.open_workbook(filename, encoding_override=enc)
+        self.book = xlrd.open_workbook(filename, formatting_info=True, encoding_override=enc)
         self.sheet_keys = {}
     def is_data_row(self, sheet, i):
         values = sheet.row_values(i)
@@ -39,7 +63,11 @@ class readexcel(object):
             if bool(v):
                 return True #+ row full of (valid) False values?
         return False
+
     def _parse_row(self, sheet, row_index, date_as_tuple):
+        global format_number
+        global div1000
+        global div1
         """ Sanitize incoming excel data """
         # Data Type Codes:
         #  EMPTY 0
@@ -49,11 +77,13 @@ class readexcel(object):
         #  BOOLEAN 4 int; 1 means TRUE, 0 means FALSE 
         #  ERROR 5 
         values = []
-        for type, value in zip(
-                sheet.row_types(row_index), sheet.row_values(row_index)):
+        for col_index, (type, value) in enumerate(zip(
+                sheet.row_types(row_index), sheet.row_values(row_index))):
             if type == 2:
-                if value == int(value):
-                    value = int(value)
+              cell = sheet.cell(row_index, col_index)
+              value = format_number(cell.value, cell, self.book)
+              #  if value == int(value):
+              #      value = int(value)
             elif type == 3:
                 datetuple = xlrd.xldate_as_tuple(value, self.book.datemode)
                 if date_as_tuple:
